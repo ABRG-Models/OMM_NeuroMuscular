@@ -1,0 +1,26 @@
+{
+    // Single luminance example
+    "luminances":
+    [
+    {
+    "shape":"cross",
+    "thetaX":0,
+    "thetaY":0,
+    "widthThetaX":6,
+    "widthThetaY":2,
+    "luminance":0.5,
+    "timeOn":0.0,
+    "timeOff":0.050
+    },
+    {
+    "shape":"cross",
+    "thetaX":0,
+    "thetaY":10,
+    "widthThetaX":6,
+    "widthThetaY":2,
+    "luminance":0.5,
+    "timeOn":0.070,
+    "timeOff":0.600
+    }
+    ]
+}

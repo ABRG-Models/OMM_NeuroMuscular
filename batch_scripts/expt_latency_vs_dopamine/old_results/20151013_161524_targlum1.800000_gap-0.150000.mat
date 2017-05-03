@@ -1,0 +1,119 @@
+# Created by Octave 3.8.2, Tue Oct 13 16:15:24 2015 BST <pc1ssj@node117>
+# name: da
+# type: matrix
+# rows: 1
+# columns: 10
+ 0.01 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+
+
+# name: lat_mean
+# type: matrix
+# rows: 1
+# columns: 10
+ 244.375 242.125 237.625 222.625 203 187 154.625 135 129.125 125.75
+
+
+# name: lat_sd
+# type: matrix
+# rows: 1
+# columns: 10
+ 0.5175491695067657 0.6408699444616557 2.774243783705493 10.90134329861626 8.298020417975776 6.546536707079771 3.335416016031584 1.069044967649698 0.6408699444616557 0.7071067811865476
+
+
+# name: params
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 18
+# name: targetThetaY
+# type: scalar
+-12
+
+
+# name: targetThetaX
+# type: scalar
+0
+
+
+# name: num_par_runs
+# type: scalar
+8
+
+
+# name: dopamine
+# type: scalar
+0.9
+
+
+# name: targetCross
+# type: scalar
+0
+
+
+# name: targetLuminance
+# type: scalar
+1.8
+
+
+# name: targetWidthX
+# type: scalar
+4
+
+
+# name: targetWidthY
+# type: scalar
+4
+
+
+# name: fixCross
+# type: scalar
+0
+
+
+# name: fixLuminance
+# type: scalar
+0.2
+
+
+# name: fixWidthX
+# type: scalar
+2
+
+
+# name: fixWidthY
+# type: scalar
+2
+
+
+# name: fixOn
+# type: scalar
+0
+
+
+# name: fixOff
+# type: scalar
+0.55
+
+
+# name: targetOn
+# type: scalar
+0.4
+
+
+# name: targetOff
+# type: scalar
+1
+
+
+# name: use_insigneo
+# type: scalar
+1
+
+
+# name: cleanup
+# type: scalar
+1
+
+
+
+

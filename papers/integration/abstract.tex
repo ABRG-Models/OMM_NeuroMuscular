@@ -1,0 +1,143 @@
+% While writing, don't stop for errors
+\nonstopmode
+
+%%% This is based on the Frontiers template.
+\documentclass{frontiersSCNS}
+
+\usepackage{url,hyperref,lineno,microtype}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage[onehalfspacing]{setspace}
+\linenumbers
+
+% Trick to define a language alias and permit language = {en} in the .bib file.
+% From: http://tex.stackexchange.com/questions/199254/babel-define-language-synonym
+\usepackage{letltxmacro}
+\LetLtxMacro{\ORIGselectlanguage}{\selectlanguage}
+\makeatletter
+\DeclareRobustCommand{\selectlanguage}[1]{%
+  \@ifundefined{alias@\string#1}
+    {\ORIGselectlanguage{#1}}
+    {\begingroup\edef\x{\endgroup
+       \noexpand\ORIGselectlanguage{\@nameuse{alias@#1}}}\x}%
+}
+\newcommand{\definelanguagealias}[2]{%
+  \@namedef{alias@#1}{#2}%
+}
+\makeatother
+\definelanguagealias{en}{english}
+\definelanguagealias{eng}{english}
+% End language alias trick
+
+
+\def\keyFont{\fontsize{8}{11}\helveticabold }
+\def\firstAuthorLast{James {et~al.}}
+\def\Authors{Sebastian James\,$^{1,2,*}$, Alexander Blenkinsop\,$^{1,2}$, \\
+  Alexander Cope\,$^3$, Sean Anderson\,$^{2,4}$, Dimitrios Stanev\,$^5$, \\
+  Chris Papapavlou\,$^5$, Konstantinos Moustakas\,$^5$, Kevin Gurney\,$^{1,2}$}
+% Affiliations should be keyed to the author's name with superscript
+% numbers and be listed as follows: Laboratory, Institute, Department,
+% Organization, City, State abbreviation (USA, Canada, Australia), and
+% Country (without detailed address information such as city zip codes
+% or street names).
+%
+% If one of the authors has a change of address, list the new address
+% below the correspondence details using a superscript symbol and use
+% the same symbol to indicate the author in the author list.
+\def\Address{\\
+$^{1}$Adaptive Behaviour Research Group, Department of Psychology,
+  The University of Sheffield, Sheffield, UK \\
+$^{2}$Insigneo Institute for in-silico Medicine,
+  The University of Sheffield, Sheffield, UK \\
+$^{3}$Department of Computer Science,
+  The University of Sheffield, Sheffield, UK \\
+$^{4}$Department of Automatic Control Systems Engineering,
+  The University of Sheffield, Sheffield, UK \\
+$^{5}$Department of Computer Science,
+  The University of Patras, Patras, Greece \\
+}
+% The Corresponding Author should be marked with an asterisk. Provide
+% the exact contact address (this time including street name and city
+% zip code) and email of the corresponding author
+\def\corrAuthor{Kevin Gurney}
+\def\corrAddress{Department of Psychology, The University of Sheffield,
+  Western Bank, Sheffield, S10 2TP, UK}
+\def\corrEmail{k.gurney@sheffield.ac.uk}
+
+
+\begin{document}
+
+% A place for aliases:
+\input{sebcommands.tex}
+
+\onecolumn
+\firstpage{1}
+
+\title[Integrated brain and biomechanics]{
+  Integrating brain and biomechanical models - a new  paradigm
+  for understanding  neuro-muscular control
+}
+
+\author[\firstAuthorLast ]{\Authors}
+\address{}
+\correspondance{}
+\extraAuth{} % If more than 1 corr. author refer to original template
+             % and fill this in
+
+\maketitle
+%% END PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstract}
+\section{}
+To date, realistic models of how the central nervous system governs
+behaviour have been restricted in scope to the brain, brainstem or
+spinal column, as if these existed as disembodied organs.
+Further, the model is often exercised in relation to an in vivo
+physiological experiment with input comprising an impulse, a periodic
+signal or constant activation, and output as a pattern of neural
+activity in one or more neural populations. Any link to behaviour is
+inferred only indirectly via these activity patterns.
+%
+We argue that to discover the principles of operation of neural
+systems, it is necessary to express their behaviour in terms of
+physical movements of a realistic motor system, and to supply inputs
+that mimic sensory experience. To do this with confidence, we must
+connect our brain models to neuro-muscular models and provide relevant
+visual and proprioceptive feedback signals, thereby closing the loop
+of the simulation.
+%
+This paper describes an effort to develop just such an integrated
+brain and biomechanical system using a number of pre-existing
+models. It describes a model of the saccadic oculomotor system
+incorporating a neuromuscular model of the eye and its six extraocular
+muscles. The position of the eye determines how illumination of a
+retinotopic input population projects information about the location
+of a saccade target into the system.
+%
+A pre-existing saccadic burst generator model was incorporated into
+the system, which generated motoneuron activity patterns suitable for
+driving the biomechanical eye. The model was demonstrated to make
+accurate saccades to a target luminance under a set of environmental
+constraints.
+%
+Challenges encountered in the development of this model showed the
+importance of this integrated modelling approach. Thus, we exposed
+shortcomings in individual model components which were only apparent
+when these were supplied with the more plausible inputs available in a
+closed loop design. Consequently we were able to suggest missing
+functionality which the system would require to reproduce more
+realistic behaviour.
+%
+The construction of such closed-loop animal models constitutes a new
+paradigm of {\em computational neurobehaviour} and promises a more
+thoroughgoing approach to our understanding of the brain's function as
+a controller for movement and behaviour.
+
+\tiny
+ \keyFont{
+   \section{Keywords:}
+   integrated brain biomechanics neuromuscular oculomotor saccade basal ganglia
+ } % 5 to 8 keywords
+\end{abstract}
+
+\end{document}

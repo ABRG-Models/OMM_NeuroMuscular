@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<SpineML xsi:schemaLocation="http://www.shef.ac.uk/SpineMLComponentLayer SpineMLComponentLayer.xsd" xmlns="http://www.shef.ac.uk/SpineMLComponentLayer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <ComponentClass type="neuron_body" name="EBNleft">
+  <Dynamics initial_regime="default">
+   <Regime name="default">
+    <TimeDerivative variable="E">
+     <MathInline>-3.5*E+(2-E)*(5*Ll+1)-(E+1)*(10*Lr+20*g)</MathInline>
+    </TimeDerivative>
+   </Regime>
+   <Alias dimension="?" name="g">
+    <MathInline>(P*P*P*P)/((0.1*0.1*0.1*0.1)+(P*P*P*P))</MathInline>
+   </Alias>
+   <StateVariable dimension="?" name="E"/>
+  </Dynamics>
+  <AnalogReceivePort dimension="?" name="Ll"/>
+  <AnalogReceivePort dimension="?" name="Lr"/>
+  <AnalogReceivePort dimension="?" name="P"/>
+  <AnalogSendPort name="E"/>
+ </ComponentClass>
+</SpineML>

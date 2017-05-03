@@ -1,0 +1,57 @@
+I'd like to thank the reviewer for their comments, which were
+constructive and useful. I'll reply to the comments and indicate where
+I have changed the manuscript below.
+
+> Reviewer comments:
+
+(Introduction)
+
+> The introduction section depicts clearly the need of such a model.
+
+(Materials & Methods)
+
+> The second section presents a clear architecture of the platform
+> components and the overall methodology. However, there is not a strong
+> mathematical support of the algorithms used. The BRAHMS and SpineML
+> could be just mentioned and not analysed as much, so that the gained
+> space could be used for the mathematical background of the
+> algorithms.
+
+The description of BRAHMS and SpineML has been reduced. I've added the
+equations governing the rate coded neural elements.
+
+> More analysis should be performed regarding the connection
+> of the Brain model and the muscular components, as it is there where
+> the main novelty of the platform resides; thus, please explain
+> thoroughly how the SC Map signal is converted into the 6
+> time-dependent moto-neuron activation signals.
+
+I have added additional detail to the description of the SC map -> SBG
+conversion.
+
+(Results)
+
+> The results section contains a methodology portion regarding the
+> model's training, so please consider of transferring it to the 2nd
+> section.
+
+This has been moved.
+
+> Moreover, there is not any reference to the training data
+> that were used, i.e. what exactly was the nature of the data input in
+> the training process. Finally, a validation protocol of the simulated
+> results is not mentioned at all, so please consider of adding any
+> error metrics.
+
+I have added a description of the data input for the training
+process. I've not mentioned validation because the centroiding step,
+ensures that only a single neural element drives the SC to SBG weight
+maps and the range of inputs given ensures that every active element
+in each weight map is trained.
+
+> The reference section lacks of the titles of the journal papers and
+> has to be revised.
+
+I believe I have followed the short format for the bibliography, given
+in the VPH2016 extended abstract template, which does not include
+journal paper titles and so I have not made any changes here.

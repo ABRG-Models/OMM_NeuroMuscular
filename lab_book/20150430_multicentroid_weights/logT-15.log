@@ -1,0 +1,4 @@
+TargetThetaY: -15.000000
+last_angle: -14.494130 cur_angle: -14.494130 (sd 0.307457) last_error: 1000.000000 cur_error: 0.505870 last_weight: 0.700000 cur_weight: 0.800000 next_weight: 0.794941 dedw: 70.000000
+last_angle: -14.494130 cur_angle: -14.796650 (sd 0.395993) last_error: 0.505870 cur_error: 0.203350 last_weight: 0.800000 cur_weight: 0.794941 next_weight: 0.792561 dedw: 59.801925
+Best weight: 0.794941 for which angle was: -14.796650

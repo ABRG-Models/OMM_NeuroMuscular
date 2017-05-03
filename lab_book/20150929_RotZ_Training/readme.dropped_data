@@ -1,0 +1,8 @@
+I removed two data points from allweights_mod.log which seemed to have 
+bad numbers:
+
+e53, TargetX:19, TargetY:-12 (weight 1131800.261862)
+e52, TargetX:8, TargetY:-20 (weight 4057963.609389)
+
+I then used the script load_interp to generate the 
+explicitDataBinaryFiles.

@@ -1,0 +1,1955 @@
+<modelMetaData>
+ <population name="World">
+  <xPos value="-4.61474"/>
+  <yPos value="12.2578"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="255" red="0"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="-29"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Retina_1" showlabel="0" source="World" style="4">
+  <start x="-4.98174" y="11.7585"/>
+  <curves>
+   <curve>
+    <C1 xpos="-4.92168" ypos="9.82281"/>
+    <C2 xpos="-5.16326" ypos="8.88374"/>
+    <end xpos="-4.07073" ypos="8.4716"/>
+   </curve>
+  </curves>
+  <synapseConnection name="World to Retina_1 Synapse 0 weight_update">
+   <Script text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;" sigma="1" name="GaussianKernel"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="Retina_2" showlabel="0" source="World" style="4">
+  <start x="-4.67994" y="11.7584"/>
+  <curves>
+   <curve>
+    <C1 xpos="-4.62863" ypos="10.6864"/>
+    <C2 xpos="-4.9372" ypos="10.0849"/>
+    <end xpos="-4.06459" ypos="10.1484"/>
+   </curve>
+  </curves>
+  <synapseConnection name="World to Retina_2 Synapse 0 weight_update">
+   <Script text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;" sigma="1" name="GaussianKernel"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="FEF_add_noise" showlabel="0" source="World" style="4">
+  <start x="-5.02814" y="12.7583"/>
+  <curves>
+   <curve>
+    <C1 xpos="-4.94649" ypos="13.9642"/>
+    <C2 xpos="-5.01" ypos="14.72"/>
+    <end xpos="-3.46559" ypos="14.5094"/>
+   </curve>
+  </curves>
+  <synapseConnection name="World to FEF_add_noise Synapse 0 weight_update"/>
+ </projection>
+ <population name="Retina_1">
+  <xPos value="-3.23828"/>
+  <yPos value="8.476"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="255"/>
+  <size value="1"/>
+  <tag value="2"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="SC_sup" showlabel="0" source="Retina_1" style="4">
+  <start x="-2.39465" y="8.44384"/>
+  <curves>
+   <curve>
+    <C1 xpos="-1.71599" ypos="8.41558"/>
+    <C2 xpos="-2.74979" ypos="9.37968"/>
+    <end xpos="-1.51351" ypos="9.34608"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Retina_1 to SC_sup Synapse 0 weight_update"/>
+ </projection>
+ <population name="Retina_2">
+  <xPos value="-3.23149"/>
+  <yPos value="10.1558"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="255"/>
+  <size value="1"/>
+  <tag value="3"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="30"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Retina_1" showlabel="0" source="Retina_2" style="0">
+  <start x="-3.26973" y="9.6558"/>
+  <curves>
+   <curve>
+    <C1 xpos="-3.0081" ypos="9.06115"/>
+    <C2 xpos="-3.49568" ypos="9.57251"/>
+    <end xpos="-3.21221" ypos="8.976"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Retina_2 to Retina_1 Synapse 0 weight_update"/>
+ </projection>
+ <population name="FEF">
+  <xPos value="1.83017"/>
+  <yPos value="14.6852"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="0"/>
+  <size value="1"/>
+  <tag value="4"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="56"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Thalamus" showlabel="0" source="FEF" style="4">
+  <start x="1.19203" y="14.188"/>
+  <curves>
+   <curve>
+    <C1 xpos="0.642163" ypos="13.307"/>
+    <C2 xpos="-0.637933" ypos="14.0446"/>
+    <end xpos="-0.680385" ypos="12.4082"/>
+   </curve>
+  </curves>
+  <synapseConnection name="FEF to Thalamus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Str_D1" showlabel="0" source="FEF" style="4">
+  <start x="2.66029" y="14.8201"/>
+  <curves>
+   <curve>
+    <C1 xpos="3.51469" ypos="14.5097"/>
+    <C2 xpos="3.25633" ypos="13.2462"/>
+    <end xpos="3.28241" ypos="12.4184"/>
+   </curve>
+  </curves>
+  <synapseConnection name="FEF to Str_D1 Synapse 0 weight_update">
+   <Script text="&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs):&#xa;&#xa;  import math&#xa;&#xa;  i = 0&#xa;  # Magnification factor is&#xa;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#xa;  # where nfs is 50 and window_size is 61 in latest&#xa;  # model. This gives the best Mf of 7.7513.&#xa;  # See EyeFrame::fieldOfView for the field of view.&#xa;  # Note that field of view was 150 in Alex C's &#xa;  # model giving Mf=4.87 there. I've maintained the&#xa;  # same Mf of 4.87, but have ensured that my&#xa;  # fixations do not &quot;leak outside of the foveal mask.&#xa;  Mf = 4.87&#xa;  E2 = 2.5&#xa;  out = []&#xa;&#xa;  for srcloc in srclocs:&#xa;    row = srcloc[1]&#xa;    j = 0&#xa;    for dstloc in dstlocs:    &#xa;      if srcloc == dstloc:&#xa;        E = E2*(-1+math.exp(row/(Mf*E2)))&#xa;        # Where from the 7.5 here?&#xa;        res = 1/(1+math.exp(2*(7.5-E)))&#xa;        &#xa;        conn = (i,j,0,res)&#xa;        out.append(conn)&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  return out&#xa;" name="DecayingAtFovea"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="SC_deep" showlabel="0" source="FEF" style="4">
+  <start x="1.83961" y="14.1852"/>
+  <curves>
+   <curve>
+    <C1 xpos="1.94479" ypos="8.37275"/>
+    <C2 xpos="-0.353871" ypos="8.85205"/>
+    <end xpos="-0.412929" ypos="7.92607"/>
+   </curve>
+  </curves>
+  <synapseConnection name="FEF to SC_deep Synapse 0 weight_update">
+   <Script text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;" sigma="0.6" name="GaussianKernel"/>
+   <Config/>
+  </synapseConnection>
+ </projection>
+ <projection destination="Str_D2" showlabel="1" source="FEF" style="4">
+  <start x="2.66368" y="15.0069"/>
+  <curves>
+   <curve>
+    <C1 xpos="5.62224" ypos="14.7263"/>
+    <C2 xpos="4.80034" ypos="14.5345"/>
+    <end xpos="6.44132" ypos="12.3351"/>
+   </curve>
+  </curves>
+  <synapseConnection name="FEF to Str_D2 Synapse 0 weight_update">
+   <Script text="&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs):&#xa;&#xa;  import math&#xa;&#xa;  i = 0&#xa;  # Magnification factor is&#xa;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#xa;  # where nfs is 50 and window_size is 61 in latest&#xa;  # model. This gives the best Mf of 7.7513.&#xa;  # See EyeFrame::fieldOfView for the field of view.&#xa;  # Note that field of view was 150 in Alex C's &#xa;  # model giving Mf=4.87 there. I've maintained the&#xa;  # same Mf of 4.87, but have ensured that my&#xa;  # fixations do not &quot;leak outside of the foveal mask.&#xa;  Mf = 4.87&#xa;  E2 = 2.5&#xa;  out = []&#xa;&#xa;  for srcloc in srclocs:&#xa;    row = srcloc[1]&#xa;    j = 0&#xa;    for dstloc in dstlocs:    &#xa;      if srcloc == dstloc:&#xa;        E = E2*(-1+math.exp(row/(Mf*E2)))&#xa;        # Where from the 7.5 here?&#xa;        res = 1/(1+math.exp(2*(7.5-E)))&#xa;        &#xa;        conn = (i,j,0,res)&#xa;        out.append(conn)&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  return out&#xa;" name="DecayingAtFovea"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="STN" showlabel="0" source="FEF" style="4">
+  <start x="2.66389" y="14.9144"/>
+  <curves>
+   <curve>
+    <C1 xpos="5.56233" ypos="14.3312"/>
+    <C2 xpos="4.86438" ypos="10.7627"/>
+    <end xpos="4.89422" ypos="10.1138"/>
+   </curve>
+  </curves>
+  <synapseConnection name="FEF to STN Synapse 0 weight_update">
+   <Script text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;" sigma="3" name="GaussianKernel"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <population name="Thalamus">
+  <xPos value="-0.683478"/>
+  <yPos value="11.9082"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="128" red="255"/>
+  <size value="1"/>
+  <tag value="5"/>
+  <x3D value="70"/>
+  <y3D value="-2"/>
+  <z3D value="57"/>
+  <is_visualised value="1"/>
+ </population>
+ <projection destination="FEF" showlabel="0" source="Thalamus" style="4">
+  <start x="-0.480809" y="12.4082"/>
+  <curves>
+   <curve>
+    <C1 xpos="-0.534313" ypos="13.2795"/>
+    <C2 xpos="1.36608" ypos="12.9995"/>
+    <end xpos="1.51038" ypos="14.1881"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Thalamus to FEF Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Str_D1" showlabel="0" source="Thalamus" style="4">
+  <start x="0.150007" y="11.8683"/>
+  <curves>
+   <curve>
+    <C1 xpos="0.88341" ypos="11.8683"/>
+    <C2 xpos="2.00207" ypos="11.9439"/>
+    <end xpos="2.46426" ypos="11.9439"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Thalamus to Str_D1 Synapse 0 weight_update">
+   <Script text="&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs):&#xa;&#xa;  import math&#xa;&#xa;  i = 0&#xa;  # Magnification factor is&#xa;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#xa;  # where nfs is 50 and window_size is 61 in latest&#xa;  # model. This gives the best Mf of 7.7513.&#xa;  # See EyeFrame::fieldOfView for the field of view.&#xa;  # Note that field of view was 150 in Alex C's &#xa;  # model giving Mf=4.87 there. I've maintained the&#xa;  # same Mf of 4.87, but have ensured that my&#xa;  # fixations do not &quot;leak outside of the foveal mask.&#xa;  Mf = 4.87&#xa;  E2 = 2.5&#xa;  out = []&#xa;&#xa;  for srcloc in srclocs:&#xa;    row = srcloc[1]&#xa;    j = 0&#xa;    for dstloc in dstlocs:    &#xa;      if srcloc == dstloc:&#xa;        E = E2*(-1+math.exp(row/(Mf*E2)))&#xa;        # Where from the 7.5 here?&#xa;        res = 1/(1+math.exp(2*(7.5-E)))&#xa;        &#xa;        conn = (i,j,0,res)&#xa;        out.append(conn)&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  return out&#xa;" name="DecayingAtFovea"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="Str_D2" showlabel="0" source="Thalamus" style="4">
+  <start x="0.15" y="11.9019"/>
+  <curves>
+   <curve>
+    <C1 xpos="0.980478" ypos="13.2412"/>
+    <C2 xpos="4.89492" ypos="13.1387"/>
+    <end xpos="5.98087" ypos="11.8702"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Thalamus to Str_D2 Synapse 0 weight_update">
+   <Script text="&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs):&#xa;&#xa;  import math&#xa;&#xa;  i = 0&#xa;  # Magnification factor is&#xa;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#xa;  # where nfs is 50 and window_size is 61 in latest&#xa;  # model. This gives the best Mf of 7.7513.&#xa;  # See EyeFrame::fieldOfView for the field of view.&#xa;  # Note that field of view was 150 in Alex C's &#xa;  # model giving Mf=4.87 there. I've maintained the&#xa;  # same Mf of 4.87, but have ensured that my&#xa;  # fixations do not &quot;leak outside of the foveal mask.&#xa;  Mf = 4.87&#xa;  E2 = 2.5&#xa;  out = []&#xa;&#xa;  for srcloc in srclocs:&#xa;    row = srcloc[1]&#xa;    j = 0&#xa;    for dstloc in dstlocs:    &#xa;      if srcloc == dstloc:&#xa;        E = E2*(-1+math.exp(row/(Mf*E2)))&#xa;        # Where from the 7.5 here?&#xa;        res = 1/(1+math.exp(2*(7.5-E)))&#xa;        &#xa;        conn = (i,j,0,res)&#xa;        out.append(conn)&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  return out&#xa;" name="DecayingAtFovea"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="STN" showlabel="1" source="Thalamus" style="4">
+  <start x="0.149972" y="11.4276"/>
+  <curves>
+   <curve>
+    <C1 xpos="1.56044" ypos="10.6206"/>
+    <C2 xpos="2.6707" ypos="9.84632"/>
+    <end xpos="4.08156" ypos="9.69975"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Thalamus to STN Synapse 0 weight_update">
+   <Script text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;" sigma="3" name="GaussianKernel"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <population name="SC_sup">
+  <xPos value="-0.679526"/>
+  <yPos value="9.32518"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="128" green="0" red="128"/>
+  <size value="1"/>
+  <tag value="6"/>
+  <x3D value="70"/>
+  <y3D value="0"/>
+  <z3D value="30"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="SC_deep" showlabel="0" source="SC_sup" style="4">
+  <start x="-0.823181" y="8.82678"/>
+  <curves>
+   <curve>
+    <C1 xpos="-0.834204" ypos="8.12601"/>
+    <C2 xpos="-1.14561" ypos="8.78943"/>
+    <end xpos="-1.16673" ypos="7.92607"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_sup to SC_deep Synapse 0 weight_update">
+   <Script text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;" sigma="0.6" name="GaussianKernel"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="Thalamus" showlabel="0" source="SC_sup" style="4">
+  <start x="-0.675791" y="9.8202"/>
+  <curves>
+   <curve>
+    <C1 xpos="-0.675791" ypos="10.3629"/>
+    <C2 xpos="-0.764479" ypos="10.874"/>
+    <end xpos="-0.764479" ypos="11.4052"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_sup to Thalamus Synapse 0 weight_update"/>
+ </projection>
+ <population name="SC_deep">
+  <xPos value="-0.683888"/>
+  <yPos value="7.42568"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="128" green="0" red="128"/>
+  <size value="1"/>
+  <tag value="7"/>
+  <x3D value="70"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="SC_deep" showlabel="0" source="SC_deep" style="4">
+  <start x="0.149624" y="7.82682"/>
+  <curves>
+   <curve>
+    <C1 xpos="1.16803" ypos="8.31819"/>
+    <C2 xpos="0.476188" ypos="8.82158"/>
+    <end xpos="-0.113297" ypos="7.9256"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_deep to SC_deep Synapse 0 weight_update">
+   <Script text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;" sigma="2" name="GaussianKernel"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+  <synapseConnection name="SC_deep to SC_deep Synapse 1 weight_update">
+   <Script text="#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;&#x9;import math&#xa;&#x9;normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;&#x9;i = 0&#xa;&#x9;out = []&#xa;&#x9;for srcloc in srclocs:&#xa;&#x9;&#x9;j = 0&#xa;&#x9;&#x9;for dstloc in dstlocs:&#xa;            &#xa;&#x9;&#x9;&#x9;s1 = srcloc[1]&#xa;&#x9;&#x9;&#x9;# Invert one dimension of the sources prior to dist calculation:&#xa;&#x9;&#x9;&#x9;s0 = -1*(srcloc[0]-(49.0/2.0))&#xa;&#x9;&#x9;&#x9;s2 = srcloc[2]&#xa;&#x9;&#x9;&#x9;d1 = dstloc[1]&#xa;&#x9;&#x9;&#x9;d0 = dstloc[0]-(49.0/2.0)&#xa;&#x9;&#x9;&#x9;d2 = dstloc[2]&#xa;            &#xa;&#x9;&#x9;&#x9;dist = math.sqrt(math.pow((s0 - d0),2)&#xa;                             + math.pow((s1 - d1),2)&#xa;                             + math.pow((s2 - d2),2))&#xa;&#xa;&#x9;&#x9;&#x9;conn_weight = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;&#x9;&#x9;&#x9;if conn_weight > 0.001:&#xa;&#x9;&#x9;&#x9;&#x9;conn = (i,j,0,conn_weight)&#xa;&#x9;&#x9;&#x9;&#x9;out.append(conn)&#xa;&#xa;&#x9;&#x9;&#x9;j = j + 1&#xa;&#xa;&#x9;&#x9;i = i + 1&#xa;&#xa;&#x9;return out&#xa;" sigma="3" name="TectotectalInhibition"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="Thalamus" showlabel="0" source="SC_deep" style="4">
+  <start x="-0.920511" y="7.92607"/>
+  <curves>
+   <curve>
+    <C1 xpos="-0.612246" ypos="8.46061"/>
+    <C2 xpos="-0.643199" ypos="8.16197"/>
+    <end xpos="-0.138847" ypos="8.51961"/>
+   </curve>
+   <curve>
+    <C1 xpos="0.356335" ypos="8.86807"/>
+    <C2 xpos="0.40203" ypos="8.99011"/>
+    <end xpos="0.30116" ypos="9.61368"/>
+   </curve>
+   <curve>
+    <C1 xpos="0.163609" ypos="10.494"/>
+    <C2 xpos="-0.210199" ypos="9.99422"/>
+    <end xpos="-0.456146" ypos="11.4082"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_deep to Thalamus Synapse 0 weight_update"/>
+ </projection>
+ <population name="Str_D1">
+  <xPos value="3.29531"/>
+  <yPos value="11.9199"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="51" green="102" red="153"/>
+  <size value="1"/>
+  <tag value="8"/>
+  <x3D value="133"/>
+  <y3D value="0"/>
+  <z3D value="54"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="SNr" showlabel="0" source="Str_D1" style="0">
+  <start x="3.30277" y="11.4194"/>
+  <curves>
+   <curve>
+    <C1 xpos="3.30227" ypos="11.4699"/>
+    <C2 xpos="3.31044" ypos="9.11913"/>
+    <end xpos="3.24393" ypos="7.25544"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Str_D1 to SNr Synapse 0 weight_update">
+   <Script text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;" sigma="1.5" name="GaussianKernel"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <population name="Str_D2">
+  <xPos value="6.8129"/>
+  <yPos value="11.8298"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="51" green="102" red="153"/>
+  <size value="1"/>
+  <tag value="9"/>
+  <x3D value="195"/>
+  <y3D value="0"/>
+  <z3D value="57"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="GPe" showlabel="0" source="Str_D2" style="0">
+  <start x="6.85299" y="11.3353"/>
+  <curves>
+   <curve>
+    <C1 xpos="6.87875" ypos="11.6654"/>
+    <C2 xpos="6.73088" ypos="8.83008"/>
+    <end xpos="6.73088" ypos="7.268"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Str_D2 to GPe Synapse 0 weight_update">
+   <Script text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;" sigma="1.5" name="GaussianKernel"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <population name="STN">
+  <xPos value="4.91237"/>
+  <yPos value="9.61594"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="255" red="0"/>
+  <size value="1"/>
+  <tag value="10"/>
+  <x3D value="155"/>
+  <y3D value="0"/>
+  <z3D value="30"/>
+  <is_visualised value="1"/>
+ </population>
+ <projection destination="SNr" showlabel="0" source="STN" style="4">
+  <start x="4.56073" y="9.11345"/>
+  <curves>
+   <curve>
+    <C1 xpos="4.08193" ypos="8.8329"/>
+    <C2 xpos="3.6853" ypos="7.63182"/>
+    <end xpos="3.6853" ypos="7.25549"/>
+   </curve>
+  </curves>
+  <synapseConnection name="STN to SNr Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="GPe" showlabel="0" source="STN" style="4">
+  <start x="5.309" y="9.11343"/>
+  <curves>
+   <curve>
+    <C1 xpos="5.71775" ypos="8.84209"/>
+    <C2 xpos="6.35161" ypos="7.7772"/>
+    <end xpos="6.35161" ypos="7.26798"/>
+   </curve>
+  </curves>
+  <synapseConnection name="STN to GPe Synapse 0 weight_update"/>
+ </projection>
+ <population name="GPe">
+  <xPos value="6.72445"/>
+  <yPos value="6.76637"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="255" green="0" red="0"/>
+  <size value="1"/>
+  <tag value="11"/>
+  <x3D value="200"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="SNr" showlabel="0" source="GPe" style="0">
+  <start x="5.8884" y="6.72761"/>
+  <curves>
+   <curve>
+    <C1 xpos="4.80423" ypos="6.72761"/>
+    <C2 xpos="4.79704" ypos="6.74589"/>
+    <end xpos="4.0936" ypos="6.74589"/>
+   </curve>
+  </curves>
+  <synapseConnection name="GPe to SNr Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="STN" showlabel="0" source="GPe" style="0">
+  <start x="6.12663" y="7.26814"/>
+  <curves>
+   <curve>
+    <C1 xpos="5.56588" ypos="7.57094"/>
+    <C2 xpos="5.14217" ypos="8.66569"/>
+    <end xpos="5.14217" ypos="9.11259"/>
+   </curve>
+  </curves>
+  <synapseConnection name="GPe to STN Synapse 0 weight_update"/>
+ </projection>
+ <population name="SNr">
+  <xPos value="3.25927"/>
+  <yPos value="6.76168"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="255" green="255" red="0"/>
+  <size value="1"/>
+  <tag value="12"/>
+  <x3D value="133"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="SC_deep" showlabel="0" source="SNr" style="0">
+  <start x="2.42773" y="6.77032"/>
+  <curves>
+   <curve>
+    <C1 xpos="1.68309" ypos="6.77032"/>
+    <C2 xpos="1.23012" ypos="7.74294"/>
+    <end xpos="0.149621" ypos="7.70366"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SNr to SC_deep Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Thalamus" showlabel="0" source="SNr" style="0">
+  <start x="2.96097" y="7.25525"/>
+  <curves>
+   <curve>
+    <C1 xpos="2.96097" ypos="9.26518"/>
+    <C2 xpos="1.24063" ypos="8.30555"/>
+    <end xpos="-0.174403" ypos="11.4082"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SNr to Thalamus Synapse 0 weight_update"/>
+  <synapseConnection name="SNr to Thalamus Synapse 1 weight_update"/>
+ </projection>
+ <population name="LLBN left">
+  <xPos value="-4.0558"/>
+  <yPos value="2.2117"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="255" green="255" red="0"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="EBN left" showlabel="0" source="LLBN left" style="4">
+  <start x="-4.05469" y="1.71497"/>
+  <curves>
+   <curve>
+    <C1 xpos="-3.77849" ypos="1.17429"/>
+    <C2 xpos="-4.04804" ypos="0.151771"/>
+    <end xpos="-4.04804" ypos="-1.37919"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LLBN left to EBN left Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="EBN right" showlabel="0" source="LLBN left" style="0">
+  <start x="-3.42278" y="1.71487"/>
+  <curves>
+   <curve>
+    <C1 xpos="-3.42278" ypos="0.0776524"/>
+    <C2 xpos="0.329728" ypos="0.063981"/>
+    <end xpos="0.329728" ypos="-1.36985"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LLBN left to EBN right Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="OPN" showlabel="0" source="LLBN left" style="0">
+  <start x="-3.61236" y="2.71386"/>
+  <curves>
+   <curve>
+    <C1 xpos="-2.92218" ypos="3.4997"/>
+    <C2 xpos="3.82136" ypos="4.72058"/>
+    <end xpos="4.80941" ypos="-0.911353"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LLBN left to OPN Synapse 0 weight_update"/>
+ </projection>
+ <population name="LLBN right">
+  <xPos value="0.817592"/>
+  <yPos value="2.16466"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="255" red="0"/>
+  <size value="1"/>
+  <tag value="2"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="EBN right" showlabel="0" source="LLBN right" style="4">
+  <start x="0.820486" y="1.66818"/>
+  <curves>
+   <curve>
+    <C1 xpos="0.820486" ypos="0.0679124"/>
+    <C2 xpos="0.917749" ypos="0.069241"/>
+    <end xpos="0.917749" ypos="-1.36984"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LLBN right to EBN right Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="EBN left" showlabel="0" source="LLBN right" style="0">
+  <start x="0.118356" y="1.66807"/>
+  <curves>
+   <curve>
+    <C1 xpos="0.118356" ypos="0.106452"/>
+    <C2 xpos="-3.47227" ypos="0.144431"/>
+    <end xpos="-3.47227" ypos="-1.37923"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LLBN right to EBN left Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="OPN" showlabel="0" source="LLBN right" style="0">
+  <start x="1.6516" y="2.04248"/>
+  <curves>
+   <curve>
+    <C1 xpos="2.66349" ypos="1.89114"/>
+    <C2 xpos="3.86634" ypos="0.773741"/>
+    <end xpos="4.25514" ypos="-0.911346"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LLBN right to OPN Synapse 0 weight_update"/>
+ </projection>
+ <population name="IBN left">
+  <xPos value="-6.12911"/>
+  <yPos value="0.20014"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="255" green="255" red="0"/>
+  <size value="1"/>
+  <tag value="3"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="LLBN left" showlabel="0" source="IBN left" style="0">
+  <start x="-5.69171" y="0.699974"/>
+  <curves>
+   <curve>
+    <C1 xpos="-5.69171" ypos="1.47251"/>
+    <C2 xpos="-4.62075" ypos="1.49087"/>
+    <end xpos="-4.62075" ypos="1.71446"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN left to LLBN left Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="SC_deep" showlabel="0" source="IBN left" style="0">
+  <start x="-5.98424" y="0.700274"/>
+  <curves>
+   <curve>
+    <C1 xpos="-5.80017" ypos="3.85529"/>
+    <C2 xpos="-4.31585" ypos="7.28533"/>
+    <end xpos="-1.51705" ypos="7.45182"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN left to SC_deep Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="FEF" showlabel="0" source="IBN left" style="0">
+  <start x="-6.38985" y="0.700199"/>
+  <curves>
+   <curve>
+    <C1 xpos="-6.59472" ypos="12.8837"/>
+    <C2 xpos="-8.25492" ypos="13.2637"/>
+    <end xpos="0.997224" ypos="14.4228"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN left to FEF Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Thalamus" showlabel="0" source="IBN left" style="0">
+  <start x="-6.12328" y="0.700274"/>
+  <curves>
+   <curve>
+    <C1 xpos="-6.10803" ypos="5.65289"/>
+    <C2 xpos="-2.75" ypos="8.47"/>
+    <end xpos="-1.01764" ypos="11.4082"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN left to Thalamus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="SC_avg" showlabel="0" source="IBN left" style="0">
+  <start x="-5.89462" y="0.70014"/>
+  <curves>
+   <curve>
+    <C1 xpos="-4.71" ypos="5.37"/>
+    <C2 xpos="-4.33" ypos="4.97"/>
+    <end xpos="-1.53061" ypos="5.0818"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN left to SC_avg Synapse 0 weight_update"/>
+ </projection>
+ <population name="OPN">
+  <xPos value="5.02378"/>
+  <yPos value="-1.41249"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="0"/>
+  <size value="1"/>
+  <tag value="4"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="EBN left" showlabel="0" source="OPN" style="0">
+  <start x="4.19408" y="-1.76504"/>
+  <curves>
+   <curve>
+    <C1 xpos="3.49756" ypos="-1.76504"/>
+    <C2 xpos="-2.01977" ypos="0.408701"/>
+    <end xpos="-3.22892" ypos="-1.65728"/>
+   </curve>
+  </curves>
+  <synapseConnection name="OPN to EBN left Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="EBN right" showlabel="0" source="OPN" style="0">
+  <start x="4.72214" y="-1.91136"/>
+  <curves>
+   <curve>
+    <C1 xpos="4.13519" ypos="-2.87375"/>
+    <C2 xpos="1.77307" ypos="-2.11148"/>
+    <end xpos="1.76404" ypos="-2.10889"/>
+   </curve>
+  </curves>
+  <synapseConnection name="OPN to EBN right Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="EBN down" showlabel="0" source="OPN" style="0">
+  <start x="5.8621" y="-1.4523"/>
+  <curves>
+   <curve>
+    <C1 xpos="6.61493" ypos="-1.15643"/>
+    <C2 xpos="10.4697" ypos="-0.254268"/>
+    <end xpos="11.8626" ypos="-1.65831"/>
+   </curve>
+  </curves>
+  <synapseConnection name="OPN to EBN down Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="EBN up" showlabel="0" source="OPN" style="0">
+  <start x="5.8614" y="-1.59357"/>
+  <curves>
+   <curve>
+    <C1 xpos="6.43247" ypos="-1.65282"/>
+    <C2 xpos="7.13675" ypos="-1.95282"/>
+    <end xpos="7.75628" ypos="-1.61929"/>
+   </curve>
+  </curves>
+  <synapseConnection name="OPN to EBN up Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="EBN zplus" showlabel="0" source="OPN" style="0">
+  <start x="5.8614" y="-1.1636"/>
+  <curves>
+   <curve>
+    <C1 xpos="9.00198" ypos="-0.229638"/>
+    <C2 xpos="14.8822" ypos="-0.791451"/>
+    <end xpos="17.8282" ypos="-1.84419"/>
+   </curve>
+  </curves>
+  <synapseConnection name="OPN to EBN zplus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="EBN zminus" showlabel="0" source="OPN" style="0">
+  <start x="5.8614" y="-1.77139"/>
+  <curves>
+   <curve>
+    <C1 xpos="8.0856" ypos="-3.36461"/>
+    <C2 xpos="18.8455" ypos="-2.95171"/>
+    <end xpos="20.2433" ypos="-2.23414"/>
+   </curve>
+  </curves>
+  <synapseConnection name="OPN to EBN zminus Synapse 0 weight_update"/>
+ </projection>
+ <population name="IBN right">
+  <xPos value="2.41692"/>
+  <yPos value="0.22683"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="255" red="0"/>
+  <size value="1"/>
+  <tag value="5"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="LLBN right" showlabel="0" source="IBN right" style="0">
+  <start x="1.90928" y="0.727394"/>
+  <curves>
+   <curve>
+    <C1 xpos="1.90928" ypos="1.37759"/>
+    <C2 xpos="1.44368" ypos="1.31936"/>
+    <end xpos="1.44368" ypos="1.6677"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN right to LLBN right Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="SC_deep" showlabel="0" source="IBN right" style="0">
+  <start x="2.23966" y="0.726964"/>
+  <curves>
+   <curve>
+    <C1 xpos="2.23966" ypos="3.19025"/>
+    <C2 xpos="1.03789" ypos="6.57711"/>
+    <end xpos="0.149588" ypos="7.01461"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN right to SC_deep Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="FEF" showlabel="0" source="IBN right" style="0">
+  <start x="2.43331" y="0.726964"/>
+  <curves>
+   <curve>
+    <C1 xpos="2.43331" ypos="7.15437"/>
+    <C2 xpos="2.09" ypos="10.28"/>
+    <end xpos="2.21665" ypos="14.1852"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN right to FEF Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Thalamus" showlabel="0" source="IBN right" style="0">
+  <start x="2.31893" y="0.726964"/>
+  <curves>
+   <curve>
+    <C1 xpos="2.31893" ypos="5.68082"/>
+    <C2 xpos="1.97" ypos="9.27"/>
+    <end xpos="0.0165196" ypos="11.4082"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN right to Thalamus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="SC_avg" showlabel="0" source="IBN right" style="0">
+  <start x="2.15189" y="0.72683"/>
+  <curves>
+   <curve>
+    <C1 xpos="2.15189" ypos="2.72842"/>
+    <C2 xpos="0.960439" ypos="3.40156"/>
+    <end xpos="-0.186583" ypos="4.52456"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN right to SC_avg Synapse 0 weight_update"/>
+ </projection>
+ <population name="EBN left">
+  <xPos value="-4.07084"/>
+  <yPos value="-1.88062"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="255" green="255" red="0"/>
+  <size value="1"/>
+  <tag value="6"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="IBN left" showlabel="0" source="EBN left" style="4">
+  <start x="-4.48129" y="-1.3793"/>
+  <curves>
+   <curve>
+    <C1 xpos="-4.48129" ypos="-0.651532"/>
+    <C2 xpos="-5.61494" ypos="-0.872341"/>
+    <end xpos="-5.61494" ypos="-0.300041"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN left to IBN left Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="TN left" showlabel="0" source="EBN left" style="4">
+  <start x="-4.08684" y="-2.37934"/>
+  <curves>
+   <curve>
+    <C1 xpos="-4.08684" ypos="-3.33691"/>
+    <C2 xpos="-4.12903" ypos="-3.39443"/>
+    <end xpos="-4.12903" ypos="-3.90088"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN left to TN left Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="MN left" showlabel="0" source="EBN left" style="4">
+  <start x="-4.13789" y="-2.37939"/>
+  <curves>
+   <curve>
+    <C1 xpos="-6.97932" ypos="-4.53454"/>
+    <C2 xpos="-5.70249" ypos="-5.09204"/>
+    <end xpos="-4.06853" ypos="-6.36643"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN left to MN left Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="MN right" showlabel="0" source="EBN left" style="0">
+  <start x="-3.58374" y="-2.37944"/>
+  <curves>
+   <curve>
+    <C1 xpos="-3.58374" ypos="-4.50701"/>
+    <C2 xpos="0.489242" ypos="-4.4627"/>
+    <end xpos="0.489242" ypos="-6.30995"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN left to MN right Synapse 0 weight_update"/>
+ </projection>
+ <population name="EBN right">
+  <xPos value="0.930077"/>
+  <yPos value="-1.87098"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="255" red="0"/>
+  <size value="1"/>
+  <tag value="7"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="IBN right" showlabel="0" source="EBN right" style="4">
+  <start x="1.76394" y="-1.40022"/>
+  <curves>
+   <curve>
+    <C1 xpos="2.84691" ypos="-1.40022"/>
+    <C2 xpos="1.9624" ypos="-0.753267"/>
+    <end xpos="1.9624" ypos="-0.272671"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN right to IBN right Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="TN right" showlabel="0" source="EBN right" style="4">
+  <start x="0.987805" y="-2.36999"/>
+  <curves>
+   <curve>
+    <C1 xpos="0.987805" ypos="-3.27057"/>
+    <C2 xpos="1.05201" ypos="-3.20992"/>
+    <end xpos="1.05201" ypos="-3.81256"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN right to TN right Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="MN right" showlabel="0" source="EBN right" style="4">
+  <start x="0.973219" y="-2.37004"/>
+  <curves>
+   <curve>
+    <C1 xpos="3.9337" ypos="-3.63122"/>
+    <C2 xpos="2.7543" ypos="-5.19003"/>
+    <end xpos="1.00144" ypos="-6.30966"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN right to MN right Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="MN left" showlabel="0" source="EBN right" style="0">
+  <start x="0.44542" y="-2.3701"/>
+  <curves>
+   <curve>
+    <C1 xpos="0.44542" ypos="-4.57067"/>
+    <C2 xpos="-3.55058" ypos="-4.59098"/>
+    <end xpos="-3.55058" ypos="-6.3659"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN right to MN left Synapse 0 weight_update"/>
+ </projection>
+ <population name="TN left">
+  <xPos value="-4.12734"/>
+  <yPos value="-4.40464"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="255" green="255" red="0"/>
+  <size value="1"/>
+  <tag value="8"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="MN left" showlabel="0" source="TN left" style="4">
+  <start x="-4.14216" y="-4.90081"/>
+  <curves>
+   <curve>
+    <C1 xpos="-4.14216" ypos="-5.89636"/>
+    <C2 xpos="-4.06876" ypos="-5.89679"/>
+    <end xpos="-4.06876" ypos="-6.36669"/>
+   </curve>
+  </curves>
+  <synapseConnection name="TN left to MN left Synapse 0 weight_update"/>
+ </projection>
+ <population name="TN right">
+  <xPos value="1.03854"/>
+  <yPos value="-4.31783"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="255" red="0"/>
+  <size value="1"/>
+  <tag value="9"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="MN right" showlabel="0" source="TN right" style="4">
+  <start x="1.05121" y="-4.81263"/>
+  <curves>
+   <curve>
+    <C1 xpos="1.05121" ypos="-5.7616"/>
+    <C2 xpos="0.991485" ypos="-5.7607"/>
+    <end xpos="0.991485" ypos="-6.30935"/>
+   </curve>
+  </curves>
+  <synapseConnection name="TN right to MN right Synapse 0 weight_update"/>
+ </projection>
+ <population name="MN left">
+  <xPos value="-4.06109"/>
+  <yPos value="-6.8701"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="255" green="255" red="0"/>
+  <size value="1"/>
+  <tag value="10"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <population name="MN right">
+  <xPos value="1.00364"/>
+  <yPos value="-6.81544"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="255" red="0"/>
+  <size value="1"/>
+  <tag value="11"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <population name="LLBN up">
+  <xPos value="8.95444"/>
+  <yPos value="2.07597"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="128" red="255"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="EBN up" showlabel="0" source="LLBN up" style="4">
+  <start x="8.96663" y="1.57818"/>
+  <curves>
+   <curve>
+    <C1 xpos="8.9043" ypos="1.52021"/>
+    <C2 xpos="8.59798" ypos="0.266811"/>
+    <end xpos="8.59798" ypos="-1.2276"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LLBN up to EBN up Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="EBN down" showlabel="0" source="LLBN up" style="0">
+  <start x="9.42592" y="1.57777"/>
+  <curves>
+   <curve>
+    <C1 xpos="9.42592" ypos="-0.131555"/>
+    <C2 xpos="12.188" ypos="0.195061"/>
+    <end xpos="12.188" ypos="-1.21968"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LLBN up to EBN down Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="OPN" showlabel="0" source="LLBN up" style="0">
+  <start x="8.13104" y="1.95759"/>
+  <curves>
+   <curve>
+    <C1 xpos="6.20513" ypos="1.67986"/>
+    <C2 xpos="5.53684" ypos="0.204941"/>
+    <end xpos="5.53684" ypos="-0.911442"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LLBN up to OPN Synapse 0 weight_update"/>
+ </projection>
+ <population name="LLBN down">
+  <xPos value="12.5999"/>
+  <yPos value="2.10269"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="255"/>
+  <size value="1"/>
+  <tag value="2"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="EBN down" showlabel="0" source="LLBN down" style="4">
+  <start x="12.6291" y="1.60517"/>
+  <curves>
+   <curve>
+    <C1 xpos="12.5989" ypos="1.6565"/>
+    <C2 xpos="12.6765" ypos="0.127051"/>
+    <end xpos="12.6765" ypos="-1.21973"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LLBN down to EBN down Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="EBN up" showlabel="0" source="LLBN down" style="0">
+  <start x="12.106" y="1.60483"/>
+  <curves>
+   <curve>
+    <C1 xpos="12.106" ypos="-0.0442327"/>
+    <C2 xpos="9.08365" ypos="0.218661"/>
+    <end xpos="9.08365" ypos="-1.2276"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LLBN down to EBN up Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="OPN" showlabel="0" source="LLBN down" style="0">
+  <start x="12.2624" y="2.60483"/>
+  <curves>
+   <curve>
+    <C1 xpos="8.20657" ypos="4.56648"/>
+    <C2 xpos="5.06162" ypos="2.25353"/>
+    <end xpos="5.07078" ypos="-0.911431"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LLBN down to OPN Synapse 0 weight_update"/>
+ </projection>
+ <population name="IBN up">
+  <xPos value="7.21225"/>
+  <yPos value="0.23322"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="128" red="255"/>
+  <size value="1"/>
+  <tag value="3"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="LLBN up" showlabel="0" source="IBN up" style="0">
+  <start x="7.57271" y="0.733264"/>
+  <curves>
+   <curve>
+    <C1 xpos="7.57271" ypos="1.33255"/>
+    <C2 xpos="8.57135" ypos="1.17983"/>
+    <end xpos="8.57135" ypos="1.57777"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN up to LLBN up Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="SC_deep" showlabel="0" source="IBN up" style="0">
+  <start x="6.65672" y="0.733354"/>
+  <curves>
+   <curve>
+    <C1 xpos="6.65672" ypos="3.49704"/>
+    <C2 xpos="1.12924" ypos="7.43123"/>
+    <end xpos="0.149614" ypos="7.43135"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN up to SC_deep Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Thalamus" showlabel="0" source="IBN up" style="0">
+  <start x="6.88213" y="0.733354"/>
+  <curves>
+   <curve>
+    <C1 xpos="9.11031" ypos="8.32179"/>
+    <C2 xpos="10.3911" ypos="13.2654"/>
+    <end xpos="5.85218" ypos="13.421"/>
+   </curve>
+   <curve>
+    <C1 xpos="3.95879" ypos="13.4729"/>
+    <C2 xpos="2.94726" ypos="13.8101"/>
+    <end xpos="0.0194451" ypos="12.4082"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN up to Thalamus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="FEF" showlabel="0" source="IBN up" style="0">
+  <start x="7.05612" y="0.733354"/>
+  <curves>
+   <curve>
+    <C1 xpos="9.94418" ypos="7.94945"/>
+    <C2 xpos="9.3316" ypos="10.896"/>
+    <end xpos="9.15005" ypos="12.0112"/>
+   </curve>
+   <curve>
+    <C1 xpos="9.09817" ypos="12.9968"/>
+    <C2 xpos="7.80133" ypos="15.7202"/>
+    <end xpos="2.65513" ypos="15.1852"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN up to FEF Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="SC_avg" showlabel="0" source="IBN up" style="0">
+  <start x="6.37892" y="0.695724"/>
+  <curves>
+   <curve>
+    <C1 xpos="4.15" ypos="1.35"/>
+    <C2 xpos="2.21" ypos="3.27"/>
+    <end xpos="0.120055" ypos="4.52456"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN up to SC_avg Synapse 0 weight_update"/>
+ </projection>
+ <population name="IBN down">
+  <xPos value="14.6792"/>
+  <yPos value="-0.0188596"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="255"/>
+  <size value="1"/>
+  <tag value="4"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="LLBN down" showlabel="0" source="IBN down" style="0">
+  <start x="14.1495" y="0.481137"/>
+  <curves>
+   <curve>
+    <C1 xpos="14.1495" ypos="1.18104"/>
+    <C2 xpos="13.0126" ypos="1.2268"/>
+    <end xpos="13.0126" ypos="1.60483"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN down to LLBN down Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="FEF" showlabel="0" source="IBN down" style="0">
+  <start x="15.2304" y="0.481157"/>
+  <curves>
+   <curve>
+    <C1 xpos="15.727" ypos="6.51582"/>
+    <C2 xpos="10.2867" ypos="18.3851"/>
+    <end xpos="2.40013" ypos="15.1852"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN down to FEF Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Thalamus" showlabel="0" source="IBN down" style="0">
+  <start x="14.9722" y="0.481157"/>
+  <curves>
+   <curve>
+    <C1 xpos="14.5955" ypos="7.97654"/>
+    <C2 xpos="11.4949" ypos="11.4853"/>
+    <end xpos="9.16689" ypos="12.7012"/>
+   </curve>
+   <curve>
+    <C1 xpos="7.66689" ypos="13.4012"/>
+    <C2 xpos="3.74689" ypos="14.7812"/>
+    <end xpos="-0.225051" ypos="12.4082"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN down to Thalamus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="SC_deep" showlabel="0" source="IBN down" style="0">
+  <start x="14.6645" y="0.481157"/>
+  <curves>
+   <curve>
+    <C1 xpos="14.7955" ypos="7.31654"/>
+    <C2 xpos="3.52768" ypos="3.60649"/>
+    <end xpos="0.149607" ypos="7.29489"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN down to SC_deep Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="SC_avg" showlabel="0" source="IBN down" style="0">
+  <start x="13.8459" y="0.246783"/>
+  <curves>
+   <curve>
+    <C1 xpos="6.90793" ypos="0.246783"/>
+    <C2 xpos="6.19281" ypos="1.55495"/>
+    <end xpos="0.136058" ypos="4.60492"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN down to SC_avg Synapse 0 weight_update"/>
+ </projection>
+ <population name="EBN up">
+  <xPos value="8.57771"/>
+  <yPos value="-1.72902"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="128" red="255"/>
+  <size value="1"/>
+  <tag value="5"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="TN up" showlabel="0" source="EBN up" style="4">
+  <start x="8.62038" y="-2.2276"/>
+  <curves>
+   <curve>
+    <C1 xpos="8.55736" ypos="-2.32059"/>
+    <C2 xpos="8.61004" ypos="-3.20715"/>
+    <end xpos="8.61004" ypos="-3.79287"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN up to TN up Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="IBN up" showlabel="0" source="EBN up" style="4">
+  <start x="8.1995" y="-1.2276"/>
+  <curves>
+   <curve>
+    <C1 xpos="8.1995" ypos="-0.579001"/>
+    <C2 xpos="7.58211" ypos="-1.12564"/>
+    <end xpos="7.54274" ypos="-0.26674"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN up to IBN up Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="MN up" showlabel="0" source="EBN up" style="4">
+  <start x="8.5732" y="-2.2276"/>
+  <curves>
+   <curve>
+    <C1 xpos="5.74739" ypos="-3.6504"/>
+    <C2 xpos="6.27231" ypos="-5.21999"/>
+    <end xpos="8.35699" ypos="-6.35161"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN up to MN up Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="MN down" showlabel="0" source="EBN up" style="0">
+  <start x="8.98621" y="-2.2276"/>
+  <curves>
+   <curve>
+    <C1 xpos="9.38738" ypos="-4.21041"/>
+    <C2 xpos="12.3743" ypos="-4.57899"/>
+    <end xpos="12.3743" ypos="-6.48254"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN up to MN down Synapse 0 weight_update"/>
+ </projection>
+ <population name="TN up">
+  <xPos value="8.60137"/>
+  <yPos value="-4.29833"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="128" red="255"/>
+  <size value="1"/>
+  <tag value="6"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="MN up" showlabel="0" source="TN up" style="4">
+  <start x="8.53678" y="-4.79298"/>
+  <curves>
+   <curve>
+    <C1 xpos="8.63157" ypos="-4.77028"/>
+    <C2 xpos="8.63012" ypos="-5.77424"/>
+    <end xpos="8.63012" ypos="-6.35123"/>
+   </curve>
+  </curves>
+  <synapseConnection name="TN up to MN up Synapse 0 weight_update"/>
+ </projection>
+ <population name="MN up">
+  <xPos value="8.61728"/>
+  <yPos value="-6.85705"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="128" red="255"/>
+  <size value="1"/>
+  <tag value="7"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <population name="EBN down">
+  <xPos value="12.689"/>
+  <yPos value="-1.72085"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="255"/>
+  <size value="1"/>
+  <tag value="8"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="TN down" showlabel="0" source="EBN down" style="4">
+  <start x="12.6806" y="-2.21969"/>
+  <curves>
+   <curve>
+    <C1 xpos="12.6806" ypos="-3.31988"/>
+    <C2 xpos="12.7652" ypos="-3.57651"/>
+    <end xpos="12.7652" ypos="-3.98969"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN down to TN down Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="IBN down" showlabel="0" source="EBN down" style="4">
+  <start x="13.2091" y="-1.21955"/>
+  <curves>
+   <curve>
+    <C1 xpos="13.2091" ypos="-0.546848"/>
+    <C2 xpos="14.304" ypos="-1.56668"/>
+    <end xpos="14.3016" ypos="-0.518864"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN down to IBN down Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="MN down" showlabel="0" source="EBN down" style="4">
+  <start x="12.7209" y="-2.2196"/>
+  <curves>
+   <curve>
+    <C1 xpos="14.9697" ypos="-2.9542"/>
+    <C2 xpos="15.1928" ypos="-5.29039"/>
+    <end xpos="13.1585" ypos="-6.48254"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN down to MN down Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="MN up" showlabel="0" source="EBN down" style="0">
+  <start x="12.3087" y="-2.21968"/>
+  <curves>
+   <curve>
+    <C1 xpos="12.3087" ypos="-4.42697"/>
+    <C2 xpos="9.0519" ypos="-4.51269"/>
+    <end xpos="9.0519" ypos="-6.35161"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN down to MN up Synapse 0 weight_update"/>
+ </projection>
+ <population name="TN down">
+  <xPos value="12.7652"/>
+  <yPos value="-4.49422"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="255"/>
+  <size value="1"/>
+  <tag value="9"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="MN down" showlabel="0" source="TN down" style="4">
+  <start x="12.7709" y="-4.98981"/>
+  <curves>
+   <curve>
+    <C1 xpos="12.842" ypos="-5.21293"/>
+    <C2 xpos="12.7957" ypos="-6.01508"/>
+    <end xpos="12.7957" ypos="-6.48281"/>
+   </curve>
+  </curves>
+  <synapseConnection name="TN down to MN down Synapse 0 weight_update"/>
+ </projection>
+ <population name="MN down">
+  <xPos value="12.7858"/>
+  <yPos value="-6.98759"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="255"/>
+  <size value="1"/>
+  <tag value="10"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <population name="FEF_add_noise">
+  <xPos value="-2.6314"/>
+  <yPos value="14.5701"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="0"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="FEF" showlabel="0" source="FEF_add_noise" style="4">
+  <start x="-1.79865" y="14.6347"/>
+  <curves>
+   <curve>
+    <C1 xpos="-1.24905" ypos="14.6758"/>
+    <C2 xpos="-0.0604393" ypos="14.6651"/>
+    <end xpos="0.997224" ypos="14.7101"/>
+   </curve>
+  </curves>
+  <synapseConnection name="FEF_add_noise to FEF Synapse 0 weight_update">
+   <Script text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;" sigma="1" name="GaussianKernel"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="CogCont" showlabel="0" source="FEF_add_noise" style="4">
+  <start x="-2.42752" y="15.0724"/>
+  <curves>
+   <curve>
+    <C1 xpos="-2.42097" ypos="15.5472"/>
+    <C2 xpos="-5.08095" ypos="15.641"/>
+    <end xpos="-3.27519" ypos="16.1762"/>
+   </curve>
+  </curves>
+  <synapseConnection name="FEF_add_noise to CogCont Synapse 0 weight_update">
+   <Script text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;" sigma="1" name="GaussianKernel"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <population name="Mirror">
+  <xPos value="0.252981"/>
+  <yPos value="16.1972"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="255" green="255" red="85"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="FEF" showlabel="0" source="Mirror" style="4">
+  <start x="0.199893" y="15.6887"/>
+  <curves>
+   <curve>
+    <C1 xpos="0.169653" ypos="14.6314"/>
+    <C2 xpos="1.7828" ypos="16.6177"/>
+    <end xpos="1.81791" ypos="15.1852"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Mirror to FEF Synapse 0 weight_update"/>
+ </projection>
+ <population name="CogCont">
+  <xPos value="-2.44105"/>
+  <yPos value="16.1753"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="170" red="255"/>
+  <size value="1"/>
+  <tag value="3"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Mirror" showlabel="0" source="CogCont" style="4">
+  <start x="-1.6078" y="16.2902"/>
+  <curves>
+   <curve>
+    <C1 xpos="-0.731526" ypos="16.2917"/>
+    <C2 xpos="-1.57341" ypos="16.0716"/>
+    <end xpos="-0.582557" ypos="16.0795"/>
+   </curve>
+  </curves>
+  <synapseConnection name="CogCont to Mirror Synapse 0 weight_update"/>
+ </projection>
+ <population name="SC_avg">
+  <xPos value="-0.697277"/>
+  <yPos value="5.02456"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="128" green="0" red="128"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="LLBN left" showlabel="0" source="SC_avg" style="4">
+  <start x="-1.41676" y="4.53074"/>
+  <curves>
+   <curve>
+    <C1 xpos="-1.59805" ypos="3.4185"/>
+    <C2 xpos="-4.19299" ypos="4.5267"/>
+    <end xpos="-4.27762" ypos="2.71384"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_avg to LLBN left Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="LLBN right" showlabel="0" source="SC_avg" style="4">
+  <start x="-0.73036" y="4.52456"/>
+  <curves>
+   <curve>
+    <C1 xpos="-0.791378" ypos="3.60236"/>
+    <C2 xpos="-0.196742" ypos="4.0267"/>
+    <end xpos="0.401478" ypos="2.6668"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_avg to LLBN right Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="LLBN up" showlabel="0" source="SC_avg" style="4">
+  <start x="0.13652" y="4.85415"/>
+  <curves>
+   <curve>
+    <C1 xpos="0.303176" ypos="4.5295"/>
+    <C2 xpos="8.81129" ypos="4.5267"/>
+    <end xpos="8.7939" ypos="2.57811"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_avg to LLBN up Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="LLBN down" showlabel="0" source="SC_avg" style="4">
+  <start x="0.136444" y="4.94518"/>
+  <curves>
+   <curve>
+    <C1 xpos="6.33137" ypos="4.31264"/>
+    <C2 xpos="12.3113" ypos="4.5267"/>
+    <end xpos="12.8489" ypos="2.60483"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_avg to LLBN down Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="LLBN zplus" showlabel="0" source="SC_avg" style="4">
+  <start x="0.136593" y="5.11678"/>
+  <curves>
+   <curve>
+    <C1 xpos="9.25223" ypos="4.71176"/>
+    <C2 xpos="17.8227" ypos="5.02705"/>
+    <end xpos="18.2226" ypos="2.64357"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_avg to LLBN zplus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="LLBN zminus" showlabel="0" source="SC_avg" style="4">
+  <start x="0.136593" y="5.26904"/>
+  <curves>
+   <curve>
+    <C1 xpos="6.78823" ypos="4.99707"/>
+    <C2 xpos="21.3222" ypos="5.54775"/>
+    <end xpos="21.32" ypos="2.53818"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_avg to LLBN zminus Synapse 0 weight_update"/>
+ </projection>
+ <population name="LLBN zplus">
+  <xPos value="18.6325"/>
+  <yPos value="2.14107"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="0"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="EBN zplus" showlabel="0" source="LLBN zplus" style="4">
+  <start x="18.7361" y="1.64519"/>
+  <curves>
+   <curve>
+    <C1 xpos="18.7361" ypos="-0.0370967"/>
+    <C2 xpos="18.6757" ypos="-0.086911"/>
+    <end xpos="18.6757" ypos="-1.37295"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LLBN zplus to EBN zplus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="EBN zminus" showlabel="0" source="LLBN zplus" style="0">
+  <start x="18.9321" y="1.64321"/>
+  <curves>
+   <curve>
+    <C1 xpos="18.9321" ypos="0.139952"/>
+    <C2 xpos="20.7657" ypos="0.138881"/>
+    <end xpos="20.7657" ypos="-1.30632"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LLBN zplus to EBN zminus Synapse 0 weight_update"/>
+ </projection>
+ <population name="IBN zplus">
+  <xPos value="16.9466"/>
+  <yPos value="-0.0320106"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="0"/>
+  <size value="1"/>
+  <tag value="2"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="LLBN zplus" showlabel="0" source="IBN zplus" style="0">
+  <start x="17.4416" y="0.468514"/>
+  <curves>
+   <curve>
+    <C1 xpos="17.4416" ypos="1.07442"/>
+    <C2 xpos="18.2892" ypos="1.12426"/>
+    <end xpos="18.2892" ypos="1.64516"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN zplus to LLBN zplus Synapse 0 weight_update"/>
+ </projection>
+ <population name="EBN zplus">
+  <xPos value="18.6325"/>
+  <yPos value="-1.87352"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="0"/>
+  <size value="1"/>
+  <tag value="3"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="IBN zplus" showlabel="0" source="EBN zplus" style="4">
+  <start x="18.0633" y="-1.37293"/>
+  <curves>
+   <curve>
+    <C1 xpos="18.115" ypos="-0.644232"/>
+    <C2 xpos="17.315" ypos="-1.44485"/>
+    <end xpos="17.3833" ypos="-0.531496"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN zplus to IBN zplus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="TN zplus" showlabel="0" source="EBN zplus" style="4">
+  <start x="18.6117" y="-2.37293"/>
+  <curves>
+   <curve>
+    <C1 xpos="18.6117" ypos="-3.34196"/>
+    <C2 xpos="18.6316" ypos="-3.33638"/>
+    <end xpos="18.6316" ypos="-3.72759"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN zplus to TN zplus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="MN zplus" showlabel="0" source="EBN zplus" style="4">
+  <start x="18.6141" y="-2.37291"/>
+  <curves>
+   <curve>
+    <C1 xpos="17.1552" ypos="-3.62424"/>
+    <C2 xpos="16.9747" ypos="-4.31922"/>
+    <end xpos="18.3048" ypos="-6.25509"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN zplus to MN zplus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="TN zminus" showlabel="0" source="EBN zplus" style="0">
+  <start x="19.1467" y="-2.37245"/>
+  <curves>
+   <curve>
+    <C1 xpos="19.1467" ypos="-3.10841"/>
+    <C2 xpos="20.5281" ypos="-3.1052"/>
+    <end xpos="20.5281" ypos="-3.73765"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN zplus to TN zminus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="MN zminus" showlabel="0" source="EBN zplus" style="0">
+  <start x="18.8714" y="-2.37245"/>
+  <curves>
+   <curve>
+    <C1 xpos="18.8714" ypos="-4.37841"/>
+    <C2 xpos="20.788" ypos="-4.3752"/>
+    <end xpos="20.788" ypos="-6.28306"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN zplus to MN zminus Synapse 0 weight_update"/>
+ </projection>
+ <population name="TN zplus">
+  <xPos value="18.6066"/>
+  <yPos value="-4.23377"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="0"/>
+  <size value="1"/>
+  <tag value="4"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="MN zplus" showlabel="0" source="TN zplus" style="4">
+  <start x="18.6388" y="-4.72762"/>
+  <curves>
+   <curve>
+    <C1 xpos="18.6388" ypos="-5.51509"/>
+    <C2 xpos="18.6388" ypos="-5.50092"/>
+    <end xpos="18.6388" ypos="-6.25525"/>
+   </curve>
+  </curves>
+  <synapseConnection name="TN zplus to MN zplus Synapse 0 weight_update"/>
+ </projection>
+ <population name="MN zplus">
+  <xPos value="18.6066"/>
+  <yPos value="-6.76016"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="0"/>
+  <size value="1"/>
+  <tag value="5"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <population name="LLBN zminus">
+  <xPos value="21.1807"/>
+  <yPos value="2.03498"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="0"/>
+  <size value="1"/>
+  <tag value="13"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="EBN zminus" showlabel="0" source="LLBN zminus" style="4">
+  <start x="21.1753" y="1.53889"/>
+  <curves>
+   <curve>
+    <C1 xpos="21.1753" ypos="-0.0690717"/>
+    <C2 xpos="21.0821" ypos="-0.0916569"/>
+    <end xpos="21.0821" ypos="-1.30607"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LLBN zminus to EBN zminus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="EBN zplus" showlabel="0" source="LLBN zminus" style="0">
+  <start x="20.9104" y="1.53787"/>
+  <curves>
+   <curve>
+    <C1 xpos="20.9104" ypos="-0.0623376"/>
+    <C2 xpos="18.9813" ypos="-0.064159"/>
+    <end xpos="18.9813" ypos="-1.37245"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LLBN zminus to EBN zplus Synapse 0 weight_update"/>
+ </projection>
+ <population name="IBN zminus">
+  <xPos value="22.7605"/>
+  <yPos value="-0.0671606"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="0"/>
+  <size value="1"/>
+  <tag value="14"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="LLBN zminus" showlabel="0" source="IBN zminus" style="0">
+  <start x="22.3914" y="0.433157"/>
+  <curves>
+   <curve>
+    <C1 xpos="22.3914" ypos="1.12439"/>
+    <C2 xpos="21.5805" ypos="1.14796"/>
+    <end xpos="21.5805" ypos="1.53887"/>
+   </curve>
+  </curves>
+  <synapseConnection name="IBN zminus to LLBN zminus Synapse 0 weight_update"/>
+ </projection>
+ <population name="EBN zminus">
+  <xPos value="21.0594"/>
+  <yPos value="-1.80739"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="0"/>
+  <size value="1"/>
+  <tag value="15"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="IBN zminus" showlabel="0" source="EBN zminus" style="4">
+  <start x="21.4713" y="-1.30608"/>
+  <curves>
+   <curve>
+    <C1 xpos="21.4713" ypos="-0.731749"/>
+    <C2 xpos="22.8699" ypos="-1.58537"/>
+    <end xpos="22.7983" ypos="-0.566921"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN zminus to IBN zminus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="TN zminus" showlabel="0" source="EBN zminus" style="4">
+  <start x="21.0086" y="-2.30609"/>
+  <curves>
+   <curve>
+    <C1 xpos="21.0086" ypos="-3.26747"/>
+    <C2 xpos="21.021" ypos="-3.26355"/>
+    <end xpos="21.021" ypos="-3.7367"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN zminus to TN zminus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="MN zminus" showlabel="0" source="EBN zminus" style="4">
+  <start x="21.0935" y="-2.3061"/>
+  <curves>
+   <curve>
+    <C1 xpos="22.7812" ypos="-3.8638"/>
+    <C2 xpos="22.4411" ypos="-4.95902"/>
+    <end xpos="21.247" ypos="-6.28125"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN zminus to MN zminus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="TN zplus" showlabel="0" source="EBN zminus" style="0">
+  <start x="20.5941" y="-2.30632"/>
+  <curves>
+   <curve>
+    <C1 xpos="20.5941" ypos="-3.07535"/>
+    <C2 xpos="19.1352" ypos="-3.07214"/>
+    <end xpos="19.1352" ypos="-3.72949"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN zminus to TN zplus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="MN zplus" showlabel="0" source="EBN zminus" style="0">
+  <start x="20.8445" y="-2.30632"/>
+  <curves>
+   <curve>
+    <C1 xpos="20.8445" ypos="-4.32535"/>
+    <C2 xpos="18.8732" ypos="-4.32214"/>
+    <end xpos="18.8732" ypos="-6.25588"/>
+   </curve>
+  </curves>
+  <synapseConnection name="EBN zminus to MN zplus Synapse 0 weight_update"/>
+ </projection>
+ <population name="TN zminus">
+  <xPos value="21.0157"/>
+  <yPos value="-4.24193"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="0"/>
+  <size value="1"/>
+  <tag value="16"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="MN zminus" showlabel="0" source="TN zminus" style="4">
+  <start x="21.0399" y="-4.73672"/>
+  <curves>
+   <curve>
+    <C1 xpos="21.0399" ypos="-5.784"/>
+    <C2 xpos="21.029" ypos="-5.78306"/>
+    <end xpos="21.029" ypos="-6.28118"/>
+   </curve>
+  </curves>
+  <synapseConnection name="TN zminus to MN zminus Synapse 0 weight_update"/>
+ </projection>
+ <population name="MN zminus">
+  <xPos value="21.0157"/>
+  <yPos value="-6.78734"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="0"/>
+  <size value="1"/>
+  <tag value="17"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <population name="DA value">
+  <xPos value="8.30901"/>
+  <yPos value="15.9472"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" green="0" red="0"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Str_D1" showlabel="0" source="DA value" style="4">
+  <start x="7.68394" y="15.4472"/>
+  <curves>
+   <curve>
+    <C1 xpos="7.68394" ypos="13.9096"/>
+    <C2 xpos="3.9174" ypos="13.9096"/>
+    <end xpos="3.9174" ypos="12.4199"/>
+   </curve>
+  </curves>
+  <synapseConnection name="DA value to Str_D1 Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Str_D2" showlabel="0" source="DA value" style="4">
+  <start x="8.13279" y="15.4472"/>
+  <curves>
+   <curve>
+    <C1 xpos="8.13279" ypos="13.7323"/>
+    <C2 xpos="6.99534" ypos="13.7323"/>
+    <end xpos="6.99534" ypos="12.3298"/>
+   </curve>
+  </curves>
+  <synapseConnection name="DA value to Str_D2 Synapse 0 weight_update"/>
+ </projection>
+</modelMetaData>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<SpineML xsi:schemaLocation="http://www.shef.ac.uk/SpineMLComponentLayer SpineMLComponentLayer.xsd" xmlns="http://www.shef.ac.uk/SpineMLComponentLayer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <ComponentClass type="neuron_body" name="InhibFEF">
+  <Dynamics initial_regime="default">
+   <Regime name="default"/>
+   <Alias dimension="?" name="outMirror">
+    <MathInline>inW</MathInline>
+   </Alias>
+   <Alias dimension="?" name="outFEF">
+    <MathInline>1</MathInline>
+   </Alias>
+  </Dynamics>
+  <AnalogReducePort dimension="?" name="inW" reduce_op="+"/>
+  <AnalogSendPort name="outFEF"/>
+  <AnalogSendPort name="outMirror"/>
+ </ComponentClass>
+</SpineML>

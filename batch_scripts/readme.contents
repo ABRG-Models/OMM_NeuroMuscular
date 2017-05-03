@@ -1,0 +1,41 @@
+This directory contains various scripts used to run, view and analyse
+the model. Some scripts deal with weight training the model, other
+provide ways to run experiments with the model.
+
+They are matlab scripts, but have been developed using Octave. Some of
+them are specific to running the software on Seb's account on the
+Sheffield HPC cluster which is called Iceberg.
+
+You will want to add the directory [path/to/]batch_scripts/include to
+your matlab/octave include path.
+
+analysis/
+
+contains scripts to load or visualise data following
+execution of the model.
+
+example_luminances/
+
+Some examples of the luminances.json file, which
+is used by the model to define when and where luminances will appear.
+
+expt_latency_vs_dopamine/
+
+An experiment to investigate the model's
+latency behaviour (time to eye movement) versus modification of the
+model's dopamine parameter.
+
+expt_spatial_scatter/
+
+An experiment to determine the spatial distribution of the final
+location of the eye.
+
+include/
+
+Numerous common scripts used by the rest of the scripts in this
+directory. Make sure this is in your Octave/Matlab path.
+
+weight_finding/
+
+Scripts to run the model thousands of times on Iceberg to find the
+SCdeep->LLBN weights.

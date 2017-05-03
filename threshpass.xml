@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<SpineML xsi:schemaLocation="http://www.shef.ac.uk/SpineMLComponentLayer SpineMLComponentLayer.xsd" xmlns="http://www.shef.ac.uk/SpineMLComponentLayer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <ComponentClass type="neuron_body" name="threshpass">
+  <Dynamics initial_regime="empty">
+   <Regime name="empty">
+    <OnCondition target_regime="empty">
+     <StateAssignment variable="out">
+      <MathInline>0</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>in &lt; min</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="empty">
+     <StateAssignment variable="out">
+      <MathInline>(in-min)/(max-min)</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>in >= min &amp;&amp; in &lt; max &amp;&amp; t > 120 &amp;&amp; inhibit &lt; inhibit_thresh</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="empty">
+     <StateAssignment variable="out">
+      <MathInline>1</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>in>=max &amp;&amp; t>120 &amp;&amp; inhibit &lt; inhibit_thresh</MathInline>
+     </Trigger>
+    </OnCondition>
+   </Regime>
+   <Alias dimension="?" name="in_copy">
+    <MathInline>in</MathInline>
+   </Alias>
+   <Alias dimension="?" name="inhibit_copy">
+    <MathInline>inhibit</MathInline>
+   </Alias>
+   <StateVariable dimension="?" name="out"/>
+  </Dynamics>
+  <AnalogReceivePort dimension="?" name="in"/>
+  <AnalogSendPort name="out"/>
+  <AnalogSendPort name="in_copy"/>
+  <AnalogReducePort dimension="?" name="inhibit" reduce_op="+"/>
+  <AnalogSendPort name="inhibit_copy"/>
+  <Parameter dimension="?" name="min"/>
+  <Parameter dimension="?" name="max"/>
+  <Parameter dimension="?" name="inhibit_thresh"/>
+ </ComponentClass>
+</SpineML>

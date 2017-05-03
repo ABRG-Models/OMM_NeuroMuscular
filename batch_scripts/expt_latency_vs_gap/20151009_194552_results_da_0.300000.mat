@@ -1,0 +1,133 @@
+# Created by Octave 3.8.2, Fri Oct 09 19:45:52 2015 BST <pc1ssj@node117>
+# name: fixation_off
+# type: matrix
+# rows: 1
+# columns: 15
+ 0.5 0.45 0.4 0.35 0.3 0.26 0.22 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2
+
+
+# name: target_on
+# type: matrix
+# rows: 1
+# columns: 15
+ 0.15 0.15 0.15 0.15 0.15 0.15 0.15 0.17 0.2 0.25 0.29 0.31 0.35 0.39 0.5
+
+
+# name: gap
+# type: matrix
+# rows: 1
+# columns: 15
+ -0.35 -0.3 -0.25 -0.2 -0.15 -0.11 -0.07000000000000001 -0.03 0 0.04999999999999999 0.08999999999999997 0.11 0.15 0.19 0.3
+
+
+# name: lat_mean
+# type: matrix
+# rows: 1
+# columns: 15
+ 219.625 220.125 221.875 225.25 219.25 198.5 164 131 112.625 97.75 86.625 82.875 81 82.625 79.75
+
+
+# name: lat_sd
+# type: matrix
+# rows: 1
+# columns: 15
+ 14.15160263513844 13.92261777519895 11.72832347049532 15.04991694329241 10.33371735077529 1.309307341415954 0 0.5345224838248488 0.5175491695067657 0.4629100498862757 2.065879266282796 3.522884370187913 1.195228609334394 2.875388172552906 1.98206241793023
+
+
+# name: params
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 18
+# name: targetThetaY
+# type: scalar
+-12
+
+
+# name: targetThetaX
+# type: scalar
+0
+
+
+# name: num_par_runs
+# type: scalar
+8
+
+
+# name: dopamine
+# type: scalar
+0.3
+
+
+# name: targetCross
+# type: scalar
+0
+
+
+# name: targetLuminance
+# type: scalar
+1.8
+
+
+# name: targetWidthX
+# type: scalar
+4
+
+
+# name: targetWidthY
+# type: scalar
+4
+
+
+# name: fixCross
+# type: scalar
+0
+
+
+# name: fixLuminance
+# type: scalar
+0.2
+
+
+# name: fixWidthX
+# type: scalar
+2
+
+
+# name: fixWidthY
+# type: scalar
+2
+
+
+# name: fixOn
+# type: scalar
+0
+
+
+# name: targetOff
+# type: scalar
+1
+
+
+# name: use_insigneo
+# type: scalar
+1
+
+
+# name: cleanup
+# type: scalar
+1
+
+
+# name: fixOff
+# type: scalar
+0.2
+
+
+# name: targetOn
+# type: scalar
+0.5
+
+
+
+

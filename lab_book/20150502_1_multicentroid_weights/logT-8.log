@@ -1,0 +1,8 @@
+TargetThetaY: -8.000000
+last_angle: -3.994062 cur_angle: -3.994062 (sd 0.013677) last_error: 1000.000000 cur_error: 4.005938 last_weight: 0.200000 cur_weight: 0.300000 next_weight: 0.259941 dedw: 70.000000
+last_angle: -3.994062 cur_angle: -3.329082 (sd 0.015216) last_error: 4.005938 cur_error: 4.670918 last_weight: 0.300000 cur_weight: 0.259941 next_weight: 0.456909 dedw: -16.599858
+last_angle: -3.329082 cur_angle: -6.505872 (sd 0.020992) last_error: 4.670918 cur_error: 1.494128 last_weight: 0.259941 cur_weight: 0.456909 next_weight: 0.521756 dedw: -16.128448
+last_angle: -6.505872 cur_angle: -7.452873 (sd 0.027124) last_error: 1.494128 cur_error: 0.547127 last_weight: 0.456909 cur_weight: 0.521756 next_weight: 0.547982 dedw: -14.603507
+last_angle: -7.452873 cur_angle: -7.848306 (sd 0.034119) last_error: 0.547127 cur_error: 0.151694 last_weight: 0.521756 cur_weight: 0.547982 next_weight: 0.555024 dedw: -15.078006
+last_angle: -7.848306 cur_angle: -7.946533 (sd 0.033664) last_error: 0.151694 cur_error: 0.053467 last_weight: 0.547982 cur_weight: 0.555024 next_weight: 0.557708 dedw: -13.947884
+Best weight: 0.555024 for which angle was: -7.946533

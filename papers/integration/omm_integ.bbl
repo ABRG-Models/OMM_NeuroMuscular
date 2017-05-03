@@ -1,0 +1,228 @@
+\begin{thebibliography}{28}
+\providecommand{\natexlab}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\selectlanguage}[1]{\relax}
+\providecommand{\bibAnnoteFile}[1]{%
+  \IfFileExists{#1}{\begin{quotation}\noindent\textsc{Key:} #1\\
+  \textsc{Annotation:}\ \input{#1}\end{quotation}}{}}
+\providecommand{\bibAnnote}[2]{%
+  \begin{quotation}\noindent\textsc{Key:} #1\\
+  \textsc{Annotation:}\ #2\end{quotation}}
+
+\bibitem[{{Alex Cope} et~al.(2015){Alex Cope}, {John Chambers}, and {Kevin
+  Gurney}}]{alex_cope_integrative_2015}
+{Alex Cope}, {John Chambers}, and {Kevin Gurney} (2015).
+\newblock An integrative model of reflexive saccades: physiology meets anatomy
+  in understanding gaze control.
+\newblock \emph{In press}
+\bibAnnoteFile{alex_cope_integrative_2015}
+
+\bibitem[{Bevan and Wilson(1999)}]{bevan_mechanisms_1999}
+Bevan, M.~D. and Wilson, C.~J. (1999).
+\newblock Mechanisms underlying spontaneous oscillation and rhythmic firing in
+  rat subthalamic neurons.
+\newblock \emph{The Journal of neuroscience : the official journal of the
+  Society for Neuroscience} 19, 7617--28
+\bibAnnoteFile{bevan_mechanisms_1999}
+
+\bibitem[{Bogacz and Gurney(2007)}]{bogacz_basal_2007}
+Bogacz, R. and Gurney, K. (2007).
+\newblock The basal ganglia and cortex implement optimal decision making
+  between alternative actions.
+\newblock \emph{Neural Computation} 19, 442--477.
+\newblock \doi{10.1162/neco.2007.19.2.442}
+\bibAnnoteFile{bogacz_basal_2007}
+
+\bibitem[{Cope and James(2015{\natexlab{a}})}]{cope_spineml_2_brahms_2015-1}
+Cope, A.~J. and James, S.~S. (2015{\natexlab{a}}).
+\newblock {SpineML}\_2\_brahms
+\bibAnnoteFile{cope_spineml_2_brahms_2015-1}
+
+\bibitem[{Cope and James(2015{\natexlab{b}})}]{cope_spineml_2_brahms_2015}
+Cope, A.~J. and James, S.~S. (2015{\natexlab{b}}).
+\newblock {SpineML}\_2\_brahms ({NoTremor} {Oculomotor} branch)
+\bibAnnoteFile{cope_spineml_2_brahms_2015}
+
+\bibitem[{Fuchs and Luschei(1970)}]{fuchs_firing_1970}
+Fuchs, A.~F. and Luschei, E.~S. (1970).
+\newblock Firing patterns of abducens neurons of alert monkeys in relationship
+  to horizontal eye movement.
+\newblock \emph{J Neurophysiol} 33, 382--392
+\bibAnnoteFile{fuchs_firing_1970}
+
+\bibitem[{Gancarz and Grossberg(1998)}]{gancarz_neural_1998}
+Gancarz, G. and Grossberg, S. (1998).
+\newblock A neural model of the saccade generator in the reticular formation.
+\newblock \emph{Neural Networks} 11, 1159--1174
+\bibAnnoteFile{gancarz_neural_1998}
+
+\bibitem[{Hallworth et~al.(2003)Hallworth, Wilson, and
+  Bevan}]{hallworth_apamin-sensitive_2003}
+Hallworth, N.~E., Wilson, C.~J., and Bevan, M.~D. (2003).
+\newblock Apamin-sensitive small conductance calcium-activated potassium
+  channels, through their selective coupling to voltage-gated calcium channels,
+  are critical determinants of the precision, pace, and pattern of action
+  potential generation in rat subthalamic nu.
+\newblock \emph{The Journal of neuroscience : the official journal of the
+  Society for Neuroscience} 23, 7525--42
+\bibAnnoteFile{hallworth_apamin-sensitive_2003}
+
+\bibitem[{Hepp et~al.(1993)Hepp, Van~Opstal, Straumann, Hess, and
+  Henn}]{hepp_monkey_1993}
+Hepp, K., Van~Opstal, A.~J., Straumann, D., Hess, B.~J., and Henn, V. (1993).
+\newblock Monkey superior colliculus represents rapid eye movements in a
+  two-dimensional motor map.
+\newblock \emph{Journal of neurophysiology} 69, 965--979
+\bibAnnote{hepp_monkey_1993}{On the fact that SC encodes end point positions as
+  2D information, excluding oblique information.}
+
+\bibitem[{Hikosaka et~al.(2000)Hikosaka, Takikawa, and
+  Kawagoe}]{hikosaka_role_2000}
+Hikosaka, O., Takikawa, Y., and Kawagoe, R. (2000).
+\newblock Role of the basal ganglia in the control of purposive saccadic eye
+  movements.
+\newblock \emph{Physiological reviews} 80, 953--978
+\bibAnnoteFile{hikosaka_role_2000}
+
+\bibitem[{{INCF Task Force on Multi-Scale
+  Modeling}(2011)}]{incf_task_force_on_multi-scale_modeling_network_2011}
+{INCF Task Force on Multi-Scale Modeling} (2011).
+\newblock Network {Interchange} for {Neuroscience} {Modeling} {Language}
+  ({NineML})
+\bibAnnoteFile{incf_task_force_on_multi-scale_modeling_network_2011}
+
+\bibitem[{Kühn et~al.(2004)Kühn, Williams, Kupsch, Limousin, Hariz, Schneider
+  et~al.}]{kuhn_event-related_2004}
+Kühn, A.~A., Williams, D., Kupsch, A., Limousin, P., Hariz, M., Schneider,
+  G.-H., et~al. (2004).
+\newblock Event-related beta desynchronization in human subthalamic nucleus
+  correlates with motor performance.
+\newblock \emph{Brain : a journal of neurology} 127, 735--46.
+\newblock \doi{10.1093/brain/awh106}
+\bibAnnoteFile{kuhn_event-related_2004}
+
+\bibitem[{McPeek et~al.(2003)McPeek, Han, and Keller}]{mcpeek_competition_2003}
+McPeek, R.~M., Han, J.~H., and Keller, E.~L. (2003).
+\newblock Competition {Between} {Saccade} {Goals} in the {Superior}
+  {Colliculus} {Produces} {Saccade} {Curvature}.
+\newblock \emph{Journal of Neurophysiology} 89, 2577--2590.
+\newblock \doi{10.1152/jn.00657.2002}
+\bibAnnoteFile{mcpeek_competition_2003}
+
+\bibitem[{Mitchinson et~al.(2010)Mitchinson, Chan, Chambers, Pearson,
+  Humphries, Fox et~al.}]{mitchinson_brahms:_2010}
+Mitchinson, B., Chan, T.-S., Chambers, J., Pearson, M., Humphries, M., Fox, C.,
+  et~al. (2010).
+\newblock {\selectlanguage{en}{BRAHMS}: {Novel} middleware for integrated
+  systems computation}.
+\newblock \emph{Advanced Engineering Informatics} 24, 49--61.
+\newblock \doi{10.1016/j.aei.2009.08.002}
+\bibAnnoteFile{mitchinson_brahms:_2010}
+
+\bibitem[{Mitchinson and James(2015)}]{mitchinson_brahms_2015}
+Mitchinson, B. and James, S.~S. (2015).
+\newblock {BRAHMS}
+\bibAnnoteFile{mitchinson_brahms_2015}
+
+\bibitem[{Munoz(2002)}]{munoz_commentary:_2002}
+Munoz, D.~P. (2002).
+\newblock Commentary: {Saccadic} eye movements: overview of neural circuitry.
+\newblock In \emph{Progress in {Brain} {Research}}, ed. D.~M. J.~Hyona, W.
+  Heide {and} R.~Radach (Elsevier), vol. Volume 140. 89--96
+\bibAnnoteFile{munoz_commentary:_2002}
+
+\bibitem[{Nambu et~al.(1990)Nambu, Yoshida, and Jinnai}]{nambu_discharge_1990}
+Nambu, A., Yoshida, S.-i., and Jinnai, K. (1990).
+\newblock Discharge patterns of pallidal neurons with input from various
+  cortical areas during movement in the monkey.
+\newblock \emph{Brain Research} 519, 183--191.
+\newblock \doi{10.1016/0006-8993(90)90076-N}
+\bibAnnoteFile{nambu_discharge_1990}
+
+\bibitem[{Nowotny(2011)}]{nowotny_flexible_2011}
+Nowotny, T. (2011).
+\newblock {\selectlanguage{en}Flexible neuronal network simulation framework
+  using code generation for {NVidia}® {CUDA}™}.
+\newblock \emph{BMC Neuroscience} 12, P239.
+\newblock \doi{10.1186/1471-2202-12-S1-P239}
+\bibAnnoteFile{nowotny_flexible_2011}
+
+\bibitem[{Nowotny et~al.(2014)Nowotny, Cope, Yavuz, Stimberg, Goodman, Marshall
+  et~al.}]{nowotny_spineml_2014}
+Nowotny, T., Cope, A.~J., Yavuz, E., Stimberg, M., Goodman, D.~F., Marshall,
+  J., et~al. (2014).
+\newblock {\selectlanguage{en}{SpineML} and {Brian} 2.0 interfaces for using
+  {GPU} enhanced {Neuronal} {Networks} ({GeNN})}.
+\newblock \emph{BMC Neuroscience} 15, P148.
+\newblock \doi{10.1186/1471-2202-15-S1-P148}
+\bibAnnoteFile{nowotny_spineml_2014}
+
+\bibitem[{Port and Wurtz(2003)}]{port_sequential_2003}
+Port, N.~L. and Wurtz, R.~H. (2003).
+\newblock Sequential {Activity} of {Simultaneously} {Recorded} {Neurons} in the
+  {Superior} {Colliculus} {During} {Curved} {Saccades}.
+\newblock \emph{Journal of Neurophysiology} 90, 1887--1903.
+\newblock \doi{10.1152/jn.01151.2002}
+\bibAnnoteFile{port_sequential_2003}
+
+\bibitem[{Richmond(2015)}]{richmond_damson_2015}
+Richmond, P. (2015).
+\newblock {DAMSON}
+\bibAnnoteFile{richmond_damson_2015}
+
+\bibitem[{Richmond et~al.(2014)Richmond, Cope, Gurney, and
+  Allerton}]{richmond_model_2014}
+Richmond, P., Cope, A., Gurney, K., and Allerton, D.~J. (2014).
+\newblock {\selectlanguage{en}From {Model} {Specification} to {Simulation} of
+  {Biologically} {Constrained} {Networks} of {Spiking} {Neurons}}.
+\newblock \emph{Neuroinformatics} 12, 307--323.
+\newblock \doi{10.1007/s12021-013-9208-z}
+\bibAnnoteFile{richmond_model_2014}
+
+\bibitem[{Robinson(1972)}]{robinson_eye_1972}
+Robinson, D. (1972).
+\newblock Eye movements evoked by collicular stimulation in the alert monkey.
+\newblock \emph{Vision Research} 12, 1795--1808.
+\newblock \doi{10.1016/0042-6989(72)90070-3}
+\bibAnnoteFile{robinson_eye_1972}
+
+\bibitem[{Schall and Thompson(1999)}]{schall_neural_1999}
+Schall, J.~D. and Thompson, K.~G. (1999).
+\newblock Neural selection and control of visually guided eye movements.
+\newblock \emph{Annual review of neuroscience} 22, 241--259
+\bibAnnoteFile{schall_neural_1999}
+
+\bibitem[{Sparks(2002)}]{sparks_brainstem_2002}
+Sparks, D.~L. (2002).
+\newblock The brainstem control of saccadic eye movements.
+\newblock \emph{Nature Reviews Neuroscience} 3, 952--964.
+\newblock \doi{10.1038/nrn986}
+\bibAnnoteFile{sparks_brainstem_2002}
+
+\bibitem[{Van~der Stigchel(2010)}]{van_der_stigchel_recent_2010}
+Van~der Stigchel, S. (2010).
+\newblock {\selectlanguage{en}Recent advances in the study of saccade
+  trajectory deviations}.
+\newblock \emph{Vision Research} 50, 1619--1627.
+\newblock \doi{10.1016/j.visres.2010.05.028}
+\bibAnnoteFile{van_der_stigchel_recent_2010}
+
+\bibitem[{Van~der Stigchel et~al.(2006)Van~der Stigchel, Meeter, and
+  Theeuwes}]{van_der_stigchel_eye_2006}
+Van~der Stigchel, S., Meeter, M., and Theeuwes, J. (2006).
+\newblock {\selectlanguage{en}Eye movement trajectories and what they tell us}.
+\newblock \emph{Neuroscience \& Biobehavioral Reviews} 30, 666--679.
+\newblock \doi{10.1016/j.neubiorev.2005.12.001}
+\bibAnnoteFile{van_der_stigchel_eye_2006}
+
+\bibitem[{Wurtz and Goldberg(1971)}]{wurtz_superior_1971}
+Wurtz, R.~H. and Goldberg, M.~E. (1971).
+\newblock Superior colliculus cell responses related to eye movements in awake
+  monkeys.
+\newblock \emph{Science} 171, 82--84
+\bibAnnoteFile{wurtz_superior_1971}
+
+\end{thebibliography}

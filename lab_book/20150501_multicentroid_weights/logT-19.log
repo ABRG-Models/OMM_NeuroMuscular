@@ -1,0 +1,13 @@
+TargetThetaY: -19.000000
+last_angle: -5.414589 cur_angle: -5.414589 (sd 0.030193) last_error: 1000.000000 cur_error: 13.585411 last_weight: 0.200000 cur_weight: 0.300000 next_weight: 0.164146 dedw: 70.000000
+last_angle: -5.414589 cur_angle: -2.331365 (sd 0.009595) last_error: 13.585411 cur_error: 16.668635 last_weight: 0.300000 cur_weight: 0.164146 next_weight: 0.678267 dedw: -22.695110
+last_angle: -2.331365 cur_angle: -13.187110 (sd 0.230314) last_error: 16.668635 cur_error: 5.812890 last_weight: 0.164146 cur_weight: 0.678267 next_weight: 0.870974 dedw: -21.115135
+last_angle: -13.187110 cur_angle: -15.533660 (sd 0.408343) last_error: 5.812890 cur_error: 3.466340 last_weight: 0.678267 cur_weight: 0.870974 next_weight: 1.070241 dedw: -12.176810
+last_angle: -15.533660 cur_angle: -17.159040 (sd 0.660190) last_error: 3.466340 cur_error: 1.840960 last_weight: 0.870974 cur_weight: 1.070241 next_weight: 1.228229 dedw: -8.156789
+last_angle: -17.159040 cur_angle: -16.385350 (sd 0.818970) last_error: 1.840960 cur_error: 2.614650 last_weight: 1.070241 cur_weight: 1.228229 next_weight: 0.854490 dedw: 4.897155
+last_angle: -16.385350 cur_angle: -15.438430 (sd 0.348396) last_error: 2.614650 cur_error: 3.561570 last_weight: 1.228229 cur_weight: 0.854490 next_weight: 1.838488 dedw: -2.533644
+last_angle: -15.438430 cur_angle: -16.134640 (sd 0.060027) last_error: 3.561570 cur_error: 2.865360 last_weight: 0.854490 cur_weight: 1.838488 next_weight: 4.673344 dedw: -0.707532
+last_angle: -16.134640 cur_angle: -19.369060 (sd 0.307502) last_error: 2.865360 cur_error: -0.369060 last_weight: 1.838488 cur_weight: 4.673344 next_weight: 4.446916 dedw: -1.140947
+last_angle: -19.369060 cur_angle: -19.286610 (sd 0.219341) last_error: -0.369060 cur_error: -0.286610 last_weight: 4.673344 cur_weight: 4.446916 next_weight: 3.895945 dedw: -0.364134
+last_angle: -19.286610 cur_angle: -18.991740 (sd 0.198643) last_error: -0.286610 cur_error: 0.008260 last_weight: 4.446916 cur_weight: 3.895945 next_weight: 3.906749 dedw: -0.535183
+Best weight: 3.895945 for which angle was: -18.991740

@@ -1,0 +1,153 @@
+# Created by Octave 3.8.2, Tue Jun 28 14:52:20 2016 BST <pc1ssj@node117>
+# name: da
+# type: matrix
+# rows: 1
+# columns: 11
+ 0.05 0.1 0.15 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+
+
+# name: lat_mean
+# type: matrix
+# rows: 1
+# columns: 11
+ 0 0 0 393 254.5 209.625 187.625 176 167.625 161.625 158.125
+
+
+# name: lat_sd
+# type: matrix
+# rows: 1
+# columns: 11
+ 0 0 0 14.69693845669907 4.035556254807296 3.50255009141299 1.302470180629319 1.603567451474546 1.846811924835414 1.187734939165421 1.125991626459603
+
+
+# name: params
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 18
+# name: targetThetaY
+# type: scalar
+-8
+
+
+# name: targetThetaX
+# type: scalar
+0
+
+
+# name: num_par_runs
+# type: scalar
+8
+
+
+# name: dopamine
+# type: scalar
+0.9
+
+
+# name: targetCross
+# type: scalar
+0
+
+
+# name: targetLuminance
+# type: scalar
+0.2
+
+
+# name: targetWidthX
+# type: scalar
+4
+
+
+# name: targetWidthY
+# type: scalar
+4
+
+
+# name: fixCross
+# type: scalar
+0
+
+
+# name: fixLuminance
+# type: scalar
+0.5
+
+
+# name: fixWidthX
+# type: scalar
+2
+
+
+# name: fixWidthY
+# type: scalar
+2
+
+
+# name: fixOn
+# type: scalar
+0
+
+
+# name: targetOff
+# type: scalar
+1
+
+
+# name: use_insigneo
+# type: scalar
+1
+
+
+# name: cleanup
+# type: scalar
+0
+
+
+# name: fixOff
+# type: scalar
+0.45
+
+
+# name: targetOn
+# type: scalar
+0.45
+
+
+
+
+# name: fa_mean
+# type: matrix
+# rows: 11
+# columns: 3
+ 0 0 0
+ 0 0 0
+ 0 0 0
+ -0.7983555 -8.725669999999999 0.0814484625
+ -0.311831 -9.449285 0.0321815875
+ -0.137136775 -9.55306375 0.01605227375
+ -0.0865777375 -9.646816250000001 0.0101129225
+ -0.0621917375 -9.678482500000001 0.007578492500000001
+ -0.0480031625 -9.69281 0.005897082499999999
+ -0.0432503125 -9.702575 0.00542745625
+ -0.05341973749999999 -9.72411 0.0061183725
+
+
+# name: fa_sd
+# type: matrix
+# rows: 11
+# columns: 3
+ 0 0 0
+ 0 0 0
+ 0 0 0
+ 0.08313823756508536 0.1331514897722569 0.02171129719457707
+ 0.2028121675386225 0.206337844115629 0.02104892549483143
+ 0.04483547891145232 0.07882007139908656 0.004663135713422697
+ 0.03228489281961622 0.08367351602465697 0.003589693940478372
+ 0.01975126481128578 0.07236472576963333 0.001763462823576305
+ 0.02073542287060185 0.0371082589960008 0.001809351071625641
+ 0.0115147405726545 0.04631864234378443 0.001050544809079521
+ 0.0125105246204874 0.01173358062509955 0.001116635918740495
+
+

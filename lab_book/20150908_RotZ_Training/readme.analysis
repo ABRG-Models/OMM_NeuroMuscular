@@ -1,0 +1,18 @@
+In the "combined_RotZ_Training" directory, make sure that all the data 
+from the individual computing sessions has been concatenated into one 
+file called allweights_mod.log.
+
+Now open octave and
+
+addpath ('path/to/Oculomotor/batch_scripts/analysis')
+addpath ('path/to/Oculomotor/batch_scripts/analysis/include')
+
+Now you can
+
+load_justdata % This just loads the data
+
+load_weights % This loads and graphs
+
+fit_curve_up % Tries to fit a dual exponential surface
+
+fit_curve_down % etc.

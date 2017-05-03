@@ -1,0 +1,16 @@
+Contents of these directories. Essentially, everything here is old and
+has been superceded. SJ, 20151002.
+
+archivedAnalysis - really old scripts for plotting output from old
+versions of the model.
+
+archivedDevelopment - really old stuff, from when there was no weight
+map and only 1-D movements.
+
+movies - old matlab-based scheme for producing movies.
+
+multicentroid - the initial, matlab version of the multicentroid
+algorithm, which was later ported to c++.
+
+worldDataMaker - early versions of worldDataMaker in matlab; these
+were later ported to c++.

@@ -1,0 +1,3 @@
+*.sh.[eo]*
+parent.*
+octave-workspace

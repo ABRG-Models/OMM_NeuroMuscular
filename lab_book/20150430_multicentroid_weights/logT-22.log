@@ -1,0 +1,13 @@
+TargetThetaY: -22.000000
+last_angle: -12.926860 cur_angle: -12.926860 (sd 0.702633) last_error: 1000.000000 cur_error: 9.073140 last_weight: 0.700000 cur_weight: 0.800000 next_weight: 0.709269 dedw: 70.000000
+last_angle: -12.926860 cur_angle: -11.598740 (sd 0.684063) last_error: 9.073140 cur_error: 10.401260 last_weight: 0.800000 cur_weight: 0.709269 next_weight: 1.206667 dedw: -14.637931
+last_angle: -11.598740 cur_angle: -14.455410 (sd 0.543518) last_error: 10.401260 cur_error: 7.544590 last_weight: 0.709269 cur_weight: 1.206667 next_weight: 2.126222 dedw: -5.743224
+last_angle: -14.455410 cur_angle: -16.261040 (sd 0.179326) last_error: 7.544590 cur_error: 5.738960 last_weight: 1.206667 cur_weight: 2.126222 next_weight: 4.172103 dedw: -1.963590
+last_angle: -16.261040 cur_angle: -18.165570 (sd 0.228306) last_error: 5.738960 cur_error: 3.834430 last_weight: 2.126222 cur_weight: 4.172103 next_weight: 7.055414 dedw: -0.930909
+last_angle: -18.165570 cur_angle: -19.338690 (sd 0.259497) last_error: 3.834430 cur_error: 2.661310 last_weight: 4.172103 cur_weight: 7.055414 next_weight: 11.634117 dedw: -0.406866
+last_angle: -19.338690 cur_angle: -20.495370 (sd 0.325109) last_error: 2.661310 cur_error: 1.504630 last_weight: 7.055414 cur_weight: 11.634117 next_weight: 15.803358 dedw: -0.252622
+last_angle: -20.495370 cur_angle: -20.965160 (sd 0.191583) last_error: 1.504630 cur_error: 1.034840 last_weight: 11.634117 cur_weight: 15.803358 next_weight: 22.232078 dedw: -0.112680
+last_angle: -20.965160 cur_angle: -21.197700 (sd 0.137250) last_error: 1.034840 cur_error: 0.802300 last_weight: 15.803358 cur_weight: 22.232078 next_weight: 37.758151 dedw: -0.036172
+last_angle: -21.197700 cur_angle: -21.804990 (sd 0.087539) last_error: 0.802300 cur_error: 0.195010 last_weight: 22.232078 cur_weight: 37.758151 next_weight: 41.248111 dedw: -0.039114
+last_angle: -21.804990 cur_angle: -21.757970 (sd 0.339313) last_error: 0.195010 cur_error: 0.242030 last_weight: 37.758151 cur_weight: 41.248111 next_weight: 28.673196 dedw: 0.013473
+Best weight: 41.248111 for which angle was: -21.757970

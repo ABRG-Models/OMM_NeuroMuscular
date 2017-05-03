@@ -1,0 +1,6 @@
+build
+*~
+CMakeFiles
+multicentroid_test
+log
+model

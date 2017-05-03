@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<SpineML xmlns="http://nineml.org/9ML/0.1">
+ <LayoutClass name="grid">
+  <Parameter dimension="?" name="numNeurons"/>
+  <Parameter dimension="?" name="rowLen"/>
+  <Spatial>
+   <Regime name="">
+    <Transform dimension="??" type="translate" variable="x" order="1">
+     <MathInline>mod(t,rowLen)</MathInline>
+    </Transform>
+    <Transform dimension="??" type="translate" variable="y" order="2">
+     <MathInline>floor(t/rowLen)</MathInline>
+    </Transform>
+    <Transform dimension="??" type="translate" variable="t" order="3">
+     <MathInline>t+1</MathInline>
+    </Transform>
+   </Regime>
+   <StateVariable dimension="?" name="x"/>
+   <StateVariable dimension="?" name="y"/>
+   <StateVariable dimension="?" name="z"/>
+   <StateVariable dimension="?" name="t"/>
+  </Spatial>
+ </LayoutClass>
+</SpineML>

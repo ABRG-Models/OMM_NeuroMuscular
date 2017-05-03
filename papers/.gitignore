@@ -1,0 +1,8 @@
+*.dvi
+*.log
+*.aux
+*.out
+*.pdf
+*.ps
+*.blg
+*.bib

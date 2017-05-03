@@ -1,0 +1,85 @@
+#!/usr/bin/octave
+
+A = csvread('saccsim_side.log');
+
+% Load data
+
+OUTDIR=getenv('OUTDIR');
+
+filePath =[OUTDIR '/log/LLBN_right_a_log.bin'];
+noNeurons = 1;
+[datallbnR count] = load_sc_data(filePath, noNeurons);
+
+filePath =[OUTDIR '/log/LLBN_left_a_log.bin'];
+noNeurons = 1;
+[datallbn count] = load_sc_data(filePath, noNeurons);
+
+filePath =[OUTDIR '/log/OPN_a_log.bin'];
+noNeurons = 1;
+[dataopn count] = load_sc_data(filePath, noNeurons);
+
+filePath =[OUTDIR '/log/EBN_left_a_log.bin'];
+noNeurons = 1;
+[dataebn count] = load_sc_data(filePath, noNeurons);
+
+filePath =[OUTDIR '/log/IBN_left_a_log.bin'];
+noNeurons = 1;
+[dataibn count] = load_sc_data(filePath, noNeurons);
+
+filePath =[OUTDIR '/log/TN_left_a_log.bin'];
+noNeurons = 1;
+[datatn count] = load_sc_data(filePath, noNeurons);
+
+filePath =[OUTDIR '/log/MN_left_a_log.bin'];
+noNeurons = 1;
+[datamn count] = load_sc_data(filePath, noNeurons);                                                                       
+
+t = 0.5e-3:0.5e-3:A(end,14);
+
+deg = str2num(getenv("DEG"));
+window_size = 150;
+E2 = 2.5;
+nfs = 50;
+Mf = nfs/(E2*log(((window_size/2)/E2)+1));
+
+col = Mf.*E2.*log(1+(deg./E2));
+col = round(col);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+filePath =[OUTDIR '/log/SC_deep_out_log.bin'];
+noNeurons = 2500;
+[data count] = load_sc_data(filePath, noNeurons);
+noTimesteps = count/noNeurons;
+B = reshape(data,50,50,noTimesteps);
+B(1,1,:) = 0;
+B(2,1,:) = 1;
+datascd = squeeze(B(38,col,:));
+
+filePath =[OUTDIR '/log/Retina_2_out_log.bin'];
+noNeurons = 2500;
+[data count] = load_sc_data(filePath, noNeurons);
+noTimesteps = count/noNeurons;
+R = reshape(data,50,50,noTimesteps);
+R(1,1,:) = 0;
+R(2,1,:) = 1;
+dataret = squeeze(R(37,col,:));
+
+filePath =[OUTDIR '/log/SNr_out_log.bin'];
+noNeurons = 2500;
+[data count] = load_sc_data(filePath, noNeurons);
+noTimesteps = count/noNeurons;
+G = reshape(data,50,50,noTimesteps);
+G(1,1,:) = 0;
+G(2,1,:) = 1;
+datasnr = squeeze(G(38,col,:));
+
+% SAVE DATA
+T = A(:,14);
+datarotx = A(:,8);
+dataroty = A(:,9);
+datarotz = A(:,10);
+
+i = getenv("DEG");
+eval(['save Degree' num2str(i) ' t T datarotx dataroty datarotz dataret datasnr datascd dataebn dataopn datallbn dataibn datatn datamn']);
+

@@ -1,0 +1,8 @@
+You'll need brahms and json libraries to be available to your compiler and also cmake.
+
+mkdir build
+cd build
+cmake ..
+make -j4
+
+Done.

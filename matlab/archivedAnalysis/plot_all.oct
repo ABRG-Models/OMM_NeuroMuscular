@@ -1,0 +1,79 @@
+#!/usr/bin/octave
+
+figure(1) ;clf
+
+for i = 1:3
+
+eval(['load Degree' num2str(i*5) ';']);
+
+colour = {'r','g','b'}
+
+figure(1);hold on
+
+subplot(6,2,1);hold on
+plot(t,dataret,colour{i})
+%title('retina 2')
+
+subplot(6,2,2);hold on
+plot(t,datasnr,colour{i})
+%title('SNr')
+
+subplot(6,2,3);hold on
+plot(t,datascd,colour{i})
+%title('SC deep')
+
+subplot(6,2,4);hold on
+plot(t,datallbn,colour{i})
+%title('llbn')
+
+subplot(6,2,5);hold on
+plot(t,dataopn,colour{i})
+%title('obn')
+
+subplot(6,2,6);hold on
+plot(t,dataebn,colour{i})
+%title('ebn')
+
+subplot(6,2,7);hold on
+plot(t,dataibn,colour{i})
+%title('ibn')
+
+subplot(6,2,8);hold on
+plot(t,datatn,colour{i})
+%title('tn')
+
+subplot(6,2,9);hold on
+plot(t,datamn,colour{i})
+%title('mn')
+
+subplot(6,2,10);hold on
+plot(t,datamn,colour{i})
+title('Motor Neuron Activation')
+
+subplot(6,2,11);hold on
+plot(T,dataroty,colour{i})
+title('Rotation about y axis')
+
+subplot(6,2,12);hold on
+plot(T(1:end-1),diff(dataroty)./diff(T),colour{i})
+title('Velocity. Degrees/sec')
+
+
+%figure(4);
+
+%subplot(3,1,1);hold on
+%plot(T,datarotx,colour{i})
+%title('rotation about x axis')
+
+%subplot(3,1,2);hold on
+%plot(T,dataroty,colour{i})
+%title('rotation about y axis')
+
+%subplot(3,1,3);hold on
+%plot(T,datarotz,colour{i})
+%title('rotation about z axis')
+
+waitforbuttonpress
+end
+
+input('return to exit','s');

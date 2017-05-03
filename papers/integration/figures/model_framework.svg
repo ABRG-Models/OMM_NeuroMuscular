@@ -1,0 +1,920 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1052.3622"
+   height="744.09448"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="model_framework.svg"
+   inkscape:export-filename="/home/seb/omm/abrg_local/Oculomotor/papers/integration/figures/model_framework.png"
+   inkscape:export-xdpi="395.82001"
+   inkscape:export-ydpi="395.82001">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Send"
+       style="overflow:visible;">
+      <path
+         id="path4551"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.2) rotate(180) translate(6,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path4539"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="446.73628"
+     inkscape:cy="352.20129"
+     inkscape:document-units="px"
+     inkscape:current-layer="g4279"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="727"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-308.2677)">
+    <rect
+       ry="9.1555243"
+       y="747.23969"
+       x="130.93117"
+       height="147.44521"
+       width="799.41815"
+       id="rect3412"
+       style="fill:#fca4bf;fill-opacity:1;stroke:#1700a2;stroke-width:3.0999999;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <rect
+       ry="9.1555243"
+       y="316.9678"
+       x="130.14594"
+       height="292.20959"
+       width="797.52246"
+       id="rect3408"
+       style="fill:#c8b3ea;fill-opacity:0.84304935;stroke:#1700a2;stroke-width:3.0999999;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <rect
+       ry="9.1555243"
+       y="619.81934"
+       x="130.22726"
+       height="120.63699"
+       width="799.41815"
+       id="rect3410"
+       style="fill:#b5e7d1;fill-opacity:0.73991029;stroke:#1700a2;stroke-width:1.20000005;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <text
+       xml:space="preserve"
+       style="font-size:18px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="87.88327"
+       y="117.466"
+       id="text3765"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3767"
+         x="87.88327"
+         y="117.466" /></text>
+    <g
+       id="g3247"
+       transform="matrix(0.94783436,0,0,0.94781372,33.420611,-2.4575244)">
+      <g
+         transform="matrix(0.88062232,0,0,0.88062232,82.941068,457.62317)"
+         id="g3761">
+        <rect
+           style="fill:#fbfbfb;fill-opacity:1;stroke:#515151;stroke-width:3.59421325;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect2985"
+           width="208.57143"
+           height="147.14285"
+           x="82.85714"
+           y="55.219322"
+           ry="14.188041" />
+        <path
+           style="fill:none;stroke:#515151;stroke-width:3.59421325;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 82.142857,83.076468 c 208.571433,0 208.571433,0.714286 208.571433,0.714286"
+           id="path2991"
+           inkscape:connector-curvature="0" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3769"
+         y="524.5943"
+         x="165.22563"
+         style="font-size:35.22489166px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:15.85120201px"
+           y="524.5943"
+           x="165.22563"
+           id="tspan3771"
+           sodipodi:role="line">abrg/Oculomotor</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3773"
+         y="550.83636"
+         x="246.48961"
+         style="font-size:35.22489166px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle;fill:#562cb4;fill-opacity:1"
+           y="550.83636"
+           x="246.48961"
+           id="tspan3775"
+           sodipodi:role="line">SpineML component</tspan><tspan
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle;fill:#562cb4;fill-opacity:1"
+           id="tspan3777"
+           y="570.65039"
+           x="246.48961"
+           sodipodi:role="line">XML</tspan><tspan
+           id="tspan3779"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="590.46436"
+           x="246.48961"
+           sodipodi:role="line">Brain &amp; Brainstem</tspan><tspan
+           id="tspan3781"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="610.27838"
+           x="246.48961"
+           sodipodi:role="line">neural element</tspan><tspan
+           id="tspan4009"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="630.09235"
+           x="246.48961"
+           sodipodi:role="line">model spec</tspan></text>
+    </g>
+    <g
+       id="g3132"
+       transform="matrix(0.94783436,0,0,0.94781372,20.190388,-2.2275459)">
+      <g
+         transform="matrix(0.88062232,0,0,0.88062232,163.57178,300.82622)"
+         id="g3761-0">
+        <rect
+           style="fill:#fbfbfb;fill-opacity:1;stroke:#515151;stroke-width:3.59421325;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect2985-6"
+           width="208.57143"
+           height="147.14285"
+           x="82.85714"
+           y="55.219322"
+           ry="14.188041" />
+        <path
+           style="fill:none;stroke:#515151;stroke-width:3.59421325;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 82.142857,83.076468 c 208.571433,0 208.571433,0.714286 208.571433,0.714286"
+           id="path2991-5"
+           inkscape:connector-curvature="0" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3769-7"
+         y="367.79733"
+         x="245.85635"
+         style="font-size:35.22489166px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:15.85120201px"
+           y="367.79733"
+           x="245.85635"
+           id="tspan3771-4"
+           sodipodi:role="line">abrg/Oculomotor/c++</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3773-1"
+         y="394.03943"
+         x="329.89505"
+         style="font-size:35.22489166px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           id="tspan3781-2"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle;fill:#562cb4;fill-opacity:1"
+           y="394.03943"
+           x="329.89505"
+           sodipodi:role="line">worldDataMaker.cpp</tspan><tspan
+           id="tspan3997"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="413.85342"
+           x="329.89505"
+           sodipodi:role="line">Creates brain</tspan><tspan
+           id="tspan3999"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="433.66742"
+           x="329.89505"
+           sodipodi:role="line">model input</tspan><tspan
+           id="tspan3947"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="453.48145"
+           x="329.89505"
+           sodipodi:role="line">BRAHMS component</tspan><tspan
+           id="tspan3949"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="473.29544"
+           x="329.89505"
+           sodipodi:role="line">Hand-coded C++</tspan></text>
+    </g>
+    <g
+       id="g3260"
+       transform="matrix(0.94783436,0,0,0.94781372,73.807997,12.516975)">
+      <g
+         transform="matrix(0.88062232,0,0,0.88062232,91.296772,739.9501)"
+         id="g3761-3">
+        <rect
+           style="fill:#fbfbfb;fill-opacity:1;stroke:#515151;stroke-width:3.59421325;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect2985-4"
+           width="208.57143"
+           height="147.14285"
+           x="82.85714"
+           y="55.219322"
+           ry="14.188041" />
+        <path
+           style="fill:none;stroke:#515151;stroke-width:3.59421325;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 82.142857,83.076468 c 208.571433,0 208.571433,0.714286 208.571433,0.714286"
+           id="path2991-8"
+           inkscape:connector-curvature="0" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3769-4"
+         y="806.9212"
+         x="173.58133"
+         style="font-size:35.22489166px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:15.85120201px"
+           y="806.9212"
+           x="173.58133"
+           id="tspan3771-0"
+           sodipodi:role="line">BRAHMS Namespace</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3773-2"
+         y="833.16333"
+         x="255.093"
+         style="font-size:35.22489166px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle;fill:#562cb4;fill-opacity:1"
+           id="tspan3777-2"
+           y="833.16333"
+           x="255.093"
+           sodipodi:role="line">BRAHMS component</tspan><tspan
+           id="tspan4015"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle;fill:#562cb4;fill-opacity:1"
+           y="852.97736"
+           x="255.093"
+           sodipodi:role="line">object code</tspan><tspan
+           id="tspan4017"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="872.79132"
+           x="255.093"
+           sodipodi:role="line">Brain &amp;</tspan><tspan
+           id="tspan3779-5"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="892.60535"
+           x="255.093"
+           sodipodi:role="line">Brainstem neural</tspan><tspan
+           id="tspan3951"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="912.41931"
+           x="255.093"
+           sodipodi:role="line">element models</tspan></text>
+    </g>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#1700a2;stroke-width:2.99999976;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect3863"
+       width="161.92871"
+       height="109.34124"
+       x="184.87868"
+       y="626.18933"
+       ry="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:33.38700104px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="264.48257"
+       y="647.89771"
+       id="text3855"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0000109,0.99998911)"><tspan
+         sodipodi:role="line"
+         id="tspan3857"
+         x="264.48257"
+         y="647.89771"
+         style="font-size:15.02415085px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#2c2eb4;fill-opacity:1">code generation</tspan><tspan
+         sodipodi:role="line"
+         x="264.48257"
+         y="666.67792"
+         style="font-size:15.02415085px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#2c2eb4;fill-opacity:1"
+         id="tspan4033">&amp; compile</tspan><tspan
+         sodipodi:role="line"
+         x="264.48257"
+         y="685.45807"
+         style="font-size:15.02415085px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle"
+         id="tspan4035">SpineML_2_BRAHMS</tspan><tspan
+         sodipodi:role="line"
+         x="264.48257"
+         y="704.23828"
+         style="font-size:15.02415085px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle"
+         id="tspan4019">Component XSLT</tspan><tspan
+         sodipodi:role="line"
+         x="264.48257"
+         y="723.01843"
+         style="font-size:15.02415085px;text-align:center;text-anchor:middle"
+         id="tspan3865">XML -&gt; C++ -&gt; obj</tspan><tspan
+         sodipodi:role="line"
+         x="264.48257"
+         y="741.79865"
+         id="tspan3861" /></text>
+    <g
+       id="g3145"
+       transform="matrix(0.94783436,0,0,0.94781372,34.935234,-3.5679564)">
+      <g
+         transform="matrix(0.88062232,0,0,0.88062232,354.66683,301.70685)"
+         id="g3761-0-8">
+        <rect
+           style="fill:#fbfbfb;fill-opacity:1;stroke:#515151;stroke-width:3.59421325;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect2985-6-1"
+           width="208.57143"
+           height="147.14285"
+           x="82.85714"
+           y="55.219322"
+           ry="14.188041" />
+        <path
+           style="fill:none;stroke:#515151;stroke-width:3.59421325;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 82.142857,83.076468 c 208.571433,0 208.571433,0.714286 208.571433,0.714286"
+           id="path2991-5-6"
+           inkscape:connector-curvature="0" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3769-7-1"
+         y="368.67795"
+         x="436.95139"
+         style="font-size:35.22489166px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:15.85120201px"
+           y="368.67795"
+           x="436.95139"
+           id="tspan3771-4-6"
+           sodipodi:role="line">abrg/Oculomotor/c++</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3773-1-2"
+         y="394.92007"
+         x="520.99011"
+         style="font-size:35.22489166px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           id="tspan3781-2-0"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle;fill:#562cb4;fill-opacity:1"
+           y="394.92007"
+           x="520.99011"
+           sodipodi:role="line">centroid.cpp</tspan><tspan
+           id="tspan3999-7"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="414.73407"
+           x="520.99011"
+           sodipodi:role="line">Compute neural</tspan><tspan
+           id="tspan4091"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="434.54807"
+           x="520.99011"
+           sodipodi:role="line">layer centroid</tspan><tspan
+           id="tspan3947-3"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="454.36209"
+           x="520.99011"
+           sodipodi:role="line">BRAHMS component</tspan><tspan
+           id="tspan3949-5"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="474.17609"
+           x="520.99011"
+           sodipodi:role="line">Hand-coded C++</tspan></text>
+    </g>
+    <g
+       id="g3170"
+       transform="matrix(0.94783436,0,0,0.94781372,31.738582,-10.270012)">
+      <g
+         style="fill:#ffffff;fill-opacity:1"
+         transform="matrix(0.88062232,0,0,0.88062232,644.8572,460.39608)"
+         id="g3761-38">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:#515151;stroke-width:3.59421325;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect2985-5"
+           width="208.57143"
+           height="147.14285"
+           x="82.85714"
+           y="55.219322"
+           ry="14.188041" />
+        <path
+           style="fill:#ffffff;fill-opacity:1;stroke:#515151;stroke-width:3.59421325;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 82.142857,83.076468 c 208.571433,0 208.571433,0.714286 208.571433,0.714286"
+           id="path2991-1"
+           inkscape:connector-curvature="0" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3769-8"
+         y="527.36725"
+         x="727.14178"
+         style="font-size:35.22489166px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:15.85120201px"
+           y="527.36725"
+           x="727.14178"
+           id="tspan3771-1"
+           sodipodi:role="line">abrg/Oculomotor</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3773-9"
+         y="553.60931"
+         x="808.4057"
+         style="font-size:35.22489166px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle;fill:#562cb4;fill-opacity:1"
+           y="553.60931"
+           x="808.4057"
+           id="tspan3775-8"
+           sodipodi:role="line">SpineML network</tspan><tspan
+           id="tspan3781-0"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle;fill:#562cb4;fill-opacity:1"
+           y="573.42334"
+           x="808.4057"
+           sodipodi:role="line">&amp; experiment XML</tspan><tspan
+           id="tspan4009-8"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="593.2373"
+           x="808.4057"
+           sodipodi:role="line">model network</tspan><tspan
+           id="tspan4147"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="613.05133"
+           x="808.4057"
+           sodipodi:role="line">&amp; expt specification</tspan></text>
+    </g>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#1700a2;stroke-width:2.99999976;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect3863-1"
+       width="174.44897"
+       height="109.34124"
+       x="716.22784"
+       y="626.71112"
+       ry="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:33.38700104px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="803.33801"
+       y="648.41949"
+       id="text3855-2"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0000109,0.99998911)"><tspan
+         sodipodi:role="line"
+         x="803.33801"
+         y="648.41949"
+         style="font-size:15.02415085px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#2c2eb4;fill-opacity:1"
+         id="tspan4033-1">SystemML generation</tspan><tspan
+         sodipodi:role="line"
+         x="803.33801"
+         y="667.19971"
+         style="font-size:15.02415085px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle"
+         id="tspan4035-2">SpineML_2_BRAHMS</tspan><tspan
+         sodipodi:role="line"
+         x="803.33801"
+         y="685.97986"
+         style="font-size:15.02415085px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle"
+         id="tspan4019-8">Network XSLT*</tspan><tspan
+         sodipodi:role="line"
+         x="803.33801"
+         y="704.76007"
+         style="font-size:15.02415085px;text-align:center;text-anchor:middle"
+         id="tspan3865-7">XML -&gt; SystemML</tspan><tspan
+         sodipodi:role="line"
+         x="803.33801"
+         y="723.54022"
+         id="tspan3861-8" /></text>
+    <g
+       id="g3191"
+       transform="matrix(0.94783436,0,0,0.94781372,30.913911,8.4957424)">
+      <g
+         transform="matrix(0.98507285,0,0,0.88062232,629.032,737.05368)"
+         id="g3761-38-6">
+        <rect
+           style="fill:#fbfbfb;fill-opacity:1;stroke:#515151;stroke-width:3.39832211;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect2985-5-9"
+           width="208.57143"
+           height="147.14285"
+           x="82.85714"
+           y="55.219322"
+           ry="14.188041" />
+        <path
+           style="fill:none;stroke:#515151;stroke-width:3.39832211;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 82.142857,83.076468 c 208.571433,0 208.571433,0.714286 208.571433,0.714286"
+           id="path2991-1-9"
+           inkscape:connector-curvature="0" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3769-8-9"
+         y="804.02478"
+         x="719.89648"
+         style="font-size:35.22489166px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:12.32871246px"
+           y="804.02478"
+           x="719.89648"
+           id="tspan3771-1-7"
+           sodipodi:role="line">SpineML_2_BRAHMS/temp/run</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3773-9-2"
+         y="840.83435"
+         x="811.72797"
+         style="font-size:35.22489166px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           id="tspan3781-0-3"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle;fill:#562cb4;fill-opacity:1"
+           y="840.83435"
+           x="811.72797"
+           sodipodi:role="line">SystemML</tspan><tspan
+           id="tspan4145-5"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="860.64838"
+           x="811.72797"
+           sodipodi:role="line">BRAHMS system</tspan><tspan
+           id="tspan4147-1"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="880.46234"
+           x="811.72797"
+           sodipodi:role="line">specification</tspan></text>
+    </g>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#1700a2;stroke-width:2.99999976;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect3863-15"
+       width="161.92871"
+       height="92.647919"
+       x="448.91364"
+       y="631.94568"
+       ry="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:33.38700104px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="528.51471"
+       y="653.65417"
+       id="text3855-4"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0000109,0.99998911)"><tspan
+         sodipodi:role="line"
+         x="528.51471"
+         y="653.65417"
+         style="font-size:15.02415085px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#2c2eb4;fill-opacity:1"
+         id="tspan4033-8">Compile &amp; install</tspan><tspan
+         sodipodi:role="line"
+         x="528.51471"
+         y="672.43439"
+         style="font-size:15.02415085px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle"
+         id="tspan4019-3">cmake compile &amp;</tspan><tspan
+         sodipodi:role="line"
+         x="528.51471"
+         y="691.21454"
+         style="font-size:15.02415085px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle"
+         id="tspan4293">manual install</tspan><tspan
+         sodipodi:role="line"
+         x="528.51471"
+         y="709.99475"
+         style="font-size:15.02415085px;text-align:center;text-anchor:middle"
+         id="tspan3865-9">C++ -&gt; obj</tspan><tspan
+         sodipodi:role="line"
+         x="528.51471"
+         y="728.7749"
+         id="tspan3861-6" /></text>
+    <g
+       id="g3291"
+       transform="matrix(0.94783436,0,0,0.94781372,42.977872,12.516975)">
+      <g
+         id="g3211">
+        <g
+           id="g3761-3-2"
+           transform="matrix(0.88062232,0,0,0.88062232,355.05323,741.57917)">
+          <rect
+             ry="14.188041"
+             y="55.219322"
+             x="82.85714"
+             height="147.14285"
+             width="208.57143"
+             id="rect2985-4-3"
+             style="fill:#fbfbfb;fill-opacity:1;stroke:#515151;stroke-width:3.59421325;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path2991-8-3"
+             d="m 82.142857,83.076468 c 208.571433,0 208.571433,0.714286 208.571433,0.714286"
+             style="fill:none;stroke:#515151;stroke-width:3.59421325;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-size:35.22489166px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="437.3378"
+           y="808.55023"
+           id="text3769-4-6"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3771-0-7"
+             x="437.3378"
+             y="808.55023"
+             style="font-size:15.85120201px">BRAHMS Namespace</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:35.22489166px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="518.84943"
+           y="834.79236"
+           id="text3773-2-6"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             x="518.84943"
+             y="834.79236"
+             id="tspan3777-2-8"
+             style="font-size:15.85120201px;text-align:center;text-anchor:middle;fill:#562cb4;fill-opacity:1">BRAHMS component</tspan><tspan
+             sodipodi:role="line"
+             x="518.84943"
+             y="854.60638"
+             style="font-size:15.85120201px;text-align:center;text-anchor:middle;fill:#562cb4;fill-opacity:1"
+             id="tspan4015-7">object code</tspan><tspan
+             sodipodi:role="line"
+             x="518.84943"
+             y="874.42035"
+             style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+             id="tspan3951-0">Eye model and</tspan><tspan
+             sodipodi:role="line"
+             x="518.84943"
+             y="894.23438"
+             style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+             id="tspan4422">supporting</tspan><tspan
+             sodipodi:role="line"
+             x="518.84943"
+             y="914.04834"
+             style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+             id="tspan4424">components</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g3158"
+       transform="matrix(0.94783436,0,0,0.94781372,46.999188,-2.2275497)">
+      <g
+         transform="matrix(0.88062232,0,0,0.88062232,547.52311,299.06498)"
+         id="g3761-0-8-2">
+        <rect
+           style="fill:#fbfbfb;fill-opacity:1;stroke:#515151;stroke-width:3.59421325;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect2985-6-1-0"
+           width="208.57143"
+           height="147.14285"
+           x="82.85714"
+           y="55.219322"
+           ry="14.188041" />
+        <path
+           style="fill:none;stroke:#515151;stroke-width:3.59421325;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 82.142857,83.076468 c 208.571433,0 208.571433,0.714286 208.571433,0.714286"
+           id="path2991-5-6-9"
+           inkscape:connector-curvature="0" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3769-7-1-3"
+         y="366.0361"
+         x="629.80768"
+         style="font-size:35.22489166px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:15.85120201px"
+           y="366.0361"
+           x="629.80768"
+           id="tspan3771-4-6-7"
+           sodipodi:role="line">saccsim/src</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3773-1-2-3"
+         y="392.2782"
+         x="713.84637"
+         style="font-size:35.22489166px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           id="tspan3781-2-0-2"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle;fill:#562cb4;fill-opacity:1"
+           y="392.2782"
+           x="713.84637"
+           sodipodi:role="line">saccasim code</tspan><tspan
+           id="tspan4393"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="412.09219"
+           x="713.84637"
+           sodipodi:role="line">Eye model wrapped as</tspan><tspan
+           id="tspan3947-3-7"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="431.90619"
+           x="713.84637"
+           sodipodi:role="line">BRAHMS component</tspan><tspan
+           id="tspan3949-5-4"
+           style="font-size:15.85120201px;text-align:center;text-anchor:middle"
+           y="451.72021"
+           x="713.84637"
+           sodipodi:role="line">Hand-coded C++</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="663"
+       y="496.36218"
+       id="text4426"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4428"
+         x="663"
+         y="496.36218" /></text>
+    <g
+       id="g4279"
+       transform="translate(12,10)">
+      <text
+         sodipodi:linespacing="125%"
+         id="text3855-2-0"
+         y="938.55774"
+         x="520.15857"
+         style="font-size:33.38700104px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"
+         transform="scale(1.0000109,0.99998911)"><tspan
+           id="tspan4033-1-2"
+           style="font-size:15.02415085px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#2c2eb4;fill-opacity:1"
+           y="938.55774"
+           x="520.15857"
+           sodipodi:role="line">brahms</tspan><tspan
+           id="tspan4471"
+           style="font-size:15.02415085px;text-align:center;text-anchor:middle"
+           y="957.33795"
+           x="520.15857"
+           sodipodi:role="line">SpineML_2_BRAHMS</tspan><tspan
+           style="font-size:15.02415085px;text-align:center;text-anchor:middle"
+           y="976.1181"
+           x="520.15857"
+           sodipodi:role="line"
+           id="tspan4336">calls brahms</tspan><tspan
+           style="font-size:15.02415085px;text-align:center;text-anchor:middle"
+           y="994.89832"
+           x="520.15857"
+           sodipodi:role="line"
+           id="tspan4342">executable to run</tspan><tspan
+           style="font-size:15.02415085px;text-align:center;text-anchor:middle"
+           y="1013.6785"
+           x="520.15857"
+           sodipodi:role="line"
+           id="tspan4344">the full model</tspan><tspan
+           id="tspan3861-8-3"
+           y="1032.4587"
+           x="520.15857"
+           sodipodi:role="line" /></text>
+      <rect
+         ry="0"
+         y="916.84619"
+         x="433.04523"
+         height="109.2314"
+         width="174.44897"
+         id="rect3863-1-1"
+         style="fill:none;stroke:#1700a2;stroke-width:2.99999976;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    </g>
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.0999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 527.57514,728.21169 -0.0744,18.49813 -5.35659,0 9.82042,14.06159 9.44846,-14.06159 -4.98463,0 -0.14881,-18.49813 z"
+       id="path5164-0-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.0999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 524.01378,465.55849 -0.0744,139.13512 -5.35659,0 9.82042,14.06158 9.44845,-14.06158 -4.98463,0 -0.14881,-138.96757 z"
+       id="path5164-0-0-9"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.0999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 798.80403,595.57836 -0.0744,18.49813 -5.35659,0 9.82042,14.06158 9.44846,-14.06158 -4.98464,0 -0.14881,-18.49813 z"
+       id="path5164-0-0-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.0999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 801.4849,722.91742 -0.0744,18.49813 -5.3566,0 9.82042,14.06158 9.44846,-14.06158 -4.98463,0 -0.14881,-18.49813 z"
+       id="path5164-0-0-1"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.0999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 262.62794,599.5996 -0.0744,18.49813 -5.35659,0 9.82042,14.06158 9.44846,-14.06158 -4.98463,0 -0.14881,-18.49813 z"
+       id="path5164-0-0-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.0999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 288.09631,729.61946 -0.0744,18.49813 -5.35659,0 9.82042,14.06159 9.44845,-14.06159 -4.98463,0 -0.14881,-18.49813 z"
+       id="path5164-0-0-95"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.0999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 642.38384,482.81666 -51.40849,129.28986 -4.97861,-1.97643 3.93889,16.69282 13.97032,-9.58313 -4.6329,-1.8392 51.13919,-129.21649 z"
+       id="path5164-0-0-9-5"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.0999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 415.56881,482.21742 51.40849,129.28987 4.97862,-1.97644 -3.93889,16.69283 -13.97032,-9.58314 4.6329,-1.83919 -51.13919,-129.2165 z"
+       id="path5164-0-0-9-5-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.0999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 699.34546,873.71929 -66.97954,69.57782 -3.86195,-3.71185 -2.66413,16.94305 16.55646,-3.5907 -3.59378,-3.4541 66.8186,-69.7325 z"
+       id="path5164-0-0-5-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.0999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 362.89412,883.87991 66.97954,69.57782 3.86195,-3.71185 2.66414,16.94307 -16.55646,-3.59077 3.59378,-3.45402 -66.81861,-69.73253 z"
+       id="path5164-0-0-5-7-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.0999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 528.11485,888.24317 -0.0744,18.4981 -5.35659,0 9.82042,14.06158 9.44846,-14.06158 -4.98464,0 -0.14881,-18.4981 z"
+       id="path5164-0-0-03"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:37.91296005px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-586.40228"
+       y="155.90361"
+       id="text4289"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-0.99998911,1.0000109,0,0,0)"><tspan
+         sodipodi:role="line"
+         x="-586.40228"
+         y="155.90361"
+         id="tspan4296"
+         style="font-size:20.85212898px">Model specification files</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:37.91296005px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-718.65973"
+       y="154.62369"
+       id="text4289-4"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-0.99998911,1.0000109,0,0,0)"><tspan
+         sodipodi:role="line"
+         x="-718.65973"
+         y="154.62369"
+         id="tspan4296-8"
+         style="font-size:20.85212898px">Process</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:37.91296005px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-824.17419"
+       y="157.30453"
+       id="text4289-46"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-0.99998911,1.0000109,0,0,0)"><tspan
+         sodipodi:role="line"
+         x="-824.17419"
+         y="157.30453"
+         id="tspan4296-4"
+         style="font-size:20.85212898px;text-align:center;text-anchor:middle"> BRAHMS</tspan><tspan
+         sodipodi:role="line"
+         x="-824.17419"
+         y="183.36969"
+         style="font-size:20.85212898px;text-align:center;text-anchor:middle"
+         id="tspan4332">system</tspan></text>
+  </g>
+</svg>

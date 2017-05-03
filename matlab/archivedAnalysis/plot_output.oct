@@ -1,0 +1,275 @@
+#!/usr/bin/octave
+
+A = csvread('saccsim_side.log');
+plotNow = 1;
+
+% Load data
+
+filePath =[getenv('SPINEML_2_BRAHMS_DIR') '/temp/log/LLBN_right_a_log.bin'];
+noNeurons = 1;
+[datallbnR count] = load_sc_data(filePath, noNeurons);
+
+filePath =[getenv('SPINEML_2_BRAHMS_DIR') '/temp/log/LLBN_left_a_log.bin'];
+noNeurons = 1;
+[datallbn count] = load_sc_data(filePath, noNeurons);
+
+filePath =[getenv('SPINEML_2_BRAHMS_DIR') '/temp/log/OPN_a_log.bin'];
+noNeurons = 1;
+[dataopn count] = load_sc_data(filePath, noNeurons);
+
+filePath =[getenv('SPINEML_2_BRAHMS_DIR') '/temp/log/EBN_left_a_log.bin'];
+noNeurons = 1;
+[dataebn count] = load_sc_data(filePath, noNeurons);
+
+filePath =[getenv('SPINEML_2_BRAHMS_DIR') '/temp/log/IBN_left_a_log.bin'];
+noNeurons = 1;
+[dataibn count] = load_sc_data(filePath, noNeurons);
+
+filePath =[getenv('SPINEML_2_BRAHMS_DIR') '/temp/log/TN_left_a_log.bin'];
+noNeurons = 1;
+[datatn count] = load_sc_data(filePath, noNeurons);
+
+filePath =[getenv('SPINEML_2_BRAHMS_DIR') '/temp/log/MN_left_a_log.bin'];
+noNeurons = 1;
+[datamn count] = load_sc_data(filePath, noNeurons);                                                                       
+
+if plotNow = 1;
+
+t = 0.5e-3:0.5e-3:A(end,14);
+
+figure(99);clf
+%subplot(3,1,1); hold on
+plot (0.5e-3:0.5e-3:A(end,14), datallbnR, 'b');
+%plot (A(:,14), A(:,4), 'b');
+%plot (A(:,14), A(:,5), '-b');
+%xlabel ('time (s)', 'fontsize', 14);
+ylabel ('LLBN');
+title("right")
+
+figure(1); clf
+hold on
+subplot(3,1,1); hold on
+plot (0.5e-3:0.5e-3:A(end,14), datallbn, 'b');
+%plot (A(:,14), A(:,4), 'b');
+%plot (A(:,14), A(:,5), '-b');
+%xlabel ('time (s)', 'fontsize', 14);
+ylabel ('LLBN');
+title("left")
+
+
+subplot(3,1,2); hold on
+plot (0.5e-3:0.5e-3:A(end,14), dataopn, 'b');
+%plot (A(:,14), A(:,4), 'b');
+%plot (A(:,14), A(:,5), '-b');
+%xlabel ('time (s)', 'fontsize', 14);
+ylabel ('OPN');
+
+subplot(3,1,3); hold on
+plot (0.5e-3:0.5e-3:A(end,14), dataebn, 'b');
+%plot (A(:,14), A(:,4), 'b');
+%plot (A(:,14), A(:,5), '-b');
+%xlabel ('time (s)', 'fontsize', 14);
+ylabel ('EBN');
+
+figure(2); clf; hold on
+subplot(3,1,1); hold on
+plot (0.5e-3:0.5e-3:A(end,14), dataibn, 'b');
+%plot (A(:,14), A(:,4), 'b');
+%plot (A(:,14), A(:,5), '-b');
+%xlabel ('time (s)', 'fontsize', 14);
+ylabel ('IBN');
+
+subplot(3,1,2); hold on
+plot (0.5e-3:0.5e-3:A(end,14), datatn, 'b');
+%plot (A(:,14), A(:,4), 'b');
+%plot (A(:,14), A(:,5), '-b');
+%xlabel ('time (s)', 'fontsize', 14);
+ylabel ('TN');
+
+subplot(3,1,3); hold on
+plot (0.5e-3:0.5e-3:A(end,14), datamn, 'b');
+%plot (A(:,14), A(:,4), 'b');
+%plot (A(:,14), A(:,5), '-b');
+%xlabel ('time (s)', 'fontsize', 14);
+ylabel ('MN');
+
+figure(3); clf
+subplot(2,1,1); hold on
+plot (A(:,14), A(:,2), 'r');
+plot (A(:,14), A(:,3), '-r');
+xlabel ('time (s)', 'fontsize', 14);
+ylabel ('Muscle Activation');
+title("horizontal")
+
+subplot(2,1,2); hold on
+plot(A(:,14), A(:,8),'b');
+plot(A(:,14), A(:,9),'r');
+plot(A(:,14), A(:,10),'g');
+ylabel('Rotations');		
+
+end
+
+deg = str2num(getenv("DEG"));
+if deg == 5
+col = 19; % [15,23,30];
+elseif deg == 10
+col = 22;
+elseif deg == 15
+col = 28;
+else 
+error('deg error')
+end
+
+%
+%window_size = 150;
+%E2 = 2.5;
+%nfs = 50;
+%Mf = nfs/(E2*log(((window_size/2)/E2)+1));
+%col = Mf.*E2.*log(1+(deg./E2));
+%col = round(col);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+filePath =[getenv('SPINEML_2_BRAHMS_DIR') '/temp/log/SC_deep_out_log.bin'];
+noNeurons = 2500;
+[data count] = load_sc_data(filePath, noNeurons);
+noTimesteps = count/noNeurons;
+B = reshape(data,50,50,noTimesteps);
+B(1,1,:) = 0;
+B(2,1,:) = 1;
+datascd = squeeze(B(38,col,:));
+
+filePath =[getenv('SPINEML_2_BRAHMS_DIR') '/temp/log/Retina_2_out_log.bin'];
+noNeurons = 2500;
+[data count] = load_sc_data(filePath, noNeurons);
+noTimesteps = count/noNeurons;
+R = reshape(data,50,50,noTimesteps);
+R(1,1,:) = 0;
+R(2,1,:) = 1;
+dataret = squeeze(R(37,col,:));
+
+filePath =[getenv('SPINEML_2_BRAHMS_DIR') '/temp/log/SNr_out_log.bin'];
+noNeurons = 2500;
+[data count] = load_sc_data(filePath, noNeurons);
+noTimesteps = count/noNeurons;
+G = reshape(data,50,50,noTimesteps);
+G(1,1,:) = 0;
+G(2,1,:) = 1;
+datasnr = squeeze(G(38,col,:));
+
+filePath =[getenv('SPINEML_2_BRAHMS_DIR') '/temp/FEF_out_log.bin'];
+noNeurons = 2500;
+[data count] = load_sc_data(filePath, noNeurons);
+noTimesteps = count/noNeurons;
+F = reshape(data,50,50,noTimesteps);
+F(1,1,:) = 0;
+F(2,1,:) = 1;
+datafef = squeeze(F(38,col,:));
+
+filePath =[getenv('SPINEML_2_BRAHMS_DIR') '/temp/Str_D1_out_log.bin'];
+noNeurons = 2500;
+[data count] = load_sc_data(filePath, noNeurons);
+noTimesteps = count/noNeurons;
+D1 = reshape(data,50,50,noTimesteps);
+D1(1,1,:) = 0;
+D1(2,1,:) = 1;
+datastr = squeeze(D1(38,col,:));
+
+filePath =[getenv('SPINEML_2_BRAHMS_DIR') '/temp/STN_out_log.bin'];
+noNeurons = 2500;
+[data count] = load_sc_data(filePath, noNeurons);
+noTimesteps = count/noNeurons;
+STN = reshape(data,50,50,noTimesteps);
+STN(1,1,:) = 0;
+STN(2,1,:) = 1;
+datastn = squeeze(STN(38,col,:));
+
+filePath =[getenv('SPINEML_2_BRAHMS_DIR') '/temp/Thalamus_out_log.bin'];
+noNeurons = 2500;
+[data count] = load_sc_data(filePath, noNeurons);
+noTimesteps = count/noNeurons;
+Th = reshape(data,50,50,noTimesteps);
+Th(1,1,:) = 0;
+Th(2,1,:) = 1;
+datathal = squeeze(Th(38,col,:));
+
+filePath =[getenv('SPINEML_2_BRAHMS_DIR') '/temp/SC_sup_out_log.bin'];
+noNeurons = 2500;
+[data count] = load_sc_data(filePath, noNeurons);
+noTimesteps = count/noNeurons;
+SCs = reshape(data,50,50,noTimesteps);
+SCs(1,1,:) = 0;
+SCs(2,1,:) = 1;
+datascs = squeeze(Th(38,col,:));
+
+% SAVE DATA
+T = A(:,14);
+datarotx = A(:,8);
+dataroty = A(:,9);
+datarotz = A(:,10);
+
+i = getenv("DEG");
+eval(['save Degree' num2str(i) '.mat t T datarotx dataroty datarotz dataret datasnr datascd dataebn dataopn datallbn dataibn datatn datamn -v7']);
+
+
+figure(4); clf
+imagesc(B(:,:,end))
+title('GPi at end')
+
+for i = 1:10:noTimesteps
+  figure(5);
+  subplot(3,4,8);
+  imagesc(B(:,:,i)) 
+  colormap(hot)
+  title(A(i,14))
+  ylabel('SCd')
+
+
+  subplot(3,4,1);
+  imagesc(R(:,:,i))
+  colormap(hot)
+  title(A(i,14))  
+  ylabel('Retina 2')
+
+  subplot(3,4,7);
+  imagesc(G(:,:,i))
+  colormap(hot)
+  title(A(i,14))  
+  ylabel('SNr')
+  
+  subplot(3,4,2);
+  imagesc(F(:,:,i))
+  colormap(hot)
+  title(A(i,14))  
+  ylabel('FEF')
+
+  subplot(3,4,4);
+  imagesc(D1(:,:,i))
+  colormap(hot)
+  title(A(i,14))  
+  ylabel('striatum D1') 
+ 
+  subplot(3,4,5);
+  imagesc(STN(:,:,i))
+  colormap(hot)
+  title(A(i,14))  
+  ylabel('STN')
+
+  subplot(3,4,3);
+  imagesc(Th(:,:,i))
+  colormap(hot)
+  title(A(i,14))  
+  ylabel('Thalamus') 
+ 
+  subplot(3,4,9);
+  imagesc(SCs(:,:,i))
+  colormap(hot)
+  title(A(i,14))  
+  ylabel('SCsup') 
+
+  waitforbuttonpress
+end
+
+
+input ('rtn to exit','s');
+

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<SpineML xsi:schemaLocation="http://www.shef.ac.uk/SpineMLComponentLayer SpineMLComponentLayer.xsd" xmlns="http://www.shef.ac.uk/SpineMLComponentLayer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <ComponentClass type="neuron_body" name="WorldToBrain">
+  <Dynamics initial_regime="default">
+   <Regime name="default">
+    <OnCondition target_regime="default">
+     <StateAssignment variable="out">
+      <MathInline>in</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>MN&lt;thrsh</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="default">
+     <StateAssignment variable="out">
+      <MathInline>0</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>MN>=thrsh</MathInline>
+     </Trigger>
+    </OnCondition>
+   </Regime>
+   <StateVariable dimension="?" name="out"/>
+  </Dynamics>
+  <AnalogReceivePort dimension="?" name="in"/>
+  <AnalogSendPort name="out"/>
+  <AnalogReducePort dimension="?" name="MN" reduce_op="+"/>
+  <Parameter dimension="?" name="thrsh"/>
+ </ComponentClass>
+</SpineML>
