@@ -1,7 +1,7 @@
 % Load the file which contains the weights determined by the
 % rotations_weight_finder_centroid_3d.m
 %
-% /fast/pc1ssj/allweights.log
+% /fast/co1ssj/allweights.log
 %
 % This file has the following format:
 %
@@ -13,7 +13,7 @@
 % Lines starting with a script path signify the "run set" range.
 %
 % Other lines have this format:
-% 
+%
 % weight_file_number, axis(X/Y/Z), target angle, map positionX, map
 % positionY, best weight, scd centroid X, scd centroid Y.
 %

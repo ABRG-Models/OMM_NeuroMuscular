@@ -10,9 +10,9 @@ if isOctave
     page_output_immediately(1);
 end
 addpath ('./include');
-    
+
 % The input model. Hardcoded. Luminances therein are left alone.
-model_dir = '/home/pc1ssj/abrg_local/Oculomotor';
+model_dir = '/home/co1ssj/abrg_local/Oculomotor';
 
 num_par_runs = 6;
 

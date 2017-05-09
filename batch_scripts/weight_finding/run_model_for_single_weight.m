@@ -7,9 +7,9 @@ insigneo = 1; % Use insigneo server
 num_parallel = 8; % How many times to run
 
 % The input model. Hardcoded.
-orig_model_dir = '/home/pc1ssj/abrg_local/Oculomotor';
+orig_model_dir = '/home/co1ssj/abrg_local/Oculomotor';
 % This codes makes a copy here:
-model_dir = '/fastdata/pc1ssj/input_models/';
+model_dir = '/fastdata/co1ssj/input_models/';
 cmd = ['mkdir -p ' model_dir];
 system (cmd);
 model_dir = [model_dir 'OculomotorT' num2str(targetThetaY)];

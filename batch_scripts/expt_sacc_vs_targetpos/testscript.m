@@ -1,7 +1,7 @@
 run_index = 6
 
-model_dir = '/home/pc1ssj/abrg_local/Oculomotor';
-thepath = ['/fastdata/pc1ssj/oculomotorRX0RY7_0.8_' num2str(run_index)];
+model_dir = '/home/co1ssj/abrg_local/Oculomotor';
+thepath = ['/fastdata/co1ssj/oculomotorRX0RY7_0.8_' num2str(run_index)];
 output_dirs = setup_model_directories ([0, 7], 0.8)
 peaktime = find_peaktime ([output_dirs.root '_' num2str(run_index)])
 

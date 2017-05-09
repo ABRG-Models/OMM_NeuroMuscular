@@ -3,7 +3,7 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %spineml2brahms_workdir = '/home/seb/analysis/oculomotor/';
-spineml2brahms_workdir = '/fastdata/pc1ssj/oculomotor/';
+spineml2brahms_workdir = '/fastdata/co1ssj/oculomotor/';
 movFlag = 0;
 % Size of neural field.  Assumed to be square array Needs to be same as the
 % one in worldDataMaker.m

@@ -91,7 +91,7 @@ function [bestweight, lastangle] = rotations_weight_finder_centroid_3d (targetTh
         wbfX = edbfNumUP;
     end
 
-    logfile = fopen (['/fastdata/pc1ssj/rotwfRX' num2str(targetTheta(1)) 'RY' num2str(targetTheta(2)) ...
+    logfile = fopen (['/fastdata/co1ssj/rotwfRX' num2str(targetTheta(1)) 'RY' num2str(targetTheta(2)) ...
                       '.log'], 'w');
     fprintf (logfile, 'TargetThetaX: %f, TargetThetaY: %f\n', ...
              targetTheta(1), targetTheta(2));
@@ -107,9 +107,9 @@ function [bestweight, lastangle] = rotations_weight_finder_centroid_3d (targetTh
 
     nfs = 50; % neural field size.
     % The input model. Hardcoded.
-    orig_model_dir = '/home/pc1ssj/abrg_local/Oculomotor';
+    orig_model_dir = '/home/co1ssj/abrg_local/Oculomotor';
     % This codes makes a copy here:
-    model_dir = '/fastdata/pc1ssj/input_models/';
+    model_dir = '/fastdata/co1ssj/input_models/';
     cmd = ['mkdir -p ' model_dir];
     system (cmd);
     model_dir = [model_dir 'OculomotorRX' num2str(targetTheta(1)) 'RY' ...
@@ -224,7 +224,7 @@ function [bestweight, lastangle] = rotations_weight_finder_centroid_3d (targetTh
             write_plane_weights ([model_dir explicitDataBinaryFileZMINUS], ...
                                  -weight(3));
         end
-        
+
         [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi (model_dir, ...
                                                           output_dirs, num_runs, insigneo, cleanup);
 
@@ -323,7 +323,7 @@ function [bestweight, lastangle] = rotations_weight_finder_centroid_3d (targetTh
     % angles x/y/z,
     % peakposn1(phi), peakposn2(r), bestweight, meanpeakposn1(phi),
     % meanpeakposn2(r), eyeposSD.
-    allweightsfile = fopen (['/fastdata/pc1ssj/allweights.log'], 'a');
+    allweightsfile = fopen (['/fastdata/co1ssj/allweights.log'], 'a');
 
     % RotX
     if counter == 50

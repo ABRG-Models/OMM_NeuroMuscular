@@ -21,7 +21,7 @@ for i = [0.2 : 0.2 : 1.6]
 
     % Also plot each trajectory from the model run data
     for j=1:num_runs
-        filepath=['/fastdata/pc1ssj/oculomotorRX0RY7_' num2str(i) '_' num2str(j)];
+        filepath=['/fastdata/co1ssj/oculomotorRX0RY7_' num2str(i) '_' num2str(j)];
         A=load_ocm_min(filepath);
         figure(33);
         hold on;

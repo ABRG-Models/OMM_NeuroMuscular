@@ -19,8 +19,8 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
         tag{i} = ['r' num2str(i-1) '_' num2str(round(rand * ...
                                                    999999))];
         display(['Starting sim run ' tag{i} ' in output dir: ' output_dirs.root '_' num2str(i)]);
-        scriptname=['/fastdata/pc1ssj/' tag{i} '_run_sim.sh'];
-        script=['pushd /home/pc1ssj/SpineML_2_BRAHMS && ./convert_script_s2b -g ' ...
+        scriptname=['/fastdata/co1ssj/' tag{i} '_run_sim.sh'];
+        script=['pushd /home/co1ssj/SpineML_2_BRAHMS && ./convert_script_s2b -g ' ...
                 '-p "Mirror to FEF Synapse 0 postsynapse:w:0" -p "FEF_add_noise to FEF Synapse 0 postsynapse:w:1" ' ...
                 '-m ' model_dir ' -e2 -o ' output_dirs.root '_' num2str(i) ' && popd'];
 
@@ -30,7 +30,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
 
         % For requests for two processors, use -pe openmp 2 and
         % change mem to 1G (so that you get 1G * 2 = 2G per job)
-        
+
         % Insigneo version
         if insigneo
             cmd=['mkdir -p ' output_dirs.qlog '_' num2str(i) ' && ' ...
@@ -57,7 +57,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
     while running == 0 && errqsub == 0
         concatenated_output = [];
         for i = 1:num_runs
-            cmd = ['qstat -u pc1ssj | grep ' tag{i}  ' | awk -F '' '' ''{print $5}'''];
+            cmd = ['qstat -u co1ssj | grep ' tag{i}  ' | awk -F '' '' ''{print $5}'''];
             [status, output] = system (cmd);
             %cmd = ['qstat | grep ' tag{i}];
             %[status2, output2] = system (cmd);
@@ -88,7 +88,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
     while running > 0
         concatenated_output = [];
         for i = 1:num_runs
-            cmd = ['qstat -u pc1ssj | grep pc1ssj | grep ' tag{i}  ' | awk -F '' '' ''{print $5}'''];
+            cmd = ['qstat -u co1ssj | grep co1ssj | grep ' tag{i}  ' | awk -F '' '' ''{print $5}'''];
             [status, output] = system (cmd);
             %cmd = ['qstat| grep ' tag{i}];
             %[status2, output2] = system (cmd);
@@ -108,7 +108,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
         %display (concatenated_output);
         if isempty(concatenated_output)
             display ('Finished; concatenated output is zero');
-            cmd = ['qstat -u pc1ssj | grep ' tag{i}];
+            cmd = ['qstat -u co1ssj | grep ' tag{i}];
             [status2, output2] = system (cmd);
             display (['qstat output at finished time: ' output2]);
             running = 0;
@@ -128,7 +128,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
     % Clean up the run scripts
     display ('Clean up run scripts...');
     for i = 1:num_runs
-        scriptname=['/fastdata/pc1ssj/' tag{i} '_run_sim.sh'];
+        scriptname=['/fastdata/co1ssj/' tag{i} '_run_sim.sh'];
         unlink (scriptname);
     end
 

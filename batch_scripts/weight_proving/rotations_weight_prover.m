@@ -12,15 +12,15 @@ function [eyeposAvg, eyeposSD] = rotations_weight_prover (targetTheta,num_runs,i
 
     display(['targetTheta: ' num2str(targetTheta)]);
 
-    logfile = fopen (['/fastdata/pc1ssj/rotwfRX' num2str(targetTheta(1)) 'RY' num2str(targetTheta(2)) ...
+    logfile = fopen (['/fastdata/co1ssj/rotwfRX' num2str(targetTheta(1)) 'RY' num2str(targetTheta(2)) ...
                       '.log'], 'w');
     fprintf (logfile, 'TargetThetaX: %f, TargetThetaY: %f\n', ...
              targetTheta(1), targetTheta(2));
 
     % The input model. Hardcoded.
-    orig_model_dir = '/home/pc1ssj/abrg_local/Oculomotor';
+    orig_model_dir = '/home/co1ssj/abrg_local/Oculomotor';
     % This codes makes a copy here (so target X/Y can be written out):
-    model_dir = '/fastdata/pc1ssj/input_models/';
+    model_dir = '/fastdata/co1ssj/input_models/';
     cmd = ['mkdir -p ' model_dir];
     system (cmd);
     model_dir = [model_dir 'OculomotorRX' num2str(targetTheta(1)) 'RY' ...
@@ -46,7 +46,7 @@ function [eyeposAvg, eyeposSD] = rotations_weight_prover (targetTheta,num_runs,i
     % columns are: target x, target y, target z,
     % x avg, x sd, y avg, y sd, z avg, z sd,
     % peakposn1(phi), peakposn2(r), meanpeakposn1(phi), meanpeakposn2(r)
-    weightproving = fopen (['/fastdata/pc1ssj/weightproving.log'], 'a');
+    weightproving = fopen (['/fastdata/co1ssj/weightproving.log'], 'a');
 
     fprintf (weightproving, ...
              '%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%d,%f,%f\n', ...

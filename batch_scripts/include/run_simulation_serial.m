@@ -17,15 +17,15 @@ function [ eyeRyAvg, eyeRySD, eyeRyFinals ] = run_simulation_serial ...
         display ('Uh oh - model directory doesn''t exist!');
         return
     end
-    
+
     tag = {};
     for i = 1:num_runs
 
         tag{i} = ['r' num2str(i-1) '_' num2str(round(rand * ...
                                                    999999))];
         display(['Starting sim run ' tag{i}]);
-        scriptname=['/fastdata/pc1ssj/' tag{i} '_run_sim.sh'];
-        script=['pushd /home/pc1ssj/SpineML_2_BRAHMS && ./convert_script_s2b  ' ...
+        scriptname=['/fastdata/co1ssj/' tag{i} '_run_sim.sh'];
+        script=['pushd /home/co1ssj/SpineML_2_BRAHMS && ./convert_script_s2b  ' ...
                 '-p "Mirror to FEF Synapse 0 postsynapse:w:0" ' ...
                 '-p "FEF_add_noise to FEF Synapse 0 postsynapse:w:1" ' ...
                 '-m ' model_dir ' -e3 -o ' output_dirs.root '_' num2str(i) ' && popd'];
@@ -37,20 +37,20 @@ function [ eyeRyAvg, eyeRySD, eyeRyFinals ] = run_simulation_serial ...
         % Now execute the script "scriptname"
         cmd = [ 'bash ' scriptname ];
         [status, output] = system (cmd);
-    
+
         pause (3);
     end
 
     % Clean up the run scripts
     display ('Clean up run scripts...');
     for i = 1:num_runs
-        scriptname=['/fastdata/pc1ssj/' tag{i} '_run_sim.sh'];
+        scriptname=['/fastdata/co1ssj/' tag{i} '_run_sim.sh'];
         unlink (scriptname);
     end
 
     display ('Read output...');
     eyeRyFinals = [];
-    for i = 1:num_runs        
+    for i = 1:num_runs
         % Eye rotations
         SS = csvread ([output_dirs.root '_' num2str(i) '/run/saccsim_side.log'], 1 , 0);
         eyeRy = SS(:,9);

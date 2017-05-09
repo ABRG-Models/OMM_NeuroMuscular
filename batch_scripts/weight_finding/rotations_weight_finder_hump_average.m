@@ -19,16 +19,16 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
 %% Author: Seb James.
 
     addpath ('./include');
-    
+
     % To get stdout scrolling past while this runs:
     page_screen_output(0);
     page_output_immediately(1);
-    
+
     weightsBinaryFile = '/explicitDataBinaryFile51.bin';
     exploratory_weight = 0.3 % This will need changing depending on
                              % b in LLBN popn.
-    
-    dbgfile = fopen (['/fastdata/pc1ssj/dbgT' num2str(targetThetaY) ...
+
+    dbgfile = fopen (['/fastdata/co1ssj/dbgT' num2str(targetThetaY) ...
                       '.log'], 'w');
 
     %weight = 0.16; % starting weight. Hard coded.
@@ -40,12 +40,12 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
 
     learning_rate = 0.7;
     default_dedw = 70;
-    
+
     nfs = 50; % neural field size.
     % The input model. Hardcoded.
-    orig_model_dir = '/home/pc1ssj/abrg_local/Oculomotor';
+    orig_model_dir = '/home/co1ssj/abrg_local/Oculomotor';
     % This codes makes a copy here:
-    model_dir = '/fastdata/pc1ssj/input_models/';
+    model_dir = '/fastdata/co1ssj/input_models/';
     cmd = ['mkdir -p ' model_dir];
     system (cmd);
     model_dir = [model_dir 'OculomotorT' num2str(targetThetaY)];
@@ -53,7 +53,7 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
     system (cmd);
     cmd = ['cp -Ra ' orig_model_dir ' ' model_dir];
     system (cmd);
-    
+
     % Write luminances.json into model dir:
     if (write_single_luminance ([model_dir '/luminances.json'], ...
                                 targetThetaY)) < 1
@@ -75,7 +75,7 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
     % may be an induced saccade from the noise alone.
     %%write_onedim_binary ([model_dir '/explicitDataBinaryFile11.bin'], 0.1);
     write_plane_weights ([model_dir weightsBinaryFile], exploratory_weight);
-    cmd=['pushd /home/pc1ssj/SpineML_2_BRAHMS && ./convert_script_s2b  ' ...
+    cmd=['pushd /home/co1ssj/SpineML_2_BRAHMS && ./convert_script_s2b  ' ...
          '-m ' model_dir ' -e0 -o ' output_dirs.root ' && popd'];
     system(cmd);
 
@@ -95,9 +95,9 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
 
     figure (84+counter); surf (mask); title (['mask 0 If this is flat ' ...
                         'then update exploratory_weight!']);
-    
+
     %input ('Did zeroth run, press rtn to continue.');
-    
+
     %
     % The first loop.
     %
@@ -108,7 +108,7 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
 
     [ eyeRyAvg, eyeRySD ] = run_simulation_multi (model_dir, ...
                                                   output_dirs, 10, 1);
-    
+
     %
     % Calculate mask (and peak!) again (choose first run from the
     % run_simulation_multi above)
@@ -130,13 +130,13 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
     %
     % New weight calculation
     %
-    
+
     % Error for this calculation
     errorplus = eyeRyAvg + 2*eyeRySD - targetThetaY
     error = eyeRyAvg - targetThetaY
     errorminus = eyeRyAvg - 2*eyeRySD - targetThetaY
     eyeRySD
-    
+
     if error > 0 && errorplus > 0 && errorminus > 0
         % Unambiguous
         display ('unambiguous');
@@ -166,7 +166,7 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
         display ('Weight still negative - returning');
         return
     end
-    
+
     lastangle = eyeRyAvg;
 
     %
@@ -186,7 +186,7 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
 
         output_dirs = setup_model_directories (targetThetaY, counter);
         system (['mkdir -p ' output_dirs.model]);
-        
+
         % Write out the luminances file into the output model directory (to
         % make parallel running safe).
         if (write_single_luminance ([output_dirs.model '/luminances.json'], ...
@@ -195,11 +195,11 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
         end
 
         write_mapped_weights ([model_dir weightsBinaryFile], weight, mask);
-        
+
         [ eyeRyAvg, eyeRySD ] = run_simulation_multi (model_dir, ...
                                                       output_dirs, 10, 1);
 
-        
+
         display (['This is counter=' num2str(counter)]);
         if eyeRyAvg > 0
             %
@@ -210,7 +210,7 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
             error = eyeRyAvg - targetThetaY
             errorminus = eyeRyAvg - 2*eyeRySD - targetThetaY
             eyeRySD
-            
+
             % Calculate rate of change of error per weight change.
             delta_weight = weight - lastweight
             delta_error = error - lasterror
@@ -222,12 +222,12 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
             if dedw == 0
                 dedw = default_dedw;
             end
-            
+
             % Calculate new weight, based on a calculated de/dw:
             reallylastweight = lastweight;
             lastweight = weight;
             weight = lastweight - ((learning_rate*error)/dedw);
-            
+
             % Check sanity of new weight and modify de/dw accordingly
             % to avoid going negative.
             while weight < 0
@@ -260,7 +260,7 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
             display ('Finishing because error is smaller than 1 SD.');
             break
         end
-        
+
         counter = counter + 1;
 
         %input ('Press rtn to continue...'); display ('...continuing');
@@ -273,5 +273,5 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
     fclose (dbgfile);
 
     bestweight = lastweight;
-    
+
 end

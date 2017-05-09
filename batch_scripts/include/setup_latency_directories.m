@@ -1,11 +1,11 @@
 function directories = setup_latency_directories (params, counter)
 
-    output_dir = ['/fastdata/pc1ssj/oculomotorRX' ...
+    output_dir = ['/fastdata/co1ssj/oculomotorRX' ...
                   num2str(params.targetThetaX) 'RY' num2str(params.targetThetaY) ...
                   '_F' num2str(params.fixOff) '_T' num2str(params.targetOn) ...
                   '_D' num2str(params.dopamine) '_' num2str(counter)];
     qlog_dir = output_dir;
-    
+
     output_model_dir = [output_dir '/model'];
     output_run_dir = [output_dir '/run/'];
     output_log_dir = [output_dir '/log/'];
@@ -16,5 +16,5 @@ function directories = setup_latency_directories (params, counter)
                           'run', output_run_dir, ...
                           'log', output_log_dir ...
                           );
-    
+
 end
