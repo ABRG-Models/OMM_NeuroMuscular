@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
-<SpineML xsi:schemaLocation="http://www.shef.ac.uk/SpineMLComponentLayer SpineMLComponentLayer.xsd" xmlns="http://www.shef.ac.uk/SpineMLComponentLayer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
- <ComponentClass type="neuron_body" name="D1MSN">
+<SpineML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.shef.ac.uk/SpineMLComponentLayer" xsi:schemaLocation="http://www.shef.ac.uk/SpineMLComponentLayer SpineMLComponentLayer.xsd">
+ <ComponentClass name="D1MSN" type="neuron_body">
+  <Annotation>
+   <SpineCreator/>
+  </Annotation>
   <Dynamics initial_regime="integrating">
    <Regime name="integrating">
     <TimeDerivative variable="a">
@@ -31,21 +34,21 @@
      </Trigger>
     </OnCondition>
    </Regime>
-   <Alias dimension="?" name="in">
+   <Alias name="in" dimension="?">
     <MathInline>(0.2+da)*A+(0.01*randomNormal)</MathInline>
    </Alias>
-   <StateVariable dimension="?" name="a"/>
-   <StateVariable dimension="?" name="out"/>
+   <StateVariable name="a" dimension="?"/>
+   <StateVariable name="out" dimension="?"/>
   </Dynamics>
-  <AnalogReducePort dimension="?" name="A" reduce_op="+"/>
+  <AnalogReducePort name="A" reduce_op="+" dimension="?"/>
   <AnalogSendPort name="out"/>
-  <AnalogReducePort dimension="?" name="S" reduce_op="+"/>
+  <AnalogReducePort name="S" reduce_op="+" dimension="?"/>
   <AnalogSendPort name="in"/>
   <AnalogSendPort name="a"/>
-  <AnalogReducePort dimension="?" name="da" reduce_op="+"/>
-  <Parameter dimension="?" name="p"/>
-  <Parameter dimension="?" name="tau"/>
-  <Parameter dimension="?" name="c"/>
-  <Parameter dimension="?" name="w"/>
+  <AnalogReducePort name="da" reduce_op="+" dimension="?"/>
+  <Parameter name="p" dimension="?"/>
+  <Parameter name="tau" dimension="?"/>
+  <Parameter name="c" dimension="?"/>
+  <Parameter name="w" dimension="?"/>
  </ComponentClass>
 </SpineML>
