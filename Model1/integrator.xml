@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<SpineML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.shef.ac.uk/SpineMLComponentLayer" xsi:schemaLocation="http://www.shef.ac.uk/SpineMLComponentLayer SpineMLComponentLayer.xsd">
+ <ComponentClass name="integrator" type="neuron_body">
+  <Annotation>
+   <SpineCreator/>
+  </Annotation>
+  <Dynamics initial_regime="default">
+   <Regime name="default">
+    <TimeDerivative variable="a">
+     <MathInline>(1/tau)*y</MathInline>
+    </TimeDerivative>
+    <OnCondition target_regime="default">
+     <StateAssignment variable="y">
+      <MathInline>0</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>in&lt;b</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="default">
+     <StateAssignment variable="y">
+      <MathInline>1</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>in>((1/m)+b)</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="default">
+     <StateAssignment variable="y">
+      <MathInline>m*(in-b)</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>in>=b &amp;&amp; in&lt;=((1/m)+b)</MathInline>
+     </Trigger>
+    </OnCondition>
+   </Regime>
+   <StateVariable name="a" dimension="?"/>
+   <StateVariable name="y" dimension="?"/>
+  </Dynamics>
+  <AnalogReducePort name="in" reduce_op="+" dimension="?"/>
+  <AnalogSendPort name="a"/>
+  <Parameter name="tau" dimension="?"/>
+  <Parameter name="b" dimension="?"/>
+  <Parameter name="m" dimension="?"/>
+ </ComponentClass>
+</SpineML>

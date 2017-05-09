@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<SpineML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.shef.ac.uk/SpineMLComponentLayer" xsi:schemaLocation="http://www.shef.ac.uk/SpineMLComponentLayer SpineMLComponentLayer.xsd">
+ <ComponentClass name="LINlinearNoisy" type="neuron_body">
+  <Annotation>
+   <SpineCreator/>
+  </Annotation>
+  <Dynamics initial_regime="integrating">
+   <Regime name="integrating">
+    <TimeDerivative variable="a">
+     <MathInline>(1/tau)*(in-a)</MathInline>
+    </TimeDerivative>
+    <OnCondition target_regime="integrating">
+     <StateAssignment variable="out">
+      <MathInline>0</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>a&lt;c</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="integrating">
+     <StateAssignment variable="out">
+      <MathInline>1</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>a>1+c</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="integrating">
+     <StateAssignment variable="out">
+      <MathInline>a-c</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>a>=c &amp;&amp; a&lt;=1+c</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="integrating">
+     <StateAssignment variable="sa">
+      <MathInline>S</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>S&lt;=1</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="integrating">
+     <StateAssignment variable="sa">
+      <MathInline>1</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>S>1</MathInline>
+     </Trigger>
+    </OnCondition>
+   </Regime>
+   <Alias name="in" dimension="?">
+    <MathInline>A*(1-sa)+(0.2*randomNormal)</MathInline>
+   </Alias>
+   <StateVariable name="a" dimension="?"/>
+   <StateVariable name="out" dimension="?"/>
+   <StateVariable name="sa" dimension="?"/>
+  </Dynamics>
+  <AnalogReducePort name="A" reduce_op="+" dimension="?"/>
+  <AnalogSendPort name="out"/>
+  <AnalogReducePort name="S" reduce_op="+" dimension="?"/>
+  <AnalogSendPort name="a"/>
+  <Parameter name="p" dimension="?"/>
+  <Parameter name="tau" dimension="?"/>
+  <Parameter name="c" dimension="?"/>
+ </ComponentClass>
+</SpineML>
