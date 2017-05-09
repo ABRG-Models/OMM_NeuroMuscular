@@ -1125,6 +1125,38 @@
                 </LL:PostSynapse>
             </LL:Synapse>
         </LL:Projection>
+        <LL:Projection dst_population="SC_avg">
+            <LL:Annotation>
+                <SpineCreator>
+                    <DrawOptions style="4" showlabel="0"/>
+                    <start x="-0.676223" y="6.92568"/>
+                    <curves>
+                        <curve>
+                            <C1 xpos="-0.676223" ypos="5.97643"/>
+                            <C2 xpos="-0.673346" ypos="5.98604"/>
+                            <end xpos="-0.673346" ypos="5.53416"/>
+                        </curve>
+                    </curves>
+                </SpineCreator>
+            </LL:Annotation>
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay dimension="ms">
+                        <FixedValue value="0"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="SC_deep to SC_avg Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.07"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SC_deep to SC_avg Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
     </LL:Population>
     <LL:Population>
         <LL:Annotation>
@@ -2154,8 +2186,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="-4.71" ypos="5.37"/>
-                            <C2 xpos="-4.33" ypos="4.97"/>
-                            <end xpos="-1.53061" ypos="5.0818"/>
+                            <C2 xpos="-4.31161" ypos="4.9796"/>
+                            <end xpos="-1.51222" ypos="5.0914"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -2562,8 +2594,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="2.15189" ypos="2.72842"/>
-                            <C2 xpos="0.960439" ypos="3.40156"/>
-                            <end xpos="-0.186583" ypos="4.52456"/>
+                            <C2 xpos="0.978833" ypos="3.41116"/>
+                            <end xpos="-0.168189" ypos="4.53416"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -3548,8 +3580,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="4.15" ypos="1.35"/>
-                            <C2 xpos="2.21" ypos="3.27"/>
-                            <end xpos="0.120055" ypos="4.52456"/>
+                            <C2 xpos="2.22839" ypos="3.2796"/>
+                            <end xpos="0.138449" ypos="4.53416"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -3751,8 +3783,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="6.90793" ypos="0.246783"/>
-                            <C2 xpos="6.19281" ypos="1.55495"/>
-                            <end xpos="0.136058" ypos="4.60492"/>
+                            <C2 xpos="6.2112" ypos="1.56455"/>
+                            <end xpos="0.154452" ypos="4.61452"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -4409,8 +4441,8 @@
     <LL:Population>
         <LL:Annotation>
             <SpineCreator>
-                <xPos value="-0.697277"/>
-                <yPos value="5.02456"/>
+                <xPos value="-0.678937"/>
+                <yPos value="5.03373"/>
                 <animSpeed value="0.2"/>
                 <aspectRatio value="1.66667"/>
                 <colour red="128" green="0" blue="128"/>
@@ -4424,10 +4456,10 @@
         </LL:Annotation>
         <LL:Neuron name="SC_avg" size="2500" url="threshpass.xml">
             <Property name="min" dimension="?">
-                <FixedValue value="15"/>
+                <FixedValue value="0.01"/>
             </Property>
             <Property name="max" dimension="?">
-                <FixedValue value="15"/>
+                <FixedValue value="1"/>
             </Property>
             <Property name="inhibit_thresh" dimension="?">
                 <FixedValue value="0.05"/>
@@ -4441,10 +4473,10 @@
             <LL:Annotation>
                 <SpineCreator>
                     <DrawOptions style="4" showlabel="0"/>
-                    <start x="-1.41676" y="4.53074"/>
+                    <start x="-1.39837" y="4.54034"/>
                     <curves>
                         <curve>
-                            <C1 xpos="-1.59805" ypos="3.4185"/>
+                            <C1 xpos="-1.57966" ypos="3.4281"/>
                             <C2 xpos="-4.19299" ypos="4.5267"/>
                             <end xpos="-4.27762" ypos="2.71384"/>
                         </curve>
@@ -4475,10 +4507,10 @@
             <LL:Annotation>
                 <SpineCreator>
                     <DrawOptions style="4" showlabel="0"/>
-                    <start x="-0.73036" y="4.52456"/>
+                    <start x="-0.711966" y="4.53416"/>
                     <curves>
                         <curve>
-                            <C1 xpos="-0.791378" ypos="3.60236"/>
+                            <C1 xpos="-0.772984" ypos="3.61196"/>
                             <C2 xpos="-0.196742" ypos="4.0267"/>
                             <end xpos="0.401478" ypos="2.6668"/>
                         </curve>
@@ -4509,10 +4541,10 @@
             <LL:Annotation>
                 <SpineCreator>
                     <DrawOptions style="4" showlabel="0"/>
-                    <start x="0.13652" y="4.85415"/>
+                    <start x="0.154914" y="4.86375"/>
                     <curves>
                         <curve>
-                            <C1 xpos="0.303176" ypos="4.5295"/>
+                            <C1 xpos="0.32157" ypos="4.5391"/>
                             <C2 xpos="8.81129" ypos="4.5267"/>
                             <end xpos="8.7939" ypos="2.57811"/>
                         </curve>
@@ -4543,10 +4575,10 @@
             <LL:Annotation>
                 <SpineCreator>
                     <DrawOptions style="4" showlabel="0"/>
-                    <start x="0.136444" y="4.94518"/>
+                    <start x="0.154838" y="4.95478"/>
                     <curves>
                         <curve>
-                            <C1 xpos="6.33137" ypos="4.31264"/>
+                            <C1 xpos="6.34976" ypos="4.32224"/>
                             <C2 xpos="12.3113" ypos="4.5267"/>
                             <end xpos="12.8489" ypos="2.60483"/>
                         </curve>
@@ -4577,10 +4609,10 @@
             <LL:Annotation>
                 <SpineCreator>
                     <DrawOptions style="4" showlabel="0"/>
-                    <start x="0.136593" y="5.11678"/>
+                    <start x="0.154987" y="5.12638"/>
                     <curves>
                         <curve>
-                            <C1 xpos="9.25223" ypos="4.71176"/>
+                            <C1 xpos="9.27062" ypos="4.72136"/>
                             <C2 xpos="17.8227" ypos="5.02705"/>
                             <end xpos="18.2226" ypos="2.64357"/>
                         </curve>
@@ -4611,10 +4643,10 @@
             <LL:Annotation>
                 <SpineCreator>
                     <DrawOptions style="4" showlabel="0"/>
-                    <start x="0.136593" y="5.26904"/>
+                    <start x="0.154987" y="5.27864"/>
                     <curves>
                         <curve>
-                            <C1 xpos="6.78823" ypos="4.99707"/>
+                            <C1 xpos="6.80662" ypos="5.00667"/>
                             <C2 xpos="21.3222" ypos="5.54775"/>
                             <end xpos="21.32" ypos="2.53818"/>
                         </curve>

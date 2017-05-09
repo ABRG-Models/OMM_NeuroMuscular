@@ -44,7 +44,7 @@ function model_data = load_ocm (output_base_path)
                         'SC_deep_out_log.bin'], 2500);
     [scd_tt, count] = load_sc_data ([model_log_path ...
                         'SC_deep_to_SC_deep_Synapse_1_postsynapse_out_log.bin'], 2500);
-    
+
     [scs, count] = load_sc_data ([model_log_path ...
                         'SC_sup_out_log.bin'], 2500);
     %    [scsm, count] = load_sc_data ([model_log_path ...
@@ -56,20 +56,10 @@ function model_data = load_ocm (output_base_path)
 
     [thal, count] = load_sc_data ([model_log_path ...
                         'Thalamus_out_log.bin'], 2500);
-                    
-    [mirror, count] = load_sc_data ([model_log_path ...
-                        'Mirror_out_log.bin'], 2500);
- 
-%     [cogcontfef, count] = load_sc_data ([model_log_path ...
-%                         'CogCont_outFEF_log.bin'], 2500);       
-%                     
-%     [cogcontmirror, count] = load_sc_data ([model_log_path ...
-%                         'CogCont_outMirror_log.bin'], 2500);
-                    
-                    
+
     [r2_to_r1, count] = load_sc_data ([model_log_path ...
                         'Retina_2_to_Retina_1_Synapse_0_postsynapse_out_log.bin'], 2500);
-                    
+
     [w_to_r1, count] = load_sc_data ([model_log_path ...
                         'World_to_Retina_1_Synapse_0_postsynapse_out_log.bin'], 2500);
 
@@ -95,7 +85,7 @@ function model_data = load_ocm (output_base_path)
     [llbn_zp, count] = load_sc_data ([model_log_path 'LLBN_zplus_a_log.bin'], 1);
     [llbn_zm, count] = load_sc_data ([model_log_path 'LLBN_zminus_a_log.bin'], 1);
 
-    
+
     [ebn_r, count] = load_sc_data ([model_log_path 'EBN_right_a_log.bin'],1);
     [ibn_r, count] = load_sc_data ([model_log_path 'IBN_right_a_log.bin'], 1);
     [tn_r, count] = load_sc_data ([model_log_path 'TN_right_a_log.bin'], 1);
@@ -119,9 +109,6 @@ function model_data = load_ocm (output_base_path)
     scs = reshape (scs, 50, 50, []);
     sca = reshape (sca, 50, 50, []);
     thal = reshape (thal, 50, 50, []);
-    mirror = reshape (mirror, 50, 50, []);
-%     cogcontfef = reshape (cogcontfef, 50, 50, []);
-%     cogcontmirror = reshape (cogcontmirror, 50, 50, []);
 
     % Eye rotations
     SS = csvread ([model_run_path 'saccsim_side.log'], 1 , 0);
@@ -142,15 +129,15 @@ function model_data = load_ocm (output_base_path)
               'thal', 'eyeRx', 'eyeRy', 'eyeRz', ...
               'eyeTime', 'opn', 'llbn_l', 'llbn_in', 'ebn', 'tn', 'mn', 'ibn', ...
               'llbn_r', 'llbn_in_r', 'llbn_u', 'llbn_d', 'llbn_zp', ...
-              'llbn_zm', 'ebn_r', 'tn_r', 'mn_r', 'ibn_r','mirror'}; % ,'cogcontfef', 'cogcontmirror'
+              'llbn_zm', 'ebn_r', 'tn_r', 'mn_r', 'ibn_r'};
     valueSet = {r2_to_r1, w_to_r1, fef_add_noise, fef, strd1, strd2, ...
                 stn, snr, gpe, ret1, ret2, world, scd, scd_tt, sca_in, scs, sca, ...
                 thal, ...
                 eyeRx, eyeRy, eyeRz, eyeTime, opn, llbn_l, llbn_in, ebn, tn, ...
-                mn, ibn, llbn_r, llbn_in_r, llbn_u, llbn_d, llbn_zp, llbn_zm, ebn_r, tn_r, mn_r, ibn_r, mirror}; %, cogcontfef, cogcontmirror
+                mn, ibn, llbn_r, llbn_in_r, llbn_u, llbn_d, llbn_zp, llbn_zm, ebn_r, tn_r, mn_r, ibn_r};
     model_data = struct();
     for i = 1:numel (keySet)
         model_data.(keySet{i}) = valueSet{i};
-    end 
+    end
 
 end
