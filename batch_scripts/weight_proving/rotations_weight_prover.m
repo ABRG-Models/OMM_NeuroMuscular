@@ -18,7 +18,7 @@ function [eyeposAvg, eyeposSD] = rotations_weight_prover (targetTheta,num_runs,i
              targetTheta(1), targetTheta(2));
 
     % The input model. Hardcoded.
-    orig_model_dir = '/home/co1ssj/abrg_local/Oculomotor';
+    orig_model_dir = '/home/co1ssj/OMM_NeuroMuscular/Model1';
     % This codes makes a copy here (so target X/Y can be written out):
     model_dir = '/fastdata/co1ssj/input_models/';
     cmd = ['mkdir -p ' model_dir];

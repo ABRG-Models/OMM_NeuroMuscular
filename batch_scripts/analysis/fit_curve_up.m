@@ -16,7 +16,7 @@
 %% FIXME: Make this work with fitcurve.m
 
 % You will need the include dir containing weight_surface_one.m
-% (abrg_local/Oculomotor/batch_scripts/include) to be in your
+% (OMM_NeuroMuscular/batch_scripts/include) to be in your
 % matlab/octave path.
 
 % To get stdout scrolling past while this runs:
@@ -134,8 +134,8 @@ while finished == 0
       otherwise
         display ('error!')
     end
-    
-    v = weight_surface_one (R, THETA, a(ai), k(ki), b(bi), l(li), os(osi), wg(wgi));    
+
+    v = weight_surface_one (R, THETA, a(ai), k(ki), b(bi), l(li), os(osi), wg(wgi));
 
     % Compute a number for goodness of fit:
     diffsq = power(masked .- v, 2); % errors squared
@@ -145,7 +145,7 @@ while finished == 0
     % opposite side:
     diffsq_opp = power(masked_opp .- v, 2); % errors squared
     gf_opp = sqrt(sum(nansum(diffsq_opp))/diffsz);
-    
+
     % The simulated annealing algorithm
     if gf < lastgf
         % accept this one for sure
@@ -153,7 +153,7 @@ while finished == 0
     else
         acc_prob = exp ((lastgf - gf)/temp);
     end
-    
+
     % Do we accept it?
     if acc_prob > unifrnd(0,1)
         if gf<2
@@ -199,12 +199,12 @@ while finished == 0
     if ~mod(count,10)
         temp = temp .* (1-coolrate);
     end
-    
+
     if temp < low_temp_threshold
         finished = 1;
     end
-    
-    count = count + 1;    
+
+    count = count + 1;
 
 end % while
 

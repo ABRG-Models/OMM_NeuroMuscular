@@ -13,7 +13,7 @@ function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval)
 
     cleanup = 0;
     use_insigneo = 1;
-    model_dir = '/home/co1ssj/abrg_local/Oculomotor';
+    model_dir = '/home/co1ssj/OMM_NeuroMuscular/Model1';
 
     write_single_luminance ([model_dir '/luminances.json'], targetThetaX, targetThetaY, lumval);
 

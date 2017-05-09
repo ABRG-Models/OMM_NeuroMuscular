@@ -7,7 +7,7 @@ insigneo = 1; % Use insigneo server
 num_parallel = 8; % How many times to run
 
 % The input model. Hardcoded.
-orig_model_dir = '/home/co1ssj/abrg_local/Oculomotor';
+orig_model_dir = '/home/co1ssj/OMM_NeuroMuscular/Model1';
 % This codes makes a copy here:
 model_dir = '/fastdata/co1ssj/input_models/';
 cmd = ['mkdir -p ' model_dir];
