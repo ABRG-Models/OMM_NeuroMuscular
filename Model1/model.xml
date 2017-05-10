@@ -5610,7 +5610,7 @@
         </LL:Annotation>
         <LL:Neuron name="DA value" size="1" url="commonParam.xml">
             <Property name="param" dimension="?">
-                <NormalDistribution mean="0.5" variance="0.2" seed="0"/>
+                <FixedValue value="0.7"/>
             </Property>
         </LL:Neuron>
         <Layout url="none.xml" seed="123" minimum_distance="0"/>
