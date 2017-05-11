@@ -153,3 +153,349 @@ Bad peakPos information, setting peakPos to zeros...
 
 run_simulation_multi() finished.
 
+~/OMM_NeuroMuscular/batch_scripts ~/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos
+Testing if Octave runs on this host.
+
+~/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos
+Starting sim run r0_784905 in output dir: /fastdata/co1ssj/oculomotorRX-8RY0_1.8_1
+
+Starting sim run r1_961330 in output dir: /fastdata/co1ssj/oculomotorRX-8RY0_1.8_2
+
+Starting sim run r2_834368 in output dir: /fastdata/co1ssj/oculomotorRX-8RY0_1.8_3
+
+Starting sim run r3_861550 in output dir: /fastdata/co1ssj/oculomotorRX-8RY0_1.8_4
+
+Starting sim run r4_908725 in output dir: /fastdata/co1ssj/oculomotorRX-8RY0_1.8_5
+
+Starting sim run r5_992396 in output dir: /fastdata/co1ssj/oculomotorRX-8RY0_1.8_6
+
+No process for tag r0_784905
+
+No process for tag r0_784905
+
+No process for tag r5_992396
+
+No process for tag r0_784905
+
+No process for tag r5_992396
+
+No process for tag r0_784905
+
+No process for tag r5_992396
+
+No process for tag r0_784905
+
+No process for tag r1_961330
+
+No process for tag r5_992396
+
+No process for tag r0_784905
+
+No process for tag r1_961330
+
+No process for tag r2_834368
+
+No process for tag r3_861550
+
+No process for tag r4_908725
+
+No process for tag r5_992396
+
+Finished; concatenated output is zero
+
+qstat output at finished time: 
+
+Clean up run scripts...
+
+Read output...
+
+peaktime = 372
+
+peaktime =  372
+final_eyeR = -5.5226
+final_eyeR =  0.62700
+endsacc: 494
+
+peaktime = 372
+
+saturate = [](0x1)
+saturate =  1
+c_x =  25.256
+c_y =  25.137
+peaktime = 379
+
+peaktime =  379
+final_eyeR = -3.6404
+final_eyeR =  0.49310
+endsacc: 503
+
+peaktime = 379
+
+saturate = [](0x1)
+saturate =  1
+c_x =  25.562
+c_y =  25.493
+peaktime = 393
+
+peaktime =  393
+final_eyeR = -5.7205
+final_eyeR =  0.59466
+endsacc: 524
+
+peaktime = 393
+
+saturate = [](0x1)
+saturate =  1
+c_x =  24.798
+c_y =  25.238
+peaktime = 403
+
+peaktime =  403
+final_eyeR = -5.7428
+final_eyeR =  0.55368
+endsacc: 556
+
+peaktime = 403
+
+saturate = [](0x1)
+saturate =  1
+c_x =  25.072
+c_y =  25.465
+peaktime = 366
+
+peaktime =  366
+final_eyeR = -6.7682
+final_eyeR =  0.68510
+endsacc: 486
+
+peaktime = 366
+
+saturate = [](0x1)
+saturate =  1
+c_x =  25.175
+c_y =  25.357
+peaktime = 393
+
+peaktime =  393
+final_eyeR = -2.2956
+final_eyeR =  0.19780
+endsacc: 0
+
+Warning: Couldn't find end saccade
+
+peaktime = 393
+
+saturate = [](0x1)
+saturate =  1
+c_x =  25.168
+c_y =  25.075
+eyeposFinals =
+
+  -5.57450  -3.68280  -5.75551  -5.75997  -6.84338
+   0.62108   0.48823   0.59043   0.55173   0.67630
+   0.56331   0.31081   0.63516   0.63510   0.69110
+
+debug_it =  1
+mean centroid x/y position: 25.172/25.294 from 6 entries with sd 0.24859/0.17225
+
+allc_x =
+
+   25.256   25.562   24.798   25.072   25.175   25.168
+
+allc_y =
+
+   25.137   25.493   25.238   25.465   25.357   25.075
+
+Bad peakPos information, setting peakPos to zeros...
+
+run_simulation_multi() finished.
+
+~/OMM_NeuroMuscular/batch_scripts ~/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos
+Testing if Octave runs on this host.
+
+~/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos
+Starting sim run r0_775112 in output dir: /fastdata/co1ssj/oculomotorRX-8RY0_1.8_1
+
+Starting sim run r1_342897 in output dir: /fastdata/co1ssj/oculomotorRX-8RY0_1.8_2
+
+Starting sim run r2_183687 in output dir: /fastdata/co1ssj/oculomotorRX-8RY0_1.8_3
+
+Starting sim run r3_11781 in output dir: /fastdata/co1ssj/oculomotorRX-8RY0_1.8_4
+
+Starting sim run r4_337875 in output dir: /fastdata/co1ssj/oculomotorRX-8RY0_1.8_5
+
+Starting sim run r5_145708 in output dir: /fastdata/co1ssj/oculomotorRX-8RY0_1.8_6
+
+No process for tag r0_775112
+
+No process for tag r0_775112
+
+No process for tag r0_775112
+
+No process for tag r0_775112
+
+No process for tag r0_775112
+
+No process for tag r0_775112
+
+No process for tag r2_183687
+
+No process for tag r3_11781
+
+No process for tag r4_337875
+
+No process for tag r5_145708
+
+No process for tag r0_775112
+
+No process for tag r2_183687
+
+No process for tag r3_11781
+
+No process for tag r4_337875
+
+No process for tag r5_145708
+
+No process for tag r0_775112
+
+No process for tag r2_183687
+
+No process for tag r3_11781
+
+No process for tag r4_337875
+
+No process for tag r5_145708
+
+No process for tag r0_775112
+
+No process for tag r2_183687
+
+No process for tag r3_11781
+
+No process for tag r4_337875
+
+No process for tag r5_145708
+
+No process for tag r0_775112
+
+No process for tag r1_342897
+
+No process for tag r2_183687
+
+No process for tag r3_11781
+
+No process for tag r4_337875
+
+No process for tag r5_145708
+
+Finished; concatenated output is zero
+
+qstat output at finished time: 
+
+Clean up run scripts...
+
+Read output...
+
+peaktime = 397
+
+peaktime =  397
+final_eyeR = -4.9946
+final_eyeR =  0.21368
+endsacc: 601
+
+peaktime = 397
+
+saturate = [](0x1)
+saturate =  1
+c_x =  24.845
+c_y =  25.072
+peaktime = 566
+
+peaktime =  566
+final_eyeR = -4.8589
+final_eyeR =  0.55682
+endsacc: 578
+
+peaktime = 566
+
+saturate = [](0x1)
+saturate =  1
+c_x =  24.682
+c_y =  24.913
+peaktime = 371
+
+peaktime =  371
+final_eyeR = -8.5848
+final_eyeR =  1.0730
+endsacc: 496
+
+peaktime = 371
+
+saturate = [](0x1)
+saturate =  1
+c_x =  25.105
+c_y =  25.294
+peaktime = 406
+
+peaktime =  406
+final_eyeR = -2.3104
+final_eyeR =  0.21369
+endsacc: 0
+
+Warning: Couldn't find end saccade
+
+peaktime = 406
+
+saturate = [](0x1)
+saturate =  1
+c_x =  25.463
+c_y =  24.991
+peaktime = 433
+
+peaktime =  433
+final_eyeR = -2.7370
+final_eyeR =  0.24326
+endsacc: 0
+
+Warning: Couldn't find end saccade
+
+peaktime = 433
+
+saturate = [](0x1)
+saturate =  1
+c_x =  25.125
+c_y =  25.406
+peaktime = 376
+
+peaktime =  376
+final_eyeR = -5.9100
+final_eyeR =  0.69400
+endsacc: 499
+
+peaktime = 376
+
+saturate = [](0x1)
+saturate =  1
+c_x =  25.294
+c_y =  25.235
+eyeposFinals =
+
+  -4.994640  -7.465800  -8.719290  -5.968120
+   0.757664   0.556823   1.055800   0.687178
+   0.080121   0.709307   0.797236   0.602899
+
+debug_it =  1
+mean centroid x/y position: 25.086/25.152 from 6 entries with sd 0.28597/0.19053
+
+allc_x =
+
+   24.845   24.682   25.105   25.463   25.125   25.294
+
+allc_y =
+
+   25.072   24.913   25.294   24.991   25.406   25.235
+
+Bad peakPos information, setting peakPos to zeros...
+
+run_simulation_multi() finished.
+

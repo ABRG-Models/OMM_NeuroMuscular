@@ -26,7 +26,7 @@ function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval)
     % You can't put minus signs in the resdat name, either.
     resdatname = strrep (resdatname, '-', 'm');
 
-    vs = [lumval, eyeRyAvg, eyeRySD];
+    vs = [targetThetaX, eyeRyAvg, eyeRySD];
     result = struct();
     result.(resdatname) = vs;
 
