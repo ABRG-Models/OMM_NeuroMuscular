@@ -18,20 +18,23 @@ function [allc_x, allc_y, alla, allb] = find_saccade_location ...
 
     % ok, we have a peak time, now find location of the
     % peak
-    [sca, count] = load_sc_data ([ output_dirs.root '_' ...
-                        num2str(run_number) '/log/' ...
-                        'SC_avg_out_log.bin'], 2500);
-    sca = reshape (sca, 50, 50, []);
-    %display (['find in sca for time ' num2str(peaktime)]);
-    [a,b] = find (sca(:,:,peaktime));
-    alla = [ alla, a ];
-    allb = [ allb, b ];
+    model = 'Model1';
+    if model == 'Model2'
+        [sca, count] = load_sc_data ([ output_dirs.root '_' ...
+                            num2str(run_number) '/log/' ...
+                            'SC_avg_out_log.bin'], 2500);
+        sca = reshape (sca, 50, 50, []);
+        %display (['find in sca for time ' num2str(peaktime)]);
+        [a,b] = find (sca(:,:,peaktime));
+        alla = [ alla, a ];
+        allb = [ allb, b ];
+    end
 
     % How about centroid location of scd?
     [scd, count] = load_sc_data ([output_dirs.root '_' ...
                         num2str(run_number) '/log/SC_deep_out_log.bin'], 2500);
     scd = reshape (scd, 50, 50, []);
-    m = find(max(max(scd(:,:,:)))<1)
+    m = find(max(max(scd(:,:,:)))<1);
     % Of the above, the last one as you count up before it
     % stops.
     saturate = find (diff(m)>2) % should be 1x1

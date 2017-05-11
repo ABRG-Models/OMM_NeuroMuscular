@@ -3,7 +3,7 @@
 %%
 %% Find the iterator at which the saccade ends based on the eye velocity.
 function [endsacc] = find_saccade_end (eyeR, peaktime)
-    
+
     % Find end of first saccade. Note the use of abs() - we don't
     % care which direction the saccade is in here.
     deyeR = diff(abs(eyeR(peaktime:end)));
@@ -12,14 +12,14 @@ function [endsacc] = find_saccade_end (eyeR, peaktime)
     %figure(50);
     %clf;
     %plot (abs(eyeR(peaktime:end)), 'b');
-    %hold on;    
+    %hold on;
     %plot (deyeR, 'r');
     %plot (ddeyeR, 'g');
-    
+
     % Start looking for the end of the saccade by finding the
     % peak velocity of the first saccade:
     max_vel_iter = min(find (ddeyeR < 0));
-                                       
+
     % From this point, find the end, which is defined here as
     % the point where the vel drops below 0.0182 of the peak
     % vel. By this time, the position of the eye is fairly close to
@@ -34,5 +34,5 @@ function [endsacc] = find_saccade_end (eyeR, peaktime)
         endsacc = peaktime+1;
     end
 
-    %final_eyeR = eyeR(endsacc)
+    final_eyeR = eyeR(endsacc)
 end

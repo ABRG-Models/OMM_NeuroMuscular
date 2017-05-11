@@ -21,7 +21,6 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
         display(['Starting sim run ' tag{i} ' in output dir: ' output_dirs.root '_' num2str(i)]);
         scriptname=['/fastdata/co1ssj/' tag{i} '_run_sim.sh'];
         script=['pushd /home/co1ssj/SpineML_2_BRAHMS && ./convert_script_s2b -g ' ...
-                '-p "FEF_add_noise to FEF Synapse 0 postsynapse:w:1" ' ...
                 '-m ' model_dir ' -e2 -o ' output_dirs.root '_' num2str(i) ' && popd'];
 
         fid = fopen (scriptname, 'w');
@@ -200,8 +199,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
             % Determine the pixel which is active in the sc deep output
             % layer sca.
             [allc_x, allc_y, alla, allb] = ...
-                find_saccade_location (output_dirs, i, allc_x, allc_y, ...
-                                       alla, allb);
+                find_saccade_location (output_dirs, i, allc_x, allc_y, alla, allb);
 
         end % else no peak, can't do this stuff.
 
@@ -213,7 +211,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
         end
     end
 
-    eyeposFinals;
+    eyeposFinals
     eyeposAvg = mean (eyeposFinals');
     eyeposSD = std (eyeposFinals');
 
@@ -227,12 +225,14 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
                  num2str(std(allc_x)) '/' num2str(std(allc_y))]);
         allc_x
         allc_y
-        display(['mean sca x/y position: ' ...
-                 num2str(mean(alla)) '/' num2str(mean(allb)) ' from ' ...
-                 num2str(size(alla)(2)) ' entries with sd '  ...
-                 num2str(std(alla)) '/' num2str(std(allb))]);
-        alla
-        allb
+        if ~isempty(alla) && ~isempty(allb)
+            display(['mean sca x/y position: ' ...
+                     num2str(mean(alla)) '/' num2str(mean(allb)) ' from ' ...
+                     num2str(size(alla)(2)) ' entries with sd '  ...
+                     num2str(std(alla)) '/' num2str(std(allb))]);
+            alla
+            allb
+        end
     end
     if ~isempty(alla) && ~isempty(allb)
         peakPos = [median(alla), median(allb), mean(allc_x), mean(allc_y)];
