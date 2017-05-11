@@ -22,12 +22,14 @@ function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval)
 
     resname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_' num2str(lumval) '.dat'];
     resdatname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_' num2str(lumval)];
-    resdatname = strrep (resdatname, '.', '_');
+    resdatname = strrep (resdatname, '.', 'p');
+    % You can't put minus signs in the resdat name, either.
+    resdatname = strrep (resdatname, '-', 'm');
 
     vs = [lumval, eyeRyAvg, eyeRySD];
     result = struct();
     result.(resdatname) = vs;
 
-    save (resname, 'result');
+    save (['results/' resname], 'result');
 
 end
