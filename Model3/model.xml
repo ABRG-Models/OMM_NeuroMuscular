@@ -4420,7 +4420,7 @@
                     </LL:Annotation>
                     <BinaryFile file_name="conn_FEF_add_noise_to_FEF_syn0.bin" num_connections="350060" explicit_delay_flag="0" packed_data="true"/>
                     <Delay dimension="ms">
-                        <FixedValue value="0"/>
+                        <FixedValue value="50"/>
                     </Delay>
                 </ConnectionList>
                 <LL:WeightUpdate name="FEF_add_noise to FEF Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
