@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<SpineML xmlns="http://nineml.org/9ML/0.1">
+ <LayoutClass name="rand3d">
+  <Parameter name="numNeurons" dimension="?"/>
+  <Parameter name="size" dimension="?"/>
+  <Spatial>
+   <Regime name="">
+    <Transform variable="x" order="1" dimension="??" type="translate">
+     <MathInline>rand()*size</MathInline>
+    </Transform>
+    <Transform variable="y" order="2" dimension="??" type="translate">
+     <MathInline>rand()*size</MathInline>
+    </Transform>
+    <Transform variable="z" order="3" dimension="??" type="translate">
+     <MathInline>rand()*size</MathInline>
+    </Transform>
+   </Regime>
+   <StateVariable name="x" dimension="?"/>
+   <StateVariable name="y" dimension="?"/>
+   <StateVariable name="z" dimension="?"/>
+  </Spatial>
+ </LayoutClass>
+</SpineML>

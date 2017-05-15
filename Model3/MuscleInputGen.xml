@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<SpineML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.shef.ac.uk/SpineMLComponentLayer" xsi:schemaLocation="http://www.shef.ac.uk/SpineMLComponentLayer SpineMLComponentLayer.xsd">
+ <ComponentClass name="MuscleInputGen" type="neuron_body">
+  <Annotation>
+   <SpineCreator/>
+  </Annotation>
+  <Dynamics initial_regime="default">
+   <Regime name="default">
+    <TimeDerivative variable="a">
+     <MathInline>a-A/tau</MathInline>
+    </TimeDerivative>
+    <TimeDerivative variable="trig">
+     <MathInline>-trig-TRIGIN/tau_trig</MathInline>
+    </TimeDerivative>
+    <OnCondition target_regime="default">
+     <StateAssignment variable="a">
+      <MathInline>a_init</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>trig>trig_thresh &amp;&amp; a&lt;a_min_activity</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="default">
+     <StateAssignment variable="trig">
+      <MathInline>T</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>T>0</MathInline>
+     </Trigger>
+    </OnCondition>
+   </Regime>
+   <Alias name="A_copy" dimension="?">
+    <MathInline>A</MathInline>
+   </Alias>
+   <Alias name="T_copy" dimension="?">
+    <MathInline>T</MathInline>
+   </Alias>
+   <StateVariable name="trig" dimension="?"/>
+   <StateVariable name="a" dimension="?"/>
+  </Dynamics>
+  <AnalogReducePort name="T" reduce_op="+" dimension="?"/>
+  <AnalogReducePort name="A" reduce_op="+" dimension="?"/>
+  <AnalogSendPort name="a"/>
+  <AnalogSendPort name="A_copy"/>
+  <AnalogSendPort name="T_copy"/>
+  <AnalogSendPort name="trig"/>
+  <AnalogReducePort name="TRIGIN" reduce_op="+" dimension="?"/>
+  <Parameter name="tau" dimension="?"/>
+  <Parameter name="tau_trig" dimension="?"/>
+  <Parameter name="a_init" dimension="?"/>
+  <Parameter name="a_min_activity" dimension="?"/>
+  <Parameter name="trig_thresh" dimension="?"/>
+ </ComponentClass>
+</SpineML>

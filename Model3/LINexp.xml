@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<SpineML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.shef.ac.uk/SpineMLComponentLayer" xsi:schemaLocation="http://www.shef.ac.uk/SpineMLComponentLayer SpineMLComponentLayer.xsd">
+ <ComponentClass name="LINexp" type="neuron_body">
+  <Annotation>
+   <SpineCreator/>
+  </Annotation>
+  <Dynamics initial_regime="integrating">
+   <Regime name="integrating">
+    <TimeDerivative variable="a">
+     <MathInline>(1/tau)*(in-a)</MathInline>
+    </TimeDerivative>
+    <OnCondition target_regime="integrating">
+     <StateAssignment variable="out">
+      <MathInline>1</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>exp(a)>c+1</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="integrating">
+     <StateAssignment variable="out">
+      <MathInline>exp(a)-c</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>exp(a)&lt;=c+1</MathInline>
+     </Trigger>
+    </OnCondition>
+   </Regime>
+   <Alias name="in" dimension="?">
+    <MathInline>(A+N*(a-neg_rev_pot))*(p-(S/w))+(0.01*randomNormal)</MathInline>
+   </Alias>
+   <StateVariable name="a" dimension="?"/>
+   <StateVariable name="out" dimension="?"/>
+  </Dynamics>
+  <AnalogReducePort name="A" reduce_op="+" dimension="?"/>
+  <AnalogSendPort name="out"/>
+  <AnalogReducePort name="S" reduce_op="+" dimension="?"/>
+  <AnalogSendPort name="a"/>
+  <AnalogReducePort name="N" reduce_op="+" dimension="?"/>
+  <Parameter name="p" dimension="?"/>
+  <Parameter name="tau" dimension="?"/>
+  <Parameter name="c" dimension="?"/>
+  <Parameter name="w" dimension="?"/>
+  <Parameter name="neg_rev_pot" dimension="?"/>
+ </ComponentClass>
+</SpineML>
