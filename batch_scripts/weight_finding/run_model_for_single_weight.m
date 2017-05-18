@@ -7,9 +7,9 @@ insigneo = 1; % Use insigneo server
 num_parallel = 8; % How many times to run
 
 % The input model. Hardcoded.
-orig_model_dir = '/home/co1ssj/OMM_NeuroMuscular/Model1';
+orig_model_dir = [getenv('HOME') '/OMM_NeuroMuscular/Model1'];
 % This codes makes a copy here:
-model_dir = '/fastdata/co1ssj/input_models/';
+model_dir = '/fastdata/' getenv('USER') '/input_models/';
 cmd = ['mkdir -p ' model_dir];
 system (cmd);
 model_dir = [model_dir 'OculomotorT' num2str(targetThetaY)];
@@ -19,8 +19,7 @@ cmd = ['cp -Ra ' orig_model_dir ' ' model_dir];
 system (cmd);
 
 % Write luminances.json into model dir:
-if (write_single_luminance ([model_dir '/luminances.json'], ...
-                            targetThetaY)) < 1
+if (write_single_luminance ([model_dir '/luminances.json'], targetThetaY)) < 1
     return
 end
 

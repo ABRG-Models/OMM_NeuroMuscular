@@ -31,7 +31,7 @@ for i = [-14 : 1 : -7]
 
     % Also plot each trajectory from the model run data
     for j=1:num_runs
-        filepath=['/fastdata/co1ssj/oculomotorRX' num2str(i) 'RY0_1.8_' num2str(j)]
+        filepath=['/fastdata/' getenv('USER') '/oculomotorRX' num2str(i) 'RY0_1.8_' num2str(j)]
         A=load_ocm_min(filepath);
         figure(fa);
         hold on;

@@ -19,8 +19,8 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
         tag{i} = ['r' num2str(i-1) '_' num2str(round(rand * ...
                                                    999999))];
         display(['Starting sim run ' tag{i} ' in output dir: ' output_dirs.root '_' num2str(i)]);
-        scriptname=['/fastdata/co1ssj/' tag{i} '_run_sim.sh'];
-        script=['pushd /home/co1ssj/SpineML_2_BRAHMS && ./convert_script_s2b -g ' ...
+        scriptname=['/fastdata/' getenv('USER') '/' tag{i} '_run_sim.sh'];
+        script=['pushd ' getenv('HOME') '/SpineML_2_BRAHMS && ./convert_script_s2b -g ' ...
                 '-m ' model_dir ' -e2 -o ' output_dirs.root '_' num2str(i) ' && popd'];
 
         fid = fopen (scriptname, 'w');
@@ -56,7 +56,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
     while running == 0 && errqsub == 0
         concatenated_output = [];
         for i = 1:num_runs
-            cmd = ['qstat -u co1ssj | grep ' tag{i}  ' | awk -F '' '' ''{print $5}'''];
+            cmd = ['qstat -u ' getenv('USER') ' | grep ' tag{i}  ' | awk -F '' '' ''{print $5}'''];
             [status, output] = system (cmd);
             %cmd = ['qstat | grep ' tag{i}];
             %[status2, output2] = system (cmd);
@@ -87,7 +87,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
     while running > 0
         concatenated_output = [];
         for i = 1:num_runs
-            cmd = ['qstat -u co1ssj | grep co1ssj | grep ' tag{i}  ' | awk -F '' '' ''{print $5}'''];
+            cmd = ['qstat -u ' getenv('USER') ' | grep ' getenv('USER') ' | grep ' tag{i}  ' | awk -F '' '' ''{print $5}'''];
             [status, output] = system (cmd);
             %cmd = ['qstat| grep ' tag{i}];
             %[status2, output2] = system (cmd);
@@ -107,7 +107,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
         %display (concatenated_output);
         if isempty(concatenated_output)
             display ('Finished; concatenated output is zero');
-            cmd = ['qstat -u co1ssj | grep ' tag{i}];
+            cmd = ['qstat -u ' getenv('USER') ' | grep ' tag{i}];
             [status2, output2] = system (cmd);
             display (['qstat output at finished time: ' output2]);
             running = 0;
@@ -127,7 +127,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
     % Clean up the run scripts
     display ('Clean up run scripts...');
     for i = 1:num_runs
-        scriptname=['/fastdata/co1ssj/' tag{i} '_run_sim.sh'];
+        scriptname=['/fastdata/' getenv('USER') '/' tag{i} '_run_sim.sh'];
         unlink (scriptname);
     end
 

@@ -91,7 +91,7 @@ function [bestweight, lastangle] = rotations_weight_finder_centroid_3d (targetTh
         wbfX = edbfNumUP;
     end
 
-    logfile = fopen (['/fastdata/co1ssj/rotwfRX' num2str(targetTheta(1)) 'RY' num2str(targetTheta(2)) ...
+    logfile = fopen (['/fastdata/' getenv('USER') '/rotwfRX' num2str(targetTheta(1)) 'RY' num2str(targetTheta(2)) ...
                       '.log'], 'w');
     fprintf (logfile, 'TargetThetaX: %f, TargetThetaY: %f\n', ...
              targetTheta(1), targetTheta(2));
@@ -107,9 +107,9 @@ function [bestweight, lastangle] = rotations_weight_finder_centroid_3d (targetTh
 
     nfs = 50; % neural field size.
     % The input model. Hardcoded.
-    orig_model_dir = '/home/co1ssj/OMM_NeuroMuscular/Model1';
+    orig_model_dir = [getenv('HOME') '/OMM_NeuroMuscular/Model1'];
     % This codes makes a copy here:
-    model_dir = '/fastdata/co1ssj/input_models/';
+    model_dir = '/fastdata/' getenv('USER') '/input_models/';
     cmd = ['mkdir -p ' model_dir];
     system (cmd);
     model_dir = [model_dir 'OculomotorRX' num2str(targetTheta(1)) 'RY' ...
@@ -323,7 +323,7 @@ function [bestweight, lastangle] = rotations_weight_finder_centroid_3d (targetTh
     % angles x/y/z,
     % peakposn1(phi), peakposn2(r), bestweight, meanpeakposn1(phi),
     % meanpeakposn2(r), eyeposSD.
-    allweightsfile = fopen (['/fastdata/co1ssj/allweights.log'], 'a');
+    allweightsfile = fopen (['/fastdata/' getenv('USER') '/allweights.log'], 'a');
 
     % RotX
     if counter == 50

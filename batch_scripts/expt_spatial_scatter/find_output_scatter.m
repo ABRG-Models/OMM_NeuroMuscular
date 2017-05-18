@@ -9,7 +9,7 @@ function [eyeRyAvg, eyeRySD, eyeRyFinals] = find_output_scatter ...
     page_output_immediately(1);
 
     % The input model. Hardcoded.
-    model_dir = '/home/co1ssj/OMM_NeuroMuscular/Model1';
+    model_dir = [getenv('HOME') '/OMM_NeuroMuscular/Model1'];
     % Add a write-out of the luminances file:
     write_single_luminance ([model_dir '/luminances.json'], ...
                             targetThetaX, targetThetaY);

@@ -12,7 +12,7 @@ end
 addpath ('./include');
 
 % The input model. Hardcoded. Luminances therein are left alone.
-model_dir = '/home/co1ssj/OMM_NeuroMuscular/Model1';
+model_dir = [getenv('HOME') '/OMM_NeuroMuscular/Model1'];
 
 num_par_runs = 6;
 

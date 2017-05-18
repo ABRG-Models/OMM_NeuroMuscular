@@ -13,7 +13,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-## Author: S. James <co1ssj@node117.iceberg.shef.ac.uk>
+## Author: S. James <seb@node117.iceberg.shef.ac.uk>
 ## Created: 2015-10-12
 
 

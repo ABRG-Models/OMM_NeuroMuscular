@@ -28,7 +28,7 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
     exploratory_weight = 0.3 % This will need changing depending on
                              % b in LLBN popn.
 
-    dbgfile = fopen (['/fastdata/co1ssj/dbgT' num2str(targetThetaY) ...
+    dbgfile = fopen (['/fastdata/' getenv('USER') '/dbgT' num2str(targetThetaY) ...
                       '.log'], 'w');
 
     %weight = 0.16; % starting weight. Hard coded.
@@ -43,9 +43,9 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
 
     nfs = 50; % neural field size.
     % The input model. Hardcoded.
-    orig_model_dir = '/home/co1ssj/OMM_NeuroMuscular/Model1';
+    orig_model_dir = [getenv('HOME') '/OMM_NeuroMuscular/Model1'];
     % This codes makes a copy here:
-    model_dir = '/fastdata/co1ssj/input_models/';
+    model_dir = '/fastdata/' getenv('USER') '/input_models/';
     cmd = ['mkdir -p ' model_dir];
     system (cmd);
     model_dir = [model_dir 'OculomotorT' num2str(targetThetaY)];
@@ -55,8 +55,7 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
     system (cmd);
 
     % Write luminances.json into model dir:
-    if (write_single_luminance ([model_dir '/luminances.json'], ...
-                                targetThetaY)) < 1
+    if (write_single_luminance ([model_dir '/luminances.json'], targetThetaY)) < 1
         return
     end
 
@@ -75,7 +74,7 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
     % may be an induced saccade from the noise alone.
     %%write_onedim_binary ([model_dir '/explicitDataBinaryFile11.bin'], 0.1);
     write_plane_weights ([model_dir weightsBinaryFile], exploratory_weight);
-    cmd=['pushd /home/co1ssj/SpineML_2_BRAHMS && ./convert_script_s2b  ' ...
+    cmd=['pushd ' getenv('HOME') '/SpineML_2_BRAHMS && ./convert_script_s2b  ' ...
          '-m ' model_dir ' -e0 -o ' output_dirs.root ' && popd'];
     system(cmd);
 

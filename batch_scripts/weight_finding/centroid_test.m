@@ -1,5 +1,5 @@
 function C = centroid_test (targetThetaY)
-    [scd, c] = load_sc_data(['/fastdata/co1ssj/oculomotorT' num2str(targetThetaY) '_1/log/SC_deep_out_log.bin'], 2500);
+    [scd, c] = load_sc_data(['/fastdata/' getenv('USER') '/oculomotorT' num2str(targetThetaY) '_1/log/SC_deep_out_log.bin'], 2500);
     scd = reshape (scd, 50, 50, []);
     scd_time = sum(sum(scd));
     scd_time_shifted = scd_time(100:end);

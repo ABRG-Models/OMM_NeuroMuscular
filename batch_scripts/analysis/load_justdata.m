@@ -1,7 +1,7 @@
 % Load the file which contains the weights determined by the
 % rotations_weight_finder_centroid_3d.m
 %
-% /fast/co1ssj/allweights.log
+% /fast/${USER}/allweights.log
 %
 % This file has the following format:
 %

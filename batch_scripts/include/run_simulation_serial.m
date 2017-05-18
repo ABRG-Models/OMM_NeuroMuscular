@@ -24,8 +24,8 @@ function [ eyeRyAvg, eyeRySD, eyeRyFinals ] = run_simulation_serial ...
         tag{i} = ['r' num2str(i-1) '_' num2str(round(rand * ...
                                                    999999))];
         display(['Starting sim run ' tag{i}]);
-        scriptname=['/fastdata/co1ssj/' tag{i} '_run_sim.sh'];
-        script=['pushd /home/co1ssj/SpineML_2_BRAHMS && ./convert_script_s2b  ' ...
+        scriptname=['/fastdata/' getenv('USER') '/' tag{i} '_run_sim.sh'];
+        script=['pushd ' getenv('HOME') '/SpineML_2_BRAHMS && ./convert_script_s2b  ' ...
                 '-m ' model_dir ' -e3 -o ' output_dirs.root '_' num2str(i) ' && popd'];
 
         fid = fopen (scriptname, "w");
@@ -42,7 +42,7 @@ function [ eyeRyAvg, eyeRySD, eyeRyFinals ] = run_simulation_serial ...
     % Clean up the run scripts
     display ('Clean up run scripts...');
     for i = 1:num_runs
-        scriptname=['/fastdata/co1ssj/' tag{i} '_run_sim.sh'];
+        scriptname=['/fastdata/' getenv('USER') '/' tag{i} '_run_sim.sh'];
         unlink (scriptname);
     end
 
