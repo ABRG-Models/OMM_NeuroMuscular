@@ -42,7 +42,7 @@ EOF
     fi
 
     cat >> script${targxval}.sh <<EOF
-pushd ${HOME}/OMM_NeuroMuscular/batch_scripts
+pushd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos
 octave -q --eval "octave_run_test"
 oct_run_rtn=\$?
 if [ \$oct_run_rtn -gt "0" ]; then

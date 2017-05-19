@@ -13,7 +13,7 @@ end
 
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
 colcount = 1;
-for i = [-10 : 1 : -7]
+for i = [-15 : 0.5 : -7]
     resname = ['results/r_' num2str(i) '_0_' num2str(lumval) '.dat']
     resdatname = ['r_' num2str(i) '_0_1'];
     resdatname = strrep (resdatname, '.', 'p');
