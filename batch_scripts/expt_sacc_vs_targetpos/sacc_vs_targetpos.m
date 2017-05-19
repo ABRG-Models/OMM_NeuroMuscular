@@ -11,9 +11,9 @@ function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval)
     page_output_immediately(1);
 
     cleanup = 0;
-    [d, msg, msgid] = mkdir (['/scratch/' getenv('USER')])
-    [d, msg, msgid] = mkdir (['/scratch/' getenv('USER') '/OMM_NeuroMuscular'])
-    model_dir = ['/scratch/' getenv('USER') '/OMM_NeuroMuscular/SVTP' num2str(targetThetaX) num2str(targetThetaY)]
+    [d, msg, msgid] = mkdir (['/fastdata/' getenv('USER')])
+    [d, msg, msgid] = mkdir (['/fastdata/' getenv('USER') '/OMM_NeuroMuscular'])
+    model_dir = ['/fastdata/' getenv('USER') '/OMM_NeuroMuscular/SVTP' num2str(targetThetaX) num2str(targetThetaY)]
     origin_model_dir = [getenv('HOME') '/OMM_NeuroMuscular/Model3'];
     % Copy origin_model_dir into model_dir
     copyfile (origin_model_dir, model_dir)
