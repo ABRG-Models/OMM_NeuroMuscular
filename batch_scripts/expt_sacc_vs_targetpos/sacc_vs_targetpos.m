@@ -3,8 +3,7 @@
 %%
 %% Usage:
 %%
-%%   sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs,
-%%                      lumval)
+%%   sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval)
 %%
 function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval)
 
@@ -12,9 +11,16 @@ function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval)
     page_output_immediately(1);
 
     cleanup = 0;
-    p_str = platform_str();
-    model_dir = [getenv('HOME') '/OMM_NeuroMuscular/Model3'];
+    [d, msg, msgid] = mkdir (['/scratch/' getenv('USER')])
+    [d, msg, msgid] = mkdir (['/scratch/' getenv('USER') '/OMM_NeuroMuscular'])
+    model_dir = ['/scratch/' getenv('USER') '/OMM_NeuroMuscular/SVTP' num2str(targetThetaX) num2str(targetThetaY)]
+    origin_model_dir = [getenv('HOME') '/OMM_NeuroMuscular/Model3'];
+    % Copy origin_model_dir into model_dir
+    copyfile (origin_model_dir, model_dir)
 
+    % This writes into the origin model directory. When running
+    % many in parallel, these get mixed up. So make a copy of the
+    % model.
     write_single_luminance ([model_dir '/luminances.json'], targetThetaX, targetThetaY, lumval);
 
     output_dirs = setup_model_directories ([targetThetaX, targetThetaY], lumval);
@@ -30,6 +36,8 @@ function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval)
     result = struct();
     result.(resdatname) = vs;
 
+    eyeRyAvg
+    eyeRySD
     save (['results/' resname], 'result');
 
 end

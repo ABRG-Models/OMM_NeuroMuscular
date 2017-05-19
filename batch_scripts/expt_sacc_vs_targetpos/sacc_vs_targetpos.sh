@@ -6,20 +6,26 @@
 # and plot using plot_sacc_vs_t.m
 
 THETAXSTART=-7
-THETAXINC=-1
-THETAXEND=-14
+THETAXINC=-0.5
+THETAXEND=-15
 
 THETAY=0
-NUM_RUNS=6
+NUM_RUNS=12
 
-LUMVAL=1.8
+LUMVAL=1
 
 mkdir -p results
 
+P_STR='iceberg'
+if [ -d /usr/local/abrg ]; then
+    P_STR='ace2'
+fi
+
 for targxval in `seq ${THETAXSTART} ${THETAXINC} ${THETAXEND}`; do
 
-    # 1) write out a script we can qsub for the luminance:
-    cat > script${targxval}.sh <<EOF
+    if [ ${P_STR} = 'iceberg' ]; then
+        # 1) write out a script we can qsub for the luminance:
+        cat > script${targxval}.sh <<EOF
 #!/bin/bash
 #$ -l mem=4G
 #$ -l rmem=4G
@@ -27,8 +33,17 @@ for targxval in `seq ${THETAXSTART} ${THETAXINC} ${THETAXEND}`; do
 #$ -m ae
 #$ -M seb.james@sheffield.ac.uk
 
-pushd /home/co1ssj/OMM_NeuroMuscular/batch_scripts
-/home/co1ssj/usr/bin/octave -q --eval "octave_run_test"
+EOF
+    elif ${P_STR} = 'ace2' ]; then
+        cat > script${targxval}.sh <<EOF
+#!/bin/bash
+
+EOF
+    fi
+
+    cat >> script${targxval}.sh <<EOF
+pushd ${HOME}/OMM_NeuroMuscular/batch_scripts
+octave -q --eval "octave_run_test"
 oct_run_rtn=\$?
 if [ \$oct_run_rtn -gt "0" ]; then
     echo "Failed to run Octave on this host, exiting."
@@ -37,12 +52,16 @@ if [ \$oct_run_rtn -gt "0" ]; then
 fi
 popd
 
-/home/co1ssj/usr/bin/octave -q --eval "sacc_vs_targetpos(${targxval},${THETAY},${NUM_RUNS},${LUMVAL})"
+octave -q --eval "sacc_vs_targetpos(${targxval},${THETAY},${NUM_RUNS},${LUMVAL})"
 exit 0
 EOF
 
     # 2) and then qsub it:
-    qsub -P insigneo-notremor -N SVTP${targxval} -o results/SVTP${targxval}.out -j y ./script${targxval}.sh
+    PROJECT_TAG=''
+    if [ ${P_STR} = 'iceberg' ]; then
+        PROJECT_TAG='-P insigneo-notremor'
+    fi
+    qsub ${PROJECT_TAG} -N SVTP${targxval} -o results/SVTP${targxval}.out -j y ./script${targxval}.sh
 
     # 3) Clean up the script
     rm -f ./script${targxval}.sh
