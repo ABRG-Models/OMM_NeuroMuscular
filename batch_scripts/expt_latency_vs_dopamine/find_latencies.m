@@ -30,7 +30,6 @@ params.targetWidthY=4;
 params.targetOn=0.35; % Then 0.35
 params.targetOff=1;
 
-params.use_insigneo=1; % Set to 1 to use Insigneo queues on Iceberg
 params.cleanup=0; % Set to 1 to clean up used files.
 
 %da = [0.01 0.05 0.1 0.15 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9];

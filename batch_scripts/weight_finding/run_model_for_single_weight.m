@@ -3,7 +3,6 @@ addpath ('./include');
 targetThetaY = -10;
 weight = 0.47;
 
-insigneo = 1; % Use insigneo server
 num_parallel = 8; % How many times to run
 
 % The input model. Hardcoded.
@@ -38,5 +37,4 @@ end
 write_plane_weights ([model_dir weightsBinaryFile], weight);
 
 display ('Running...');
-[ eyeRyAvg, eyeRySD ] = run_simulation_multi (model_dir, ...
-                                              output_dirs, num_parallel, insigneo);
+[ eyeRyAvg, eyeRySD ] = run_simulation_multi (model_dir, output_dirs, num_parallel);

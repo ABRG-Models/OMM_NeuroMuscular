@@ -16,7 +16,6 @@ params.fixWidthX=2;
 params.fixWidthY=2;
 params.fixOn=0;
 params.targetOff=1;
-params.use_insigneo=1; % Set to 1 to use Insigneo queues on Iceberg
 params.cleanup=1; % Set to 1 to clean up used files.
 
 % Here are the fixation off/target on numbers:
@@ -50,9 +49,9 @@ fa_mean = [];
 fa_sd = [];
 
 for ft = fixtarg
-    
+
     printf ('Finding latency for fixation off: %f  target on: %f', ft(1), ft(2));
-    
+
     params.fixOff = ft(1);
     params.targetOn = ft(2);
     [avg, sd, finals, sm] = find_latency (params);

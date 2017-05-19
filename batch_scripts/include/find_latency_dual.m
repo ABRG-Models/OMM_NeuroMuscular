@@ -16,7 +16,7 @@ function [eyeRyAvg, eyeRySD, eyeRyFinals, latency] = find_latency_dual (params)
     output_dirs = setup_latency_directories (params, 1);
     [ eyeRyAvg, eyeRySD, eyeRyFinals, peakPos, startMove ] = ...
         run_sim_multi_for_latency (params.model_dir, output_dirs, params.num_par_runs, ...
-                                   params.use_insigneo, params.cleanup, params.dopamine);
+                                   params.cleanup, params.dopamine);
 
     latency = startMove.-(1000.*params.targetOn);
     lat_mean = mean(latency);

@@ -17,5 +17,4 @@ model_dir = [getenv('HOME') '/OMM_NeuroMuscular/Model1'];
 num_par_runs = 6;
 
 output_dirs = setup_model_output_directories ('ocmot_multi');
-[ eyeRyAvg, eyeRySD, eyeRyFinals ] = run_simulation_multi ...
-    (model_dir, output_dirs, num_par_runs, 1);
+[ eyeRyAvg, eyeRySD, eyeRyFinals ] = run_simulation_multi (model_dir, output_dirs, num_par_runs);

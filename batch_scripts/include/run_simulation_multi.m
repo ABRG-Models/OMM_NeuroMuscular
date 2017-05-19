@@ -1,5 +1,5 @@
 function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi ...
-        (model_dir, output_dirs, num_runs, insigneo, cleanup)
+        (model_dir, output_dirs, num_runs, cleanup)
 %% Run a simulation specified in model_dir, sending results to
 %% output_dirs.root num_runs times. Do this by submitting using the
 %% qsub system and use calls to Qstat to determine when the runs
@@ -30,18 +30,24 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
         % For requests for two processors, use -pe openmp 2 and
         % change mem to 1G (so that you get 1G * 2 = 2G per job)
 
-        % Insigneo version
-        if insigneo
+        % Iceberg_Insigneo version
+        p_str = platform_str();
+        if strcmp (p_str, 'iceberg') == 1
             cmd=['mkdir -p ' output_dirs.qlog '_' num2str(i) ' && ' ...
                  'qsub -o '  output_dirs.qlog '_' num2str(i) ...
                  '/qsub.out -m a -M seb.james@sheffield.ac.uk ' ...
-                 '-j y -l mem=2G -l rmem=2G -l arch=intel* ' ...
+                 '-j y -l mem=4G -l rmem=4G -l arch=intel* ' ...
                  '-P insigneo-notremor ' scriptname];
-        else
-            % General submission:
+        elseif strcmp (p_str, 'ace2') == 1
+            % Submission on ace2
             cmd=['mkdir -p ' output_dirs.qlog '_' num2str(i) ' && ' ...
                  'qsub -o '  output_dirs.qlog '_' num2str(i) ...
-                 '/qsub.out -j y -l mem=2G -l rmem=2G ' scriptname];
+                 '/qsub.out ' scriptname];
+        else
+            % General submission on anything else...
+            cmd=['mkdir -p ' output_dirs.qlog '_' num2str(i) ' && ' ...
+                 'qsub -o '  output_dirs.qlog '_' num2str(i) ...
+                 '/qsub.out -j y -l mem=4G -l rmem=4G ' scriptname];
         end
         %display (['qsub command: ' cmd]);
         [status, output] = system (cmd);

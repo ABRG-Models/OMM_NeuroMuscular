@@ -1,4 +1,4 @@
-function [bestweight, lastangle] = rotations_weight_finder_centroid_3d (targetTheta,weight,num_runs,insigneo,cleanup)
+function [bestweight, lastangle] = rotations_weight_finder_centroid_3d (targetTheta,weight,num_runs,cleanup)
 %% Explore the parameter space of SCdeep -> LLBN collicular mapping
 %% weight for a single target saccade.
 %%
@@ -150,8 +150,7 @@ function [bestweight, lastangle] = rotations_weight_finder_centroid_3d (targetTh
                              -weight(3));
     end
 
-    [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi (model_dir, ...
-                                                      output_dirs, num_runs, insigneo, cleanup);
+    [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi (model_dir, output_dirs, num_runs, cleanup);
 
     %
     % New weight calculation
@@ -225,8 +224,7 @@ function [bestweight, lastangle] = rotations_weight_finder_centroid_3d (targetTh
                                  -weight(3));
         end
 
-        [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi (model_dir, ...
-                                                          output_dirs, num_runs, insigneo, cleanup);
+        [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi (model_dir, output_dirs, num_runs, cleanup);
 
         display (['This is counter=' num2str(counter)]);
         if norm(eyeposAvg) > 0

@@ -105,8 +105,7 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
 
     write_mapped_weights ([model_dir weightsBinaryFile], weight, mask);
 
-    [ eyeRyAvg, eyeRySD ] = run_simulation_multi (model_dir, ...
-                                                  output_dirs, 10, 1);
+    [ eyeRyAvg, eyeRySD ] = run_simulation_multi (model_dir, output_dirs, 10);
 
     %
     % Calculate mask (and peak!) again (choose first run from the
@@ -195,8 +194,7 @@ function [bestweight, lastangle] = rotations_weight_finder_hump_average (targetT
 
         write_mapped_weights ([model_dir weightsBinaryFile], weight, mask);
 
-        [ eyeRyAvg, eyeRySD ] = run_simulation_multi (model_dir, ...
-                                                      output_dirs, 10, 1);
+        [ eyeRyAvg, eyeRySD ] = run_simulation_multi (model_dir, output_dirs, 10);
 
 
         display (['This is counter=' num2str(counter)]);

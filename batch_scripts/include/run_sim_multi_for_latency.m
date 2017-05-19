@@ -1,5 +1,5 @@
 function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_sim_multi_for_latency ...
-        (model_dir, output_dirs, num_runs, insigneo, cleanup, da_param)
+        (model_dir, output_dirs, num_runs, cleanup, da_param)
 %% Run a simulation specified in model_dir, sending results to
 %% output_dirs.root num_runs times. Do this by submitting using the
 %% qsub system and use calls to Qstat to determine when the runs
@@ -33,12 +33,17 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_sim_mul
         % change mem to 1G (so that you get 1G * 2 = 2G per job)
 
         % Insigneo version
-        if insigneo
+        p_str = platform_str();
+        if strcmp (p_str, 'iceberg') == 1
             cmd=['mkdir -p ' output_dirs.qlog '_' num2str(i) ' && ' ...
                  'qsub -o '  output_dirs.qlog '_' num2str(i) ...
                  '/qsub.out -m a -M seb.james@sheffield.ac.uk ' ...
                  '-j y -l mem=2G -l rmem=2G -l arch=intel* ' ...
                  '-P insigneo-notremor ' scriptname];
+        elseif strcmp (p_str, 'ace2') == 1
+            cmd=['mkdir -p ' output_dirs.qlog '_' num2str(i) ' && ' ...
+                 'qsub -o '  output_dirs.qlog '_' num2str(i) ...
+                 '/qsub.out ' scriptname];
         else
             % General submission:
             cmd=['mkdir -p ' output_dirs.qlog '_' num2str(i) ' && ' ...
@@ -220,5 +225,5 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_sim_mul
         [status, output] = system (rmcmd);
     end
 
-    display ('run_simulation_multi() finished.');
+    display ('run_sim_multi_for_latency() finished.');
 end

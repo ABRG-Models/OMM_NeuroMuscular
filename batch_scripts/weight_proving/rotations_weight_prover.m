@@ -1,4 +1,4 @@
-function [eyeposAvg, eyeposSD] = rotations_weight_prover (targetTheta,num_runs,insigneo,cleanup)
+function [eyeposAvg, eyeposSD] = rotations_weight_prover (targetTheta,num_runs,cleanup)
 %% Run the model with run_simulation_multi() then write the results
 %% out to a file.
 %%
@@ -39,8 +39,7 @@ function [eyeposAvg, eyeposSD] = rotations_weight_prover (targetTheta,num_runs,i
     counter = 1;
     output_dirs = setup_model_directories (targetTheta, counter);
 
-    [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi (model_dir, ...
-                                                      output_dirs, num_runs, insigneo, cleanup);
+    [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi (model_dir, output_dirs, num_runs, cleanup);
     fclose (logfile);
 
     % columns are: target x, target y, target z,
