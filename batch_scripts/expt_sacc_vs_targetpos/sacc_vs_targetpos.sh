@@ -34,7 +34,7 @@ for targxval in `seq ${THETAXSTART} ${THETAXINC} ${THETAXEND}`; do
 #$ -M seb.james@sheffield.ac.uk
 
 EOF
-    elif ${P_STR} = 'ace2' ]; then
+    elif [ ${P_STR} = 'ace2' ]; then
         cat > script${targxval}.sh <<EOF
 #!/bin/bash
 
