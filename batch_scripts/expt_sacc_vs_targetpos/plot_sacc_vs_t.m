@@ -2,10 +2,13 @@
 r = struct();
 rr = [];
 
-num_runs=12
-lumval=1
+lumval=1;
 
+% Plot lots of trajectories? If you want that set plottraj to 1
 plottraj=0
+% And decide how many of the runs you want to show
+numruns = 6
+
 if plottraj
     fa = 33; figure(fa); clf;
     fb = 34; figure(fb); clf;
@@ -13,7 +16,7 @@ end
 
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
 colcount = 1;
-for i = [-15 : 0.5 : -7]
+for i = [-15 : 1 : -7]
     resname = ['results/r_' num2str(i) '_0_' num2str(lumval) '.dat']
     resdatname = ['r_' num2str(i) '_0_1'];
     resdatname = strrep (resdatname, '.', 'p');
@@ -37,10 +40,16 @@ for i = [-15 : 0.5 : -7]
             A=load_ocm_min(filepath);
             figure(fa);
             hold on;
-            plot (A.eyeRy(1:450), colours{colcount})
+            plot (A.eyeRx(1:450), colours{colcount})
+            title ([num2str(i) ' degrees - x vs t']);
+            xlabel('time (ms)');
+            ylabel('RotX degrees');
             figure(fb);
             hold on;
             plot (A.eyeRx(1:450), A.eyeRy(1:450), 'b')
+            title ([num2str(i) ' degrees - x/y traj'])
+            xlabel('RotX degrees');
+            ylabel('RotY degrees');
         end
         colcount = colcount + 1;
 

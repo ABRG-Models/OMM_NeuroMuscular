@@ -6,7 +6,7 @@
 # and plot using plot_sacc_vs_t.m
 
 THETAXSTART=-7
-THETAXINC=-0.5
+THETAXINC=-1 # Stick to integers! Design of eyeframe/worldframe code requires this.
 THETAXEND=-15
 
 THETAY=0
