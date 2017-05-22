@@ -10,6 +10,11 @@ function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval)
     page_screen_output(0);
     page_output_immediately(1);
 
+    if ~(floor(targetThetaX) == targetThetaX) || ~(floor(targetThetaY) == targetThetaY)
+        display ('Integers only for targetThetaX/targetThetaY')
+        return;
+    end
+
     cleanup = 0;
     [d, msg, msgid] = mkdir (['/fastdata/' getenv('USER')])
     [d, msg, msgid] = mkdir (['/fastdata/' getenv('USER') '/OMM_NeuroMuscular'])
