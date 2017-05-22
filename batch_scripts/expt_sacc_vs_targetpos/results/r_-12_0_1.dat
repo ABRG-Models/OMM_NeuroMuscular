@@ -1,0 +1,15 @@
+# Created by Octave 3.8.2, Mon May 22 14:47:49 2017 BST <co1ssj@node117>
+# name: result
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 1
+# name: r_m12_0_1
+# type: matrix
+# rows: 1
+# columns: 7
+ -12 -11.62570833333333 1.652701666666667 0.8806549166666667 0.1450824997800364 0.09120076483265155 0.01724702867404509
+
+
+
+

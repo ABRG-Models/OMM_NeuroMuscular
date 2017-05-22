@@ -1,36 +1,112 @@
-~/OMM_NeuroMuscular/batch_scripts ~/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos
+~/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos ~/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos
 Testing if Octave runs on this host.
 
 ~/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos
-Starting sim run r0_109278 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_1
+d =  1
+msg = directory exists
+msgid = mkdir
+d =  1
+msg = directory exists
+msgid = mkdir
+model_dir = /fastdata/co1ssj/OMM_NeuroMuscular/SVTP-70
+ans =  1
+Starting sim run r0_406017 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_1
 
-Starting sim run r1_666260 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_2
+Starting sim run r1_147410 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_2
 
-Starting sim run r2_354854 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_3
+Starting sim run r2_103982 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_3
 
-Starting sim run r3_378334 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_4
+Starting sim run r3_552351 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_4
 
-Starting sim run r4_61517 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_5
+Starting sim run r4_52414 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_5
 
-Starting sim run r5_478591 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_6
+Starting sim run r5_778609 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_6
 
-No process for tag r0_109278
+Starting sim run r6_893227 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_7
 
-No process for tag r1_666260
+Starting sim run r7_640502 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_8
 
-No process for tag r2_354854
+Starting sim run r8_61624 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_9
 
-No process for tag r0_109278
+Starting sim run r9_699488 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_10
 
-No process for tag r1_666260
+Starting sim run r10_681606 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_11
 
-No process for tag r2_354854
+Starting sim run r11_640291 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_12
 
-No process for tag r3_378334
+No process for tag r5_778609
 
-No process for tag r4_61517
+No process for tag r6_893227
 
-No process for tag r5_478591
+No process for tag r3_552351
+
+No process for tag r5_778609
+
+No process for tag r6_893227
+
+No process for tag r8_61624
+
+No process for tag r11_640291
+
+No process for tag r0_406017
+
+No process for tag r1_147410
+
+No process for tag r3_552351
+
+No process for tag r4_52414
+
+No process for tag r5_778609
+
+No process for tag r6_893227
+
+No process for tag r8_61624
+
+No process for tag r11_640291
+
+No process for tag r0_406017
+
+No process for tag r1_147410
+
+No process for tag r3_552351
+
+No process for tag r4_52414
+
+No process for tag r5_778609
+
+No process for tag r6_893227
+
+No process for tag r7_640502
+
+No process for tag r8_61624
+
+No process for tag r10_681606
+
+No process for tag r11_640291
+
+No process for tag r0_406017
+
+No process for tag r1_147410
+
+No process for tag r2_103982
+
+No process for tag r3_552351
+
+No process for tag r4_52414
+
+No process for tag r5_778609
+
+No process for tag r6_893227
+
+No process for tag r7_640502
+
+No process for tag r8_61624
+
+No process for tag r9_699488
+
+No process for tag r10_681606
+
+No process for tag r11_640291
 
 Finished; concatenated output is zero
 
@@ -40,184 +116,644 @@ Clean up run scripts...
 
 Read output...
 
-peaktime = 408
+peaktime = 229
 
-peaktime =  408
-final_eyeR = -4.1310
-final_eyeR =  0.44045
-endsacc: 535
+peaktime =  229
+final_eyeR = -5.7601
+final_eyeR =  0.016903
+endsacc: 291
 
-peaktime = 408
+peaktime = 229
 
-saturate = [](0x1)
-saturate =  1
-c_x =  25.276
-c_y =  24.993
-peaktime = 396
+saturate =  215
+saturate =  214
+c_x =  25.557
+c_y =  26.197
+peaktime = 229
 
-peaktime =  396
-final_eyeR = -4.0803
-final_eyeR =  0.36695
-endsacc: 539
+peaktime =  229
+final_eyeR = -5.7582
+final_eyeR =  0.067842
+endsacc: 294
 
-peaktime = 396
+peaktime = 229
 
-saturate = [](0x1)
-saturate =  1
-c_x =  25.060
-c_y =  25.182
-peaktime = 396
+saturate =  215
+saturate =  214
+c_x =  25.652
+c_y =  26.242
+peaktime = 229
 
-peaktime =  396
-final_eyeR = -4.8051
-final_eyeR =  0.44986
-endsacc: 542
+peaktime =  229
+final_eyeR = -5.7798
+final_eyeR =  0.020795
+endsacc: 292
 
-peaktime = 396
+peaktime = 229
 
-saturate = [](0x1)
-saturate =  1
-c_x =  24.817
-c_y =  25.239
-peaktime = 390
+saturate =  216
+saturate =  215
+c_x =  25.662
+c_y =  26.152
+peaktime = 228
 
-peaktime =  390
-final_eyeR = -4.6278
-final_eyeR =  0.43163
-endsacc: 514
+peaktime =  228
+final_eyeR = -5.7795
+final_eyeR =  0.0094856
+endsacc: 291
 
-peaktime = 390
+peaktime = 228
 
-saturate = [](0x1)
-saturate =  1
-c_x =  24.896
-c_y =  25.580
-peaktime = 397
+saturate =  215
+saturate =  214
+c_x =  25.452
+c_y =  26.352
+peaktime = 229
 
-peaktime =  397
-final_eyeR = -2.9509
-final_eyeR =  0.27179
-endsacc: 534
+peaktime =  229
+final_eyeR = -5.7377
+final_eyeR =  0.013824
+endsacc: 292
 
-peaktime = 397
+peaktime = 229
 
-saturate = [](0x1)
-saturate =  1
-c_x =  24.931
-c_y =  25.186
-peaktime = 370
+saturate =  215
+saturate =  214
+c_x =  25.225
+c_y =  25.751
+peaktime = 228
 
-peaktime =  370
-final_eyeR = -6.9147
-final_eyeR =  0.86140
-endsacc: 490
+peaktime =  228
+final_eyeR = -5.8087
+final_eyeR =  0.029054
+endsacc: 292
 
-peaktime = 370
+peaktime = 228
 
-saturate = [](0x1)
-saturate =  1
-c_x =  24.941
-c_y =  24.978
+saturate =  215
+saturate =  214
+c_x =  25.563
+c_y =  26.071
+peaktime = 229
+
+peaktime =  229
+final_eyeR = -5.7361
+final_eyeR =  0.013491
+endsacc: 292
+
+peaktime = 229
+
+saturate =  216
+saturate =  215
+c_x =  25.858
+c_y =  26.352
+peaktime = 229
+
+peaktime =  229
+final_eyeR = -5.7454
+final_eyeR =  0.014396
+endsacc: 292
+
+peaktime = 229
+
+saturate =  215
+saturate =  214
+c_x =  25.741
+c_y =  26.067
+peaktime = 229
+
+peaktime =  229
+final_eyeR = -5.7662
+final_eyeR =  0.012144
+endsacc: 291
+
+peaktime = 229
+
+saturate =  216
+saturate =  215
+c_x =  25.448
+c_y =  26.431
+peaktime = 228
+
+peaktime =  228
+final_eyeR = -5.9503
+final_eyeR =  0.064007
+endsacc: 293
+
+peaktime = 228
+
+saturate =  215
+saturate =  214
+c_x =  25.324
+c_y =  26.230
+peaktime = 229
+
+peaktime =  229
+final_eyeR = -5.7947
+final_eyeR =  0.027510
+endsacc: 292
+
+peaktime = 229
+
+saturate =  215
+saturate =  214
+c_x =  25.369
+c_y =  26.476
+peaktime = 229
+
+peaktime =  229
+final_eyeR = -5.7493
+final_eyeR =  0.026599
+endsacc: 292
+
+peaktime = 229
+
+saturate =  215
+saturate =  214
+c_x =  25.616
+c_y =  26.343
 eyeposFinals =
 
-  -4.15304  -4.09394  -4.82151  -4.65174  -2.95549  -6.99537
-   0.43807   0.36560   0.44814   0.42921   0.27137   0.85114
-   0.44400   0.56534   0.59947   0.56354   0.36518   0.65751
+ Columns 1 through 8:
+
+  -5.13168  -5.20054  -5.14120  -5.13495  -5.12397  -5.18735  -5.12133  -5.14789
+   0.37125   0.41776   0.39316   0.37210   0.36452   0.40345   0.37315   0.36561
+   0.27558   0.28490   0.27720   0.27611   0.27315   0.27954   0.27435   0.27632
+
+ Columns 9 through 12:
+
+  -5.10860  -5.35954  -5.18275  -5.14084
+   0.37868   0.43189   0.38257   0.37340
+   0.27528   0.28591   0.27703   0.27772
 
 debug_it =  1
-mean centroid x/y position: 24.987/25.193 from 6 entries with sd 0.16187/0.21819
+mean centroid x/y position: 25.539/26.222 from 12 entries with sd 0.18261/0.19801
 
 allc_x =
 
-   25.276   25.060   24.817   24.896   24.931   24.941
+ Columns 1 through 8:
+
+   25.557   25.652   25.662   25.452   25.225   25.563   25.858   25.741
+
+ Columns 9 through 12:
+
+   25.448   25.324   25.369   25.616
 
 allc_y =
 
-   24.993   25.182   25.239   25.580   25.186   24.978
+ Columns 1 through 8:
+
+   26.197   26.242   26.152   26.352   25.751   26.071   26.352   26.067
+
+ Columns 9 through 12:
+
+   26.431   26.230   26.476   26.343
 
 Bad peakPos information, setting peakPos to zeros...
 
 run_simulation_multi() finished.
 
-~/OMM_NeuroMuscular/batch_scripts ~/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos
+eyeRyAvg =
+
+  -5.16505   0.38563   0.27776
+
+eyeRySD =
+
+   0.0675218   0.0216299   0.0039312
+
+~/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos ~/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos
 Testing if Octave runs on this host.
 
 ~/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos
-Starting sim run r0_706367 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_1
+d =  1
+msg = directory exists
+msgid = mkdir
+d =  1
+msg = directory exists
+msgid = mkdir
+model_dir = /fastdata/co1ssj/OMM_NeuroMuscular/SVTP-70
+ans =  1
+Starting sim run r0_846568 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_1
 
-Starting sim run r1_494598 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_2
+Starting sim run r1_854952 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_2
 
-Starting sim run r2_452226 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_3
+Starting sim run r2_509511 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_3
 
-Starting sim run r3_525352 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_4
+Starting sim run r3_897798 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_4
 
-Starting sim run r4_163102 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_5
+Starting sim run r4_63381 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_5
 
-Starting sim run r5_929322 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_6
+Starting sim run r5_896013 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_6
 
-No process for tag r0_706367
+Starting sim run r6_720719 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_7
 
-No process for tag r0_706367
+Starting sim run r7_713585 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_8
 
-No process for tag r0_706367
+Starting sim run r8_837988 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_9
 
-No process for tag r0_706367
+Starting sim run r9_300578 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_10
 
-No process for tag r0_706367
+Starting sim run r10_828915 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_11
 
-No process for tag r4_163102
+Starting sim run r11_786757 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1_12
 
-No process for tag r0_706367
+No process for tag r0_846568
 
-No process for tag r4_163102
+No process for tag r0_846568
 
-No process for tag r5_929322
+No process for tag r0_846568
 
-No process for tag r0_706367
+No process for tag r0_846568
 
-No process for tag r1_494598
+No process for tag r0_846568
 
-No process for tag r4_163102
+No process for tag r0_846568
 
-No process for tag r5_929322
+No process for tag r0_846568
 
-No process for tag r0_706367
+No process for tag r0_846568
 
-No process for tag r1_494598
+No process for tag r10_828915
 
-No process for tag r4_163102
+No process for tag r0_846568
 
-No process for tag r5_929322
+No process for tag r10_828915
 
-No process for tag r0_706367
+No process for tag r0_846568
 
-No process for tag r1_494598
+No process for tag r10_828915
 
-No process for tag r4_163102
+No process for tag r0_846568
 
-No process for tag r5_929322
+No process for tag r10_828915
 
-No process for tag r0_706367
+No process for tag r0_846568
 
-No process for tag r1_494598
+No process for tag r10_828915
 
-No process for tag r2_452226
+No process for tag r0_846568
 
-No process for tag r4_163102
+No process for tag r10_828915
 
-No process for tag r5_929322
+No process for tag r0_846568
 
-No process for tag r0_706367
+No process for tag r10_828915
 
-No process for tag r1_494598
+No process for tag r0_846568
 
-No process for tag r2_452226
+No process for tag r10_828915
 
-No process for tag r3_525352
+No process for tag r0_846568
 
-No process for tag r4_163102
+No process for tag r10_828915
 
-No process for tag r5_929322
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r3_897798
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r3_897798
+
+No process for tag r8_837988
+
+No process for tag r9_300578
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r1_854952
+
+No process for tag r3_897798
+
+No process for tag r8_837988
+
+No process for tag r9_300578
+
+No process for tag r10_828915
+
+No process for tag r0_846568
+
+No process for tag r1_854952
+
+No process for tag r3_897798
+
+No process for tag r4_63381
+
+No process for tag r8_837988
+
+No process for tag r9_300578
+
+No process for tag r10_828915
+
+No process for tag r11_786757
+
+No process for tag r0_846568
+
+No process for tag r1_854952
+
+No process for tag r3_897798
+
+No process for tag r4_63381
+
+No process for tag r8_837988
+
+No process for tag r9_300578
+
+No process for tag r10_828915
+
+No process for tag r11_786757
+
+No process for tag r0_846568
+
+No process for tag r1_854952
+
+No process for tag r3_897798
+
+No process for tag r4_63381
+
+No process for tag r5_896013
+
+No process for tag r8_837988
+
+No process for tag r9_300578
+
+No process for tag r10_828915
+
+No process for tag r11_786757
+
+No process for tag r0_846568
+
+No process for tag r1_854952
+
+No process for tag r2_509511
+
+No process for tag r3_897798
+
+No process for tag r4_63381
+
+No process for tag r5_896013
+
+No process for tag r8_837988
+
+No process for tag r9_300578
+
+No process for tag r10_828915
+
+No process for tag r11_786757
+
+No process for tag r0_846568
+
+No process for tag r1_854952
+
+No process for tag r2_509511
+
+No process for tag r3_897798
+
+No process for tag r4_63381
+
+No process for tag r5_896013
+
+No process for tag r8_837988
+
+No process for tag r9_300578
+
+No process for tag r10_828915
+
+No process for tag r11_786757
+
+No process for tag r0_846568
+
+No process for tag r1_854952
+
+No process for tag r2_509511
+
+No process for tag r3_897798
+
+No process for tag r4_63381
+
+No process for tag r5_896013
+
+No process for tag r8_837988
+
+No process for tag r9_300578
+
+No process for tag r10_828915
+
+No process for tag r11_786757
+
+No process for tag r0_846568
+
+No process for tag r1_854952
+
+No process for tag r2_509511
+
+No process for tag r3_897798
+
+No process for tag r4_63381
+
+No process for tag r5_896013
+
+No process for tag r8_837988
+
+No process for tag r9_300578
+
+No process for tag r10_828915
+
+No process for tag r11_786757
+
+No process for tag r0_846568
+
+No process for tag r1_854952
+
+No process for tag r2_509511
+
+No process for tag r3_897798
+
+No process for tag r4_63381
+
+No process for tag r5_896013
+
+No process for tag r8_837988
+
+No process for tag r9_300578
+
+No process for tag r10_828915
+
+No process for tag r11_786757
+
+No process for tag r0_846568
+
+No process for tag r1_854952
+
+No process for tag r2_509511
+
+No process for tag r3_897798
+
+No process for tag r4_63381
+
+No process for tag r5_896013
+
+No process for tag r8_837988
+
+No process for tag r9_300578
+
+No process for tag r10_828915
+
+No process for tag r11_786757
+
+No process for tag r0_846568
+
+No process for tag r1_854952
+
+No process for tag r2_509511
+
+No process for tag r3_897798
+
+No process for tag r4_63381
+
+No process for tag r5_896013
+
+No process for tag r8_837988
+
+No process for tag r9_300578
+
+No process for tag r10_828915
+
+No process for tag r11_786757
+
+No process for tag r0_846568
+
+No process for tag r1_854952
+
+No process for tag r2_509511
+
+No process for tag r3_897798
+
+No process for tag r4_63381
+
+No process for tag r5_896013
+
+No process for tag r6_720719
+
+No process for tag r8_837988
+
+No process for tag r9_300578
+
+No process for tag r10_828915
+
+No process for tag r11_786757
+
+No process for tag r0_846568
+
+No process for tag r1_854952
+
+No process for tag r2_509511
+
+No process for tag r3_897798
+
+No process for tag r4_63381
+
+No process for tag r5_896013
+
+No process for tag r6_720719
+
+No process for tag r7_713585
+
+No process for tag r8_837988
+
+No process for tag r9_300578
+
+No process for tag r10_828915
+
+No process for tag r11_786757
 
 Finished; concatenated output is zero
 
@@ -227,289 +763,198 @@ Clean up run scripts...
 
 Read output...
 
-peaktime = 397
+Only 334 data points, won't search for peak.
 
-peaktime =  397
-final_eyeR = -4.9487
-final_eyeR =  0.51613
-endsacc: 533
+peaktime = -1
+peaktime = 302
 
-peaktime = 397
+peaktime =  302
+final_eyeR = -5.1807
+final_eyeR =  0.42546
+endsacc: 414
 
-saturate = [](0x1)
-saturate =  1
-c_x =  25.110
-c_y =  24.938
-peaktime = 384
+peaktime = 302
 
-peaktime =  384
-final_eyeR = -5.1033
-final_eyeR =  0.50458
-endsacc: 522
+saturate =  288
+saturate =  287
+c_x =  25.525
+c_y =  26.395
+peaktime = 301
 
-peaktime = 384
+peaktime =  301
+final_eyeR = -5.2451
+final_eyeR =  0.47615
+endsacc: 416
 
-saturate = [](0x1)
-saturate =  1
-c_x =  25.194
-c_y =  25.183
-peaktime = 380
+peaktime = 301
 
-peaktime =  380
-final_eyeR = -5.1904
-final_eyeR =  0.66354
-endsacc: 507
+saturate =  288
+saturate =  287
+c_x =  25.470
+c_y =  26.465
+peaktime = 302
 
-peaktime = 380
+peaktime =  302
+final_eyeR = -5.1248
+final_eyeR =  0.48030
+endsacc: 418
 
-saturate = [](0x1)
-saturate =  1
-c_x =  25.007
-c_y =  25.366
-peaktime = 395
+peaktime = 302
 
-peaktime =  395
-final_eyeR = -3.4057
-final_eyeR =  0.31168
-endsacc: 530
+saturate =  288
+saturate =  287
+c_x =  25.451
+c_y =  26.429
+peaktime = 302
 
-peaktime = 395
+peaktime =  302
+final_eyeR = -5.0827
+final_eyeR =  0.47853
+endsacc: 418
 
-saturate = [](0x1)
-saturate =  1
-c_x =  25.413
-c_y =  25.200
-peaktime = 384
+peaktime = 302
 
-peaktime =  384
-final_eyeR = -4.8284
-final_eyeR =  0.51184
-endsacc: 510
+saturate =  288
+saturate =  287
+c_x =  25.618
+c_y =  26.351
+peaktime = 302
 
-peaktime = 384
+peaktime =  302
+final_eyeR = -5.2781
+final_eyeR =  0.46296
+endsacc: 416
 
-saturate = [](0x1)
-saturate =  1
-c_x =  25.229
-c_y =  25.208
-peaktime = 377
+peaktime = 302
 
-peaktime =  377
-final_eyeR = -5.1616
-final_eyeR =  0.57559
-endsacc: 498
+saturate =  288
+saturate =  287
+c_x =  25.563
+c_y =  26.514
+peaktime = 302
 
-peaktime = 377
+peaktime =  302
+final_eyeR = -5.1228
+final_eyeR =  0.17539
+endsacc: 369
 
-saturate = [](0x1)
-saturate =  1
-c_x =  24.968
-c_y =  25.217
+peaktime = 302
+
+saturate =  288
+saturate =  287
+c_x =  25.512
+c_y =  26.253
+peaktime = 302
+
+peaktime =  302
+final_eyeR = -5.1571
+final_eyeR =  0.46953
+endsacc: 417
+
+peaktime = 302
+
+saturate =  288
+saturate =  287
+c_x =  25.474
+c_y =  26.589
+peaktime = 301
+
+peaktime =  301
+final_eyeR = -5.2543
+final_eyeR =  0.51315
+endsacc: 414
+
+peaktime = 301
+
+saturate =  288
+saturate =  287
+c_x =  25.482
+c_y =  26.594
+peaktime = 301
+
+peaktime =  301
+final_eyeR = -5.1784
+final_eyeR =  0.47152
+endsacc: 415
+
+peaktime = 301
+
+saturate =  288
+saturate =  287
+c_x =  25.511
+c_y =  26.484
+peaktime = 229
+
+peaktime =  229
+final_eyeR = -5.7947
+final_eyeR =  0.027510
+endsacc: 292
+
+peaktime = 229
+
+saturate =  215
+saturate =  214
+c_x =  25.369
+c_y =  26.476
+peaktime = 302
+
+peaktime =  302
+final_eyeR = -5.0625
+final_eyeR =  0.47633
+endsacc: 417
+
+peaktime = 302
+
+saturate =  287
+saturate =  286
+c_x =  25.566
+c_y =  26.373
 eyeposFinals =
 
-  -4.96888  -5.12949  -5.24315  -3.41474  -4.85715  -5.20784
-   0.51368   0.50175   0.65721   0.31071   0.50866   0.57044
-   0.50277   0.64155   0.60279   0.43923   0.51694   0.51692
+ Columns 1 through 8:
+
+  -5.20333  -5.27653  -5.15908  -5.11676  -5.30504  -4.81038  -5.18747  -5.28169
+   0.42287   0.47318   0.47696   0.47521   0.46052   0.37885   0.46668   0.51070
+   0.32544   0.33332   0.32891   0.32807   0.32825   0.30694   0.32731   0.33445
+
+ Columns 9 through 11:
+
+  -5.20978  -5.18275  -5.09662
+   0.46859   0.38257   0.47302
+   0.33248   0.27703   0.33182
 
 debug_it =  1
-mean centroid x/y position: 25.154/25.185 from 6 entries with sd 0.16289/0.13811
+mean centroid x/y position: 25.504/26.448 from 11 entries with sd 0.066595/0.10193
 
 allc_x =
 
-   25.110   25.194   25.007   25.413   25.229   24.968
+ Columns 1 through 8:
+
+   25.525   25.470   25.451   25.618   25.563   25.512   25.474   25.482
+
+ Columns 9 through 11:
+
+   25.511   25.369   25.566
 
 allc_y =
 
-   24.938   25.183   25.366   25.200   25.208   25.217
+ Columns 1 through 8:
+
+   26.395   26.465   26.429   26.351   26.514   26.253   26.589   26.594
+
+ Columns 9 through 11:
+
+   26.484   26.476   26.373
 
 Bad peakPos information, setting peakPos to zeros...
 
 run_simulation_multi() finished.
 
-~/OMM_NeuroMuscular/batch_scripts ~/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos
-Testing if Octave runs on this host.
+eyeRyAvg =
 
-~/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos
-Starting sim run r0_22707 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_1
+  -5.16631   0.45356   0.32309
 
-Starting sim run r1_821793 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_2
+eyeRySD =
 
-Starting sim run r2_630631 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_3
-
-Starting sim run r3_297732 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_4
-
-Starting sim run r4_157553 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_5
-
-Starting sim run r5_493498 in output dir: /fastdata/co1ssj/oculomotorRX-7RY0_1.8_6
-
-No process for tag r0_22707
-
-No process for tag r2_630631
-
-No process for tag r3_297732
-
-No process for tag r4_157553
-
-No process for tag r5_493498
-
-No process for tag r0_22707
-
-No process for tag r2_630631
-
-No process for tag r3_297732
-
-No process for tag r4_157553
-
-No process for tag r5_493498
-
-No process for tag r0_22707
-
-No process for tag r2_630631
-
-No process for tag r3_297732
-
-No process for tag r4_157553
-
-No process for tag r5_493498
-
-No process for tag r0_22707
-
-No process for tag r2_630631
-
-No process for tag r3_297732
-
-No process for tag r4_157553
-
-No process for tag r5_493498
-
-No process for tag r0_22707
-
-No process for tag r2_630631
-
-No process for tag r3_297732
-
-No process for tag r4_157553
-
-No process for tag r5_493498
-
-No process for tag r0_22707
-
-No process for tag r1_821793
-
-No process for tag r2_630631
-
-No process for tag r3_297732
-
-No process for tag r4_157553
-
-No process for tag r5_493498
-
-Finished; concatenated output is zero
-
-qstat output at finished time: 
-
-Clean up run scripts...
-
-Read output...
-
-peaktime = 558
-
-peaktime =  558
-final_eyeR = -5.1279
-final_eyeR =  0.51102
-endsacc: 587
-
-peaktime = 558
-
-saturate = [](0x1)
-saturate =  1
-c_x =  25.110
-c_y =  25.224
-peaktime = 380
-
-peaktime =  380
-final_eyeR = -6.0856
-final_eyeR =  0.60032
-endsacc: 507
-
-peaktime = 380
-
-saturate =  569
-saturate =  568
-c_x =  26.156
-c_y =  26.880
-peaktime = 370
-
-peaktime =  370
-final_eyeR = -5.2231
-final_eyeR =  0.65852
-endsacc: 493
-
-peaktime = 370
-
-saturate = [](0x1)
-saturate =  1
-c_x =  25.267
-c_y =  25.032
-peaktime = 570
-
-peaktime =  570
-final_eyeR = -6.0913
-final_eyeR =  0.59840
-endsacc: 599
-
-peaktime = 570
-
-saturate = [](0x1)
-saturate =  1
-c_x =  25.387
-c_y =  25.464
-peaktime = 580
-
-peaktime =  580
-final_eyeR = -8.3149
-final_eyeR =  0.59427
-endsacc: 0
-
-Warning: Couldn't find end saccade
-
-peaktime = 580
-
-saturate = [](0x1)
-saturate =  1
-c_x =  25.463
-c_y =  24.991
-peaktime = 381
-
-peaktime =  381
-final_eyeR = -8.0123
-final_eyeR =  0.91505
-endsacc: 504
-
-peaktime = 381
-
-saturate = [](0x1)
-saturate =  1
-c_x =  25.184
-c_y =  25.372
-eyeposFinals =
-
-  -5.89039  -6.11980  -5.28049  -6.66185  -8.11187
-   0.51102   0.59619   0.65145   0.59840   0.90275
-   0.69309   0.63446   0.49403   0.71993   0.72244
-
-debug_it =  1
-mean centroid x/y position: 25.428/25.494 from 6 entries with sd 0.37928/0.70361
-
-allc_x =
-
-   25.110   26.156   25.267   25.387   25.463   25.184
-
-allc_y =
-
-   25.224   26.880   25.032   25.464   24.991   25.372
-
-Bad peakPos information, setting peakPos to zeros...
-
-run_simulation_multi() finished.
+   0.135180   0.041296   0.016999
 
