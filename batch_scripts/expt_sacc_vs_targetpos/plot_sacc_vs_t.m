@@ -28,7 +28,7 @@ for i = [-15 : 1 : -7]
     size(rr)
     sz_2 = size(result.(resdatname))(2)
 
-    if (sz_2 == 7)
+    if (sz_2 == 9)
         rr = [rr; result.(resdatname)];
     end
 
@@ -63,4 +63,4 @@ end
 rr
 
 figure(32);
-errorbar (rr(:,1),rr(:,2),rr(:,5),'o-')
+errorbar (rr(:,1),rr(:,4),rr(:,7),'o-')
