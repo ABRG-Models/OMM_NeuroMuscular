@@ -7,10 +7,11 @@ num_runs=6
 thetax=0
 thetay=-10
 
-figure(33);
-clf;
-
 plottraj = 0;
+if plottraj
+    figure(33);
+    clf;
+end
 
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
 colcount = 1;

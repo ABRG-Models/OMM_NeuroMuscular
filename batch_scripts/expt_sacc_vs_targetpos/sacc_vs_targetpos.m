@@ -18,7 +18,7 @@ function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval)
     cleanup = 0;
     [d, msg, msgid] = mkdir (['/fastdata/' getenv('USER')])
     [d, msg, msgid] = mkdir (['/fastdata/' getenv('USER') '/OMM_NeuroMuscular'])
-    model_dir = ['/fastdata/' getenv('USER') '/OMM_NeuroMuscular/SVTP' num2str(targetThetaX) num2str(targetThetaY)]
+    model_dir = ['/fastdata/' getenv('USER') '/OMM_NeuroMuscular/SVTP' num2str(targetThetaX) '_' num2str(targetThetaY) '_' num2str(lumval)]
     origin_model_dir = [getenv('HOME') '/OMM_NeuroMuscular/Model3'];
     % Copy origin_model_dir into model_dir
     copyfile (origin_model_dir, model_dir)
@@ -26,7 +26,7 @@ function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval)
     % This writes into the origin model directory. When running
     % many in parallel, these get mixed up. So make a copy of the
     % model.
-    step_time=1.8;
+    step_time=0.18;
     fix_lum=0.5
     write_single_luminance ([model_dir '/luminances.json'], targetThetaX, targetThetaY, lumval, step_time, fix_lum);
 
