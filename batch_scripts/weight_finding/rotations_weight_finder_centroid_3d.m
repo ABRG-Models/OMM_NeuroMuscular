@@ -120,8 +120,10 @@ function [bestweight, lastangle] = rotations_weight_finder_centroid_3d (targetTh
     system (cmd);
 
     % Write luminances.json into model dir:
+    step_time = 0.12;
+    fix_lum = 0.5;
     if (write_single_luminance ([model_dir '/luminances.json'], ...
-                                targetTheta(1), targetTheta(2))) < 1
+                                targetTheta(1), targetTheta(2), step_time, fix_lum)) < 1
         return
     end
 
@@ -206,7 +208,7 @@ function [bestweight, lastangle] = rotations_weight_finder_centroid_3d (targetTh
         % Write out the luminances file into the output model directory (to
         % make parallel running safe).
         if (write_single_luminance ([output_dirs.model '/luminances.json'], ...
-                                    targetTheta(1), targetTheta(2))) < 1
+                                    targetTheta(1), targetTheta(2), step_time, fix_lum)) < 1
             return
         end
 

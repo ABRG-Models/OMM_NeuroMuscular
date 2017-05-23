@@ -1,8 +1,14 @@
 % An experiment standard (cross, 6, 2) single luminance of magnitude
-% 1.8 occuring at targetThetaX,targetThetaY, occurring 0.12 seconds
-% into experiment. From 0 to 0.12 s a fixation luminance of magnitude
-% 0.5 (but same shape & size) exists at (0,0)
-function success = write_single_luminance (file_path, targetThetaX, targetThetaY, lumval)
+% lumval occuring at targetThetaX,targetThetaY, occurring step_time
+% seconds into experiment. From 0 to step_time a fixation luminance of
+% magnitude fix_lum (but same shape & size) exists at (0,0)
+%
+% This could be called "write_step_luminance" as it always gives a
+% step paradigm. For gap/overlap paradigms, see
+% write_single_luminance_with_fix, which takes a bundle of params
+% as an argument.
+%
+function success = write_single_luminance (file_path, targetThetaX, targetThetaY, lumval, step_time, fix_lum)
     lum_file = fopen (file_path, 'w');
     if lum_file == -1
         display ('Failed to open luminances.json file for writing.');
@@ -11,8 +17,8 @@ function success = write_single_luminance (file_path, targetThetaX, targetThetaY
     end
 
     % Hard-coded parameters
-    step_time = 0.18; % was 0.12
-    fix_lum = 0.5;
+    %step_time = 0.18; % was 0.12
+    %fix_lum = 0.5;
 
     fprintf (lum_file, ['{"luminances":[' ...
                         '{"shape":"cross","thetaX":0,' ...

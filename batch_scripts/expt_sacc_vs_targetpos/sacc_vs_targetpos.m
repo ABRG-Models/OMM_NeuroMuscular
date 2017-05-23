@@ -26,7 +26,9 @@ function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval)
     % This writes into the origin model directory. When running
     % many in parallel, these get mixed up. So make a copy of the
     % model.
-    write_single_luminance ([model_dir '/luminances.json'], targetThetaX, targetThetaY, lumval);
+    step_time=1.8;
+    fix_lum=0.5
+    write_single_luminance ([model_dir '/luminances.json'], targetThetaX, targetThetaY, lumval, step_time, fix_lum);
 
     output_dirs = setup_model_directories ([targetThetaX, targetThetaY], lumval);
     [ eyeRyAvg, eyeRySD, eyeRyFinals ] = run_simulation_multi (model_dir, output_dirs, num_par_runs, cleanup);
