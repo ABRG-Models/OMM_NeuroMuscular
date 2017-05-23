@@ -9,9 +9,9 @@ THETAX=0 # Integer values only
 THETAY=-10
 NUM_RUNS=6
 
-LUMVALSTART=0.5 # 0.5?
-LUMVALEND=2.1 # 2.0?
-LUMVALINC=0.2
+LUMVALSTART=0.6 # 0.5?
+LUMVALEND=4.4 # 2.0?
+LUMVALINC=0.4
 
 mkdir -p results
 

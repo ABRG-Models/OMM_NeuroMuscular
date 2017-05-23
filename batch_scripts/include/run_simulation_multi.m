@@ -1,4 +1,4 @@
-function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi ...
+function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulation_multi ...
         (model_dir, output_dirs, num_runs, cleanup)
 %% Run a simulation specified in model_dir, sending results to
 %% output_dirs.root num_runs times. Do this by submitting using the
@@ -138,6 +138,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
 
     display ('Read output...');
     eyeposFinals = [];
+    startMove = [];
     alla = [];
     allb = [];
     allc_x = [];
@@ -163,6 +164,11 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos ] = run_simulation_multi .
         eyeRy = SS(:,9);
         eyeRz = SS(:,10);
         clear SS;
+
+        tmp = min([min(find(eyeRx~=0)), min(find(eyeRy~=0)), min(find(eyeRz~=0))]);
+        if isempty(tmp) == 0
+            startMove = [ startMove tmp ];
+        end
 
         % Add saccade end finding algo here.
         %

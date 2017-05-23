@@ -15,13 +15,18 @@ end
 
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
 colcount = 1;
-for i = [0.5 : 0.2 : 2.1]
-    resname = ['r_' num2str(thetax) '_' num2str(thetay) '_' num2str(i) '.dat'];
-    resdatname = ['r_' num2str(thetax) '_' num2str(thetay) '_' num2str(i)];
+% Search files in results directory and select all:
+flist = glob('results/r*.dat');
+llen = size(flist)(1);
+for i = [1 : llen]
+
+    rnm = flist{i};
+    resdatname = substr(rnm, 9); % strips initial 'results/' string
+    resdatname = substr(resdatname, 1, size(resdatname)(2)-4); % Strips '.dat' off
     resdatname = strrep (resdatname, '.', 'p');
     resdatname = strrep (resdatname, '-', 'm');
 
-    rnm = ['results/' resname];
+    %rnm = ['results/' resname];
     display(['Loading file ' rnm])
     load (rnm); % loads struct variable called result
 
@@ -48,6 +53,9 @@ end
 % rr array contains these columns:
 % thetax, thetay, lumval, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD
 % rr
+
+% sort rr on luminance value
+rr = sortrows(rr,3);
 
 figure(32);
 % rr(:,3) is lumval
