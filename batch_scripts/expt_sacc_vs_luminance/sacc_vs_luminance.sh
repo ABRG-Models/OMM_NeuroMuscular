@@ -1,31 +1,48 @@
 #!/bin/bash
 
-# Run through a set of luminances, qsubbing NUM_RUNS of the model for
-# each luminance. Results (average saccade size, saccade size SD) are
-# stored in octave data files. Load these and plot using
-# plot_sacc_vs_l.m
+# Run through a set of targets a different locations, qsubbing
+# NUM_RUNS of the model for each target. Results (average saccade
+# size, saccade size SD) are stored in octave data files. Load these
+# and plot using plot_sacc_vs_t.m
 
-XSTART=0.2
-XINC=0.2
-XEND=1.6
-
-THETAX=0
-THETAY=7
+THETAX=0 # Integer values only
+THETAY=-10
 NUM_RUNS=6
 
-for lval in `seq ${XSTART} ${XINC} ${XEND}`; do
+LUMVALSTART=0.5 # 0.5?
+LUMVALEND=2.1 # 2.0?
+LUMVALINC=0.2
 
-    # 1) write out a script we can qsub for the luminance:
-    cat > script${lval}.sh <<EOF
+mkdir -p results
+
+P_STR='iceberg'
+if [ -d /usr/local/abrg ]; then
+    P_STR='ace2'
+fi
+
+for lumval in `seq ${LUMVALSTART} ${LUMVALINC} ${LUMVALEND}`; do
+
+    if [ ${P_STR} = 'iceberg' ]; then
+        # 1) write out a script we can qsub for the luminance:
+        cat > script${lumval}.sh <<EOF
 #!/bin/bash
-#$ -l mem=2G
-#$ -l rmem=2G
+#$ -l mem=4G
+#$ -l rmem=4G
 #$ -l h_rt=4:59:00
 #$ -m ae
 #$ -M seb.james@sheffield.ac.uk
 
-pushd /home/pc1ssj/abrg_local/Oculomotor/batch_scripts
-/home/pc1ssj/usr/bin/octave -q --eval "octave_run_test"
+EOF
+    elif [ ${P_STR} = 'ace2' ]; then
+        cat > script${lumval}.sh <<EOF
+#!/bin/bash
+
+EOF
+    fi
+
+    cat >> script${lumval}.sh <<EOF
+pushd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_luminance
+octave -q --eval "octave_run_test"
 oct_run_rtn=\$?
 if [ \$oct_run_rtn -gt "0" ]; then
     echo "Failed to run Octave on this host, exiting."
@@ -34,14 +51,19 @@ if [ \$oct_run_rtn -gt "0" ]; then
 fi
 popd
 
-/home/pc1ssj/usr/bin/octave -q --eval "sacc_vs_luminance(${THETAX},${THETAY},${NUM_RUNS},${lval})"
+# Need to add path for sacc_vs_targetpos:
+octave -q --eval "addpath('../expt_sacc_vs_targetpos'); sacc_vs_targetpos(${THETAX},${THETAY},${NUM_RUNS},${lumval})"
 exit 0
 EOF
 
     # 2) and then qsub it:
-    qsub -P insigneo-notremor -N SVL${lval} -o SVL${lval}.out -j y ./script${lval}.sh
+    PROJECT_TAG=''
+    if [ ${P_STR} = 'iceberg' ]; then
+        PROJECT_TAG='-P insigneo-notremor'
+    fi
+    qsub ${PROJECT_TAG} -N SVL${lumval} -wd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_luminance -o results/SVL${lumval}.out -j y ./script${lumval}.sh
 
     # 3) Clean up the script
-    rm -f ./script${lval}.sh
+    rm -f ./script${lumval}.sh
 
 done

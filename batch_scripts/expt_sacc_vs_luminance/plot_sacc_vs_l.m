@@ -4,36 +4,45 @@ rr = [];
 
 num_runs=6
 
+thetax=0
+thetay=-10
+
 figure(33);
 clf;
 
+plottraj = 0;
+
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
 colcount = 1;
-for i = [0.2 : 0.2 : 1.6]
-    resname = ['r_0_7_' num2str(i) '.dat'];
-    resdatname = ['r_0_7_' num2str(i)];
-    resdatname = strrep (resdatname, '.', '_');
+for i = [1 : 0.1 : 1.3]
+    resname = ['r_' num2str(thetax) '_' num2str(thetay) '_' num2str(i) '.dat'];
+    resdatname = ['r_' num2str(thetax) '_' num2str(thetay) '_' num2str(i)];
+    resdatname = strrep (resdatname, '.', 'p');
+    resdatname = strrep (resdatname, '-', 'm');
 
-    load (resname); % loads struct variable called result
+    load (['results/' resname]); % loads struct variable called result
     r = struct_merge (r, result);
 
     rr = [rr; result.(resdatname)];
 
     % Also plot each trajectory from the model run data
+    if plottraj
     for j=1:num_runs
-        filepath=['/fastdata/' getenv('USER') '/oculomotorRX0RY7_' num2str(i) '_' num2str(j)];
+        filepath=['/fastdata/' getenv('USER') '/oculomotorRX0RY' num2str(thetay) '_' num2str(i) '_' num2str(j)];
         A=load_ocm_min(filepath);
         figure(33);
         hold on;
         plot (A.eyeRy, colours{colcount})
+    end
     end
     colcount = colcount + 1;
 
 end
 
 % rr array contains these columns:
-% lumval, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD
-rr
+% thetax, thetay, lumval, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD
+% rr
 
 figure(32);
-errorbar (rr(:,1),rr(:,3),rr(:,6),'o-')
+% rr(:,3) is lumval
+errorbar (rr(:,3),rr(:,5),rr(:,8),'o-')
