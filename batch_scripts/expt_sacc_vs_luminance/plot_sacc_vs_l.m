@@ -2,13 +2,12 @@
 r = struct();
 rr = [];
 
-num_runs=6
-
 thetax=0
 thetay=-10
 
 plottraj = 0;
 if plottraj
+    num_runs=6 % to show
     figure(33);
     clf;
 end
@@ -32,7 +31,7 @@ for i = [1 : llen]
 
     r = struct_merge (r, result);
 
-    if (size(result.(resdatname))(2) == 9)
+    if (size(result.(resdatname))(2) == 12)
         rr = [rr; result.(resdatname)];
     end
 
@@ -50,13 +49,24 @@ for i = [1 : llen]
 
 end
 
-% rr array contains these columns:
-% thetax, thetay, lumval, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD
-% rr
-
+% The rr array contains these columns:
+% thetaX, thetaY, fix_lum, lumval, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD, latmean, latsd
+%
 % sort rr on luminance value
-rr = sortrows(rr,3);
+rr = sortrows(rr,4);
 
 figure(32);
 % rr(:,3) is lumval
 errorbar (rr(:,3),rr(:,5),rr(:,8),'o-')
+
+% Achieved position (Rot X)
+figure(32);
+errorbar (rr(:,4),rr(:,5),rr(:,8),'o-')
+xlabel('Luminance');
+ylabel('eyeRx');
+
+% Latency
+figure(35);
+errorbar (rr(:,4),rr(:,11),rr(:,12),'o-')
+xlabel('Luminance');
+ylabel('Latency (ms)');
