@@ -24,7 +24,7 @@ params.fixOn=0;
 params.fixOff=0.45
 
 params.targetCross=0; % 1 if target should be the cross shape.
-params.targetLuminance=0.2;
+params.targetLuminance=1.8;
 params.targetWidthX=4;
 params.targetWidthY=4;
 params.targetOn=0.35; % Then 0.35
@@ -50,6 +50,11 @@ gap = params.targetOn - params.fixOff;
 for d = da
     % Change dopamine for this run:
     params.dopamine = d;
+
+    % actually, params.dopamine isn't used, we have to add a
+    % preflight_option to params.
+    params.preflight_option = sprintf('-p "DA value:param:%.2f"', params.dopamine);
+
     [avg, sd, finals, sm] = find_latency (params);
     lm = mean(sm);
     ls_ = std(sm)
