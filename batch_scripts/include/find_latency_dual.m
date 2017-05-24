@@ -14,9 +14,7 @@ function [eyeRyAvg, eyeRySD, eyeRyFinals, latency] = find_latency_dual (params)
     % Add a write-out of the luminances file:
     write_mirrored_luminances_with_fix ([params.model_dir '/luminances.json'], params);
     output_dirs = setup_latency_directories (params, 1);
-    [ eyeRyAvg, eyeRySD, eyeRyFinals, peakPos, startMove ] = ...
-        run_sim_multi_for_latency (params.model_dir, output_dirs, params.num_par_runs, ...
-                                   params.cleanup, params.dopamine);
+    [ eyeRyAvg, eyeRySD, eyeRyFinals, peakPos, startMove ] = run_simulation_multi (params.model_dir, output_dirs, params);
 
     latency = startMove.-(1000.*params.targetOn);
     lat_mean = mean(latency);
