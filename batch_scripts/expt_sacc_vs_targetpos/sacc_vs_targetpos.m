@@ -40,7 +40,7 @@ function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval, pr
     % model.
     step_time=0.18;
     fix_lum=0.5
-    write_single_luminance ([model_dir '/luminances.json'], targetThetaX, targetThetaY, lumval, step_time, fix_lum);
+    write_step_luminance ([model_dir '/luminances.json'], targetThetaX, targetThetaY, lumval, step_time, fix_lum);
 
     output_dirs = setup_model_directories ([targetThetaX, targetThetaY], lumval);
     [ eyeRyAvg, eyeRySD, eyeRyFinals, peakPos, startMove ] = run_simulation_multi (model_dir, output_dirs, params)

@@ -1,5 +1,7 @@
-% Like write_single_luminance but with a fixation point and writes
-% two luminances mirrored over the central meridian.
+% Like write_single_luminance_with_fix but writes two luminances
+% mirrored over the central meridian, with one at 0.8 of the other in
+% the value of its luminance. Params same as
+% write_single_luminance_with_fix.
 function success = write_mirrored_luminances_with_fix (file_path, params)
     lum_file = fopen (file_path, 'w');
     if lum_file == -1

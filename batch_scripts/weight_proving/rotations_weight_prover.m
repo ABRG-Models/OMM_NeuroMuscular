@@ -33,8 +33,7 @@ function [eyeposAvg, eyeposSD] = rotations_weight_prover (targetTheta,num_runs,c
     step_time = 0.12;
     fix_lum = 0.5;
     % Write luminances.json into model dir:
-    if (write_single_luminance ([model_dir '/luminances.json'], ...
-                                targetTheta(1), targetTheta(2), step_time, fix_lum)) < 1
+    if (write_step_luminance ([model_dir '/luminances.json'], targetTheta(1), targetTheta(2), step_time, fix_lum)) < 1
         return
     end
 

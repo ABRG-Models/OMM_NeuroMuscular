@@ -14,12 +14,14 @@ function [eyeRyAvg, eyeRySD, eyeRyFinals, latency] = find_latency (params)
 
     % The input model. Hardcoded.
     model_dir = [getenv('HOME') '/OMM_NeuroMuscular/Model1'];
+
     % Add a write-out of the luminances file:
     write_single_luminance_with_fix ([model_dir '/luminances.json'], params);
+
     output_dirs = setup_model_directories ([params.targetThetaX, params.targetThetaY], 1);
-    [ eyeRyAvg, eyeRySD, eyeRyFinals, peakPos, startMove ] = ...
-        run_sim_multi_for_latency (model_dir, output_dirs, params.num_par_runs, ...
-                                   params.cleanup, params.dopamine);
+
+    % Switch to using run_simulation_multi, and remove run_sim_multi_for_latency
+    [ eyeRyAvg, eyeRySD, eyeRyFinals, peakPos, startMove ] = run_simulation_multi (model_dir, output_dirs, params);
 
     latency = startMove.-(1000.*params.targetOn);
     lat_mean = mean(latency);

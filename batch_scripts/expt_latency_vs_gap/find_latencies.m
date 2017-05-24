@@ -5,7 +5,9 @@
 params.targetThetaY = -12;
 params.targetThetaX = 0;
 params.num_par_runs = 8;
+
 params.dopamine = 0.3;
+
 params.targetCross=0; % 1 if target should be the cross shape.
 params.targetLuminance=1.8;
 params.targetWidthX=4;

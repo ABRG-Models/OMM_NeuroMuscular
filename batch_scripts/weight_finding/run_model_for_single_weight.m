@@ -20,7 +20,7 @@ system (cmd);
 % Write luminances.json into model dir:
 step_time = 0.12;
 fix_lum = 0.5;
-if (write_single_luminance ([model_dir '/luminances.json'], 0, targetThetaY, step_time, fix_lum)) < 1
+if (write_step_luminance ([model_dir '/luminances.json'], 0, targetThetaY, step_time, fix_lum)) < 1
     return
 end
 

@@ -14,7 +14,7 @@ function [eyeRyAvg, eyeRySD, eyeRyFinals] = find_output_scatter ...
     step_time=0.12;
     fix_lum=0.5;
     lumval=1.8;
-    write_single_luminance ([model_dir '/luminances.json'], targetThetaX, targetThetaY, lumval, step_time, fix_lum);
+    write_step_luminance ([model_dir '/luminances.json'], targetThetaX, targetThetaY, lumval, step_time, fix_lum);
     output_dirs = setup_model_directories ([targetThetaX, targetThetaY], 1);
     cleanup = 1;
     [ eyeRyAvg, eyeRySD, eyeRyFinals ] = run_simulation_multi (model_dir, output_dirs, num_par_runs, cleanup);
