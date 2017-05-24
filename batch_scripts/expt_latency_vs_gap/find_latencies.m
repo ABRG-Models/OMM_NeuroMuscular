@@ -4,7 +4,7 @@
 % Fixed parameters
 params.targetThetaY = -12;
 params.targetThetaX = 0;
-params.num_par_runs = 8;
+params.num_runs = 8;
 
 params.dopamine = 0.3;
 
@@ -13,7 +13,7 @@ params.targetLuminance=1.8;
 params.targetWidthX=4;
 params.targetWidthY=4;
 params.fixCross=0;
-params.fixLuminance=0.2;
+params.fixLuminance=0.5;
 params.fixWidthX=2;
 params.fixWidthY=2;
 params.fixOn=0;

@@ -7,9 +7,6 @@ target_on = fixtarg(2,1:num_points);
 gap = target_on-fixation_off;
 
 % Save the data to a dated file
-res_file_name = sprintf ('%s_results_da_%f.mat', datestr(now(), ...
-                                                  'yyyymmdd_HHMMSS'), ...
-                         params.dopamine);
+res_file_name = sprintf ('%s_results_da_%f.mat', datestr(now(), 'yyyymmdd_HHMMSS'), params.dopamine);
 
-save (res_file_name, 'fixation_off', 'target_on', 'gap', 'lat_mean', ...
-      'lat_sd', 'params');
+save (res_file_name, 'fixation_off', 'target_on', 'gap', 'lat_mean', 'lat_sd', 'params');
