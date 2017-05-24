@@ -6,36 +6,42 @@ lumval=1;
 
 % Plot lots of trajectories? If you want that set plottraj to 1
 plottraj=0
-% And decide how many of the runs you want to show
-numruns = 6
 
 if plottraj
+    % Decide how many of the runs you want to show:
+    num_runs_to_show = 6
     fa = 33; figure(fa); clf;
     fb = 34; figure(fb); clf;
 end
 
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
 colcount = 1;
-for i = [-15 : 1 : -7]
-    resname = ['results/r_' num2str(i) '_0_' num2str(lumval) '.dat']
-    resdatname = ['r_' num2str(i) '_0_1'];
-    resdatname = strrep (resdatname, '.', 'p');
-    resdatname = strrep (resdatname, '-', 'm')
 
-    load (resname); % loads struct variable called result
+flist = glob('results/r*.dat');
+llen = size(flist)(1);
+for i = [1 : llen]
+
+    rnm = flist{i};
+    resdatname = substr(rnm, 9); % strips initial 'results/' string
+    resdatname = substr(resdatname, 1, size(resdatname)(2)-4); % Strips '.dat' off
+    resdatname = strrep (resdatname, '.', 'p');
+    resdatname = strrep (resdatname, '-', 'm');
+
+    load (rnm); % loads struct variable called result
     r = struct_merge (r, result)
 
+    % For expected size of rr, consult sacc_vs_targetpos.m
     size(rr)
     sz_2 = size(result.(resdatname))(2)
 
-    if (sz_2 == 9)
+    if (sz_2 == 12)
         rr = [rr; result.(resdatname)];
     end
 
 
     if plottraj
         % Also plot each trajectory from the model run data
-        for j=1:num_runs
+        for j=1:num_runs_to_show
             filepath=['/fastdata/' getenv('USER') '/oculomotorRX' num2str(i) 'RY0_1_' num2str(j)]
             A=load_ocm_min(filepath);
             figure(fa);
@@ -58,9 +64,20 @@ for i = [-15 : 1 : -7]
     end
 end
 
-% rr array contains these columns:
-% thetaX, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD
-rr
+% The rr array contains these columns:
+% thetaX, thetaY, fix_lum, lumval, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD, latmean, latsd
+%
+% sort rr on target position value
+rr = sortrows(rr,1);
 
+% Achieved position (Rot X)
 figure(32);
-errorbar (rr(:,1),rr(:,4),rr(:,7),'o-')
+errorbar (rr(:,1),rr(:,5),rr(:,8),'o-')
+xlabel('Target x');
+ylabel('eyeRx');
+
+% Latency
+figure(35);
+errorbar (rr(:,1),rr(:,11),rr(:,12),'o-')
+xlabel('Target x');
+ylabel('Latency (ms)');

@@ -1,7 +1,6 @@
-function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulation_multi ...
-        (model_dir, output_dirs, num_runs, cleanup)
+function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulation_multi(model_dir, output_dirs, params)
 %% Run a simulation specified in model_dir, sending results to
-%% output_dirs.root num_runs times. Do this by submitting using the
+%% output_dirs.root params.num_runs times. Do this by submitting using the
 %% qsub system and use calls to Qstat to determine when the runs
 %% have completed. Return the mean and sd of the result (at time of
 %% writing, this is the final rotation around the y axis of the
@@ -13,14 +12,29 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
         return
     end
 
+    % Check that we have params.num_runs
+    if ~isfield (params, 'num_runs')
+        display ('Uh oh - params.num_runs doesn''t exist!');
+        return
+    end
+
     tag = {};
-    for i = 1:num_runs
+    for i = 1:params.num_runs
 
         tag{i} = ['r' num2str(i-1) '_' num2str(round(rand * 999999))];
         display(['Starting sim run ' tag{i} ' in output dir: ' output_dirs.root '_' num2str(i)]);
         scriptname=['/fastdata/' getenv('USER') '/' tag{i} '_run_sim.sh'];
-        script=['pushd ' getenv('HOME') '/SpineML_2_BRAHMS && ./convert_script_s2b -g ' ...
-                '-m ' model_dir ' -e2 -o ' output_dirs.root '_' num2str(i) ' && popd'];
+        % pushd
+        script=['pushd ' getenv('HOME') '/SpineML_2_BRAHMS && '];
+        % Run convert_script_s2b
+        script=[script './convert_script_s2b -g -m ' model_dir ' -e2 -o ' output_dirs.root '_' num2str(i)];
+        % Add any preflight options (such as '-p "Str_D1:da:0.8"')
+        % to the convert_script command line:
+        if isfield(params, 'preflight_options')
+            script=[script params.preflight_options];
+        end
+        % popd
+        script=[script ' && popd'];
 
         fid = fopen (scriptname, 'w');
         fprintf (fid, '#!/bin/sh\n%s\n', script);
@@ -60,7 +74,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
     errqsub = 0; % Set to 1 if there was a problem qsubbing the job
     while running == 0 && errqsub == 0
         concatenated_output = [];
-        for i = 1:num_runs
+        for i = 1:params.num_runs
             cmd = ['qstat -u ' getenv('USER') ' | grep ' tag{i}  ' | awk -F '' '' ''{print $5}'''];
             [status, output] = system (cmd);
             %cmd = ['qstat | grep ' tag{i}];
@@ -91,7 +105,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
     end
     while running > 0
         concatenated_output = [];
-        for i = 1:num_runs
+        for i = 1:params.num_runs
             cmd = ['qstat -u ' getenv('USER') ' | grep ' getenv('USER') ' | grep ' tag{i}  ' | awk -F '' '' ''{print $5}'''];
             [status, output] = system (cmd);
             %cmd = ['qstat| grep ' tag{i}];
@@ -131,7 +145,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
 
     % Clean up the run scripts
     display ('Clean up run scripts...');
-    for i = 1:num_runs
+    for i = 1:params.num_runs
         scriptname=['/fastdata/' getenv('USER') '/' tag{i} '_run_sim.sh'];
         unlink (scriptname);
     end
@@ -143,7 +157,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
     allb = [];
     allc_x = [];
     allc_y = [];
-    for i = 1:num_runs
+    for i = 1:params.num_runs
         % Eye rotations. This csvread may fail with an error. If it does, then
         % try again a few times, in case it's a fastdata
         % problem. So, first ensure we can access the file.
@@ -215,7 +229,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
         end % else no peak, can't do this stuff.
 
         % Clean up the log data directory:
-        if cleanup
+        if ~isfield(params, 'cleanup') || params.cleanup
             rmcmd = ['rm -rf ' output_dirs.root '_' num2str(i)];
             display (['Calling ' rmcmd]);
             [status, output] = system (rmcmd);
@@ -252,7 +266,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
         peakPos = [0, 0, 0, 0];
     end
     % Clean up model copy
-    if cleanup
+    if ~isfield(params, 'cleanup') || params.cleanup
         rmcmd = ['rm -rf ' output_dirs.model];
         display (['Calling ' rmcmd]);
         [status, output] = system (rmcmd);
