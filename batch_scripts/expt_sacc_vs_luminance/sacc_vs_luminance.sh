@@ -13,6 +13,9 @@ LUMVALSTART=0.6 # 0.5?
 LUMVALEND=4.4 # 2.0?
 LUMVALINC=0.2
 
+# Use an env. variable to select which model to run.
+export OMMODEL='Model3'
+
 mkdir -p results
 
 P_STR='iceberg'

@@ -18,7 +18,13 @@ function [eyeposAvg, eyeposSD] = rotations_weight_prover (targetTheta,num_runs,c
              targetTheta(1), targetTheta(2));
 
     % The input model. Hardcoded.
-    orig_model_dir = [getenv('HOME') '/OMM_NeuroMuscular/Model1'];
+    model_tag = getenv('OMMODEL');
+    if isempty(model_tag)
+        display('Please set the environment variable OMMODEL to something like "Model1"')
+        return
+    end
+    orig_model_dir = [getenv('HOME') '/OMM_NeuroMuscular/' model_tag];
+
     % This codes makes a copy here (so target X/Y can be written out):
     model_dir = ['/fastdata/' getenv('USER') '/input_models/'];
     cmd = ['mkdir -p ' model_dir];

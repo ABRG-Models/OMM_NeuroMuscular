@@ -21,6 +21,9 @@ if [ -d /usr/local/abrg ]; then
     P_STR='ace2'
 fi
 
+# Use an env. variable to select which model to run.
+export OMMODEL='Model3'
+
 for targxval in `seq ${THETAXSTART} ${THETAXINC} ${THETAXEND}`; do
 
     if [ ${P_STR} = 'iceberg' ]; then

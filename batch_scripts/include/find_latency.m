@@ -13,7 +13,12 @@ function [eyeRyAvg, eyeRySD, eyeRyFinals, latency] = find_latency (params)
     % Ranges: -22<=x<=-6 and 6<=x<=22 -22<=y<=-6 and 6<=y<=22
 
     % The input model. Hardcoded.
-    model_dir = [getenv('HOME') '/OMM_NeuroMuscular/Model3'];
+    model_tag = getenv('OMMODEL');
+    if isempty(model_tag)
+        display('Please set the environment variable OMMODEL to something like "Model3"')
+        return
+    end
+    model_dir = [getenv('HOME') '/OMM_NeuroMuscular/' model_tag];
 
     % Add a write-out of the luminances file:
     write_single_luminance_with_fix ([model_dir '/luminances.json'], params);

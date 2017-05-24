@@ -5,8 +5,13 @@ weight = 0.47;
 
 num_parallel = 8; % How many times to run
 
-% The input model. Hardcoded.
-orig_model_dir = [getenv('HOME') '/OMM_NeuroMuscular/Model1'];
+% The input model.
+model_tag = getenv('OMMODEL');
+if isempty(model_tag)
+    display('Please set the environment variable OMMODEL to something like "Model1"')
+    return
+end
+orig_model_dir = [getenv('HOME') '/OMM_NeuroMuscular/' model_tag];
 % This codes makes a copy here:
 model_dir = '/fastdata/' getenv('USER') '/input_models/';
 cmd = ['mkdir -p ' model_dir];

@@ -1,6 +1,6 @@
 run_index = 6
 
-model_dir = [getenv('HOME') '/OMM_NeuroMuscular/Model1'];
+model_dir = [getenv('HOME') '/OMM_NeuroMuscular/' getenv('OMMODEL')];
 thepath = ['/fastdata/' getenv('USER') '/oculomotorRX0RY7_0.8_' num2str(run_index)];
 output_dirs = setup_model_directories ([0, 7], 0.8)
 peaktime = find_peaktime ([output_dirs.root '_' num2str(run_index)])

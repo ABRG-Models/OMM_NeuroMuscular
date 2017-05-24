@@ -31,7 +31,14 @@ function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval, pr
     [d, msg, msgid] = mkdir (['/fastdata/' getenv('USER')])
     [d, msg, msgid] = mkdir (['/fastdata/' getenv('USER') '/OMM_NeuroMuscular'])
     model_dir = ['/fastdata/' getenv('USER') '/OMM_NeuroMuscular/SVTP' num2str(targetThetaX) '_' num2str(targetThetaY) '_' num2str(lumval)]
-    origin_model_dir = [getenv('HOME') '/OMM_NeuroMuscular/Model3'];
+
+    model_tag = getenv('OMMODEL');
+    if isempty(model_tag)
+        display('Please set the environment variable OMMODEL to something like "Model3"')
+        return
+    end
+    origin_model_dir = [getenv('HOME') '/OMM_NeuroMuscular/' model_tag];
+
     % Copy origin_model_dir into model_dir
     copyfile (origin_model_dir, model_dir);
 
