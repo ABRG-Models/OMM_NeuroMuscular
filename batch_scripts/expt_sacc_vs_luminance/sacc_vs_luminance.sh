@@ -11,7 +11,7 @@ NUM_RUNS=6
 
 LUMVALSTART=0.6 # 0.5?
 LUMVALEND=4.4 # 2.0?
-LUMVALINC=0.4
+LUMVALINC=0.2
 
 mkdir -p results
 
