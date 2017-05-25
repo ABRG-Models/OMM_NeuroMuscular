@@ -24,15 +24,23 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
         tag{i} = ['r' num2str(i-1) '_' num2str(round(rand * 999999))];
         display(['Starting sim run ' tag{i} ' in output dir: ' output_dirs.root '_' num2str(i)]);
         scriptname=['/fastdata/' getenv('USER') '/' tag{i} '_run_sim.sh'];
+
         % pushd
         script=['pushd ' getenv('HOME') '/SpineML_2_BRAHMS && '];
+
         % Run convert_script_s2b
-        script=[script './convert_script_s2b -g -m ' model_dir ' -e2 -o ' output_dirs.root '_' num2str(i)];
+        exptnum = 2; % default
+        if isfield(params, 'exptnum')
+            exptnum = params.exptnum;
+        end
+        script=[script './convert_script_s2b -g -m ' model_dir ' -e' num2str(exptnum) ' -o ' output_dirs.root '_' num2str(i)];
+
         % Add any preflight options (such as '-p "Str_D1:da:0.8"')
         % to the convert_script command line:
         if isfield(params, 'preflight_options')
             script=[script params.preflight_options];
         end
+
         % popd
         script=[script ' && popd'];
 
