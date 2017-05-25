@@ -41,6 +41,10 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
             script=[script params.preflight_options];
         end
 
+        if isfield(params, 'dopamine')
+            script=[script ' -p"DA value:param:' num2str(params.dopamine) '"'];
+        end
+
         % popd
         script=[script ' && popd'];
 
