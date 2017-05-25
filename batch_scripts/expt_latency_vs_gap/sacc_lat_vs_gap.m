@@ -1,5 +1,5 @@
 %% Run the model to find the saccade latency and end position for a
-%% given target location, gap and target luminance. Fixation
+%% given target location, gap, target luminance and model dopamine level. Fixation
 %% luminance is hardcoded in this function.
 %%
 %% Results are saved in ./results/
@@ -7,9 +7,9 @@
 %% Usage:
 %%
 %%   sacc_lat_vs_gap (targetThetaX, targetThetaY, num_par_runs,
-%%   gap_ms, preflight_options='')
+%%   gap_ms, lum, dop)
 %%
-function sacc_lat_vs_gap (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum, preflight_options='')
+function sacc_lat_vs_gap (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum, dop=-1)
 
     page_screen_output(0);
     page_output_immediately(1);
@@ -22,14 +22,13 @@ function sacc_lat_vs_gap (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum,
     % Configure params object for run_simulation_multi
     params.cleanup = 0;
     params.num_runs = num_par_runs;
-
-    if ~isempty(preflight_options)
-        params.preflight_options = preflight_options;
+    if (dop != -1)
+        params.dopamine = dop;
     end
 
     [d, msg, msgid] = mkdir (['/fastdata/' getenv('USER')])
     [d, msg, msgid] = mkdir (['/fastdata/' getenv('USER') '/OMM_NeuroMuscular'])
-    model_dir = ['/fastdata/' getenv('USER') '/OMM_NeuroMuscular/SVG' num2str(targetThetaX) '_' num2str(targetThetaY) '_' num2str(gap_ms)]
+    model_dir = ['/fastdata/' getenv('USER') '/OMM_NeuroMuscular/SVG' num2str(targetThetaX) '_' num2str(targetThetaY) '_' num2str(gap_ms) '_' num2str(lum) '_' num2str(dop) ]
 
     model_tag = getenv('OMMODEL');
     if isempty(model_tag)
@@ -62,19 +61,20 @@ function sacc_lat_vs_gap (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum,
     % Also from args:
     params.targetThetaX=targetThetaX;
     params.targetThetaY=targetThetaY;
+    params.dopamine = dop;
 
     write_single_luminance_with_fix ([model_dir '/luminances.json'], params);
 
-    output_dirs = setup_model_directories ([targetThetaX, targetThetaY], gap_ms);
+    output_dirs = setup_latency_directories (params, 1);
     [ eyeRyAvg, eyeRySD, eyeRyFinals, peakPos, startMove ] = run_simulation_multi (model_dir, output_dirs, params)
 
-    resname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_G' num2str(gap_ms) '_L' num2str(lum) '.dat'];
-    resdatname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_G' num2str(gap_ms) '_L' num2str(lum)];
+    resname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_G' num2str(gap_ms) '_L' num2str(lum) '_D' num2str(dop) '.dat'];
+    resdatname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_G' num2str(gap_ms) '_L' num2str(lum) '_D' num2str(dop)];
     resdatname = strrep (resdatname, '.', 'p');
     % You can't put minus signs in the resdat name, either.
     resdatname = strrep (resdatname, '-', 'm');
 
-    vs = [targetThetaX, targetThetaY, gap_ms, lum, eyeRyAvg, eyeRySD, mean(startMove)-(1000.*params.targetOn), std(startMove)];
+    vs = [targetThetaX, targetThetaY, gap_ms, lum, eyeRyAvg, eyeRySD, mean(startMove)-(1000.*params.targetOn), std(startMove), dop];
 
     result = struct();
     result.params = params;
