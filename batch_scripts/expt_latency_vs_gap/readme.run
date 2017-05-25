@@ -1,0 +1,7 @@
+To run this experiment, execute sacc_lat_vs_gap.sh several times,
+modifying the value of LUMVAL in the script each time. This will
+produce r_*.dat files in results/.
+
+In octave, run plot_sacc_vs_g.m to plot the results and also output a
+set of csv files (also in results/) which can be read into the veusz
+graph.
