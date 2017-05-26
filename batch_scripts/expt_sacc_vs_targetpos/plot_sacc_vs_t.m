@@ -34,7 +34,7 @@ for i = [1 : llen]
     size(rr)
     sz_2 = size(result.(resdatname))(2)
 
-    if (sz_2 == 12)
+    if (sz_2 == 14)
         rr = [rr; result.(resdatname)];
     end
 
@@ -65,19 +65,22 @@ for i = [1 : llen]
 end
 
 % The rr array contains these columns:
-% thetaX, thetaY, fix_lum, lumval, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD, latmean, latsd
+% thetaX, thetaY, fix_lum, gap_ms, lumval, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD, latmean, latsd, dopamine
+
 %
 % sort rr on target position value
 rr = sortrows(rr,1);
 
 % Achieved position (Rot X)
 figure(32);
-errorbar (rr(:,1),rr(:,5),rr(:,8),'o-')
+errorbar (rr(:,1),rr(:,6),rr(:,9),'o-')
 xlabel('Target x');
 ylabel('eyeRx');
+legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))])
 
 % Latency
 figure(35);
-errorbar (rr(:,1),rr(:,11),rr(:,12),'o-')
+errorbar (rr(:,1),rr(:,12),rr(:,13),'o-')
 xlabel('Target x');
 ylabel('Latency (ms)');
+legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))]);

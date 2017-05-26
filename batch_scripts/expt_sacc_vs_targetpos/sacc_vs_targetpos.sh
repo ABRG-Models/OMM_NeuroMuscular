@@ -5,14 +5,19 @@
 # size, saccade size SD) are stored in octave data files. Load these
 # and plot using plot_sacc_vs_t.m
 
+# Note that this is sacc vs target pos for rotations about X,
+# i.e. vertical movements.
+
+# Fixed parameters for this run:
+LUMVAL=1
+DOPAMINE=0.7
+
 THETAXSTART=-7
 THETAXINC=-1 # Stick to integers! Design of eyeframe/worldframe code requires this.
 THETAXEND=-15
 
 THETAY=0
 NUM_RUNS=12
-
-LUMVAL=1
 
 mkdir -p results
 
@@ -55,7 +60,7 @@ if [ \$oct_run_rtn -gt "0" ]; then
 fi
 popd
 
-octave -q --eval "sacc_vs_targetpos(${targxval},${THETAY},${NUM_RUNS},${LUMVAL})"
+octave -q --eval "sacc_vs_targetpos(${targxval},${THETAY},${NUM_RUNS},${LUMVAL},${DOPAMINE})"
 exit 0
 EOF
 

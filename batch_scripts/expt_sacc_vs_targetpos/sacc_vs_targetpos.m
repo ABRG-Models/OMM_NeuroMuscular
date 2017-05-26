@@ -11,7 +11,7 @@
 %%
 %%   sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval)
 %%
-function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval, preflight_options='')
+function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval, dop=-1)
 
     page_screen_output(0);
     page_output_immediately(1);
@@ -24,9 +24,7 @@ function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval, pr
     % Configure params object for run_simulation_multi
     params.cleanup = 0;
     params.num_runs = num_par_runs;
-    if ~isempty(preflight_options)
-        params.preflight_options = preflight_options;
-    end
+    params.dopamine = dop;
 
     [d, msg, msgid] = mkdir (['/fastdata/' getenv('USER')])
     [d, msg, msgid] = mkdir (['/fastdata/' getenv('USER') '/OMM_NeuroMuscular'])
@@ -52,8 +50,11 @@ function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval, pr
     output_dirs = setup_model_directories ([targetThetaX, targetThetaY], lumval);
     [ eyeRyAvg, eyeRySD, eyeRyFinals, peakPos, startMove ] = run_simulation_multi (model_dir, output_dirs, params)
 
-    resname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_' num2str(lumval) '.dat'];
-    resdatname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_' num2str(lumval)];
+    % This is the standard results filename format, with G0 because this
+    % is only carried out with steps and D-1 means dopamine was
+    % unchanged from the value encoded in the model.
+    resname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_G0_L' num2str(lumval) '_D' num2str(dop) '.dat'];
+    resdatname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_G0_L' num2str(lumval) '_D' num2str(dop)];
     resdatname = strrep (resdatname, '.', 'p');
     % You can't put minus signs in the resdat name, either.
     resdatname = strrep (resdatname, '-', 'm');
@@ -61,9 +62,10 @@ function sacc_vs_targetpos (targetThetaX, targetThetaY, num_par_runs, lumval, pr
     step_time_ms = step_time*1000; % latency is time of movement
                                    % starting - step time.
 
-    % Do we put more into this? fix_lum? Make it more general for
-    % gaps etc?
-    vs = [targetThetaX, targetThetaY, fix_lum, lumval, eyeRyAvg, eyeRySD, mean(startMove)-step_time_ms, std(startMove)];
+    % The format of vs, and therefore result, is standard between
+    % thsi script and sacc_lat_vs_gap.m.
+    gap_ms = 0;
+    vs = [targetThetaX, targetThetaY, fix_lum, gap_ms, lumval, eyeRyAvg, eyeRySD, mean(startMove)-step_time_ms, std(startMove), dop];
 
     result = struct();
     result.(resdatname) = vs;
