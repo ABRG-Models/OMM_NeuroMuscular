@@ -21,7 +21,7 @@ for i = [1 : llen]
     size(rr);
     sz_2 = size(result.(resdatname))(2)
 
-    if (sz_2 >= 13)
+    if (sz_2 == 14)
         rr = [rr; result.(resdatname)];
     else
         display('Not the right size');
@@ -30,14 +30,14 @@ for i = [1 : llen]
 end
 
 % The rr array contains these columns:
-% thetaX, thetaY, gap_ms, lum, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD, latmean, latsd
+% thetaX, thetaY, fix_lum, gap_ms, lumval, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD, latmean, latsd, dopamine
 %
 % sort rr on dopamine
-rr = sortrows(rr,13)
+rr = sortrows(rr,14)
 
-% Sort also by luminance (col 4) and separate out into lat vs. gap
+% Sort also by luminance (col 5) and separate out into lat vs. gap
 % for differing luminances.
-luminances = unique(rr(:,4));
+luminances = unique(rr(:,5));
 
 % lat vs dopamine
 figure(32);
@@ -47,12 +47,13 @@ colcount = 1;
 for l = luminances'
     l
     rr_1 = [];
-    rr_1 = rr(find(rr(:,4)==l),:);
-    errorbar (rr_1(:,13),rr_1(:,11),rr_1(:,12), colours{colcount})
+    rr_1 = rr(find(rr(:,5)==l),:);
+    errorbar (rr_1(:,14),rr_1(:,12),rr_1(:,13), colours{colcount})
     hold on;
-    legend_str = [legend_str; num2str(l)];
+    legend_str = [legend_str; 'G: ' num2str(rr_1(1,4)) ' L: ' num2str(l)];
     colcount = colcount + 1;
 end
 xlabel('dopamine');
 ylabel('Latency (ms)');
 legend(legend_str);
+title(['X/Y ' num2str(rr(1,1)) '/' num2str(rr(1,2)) ]);

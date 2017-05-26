@@ -5,16 +5,17 @@
 # saccade size, saccade size SD, latency, latency SD) are stored in
 # octave data files. Load these and plot using plot_sacc_vs_g.m
 
-DOPSTART=0.4
+# Fixed parameters
+LUMVAL=0.7
+GAP_MS=0
+THETAX=0
+THETAY=-8
+
+DOPSTART=0.2
 DOPINC=0.1
 DOPEND=1.0
 
-THETAX=0
-THETAY=-8
 NUM_RUNS=12
-
-LUMVAL=0.7
-GAP_MS=0
 
 # Ensure results dir exists
 mkdir -p results
