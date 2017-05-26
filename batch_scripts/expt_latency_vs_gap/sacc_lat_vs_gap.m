@@ -66,6 +66,7 @@ function sacc_lat_vs_gap (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum,
     write_single_luminance_with_fix ([model_dir '/luminances.json'], params);
 
     output_dirs = setup_latency_directories (params, 1);
+
     [ eyeRyAvg, eyeRySD, eyeRyFinals, peakPos, startMove ] = run_simulation_multi (model_dir, output_dirs, params)
 
     resname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_G' num2str(gap_ms) '_L' num2str(lum) '_D' num2str(dop) '.dat'];
