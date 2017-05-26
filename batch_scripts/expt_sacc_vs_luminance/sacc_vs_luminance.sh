@@ -5,8 +5,11 @@
 # size, saccade size SD) are stored in octave data files. Load these
 # and plot using plot_sacc_vs_t.m
 
+# Fixed parameters
 THETAX=0 # Integer values only
 THETAY=-10
+DOPAMINE=0.7
+
 NUM_RUNS=6
 
 LUMVALSTART=0.6 # 0.5?
@@ -55,7 +58,7 @@ fi
 popd
 
 # Need to add path for sacc_vs_targetpos:
-octave -q --eval "addpath('../expt_sacc_vs_targetpos'); sacc_vs_targetpos(${THETAX},${THETAY},${NUM_RUNS},${lumval})"
+octave -q --eval "addpath('../expt_sacc_vs_targetpos'); sacc_vs_targetpos(${THETAX},${THETAY},${NUM_RUNS},${lumval},${DOPAMINE})"
 exit 0
 EOF
 

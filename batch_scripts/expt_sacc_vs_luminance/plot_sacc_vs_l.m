@@ -31,7 +31,7 @@ for i = [1 : llen]
 
     r = struct_merge (r, result);
 
-    if (size(result.(resdatname))(2) == 12)
+    if (size(result.(resdatname))(2) == 14)
         rr = [rr; result.(resdatname)];
     end
 
@@ -50,23 +50,39 @@ for i = [1 : llen]
 end
 
 % The rr array contains these columns:
-% thetaX, thetaY, fix_lum, lumval, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD, latmean, latsd
+% thetaX, thetaY, fix_lum, gap_ms, lumval, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD, latmean, latsd, dopamine
 %
 % sort rr on luminance value
-rr = sortrows(rr,4);
+rr = sortrows(rr,5);
 
 figure(32);
 % rr(:,3) is lumval
-errorbar (rr(:,3),rr(:,5),rr(:,8),'o-')
+errorbar (rr(:,3),rr(:,6),rr(:,9),'o-')
 
 % Achieved position (Rot X)
 figure(32);
-errorbar (rr(:,4),rr(:,5),rr(:,8),'o-')
+errorbar (rr(:,5),rr(:,6),rr(:,9),'o-')
 xlabel('Luminance');
 ylabel('eyeRx');
+legend(['TargX: ' num2str(rr(1,1)) ' TargY: ' num2str(rr(1,2))]);
+
+% Achieved position (Rot Y)
+figure(33);
+errorbar (rr(:,5),rr(:,7),rr(:,10),'o-')
+xlabel('Luminance');
+ylabel('eyeRy');
+legend(['TargX: ' num2str(rr(1,1)) ' TargY: ' num2str(rr(1,2))]);
+
+% Achieved position (Rot Z)
+figure(34);
+errorbar (rr(:,5),rr(:,8),rr(:,11),'o-')
+xlabel('Luminance');
+ylabel('eyeRz');
+legend(['TargX: ' num2str(rr(1,1)) ' TargY: ' num2str(rr(1,2))]);
 
 % Latency
 figure(35);
-errorbar (rr(:,4),rr(:,11),rr(:,12),'o-')
+errorbar (rr(:,5),rr(:,12),rr(:,13),'o-')
 xlabel('Luminance');
 ylabel('Latency (ms)');
+legend(['TargX: ' num2str(rr(1,1)) ' TargY: ' num2str(rr(1,2))]);
