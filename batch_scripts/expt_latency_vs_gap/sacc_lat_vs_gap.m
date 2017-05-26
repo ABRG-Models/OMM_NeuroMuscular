@@ -75,7 +75,7 @@ function sacc_lat_vs_gap (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum,
     % You can't put minus signs in the resdat name, either.
     resdatname = strrep (resdatname, '-', 'm');
 
-    vs = [targetThetaX, targetThetaY, gap_ms, lum, eyeRyAvg, eyeRySD, mean(startMove)-(1000.*params.targetOn), std(startMove), dop];
+    vs = [targetThetaX, targetThetaY, params.fixLuminance, gap_ms, lum, eyeRyAvg, eyeRySD, mean(startMove)-(1000.*params.targetOn), std(startMove), dop];
 
     result = struct();
     result.params = params;

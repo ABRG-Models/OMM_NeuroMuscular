@@ -5,15 +5,17 @@
 # saccade size, saccade size SD, latency, latency SD) are stored in
 # octave data files. Load these and plot using plot_sacc_vs_g.m
 
+# Fixed params
+THETAX=0
+THETAY=-8
+LUMVAL=0.7
+DOPAMINE=0.7
+
 GAPSTART=-10 # Will need a longer expt to go more than 80 ms overlap
 GAPINC=2
 GAPEND=10
 
-THETAX=0
-THETAY=-8
 NUM_RUNS=12
-
-LUMVAL=0.7
 
 mkdir -p results
 
@@ -56,7 +58,7 @@ if [ \$oct_run_rtn -gt "0" ]; then
 fi
 popd
 
-octave -q --eval "sacc_lat_vs_gap(${THETAX},${THETAY},${NUM_RUNS},${gapval},${LUMVAL})"
+octave -q --eval "sacc_lat_vs_gap(${THETAX},${THETAY},${NUM_RUNS},${gapval},${LUMVAL},${DOPAMINE})"
 exit 0
 EOF
 

@@ -17,27 +17,24 @@ for i = [1 : llen]
     load (rnm); % loads struct variable called result
     r = struct_merge (r, result);
 
-    % For expected size of rr, consult sacc_vs_targetpos.m
     size(rr);
-    sz_2 = size(result.(resdatname))(2)
+    sz_2 = size(result.(resdatname))(2);
 
-    if (sz_2 >= 12)
+    if (sz_2 == 14)
         rr = [rr; result.(resdatname)];
-    else
-        display('Not the right size');
     end
 
 end
 
 % The rr array contains these columns:
-% thetaX, thetaY, gap_ms, lum, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD, latmean, latsd
+% thetaX, thetaY, fix_lum, gap_ms, lumval, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD, latmean, latsd, dopamine
 %
 % sort rr on gap_ms
-rr = sortrows(rr,3)
+rr = sortrows(rr,4);
 
 % Sort also by luminance (col 4) and separate out into lat vs. gap
 % for differing luminances.
-luminances = unique(rr(:,4));
+luminances = unique(rr(:,5));
 
 % lat vs gap
 figure(32);
@@ -47,12 +44,13 @@ colcount = 1;
 for l = luminances'
     l
     rr_1 = [];
-    rr_1 = rr(find(rr(:,4)==l),:);
-    errorbar (rr_1(:,3),rr_1(:,11),rr_1(:,12), colours{colcount})
+    rr_1 = rr(find(rr(:,5)==l),:);
+    errorbar (rr_1(:,4),rr_1(:,12),rr_1(:,13), colours{colcount})
     hold on;
-    legend_str = [legend_str; num2str(l)];
+    legend_str = [legend_str; 'L: ' num2str(l) ' DA: ' num2str(rr_1(1,14))];
     colcount = colcount + 1;
 end
 xlabel('gap (ms)');
 ylabel('Latency (ms)');
+title(['X/Y ' num2str(rr(1,1)) '/' num2str(rr(1,2)) ]);
 legend(legend_str);
