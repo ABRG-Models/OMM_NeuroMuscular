@@ -11,6 +11,7 @@
 # Fixed parameters for this run:
 LUMVAL=1
 DOPAMINE=0.7
+GAP_MS=0
 
 THETAXSTART=-7
 THETAXINC=-1 # Stick to integers! Design of eyeframe/worldframe code requires this.
@@ -60,7 +61,7 @@ if [ \$oct_run_rtn -gt "0" ]; then
 fi
 popd
 
-octave -q --eval "sacc_vs_targetpos(${targxval},${THETAY},${NUM_RUNS},${LUMVAL},${DOPAMINE})"
+octave -q --eval "perform_saccade(${targxval},${THETAY},${NUM_RUNS},${GAP_MS},${LUMVAL},${DOPAMINE})"
 exit 0
 EOF
 

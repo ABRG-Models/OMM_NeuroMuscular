@@ -1,15 +1,24 @@
 %% Run the model to find the saccade latency and end position for a
-%% given target location, gap, target luminance and model dopamine level. Fixation
-%% luminance is hardcoded in this function.
+%% given target location, gap, target luminance and model dopamine
+%% level.
 %%
-%% Results are saved in ./results/
+%% Fixation luminance is hardcoded in this function, as are
+%% numerous parameters such as shape (cross or rectangle), cross
+%% dimensions, fixation location and so on.
+%%
+%% The model to be used is obtained from an environment variable
+%% OMMMODEL. The experiment to be used is the default used in
+%% run_simulation_multi - expt 2.
+%%
+%% Results are saved in ./results/ and there is no return
+%% value. Used by scripts in expt_sacc_vs_*
 %%
 %% Usage:
 %%
-%%   sacc_lat_vs_gap (targetThetaX, targetThetaY, num_par_runs,
+%%   perform_saccade (targetThetaX, targetThetaY, num_par_runs,
 %%   gap_ms, lum, dop)
 %%
-function sacc_lat_vs_gap (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum, dop=-1)
+function perform_saccade (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum, dop)
 
     page_screen_output(0);
     page_output_immediately(1);

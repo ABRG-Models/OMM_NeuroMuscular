@@ -9,6 +9,7 @@
 THETAX=0 # Integer values only
 THETAY=-10
 DOPAMINE=0.7
+GAP_MS=0
 
 NUM_RUNS=6
 
@@ -58,7 +59,7 @@ fi
 popd
 
 # Need to add path for sacc_vs_targetpos:
-octave -q --eval "addpath('../expt_sacc_vs_targetpos'); sacc_vs_targetpos(${THETAX},${THETAY},${NUM_RUNS},${lumval},${DOPAMINE})"
+octave -q --eval "perform_saccade(${THETAX},${THETAY},${NUM_RUNS},${GAP_MS},${lumval},${DOPAMINE})"
 exit 0
 EOF
 
