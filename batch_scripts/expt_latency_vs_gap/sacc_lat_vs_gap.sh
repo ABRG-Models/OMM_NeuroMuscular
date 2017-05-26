@@ -8,7 +8,7 @@
 # Fixed params
 THETAX=0
 THETAY=-8
-LUMVAL=0.7
+LUMVAL=0.9
 DOPAMINE=0.7
 
 GAPSTART=-10 # Will need a longer expt to go more than 80 ms overlap
