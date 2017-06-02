@@ -62,7 +62,6 @@ function perform_saccade (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum,
     params.fixWidthY=2;
     params.fixOn=0;
     params.targetOff=1;
-    params.cleanup=1; % Set to 1 to clean up used files.
 
     % Determined by the gap argument:
     params.targetOn = 0.2;

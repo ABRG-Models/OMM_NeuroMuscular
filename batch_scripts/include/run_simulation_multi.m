@@ -1,4 +1,4 @@
-function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulation_multi(model_dir, output_dirs, params)
+function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulation_multi (model_dir, output_dirs, params)
 %% Run a simulation specified in model_dir, sending results to
 %% output_dirs.root params.num_runs times. Do this by submitting using the
 %% qsub system and use calls to Qstat to determine when the runs
@@ -182,8 +182,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
         if exist(sslogfilepath)
             SS = csvread (sslogfilepath, 1 , 0);
         else
-            display (['We have a problem accessing ' ...
-                      sslogfilepath]);
+            display (['We have a problem accessing ' sslogfilepath]);
             continue;
         end
         eyeRx = SS(:,8);
@@ -241,9 +240,9 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
         end % else no peak, can't do this stuff.
 
         % Clean up the log data directory:
-        if ~isfield(params, 'cleanup') || params.cleanup
+        if ~isfield(params, 'cleanup') || params.cleanup==1
             rmcmd = ['rm -rf ' output_dirs.root '_' num2str(i)];
-            display (['Calling ' rmcmd]);
+            display (['Calling ' rmcmd ' to clean up root']);
             [status, output] = system (rmcmd);
         end
     end
@@ -278,9 +277,9 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
         peakPos = [0, 0, 0, 0];
     end
     % Clean up model copy
-    if ~isfield(params, 'cleanup') || params.cleanup
+    if ~isfield(params, 'cleanup') || params.cleanup==1
         rmcmd = ['rm -rf ' output_dirs.model];
-        display (['Calling ' rmcmd]);
+        display (['Calling ' rmcmd ' to clean up model copy']);
         [status, output] = system (rmcmd);
     end
 

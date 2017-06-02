@@ -9,7 +9,7 @@ plottraj=0
 
 if plottraj
     % Decide how many of the runs you want to show:
-    num_runs_to_show = 6
+    num_runs_to_show = 4
     fa = 33; figure(fa); clf;
     fb = 34; figure(fb); clf;
 end
@@ -38,24 +38,30 @@ for i = [1 : llen]
         rr = [rr; result.(resdatname)];
     end
 
-
     if plottraj
         % Also plot each trajectory from the model run data
         for j=1:num_runs_to_show
-            filepath=['/fastdata/' getenv('USER') '/oculomotorRX' num2str(i) 'RY0_1_' num2str(j)]
-            A=load_ocm_min(filepath);
-            figure(fa);
-            hold on;
-            plot (A.eyeRx(1:450), colours{colcount})
-            title ([num2str(i) ' degrees - x vs t']);
-            xlabel('time (ms)');
-            ylabel('RotX degrees');
-            figure(fb);
-            hold on;
-            plot (A.eyeRx(1:450), A.eyeRy(1:450), 'b')
-            title ([num2str(i) ' degrees - x/y traj'])
-            xlabel('RotX degrees');
-            ylabel('RotY degrees');
+            % F is fix off - that's 0.2s-gap; T is target on; that
+            % is 0.2s. The 0.2 is found in perform_saccade.m
+            filepath=['/fastdata/' getenv('USER') '/ocmRX' num2str(result.params.targetThetaX) 'RY' num2str(result.params.targetThetaY) ...
+                      '_F' num2str(result.params.fixOff) '_T' num2str(result.params.targetOn) '_L' num2str(result.params.targetLuminance) ...
+                      '_D'  num2str(result.params.dopamine) '_1_' num2str(j)]
+            % If file exists...
+            if exist(filepath, 'dir') == 7
+                A=load_ocm_min(filepath);
+                figure(fa);
+                hold on;
+                plot (A.eyeRx(1:450), colours{colcount})
+                title ([num2str(i) ' degrees - x vs t']);
+                xlabel('time (ms)');
+                ylabel('RotX degrees');
+                figure(fb);
+                hold on;
+                plot (A.eyeRx(1:450), A.eyeRy(1:450), 'b')
+                title ([num2str(i) ' degrees - x/y traj'])
+                xlabel('RotX degrees');
+                ylabel('RotY degrees');
+            end
         end
         colcount = colcount + 1;
 

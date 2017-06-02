@@ -39,10 +39,12 @@ for i = [1 : llen]
     if plottraj
         for j=1:num_runs
             filepath=['/fastdata/' getenv('USER') '/oculomotorRX0RY' num2str(thetay) '_' num2str(i) '_' num2str(j)];
-            A=load_ocm_min(filepath);
-            figure(33);
-            hold on;
-            plot (A.eyeRy, colours{colcount})
+            if exist(filepath, 'dir') == 7
+                A=load_ocm_min(filepath);
+                figure(33);
+                hold on;
+                plot (A.eyeRy, colours{colcount})
+            end
         end
     end
     colcount = colcount + 1;
