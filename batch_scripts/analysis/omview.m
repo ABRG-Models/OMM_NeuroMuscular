@@ -1,4 +1,6 @@
 % Visualise several OM plots at once.
+%
+% Usage: omview (data, t)
 function omview (data, t)
 
     omsurf(1, data, 'snr', t, 2)
@@ -32,6 +34,6 @@ function omview (data, t)
     omsetgrid ([2 2]);
 
     omsurf(10, data, 'world', t, 1)
-    omsetgrid ([1 1]);
+    omsetgrid ([0 1]);
 
 end
