@@ -69,7 +69,7 @@ EOF
     if [ ${P_STR} = 'iceberg' ]; then
         PROJECT_TAG='-P insigneo-notremor'
     fi
-    qsub ${PROJECT_TAG} -N SVDOP${dopval} -wd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_latency_vs_dopamine -o results/SVDOP${dopval}.out -j y ./script${dopval}.sh
+    qsub ${PROJECT_TAG} -N SVDOP${dopval} -wd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_dopamine -o results/SVDOP${dopval}.out -j y ./script${dopval}.sh
 
     # 3) Clean up the script
     rm -f ./script${dopval}.sh
