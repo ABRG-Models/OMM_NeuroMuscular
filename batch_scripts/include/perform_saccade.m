@@ -52,13 +52,13 @@ function perform_saccade (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum,
     % This writes into the origin model directory. When running
     % many in parallel, these get mixed up. So make a copy of the
     % model.
-    params.targetCross=0; % 1 if target should be the cross shape.
+    params.targetCross=1; % 1 if target should be the cross shape.
     params.targetLuminance=lum;
-    params.targetWidthX=4;
-    params.targetWidthY=4;
-    params.fixCross=0;
+    params.targetWidthX=6;
+    params.targetWidthY=2;
+    params.fixCross=1;
     params.fixLuminance=0.5;
-    params.fixWidthX=2;
+    params.fixWidthX=6;
     params.fixWidthY=2;
     params.fixOn=0;
     params.targetOff=1;
