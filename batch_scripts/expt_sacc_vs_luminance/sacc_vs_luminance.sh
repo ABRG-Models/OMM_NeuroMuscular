@@ -15,7 +15,7 @@ NUM_RUNS=12
 
 LUMVALSTART=0.2
 LUMVALEND=1.2
-LUMVALINC=0.2
+LUMVALINC=0.1
 
 # Use an env. variable to select which model to run.
 export OMMODEL='Model3'
