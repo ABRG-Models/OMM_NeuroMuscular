@@ -9,7 +9,7 @@
 # i.e. vertical movements.
 
 # Fixed parameters for this run:
-LUMVAL=1
+LUMVAL=0.3
 DOPAMINE=0.7
 GAP_MS=0
 
