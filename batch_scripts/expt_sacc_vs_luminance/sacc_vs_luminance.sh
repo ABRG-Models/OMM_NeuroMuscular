@@ -68,7 +68,7 @@ EOF
     if [ ${P_STR} = 'iceberg' ]; then
         PROJECT_TAG='-P insigneo-notremor'
     fi
-    qsub ${PROJECT_TAG} -N SVL${lumval} -wd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_luminance -o results/SVL${lumval}.out -j y ./script${lumval}.sh
+    qsub ${PROJECT_TAG} -v OMMODEL=${OMMODEL} -N SVL${lumval} -wd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_luminance -o results/SVL${lumval}.out -j y ./script${lumval}.sh
 
     # 3) Clean up the script
     rm -f ./script${lumval}.sh

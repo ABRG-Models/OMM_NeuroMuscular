@@ -67,7 +67,7 @@ EOF
     if [ ${P_STR} = 'iceberg' ]; then
         PROJECT_TAG='-P insigneo-notremor'
     fi
-    qsub ${PROJECT_TAG} -N SVG${gapval} -wd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_gap -o results/SVG${gapval}.out -j y ./script${gapval}.sh
+    qsub ${PROJECT_TAG} -v OMMODEL=${OMMODEL} -N SVG${gapval} -wd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_gap -o results/SVG${gapval}.out -j y ./script${gapval}.sh
 
     # 3) Clean up the script
     rm -f ./script${gapval}.sh
