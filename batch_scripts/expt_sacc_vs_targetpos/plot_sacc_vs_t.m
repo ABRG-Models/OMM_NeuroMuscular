@@ -5,7 +5,7 @@ rr = [];
 lumval=1;
 
 % Plot lots of trajectories? If you want that set plottraj to 1
-plottraj=0
+plottraj=0;
 
 if plottraj
     % Decide how many of the runs you want to show:
@@ -28,11 +28,10 @@ for i = [1 : llen]
     resdatname = strrep (resdatname, '-', 'm');
 
     load (rnm); % loads struct variable called result
-    r = struct_merge (r, result)
+    r = struct_merge (r, result);
 
     % For expected size of rr, consult sacc_vs_targetpos.m
-    size(rr)
-    sz_2 = size(result.(resdatname))(2)
+    sz_2 = size(result.(resdatname))(2);
 
     if (sz_2 == 14)
         rr = [rr; result.(resdatname)];
@@ -80,6 +79,9 @@ rr = sortrows(rr,1);
 % Achieved position (Rot X)
 figure(32);
 errorbar (rr(:,1),rr(:,6),rr(:,9),'o-')
+hold on;
+plot ([-15,-8],[-15,-8], 'g--');
+hold off;
 xlabel('Target x');
 ylabel('eyeRx');
 legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))])
