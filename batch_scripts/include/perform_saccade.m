@@ -37,7 +37,7 @@ function perform_saccade (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum,
 
     [d, msg, msgid] = mkdir (['/fastdata/' getenv('USER')])
     [d, msg, msgid] = mkdir (['/fastdata/' getenv('USER') '/OMM_NeuroMuscular'])
-    model_dir = ['/fastdata/' getenv('USER') '/OMM_NeuroMuscular/SVG' num2str(targetThetaX) '_' num2str(targetThetaY) '_' num2str(gap_ms) '_' num2str(lum) '_' num2str(dop) ]
+    model_dir = ['/fastdata/' getenv('USER') '/OMM_NeuroMuscular/PFSC_X' num2str(targetThetaX) '_Y' num2str(targetThetaY) '_G' num2str(gap_ms) '_L' num2str(lum) '_D' num2str(dop)]
 
     model_tag = getenv('OMMODEL');
     if isempty(model_tag)
@@ -46,8 +46,12 @@ function perform_saccade (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum,
     end
     origin_model_dir = [getenv('HOME') '/OMM_NeuroMuscular/' model_tag];
 
-    % Copy origin_model_dir into model_dir
-    copyfile (origin_model_dir, model_dir);
+    % Copy origin_model_dir into model_dir.
+    if exist (model_dir) == 7
+        copyfile ([origin_model_dir '/*'], [model_dir '/'], 'f');
+    else
+        copyfile (origin_model_dir, model_dir, 'f');
+    end
 
     % This writes into the origin model directory. When running
     % many in parallel, these get mixed up. So make a copy of the
@@ -57,7 +61,7 @@ function perform_saccade (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum,
     params.targetWidthX=6;
     params.targetWidthY=2;
     params.fixCross=1;
-    params.fixLuminance=0.5;
+    params.fixLuminance=0.2;
     params.fixWidthX=6;
     params.fixWidthY=2;
     params.fixOn=0;
@@ -65,7 +69,7 @@ function perform_saccade (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum,
 
     % Determined by the gap argument:
     params.targetOn = 0.2;
-    params.fixOff = 0.2-gap_ms;
+    params.fixOff = 0.2-(gap_ms./1000);
     % Also from args:
     params.targetThetaX=targetThetaX;
     params.targetThetaY=targetThetaY;
