@@ -51,6 +51,7 @@ EOF
     fi
 
     cat >> script${targxval}.sh <<EOF
+env
 pushd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos
 octave -q --eval "octave_run_test"
 oct_run_rtn=\$?
@@ -70,7 +71,9 @@ EOF
     if [ ${P_STR} = 'iceberg' ]; then
         PROJECT_TAG='-P insigneo-notremor'
     fi
-    qsub ${PROJECT_TAG} -N SVTP${targxval} -wd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos -o results/SVTP${targxval}.out -j y ./script${targxval}.sh
+    # On iceberg, the environment, and hence OMMODEL is available on
+    # qsubbed jobs, on ace2 it isn't, hence use of -v option here.
+    qsub ${PROJECT_TAG} -v OMMODEL=${OMMODEL} -N SVTP${targxval} -wd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_targetpos -o results/SVTP${targxval}.out -j y ./script${targxval}.sh
 
     # 3) Clean up the script
     rm -f ./script${targxval}.sh
