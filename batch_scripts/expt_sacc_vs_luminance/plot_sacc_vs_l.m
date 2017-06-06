@@ -2,13 +2,13 @@
 r = struct();
 rr = [];
 
-thetax=0
-thetay=-10
+thetax=0;
+thetay=-10;
 
 plottraj = 0;
 if plottraj
-    num_runs=6 % to show
-    figure(33);
+    num_runs=6; % to show
+    figure(23);
     clf;
 end
 
@@ -25,8 +25,6 @@ for i = [1 : llen]
     resdatname = strrep (resdatname, '.', 'p');
     resdatname = strrep (resdatname, '-', 'm');
 
-    %rnm = ['results/' resname];
-    display(['Loading file ' rnm])
     load (rnm); % loads struct variable called result
 
     r = struct_merge (r, result);
@@ -41,7 +39,7 @@ for i = [1 : llen]
             filepath=['/fastdata/' getenv('USER') '/oculomotorRX0RY' num2str(thetay) '_' num2str(i) '_' num2str(j)];
             if exist(filepath, 'dir') == 7
                 A=load_ocm_min(filepath);
-                figure(33);
+                figure(23);
                 hold on;
                 plot (A.eyeRy, colours{colcount})
             end
@@ -57,33 +55,33 @@ end
 % sort rr on luminance value
 rr = sortrows(rr,5);
 
-figure(32);
+figure(22);
 % rr(:,3) is lumval
 errorbar (rr(:,3),rr(:,6),rr(:,9),'o-')
 
 % Achieved position (Rot X)
-figure(32);
+figure(22);
 errorbar (rr(:,5),rr(:,6),rr(:,9),'o-')
 xlabel('Luminance');
 ylabel('eyeRx');
 legend(['TargX: ' num2str(rr(1,1)) ' TargY: ' num2str(rr(1,2))]);
 
 % Achieved position (Rot Y)
-figure(33);
+figure(23);
 errorbar (rr(:,5),rr(:,7),rr(:,10),'o-')
 xlabel('Luminance');
 ylabel('eyeRy');
 legend(['TargX: ' num2str(rr(1,1)) ' TargY: ' num2str(rr(1,2))]);
 
 % Achieved position (Rot Z)
-figure(34);
+figure(24);
 errorbar (rr(:,5),rr(:,8),rr(:,11),'o-')
 xlabel('Luminance');
 ylabel('eyeRz');
 legend(['TargX: ' num2str(rr(1,1)) ' TargY: ' num2str(rr(1,2))]);
 
 % Latency
-figure(35);
+figure(25);
 errorbar (rr(:,5),rr(:,12),rr(:,13),'o-')
 xlabel('Luminance');
 ylabel('Latency (ms)');

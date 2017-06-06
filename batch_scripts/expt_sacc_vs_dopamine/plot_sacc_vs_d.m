@@ -8,7 +8,7 @@ flist = glob('results/r*.dat');
 llen = size(flist)(1);
 for i = [1 : llen]
 
-    rnm = flist{i}
+    rnm = flist{i};
     resdatname = substr(rnm, 9); % strips initial 'results/' string
     resdatname = substr(resdatname, 1, size(resdatname)(2)-4); % Strips '.dat' off
     resdatname = strrep (resdatname, '.', 'p');
@@ -19,7 +19,7 @@ for i = [1 : llen]
 
     % For expected size of rr, consult sacc_vs_targetpos.m
     size(rr);
-    sz_2 = size(result.(resdatname))(2)
+    sz_2 = size(result.(resdatname))(2);
 
     if (sz_2 == 14)
         rr = [rr; result.(resdatname)];
@@ -33,19 +33,18 @@ end
 % thetaX, thetaY, fix_lum, gap_ms, lumval, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD, latmean, latsd, dopamine
 %
 % sort rr on dopamine
-rr = sortrows(rr,14)
+rr = sortrows(rr,14);
 
 % Sort also by luminance (col 5) and separate out into lat vs. gap
 % for differing luminances.
 luminances = unique(rr(:,5));
 
 % lat vs dopamine
-figure(32);
+figure(42);
 clf;
 legend_str='';
 colcount = 1;
 for l = luminances'
-    l
     rr_1 = [];
     rr_1 = rr(find(rr(:,5)==l),:);
     errorbar (rr_1(:,14),rr_1(:,12),rr_1(:,13), colours{colcount})

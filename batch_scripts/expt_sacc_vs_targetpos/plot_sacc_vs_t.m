@@ -10,8 +10,8 @@ plottraj=0;
 if plottraj
     % Decide how many of the runs you want to show:
     num_runs_to_show = 4
-    fa = 33; figure(fa); clf;
-    fb = 34; figure(fb); clf;
+    fa = 13; figure(fa); clf;
+    fb = 14; figure(fb); clf;
 end
 
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
@@ -77,7 +77,7 @@ end
 rr = sortrows(rr,1);
 
 % Achieved position (Rot X)
-figure(32);
+figure(12);
 errorbar (rr(:,1),rr(:,6),rr(:,9),'o-')
 hold on;
 plot ([-15,-8],[-15,-8], 'g--');
@@ -87,7 +87,7 @@ ylabel('eyeRx');
 legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))])
 
 % Latency
-figure(35);
+figure(15);
 errorbar (rr(:,1),rr(:,12),rr(:,13),'o-')
 xlabel('Target x');
 ylabel('Latency (ms)');

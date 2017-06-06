@@ -8,7 +8,7 @@ flist = glob('results/r*.dat');
 llen = size(flist)(1);
 for i = [1 : llen]
 
-    rnm = flist{i}
+    rnm = flist{i};
     resdatname = substr(rnm, 9); % strips initial 'results/' string
     resdatname = substr(resdatname, 1, size(resdatname)(2)-4); % Strips '.dat' off
     resdatname = strrep (resdatname, '.', 'p');
@@ -42,7 +42,6 @@ clf;
 legend_str='';
 colcount = 1;
 for l = luminances'
-    l
     rr_1 = [];
     rr_1 = rr(find(rr(:,5)==l),:);
     errorbar (rr_1(:,4),rr_1(:,12),rr_1(:,13), colours{colcount})
