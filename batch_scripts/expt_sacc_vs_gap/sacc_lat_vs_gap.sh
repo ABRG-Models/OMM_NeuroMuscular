@@ -27,7 +27,7 @@ fi
 # Use an env. variable to select which model to run.
 export OMMODEL='Model3'
 
-for gapval in `seq -80 20 80` `seq -10 2 10` 1 -1 100; do
+for gapval in `seq -80 20 140` `seq -10 5 10`; do
 
     if [ ${P_STR} = 'iceberg' ]; then
         # 1) write out a script we can qsub for the luminance:
