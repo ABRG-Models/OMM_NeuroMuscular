@@ -6,15 +6,15 @@
 # and plot using plot_sacc_vs_t.m
 
 # Fixed parameters
-THETAX=0 # Integer values only
-THETAY=-10
+THETAX=-10 # Integer values only
+THETAY=0
 DOPAMINE=0.7
 GAP_MS=0
 
-NUM_RUNS=6
+NUM_RUNS=12
 
-LUMVALSTART=0.6 # 0.5?
-LUMVALEND=4.4 # 2.0?
+LUMVALSTART=0.2
+LUMVALEND=1.2
 LUMVALINC=0.2
 
 # Use an env. variable to select which model to run.
