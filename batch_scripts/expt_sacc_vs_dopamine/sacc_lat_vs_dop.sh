@@ -6,10 +6,10 @@
 # octave data files. Load these and plot using plot_sacc_vs_g.m
 
 # Fixed parameters
-LUMVAL=0.7
+LUMVAL=0.3
 GAP_MS=0
-THETAX=0
-THETAY=-8
+THETAX=-10
+THETAY=0
 
 DOPSTART=0.2
 DOPINC=0.1
