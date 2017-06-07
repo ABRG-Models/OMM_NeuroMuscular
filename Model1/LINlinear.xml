@@ -51,7 +51,7 @@
     </OnCondition>
    </Regime>
    <Alias name="in" dimension="?">
-    <MathInline>A*(1-sa)+(0.01*randomNormal)</MathInline>
+    <MathInline>A*(1-sa)+(noise*randomNormal)</MathInline>
    </Alias>
    <StateVariable name="a" dimension="?"/>
    <StateVariable name="out" dimension="?"/>
@@ -64,5 +64,6 @@
   <Parameter name="p" dimension="?"/>
   <Parameter name="tau" dimension="?"/>
   <Parameter name="c" dimension="?"/>
+  <Parameter name="noise" dimension="?"/>
  </ComponentClass>
 </SpineML>
