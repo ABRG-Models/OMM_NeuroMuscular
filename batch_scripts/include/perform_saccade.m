@@ -75,11 +75,13 @@ function perform_saccade (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum,
     params.targetThetaY=targetThetaY;
     params.dopamine = dop;
 
+    % params.exptnum = 0; % default is 2.
+
     write_single_luminance_with_fix ([model_dir '/luminances.json'], params);
 
     output_dirs = setup_latency_directories (params, 1);
 
-    [ eyeRyAvg, eyeRySD, eyeRyFinals, peakPos, startMove ] = run_simulation_multi (model_dir, output_dirs, params)
+    [ eyeRAvg, eyeRSD, eyeRFinals, peakPos, startMove ] = run_simulation_multi (model_dir, output_dirs, params)
 
     resname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_G' num2str(gap_ms) '_L' num2str(lum) '_D' num2str(dop) '.dat'];
     resdatname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_G' num2str(gap_ms) '_L' num2str(lum) '_D' num2str(dop)];
@@ -87,7 +89,7 @@ function perform_saccade (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum,
     % You can't put minus signs in the resdat name, either.
     resdatname = strrep (resdatname, '-', 'm');
 
-    vs = [targetThetaX, targetThetaY, params.fixLuminance, gap_ms, lum, eyeRyAvg, eyeRySD, mean(startMove)-(1000.*params.targetOn), std(startMove), dop];
+    vs = [targetThetaX, targetThetaY, params.fixLuminance, gap_ms, lum, eyeRAvg, eyeRSD, mean(startMove)-(1000.*params.targetOn), std(startMove), dop];
 
     result = struct();
     result.params = params;
