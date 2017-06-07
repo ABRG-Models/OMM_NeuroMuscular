@@ -219,15 +219,20 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
             elseif (endsacc_x == peaktime+1 && endsacc_y > peaktime+1)
                 endsacc = endsacc_y;
             else
-                % Use the average of endsacc_x and y
-                endsacc = round((endsacc_x + endsacc_y) ./ 2);
+                % If one component movement is larger than the other, then use the
+                % endsacc for that component:
+                if abs(eyeRx(endsacc_x)) > abs(eyeRy(endsacc_y))
+                    endsacc = endsacc_x
+                else
+                    endsacc = endsacc_y
+                end
+                % Previously, I used the average of endsacc_x and y:
+                % endsacc = round((endsacc_x + endsacc_y) ./ 2);
             end
             display(['endsacc: ' num2str(endsacc)]);
 
             if (endsacc > 0)
-                eyeposFinals = [eyeposFinals [eyeRx(endsacc); ...
-                                    eyeRy(endsacc); ...
-                                    eyeRz(endsacc)]];
+                eyeposFinals = [eyeposFinals [eyeRx(endsacc); eyeRy(endsacc); eyeRz(endsacc)]];
             else
                 display ('Warning: Couldn''t find end saccade');
             end
@@ -237,6 +242,8 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
             [allc_x, allc_y, alla, allb] = ...
                 find_saccade_location (output_dirs, i, allc_x, allc_y, alla, allb);
 
+        else
+            display ('Failed to find peaktime, can''t find saccade location');
         end % else no peak, can't do this stuff.
 
         % Clean up the log data directory:
@@ -270,12 +277,16 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
             allb
         end
     end
+
     if ~isempty(alla) && ~isempty(allb)
         peakPos = [median(alla), median(allb), mean(allc_x), mean(allc_y)];
+    elseif ~isempty(allc_x) && ~isempty(allc_y)
+        peakPos = [mean(allc_x), mean(allc_y), mean(allc_x), mean(allc_y)]; % Repeat the SC_deep mean twice.
     else
         display('Bad peakPos information, setting peakPos to zeros...');
         peakPos = [0, 0, 0, 0];
     end
+
     % Clean up model copy
     if ~isfield(params, 'cleanup') || params.cleanup==1
         rmcmd = ['rm -rf ' output_dirs.model];

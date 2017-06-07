@@ -1,6 +1,32 @@
+%%
+%% [allc_x, allc_y, alla, allb] = find_saccade_location (output_dirs, run_number, allc_x, allc_y, alla, allb)
+%%
+%% Find out where a single saccade occurred. Return coordinates.
+%% Args:
+%% output_dirs: Location of model output
+%% run_number: The number of the run, used to find the model
+%% directory
+%%
+%% Args and returns:
+%%
+%% allc_x: A vector of the x coordinates of the linear centroid of
+%% the activity in SC_deep. This vector is added to by this
+%% function for the given model/run_number.
+%%
+%% allc_y: A vector of the y coordinates of the linear centroid of
+%% the activity in SC_deep. This vector is added to by this
+%% function for the given model/run_number.
+%%
+%% alla: A vector of the x coordinates of the linear centroid of
+%% the activity in SC_avg. This vector is added to by this
+%% function for the given model/run_number.
+%%
+%% allb: A vector of the y coordinates of the linear centroid of
+%% the activity in SC_avg. This vector is added to by this
+%% function for the given model/run_number.
+%%
 function [allc_x, allc_y, alla, allb] = find_saccade_location ...
         (output_dirs, run_number, allc_x, allc_y, alla, allb)
-    % Find out where a single saccade occurred. Return coordinates
 
     % First we need to find out what time the saccade occurred. Do this by
     % looking at the llbn neurons
