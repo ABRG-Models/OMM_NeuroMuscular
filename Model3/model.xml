@@ -5130,7 +5130,7 @@
         </LL:Annotation>
         <LL:Neuron name="MN zplus" size="1" url="LIN.xml">
             <Property name="m" dimension="?">
-                <FixedValue value="1.2"/>
+                <FixedValue value="1"/>
             </Property>
             <Property name="b" dimension="?">
                 <FixedValue value="0"/>
@@ -5589,7 +5589,7 @@
         </LL:Annotation>
         <LL:Neuron name="MN zminus" size="1" url="LIN.xml">
             <Property name="m" dimension="?">
-                <FixedValue value="1.2"/>
+                <FixedValue value="1"/>
             </Property>
             <Property name="b" dimension="?">
                 <FixedValue value="0"/>
