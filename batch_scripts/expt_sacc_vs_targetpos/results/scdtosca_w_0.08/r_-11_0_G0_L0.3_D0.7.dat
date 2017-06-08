@@ -1,0 +1,112 @@
+# Created by Octave 3.8.2, Thu Jun 08 10:42:44 2017 BST <co1ssj@node117>
+# name: result
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 2
+# name: params
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 18
+# name: cleanup
+# type: scalar
+0
+
+
+# name: num_runs
+# type: scalar
+12
+
+
+# name: dopamine
+# type: scalar
+0.7
+
+
+# name: targetCross
+# type: scalar
+1
+
+
+# name: targetLuminance
+# type: scalar
+0.3
+
+
+# name: targetWidthX
+# type: scalar
+6
+
+
+# name: targetWidthY
+# type: scalar
+2
+
+
+# name: fixCross
+# type: scalar
+1
+
+
+# name: fixLuminance
+# type: scalar
+0.2
+
+
+# name: fixWidthX
+# type: scalar
+6
+
+
+# name: fixWidthY
+# type: scalar
+2
+
+
+# name: fixOn
+# type: scalar
+0
+
+
+# name: targetOff
+# type: scalar
+1
+
+
+# name: targetOn
+# type: scalar
+0.2
+
+
+# name: fixOff
+# type: scalar
+0.2
+
+
+# name: targetThetaX
+# type: scalar
+-11
+
+
+# name: targetThetaY
+# type: scalar
+0
+
+
+# name: exptnum
+# type: scalar
+0
+
+
+
+
+# name: r_m11_0_G0_L0p3_D0p7
+# type: matrix
+# rows: 1
+# columns: 14
+ -11 0 0.2 0 0.3 -9.983565833333332 1.026734333333333 0.5513986666666667 0.6578255919239929 0.1663672252564042 0.02435687444246615 147.8333333333333 1.267304464625848 0.7
+
+
+
+
