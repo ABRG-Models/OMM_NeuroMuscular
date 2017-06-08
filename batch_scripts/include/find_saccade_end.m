@@ -25,8 +25,8 @@ function [endsacc] = find_saccade_end (eyeR, peaktime)
     % vel. By this time, the position of the eye is fairly close to
     % where it will be at t=inf - the extra drift being about 0.4
     % degrees if the model runs to 1 second.
-    endsacc = min (find (deyeR(max_vel_iter:end)<(deyeR(max_vel_iter).*0.0182))) ...
-              + peaktime;
+    peak_vel_proportion = 0.005; % Was 0.0182
+    endsacc = min (find (deyeR(max_vel_iter:end)<(deyeR(max_vel_iter).*peak_vel_proportion))) + peaktime;
 
     % Check endsacc. What if there is no place where it gets that small?
     if (isempty(endsacc))
