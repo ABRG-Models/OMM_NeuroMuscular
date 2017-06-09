@@ -1,4 +1,4 @@
-# Created by Octave 3.8.2, Tue Jun 06 10:20:01 2017 BST <co1ssj@node117>
+# Created by Octave 3.8.2, Thu Jun 08 16:11:07 2017 BST <co1ssj@node117>
 # name: result
 # type: scalar struct
 # ndims: 2
@@ -8,7 +8,7 @@
 # type: scalar struct
 # ndims: 2
  1 1
-# length: 17
+# length: 18
 # name: cleanup
 # type: scalar
 0
@@ -16,7 +16,7 @@
 
 # name: num_runs
 # type: scalar
-12
+6
 
 
 # name: dopamine
@@ -94,13 +94,18 @@
 0
 
 
+# name: exptnum
+# type: scalar
+0
+
+
 
 
 # name: r_m9_0_G0_L0p3_D0p7
 # type: matrix
 # rows: 1
 # columns: 14
- -9 0 0.2 0 0.3 -8.588110833333333 1.105714916666667 0.3691699166666667 1.511950174885272 0.2617567685155814 0.0345783104126333 131.9166666666667 1.378954368902449 0.7
+ -9 0 0.2 0 0.3 -7.383835000000001 0.7875039999999999 0.3303958333333333 0.2352872221562405 0.09474153093970984 0.009888938475218996 143 0.8944271909999159 0.7
 
 
 
