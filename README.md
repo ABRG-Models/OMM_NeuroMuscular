@@ -15,4 +15,11 @@ Model2: This is the model with the centroiding component between SC_deep and
 
 Model3: This is the model with a non-centroided connection from SCdeep to the
         SBG. It has a widening Gaussian projection from FEF_add_noise to FEF
-        and from SC_sup to SC_deep. This is the most successful model.
+        and from SC_sup to SC_deep. I've tried to optimise this model to make
+        the best, most linear vertical movements (Rotations about X).
+
+Model4: Like Model3, but parameters modified to give this the most linear
+        horizontal movements (rotations about Y).
+
+Model5: A copy of 4, which I will tweak to try to get vertical rotations to
+        work reasonably well.
