@@ -59,7 +59,7 @@ fi
 popd
 
 # Need to add path for sacc_vs_targetpos:
-octave -q --eval "perform_saccade(${THETAX},${THETAY},${NUM_RUNS},${GAP_MS},${lumval},${DOPAMINE})"
+octave -q --eval "perform_saccade('results',${THETAX},${THETAY},${NUM_RUNS},${GAP_MS},${lumval},${DOPAMINE})"
 exit 0
 EOF
 

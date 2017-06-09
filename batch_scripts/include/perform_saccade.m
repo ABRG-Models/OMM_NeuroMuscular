@@ -10,7 +10,7 @@
 %% OMMMODEL. The experiment to be used is the default used in
 %% run_simulation_multi - expt 2.
 %%
-%% Results are saved in ./results/ and there is no return
+%% Results are saved in resultdir and there is no return
 %% value. Used by scripts in expt_sacc_vs_*
 %%
 %% Usage:
@@ -18,7 +18,7 @@
 %%   perform_saccade (targetThetaX, targetThetaY, num_par_runs,
 %%   gap_ms, lum, dop)
 %%
-function perform_saccade (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum, dop)
+function perform_saccade (resultdir, targetThetaX, targetThetaY, num_par_runs, gap_ms, lum, dop)
 
     page_screen_output(0);
     page_output_immediately(1);
@@ -75,7 +75,7 @@ function perform_saccade (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum,
     params.targetThetaY=targetThetaY;
     params.dopamine = dop;
 
-    % params.exptnum = 0; % default is 2.
+    params.exptnum = 0; % 0 gives extra logging. default is 2.
 
     write_single_luminance_with_fix ([model_dir '/luminances.json'], params);
 
@@ -95,6 +95,6 @@ function perform_saccade (targetThetaX, targetThetaY, num_par_runs, gap_ms, lum,
     result.params = params;
     result.(resdatname) = vs;
 
-    save (['results/' resname], 'result');
+    save ([resultdir '/' resname], 'result');
 
 end

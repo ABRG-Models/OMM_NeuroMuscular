@@ -18,7 +18,7 @@ THETAXINC=-1 # Stick to integers! Design of eyeframe/worldframe code requires th
 THETAXEND=-15
 
 THETAY=0
-NUM_RUNS=12
+NUM_RUNS=6
 
 mkdir -p results
 
@@ -62,7 +62,7 @@ if [ \$oct_run_rtn -gt "0" ]; then
 fi
 popd
 
-octave -q --eval "perform_saccade(${targxval},${THETAY},${NUM_RUNS},${GAP_MS},${LUMVAL},${DOPAMINE})"
+octave -q --eval "perform_saccade('results',${targxval},${THETAY},${NUM_RUNS},${GAP_MS},${LUMVAL},${DOPAMINE})"
 exit 0
 EOF
 

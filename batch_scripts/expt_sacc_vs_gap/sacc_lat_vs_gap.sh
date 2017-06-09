@@ -58,7 +58,7 @@ if [ \$oct_run_rtn -gt "0" ]; then
 fi
 popd
 
-octave -q --eval "perform_saccade(${THETAX},${THETAY},${NUM_RUNS},${gapval},${LUMVAL},${DOPAMINE})"
+octave -q --eval "perform_saccade('results',${THETAX},${THETAY},${NUM_RUNS},${gapval},${LUMVAL},${DOPAMINE})"
 exit 0
 EOF
 
