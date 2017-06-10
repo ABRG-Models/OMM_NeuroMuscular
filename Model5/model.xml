@@ -2770,8 +2770,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="-3.58374" ypos="-4.50701"/>
-                            <C2 xpos="0.489242" ypos="-4.4627"/>
-                            <end xpos="0.489242" ypos="-6.30995"/>
+                            <C2 xpos="0.504677" ypos="-4.4627"/>
+                            <end xpos="0.504677" ypos="-6.30995"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -2896,8 +2896,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="3.9337" ypos="-3.63122"/>
-                            <C2 xpos="2.7543" ypos="-5.19003"/>
-                            <end xpos="1.00144" ypos="-6.30966"/>
+                            <C2 xpos="2.76973" ypos="-5.19003"/>
+                            <end xpos="1.01687" ypos="-6.30966"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -3058,8 +3058,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="1.05121" ypos="-5.7616"/>
-                            <C2 xpos="0.991485" ypos="-5.7607"/>
-                            <end xpos="0.991485" ypos="-6.30935"/>
+                            <C2 xpos="1.00692" ypos="-5.7607"/>
+                            <end xpos="1.00692" ypos="-6.30935"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -3124,7 +3124,7 @@
     <LL:Population>
         <LL:Annotation>
             <SpineCreator>
-                <xPos value="1.00364"/>
+                <xPos value="1.01906"/>
                 <yPos value="-6.81544"/>
                 <animSpeed value="0.2"/>
                 <aspectRatio value="1.66667"/>
@@ -3959,8 +3959,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="9.38738" ypos="-4.21041"/>
-                            <C2 xpos="12.3743" ypos="-4.57899"/>
-                            <end xpos="12.3743" ypos="-6.48254"/>
+                            <C2 xpos="12.3743" ypos="-4.56351"/>
+                            <end xpos="12.3743" ypos="-6.46706"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -4065,7 +4065,7 @@
         </LL:Annotation>
         <LL:Neuron name="MN up" size="1" url="LIN.xml">
             <Property name="m" dimension="?">
-                <FixedValue value="1.2"/>
+                <FixedValue value="1.1"/>
             </Property>
             <Property name="b" dimension="?">
                 <FixedValue value="0"/>
@@ -4194,8 +4194,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="14.9697" ypos="-2.9542"/>
-                            <C2 xpos="15.1928" ypos="-5.29039"/>
-                            <end xpos="13.1585" ypos="-6.48254"/>
+                            <C2 xpos="15.1928" ypos="-5.27491"/>
+                            <end xpos="13.1585" ypos="-6.46706"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -4289,8 +4289,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="12.842" ypos="-5.21293"/>
-                            <C2 xpos="12.7957" ypos="-6.01508"/>
-                            <end xpos="12.7957" ypos="-6.48281"/>
+                            <C2 xpos="12.7957" ypos="-5.9996"/>
+                            <end xpos="12.7957" ypos="-6.46733"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -4314,7 +4314,7 @@
         <LL:Annotation>
             <SpineCreator>
                 <xPos value="12.7858"/>
-                <yPos value="-6.98759"/>
+                <yPos value="-6.97217"/>
                 <animSpeed value="0.2"/>
                 <aspectRatio value="1.66667"/>
                 <colour red="255" green="0" blue="0"/>
@@ -4328,7 +4328,7 @@
         </LL:Annotation>
         <LL:Neuron name="MN down" size="1" url="LIN.xml">
             <Property name="m" dimension="?">
-                <FixedValue value="1.2"/>
+                <FixedValue value="1.1"/>
             </Property>
             <Property name="b" dimension="?">
                 <FixedValue value="0"/>
