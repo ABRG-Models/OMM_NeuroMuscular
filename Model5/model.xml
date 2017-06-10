@@ -2770,8 +2770,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="-3.58374" ypos="-4.50701"/>
-                            <C2 xpos="0.504741" ypos="-4.4627"/>
-                            <end xpos="0.504741" ypos="-6.30995"/>
+                            <C2 xpos="0.50481" ypos="-4.4627"/>
+                            <end xpos="0.50481" ypos="-6.30995"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -2896,8 +2896,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="3.9337" ypos="-3.63122"/>
-                            <C2 xpos="2.7698" ypos="-5.19003"/>
-                            <end xpos="1.01694" ypos="-6.30966"/>
+                            <C2 xpos="2.76987" ypos="-5.19003"/>
+                            <end xpos="1.01701" ypos="-6.30966"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -3058,8 +3058,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="1.05121" ypos="-5.7616"/>
-                            <C2 xpos="1.00698" ypos="-5.7607"/>
-                            <end xpos="1.00698" ypos="-6.30935"/>
+                            <C2 xpos="1.00705" ypos="-5.7607"/>
+                            <end xpos="1.00705" ypos="-6.30935"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -3959,8 +3959,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="9.38738" ypos="-4.21041"/>
-                            <C2 xpos="12.3743" ypos="-4.56325"/>
-                            <end xpos="12.3743" ypos="-6.4668"/>
+                            <C2 xpos="12.3743" ypos="-4.56297"/>
+                            <end xpos="12.3743" ypos="-6.46652"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -4065,7 +4065,7 @@
         </LL:Annotation>
         <LL:Neuron name="MN up" size="1" url="LIN.xml">
             <Property name="m" dimension="?">
-                <FixedValue value="1"/>
+                <FixedValue value="1.1"/>
             </Property>
             <Property name="b" dimension="?">
                 <FixedValue value="0"/>
@@ -4194,8 +4194,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="14.9697" ypos="-2.9542"/>
-                            <C2 xpos="15.1928" ypos="-5.27465"/>
-                            <end xpos="13.1585" ypos="-6.4668"/>
+                            <C2 xpos="15.1928" ypos="-5.27437"/>
+                            <end xpos="13.1585" ypos="-6.46652"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -4289,8 +4289,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="12.842" ypos="-5.21293"/>
-                            <C2 xpos="12.7957" ypos="-5.99934"/>
-                            <end xpos="12.7957" ypos="-6.46707"/>
+                            <C2 xpos="12.7957" ypos="-5.99906"/>
+                            <end xpos="12.7957" ypos="-6.46679"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -4328,7 +4328,7 @@
         </LL:Annotation>
         <LL:Neuron name="MN down" size="1" url="LIN.xml">
             <Property name="m" dimension="?">
-                <FixedValue value="1"/>
+                <FixedValue value="1.1"/>
             </Property>
             <Property name="b" dimension="?">
                 <FixedValue value="0"/>
@@ -4587,7 +4587,7 @@
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_avg to LLBN up Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="1.6"/>
+                        <FixedValue value="1.7"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
@@ -4621,7 +4621,7 @@
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_avg to LLBN down Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="1.6"/>
+                        <FixedValue value="1.7"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
