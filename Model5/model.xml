@@ -2770,8 +2770,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="-3.58374" ypos="-4.50701"/>
-                            <C2 xpos="0.504838" ypos="-4.4627"/>
-                            <end xpos="0.504838" ypos="-6.30995"/>
+                            <C2 xpos="0.50487" ypos="-4.4627"/>
+                            <end xpos="0.50487" ypos="-6.30995"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -2896,8 +2896,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="3.9337" ypos="-3.63122"/>
-                            <C2 xpos="2.7699" ypos="-5.19003"/>
-                            <end xpos="1.01704" ypos="-6.30966"/>
+                            <C2 xpos="2.76993" ypos="-5.19003"/>
+                            <end xpos="1.01707" ypos="-6.30966"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -3058,8 +3058,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="1.05121" ypos="-5.7616"/>
-                            <C2 xpos="1.00708" ypos="-5.7607"/>
-                            <end xpos="1.00708" ypos="-6.30935"/>
+                            <C2 xpos="1.00711" ypos="-5.7607"/>
+                            <end xpos="1.00711" ypos="-6.30935"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -3959,8 +3959,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="9.38738" ypos="-4.21041"/>
-                            <C2 xpos="12.3743" ypos="-4.56286"/>
-                            <end xpos="12.3743" ypos="-6.46641"/>
+                            <C2 xpos="12.3743" ypos="-4.56273"/>
+                            <end xpos="12.3743" ypos="-6.46629"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -4194,8 +4194,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="14.9697" ypos="-2.9542"/>
-                            <C2 xpos="15.1928" ypos="-5.27426"/>
-                            <end xpos="13.1585" ypos="-6.46641"/>
+                            <C2 xpos="15.1928" ypos="-5.27414"/>
+                            <end xpos="13.1585" ypos="-6.46629"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -4289,8 +4289,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="12.842" ypos="-5.21293"/>
-                            <C2 xpos="12.7957" ypos="-5.99895"/>
-                            <end xpos="12.7957" ypos="-6.46668"/>
+                            <C2 xpos="12.7957" ypos="-5.99882"/>
+                            <end xpos="12.7957" ypos="-6.46656"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -4587,7 +4587,7 @@
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_avg to LLBN up Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="1.8"/>
+                        <FixedValue value="1.9"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
@@ -4621,7 +4621,7 @@
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_avg to LLBN down Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="1.8"/>
+                        <FixedValue value="1.9"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
@@ -4655,7 +4655,7 @@
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_avg to LLBN zplus Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="1.8"/>
+                        <FixedValue value="1.9"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
@@ -4668,8 +4668,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="6.80662" ypos="5.00667"/>
-                            <C2 xpos="21.3222" ypos="5.54775"/>
-                            <end xpos="21.32" ypos="2.53818"/>
+                            <C2 xpos="21.3381" ypos="5.54775"/>
+                            <end xpos="21.3359" ypos="2.53818"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -4689,7 +4689,7 @@
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_avg to LLBN zminus Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="1.8"/>
+                        <FixedValue value="1.9"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
@@ -5157,7 +5157,7 @@
     <LL:Population>
         <LL:Annotation>
             <SpineCreator>
-                <xPos value="21.1807"/>
+                <xPos value="21.1961"/>
                 <yPos value="2.03498"/>
                 <animSpeed value="0.2"/>
                 <aspectRatio value="1.66667"/>
@@ -5199,10 +5199,10 @@
             <LL:Annotation>
                 <SpineCreator>
                     <DrawOptions style="4" showlabel="0"/>
-                    <start x="21.1753" y="1.53889"/>
+                    <start x="21.1912" y="1.53889"/>
                     <curves>
                         <curve>
-                            <C1 xpos="21.1753" ypos="-0.0690717"/>
+                            <C1 xpos="21.1912" ypos="-0.0690717"/>
                             <C2 xpos="21.0821" ypos="-0.0916569"/>
                             <end xpos="21.0821" ypos="-1.30607"/>
                         </curve>
@@ -5227,10 +5227,10 @@
             <LL:Annotation>
                 <SpineCreator>
                     <DrawOptions style="0" showlabel="0"/>
-                    <start x="20.9104" y="1.53787"/>
+                    <start x="20.9263" y="1.53787"/>
                     <curves>
                         <curve>
-                            <C1 xpos="20.9104" ypos="-0.0623376"/>
+                            <C1 xpos="20.9263" ypos="-0.0623376"/>
                             <C2 xpos="18.9813" ypos="-0.064159"/>
                             <end xpos="18.9813" ypos="-1.37245"/>
                         </curve>
@@ -5301,8 +5301,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="22.3914" ypos="1.12439"/>
-                            <C2 xpos="21.5805" ypos="1.14796"/>
-                            <end xpos="21.5805" ypos="1.53887"/>
+                            <C2 xpos="21.5964" ypos="1.14796"/>
+                            <end xpos="21.5964" ypos="1.53887"/>
                         </curve>
                     </curves>
                 </SpineCreator>
