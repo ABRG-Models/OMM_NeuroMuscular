@@ -22,4 +22,7 @@ Model4: Like Model3, but parameters modified to give this the most linear
         horizontal movements (rotations about Y).
 
 Model5: A copy of 4, which I will tweak to try to get vertical rotations to
-        work reasonably well.
+        work reasonably well in conjunction with horizontal rotations.
+
+TModel1: A model with the theoretical SG->SBG transfer function as in Tabareau
+         et al.
