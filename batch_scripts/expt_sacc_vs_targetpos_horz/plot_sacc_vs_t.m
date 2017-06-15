@@ -38,7 +38,7 @@ end
 rr = sortrows(rr,2);
 
 % Achieved position (Rot Y)
-figure(12);
+figure(62);
 errorbar (rr(:,2),rr(:,7),rr(:,10),'o-')
 hold on;
 plot ([-15,-8],[-15,-8], 'g--');
@@ -48,7 +48,7 @@ ylabel('eyeRy');
 legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))])
 
 % Latency
-figure(15);
+figure(65);
 errorbar (rr(:,2),rr(:,12),rr(:,13),'o-')
 xlabel('Target y');
 ylabel('Latency (ms)');
