@@ -2218,7 +2218,7 @@
                 </AllToAllConnection>
                 <LL:WeightUpdate name="IBN left to SC_avg Synapse 0 weight_update" url="Weight.xml" input_src_port="a" input_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="1"/>
+                        <FixedValue value="0"/>
                     </Property>
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="IBN left to SC_avg Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="inhibit">
@@ -2626,7 +2626,7 @@
                 </AllToAllConnection>
                 <LL:WeightUpdate name="IBN right to SC_avg Synapse 0 weight_update" url="Weight.xml" input_src_port="a" input_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="1"/>
+                        <FixedValue value="0"/>
                     </Property>
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="IBN right to SC_avg Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="inhibit">
@@ -3612,7 +3612,7 @@
                 </AllToAllConnection>
                 <LL:WeightUpdate name="IBN up to SC_avg Synapse 0 weight_update" url="Weight.xml" input_src_port="a" input_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="1"/>
+                        <FixedValue value="0"/>
                     </Property>
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="IBN up to SC_avg Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="inhibit">
@@ -3815,7 +3815,7 @@
                 </AllToAllConnection>
                 <LL:WeightUpdate name="IBN down to SC_avg Synapse 0 weight_update" url="Weight.xml" input_src_port="a" input_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="1"/>
+                        <FixedValue value="0"/>
                     </Property>
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="IBN down to SC_avg Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="inhibit">
