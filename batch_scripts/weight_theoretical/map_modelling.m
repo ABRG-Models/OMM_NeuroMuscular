@@ -15,7 +15,7 @@ plot (x,y2,'r');
 
 % Single exp - either y1 or y2.
 % Double exp - use y = y1 + y2.
-Y = repmat(y2,50,1);
+Y = repmat(y,50,1);
 
 % Here's half a sine wave.
 zer=zeros(1,50);
