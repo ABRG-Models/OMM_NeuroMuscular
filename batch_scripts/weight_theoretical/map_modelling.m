@@ -6,6 +6,8 @@ y1=exp(0.07.*(x-38));
 y2=exp(0.4*(x-39.5));
 y = y1+y2;
 
+y3=exp(0.2*(x-39));
+
 zlim_max=2.5;
 
 figure(10);
@@ -13,9 +15,9 @@ plot (x,y1);
 hold on;
 plot (x,y2,'r');
 
-% Single exp - either y1 or y2.
+% Single exp - either y1 or y2 etc.
 % Double exp - use y = y1 + y2.
-Y = repmat(y,50,1);
+Y = repmat(y3,50,1);
 
 % Here's half a sine wave.
 zer=zeros(1,50);
