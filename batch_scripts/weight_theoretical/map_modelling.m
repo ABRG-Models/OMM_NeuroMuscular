@@ -5,7 +5,17 @@ x=[1:50];
 y1=exp(0.07.*(x-38));
 y2=exp(0.4*(x-39.5));
 y = y1+y2;
-Y = repmat(y,50,1);
+
+zlim_max=2.5;
+
+figure(10);
+plot (x,y1);
+hold on;
+plot (x,y2,'r');
+
+% Single exp - either y1 or y2.
+% Double exp - use y = y1 + y2.
+Y = repmat(y2,50,1);
 
 % Here's half a sine wave.
 zer=zeros(1,50);
@@ -34,27 +44,27 @@ LSHEET = C1.*Y;
 
 figure(1);
 surf(LSHEET);
-zlim([0 8]);
+zlim([0 zlim_max]);
 title('Left');
 
 figure(2);
 surf(RSHEET);
-zlim([0 8]);
+zlim([0 zlim_max]);
 title('Right');
 
 figure(3);
 surf(USHEET);
-zlim([0 8]);
+zlim([0 zlim_max]);
 title('Up');
 
 figure(4);
 surf(DSHEET);
-zlim([0 8]);
+zlim([0 zlim_max]);
 title('Down');
 
 figure(6);
 surf(USHEET.+DSHEET.+LSHEET.+RSHEET);
-zlim([0 8]);
+zlim([0 zlim_max]);
 title('All');
 
 write_neural_sheet(flipud(LSHEET), 'explicitDataBinaryFile50.bin');
