@@ -1159,7 +1159,7 @@
                 </OneToOneConnection>
                 <LL:WeightUpdate name="SC_deep to SC_avg Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="0.039"/>
+                        <FixedValue value="0.05"/>
                     </Property>
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_deep to SC_avg Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
