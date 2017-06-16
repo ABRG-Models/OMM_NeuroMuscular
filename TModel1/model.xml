@@ -2196,38 +2196,6 @@
                 </LL:PostSynapse>
             </LL:Synapse>
         </LL:Projection>
-        <LL:Projection dst_population="SC_avg">
-            <LL:Annotation>
-                <SpineCreator>
-                    <DrawOptions style="0" showlabel="0"/>
-                    <start x="-5.89462" y="0.70014"/>
-                    <curves>
-                        <curve>
-                            <C1 xpos="-4.71" ypos="5.37"/>
-                            <C2 xpos="-4.31161" ypos="4.9796"/>
-                            <end xpos="-1.51222" ypos="5.0914"/>
-                        </curve>
-                    </curves>
-                </SpineCreator>
-            </LL:Annotation>
-            <LL:Synapse>
-                <AllToAllConnection>
-                    <Delay dimension="ms">
-                        <FixedValue value="0"/>
-                    </Delay>
-                </AllToAllConnection>
-                <LL:WeightUpdate name="IBN left to SC_avg Synapse 0 weight_update" url="Weight.xml" input_src_port="a" input_dst_port="in">
-                    <Property name="w" dimension="?">
-                        <FixedValue value="0"/>
-                    </Property>
-                </LL:WeightUpdate>
-                <LL:PostSynapse name="IBN left to SC_avg Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="inhibit">
-                    <Property name="w" dimension="?">
-                        <FixedValue value="1"/>
-                    </Property>
-                </LL:PostSynapse>
-            </LL:Synapse>
-        </LL:Projection>
     </LL:Population>
     <LL:Population>
         <LL:Annotation>
@@ -2600,38 +2568,6 @@
                 <LL:PostSynapse name="IBN right to Thalamus Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="S">
                     <Property name="w" dimension="?">
                         <FixedValue value="60"/>
-                    </Property>
-                </LL:PostSynapse>
-            </LL:Synapse>
-        </LL:Projection>
-        <LL:Projection dst_population="SC_avg">
-            <LL:Annotation>
-                <SpineCreator>
-                    <DrawOptions style="0" showlabel="0"/>
-                    <start x="2.15189" y="0.72683"/>
-                    <curves>
-                        <curve>
-                            <C1 xpos="2.15189" ypos="2.72842"/>
-                            <C2 xpos="0.978833" ypos="3.41116"/>
-                            <end xpos="-0.168189" ypos="4.53416"/>
-                        </curve>
-                    </curves>
-                </SpineCreator>
-            </LL:Annotation>
-            <LL:Synapse>
-                <AllToAllConnection>
-                    <Delay dimension="ms">
-                        <FixedValue value="0"/>
-                    </Delay>
-                </AllToAllConnection>
-                <LL:WeightUpdate name="IBN right to SC_avg Synapse 0 weight_update" url="Weight.xml" input_src_port="a" input_dst_port="in">
-                    <Property name="w" dimension="?">
-                        <FixedValue value="0"/>
-                    </Property>
-                </LL:WeightUpdate>
-                <LL:PostSynapse name="IBN right to SC_avg Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="inhibit">
-                    <Property name="w" dimension="?">
-                        <FixedValue value="1"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
@@ -3590,38 +3526,6 @@
                 </LL:PostSynapse>
             </LL:Synapse>
         </LL:Projection>
-        <LL:Projection dst_population="SC_avg">
-            <LL:Annotation>
-                <SpineCreator>
-                    <DrawOptions style="0" showlabel="0"/>
-                    <start x="6.37892" y="0.695724"/>
-                    <curves>
-                        <curve>
-                            <C1 xpos="4.15" ypos="1.35"/>
-                            <C2 xpos="2.22839" ypos="3.2796"/>
-                            <end xpos="0.138449" ypos="4.53416"/>
-                        </curve>
-                    </curves>
-                </SpineCreator>
-            </LL:Annotation>
-            <LL:Synapse>
-                <AllToAllConnection>
-                    <Delay dimension="ms">
-                        <FixedValue value="0"/>
-                    </Delay>
-                </AllToAllConnection>
-                <LL:WeightUpdate name="IBN up to SC_avg Synapse 0 weight_update" url="Weight.xml" input_src_port="a" input_dst_port="in">
-                    <Property name="w" dimension="?">
-                        <FixedValue value="0"/>
-                    </Property>
-                </LL:WeightUpdate>
-                <LL:PostSynapse name="IBN up to SC_avg Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="inhibit">
-                    <Property name="w" dimension="?">
-                        <FixedValue value="1"/>
-                    </Property>
-                </LL:PostSynapse>
-            </LL:Synapse>
-        </LL:Projection>
     </LL:Population>
     <LL:Population>
         <LL:Annotation>
@@ -3789,38 +3693,6 @@
                 <LL:PostSynapse name="IBN down to SC_deep Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="S">
                     <Property name="w" dimension="?">
                         <FixedValue value="60"/>
-                    </Property>
-                </LL:PostSynapse>
-            </LL:Synapse>
-        </LL:Projection>
-        <LL:Projection dst_population="SC_avg">
-            <LL:Annotation>
-                <SpineCreator>
-                    <DrawOptions style="0" showlabel="0"/>
-                    <start x="13.8459" y="0.246783"/>
-                    <curves>
-                        <curve>
-                            <C1 xpos="6.90793" ypos="0.246783"/>
-                            <C2 xpos="6.2112" ypos="1.56455"/>
-                            <end xpos="0.154452" ypos="4.61452"/>
-                        </curve>
-                    </curves>
-                </SpineCreator>
-            </LL:Annotation>
-            <LL:Synapse>
-                <AllToAllConnection>
-                    <Delay dimension="ms">
-                        <FixedValue value="0"/>
-                    </Delay>
-                </AllToAllConnection>
-                <LL:WeightUpdate name="IBN down to SC_avg Synapse 0 weight_update" url="Weight.xml" input_src_port="a" input_dst_port="in">
-                    <Property name="w" dimension="?">
-                        <FixedValue value="0"/>
-                    </Property>
-                </LL:WeightUpdate>
-                <LL:PostSynapse name="IBN down to SC_avg Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="inhibit">
-                    <Property name="w" dimension="?">
-                        <FixedValue value="1"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
