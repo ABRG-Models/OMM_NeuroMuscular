@@ -1169,6 +1169,38 @@
                 </LL:PostSynapse>
             </LL:Synapse>
         </LL:Projection>
+        <LL:Projection dst_population="SC_sum">
+            <LL:Annotation>
+                <SpineCreator>
+                    <DrawOptions style="4" showlabel="0"/>
+                    <start x="-1.10523" y="6.92568"/>
+                    <curves>
+                        <curve>
+                            <C1 xpos="-1.10523" ypos="6.47784"/>
+                            <C2 xpos="-1.41298" ypos="6.34195"/>
+                            <end xpos="-1.72659" ypos="6.30045"/>
+                        </curve>
+                    </curves>
+                </SpineCreator>
+            </LL:Annotation>
+            <LL:Synapse>
+                <AllToAllConnection>
+                    <Delay dimension="ms">
+                        <FixedValue value="0"/>
+                    </Delay>
+                </AllToAllConnection>
+                <LL:WeightUpdate name="SC_deep to SC_sum Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SC_deep to SC_sum Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
     </LL:Population>
     <LL:Population>
         <LL:Annotation>
@@ -5571,5 +5603,43 @@
                 </LL:PostSynapse>
             </LL:Synapse>
         </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Annotation>
+            <SpineCreator>
+                <xPos value="-2.56"/>
+                <yPos value="6.19"/>
+                <animSpeed value="0.2"/>
+                <aspectRatio value="1.66667"/>
+                <colour red="0" green="0" blue="0"/>
+                <size value="1"/>
+                <tag value="1"/>
+                <x3D value="0"/>
+                <y3D value="0"/>
+                <z3D value="0"/>
+                <is_visualised value="0"/>
+            </SpineCreator>
+        </LL:Annotation>
+        <LL:Neuron name="SC_sum" size="1" url="LIN.xml">
+            <Property name="m" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="b" dimension="?">
+                <FixedValue value="0.05"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="20"/>
+            </Property>
+            <Property name="max" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
     </LL:Population>
 </LL:SpineML>
