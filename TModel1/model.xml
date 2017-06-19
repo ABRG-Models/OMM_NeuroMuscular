@@ -1177,8 +1177,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="-1.10523" ypos="6.47784"/>
-                            <C2 xpos="-1.41298" ypos="6.34195"/>
-                            <end xpos="-1.72659" ypos="6.30045"/>
+                            <C2 xpos="-1.41294" ypos="6.34202"/>
+                            <end xpos="-1.72655" ypos="6.30052"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -5620,26 +5620,7 @@
                 <is_visualised value="0"/>
             </SpineCreator>
         </LL:Annotation>
-        <LL:Neuron name="SC_sum" size="1" url="LIN.xml">
-            <Property name="m" dimension="?">
-                <FixedValue value="1"/>
-            </Property>
-            <Property name="b" dimension="?">
-                <FixedValue value="0.05"/>
-            </Property>
-            <Property name="tau" dimension="?">
-                <FixedValue value="20"/>
-            </Property>
-            <Property name="max" dimension="?">
-                <FixedValue value="1"/>
-            </Property>
-            <Property name="a" dimension="?">
-                <FixedValue value="0"/>
-            </Property>
-            <Property name="y" dimension="?">
-                <FixedValue value="0"/>
-            </Property>
-        </LL:Neuron>
+        <LL:Neuron name="SC_sum" size="1" url="Summer.xml"/>
         <Layout url="none.xml" seed="123" minimum_distance="0"/>
     </LL:Population>
 </LL:SpineML>
