@@ -3,7 +3,9 @@
 % "time" is actually an index into the time series. At the
 % time of writing 1 timestep = 1 ms.
 %
-function peaktime = find_peaktime (basepath)
+% Also return the llbn data as a matrix [llbn_l; llbn_r; llbn_u; llbn_d]
+%
+function [peaktime llbn] = find_peaktime (basepath)
     peaktime = -1;
     [llbn_left, count] = load_sc_data ([basepath '/log/LLBN_left_a_log.bin'], 1);
     display(['Loaded ' num2str(count) ' data points from llbn_l']);
@@ -31,4 +33,6 @@ function peaktime = find_peaktime (basepath)
     peaktime = min(peaktimes);
 
     display (['peaktime = ' num2str(peaktime)]);
+
+    llbn = [llbn_left; llbn_right; llbn_up; llbn_down];
 end
