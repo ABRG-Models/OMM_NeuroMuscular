@@ -30,7 +30,7 @@ NORMTERM = normterm;
 d = [1:50];
 D = repmat (d, 50, 1)';
 
-GAUSS = NORMTERM.*exp(-0.5.*power(DIST./_SIGMA,2));
+GAUSS = NORMTERM.*exp(-0.5.*power(D./_SIGMA,2));
 figure(3)
 surf(GAUSS)
 xlabel('r')
