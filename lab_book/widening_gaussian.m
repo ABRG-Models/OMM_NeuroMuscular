@@ -6,7 +6,7 @@ WF = 15
 sigma = 3
 E2 = 2.5
 
-rshift = 5;
+rshift = 0;
 r = [1+rshift:50+rshift];
 
 M_f =  W_nfs ./ (E2 .* log ((r/(2.*E2))+1));
@@ -16,7 +16,7 @@ xlabel('r');
 ylabel('MagFactor(r)');
 
 _sigma = WF.*sigma./M_f;
-_SIGMA=repmat(_sigma, 50, 1)
+_SIGMA=repmat(_sigma, 50, 1);
 
 figure(2)
 plot (r, _sigma);
@@ -25,8 +25,12 @@ ylabel('_sigma(r)');
 
 %normterm = 1./(power(_sigma,2).*2.*pi);
 %NORMTERM = repmat(normterm, 50, 1);
-normterm = 1./(power(sigma,2).*2.*pi);
-NORMTERM = normterm;
+
+%normterm = 1./(power(sigma,2).*2.*pi);
+%NORMTERM = normterm;
+
+NORMTERM = 1./_sigma;
+
 figure(4)
 plot (r, normterm);
 title ('normterm(r)');
@@ -41,3 +45,5 @@ xlabel('r')
 ylabel('d')
 ylim([1,15])
 view([268 0.1])
+
+sum(GAUSS, 1);
