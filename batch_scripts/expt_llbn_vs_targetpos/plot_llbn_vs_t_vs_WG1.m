@@ -11,7 +11,7 @@ colcount = 1;
 
 for j = [0 4 8 10 12 15]
 
-     globstr = sprintf('results/WF%0.0f/r*.dat', j);
+     globstr = sprintf('results/WideningGaussian1/WF%0.0f/r*.dat', j);
      %display(globstr);
      flist = glob(globstr);
      llen = size(flist)(1);
@@ -19,10 +19,10 @@ for j = [0 4 8 10 12 15]
 
          rnm = flist{i};
          if j<10
-             resdatname = substr(rnm, 13); % strips initial
+             resdatname = substr(rnm, 13+18); % strips initial
                                            % 'results' string
          else
-             resdatname = substr(rnm, 14);
+             resdatname = substr(rnm, 14+18);
          end
 
          resdatname = substr(resdatname, 1, size(resdatname)(2)-4); % Strips '.dat' off
@@ -75,11 +75,14 @@ llbn_sing = llbn_sing(:,2:end);
 figure(62);
 clf;
 hold on;
+colcount = 0;
 legend_str = '';
 for w = wfs
+    colcount = colcount + 1;
     rr_1 = [];
     rr_1 = rr(find(rr(:,15)==w),:);
-    errorbar (rr_1(:,2),rr_1(:,7),rr_1(:,10),'o-')
+    pl = errorbar (rr_1(:,2),rr_1(:,7),rr_1(:,10),'o-')
+    set (pl,'color',colours{colcount});
     legend_str = [legend_str; 'L: ' num2str(rr_1(1,5)) ' DA: ' num2str(rr_1(1,14)) ' WF: ' num2str(w)];
 end
 plot ([-15,-8],[-15,-8], 'g--');
@@ -91,11 +94,13 @@ legend(legend_str);
 figure(65);
 clf;
 hold on;
-
+colcount = 0;
 for w = wfs
+    colcount = colcount + 1;
     rr_1 = [];
     rr_1 = rr(find(rr(:,15)==w),:);
-    errorbar (rr_1(:,2),rr_1(:,12),rr_1(:,13),'o-')
+    pl = errorbar (rr_1(:,2),rr_1(:,12),rr_1(:,13),'o-')
+    set(pl,'color',colours{colcount});
     legend_str = [legend_str; 'Lum: ' num2str(rr_1(1,5)) ' Dopa: ' num2str(rr_1(1,14)) ' WF: ' num2str(w)];
 end
 xlabel('Target y');
