@@ -9,9 +9,9 @@ lumval=1;
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
 colcount = 1;
 
-for j = [0 5 15 25]
+for j = [0 5 10 20]
 
-     globstr = sprintf('results/WG1/sigma%0.0f/r*.dat', j);
+     globstr = sprintf('results/WG2/sigma%0.0f/r*.dat', j);
      %display(globstr);
      flist = glob(globstr);
      llen = size(flist)(1);
