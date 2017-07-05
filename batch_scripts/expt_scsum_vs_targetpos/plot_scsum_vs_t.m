@@ -23,8 +23,9 @@ for i = [1 : llen]
     r = struct_merge (r, result);
 
     % For expected size of rr, consult sacc_vs_targetpos.m
-    sz_2 = size(result.(resdatname))(2);
+    sz_2 = size(result.(resdatname))(2)
 
+    % I'm getting size 8
     if (sz_2 == 14)
         rr = [rr; result.(resdatname)];
     end
@@ -77,6 +78,7 @@ ylabel('Latency (ms)');
 legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))]);
 
 % Means of scsum activity for each target
+display ('mean scsum...')
 figure(66);
 x = [rr(:,2)];
 xx = repmat(x, 1, 600);
@@ -108,16 +110,3 @@ plot (x,lsums,'bo-');
 title ('summed mean scsum activity');
 xlabel ('TargY');
 ylabel ('summed mean scsum activity');
-
-% Output for Veusz
-targrot = [rr(:,2),rr(:,7),rr(:,10)];
-f = fopen ('results/sacc_eyery_vs_targ.csv', 'w');
-fprintf (f, 'TargY,eyeRy,+-\n');
-dlmwrite (f, targrot, '-append');
-fclose(f);
-
-latrot = [rr(:,2),rr(:,12),rr(:,13)];
-f = fopen ('results/sacc_lat_vs_targ.csv', 'w');
-fprintf (f, 'TargY,Latency,+-\n');
-dlmwrite (f, latrot, '-append');
-fclose(f);
