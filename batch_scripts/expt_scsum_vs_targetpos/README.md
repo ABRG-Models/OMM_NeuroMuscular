@@ -30,3 +30,29 @@ with fixed sigma=15.
 
 I'll then work through different widening gaussians for the SC_deep
 recurrent connection.
+
+WG3
+---
+
+Investigating the effect of the normpower parameter. Does it give me
+the even SC_deep activity that I'm trying to produce? Answer - no.
+
+WG4
+---
+
+Now there are WG connections on:
+
+FEF_add_noise -> FEF
+SC_s -> SC_d
+SC_d recurrent
+FEF -> SC_d
+SC_s -> Thalamus ****
+
+And this finally begins to have an effect on the size of the hill in SCdeep!
+
+WG5
+---
+
+Reverting FEF->SC_d connection to regular GaussianKernel to see if it
+was part of the solution. Would like as few WG connections as possible
+to find out those that are critical.

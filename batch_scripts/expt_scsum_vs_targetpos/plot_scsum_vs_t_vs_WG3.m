@@ -9,20 +9,21 @@ lumval=1;
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
 colcount = 1;
 
-for j = [0 5 10 20]
+for j = [0 0.8]
 
-     globstr = sprintf('results/WG2/sigma%0.0f/r*.dat', j);
-     %display(globstr);
+     globstr = sprintf('results/WG3/np%0.1f/r*.dat', j);
+     display(globstr);
      flist = glob(globstr);
      llen = size(flist)(1);
      for i = [1 : llen]
 
-         rnm = flist{i};
-         if j<10
-             resdatname = substr(rnm, 16+4); % strips initial
-                                           % 'results' string
+         rnm = flist{i}
+         if j<1
+             resdatname = substr(rnm, 15+4)
+         elseif j<10
+             resdatname = substr(rnm, 13+4)
          else
-             resdatname = substr(rnm, 17+4);
+             resdatname = substr(rnm, 14+4)
          end
 
          resdatname = substr(resdatname, 1, size(resdatname)(2)-4); % Strips '.dat' off
