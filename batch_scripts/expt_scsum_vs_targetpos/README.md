@@ -48,7 +48,8 @@ SC_d recurrent
 FEF -> SC_d
 SC_s -> Thalamus ****
 
-And this finally begins to have an effect on the size of the hill in SCdeep!
+And this finally begins to have an effect on the size of the hill in
+SCdeep!
 
 WG5
 ---
@@ -56,3 +57,9 @@ WG5
 Reverting FEF->SC_d connection to regular GaussianKernel to see if it
 was part of the solution. Would like as few WG connections as possible
 to find out those that are critical.
+
+WG6
+---
+
+Further to WG5, revert the SC_deep recurrent connection to a regular
+GaussianKernel.
