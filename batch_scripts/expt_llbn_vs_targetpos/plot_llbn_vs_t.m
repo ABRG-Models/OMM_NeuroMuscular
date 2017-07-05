@@ -107,16 +107,3 @@ plot (x,lsums,'bo-');
 title ('summed mean llbn activity');
 xlabel ('TargY');
 ylabel ('summed mean llbn activity');
-
-% Output for Veusz
-targrot = [rr(:,2),rr(:,7),rr(:,10)];
-f = fopen ('results/sacc_eyery_vs_targ.csv', 'w');
-fprintf (f, 'TargY,eyeRy,+-\n');
-dlmwrite (f, targrot, '-append');
-fclose(f);
-
-latrot = [rr(:,2),rr(:,12),rr(:,13)];
-f = fopen ('results/sacc_lat_vs_targ.csv', 'w');
-fprintf (f, 'TargY,Latency,+-\n');
-dlmwrite (f, latrot, '-append');
-fclose(f);
