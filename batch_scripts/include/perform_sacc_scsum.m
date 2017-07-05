@@ -1,4 +1,4 @@
-%% Run the model to find the LLBN activity as well as saccade end position for a
+%% Run the model to find the summed SC_deep activity as well as saccade end position for a
 %% given target location, gap, target luminance and model dopamine
 %% level.
 %%
