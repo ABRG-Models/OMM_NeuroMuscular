@@ -63,3 +63,32 @@ WG6
 
 Further to WG5, revert the SC_deep recurrent connection to a regular
 GaussianKernel.
+
+WG7
+---
+Now lets un-Widen the SC_s to SC_d connection, reverting it back to its
+original regular GaussianKernel.
+
+WG8
+---
+FEFaddnoise->FEF is reverted to Gaussian Kernel
+
+WG9
+---
+SCs->Thal is reverted to one-to-one
+
+WG10
+----
+FEFaddnoise->FEF is switched to Widening Gaussian
+
+WG11
+----
+SCs->Thal is switched to Widening Gaussian
+
+plot_scsum_vs_t_vs_WG456.m shows three connectivity schemes from 
+results/WG4, WG5 and WG6
+
+plot_scsum_vs_t_vs_WG.m shows all connectivity scheme results
+
+plot_scsum_vs_t_vs_WG_selected.m shows selected, important connectivity 
+schemes. Legends should explain.
