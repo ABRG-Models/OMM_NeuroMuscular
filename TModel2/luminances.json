@@ -1,0 +1,18 @@
+{"luminances":
+ [
+    {"shape":"cross","thetaX":0,"thetaY":0,
+     "widthThetaX":6,"widthThetaY":2,
+     "luminance":0.200000,
+     "timeOn":0,"timeOff":0.2},
+
+    {"shape":"cross","thetaX":0,"thetaY":-7,
+     "widthThetaX":6,"widthThetaY":2,
+     "luminance":0.3,
+     "timeOn":0.2,"timeOff":0.4},
+
+    {"shape":"cross","thetaX":0,"thetaY":0,
+     "widthThetaX":6,"widthThetaY":2,
+     "luminance":0.200000,
+     "timeOn":0.4,"timeOff":2}
+ ]
+}
