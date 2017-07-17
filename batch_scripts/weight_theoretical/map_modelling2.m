@@ -82,21 +82,25 @@ figure(1);
 surf(LSHEET);
 zlim([0 zlim_max]);
 title('Left');
+print('left.png');
 
 figure(2);
 surf(RSHEET);
 zlim([0 zlim_max]);
 title('Right');
+print('right.png');
 
 figure(3);
 surf(USHEET);
 zlim([0 zlim_max]);
 title('Up');
+print('up.png');
 
 figure(4);
 surf(DSHEET);
 zlim([0 zlim_max]);
 title('Down');
+print('down.png');
 
 figure(6); clf;
 surf(USHEET.+DSHEET.+LSHEET.+RSHEET);
