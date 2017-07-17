@@ -10,14 +10,14 @@ W_nfs = 50
 % The following will be parameters to the WideningGaussian script
 %
 % The sigma constant from which sigma(r) is computed
-sigma = 20
+sigma = 25
 % E2 participates in the magnification factor. In practice this is
 % not changed, but it's still included as a param.
 E2 = 2.5
 % An r shift - required in the Python script due to indexing from 0
-_rshift = 0;
+_rshift = 1;
 % A normalisation power
-normpower = 1.5;
+normpower = 1.4;
 
 r = [1+_rshift:50+_rshift];
 
