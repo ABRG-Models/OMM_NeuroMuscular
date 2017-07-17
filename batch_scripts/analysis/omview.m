@@ -36,4 +36,10 @@ function omview (data, t)
     omsurf(10, data, 'world', t, 1)
     omsetgrid ([0 1]);
 
+    omplot(11, data, 'eyeRy')
+    omsetgrid ([3 0]);
+
+    omplot(12, data, 'eyeRx')
+    omsetgrid ([4 0]);
+
 end
