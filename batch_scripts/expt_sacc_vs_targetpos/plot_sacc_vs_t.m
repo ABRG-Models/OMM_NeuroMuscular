@@ -85,6 +85,7 @@ hold off;
 xlabel('Target x');
 ylabel('eyeRx');
 legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))])
+title('Vertical');
 
 % Latency
 figure(15);
@@ -92,6 +93,7 @@ errorbar (rr(:,1),rr(:,12),rr(:,13),'o-')
 xlabel('Target x');
 ylabel('Latency (ms)');
 legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))]);
+title('Vertical');
 
 % Output for Veusz
 targrot = [rr(:,1),rr(:,6),rr(:,9)];
