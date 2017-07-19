@@ -202,7 +202,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
         % of the end of the first part of the saccade.
         % use: peaktime = find_peaktime (); Then from here, find a
         % place where the slope of eyeRx reduces.
-        peaktime = find_peaktime ([output_dirs.root '_' num2str(i)])
+        peaktime = find_peaktime ([output_dirs.root '_' num2str(i)]);
 
         if (peaktime != -1)
 
