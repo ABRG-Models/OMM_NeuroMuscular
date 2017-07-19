@@ -34,12 +34,15 @@ function omview (data, t)
     omsetgrid ([2 2]);
 
     omsurf(10, data, 'world', t, 1)
-    omsetgrid ([0 1]);
+    omsetgrid ([1 1]);
 
     omplot(11, data, 'eyeRy')
     omsetgrid ([3 0]);
 
     omplot(12, data, 'eyeRx')
     omsetgrid ([4 0]);
+
+    omplot(13, data, 'eyeRz')
+    omsetgrid ([4 -1]);
 
 end
