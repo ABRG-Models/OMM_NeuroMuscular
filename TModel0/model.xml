@@ -4559,7 +4559,7 @@
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_avg to LLBN zplus Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="0"/>
+                        <FixedValue value="17"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
@@ -4593,7 +4593,7 @@
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_avg to LLBN zminus Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="0"/>
+                        <FixedValue value="17"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
