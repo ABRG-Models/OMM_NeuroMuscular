@@ -1,3 +1,5 @@
+display('Use map_modelling2.m now; the code here is for reference only');
+return
 
 % Modelling left map - double exponential. This is matched to
 % left(15,:) where left is loaded with load_sbgmaps.m.
