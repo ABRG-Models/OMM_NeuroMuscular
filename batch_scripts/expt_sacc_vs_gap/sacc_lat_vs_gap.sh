@@ -6,14 +6,10 @@
 # octave data files. Load these and plot using plot_sacc_vs_g.m
 
 # Fixed params
-THETAX=-9
-THETAY=0
-LUMVAL=0.5
+THETAX=0
+THETAY=-10
+LUMVAL=1
 DOPAMINE=0.7
-
-GAPSTART=-10 # Will need a longer expt to go more than 80 ms overlap
-GAPINC=2
-GAPEND=10
 
 NUM_RUNS=12
 
@@ -25,7 +21,7 @@ if [ -d /usr/local/abrg ]; then
 fi
 
 # Use an env. variable to select which model to run.
-export OMMODEL='Model3'
+export OMMODEL='TModel0'
 
 for gapval in `seq -80 20 140` `seq -10 5 10`; do
 
