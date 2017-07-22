@@ -58,14 +58,14 @@ legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))]);
 title ('Oblique');
 
 % Output for Veusz
-targrot = [rr(:,2),rr(:,7),rr(:,10)];
-f = fopen ('results/sacc_eyery_vs_targ.csv', 'w');
-fprintf (f, 'TargY,eyeRy,+-\n');
-dlmwrite (f, targrot, '-append');
-fclose(f);
+%targrot = [rr(:,2),rr(:,7),rr(:,10)];
+%f = fopen ('results/sacc_eyery_vs_targ.csv', 'w');
+%fprintf (f, 'TargY,eyeRy,+-\n');
+%dlmwrite (f, targrot, '-append');
+%fclose(f);
 
-latrot = [rr(:,2),rr(:,12),rr(:,13)];
-f = fopen ('results/sacc_lat_vs_targ.csv', 'w');
-fprintf (f, 'TargY,Latency,+-\n');
-dlmwrite (f, latrot, '-append');
-fclose(f);
+%latrot = [rr(:,2),rr(:,12),rr(:,13)];
+%f = fopen ('results/sacc_lat_vs_targ.csv', 'w');
+%fprintf (f, 'TargY,Latency,+-\n');
+%dlmwrite (f, latrot, '-append');
+%fclose(f);
