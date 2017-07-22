@@ -53,8 +53,8 @@ if [ \$oct_run_rtn -gt "0" ]; then
     exit 1
 fi
 popd
-
-octave -q --eval "perform_saccade('results',${THETAX},${THETAY},${NUM_RUNS},${gapval},${LUMVAL},${DOPAMINE})"
+mkdir -p results/${OMMODEL}
+octave -q --eval "perform_saccade('results/${OMMODEL}',${THETAX},${THETAY},${NUM_RUNS},${gapval},${LUMVAL},${DOPAMINE})"
 exit 0
 EOF
 
