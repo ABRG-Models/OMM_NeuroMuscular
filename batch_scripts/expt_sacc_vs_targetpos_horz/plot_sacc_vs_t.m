@@ -8,12 +8,12 @@ lumval=1;
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
 colcount = 1;
 
-flist = glob('results/r*.dat');
+flist = glob('results/TModel0/r*.dat');
 llen = size(flist)(1);
 for i = [1 : llen]
 
     rnm = flist{i};
-    resdatname = substr(rnm, 9); % strips initial 'results' string
+    resdatname = substr(rnm, 9+8); % strips initial 'results' string
     resdatname = substr(resdatname, 1, size(resdatname)(2)-4); % Strips '.dat' off
     resdatname = strrep (resdatname, '.', 'p');
     resdatname = strrep (resdatname, '-', 'm');
@@ -46,6 +46,7 @@ hold off;
 xlabel('Target y');
 ylabel('eyeRy');
 legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))])
+title ('Horizontal');
 
 % Latency
 figure(65);
@@ -53,6 +54,7 @@ errorbar (rr(:,2),rr(:,12),rr(:,13),'o-')
 xlabel('Target y');
 ylabel('Latency (ms)');
 legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))]);
+title ('Horizontal');
 
 % Output for Veusz
 targrot = [rr(:,2),rr(:,7),rr(:,10)];

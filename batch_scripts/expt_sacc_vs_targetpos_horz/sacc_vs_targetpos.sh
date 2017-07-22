@@ -6,7 +6,7 @@
 # and plot using plot_sacc_vs_t.m
 
 # Note that this is sacc vs target pos for rotations about Y,
-# i.e. horizontal movements.
+# i.e. horizontal movements.g
 
 # Fixed parameters for this run:
 LUMVAL=0.3
@@ -29,7 +29,7 @@ if [ -d /usr/local/abrg ]; then
 fi
 
 # Use an env. variable to select which model to run.
-export OMMODEL='TModel1' # Model4 for horizontal movements
+export OMMODEL='TModel0'
 
 for targyval in `seq ${THETAYSTART} ${THETAYINC} ${THETAYEND}`; do
 
@@ -45,7 +45,7 @@ for targyval in `seq ${THETAYSTART} ${THETAYINC} ${THETAYEND}`; do
 
 EOF
     elif [ ${P_STR} = 'ace2' ]; then
-        cat > script${targyval}.sh <<EOF
+c        cat > script${targyval}.sh <<EOF
 #!/bin/bash
 
 EOF
@@ -63,7 +63,8 @@ if [ \$oct_run_rtn -gt "0" ]; then
 fi
 popd
 
-octave -q --eval "perform_saccade('./results',${THETAX},${targyval},${NUM_RUNS},${GAP_MS},${LUMVAL},${DOPAMINE})"
+mkdir -p ./results/${OMMODEL}
+octave -q --eval "perform_saccade('./results/${OMMODEL}',${THETAX},${targyval},${NUM_RUNS},${GAP_MS},${LUMVAL},${DOPAMINE})"
 exit 0
 EOF
 
