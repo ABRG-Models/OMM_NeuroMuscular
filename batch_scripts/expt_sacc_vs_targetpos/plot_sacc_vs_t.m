@@ -17,12 +17,12 @@ end
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
 colcount = 1;
 
-flist = glob('results/r*.dat');
+flist = glob('results/TModel0/r*.dat');
 llen = size(flist)(1);
 for i = [1 : llen]
 
     rnm = flist{i};
-    resdatname = substr(rnm, 9); % strips initial 'results/' string
+    resdatname = substr(rnm, 9+8); % strips initial 'results/' string
     resdatname = substr(resdatname, 1, size(resdatname)(2)-4); % Strips '.dat' off
     resdatname = strrep (resdatname, '.', 'p');
     resdatname = strrep (resdatname, '-', 'm');
