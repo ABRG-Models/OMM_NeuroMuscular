@@ -6,19 +6,19 @@
 # and plot using plot_sacc_vs_t.m
 
 # Fixed parameters
-THETAX=-10 # Integer values only
-THETAY=0
+THETAX=0 # Integer values only
+THETAY=-10
 DOPAMINE=0.7
 GAP_MS=0
 
 NUM_RUNS=12
 
-LUMVALSTART=0.2
+LUMVALSTART=0.1
 LUMVALEND=1.2
 LUMVALINC=0.1
 
 # Use an env. variable to select which model to run.
-export OMMODEL='Model3'
+export OMMODEL='TModel0'
 
 mkdir -p results
 
@@ -57,9 +57,9 @@ if [ \$oct_run_rtn -gt "0" ]; then
     exit 1
 fi
 popd
-
+mkdir -p results/${OMMODEL}
 # Need to add path for sacc_vs_targetpos:
-octave -q --eval "perform_saccade('results',${THETAX},${THETAY},${NUM_RUNS},${GAP_MS},${lumval},${DOPAMINE})"
+octave -q --eval "perform_saccade('results/${OMMODEL}',${THETAX},${THETAY},${NUM_RUNS},${GAP_MS},${lumval},${DOPAMINE})"
 exit 0
 EOF
 
