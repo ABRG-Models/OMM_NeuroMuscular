@@ -1,6 +1,6 @@
 Extracted from Oculomotor branch of abrg_local repository on 3rd May 2017.
 
-To run this model fully, you need the saccsim biomechanical eye (currently a 
+To run this model fully, you need the saccsim biomechanical eye (currently a
 private repository) and the NoTremor_Oculomotor_201603 branch of SpineML_2_BRAHMS.
 
 Model1: This is the model with no centroiding component, and no widening
@@ -24,5 +24,8 @@ Model4: Like Model3, but parameters modified to give this the most linear
 Model5: A copy of 4, which I will tweak to try to get vertical rotations to
         work reasonably well in conjunction with horizontal rotations.
 
-TModel1: A model with the theoretical SG->SBG transfer function as in Tabareau
+TModel0: A model with the theoretical SG->SBG transfer function as in Tabareau
          et al.
+
+TModel1: To be like TModel0 with WideningGaussian from SC_deep to SC_deep2 and
+         a demonstrations that this resolves problems in TModel0.
