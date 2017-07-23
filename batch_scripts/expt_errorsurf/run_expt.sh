@@ -25,12 +25,12 @@ mkdir -p results/${OMMODEL}
 
 XSTART=-22 # full run
 XEND=0
-YSTART=-22
-#YEND=22
+YSTART=11 # Filling in data.
+YEND=22
 #XSTART=-14 # for testing
 #XEND=-12
 #YSTART=-12
-YEND=12
+#YEND=12
 PARENT_LIMIT=28
 MIN_RAD=6 # Can be down to 6; depends on target size and fovealmask in the model
 MAX_RAD=18
