@@ -4,6 +4,11 @@ function [posx, posy] = omsetgrid (g)
     widx = 350; widy = 280;
     spacex = 20; spacey = 80;
 
+    % Bottom row wants to be squat:
+    if (g(2) == -1)
+        widy = 190;
+    end
+
     posx = startx + g(1)*(widx + spacex);
     posy = starty + g(2)*(widy + spacey);
     set(gcf, 'Position', [posx posy widx widy])

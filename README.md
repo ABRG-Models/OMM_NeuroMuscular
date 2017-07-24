@@ -27,5 +27,7 @@ Model5: A copy of 4, which I will tweak to try to get vertical rotations to
 TModel0: A model with the theoretical SG->SBG transfer function as in Tabareau
          et al.
 
-TModel1: To be like TModel0 with WideningGaussian from SC_deep to SC_deep2 and
+TModel1: Like TModel0, but with a modification to improve the oblique saccades
+
+TModel2: To be like TModel0 with WideningGaussian from SC_deep to SC_deep2 and
          a demonstrations that this resolves problems in TModel0.

@@ -1,3 +1,11 @@
+%
+% Build weight maps for saccadic burst generator.
+%
+
+% For TModel0, build pure sine+exp maps, like Tabareau et al.
+%
+% For TModel1, apply the sigmoidal transform
+modeltype = 'TModel0' % TModel0 or TModel1
 
 % Modelling left map - double exponential. This is matched to
 % left(15,:) where left is loaded with load_sbgmaps.m.
@@ -97,8 +105,13 @@ sigmultfunc2Latcross = sigmultfunc2L(crosspoint2L)
 
 
 % Choose one of the above modifiers(ones, linear or sigmoidal):
-multfunc1L = sigmultfunc1L; % sigmultfunc1L, linmultfunc1L or onesmultfunc;
-multfunc2L = sigmultfunc2L; % sigmultfunc2L, linmultfunc2L or onesmultfunc;
+if strcmp (modeltype, 'TModel0')
+    multfunc1L = onesmultfunc; % sigmultfunc1L, linmultfunc1L or onesmultfunc;
+    multfunc2L = onesmultfunc; % sigmultfunc2L, linmultfunc2L or onesmultfunc;
+else
+    multfunc1L = sigmultfunc1L; % sigmultfunc1L, linmultfunc1L or onesmultfunc;
+    multfunc2L = sigmultfunc2L; % sigmultfunc2L, linmultfunc2L or onesmultfunc;
+end
 
 % Flipping same for all functions:
 multfunc1R = [fliplr(multfunc1L(mask1A)), zer(mask1B)];

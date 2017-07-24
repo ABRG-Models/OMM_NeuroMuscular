@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LL:SpineML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.shef.ac.uk/SpineMLNetworkLayer" xmlns:LL="http://www.shef.ac.uk/SpineMLLowLevelNetworkLayer" xsi:schemaLocation="http://www.shef.ac.uk/SpineMLLowLevelNetworkLayer SpineMLLowLevelNetworkLayer.xsd http://www.shef.ac.uk/SpineMLNetworkLayer SpineMLNetworkLayer.xsd" name="TheoryWeightMaps_WGtoSCdeep">
+<LL:SpineML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.shef.ac.uk/SpineMLNetworkLayer" xmlns:LL="http://www.shef.ac.uk/SpineMLLowLevelNetworkLayer" xsi:schemaLocation="http://www.shef.ac.uk/SpineMLLowLevelNetworkLayer SpineMLLowLevelNetworkLayer.xsd http://www.shef.ac.uk/SpineMLNetworkLayer SpineMLNetworkLayer.xsd" name="TheoryWeightMaps_ObliqueWG">
     <LL:Population>
         <LL:Annotation>
             <SpineCreator>
@@ -354,7 +354,7 @@
                 <x3D value="0"/>
                 <y3D value="0"/>
                 <z3D value="19"/>
-                <is_visualised value="1"/>
+                <is_visualised value="0"/>
             </SpineCreator>
         </LL:Annotation>
         <LL:Neuron name="FEF" size="2500" url="LINlinear.xml">
@@ -456,7 +456,7 @@
                 <ConnectionList>
                     <LL:Annotation>
                         <SpineCreator>
-                            <Script text="#PARNAME=Shift #LOC=1,1&#10;#HASWEIGHT&#10;&#10;def connectionFunc(srclocs,dstlocs,Shift):&#10;&#10;  import math&#10;&#10;  i = 0&#10;  # Magnification factor is&#10;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#10;  # where nfs is 50 and window_size is 61 in latest&#10;  # model. This gives the best Mf of 7.7513.&#10;  # See EyeFrame::fieldOfView for the field of view.&#10;  # Note that field of view was 150 in Alex C's &#10;  # model giving Mf=4.87 there. I've maintained the&#10;  # same Mf of 4.87, but have ensured that my&#10;  # fixations do not &quot;leak outside of the foveal mask.&#10;  Mf = 4.87&#10;  E2 = 2.5&#10;  # Shift was 7.5 originally, but Changed to this to widen the effect of the foveal mask to accound for widening gaussian.&#10;  #Shift = 12&#10;  out = []&#10;&#10;  for srcloc in srclocs:&#10;    row = srcloc[1]&#10;    j = 0&#10;    for dstloc in dstlocs:    &#10;      if srcloc == dstloc:&#10;        E = E2*(-1+math.exp(row/(Mf*E2)))&#10;        res = 1/(1+math.exp(2*(Shift-E)))&#10;        &#10;        conn = (i,j,0,res)&#10;        out.append(conn)&#10;      j = j + 1&#10;    i = i + 1&#10;  return out&#10;" name="DecayingAtFovea" Shift="15"/>
+                            <Script text="#PARNAME=Shift #LOC=1,1&#10;#HASWEIGHT&#10;&#10;def connectionFunc(srclocs,dstlocs,Shift):&#10;&#10;  import math&#10;&#10;  i = 0&#10;  # Magnification factor is&#10;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#10;  # where nfs is 50 and window_size is 61 in latest&#10;  # model. This gives the best Mf of 7.7513.&#10;  # See EyeFrame::fieldOfView for the field of view.&#10;  # Note that field of view was 150 in Alex C's &#10;  # model giving Mf=4.87 there. I've maintained the&#10;  # same Mf of 4.87, but have ensured that my&#10;  # fixations do not &quot;leak outside of the foveal mask.&#10;  Mf = 4.87&#10;  E2 = 2.5&#10;  # Shift was 7.5 originally, but Changed to this to widen the effect of the foveal mask to accound for widening gaussian.&#10;  #Shift = 12&#10;  out = []&#10;&#10;  for srcloc in srclocs:&#10;    row = srcloc[1]&#10;    j = 0&#10;    for dstloc in dstlocs:    &#10;      if srcloc == dstloc:&#10;        E = E2*(-1+math.exp(row/(Mf*E2)))&#10;        res = 1/(1+math.exp(2*(Shift-E)))&#10;        &#10;        conn = (i,j,0,res)&#10;        out.append(conn)&#10;      j = j + 1&#10;    i = i + 1&#10;  return out&#10;" name="DecayingAtFovea" Shift="10"/>
                             <Config weightProperty="w"/>
                         </SpineCreator>
                     </LL:Annotation>
@@ -538,7 +538,7 @@
                 <ConnectionList>
                     <LL:Annotation>
                         <SpineCreator>
-                            <Script text="#PARNAME=Shift #LOC=1,1&#10;#HASWEIGHT&#10;&#10;def connectionFunc(srclocs,dstlocs,Shift):&#10;&#10;  import math&#10;&#10;  i = 0&#10;  # Magnification factor is&#10;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#10;  # where nfs is 50 and window_size is 61 in latest&#10;  # model. This gives the best Mf of 7.7513.&#10;  # See EyeFrame::fieldOfView for the field of view.&#10;  # Note that field of view was 150 in Alex C's &#10;  # model giving Mf=4.87 there. I've maintained the&#10;  # same Mf of 4.87, but have ensured that my&#10;  # fixations do not &quot;leak outside of the foveal mask.&#10;  Mf = 4.87&#10;  E2 = 2.5&#10;  # Shift was 7.5 originally, but Changed to this to widen the effect of the foveal mask to accound for widening gaussian.&#10;  #Shift = 12&#10;  out = []&#10;&#10;  for srcloc in srclocs:&#10;    row = srcloc[1]&#10;    j = 0&#10;    for dstloc in dstlocs:    &#10;      if srcloc == dstloc:&#10;        E = E2*(-1+math.exp(row/(Mf*E2)))&#10;        res = 1/(1+math.exp(2*(Shift-E)))&#10;        &#10;        conn = (i,j,0,res)&#10;        out.append(conn)&#10;      j = j + 1&#10;    i = i + 1&#10;  return out&#10;" name="DecayingAtFovea" Shift="15"/>
+                            <Script text="#PARNAME=Shift #LOC=1,1&#10;#HASWEIGHT&#10;&#10;def connectionFunc(srclocs,dstlocs,Shift):&#10;&#10;  import math&#10;&#10;  i = 0&#10;  # Magnification factor is&#10;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#10;  # where nfs is 50 and window_size is 61 in latest&#10;  # model. This gives the best Mf of 7.7513.&#10;  # See EyeFrame::fieldOfView for the field of view.&#10;  # Note that field of view was 150 in Alex C's &#10;  # model giving Mf=4.87 there. I've maintained the&#10;  # same Mf of 4.87, but have ensured that my&#10;  # fixations do not &quot;leak outside of the foveal mask.&#10;  Mf = 4.87&#10;  E2 = 2.5&#10;  # Shift was 7.5 originally, but Changed to this to widen the effect of the foveal mask to accound for widening gaussian.&#10;  #Shift = 12&#10;  out = []&#10;&#10;  for srcloc in srclocs:&#10;    row = srcloc[1]&#10;    j = 0&#10;    for dstloc in dstlocs:    &#10;      if srcloc == dstloc:&#10;        E = E2*(-1+math.exp(row/(Mf*E2)))&#10;        res = 1/(1+math.exp(2*(Shift-E)))&#10;        &#10;        conn = (i,j,0,res)&#10;        out.append(conn)&#10;      j = j + 1&#10;    i = i + 1&#10;  return out&#10;" name="DecayingAtFovea" Shift="10"/>
                             <Config weightProperty="w"/>
                         </SpineCreator>
                     </LL:Annotation>
@@ -718,7 +718,7 @@
                 <ConnectionList>
                     <LL:Annotation>
                         <SpineCreator>
-                            <Script text="#PARNAME=Shift #LOC=1,1&#10;#HASWEIGHT&#10;&#10;def connectionFunc(srclocs,dstlocs,Shift):&#10;&#10;  import math&#10;&#10;  i = 0&#10;  # Magnification factor is&#10;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#10;  # where nfs is 50 and window_size is 61 in latest&#10;  # model. This gives the best Mf of 7.7513.&#10;  # See EyeFrame::fieldOfView for the field of view.&#10;  # Note that field of view was 150 in Alex C's &#10;  # model giving Mf=4.87 there. I've maintained the&#10;  # same Mf of 4.87, but have ensured that my&#10;  # fixations do not &quot;leak outside of the foveal mask.&#10;  Mf = 4.87&#10;  E2 = 2.5&#10;  # Shift was 7.5 originally, but Changed to this to widen the effect of the foveal mask to accound for widening gaussian.&#10;  #Shift = 12&#10;  out = []&#10;&#10;  for srcloc in srclocs:&#10;    row = srcloc[1]&#10;    j = 0&#10;    for dstloc in dstlocs:    &#10;      if srcloc == dstloc:&#10;        E = E2*(-1+math.exp(row/(Mf*E2)))&#10;        res = 1/(1+math.exp(2*(Shift-E)))&#10;        &#10;        conn = (i,j,0,res)&#10;        out.append(conn)&#10;      j = j + 1&#10;    i = i + 1&#10;  return out&#10;" name="DecayingAtFovea" Shift="15"/>
+                            <Script text="#PARNAME=Shift #LOC=1,1&#10;#HASWEIGHT&#10;&#10;def connectionFunc(srclocs,dstlocs,Shift):&#10;&#10;  import math&#10;&#10;  i = 0&#10;  # Magnification factor is&#10;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#10;  # where nfs is 50 and window_size is 61 in latest&#10;  # model. This gives the best Mf of 7.7513.&#10;  # See EyeFrame::fieldOfView for the field of view.&#10;  # Note that field of view was 150 in Alex C's &#10;  # model giving Mf=4.87 there. I've maintained the&#10;  # same Mf of 4.87, but have ensured that my&#10;  # fixations do not &quot;leak outside of the foveal mask.&#10;  Mf = 4.87&#10;  E2 = 2.5&#10;  # Shift was 7.5 originally, but Changed to this to widen the effect of the foveal mask to accound for widening gaussian.&#10;  #Shift = 12&#10;  out = []&#10;&#10;  for srcloc in srclocs:&#10;    row = srcloc[1]&#10;    j = 0&#10;    for dstloc in dstlocs:    &#10;      if srcloc == dstloc:&#10;        E = E2*(-1+math.exp(row/(Mf*E2)))&#10;        res = 1/(1+math.exp(2*(Shift-E)))&#10;        &#10;        conn = (i,j,0,res)&#10;        out.append(conn)&#10;      j = j + 1&#10;    i = i + 1&#10;  return out&#10;" name="DecayingAtFovea" Shift="10"/>
                             <Config weightProperty="w"/>
                         </SpineCreator>
                     </LL:Annotation>
@@ -759,7 +759,7 @@
                 <ConnectionList>
                     <LL:Annotation>
                         <SpineCreator>
-                            <Script text="#PARNAME=Shift #LOC=1,1&#10;#HASWEIGHT&#10;&#10;def connectionFunc(srclocs,dstlocs,Shift):&#10;&#10;  import math&#10;&#10;  i = 0&#10;  # Magnification factor is&#10;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#10;  # where nfs is 50 and window_size is 61 in latest&#10;  # model. This gives the best Mf of 7.7513.&#10;  # See EyeFrame::fieldOfView for the field of view.&#10;  # Note that field of view was 150 in Alex C's &#10;  # model giving Mf=4.87 there. I've maintained the&#10;  # same Mf of 4.87, but have ensured that my&#10;  # fixations do not &quot;leak outside of the foveal mask.&#10;  Mf = 4.87&#10;  E2 = 2.5&#10;  # Shift was 7.5 originally, but Changed to this to widen the effect of the foveal mask to accound for widening gaussian.&#10;  #Shift = 12&#10;  out = []&#10;&#10;  for srcloc in srclocs:&#10;    row = srcloc[1]&#10;    j = 0&#10;    for dstloc in dstlocs:    &#10;      if srcloc == dstloc:&#10;        E = E2*(-1+math.exp(row/(Mf*E2)))&#10;        res = 1/(1+math.exp(2*(Shift-E)))&#10;        &#10;        conn = (i,j,0,res)&#10;        out.append(conn)&#10;      j = j + 1&#10;    i = i + 1&#10;  return out&#10;" name="DecayingAtFovea" Shift="15"/>
+                            <Script text="#PARNAME=Shift #LOC=1,1&#10;#HASWEIGHT&#10;&#10;def connectionFunc(srclocs,dstlocs,Shift):&#10;&#10;  import math&#10;&#10;  i = 0&#10;  # Magnification factor is&#10;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#10;  # where nfs is 50 and window_size is 61 in latest&#10;  # model. This gives the best Mf of 7.7513.&#10;  # See EyeFrame::fieldOfView for the field of view.&#10;  # Note that field of view was 150 in Alex C's &#10;  # model giving Mf=4.87 there. I've maintained the&#10;  # same Mf of 4.87, but have ensured that my&#10;  # fixations do not &quot;leak outside of the foveal mask.&#10;  Mf = 4.87&#10;  E2 = 2.5&#10;  # Shift was 7.5 originally, but Changed to this to widen the effect of the foveal mask to accound for widening gaussian.&#10;  #Shift = 12&#10;  out = []&#10;&#10;  for srcloc in srclocs:&#10;    row = srcloc[1]&#10;    j = 0&#10;    for dstloc in dstlocs:    &#10;      if srcloc == dstloc:&#10;        E = E2*(-1+math.exp(row/(Mf*E2)))&#10;        res = 1/(1+math.exp(2*(Shift-E)))&#10;        &#10;        conn = (i,j,0,res)&#10;        out.append(conn)&#10;      j = j + 1&#10;    i = i + 1&#10;  return out&#10;" name="DecayingAtFovea" Shift="10"/>
                             <Config weightProperty="w"/>
                         </SpineCreator>
                     </LL:Annotation>
@@ -974,9 +974,9 @@
                 <size value="1"/>
                 <tag value="7"/>
                 <x3D value="70"/>
-                <y3D value="0"/>
+                <y3D value="2"/>
                 <z3D value="0"/>
-                <is_visualised value="0"/>
+                <is_visualised value="1"/>
             </SpineCreator>
         </LL:Annotation>
         <LL:Neuron name="SC_deep" size="2500" url="LINlinear.xml">
@@ -1137,38 +1137,6 @@
                 </LL:PostSynapse>
             </LL:Synapse>
         </LL:Projection>
-        <LL:Projection dst_population="SC_avg">
-            <LL:Annotation>
-                <SpineCreator>
-                    <DrawOptions style="4" showlabel="0"/>
-                    <start x="-0.676223" y="6.92568"/>
-                    <curves>
-                        <curve>
-                            <C1 xpos="-0.676223" ypos="5.97643"/>
-                            <C2 xpos="-0.673346" ypos="5.98604"/>
-                            <end xpos="-0.673346" ypos="5.53416"/>
-                        </curve>
-                    </curves>
-                </SpineCreator>
-            </LL:Annotation>
-            <LL:Synapse>
-                <OneToOneConnection>
-                    <Delay dimension="ms">
-                        <FixedValue value="0"/>
-                    </Delay>
-                </OneToOneConnection>
-                <LL:WeightUpdate name="SC_deep to SC_avg Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
-                    <Property name="w" dimension="?">
-                        <FixedValue value="0.06"/>
-                    </Property>
-                </LL:WeightUpdate>
-                <LL:PostSynapse name="SC_deep to SC_avg Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
-                    <Property name="w" dimension="?">
-                        <FixedValue value="1"/>
-                    </Property>
-                </LL:PostSynapse>
-            </LL:Synapse>
-        </LL:Projection>
         <LL:Projection dst_population="SC_sum">
             <LL:Annotation>
                 <SpineCreator>
@@ -1177,8 +1145,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="-1.10523" ypos="6.47784"/>
-                            <C2 xpos="-1.41285" ypos="6.34222"/>
-                            <end xpos="-1.72645" ypos="6.30072"/>
+                            <C2 xpos="-1.89441" ypos="6.50631"/>
+                            <end xpos="-2.20801" ypos="6.46481"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -1195,6 +1163,47 @@
                     </Property>
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_deep to SC_sum Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="SC_deep2">
+            <LL:Annotation>
+                <SpineCreator>
+                    <DrawOptions style="4" showlabel="0"/>
+                    <start x="-0.368301" y="6.92568"/>
+                    <curves>
+                        <curve>
+                            <C1 xpos="-0.377951" ypos="6.51702"/>
+                            <C2 xpos="0.0392796" ypos="7.14529"/>
+                            <end xpos="0.0299436" ypos="6.48118"/>
+                        </curve>
+                    </curves>
+                </SpineCreator>
+            </LL:Annotation>
+            <LL:Synapse>
+                <ConnectionList>
+                    <LL:Annotation>
+                        <SpineCreator>
+                            <Script text="#PARNAME=sigma #LOC=1,1&#10;#PARNAME=E2 #LOC=1,2&#10;#PARNAME=rshift #LOC=2,1&#10;#PARNAME=normpower #LOC=2,2&#10;#HASWEIGHT&#10;&#10;def connectionFunc(srclocs,dstlocs,sigma,E2,rshift,normpower):&#10;&#10;  import math&#10;&#10;  # Corrected normterm (2015/01/16):&#10;  # normterm = 1/(math.pow(sigma,2)*2*math.pi)&#10;&#10;  # E2 can be tweaked for best result.&#10;  #E2 = 2.5&#10;  W_nfs = 50&#10;&#10;  _rshift = 2&#10;  #magfacshift = 5&#10;&#10;  M_f_start =  W_nfs / (E2 * math.log (((_rshift+rshift)/(2*E2))+1))&#10;    &#10;  i = 0&#10;  out = []&#10;  for srcloc in srclocs:&#10;    j = 0&#10;    # Compute the location of srcloc, this defines what sigma will be. As r (as opp. to phi) increases, the sigma should increase.&#10;    M_f =  W_nfs / (E2 * math.log (((_rshift+srcloc[1])/(2*E2))+1))&#10;&#10;    # Set some of M_f to 1 to ensure the fan-out starts at around the edge of the foveal region.&#10;    if srcloc[1] &lt; rshift:&#10;        M_f = M_f_start&#10;    &#10;    _sigma = sigma/M_f # as function of r, aka srcloc[1]&#10;    normterm = 1/math.pow(_sigma,normpower)&#10;&#10;    for dstloc in dstlocs:&#10;&#10;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#10;&#10;      gauss = normterm*math.exp(-0.5*math.pow(dist/_sigma,2))&#10;&#10;      if gauss &gt; 0.001:&#10;        #sys.stdout.write('gauss&gt;0.0001: i={0} gauss={1}'.format( i, gauss))&#10;        conn = (i,j,0,gauss)&#10;        out.append(conn)&#10;&#10;      j = j + 1&#10;    i = i + 1&#10;  #sys.stdout.write('out length: %d' % len(out))&#10;  return out&#10;" name="WideningGaussian" sigma="25" E2="2.5" rshift="0" normpower="1.4"/>
+                            <Config weightProperty="w"/>
+                        </SpineCreator>
+                    </LL:Annotation>
+                    <BinaryFile file_name="conn_SC_deep_to_SC_deep2_syn0.bin" num_connections="388538" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="SC_deep to SC_deep2 Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile47.bin" num_elements="388538"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SC_deep to SC_deep2 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
                     <Property name="w" dimension="?">
                         <FixedValue value="1"/>
                     </Property>
@@ -4269,7 +4278,7 @@
                 <x3D value="0"/>
                 <y3D value="0"/>
                 <z3D value="0"/>
-                <is_visualised value="1"/>
+                <is_visualised value="0"/>
             </SpineCreator>
         </LL:Annotation>
         <LL:Neuron name="FEF_add_noise" size="2500" url="LINlinear.xml">
@@ -4366,8 +4375,8 @@
     <LL:Population>
         <LL:Annotation>
             <SpineCreator>
-                <xPos value="-0.678937"/>
-                <yPos value="5.03373"/>
+                <xPos value="-0.584453"/>
+                <yPos value="4.53821"/>
                 <animSpeed value="0.2"/>
                 <aspectRatio value="1.66667"/>
                 <colour red="128" green="0" blue="128"/>
@@ -4398,10 +4407,10 @@
             <LL:Annotation>
                 <SpineCreator>
                     <DrawOptions style="4" showlabel="0"/>
-                    <start x="-1.39837" y="4.54034"/>
+                    <start x="-1.30399" y="4.04624"/>
                     <curves>
                         <curve>
-                            <C1 xpos="-1.57966" ypos="3.4281"/>
+                            <C1 xpos="-1.48528" ypos="2.934"/>
                             <C2 xpos="-4.19299" ypos="4.5267"/>
                             <end xpos="-4.27762" ypos="2.71384"/>
                         </curve>
@@ -4423,7 +4432,7 @@
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_avg to LLBN left Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="2"/>
+                        <FixedValue value="1.8"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
@@ -4432,10 +4441,10 @@
             <LL:Annotation>
                 <SpineCreator>
                     <DrawOptions style="4" showlabel="0"/>
-                    <start x="-0.711966" y="4.53416"/>
+                    <start x="-0.617591" y="4.04006"/>
                     <curves>
                         <curve>
-                            <C1 xpos="-0.772984" ypos="3.61196"/>
+                            <C1 xpos="-0.678609" ypos="3.11786"/>
                             <C2 xpos="-0.196742" ypos="4.0267"/>
                             <end xpos="0.401478" ypos="2.6668"/>
                         </curve>
@@ -4457,7 +4466,7 @@
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_avg to LLBN right Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="2"/>
+                        <FixedValue value="1.8"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
@@ -4466,10 +4475,10 @@
             <LL:Annotation>
                 <SpineCreator>
                     <DrawOptions style="4" showlabel="0"/>
-                    <start x="0.154914" y="4.86375"/>
+                    <start x="0.249289" y="4.36965"/>
                     <curves>
                         <curve>
-                            <C1 xpos="0.32157" ypos="4.5391"/>
+                            <C1 xpos="0.415945" ypos="4.045"/>
                             <C2 xpos="8.81129" ypos="4.5267"/>
                             <end xpos="8.7939" ypos="2.57811"/>
                         </curve>
@@ -4491,7 +4500,7 @@
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_avg to LLBN up Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="2"/>
+                        <FixedValue value="6"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
@@ -4500,10 +4509,10 @@
             <LL:Annotation>
                 <SpineCreator>
                     <DrawOptions style="4" showlabel="0"/>
-                    <start x="0.154838" y="4.95478"/>
+                    <start x="0.249213" y="4.46068"/>
                     <curves>
                         <curve>
-                            <C1 xpos="6.34976" ypos="4.32224"/>
+                            <C1 xpos="6.44414" ypos="3.82814"/>
                             <C2 xpos="12.3113" ypos="4.5267"/>
                             <end xpos="12.8489" ypos="2.60483"/>
                         </curve>
@@ -4525,7 +4534,7 @@
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_avg to LLBN down Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="2"/>
+                        <FixedValue value="6"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
@@ -4534,10 +4543,10 @@
             <LL:Annotation>
                 <SpineCreator>
                     <DrawOptions style="4" showlabel="0"/>
-                    <start x="0.154987" y="5.12638"/>
+                    <start x="0.249362" y="4.63228"/>
                     <curves>
                         <curve>
-                            <C1 xpos="9.27062" ypos="4.72136"/>
+                            <C1 xpos="9.365" ypos="4.22726"/>
                             <C2 xpos="17.8227" ypos="5.02705"/>
                             <end xpos="18.2226" ypos="2.64357"/>
                         </curve>
@@ -4559,7 +4568,7 @@
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_avg to LLBN zplus Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="2"/>
+                        <FixedValue value="17"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
@@ -4568,10 +4577,10 @@
             <LL:Annotation>
                 <SpineCreator>
                     <DrawOptions style="4" showlabel="0"/>
-                    <start x="0.154987" y="5.27864"/>
+                    <start x="0.249362" y="4.78454"/>
                     <curves>
                         <curve>
-                            <C1 xpos="6.80662" ypos="5.00667"/>
+                            <C1 xpos="6.901" ypos="4.51257"/>
                             <C2 xpos="21.3391" ypos="5.54775"/>
                             <end xpos="21.3369" ypos="2.53818"/>
                         </curve>
@@ -4593,7 +4602,7 @@
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_avg to LLBN zminus Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="2"/>
+                        <FixedValue value="17"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
@@ -5607,8 +5616,8 @@
     <LL:Population>
         <LL:Annotation>
             <SpineCreator>
-                <xPos value="-2.56"/>
-                <yPos value="6.19"/>
+                <xPos value="-3.04083"/>
+                <yPos value="6.35263"/>
                 <animSpeed value="0.2"/>
                 <aspectRatio value="1.66667"/>
                 <colour red="0" green="0" blue="0"/>
@@ -5622,5 +5631,97 @@
         </LL:Annotation>
         <LL:Neuron name="SC_sum" size="1" url="Summer.xml"/>
         <Layout url="none.xml" seed="123" minimum_distance="0"/>
+    </LL:Population>
+    <LL:Population>
+        <LL:Annotation>
+            <SpineCreator>
+                <xPos value="0.0198869"/>
+                <yPos value="5.98184"/>
+                <animSpeed value="0.2"/>
+                <aspectRatio value="1.66667"/>
+                <colour red="189" green="39" blue="247"/>
+                <size value="1"/>
+                <tag value="1"/>
+                <x3D value="70"/>
+                <y3D value="0"/>
+                <z3D value="-20"/>
+                <is_visualised value="1"/>
+            </SpineCreator>
+        </LL:Annotation>
+        <LL:Neuron name="SC_deep2" size="2500" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="4"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="noise" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="sa" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="SC_avg">
+            <LL:Annotation>
+                <SpineCreator>
+                    <DrawOptions style="4" showlabel="0"/>
+                    <start x="-0.208903" y="5.4814"/>
+                    <curves>
+                        <curve>
+                            <C1 xpos="-0.217528" ypos="5.03377"/>
+                            <C2 xpos="-0.460107" ypos="5.62792"/>
+                            <end xpos="-0.468538" ypos="5.03923"/>
+                        </curve>
+                    </curves>
+                </SpineCreator>
+            </LL:Annotation>
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay dimension="ms">
+                        <FixedValue value="0"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="SC_deep2 to SC_avg Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.05"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SC_deep2 to SC_avg Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
     </LL:Population>
 </LL:SpineML>

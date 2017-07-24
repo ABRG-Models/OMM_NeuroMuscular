@@ -15,7 +15,7 @@ sigma = 25
 % not changed, but it's still included as a param.
 E2 = 2.5
 % An r shift - required in the Python script due to indexing from 0
-_rshift = 1;
+_rshift = 0;
 % A normalisation power
 normpower = 1.4;
 
