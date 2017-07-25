@@ -5,7 +5,12 @@
 % For TModel0, build pure sine+exp maps, like Tabareau et al.
 %
 % For TModel1, apply the sigmoidal transform
-modeltype = 'TModel0' % TModel0 or TModel1
+%
+% For TModel2, apply a sigmoidal transform, but with differing
+% parameters because the hill of activity is about 12 to 15 pixels
+% wide, rather than 5 to 6.
+%
+modeltype = 'TModel1' % TModel0, TModel1 or TModel2
 
 % Modelling left map - double exponential. This is matched to
 % left(15,:) where left is loaded with load_sbgmaps.m.
@@ -22,7 +27,7 @@ figure(110);
 plot (x,y1);
 hold on;
 plot (x,y2,'r');
-
+omsetgrid([1,0]);
 % Single exp - either y1 or y2 etc.
 % Double exp - use y = y1 + y2.
 Y = repmat(y3,50,1);
@@ -32,8 +37,17 @@ Y = repmat(y3,50,1);
 % rather than 50.
 %
 % Here's half a sine wave. Both at 1900 was my starting point.
-sine_width1 = 1900; % Vertical. eyeRx
-sine_width2 = 1900; % Horizontal. eyeRy
+if strcmp (modeltype, 'TModel2')
+    sine_width1 = 1100; % Vertical. eyeRx
+    sine_width2 = 1100; % Horizontal. eyeRy
+elseif strcmp (modeltype, 'TModel1')
+    sine_width1 = 1900; % Vertical. eyeRx
+    sine_width2 = 1900; % Horizontal. eyeRy
+else
+    sine_width1 = 1700; % Vertical. eyeRx. To suit HOA 9 px wide at
+                        % -6 degrees.
+    sine_width2 = 1700; % Horizontal. eyeRy
+end
 
 zer=zeros(1,5000);
 
@@ -101,13 +115,36 @@ k2 = 0.006;
 sigoffs2 = 4700;
 sigmultfunc2L = fliplr(1 + (1 ./ (1 + exp(-k2.*(x2.-sigoffs2)))));
 sigmultfunc2L = sigmultfunc2L ./(sigmultfunc2L(sine_width2/2));
-sigmultfunc2Latcross = sigmultfunc2L(crosspoint2L)
+if crosspoint2L > 0
+    sigmultfunc2Latcross = sigmultfunc2L(crosspoint2L)
+end
+%
+% WG Sigmoidal multiplier functions
+%
+
+k = 0.006;
+sigoffs = 400;
+WGsigmultfunc1L = 0.3 + (1 ./ (1.428 + exp(-k.*(x2.-sigoffs))));
+% Normalise so that function is 1 at sine_width1/2:
+WGsigmultfunc1L = WGsigmultfunc1L ./(WGsigmultfunc1L(sine_width1/2));
+WGsigmultfunc1Latcross = 0.3 + (1 ./ (1.428 + exp(-k.*(crosspoint1L-sigoffs))))
+
+k2 = 0.006;
+sigoffs2 = 4700;
+WGsigmultfunc2L = fliplr(1 + (1 ./ (1 + exp(-k2.*(x2.-sigoffs2)))));
+WGsigmultfunc2L = WGsigmultfunc2L ./(WGsigmultfunc2L(sine_width2/2));
+if crosspoint2L > 0
+    WGsigmultfunc2Latcross = WGsigmultfunc2L(crosspoint2L)
+end
 
 
 % Choose one of the above modifiers(ones, linear or sigmoidal):
 if strcmp (modeltype, 'TModel0')
     multfunc1L = onesmultfunc; % sigmultfunc1L, linmultfunc1L or onesmultfunc;
     multfunc2L = onesmultfunc; % sigmultfunc2L, linmultfunc2L or onesmultfunc;
+elseif strcmp (modeltype, 'TModel2')
+    multfunc1L = onesmultfunc;
+    multfunc2L = onesmultfunc;
 else
     multfunc1L = sigmultfunc1L; % sigmultfunc1L, linmultfunc1L or onesmultfunc;
     multfunc2L = sigmultfunc2L; % sigmultfunc2L, linmultfunc2L or onesmultfunc;
@@ -135,6 +172,7 @@ plot (x2, multfunc2L, 'm')
 
 title ('single sine(s) on 5000 wide space');
 % Now rotate and shift these sines.
+omsetgrid([2,0]);
 
 first_shift1 = -sine_width1./2;
 first_shift2 = -sine_width2./2 + 5000./4;
@@ -155,6 +193,7 @@ plot (x2,c2,'r');
 c4 = circshift(c2, shift);
 plot (x2,c4,'k');
 title('Shifted sines on 5000 wide space')
+omsetgrid([3,0]);
 
 % Now down-sample
 c1d = downsample(c1,100);
@@ -169,7 +208,7 @@ plot (x, c3d, 'go-');
 plot (x, c4d, 'ko-');
 title('downsampled sines on usual 50 pixel space');
 legend('U','L','D','R');
-
+omsetgrid([4,0]);
 C1 = repmat(c1d,1,50);
 USHEET = C1.*Y;
 
@@ -189,6 +228,7 @@ figure(101);
 surf(LSHEET);
 zlim([0 zlim_max]);
 title('Left');
+omsetgrid([1,1]);
 if printmaps
     print('left.png');
 end
@@ -197,6 +237,7 @@ figure(102);
 surf(RSHEET);
 zlim([0 zlim_max]);
 title('Right');
+omsetgrid([2,1]);
 if printmaps
     print('right.png');
 end
@@ -205,6 +246,7 @@ figure(103);
 surf(USHEET);
 zlim([0 zlim_max]);
 title('Up');
+omsetgrid([3,1]);
 if printmaps
     print('up.png');
 end
@@ -213,6 +255,7 @@ figure(104);
 surf(DSHEET);
 zlim([0 zlim_max]);
 title('Down');
+omsetgrid([4,1]);
 if printmaps
     print('down.png');
 end
@@ -221,13 +264,15 @@ figure(106); clf;
 surf(USHEET.+DSHEET.+LSHEET.+RSHEET);
 zlim([0 zlim_max]);
 title('All');
+omsetgrid([4,2]);
 
-write_neural_sheet(flipud(LSHEET), 'explicitDataBinaryFile50.bin');
-write_neural_sheet(flipud(RSHEET), 'explicitDataBinaryFile52.bin');
+mkdir (modeltype);
+write_neural_sheet(flipud(LSHEET), [modeltype '/explicitDataBinaryFile50.bin']);
+write_neural_sheet(flipud(RSHEET), [modeltype '/explicitDataBinaryFile52.bin']);
 
-write_neural_sheet(flipud(USHEET), 'explicitDataBinaryFile53.bin');
-write_neural_sheet(flipud(DSHEET), 'explicitDataBinaryFile54.bin');
+write_neural_sheet(flipud(USHEET), [modeltype '/explicitDataBinaryFile53.bin']);
+write_neural_sheet(flipud(DSHEET), [modeltype '/explicitDataBinaryFile54.bin']);
 
 % From centroiding results, Up/Down seem to be 10 times larger than zminus/zplus:
-write_neural_sheet(0.1.*flipud(USHEET), 'explicitDataBinaryFile58.bin');
-write_neural_sheet(0.1.*flipud(DSHEET), 'explicitDataBinaryFile57.bin');
+write_neural_sheet(0.1.*flipud(USHEET), [modeltype '/explicitDataBinaryFile58.bin']);
+write_neural_sheet(0.1.*flipud(DSHEET), [modeltype '/explicitDataBinaryFile57.bin']);
