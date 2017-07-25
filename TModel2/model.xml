@@ -1177,8 +1177,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="-0.377951" ypos="6.51702"/>
-                            <C2 xpos="0.0392796" ypos="7.14529"/>
-                            <end xpos="0.0299436" ypos="6.48118"/>
+                            <C2 xpos="-0.157073" ypos="7.13868"/>
+                            <end xpos="-0.166409" ypos="6.47457"/>
                         </curve>
                     </curves>
                 </SpineCreator>
@@ -4390,7 +4390,7 @@
         </LL:Annotation>
         <LL:Neuron name="SC_avg" size="2500" url="threshpass.xml">
             <Property name="min" dimension="?">
-                <FixedValue value="0.01"/>
+                <FixedValue value="0.001"/>
             </Property>
             <Property name="max" dimension="?">
                 <FixedValue value="1"/>
@@ -5635,8 +5635,8 @@
     <LL:Population>
         <LL:Annotation>
             <SpineCreator>
-                <xPos value="0.0198869"/>
-                <yPos value="5.98184"/>
+                <xPos value="-0.176474"/>
+                <yPos value="5.97498"/>
                 <animSpeed value="0.2"/>
                 <aspectRatio value="1.66667"/>
                 <colour red="189" green="39" blue="247"/>
@@ -5695,10 +5695,10 @@
             <LL:Annotation>
                 <SpineCreator>
                     <DrawOptions style="4" showlabel="0"/>
-                    <start x="-0.208903" y="5.4814"/>
+                    <start x="-0.200109" y="5.47526"/>
                     <curves>
                         <curve>
-                            <C1 xpos="-0.217528" ypos="5.03377"/>
+                            <C1 xpos="-0.222632" ypos="4.99898"/>
                             <C2 xpos="-0.460107" ypos="5.62792"/>
                             <end xpos="-0.468538" ypos="5.03923"/>
                         </curve>
@@ -5713,7 +5713,7 @@
                 </OneToOneConnection>
                 <LL:WeightUpdate name="SC_deep2 to SC_avg Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="0.05"/>
+                        <FixedValue value="0.0135"/>
                     </Property>
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_deep2 to SC_avg Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
