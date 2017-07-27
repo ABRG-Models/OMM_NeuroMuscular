@@ -57,8 +57,14 @@ function omview (data, t)
     omplot(17, data, 'llbn_u')
     omsetgrid ([0 -1]);
 
-    omsurf(18, data, 'scd2', t, 1)
-    omsetgrid ([0 0]);
+    tmodel2=1
+    if tmodel2
+        omsurf(18, data, 'scd2', t, 1)
+        omsetgrid ([0 0]);
+
+        %omsurf(19, data, 'scd3', t, 1)
+        %omsetgrid ([0 1]);
+    end
 
     a = 0
     if a
