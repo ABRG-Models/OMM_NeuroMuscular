@@ -20,12 +20,12 @@ if [ -d /usr/local/abrg ]; then
 fi
 
 # Use an env. variable to select which model to run.
-export OMMODEL='TModel1'
+export OMMODEL='TModel0'
 mkdir -p results/${OMMODEL}
 
 XSTART=-22 # full run
 XEND=0
-YSTART=11 # Filling in data.
+YSTART=-22
 YEND=22
 #XSTART=-14 # for testing
 #XEND=-12

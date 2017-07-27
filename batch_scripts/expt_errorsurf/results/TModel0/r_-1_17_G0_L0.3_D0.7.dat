@@ -1,4 +1,4 @@
-# Created by Octave 3.8.2, Sun Jul 23 09:32:56 2017 BST <co1ssj@node143>
+# Created by Octave 3.8.2, Wed Jul 26 08:51:06 2017 BST <co1ssj@node107>
 # name: result
 # type: scalar struct
 # ndims: 2
@@ -105,7 +105,7 @@
 # type: matrix
 # rows: 1
 # columns: 14
- -1 17 0.2 0 0.3 0 18.94208333333333 0 0 0.3251880773747188 0 154.5 0.5477225575051661 0.7
+ -1 17 0.2 0 0.3 0 19.03003333333334 0 0 0.2195540267603097 0 154.1666666666667 0.9831920802501749 0.7
 
 
 
