@@ -11,7 +11,7 @@ W_nfs = 50;
 %
 % The sigma multiplier from which sigma(r) is computed (as
 % sigma_m/M_f +- offsets)
-sigma_m = 40
+sigma_m = 50
 
 % An offset applied to sigma(r). Needs to be a new parameter.
 sigma_0 = 0.3
@@ -20,8 +20,9 @@ sigma_0 = 0.3
 % not changed, but it's still included as a param.
 E2 = 2.5
 
-% A right-shift in the magnification factor. Do I want/need this? No.
-%rshift = 0;
+fovshift = 20 % Past the foveal region, really, this is where the
+              % increase in the sigma starts, for r<fovshift,
+              % sigma is sigma_0
 
 % A normalisation power
 normpower = 0 %1.45
@@ -33,10 +34,6 @@ r = [1:50]; % 1-50 range here. 0-49 range of srcloc[1] in python
 M_f = W_nfs ./ ( E2 .* log (( r/(2.*E2) )+1) ); % for r=0, M_f is
                                                 % infinity. Python
                                                 % can't cope.
-
-fovshift = 20; % Past the foveal region, really, this is where the
-               % increase in the sigma starts, for r<fovshift,
-               % sigma is sigma_0
 
 M_f_start = W_nfs ./ ( E2 .* log (( fovshift/(2.*E2) )+1) );
 
