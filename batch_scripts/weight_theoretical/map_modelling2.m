@@ -10,27 +10,41 @@
 % parameters because the hill of activity is about 12 to 15 pixels
 % wide, rather than 5 to 6.
 %
-modeltype = 'TModel1' % TModel0, TModel1 or TModel2
+mo
+deltype = 'TModel2' % TModel0, TModel1 or TModel2
 
 % Modelling left map - double exponential. This is matched to
 % left(15,:) where left is loaded with load_sbgmaps.m.
 x=[1:50];
-y1=exp(0.07.*(x-38));
-y2=exp(0.4*(x-39.5));
-y = y1+y2;
 
-y3=exp(0.2*(x-39));
-
-zlim_max=2.5;
-
-figure(110);
-plot (x,y1);
-hold on;
-plot (x,y2,'r');
-omsetgrid([1,0]);
-% Single exp - either y1 or y2 etc.
+% Single exp - either y1, y2, y3 etc.
 % Double exp - use y = y1 + y2.
-Y = repmat(y3,50,1);
+if strcmp(modeltype, 'TModel2')
+    %y = exp(0.1*(x-39));
+    y0=(1./1451).*exp(0.07.*x); % Single exponential
+    y1=(1./1950).*exp(0.05.*x); % Small eccentricity
+    y2=(1./6000).*exp(0.1.*x); % Larger eccentricity
+    y = y0; %y1+y2; % Or y0
+
+    figure(110); clf;
+    plot (x,y1,'b');
+    hold on;
+    plot (x,y2,'r');
+    plot (x,y0,'g');
+    plot (x,y1+y2,'k');
+    ylim([0,0.05])
+    legend('y1','y2','y0','y1+y2')
+    omsetgrid([1,0]);
+
+else
+    y = exp(0.2*(x-39));
+end
+
+% Create Y from y
+Y = repmat(y,50,1);
+
+% A parameter for graphing
+zlim_max=2.5;
 
 % Do the sine part in higher precision first, to ensure symmetry
 % (rather than having circ commands of 12 and 13). Use 5000 pixels
