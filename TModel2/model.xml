@@ -5713,7 +5713,7 @@
                 </OneToOneConnection>
                 <LL:WeightUpdate name="SC_deep2 to SC_avg Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
                     <Property name="w" dimension="?">
-                        <FixedValue value="0.015"/>
+                        <FixedValue value="0.013"/>
                     </Property>
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_deep2 to SC_avg Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
@@ -5731,8 +5731,8 @@
                     <curves>
                         <curve>
                             <C1 xpos="-1.65407" ypos="6.0283"/>
-                            <C2 xpos="-1.08732" ypos="5.23386"/>
-                            <end xpos="-1.96876" ypos="5.24994"/>
+                            <C2 xpos="-1.0873" ypos="5.23382"/>
+                            <end xpos="-1.96874" ypos="5.2499"/>
                         </curve>
                     </curves>
                 </SpineCreator>
