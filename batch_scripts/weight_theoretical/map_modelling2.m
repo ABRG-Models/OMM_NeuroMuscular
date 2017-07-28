@@ -20,7 +20,9 @@
 % wide, rather than 5 to 6.
 %
 
-modeltype = 'TModel2' % TModel0, TModel1 or TModel2
+modeltype = 'TModel4' % TModel0, TModel1 or TModel2 or indeed TModel3
+                      % (like 0 but with joining sines) or TModel4
+                      % (like 2 but with joining sines)
 
 % Modelling left map - double exponential. This is matched to
 % left(15,:) where left is loaded with load_sbgmaps.m.
@@ -61,7 +63,15 @@ if strcmp(modeltype, 'TModel2')
     title('Vertical specific for TModel2')
     omsetgrid([0,0]);
 
-else
+elseif strcmp(modeltype, 'TModel4')
+    yh=(1./1451).*exp(0.07.*x);
+    yv=(1./14000).*exp(0.12.*x);
+
+elseif strcmp (modeltype, 'TModel3')
+    yh = exp(0.2*(x-39));
+    yv = exp(0.2*(x-39));
+
+else % TModel0
     yh = exp(0.2*(x-39));
     yv = exp(0.2*(x-39));
 end
@@ -80,6 +90,9 @@ if strcmp (modeltype, 'TModel2')
 elseif strcmp (modeltype, 'TModel1')
     sine_width1 = 1900; % Vertical. eyeRx
     sine_width2 = 1900; % Horizontal. eyeRy
+elseif strcmp (modeltype, 'TModel3') || strcmp (modeltype, 'TModel4')
+    sine_width1 = 5000/2;
+    sine_width2 = sine_width1;
 else
     sine_width1 = 1700; % Vertical. eyeRx. To suit HOA 9 px wide at
                         % -6 degrees.
@@ -180,12 +193,9 @@ end
 
 
 % Choose one of the above modifiers(ones, linear or sigmoidal):
-if strcmp (modeltype, 'TModel0')
+if strcmp (modeltype, 'TModel0') || strcmp (modeltype, 'TModel2') || strcmp (modeltype, 'TModel3') || strcmp (modeltype, 'TModel4')
     multfunc1L = onesmultfunc; % sigmultfunc1L, linmultfunc1L or onesmultfunc;
     multfunc2L = onesmultfunc; % sigmultfunc2L, linmultfunc2L or onesmultfunc;
-elseif strcmp (modeltype, 'TModel2')
-    multfunc1L = onesmultfunc;
-    multfunc2L = onesmultfunc;
 else
     multfunc1L = sigmultfunc1L; % sigmultfunc1L, linmultfunc1L or onesmultfunc;
     multfunc2L = sigmultfunc2L; % sigmultfunc2L, linmultfunc2L or onesmultfunc;
