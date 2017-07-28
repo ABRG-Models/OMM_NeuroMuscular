@@ -1,5 +1,5 @@
-%% Load the data and plot the error surface.
-function rtn = plot_errorsurf (ommodel, startfig)
+%% Load the data and plot the error surface. Only plot up to maxr.
+function rtn = plot_errorsurf (ommodel, startfig, maxr=100)
 
 rtn = 0;
 r = struct();
@@ -29,7 +29,12 @@ for i = [1 : llen]
     sz_2 = size(result.(resdatname))(2);
 
     if (sz_2 == 14)
-        rr = [rr; result.(resdatname)];
+        resx = result.(resdatname)(1,1);
+        resy = result.(resdatname)(1,2);
+        ecc = sqrt ((resx*resx) + (resy*resy));
+        if (ecc < maxr)
+            rr = [rr; result.(resdatname)];
+        end
     end
 
 end
@@ -60,7 +65,7 @@ hold off;
 xlabel('Target X');
 ylabel('Target Y');
 zlabel('mag. of error vector');
-title ([ommodel ': Error magnitude']);
+title ([ommodel ': Error magnitude (total: ' num2str(sum(errmags)) ')']);
 view([84 75]);
 
 figure(startfig+4); clf;
@@ -72,7 +77,7 @@ hold off;
 xlabel('Target X');
 ylabel('Target Y');
 zlabel('mag. of errorRotX)');
-title ([ommodel ': X Error magnitude']);
+title ([ommodel ': X Error magnitude (total: ' num2str(sum(abs(errs(:,1)))) ')']);
 view([84 75]);
 
 figure(startfig+5); clf;
@@ -84,7 +89,7 @@ hold off;
 xlabel('Target X');
 ylabel('Target Y');
 zlabel('mag. of errorRotY)');
-title ([ommodel ': Y Error magnitude']);
+title ([ommodel ': Y Error magnitude(total: ' num2str(sum(abs(errs(:,2)))) ')']);
 view([84 75]);
 
 figure(startfig+6); clf;
@@ -96,6 +101,6 @@ hold off;
 xlabel('Target X');
 ylabel('Target Y');
 zlabel('mag. of errorRotZ)');
-title ([ommodel ': Z Error magnitude']);
+title ([ommodel ': Z Error magnitude(total: ' num2str(sum(abs(errs(:,3)))) ')']);
 view([84 75]);
 end
