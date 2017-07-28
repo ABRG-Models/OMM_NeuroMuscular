@@ -1,8 +1,17 @@
 %
 % Build weight maps for saccadic burst generator.
 %
+% This version has an approximate "hill sized" gap between opposing
+% axes, so that when a pure right movement is coded, no up or down
+% activity is registered. This is unlike the results of Arai et al
+% 1994 or Tabareau et al, 2007, whose maps will, for a hill of
+% finite, non-zero size, excite some equal, and opposing up and
+% down signal for a right or leftwards saccade.
+%
 
-% For TModel0, build pure sine+exp maps, like Tabareau et al.
+% For TModel0, build pure sine+exp maps, like Tabareau et al, but
+% leave a gap between opposing weight maps of width about 5 or 6
+% pixels.
 %
 % For TModel1, apply the sigmoidal transform
 %
@@ -10,8 +19,8 @@
 % parameters because the hill of activity is about 12 to 15 pixels
 % wide, rather than 5 to 6.
 %
-mo
-deltype = 'TModel2' % TModel0, TModel1 or TModel2
+
+modeltype = 'TModel2' % TModel0, TModel1 or TModel2
 
 % Modelling left map - double exponential. This is matched to
 % left(15,:) where left is loaded with load_sbgmaps.m.
@@ -24,7 +33,12 @@ if strcmp(modeltype, 'TModel2')
     y0=(1./1451).*exp(0.07.*x); % Single exponential
     y1=(1./1950).*exp(0.05.*x); % Small eccentricity
     y2=(1./6000).*exp(0.1.*x); % Larger eccentricity
-    y = y0; %y1+y2; % Or y0
+
+    yh = y0; % y0 is great for horizontal saccades
+
+    y3=(1./14000).*exp(0.12.*x); % Works for vertical saccades
+
+    yv=y3;
 
     figure(110); clf;
     plot (x,y1,'b');
@@ -33,15 +47,24 @@ if strcmp(modeltype, 'TModel2')
     plot (x,y0,'g');
     plot (x,y1+y2,'k');
     ylim([0,0.05])
-    legend('y1','y2','y0','y1+y2')
+    legend('y1','y2','y0*','y1+y2')
+    title('Horizontal specific for TModel2')
     omsetgrid([1,0]);
 
-else
-    y = exp(0.2*(x-39));
-end
+    figure(111); clf;
+    plot (x,y0,'b--');
+    hold on;
+    plot (x,y3,'g');
+    ylim([0,0.01]);
+    xlim([18,40]);
+    legend('y0 (horz)','y3*');
+    title('Vertical specific for TModel2')
+    omsetgrid([0,0]);
 
-% Create Y from y
-Y = repmat(y,50,1);
+else
+    yh = exp(0.2*(x-39));
+    yv = exp(0.2*(x-39));
+end
 
 % A parameter for graphing
 zlim_max=2.5;
@@ -62,6 +85,10 @@ else
                         % -6 degrees.
     sine_width2 = 1700; % Horizontal. eyeRy
 end
+
+% Create Y from yh and yv.
+YH = repmat(yh,50,1);
+YV = repmat(yv,50,1);
 
 zer=zeros(1,5000);
 
@@ -224,16 +251,16 @@ title('downsampled sines on usual 50 pixel space');
 legend('U','L','D','R');
 omsetgrid([4,0]);
 C1 = repmat(c1d,1,50);
-USHEET = C1.*Y;
+USHEET = C1.*YV;
 
 C2 = repmat(c2d,1,50);
-RSHEET = C2.*Y;
+RSHEET = C2.*YH;
 
 C3 = repmat(c3d,1,50);
-DSHEET = C3.*Y;
+DSHEET = C3.*YV;
 
 C4 = repmat(c4d,1,50);
-LSHEET = C4.*Y;
+LSHEET = C4.*YH;
 
 % Set to 1 to print out pngs:
 printmaps = 0

@@ -16,7 +16,7 @@ GAP_MS=0
 # Negative theta Y is a leftward movement.
 THETAYSTART=-7
 THETAYINC=-1 # Stick to integers! Design of eyeframe/worldframe code requires this.
-THETAYEND=-17
+THETAYEND=-14
 
 THETAX=0
 NUM_RUNS=6
@@ -29,7 +29,7 @@ if [ -d /usr/local/abrg ]; then
 fi
 
 # Use an env. variable to select which model to run.
-export OMMODEL='TModel0'
+export OMMODEL='TModel2'
 
 for targyval in `seq ${THETAYSTART} ${THETAYINC} ${THETAYEND}`; do
 

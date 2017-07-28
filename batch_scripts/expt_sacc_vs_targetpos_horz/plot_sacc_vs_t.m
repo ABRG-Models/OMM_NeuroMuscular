@@ -8,7 +8,7 @@ lumval=1;
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
 colcount = 1;
 
-flist = glob('results/TModel0/r*.dat');
+flist = glob('results/TModel2/r*.dat');
 llen = size(flist)(1);
 for i = [1 : llen]
 
@@ -41,7 +41,7 @@ rr = sortrows(rr,2);
 figure(62);
 errorbar (rr(:,2),rr(:,7),rr(:,10),'o-')
 hold on;
-plot ([-15,-8],[-15,-8], 'g--');
+plot ([-15,-7],[-15,-7], 'g--');
 hold off;
 xlabel('Target y');
 ylabel('eyeRy');
@@ -57,14 +57,17 @@ legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))]);
 title ('Horizontal');
 
 % Output for Veusz
-targrot = [rr(:,2),rr(:,7),rr(:,10)];
-f = fopen ('results/sacc_eyery_vs_targ.csv', 'w');
-fprintf (f, 'TargY,eyeRy,+-\n');
-dlmwrite (f, targrot, '-append');
-fclose(f);
+output_veusz = 0
+if output_veusz
+    targrot = [rr(:,2),rr(:,7),rr(:,10)];
+    f = fopen ('results/sacc_eyery_vs_targ.csv', 'w');
+    fprintf (f, 'TargY,eyeRy,+-\n');
+    dlmwrite (f, targrot, '-append');
+    fclose(f);
 
-latrot = [rr(:,2),rr(:,12),rr(:,13)];
-f = fopen ('results/sacc_lat_vs_targ.csv', 'w');
-fprintf (f, 'TargY,Latency,+-\n');
-dlmwrite (f, latrot, '-append');
-fclose(f);
+    latrot = [rr(:,2),rr(:,12),rr(:,13)];
+    f = fopen ('results/sacc_lat_vs_targ.csv', 'w');
+    fprintf (f, 'TargY,Latency,+-\n');
+    dlmwrite (f, latrot, '-append');
+    fclose(f);
+end
