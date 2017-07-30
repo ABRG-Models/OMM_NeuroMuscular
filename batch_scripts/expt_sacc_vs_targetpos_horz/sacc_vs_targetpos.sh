@@ -16,7 +16,7 @@ GAP_MS=0
 # Negative theta Y is a leftward movement.
 THETAYSTART=-7
 THETAYINC=-1 # Stick to integers! Design of eyeframe/worldframe code requires this.
-THETAYEND=-14
+THETAYEND=-17
 
 THETAX=0
 NUM_RUNS=6
