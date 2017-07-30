@@ -50,13 +50,17 @@ elseif strcmp (modeltype, 'TModel3')
     % TModel3 starting point should be similar to TModel0, but I've
     % changed the weights for SC_Deep to SCavg and SC_avg to LLBNs
     % to unity.
-    yh = 0.001.*exp(0.2.*x);
+    %ycmp = 0.0009.*exp(0.19.*x);
+    yh = 0.0012.*exp(0.19.*x);
     yv = 0.005.*exp(0.2.*x);
 
     figure(110); clf;
     plot (x,yh,'b');
     hold on;
     plot (x,yv,'r');
+    %plot (x,ycmp,'k');
+    xlim([18 40]);
+    ylim([0 5]);
     legend('yh','yv')
     omsetgrid([1,0]);
 

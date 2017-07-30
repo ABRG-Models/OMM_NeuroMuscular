@@ -17,7 +17,7 @@ end
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
 colcount = 1;
 
-flist = glob('results/TModel2/r*.dat');
+flist = glob('results/TModel3/r*.dat');
 llen = size(flist)(1);
 for i = [1 : llen]
 

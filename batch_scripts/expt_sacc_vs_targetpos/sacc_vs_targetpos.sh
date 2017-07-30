@@ -16,7 +16,7 @@ GAP_MS=0
 # Negative ThetaX is a downward movement and avoids edge effects in the model.
 THETAXSTART=-7
 THETAXINC=-1 # Stick to integers! Design of eyeframe/worldframe code requires this.
-THETAXEND=-14
+THETAXEND=-17
 
 THETAY=0
 NUM_RUNS=6
@@ -29,7 +29,7 @@ if [ -d /usr/local/abrg ]; then
 fi
 
 # Use an env. variable to select which model to run.
-export OMMODEL='TModel2'
+export OMMODEL='TModel3'
 
 for targxval in `seq ${THETAXSTART} ${THETAXINC} ${THETAXEND}`; do
 
