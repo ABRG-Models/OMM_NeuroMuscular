@@ -1,4 +1,4 @@
-# Created by Octave 3.8.2, Sat Jul 29 12:22:30 2017 BST <co1ssj@node201>
+# Created by Octave 3.8.2, Sun Jul 30 09:09:23 2017 BST <co1ssj@node117>
 # name: result
 # type: scalar struct
 # ndims: 2
@@ -86,12 +86,12 @@
 
 # name: targetThetaX
 # type: scalar
-0
+-10
 
 
 # name: targetThetaY
 # type: scalar
-13
+-14
 
 
 # name: exptnum
@@ -101,11 +101,11 @@
 
 
 
-# name: r_0_13_G0_L0p3_D0p7
+# name: r_m10_m14_G0_L0p3_D0p7
 # type: matrix
 # rows: 1
 # columns: 14
- 0 13 0.2 0 0.3 0.3169665 16.48318333333333 1.928926666666667 0.07688689179762698 0.4308975164313048 0.151133151051206 148.1666666666667 0.752772652709081 0.7
+ -10 -14 0.2 0 0.3 -12.18915 -10.83406666666667 0.134677 0.05044754701667901 0.108345552131441 0.0103838557385973 153.6666666666667 0.5163977794943223 0.7
 
 
 
