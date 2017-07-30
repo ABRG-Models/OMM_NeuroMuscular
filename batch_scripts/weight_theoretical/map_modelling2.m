@@ -20,7 +20,7 @@
 % wide, rather than 5 to 6.
 %
 
-modeltype = 'TModel3' % TModel0, TModel1 or TModel2 or indeed TModel3
+modeltype = 'TModel4' % TModel0, TModel1 or TModel2 or indeed TModel3
                       % (like 0 but with joining sines) or TModel4
                       % (like 2 but with joining sines)
 
@@ -46,26 +46,27 @@ if strcmp(modeltype, 'TModel2')
     yv=y3;
 
 elseif strcmp(modeltype, 'TModel4')
-    yh=(1./1451).*exp(0.07.*x);
-    yv=(1./14000).*exp(0.12.*x);
-
-elseif strcmp (modeltype, 'TModel3')
-    % TModel3 starting point should be similar to TModel0, but I've
-    % changed the weights for SC_Deep to SCavg and SC_avg to LLBNs
-    % to unity.
-    ycmp = 0.0088.*exp(0.16.*x);
-    yh = 0.0012.*exp(0.19.*x);
-    yv = 0.0088.*exp(0.162.*x);
+    yh=0.00075*exp(0.08.*x);
+    yv=0.0012*exp(0.08.*x);
+    %ycmp=0.00075*exp(0.08.*x);
 
     figure(110); clf;
     plot (x,yh,'b');
     hold on;
     plot (x,yv,'r');
-    plot (x,ycmp,'k');
+    %plot (x,ycmp,'k');
     xlim([18 40]);
-    ylim([0 5]);
+    %ylim([0 5]);
     legend('yh','yv')
     omsetgrid([1,0]);
+
+elseif strcmp (modeltype, 'TModel3')
+    % TModel3 starting point should be similar to TModel0, but I've
+    % changed the weights for SC_Deep to SCavg and SC_avg to LLBNs
+    % to unity.
+    yh = 0.0012.*exp(0.19.*x);
+    yv = 0.0088.*exp(0.162.*x);
+
 
 else % TModel0
     yh = exp(0.2*(x-39)); % 1/2441 exp (0.2x)
