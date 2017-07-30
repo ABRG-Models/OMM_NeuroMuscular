@@ -28,6 +28,9 @@ modeltype = 'TModel3' % TModel0, TModel1 or TModel2 or indeed TModel3
 % left(15,:) where left is loaded with load_sbgmaps.m.
 x=[1:50];
 
+% How much to multiplus UP/DOWN to get Zminus/Zplus
+zmult = 0.1;
+
 % Single exp - either y1, y2, y3 etc.
 % Double exp - use y = y1 + y2.
 if strcmp(modeltype, 'TModel2')
@@ -268,7 +271,7 @@ LSHEET = C4.*YH;
 % Set to 1 to print out pngs:
 printmaps = 0
 
-figure(101);
+figure(201);
 surf(LSHEET);
 zlim([0 zlim_max]);
 title('Left');
@@ -277,7 +280,7 @@ if printmaps
     print('left.png');
 end
 
-figure(102);
+figure(202);
 surf(RSHEET);
 zlim([0 zlim_max]);
 title('Right');
@@ -286,7 +289,7 @@ if printmaps
     print('right.png');
 end
 
-figure(103);
+figure(203);
 surf(USHEET);
 zlim([0 zlim_max]);
 title('Up');
@@ -295,7 +298,7 @@ if printmaps
     print('up.png');
 end
 
-figure(104);
+figure(204);
 surf(DSHEET);
 zlim([0 zlim_max]);
 title('Down');
@@ -304,7 +307,25 @@ if printmaps
     print('down.png');
 end
 
-figure(106); clf;
+figure(205);
+surf(zmult.*USHEET);
+zlim([0 zlim_max]);
+title('Zminus');
+omsetgrid([3,1]);
+if printmaps
+    print('zminus.png');
+end
+
+figure(206);
+surf(zmult.*DSHEET);
+zlim([0 zlim_max]);
+title('ZPlus');
+omsetgrid([4,1]);
+if printmaps
+    print('zplus.png');
+end
+
+figure(208); clf;
 surf(USHEET.+DSHEET.+LSHEET.+RSHEET);
 zlim([0 zlim_max]);
 title('All');
@@ -320,9 +341,9 @@ write_neural_sheet(flipud(DSHEET), [modeltype '/explicitDataBinaryFile54.bin']);
 % From centroiding results, Up/Down seem to be 10 times larger than
 % zminus/zplus:
 if strcmp(modeltype, 'TModel3')
-    write_neural_sheet(1.7.*flipud(USHEET), [modeltype '/explicitDataBinaryFile58.bin']);
-    write_neural_sheet(1.7.*flipud(DSHEET), [modeltype '/explicitDataBinaryFile57.bin']);
+    write_neural_sheet(zmult.*flipud(USHEET), [modeltype '/explicitDataBinaryFile58.bin']);
+    write_neural_sheet(zmult.*flipud(DSHEET), [modeltype '/explicitDataBinaryFile57.bin']);
 else
-    write_neural_sheet(0.1.*flipud(USHEET), [modeltype '/explicitDataBinaryFile58.bin']);
-    write_neural_sheet(0.1.*flipud(DSHEET), [modeltype '/explicitDataBinaryFile57.bin']);
+    write_neural_sheet(zmult.*flipud(USHEET), [modeltype '/explicitDataBinaryFile58.bin']);
+    write_neural_sheet(zmult.*flipud(DSHEET), [modeltype '/explicitDataBinaryFile57.bin']);
 end
