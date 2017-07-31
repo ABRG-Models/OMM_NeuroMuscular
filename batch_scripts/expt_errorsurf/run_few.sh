@@ -20,13 +20,13 @@ if [ -d /usr/local/abrg ]; then
 fi
 
 # Use an env. variable to select which model to run.
-export OMMODEL='TModel4'
+export OMMODEL='TModel3'
 mkdir -p results/${OMMODEL}
 
 PARENT_LIMIT=28
 
-# The list of angles to re-do.
-LIST="RX-11RY-3 RX-12RY7"
+# The list of angles to re-do. RX-4RY8 is the format, with spaces separating.
+LIST="RX-11RY-3 RX-12RY7 RX-4RY-11 RX-8RY-12 RX-8RY-5"
 
 for tag in $LIST; do
 
