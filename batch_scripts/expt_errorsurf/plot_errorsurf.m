@@ -67,6 +67,7 @@ ylabel('Target Y');
 zlabel('mag. of error vector');
 title ([ommodel ': Error magnitude (total: ' num2str(sum(errmags)) ')']);
 view([84 75]);
+zlim([0 7]);
 
 figure(startfig+4); clf;
 trisurf(delaunay(X,Y),X,Y,abs(errs(:,1)));
@@ -79,6 +80,7 @@ ylabel('Target Y');
 zlabel('mag. of errorRotX)');
 title ([ommodel ': X Error magnitude (total: ' num2str(sum(abs(errs(:,1)))) ')']);
 view([84 75]);
+zlim([0 7]);
 
 figure(startfig+5); clf;
 trisurf(delaunay(X,Y),X,Y,abs(errs(:,2)));
@@ -91,6 +93,7 @@ ylabel('Target Y');
 zlabel('mag. of errorRotY)');
 title ([ommodel ': Y Error magnitude(total: ' num2str(sum(abs(errs(:,2)))) ')']);
 view([84 75]);
+zlim([0 5]);
 
 figure(startfig+6); clf;
 trisurf(delaunay(X,Y),X,Y,abs(errs(:,3)));
@@ -103,4 +106,6 @@ ylabel('Target Y');
 zlabel('mag. of errorRotZ)');
 title ([ommodel ': Z Error magnitude(total: ' num2str(sum(abs(errs(:,3)))) ')']);
 view([84 75]);
+zlim([0 2.5]);
+
 end
