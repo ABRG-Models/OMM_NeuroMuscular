@@ -6,7 +6,7 @@
 # octave data files. Load these and plot using plot_sacc_vs_g.m
 
 # Fixed parameters
-LUMVAL=0.3
+LUMVAL=1
 GAP_MS=0
 THETAX=-10
 THETAY=0
@@ -60,7 +60,8 @@ if [ \$oct_run_rtn -gt "0" ]; then
 fi
 popd
 
-octave -q --eval "perform_saccade('results',${THETAX},${THETAY},${NUM_RUNS},${GAP_MS},${LUMVAL},${dopval})"
+mkdir -p results/${OMMODEL}
+octave -q --eval "perform_saccade('results/${OMMODEL}',${THETAX},${THETAY},${NUM_RUNS},${GAP_MS},${LUMVAL},${dopval})"
 exit 0
 EOF
 

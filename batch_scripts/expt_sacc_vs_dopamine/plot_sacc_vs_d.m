@@ -4,12 +4,12 @@ rr = [];
 
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
 
-flist = glob('results/r*.dat');
+flist = glob('results/TModel4/r*.dat');
 llen = size(flist)(1);
 for i = [1 : llen]
 
     rnm = flist{i};
-    resdatname = substr(rnm, 9); % strips initial 'results/' string
+    resdatname = substr(rnm, 9+8); % strips initial 'results/' string
     resdatname = substr(resdatname, 1, size(resdatname)(2)-4); % Strips '.dat' off
     resdatname = strrep (resdatname, '.', 'p');
     resdatname = strrep (resdatname, '-', 'm');
@@ -49,10 +49,37 @@ for l = luminances'
     rr_1 = rr(find(rr(:,5)==l),:);
     errorbar (rr_1(:,14),rr_1(:,12),rr_1(:,13), colours{colcount})
     hold on;
+    % G is "gap"
     legend_str = [legend_str; 'G: ' num2str(rr_1(1,4)) ' L: ' num2str(l)];
     colcount = colcount + 1;
 end
 xlabel('dopamine');
 ylabel('Latency (ms)');
+legend(legend_str);
+title(['X/Y ' num2str(rr(1,1)) '/' num2str(rr(1,2)) ]);
+
+% Accuracy vs dopamine
+figure(43);
+clf;
+legend_str='';
+colcount = 1;
+for l = luminances'
+    rr_1 = [];
+    rr_1 = rr(find(rr(:,5)==l),:);
+    xvecmag = abs(rr_1(:,6) - rr_1(:,1));
+    yvecmag = abs(rr_1(:,7) - rr_1(:,2));
+    zvecmag = abs(rr_1(:,8));
+    hold on;
+    plot (rr_1(:,14),xvecmag, 'color', colours{colcount}, 'linestyle', '-', 'marker', 'o', 'markersize',12)
+    % G is "gap"
+    legend_str = [legend_str; 'G: ' num2str(rr_1(1,4)) ' L: ' num2str(l) ' Xerr'];
+    plot (rr_1(:,14),yvecmag, 'color', colours{colcount}, 'linestyle', '-', 'marker', 'd', 'markersize',12)
+    legend_str = [legend_str; 'G: ' num2str(rr_1(1,4)) ' L: ' num2str(l) ' Yerr'];
+    plot (rr_1(:,14),zvecmag, 'color', colours{colcount}, 'linestyle', '-', 'marker', '^', 'markersize',12)
+    legend_str = [legend_str; 'G: ' num2str(rr_1(1,4)) ' L: ' num2str(l) ' Zerr'];
+    colcount = colcount + 1;
+end
+xlabel('dopamine');
+ylabel('Error (degrees)');
 legend(legend_str);
 title(['X/Y ' num2str(rr(1,1)) '/' num2str(rr(1,2)) ]);
