@@ -18,7 +18,7 @@ LUMVALEND=1.2
 LUMVALINC=0.1
 
 # Use an env. variable to select which model to run.
-export OMMODEL='TModel0'
+export OMMODEL='TModel4'
 
 mkdir -p results
 

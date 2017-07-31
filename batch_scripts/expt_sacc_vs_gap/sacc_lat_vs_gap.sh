@@ -21,7 +21,7 @@ if [ -d /usr/local/abrg ]; then
 fi
 
 # Use an env. variable to select which model to run.
-export OMMODEL='TModel0'
+export OMMODEL='TModel4'
 
 for gapval in `seq -80 20 140` `seq -10 5 10`; do
 

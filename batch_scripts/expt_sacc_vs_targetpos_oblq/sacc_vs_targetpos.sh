@@ -33,7 +33,7 @@ if [ -d /usr/local/abrg ]; then
 fi
 
 # Use an env. variable to select which model to run.
-export OMMODEL='TModel0'
+export OMMODEL='TModel4'
 
 for targyval in `seq ${THETAYSTART} ${THETAYINC} ${THETAYEND}`; do
 

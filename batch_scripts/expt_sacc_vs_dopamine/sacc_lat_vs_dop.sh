@@ -27,7 +27,7 @@ if [ -d /usr/local/abrg ]; then
 fi
 
 # Use an env. variable to select which model to run.
-export OMMODEL='Model3'
+export OMMODEL='TModel4'
 
 for dopval in `seq $DOPSTART $DOPINC $DOPEND`; do
 
