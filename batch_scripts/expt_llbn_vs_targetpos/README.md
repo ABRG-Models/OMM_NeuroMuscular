@@ -1,3 +1,8 @@
+This expt directory contains results from investigations of the
+activity in LLBN populations. It's an experiment which was conducted
+for model development, and won't produce results used in the paper.
+
+---------------------------------------------------------------------
 I first tested a WideningGaussian script before 4th July 2017 which was
 not very well normalised. This is WG1.
 
