@@ -7,7 +7,7 @@
 
 # Fixed parameters
 LUMVAL=1
-GAP_MS=0
+GAP_MS=80
 THETAX=-10
 THETAY=0
 
