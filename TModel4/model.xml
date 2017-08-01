@@ -925,7 +925,7 @@
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_sup to SC_deep Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
                     <Property name="w" dimension="?">
-                        <FixedValue value="10"/>
+                        <FixedValue value="5"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
@@ -957,7 +957,7 @@
                 </LL:WeightUpdate>
                 <LL:PostSynapse name="SC_sup to Thalamus Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
                     <Property name="w" dimension="?">
-                        <FixedValue value="6"/>
+                        <FixedValue value="3"/>
                     </Property>
                 </LL:PostSynapse>
             </LL:Synapse>
