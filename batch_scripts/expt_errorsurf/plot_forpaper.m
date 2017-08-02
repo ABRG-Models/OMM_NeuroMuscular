@@ -11,7 +11,7 @@ end
 
 h_f = figure (1); clf;
 h_f_pos = get(h_f, 'Position');
-set(h_f, 'Position', [20, 600, 1200, 800]);
+set(h_f, 'Position', [20, 1000, 2100, 1400]);
 
 % Best viewing angle for the surfaces
 viewx=90; viewy=90;
@@ -32,7 +32,7 @@ lw = 2;
 ms = 20;
 
 % Main fontsize
-fs1 = 22;
+fs1 = 26;
 
 targxtxt = 'Target X (\deg)';
 targytxt = 'Target Y (\deg)';
@@ -43,7 +43,7 @@ targytxt = 'Target Y (\deg)';
 
 function offsetxlabel (h)
     xpos = get(h, 'position');
-    xpos(2) = xpos(2)+3;
+    xpos(2) = xpos(2)+2;
     halfwidth = 2.5;
     xpos(1) = xpos(1)-halfwidth;
     set(h, 'position', xpos);
@@ -57,8 +57,8 @@ function offsetylabel (h)
     set(h, 'position', xpos);
 end
 
-function setaxprops (h)
-    set(h, 'fontsize', 22);
+function setaxprops (h, fs)
+    set(h, 'fontsize', fs);
 end
 
 X=rr4(:,1);
@@ -75,7 +75,7 @@ plot ([1,-15],[-1,15],'b','linewidth',lw,'markersize',ms)
 plot ([-15,1],[-15,1],'b','linewidth',lw,'markersize',ms)
 hold off;
 
-setaxprops (hax(1));
+setaxprops (hax(1), fs1);
 
 hxl(1)=xlabel(targxtxt, 'fontsize', fs1);
 offsetxlabel(hxl(1));
@@ -97,7 +97,7 @@ plot ([1,-15],[-1,15],'b','linewidth',lw,'markersize',ms)
 plot ([-15,1],[-15,1],'b','linewidth',lw,'markersize',ms)
 hold off;
 
-setaxprops (hax(2));
+setaxprops (hax(2), fs1);
 
 hxl(2)=xlabel(targxtxt, 'fontsize', fs1);
 offsetxlabel(hxl(2));
@@ -120,7 +120,7 @@ plot ([1,-15],[-1,15],'b','linewidth',lw,'markersize',ms)
 plot ([-15,1],[-15,1],'b','linewidth',lw,'markersize',ms)
 hold off;
 
-setaxprops (hax(3));
+setaxprops (hax(3), fs1);
 
 hxl(3)=xlabel(targxtxt, 'fontsize', fs1);
 offsetxlabel(hxl(3));
@@ -143,7 +143,7 @@ plot ([1,-15],[-1,15],'b','linewidth',lw,'markersize',ms)
 plot ([-15,1],[-15,1],'b','linewidth',lw,'markersize',ms)
 hold off;
 
-setaxprops (hax(4));
+setaxprops (hax(4), fs1);
 
 hxl(4)=xlabel(targxtxt, 'fontsize', fs1);
 offsetxlabel(hxl(4));
@@ -164,3 +164,5 @@ set(cbh,'linewidth', 0.5, 'tickdir', 'out', 'ticklength', [0.01,0.01], 'ytick', 
 
 set(cbh, 'position', [opos(1)+opos(3)+0.04  opos(2)  0.02 opos(2)+opos(3)*2.1], 'fontsize', fs1)
 title(cbh, 'Error (\deg)');
+
+display('Done. I just use a screenshot of this and then crop it for my png');
