@@ -33,7 +33,7 @@ function omview (data, t)
     omsurf(9, data, 'thal', t, 1)
     omsetgrid ([2 2]);
 
-    omsurf(10, data, 'world', t, 1)
+    omsurf(10, data, 'world', t, 1, 6)
     omsetgrid ([1 1]);
 
     omplot(11, data, 'eyeRy')
