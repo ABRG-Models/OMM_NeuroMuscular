@@ -3,7 +3,7 @@
 % Do this all on one plot...
 
 % Load the data
-do_load = 0
+do_load = 1
 if do_load
     [rr3, errs3, errmags3] = load_errorsurf ('TModel3', 14.5);
     [rr4, errs4, errmags4] = load_errorsurf ('TModel4', 14.5);
