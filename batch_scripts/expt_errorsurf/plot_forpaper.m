@@ -32,7 +32,7 @@ lw = 2;
 ms = 20;
 
 % Main fontsize
-fs1 = 26;
+fs1 = 38;
 
 targxtxt = 'Target X (\deg)';
 targytxt = 'Target Y (\deg)';
