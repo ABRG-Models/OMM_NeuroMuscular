@@ -18,7 +18,7 @@
 %%   perform_saccade (targetThetaX, targetThetaY, num_par_runs,
 %%   gap_ms, lum, dop)
 %%
-function perform_saccade (resultdir, targetThetaX, targetThetaY, num_par_runs, gap_ms, lum, dop)
+function perform_saccade (resultdir, targetThetaX, targetThetaY, num_par_runs, gap_ms, lum, dop, fixlum=0.2, exptnum=0)
 
     page_screen_output(0);
     page_output_immediately(1);
@@ -61,21 +61,27 @@ function perform_saccade (resultdir, targetThetaX, targetThetaY, num_par_runs, g
     params.targetWidthX=6;
     params.targetWidthY=2;
     params.fixCross=1;
-    params.fixLuminance=0.2;
+    params.fixLuminance=fixlum;
     params.fixWidthX=6;
     params.fixWidthY=2;
     params.fixOn=0;
     params.targetOff=1;
 
     % Determined by the gap argument:
-    params.targetOn = 0.2;
-    params.fixOff = 0.2-(gap_ms./1000);
+    if (exptnum > 0) % expt 0 has 0.6 sec duration; expts 5,6,7 have
+                     % 1 sec duration.
+        params.targetOn = 0.4;
+        params.fixOff = 0.4-(gap_ms./1000);
+    else
+        params.targetOn = 0.2;
+        params.fixOff = 0.2-(gap_ms./1000);
+    end
     % Also from args:
     params.targetThetaX=targetThetaX;
     params.targetThetaY=targetThetaY;
     params.dopamine = dop;
 
-    params.exptnum = 0; % 0 gives extra logging. default is 2.
+    params.exptnum = exptnum; % 0 gives extra logging. default is 2.
 
     write_single_luminance_with_fix ([model_dir '/luminances.json'], params);
 
@@ -83,8 +89,8 @@ function perform_saccade (resultdir, targetThetaX, targetThetaY, num_par_runs, g
 
     [ eyeRAvg, eyeRSD, eyeRFinals, peakPos, startMove ] = run_simulation_multi (model_dir, output_dirs, params)
 
-    resname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_G' num2str(gap_ms) '_L' num2str(lum) '_D' num2str(dop) '.dat'];
-    resdatname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_G' num2str(gap_ms) '_L' num2str(lum) '_D' num2str(dop)];
+    resname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_G' num2str(gap_ms) '_F' num2str(fixlum) '_L' num2str(lum) '_D' num2str(dop) '.dat'];
+    resdatname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_G' num2str(gap_ms) '_F' num2str(fixlum) '_L' num2str(lum) '_D' num2str(dop)];
     resdatname = strrep (resdatname, '.', 'p');
     % You can't put minus signs in the resdat name, either.
     resdatname = strrep (resdatname, '-', 'm');
