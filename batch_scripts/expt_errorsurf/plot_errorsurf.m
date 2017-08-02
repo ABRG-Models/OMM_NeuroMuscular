@@ -1,11 +1,13 @@
 %% Load the data and plot the error surface. Only plot up to maxr.
-function rtn = plot_errorsurf (ommodel, startfig, maxr=100)
+function rtn = plot_errorsurf (ommodel, startfig, yposn=300, maxr=100)
 
 rtn = 0;
 r = struct();
 rr = [];
 
 lumval=1;
+
+viewx=90; viewy=90;
 
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
 colcount = 1;
@@ -66,8 +68,9 @@ xlabel('Target X');
 ylabel('Target Y');
 zlabel('mag. of error vector');
 title ([ommodel ': Error magnitude (total: ' num2str(sum(errmags)) ')']);
-view([84 75]);
+view([viewx viewy]);
 zlim([0 7]);
+eesetgrid([0, 0], yposn);
 
 figure(startfig+4); clf;
 trisurf(delaunay(X,Y),X,Y,abs(errs(:,1)));
@@ -79,8 +82,9 @@ xlabel('Target X');
 ylabel('Target Y');
 zlabel('mag. of errorRotX)');
 title ([ommodel ': X Error magnitude (total: ' num2str(sum(abs(errs(:,1)))) ')']);
-view([84 75]);
+view([viewx viewy]);
 zlim([0 7]);
+eesetgrid([1, 0], yposn);
 
 figure(startfig+5); clf;
 trisurf(delaunay(X,Y),X,Y,abs(errs(:,2)));
@@ -92,8 +96,9 @@ xlabel('Target X');
 ylabel('Target Y');
 zlabel('mag. of errorRotY)');
 title ([ommodel ': Y Error magnitude(total: ' num2str(sum(abs(errs(:,2)))) ')']);
-view([84 75]);
+view([viewx viewy]);
 zlim([0 5]);
+eesetgrid([2, 0], yposn);
 
 figure(startfig+6); clf;
 trisurf(delaunay(X,Y),X,Y,abs(errs(:,3)));
@@ -105,7 +110,8 @@ xlabel('Target X');
 ylabel('Target Y');
 zlabel('mag. of errorRotZ)');
 title ([ommodel ': Z Error magnitude(total: ' num2str(sum(abs(errs(:,3)))) ')']);
-view([84 75]);
+view([viewx viewy]);
 zlim([0 2.5]);
+eesetgrid([3, 0], yposn);
 
 end
