@@ -3,19 +3,23 @@
 # Run through a set of targets a different locations, qsubbing
 # NUM_RUNS of the model for each target. Results (average saccade
 # size, saccade size SD) are stored in octave data files. Load these
-# and plot using plot_sacc_vs_t.m
+# and plot using plot_sacc_vs_l.m
 
 # Fixed parameters
 THETAX=0 # Integer values only
 THETAY=-10
 DOPAMINE=0.7
-GAP_MS=0
+GAP_MS=100 # -100 0 100
 
-NUM_RUNS=12
+NUM_RUNS=6
 
-LUMVALSTART=0.1
-LUMVALEND=1.2
-LUMVALINC=0.1
+LUMVALSTART=0.25
+LUMVALEND=3
+LUMVALINC=0.25
+
+FIXLUM=0.4
+
+EXPT=5 # 5 is like 0, but with 1 second duration.
 
 # Use an env. variable to select which model to run.
 export OMMODEL='TModel4'
@@ -59,7 +63,7 @@ fi
 popd
 mkdir -p results/${OMMODEL}
 # Need to add path for sacc_vs_targetpos:
-octave -q --eval "perform_saccade('results/${OMMODEL}',${THETAX},${THETAY},${NUM_RUNS},${GAP_MS},${lumval},${DOPAMINE})"
+octave -q --eval "perform_saccade('results/${OMMODEL}',${THETAX},${THETAY},${NUM_RUNS},${GAP_MS},${lumval},${DOPAMINE},${FIXLUM},${EXPT})"
 exit 0
 EOF
 
