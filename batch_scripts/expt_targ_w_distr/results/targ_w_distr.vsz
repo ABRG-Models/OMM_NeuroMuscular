@@ -1,5 +1,5 @@
 # Veusz saved document (version 1.21.1)
-# Saved at 2017-08-09T10:05:57.114995
+# Saved at 2017-08-09T10:16:30.923806
 
 AddImportPath(u'/home/seb/models/OMM_NeuroMuscular/batch_scripts/expt_targ_w_distr/results')
 ImportFileCSV(u'targets.csv', headermode='1st', linked=True, numericlocale=u'en_GB')
@@ -26,6 +26,7 @@ To('x')
 Set('label', u'Horizontal rotation (-\\theta_{y})')
 Set('min', 'Auto')
 Set('max', 12.0)
+Set('Label/size', u'18pt')
 To('..')
 Add('axis', name='y', autoadd=False)
 To('y')
@@ -33,6 +34,7 @@ Set('label', u'Vertical rotation (\\theta_{x})')
 Set('min', -12.0)
 Set('max', 1.4)
 Set('direction', 'vertical')
+Set('Label/size', u'18pt')
 To('..')
 Add('xy', name=u'LUM0DIST', autoadd=False)
 To(u'LUM0DIST')
