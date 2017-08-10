@@ -17,12 +17,14 @@ end
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
 colcount = 1;
 
-flist = glob('results/TModel4/r*.dat');
+modeldir = 'TModel4'
+
+flist = glob(['results/' modeldir '/r*.dat']);
 llen = size(flist)(1);
 for i = [1 : llen]
 
     rnm = flist{i};
-    resdatname = substr(rnm, 9+8); % strips initial 'results/' string
+    resdatname = substr(rnm, 9+length(modeldir)+1); % strips initial 'results/' string
     resdatname = substr(resdatname, 1, size(resdatname)(2)-4); % Strips '.dat' off
     resdatname = strrep (resdatname, '.', 'p');
     resdatname = strrep (resdatname, '-', 'm');
@@ -96,16 +98,16 @@ legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))]);
 title('Vertical');
 
 % Output for Veusz
-output_veusz = 0
+output_veusz = 1
 if output_veusz
     targrot = [rr(:,1),rr(:,6),rr(:,9)];
-    f = fopen ('results/sacc_eyerx_vs_targ.csv', 'w');
+    f = fopen (['results/' modeldir '/sacc_eyerx_vs_targ.csv'], 'w');
     fprintf (f, 'TargX,eyeRx,+-\n');
     dlmwrite (f, targrot, '-append');
     fclose(f);
 
     latrot = [rr(:,1),rr(:,12),rr(:,13)];
-    f = fopen ('results/sacc_lat_vs_targ.csv', 'w');
+    f = fopen (['results/' modeldir '/sacc_lat_vs_targ.csv'], 'w');
     fprintf (f, 'TargX,Latency,+-\n');
     dlmwrite (f, latrot, '-append');
     fclose(f);
