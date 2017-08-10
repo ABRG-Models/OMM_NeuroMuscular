@@ -74,21 +74,21 @@ function omview (data, t)
         surf (data.wm_d.*multsurf(:,:,t));
         view([30,60])
         title ('wm\_d x multsurf');
-        omsetgrid ([1 1]);
+        omsetgrid ([0 1]);
 
         figure(19); clf;
         % These'll cover over some of the BG graphs
         surf (data.wm_r.*multsurf(:,:,t));
         view([30,60])
         title ('wm\_r x multsurf');
-        omsetgrid ([2 1]);
+        omsetgrid ([0 2]);
 
         figure(20); clf;
         % These'll cover over some of the BG graphs
         surf (data.wm_l.*multsurf(:,:,t));
         view([30,60])
         title ('wm\_l x multsurf');
-        omsetgrid ([3 1]);
+        omsetgrid ([-1 2]);
     end
 
     figure(21); clf;
