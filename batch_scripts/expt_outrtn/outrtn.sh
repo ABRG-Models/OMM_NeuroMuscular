@@ -8,8 +8,11 @@ DOPAMINE=0.7
 GAP_MS=0
 
 # Negative ThetaX is a downward movement and avoids edge effects in the model.
-TARGX=-10
+TARGX=0
 TARGY=-10
+
+STARTDIR=`pwd`
+mkdir -p results
 
 # Write out luminaces file and then run the model.
 OMMODEL='TModel4'
@@ -41,4 +44,11 @@ EOF
 popd
 
 pushd ${S2B_DIR}
-./convert_script_s2b -m ${OMMPATH} -e8 -o temp/${OMMODEL}
+
+for i in 1 2 3 4 5; do
+    ./convert_script_s2b -m ${OMMPATH} -e8 -o temp/${OMMODEL}
+
+    # Now extract the movement data and save it off, then re-run several times.
+    cp ${S2B_DIR}/temp/${OMMODEL}/run/saccsim_side.log ${STARTDIR}/results/${i}_saccsim_side.log
+
+done
