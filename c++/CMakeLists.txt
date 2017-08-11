@@ -26,6 +26,12 @@ add_executable(${TARGET_WTCO} ${SOURCE_WTCO})
 set_target_properties (${TARGET_WTCO} PROPERTIES COMPILE_FLAGS "-g")
 target_link_libraries(${TARGET_WTCO} jsoncpp)
 
+set(TARGET_WTMP worldtest_mapping CACHE TYPE STRING)
+set(SOURCE_WTMP ${SOURCE_HEADERS} worldtest_mapping.cpp worldframe.cpp eyeframe.cpp)
+add_executable(${TARGET_WTMP} ${SOURCE_WTMP})
+set_target_properties (${TARGET_WTMP} PROPERTIES COMPILE_FLAGS "-g")
+target_link_libraries(${TARGET_WTMP} jsoncpp)
+
 set(TARGET_WTSL worldtest_singlelum CACHE TYPE STRING)
 add_executable(${TARGET_WTSL} ${SOURCE_HEADERS} worldtest_singlelum.cpp worldframe.cpp eyeframe.cpp)
 set_target_properties (${TARGET_WTSL} PROPERTIES COMPILE_FLAGS "-g")
