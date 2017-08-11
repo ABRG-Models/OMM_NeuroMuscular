@@ -51,6 +51,20 @@ WorldFrame::setLuminanceThetaMap (const double& t)
     DBG ("About to loop through " << this->luminanceSeries.size() << " luminances in luminanceSeries.");
     while (lum != this->luminanceSeries.end()) {
 
+#define NEED_TO_UNAPPLY_BEFORE_APPLY 1
+#ifdef NEED_TO_UNAPPLY_BEFORE_APPLY
+        if (this->blurMode == true) {
+            // Unapply any blur first, but WITHOUT removing the original data.
+            for (int b = 0; b < lum->bi; ++b) {
+                this->luminanceThetaMap (lum->blurLocations(b,0), lum->blurLocations(b,1)) = lum->background;
+            }
+            // can now empty lum->blurLocations:
+            NoChange_t nochange;
+            lum->blurLocations.conservativeResize (0, nochange);
+            lum->bi = 0;
+        }
+#endif
+
         DBG ("For this lum, thetaX: "<<lum->thetaX<<", thetaY: "<<lum->thetaY<<", timeOn: " << lum->timeOn << " and timeOff: " << lum->timeOff);
         if (t >= lum->timeOn && t < lum->timeOff) {
             // This one needs to be on.
