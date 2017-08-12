@@ -46,15 +46,19 @@ if strcmp(modeltype, 'TModel2')
     yv=y3;
 
 elseif strcmp(modeltype, 'TModel4')
-    yh=0.00075*exp(0.08.*x);
-    yv=0.0012*exp(0.08.*x);
-    %ycmp=0.00075*exp(0.08.*x);
+    yh=0.0016*exp(0.067.*x);
+    yv=0.00195*exp(0.075.*x);
+
+    %yhcmp=0.00075*exp(0.08.*x);
+    %yvcmp=0.0012*exp(0.08.*x);
 
     figure(110); clf;
     plot (x,yh,'b');
     hold on;
+    %plot (x,yhcmp,'b--');
+    %plot (x,yhcmp2,'b..');
     plot (x,yv,'r');
-    %plot (x,ycmp,'k');
+    %plot (x,yvcmp,'r--');
     xlim([18 40]);
     %ylim([0 5]);
     legend('yh','yv')
