@@ -131,7 +131,7 @@ hyl(4)=ylabel(targytxt, 'fontsize', fs1);
 %hzl(4)=zlabel('Weight', 'fontsize', fs1);
 %offsetzlabel(hzl(4));
 
-title (['d) Left'], 'fontsize', fs1);
+title (['d) Right'], 'fontsize', fs1);
 view([viewx viewy]);
 zlim([0 zmax]);
 

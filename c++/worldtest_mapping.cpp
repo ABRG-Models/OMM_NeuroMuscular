@@ -34,10 +34,10 @@ std::ofstream DBGSTREAM;
 #define NUM_DEGREES_PER_STEP 12
 
 #define RECT_WIDTH 4
-#define LUM_VALUE 1.2
+#define LUM_VALUE 0.6
 
 #define ORIGIN_RECT_WIDTH 4
-#define ORIGIN_LUM_VALUE 1.5
+#define ORIGIN_LUM_VALUE 0.8
 
 #define CROSS_WIDTH 10
 #define CROSS_THICK 2
