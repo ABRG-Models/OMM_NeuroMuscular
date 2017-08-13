@@ -14,15 +14,15 @@ echo "TX,TY" > results/targets.csv
 
 # Write out luminaces file and then run the model.
 OMMODEL='TModel4'
-OMMPATH="/home/seb/models/OMM_NeuroMuscular/${OMMODEL}"
-S2B_DIR='/home/seb/src/SpineML_2_BRAHMS'
+OMMPATH="${HOME}/OMM_NeuroMuscular/${OMMODEL}"
+S2B_DIR="${HOME}/SpineML_2_BRAHMS"
 
 #
 # Five outward saccades, ready for plotting.
 #
 
-#LIST='RX0RY-10 RX-7RY-7 RX-10RY0 RX-7RY7 RX0RY10'
-LIST='RX-3RY-5 RX-3RY5 RX-8RY-5 RX-8RY5'
+LIST="RX0RY-10 RX-7RY-7 RX-10RY0 RX-7RY7 RX0RY10"
+LIST="${LIST} RX-3RY-5 RX-3RY5 RX-8RY-5 RX-8RY5"
 
 for tag in $LIST; do
 
