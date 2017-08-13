@@ -26,7 +26,7 @@ ms = 20;
 % Main fontsize
 fs1 = 32;
 
-zmax = 0.075;
+zmax = 0.1;
 
 %
 % Utility functions

@@ -11,7 +11,7 @@ end
 
 h_f = figure (1); clf;
 h_f_pos = get(h_f, 'Position');
-set(h_f, 'Position', [20, 1000, 2100, 1400]);
+set(h_f, 'Position', [20, 1050, 2100, 1300]);
 
 % Best viewing angle for the surfaces
 viewx=90; viewy=90;
