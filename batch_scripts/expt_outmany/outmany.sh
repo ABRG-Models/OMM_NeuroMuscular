@@ -9,9 +9,6 @@ TARGLUM=0.3
 STARTDIR=`pwd`
 mkdir -p results
 
-# Write out a file for veusz to get the target positions from
-echo "TX,TY" > results/targets.csv
-
 # Write out luminaces file and then run the model.
 OMMODEL='TModel4'
 OMMPATH="${HOME}/OMM_NeuroMuscular/${OMMODEL}"
@@ -28,8 +25,6 @@ for tag in $LIST; do
 
     tx=`echo $tag | awk -F 'R' '{print $2}' | tr --delete "X"`
     ty=`echo $tag | awk -F 'R' '{print $3}' | tr --delete "Y"`
-
-    echo "${tx},${ty}" >> results/targets.csv
 
     pushd ${OMMPATH}
     cat > luminances.json <<EOF
