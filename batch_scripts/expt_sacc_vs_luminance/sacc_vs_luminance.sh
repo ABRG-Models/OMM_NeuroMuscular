@@ -9,15 +9,17 @@
 THETAX=0 # Integer values only
 THETAY=-10
 DOPAMINE=0.7
-GAP_MS=100 # -100 0 100
 
+#GAP_MS=100 # -100 0 100
+#FIXLUM=0.4
+
+PARENT_LIMIT=29
 NUM_RUNS=6
 
 LUMVALSTART=0.25
 LUMVALEND=3
 LUMVALINC=0.25
 
-FIXLUM=0.4
 
 EXPT=5 # 5 is like 0, but with 1 second duration.
 
@@ -31,11 +33,21 @@ if [ -d /usr/local/abrg ]; then
     P_STR='ace2'
 fi
 
-for lumval in `seq ${LUMVALSTART} ${LUMVALINC} ${LUMVALEND}`; do
+for GAP_MS in -100 0 100; do
+    for FIXLUM in 0.1 0.2 0.3; do
+        for lumval in `seq ${LUMVALSTART} ${LUMVALINC} ${LUMVALEND}`; do
 
-    if [ ${P_STR} = 'iceberg' ]; then
-        # 1) write out a script we can qsub for the luminance:
-        cat > script${lumval}.sh <<EOF
+            # while num jobs of this type > 10, wait...
+            NUM_PARENTS=`qstat -u co1ssj | grep SVL | wc -l`
+            while [ $NUM_PARENTS -gt $PARENT_LIMIT ]; do
+                sleep 15
+                NUM_PARENTS=`qstat -u co1ssj | grep SVL | wc -l`
+            done
+
+
+            if [ ${P_STR} = 'iceberg' ]; then
+                # 1) write out a script we can qsub for the luminance:
+                cat > script${lumval}${FIXLUM}${GAP_MS}.sh <<EOF
 #!/bin/bash
 #$ -l mem=4G
 #$ -l rmem=4G
@@ -44,14 +56,14 @@ for lumval in `seq ${LUMVALSTART} ${LUMVALINC} ${LUMVALEND}`; do
 #$ -M seb.james@sheffield.ac.uk
 
 EOF
-    elif [ ${P_STR} = 'ace2' ]; then
-        cat > script${lumval}.sh <<EOF
+            elif [ ${P_STR} = 'ace2' ]; then
+                cat > script${lumval}${FIXLUM}${GAP_MS}.sh <<EOF
 #!/bin/bash
 
 EOF
-    fi
+            fi
 
-    cat >> script${lumval}.sh <<EOF
+            cat >> script${lumval}${FIXLUM}${GAP_MS}.sh <<EOF
 pushd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_luminance
 octave -q --eval "octave_run_test"
 oct_run_rtn=\$?
@@ -67,14 +79,16 @@ octave -q --eval "perform_saccade('results/${OMMODEL}',${THETAX},${THETAY},${NUM
 exit 0
 EOF
 
-    # 2) and then qsub it:
-    PROJECT_TAG=''
-    if [ ${P_STR} = 'iceberg' ]; then
-        PROJECT_TAG='-P insigneo-notremor'
-    fi
-    qsub ${PROJECT_TAG} -v OMMODEL=${OMMODEL} -N SVL${lumval} -wd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_luminance -o results/SVL${lumval}.out -j y ./script${lumval}.sh
+            # 2) and then qsub it:
+            PROJECT_TAG=''
+            if [ ${P_STR} = 'iceberg' ]; then
+                PROJECT_TAG='-P insigneo-notremor'
+            fi
+            qsub ${PROJECT_TAG} -v OMMODEL=${OMMODEL} -N SVL${lumval}${FIXLUM}${GAP_MS} -wd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_sacc_vs_luminance -o results/SVL${lumval}${FIXLUM}${GAP_MS}.out -j y ./script${lumval}${FIXLUM}${GAP_MS}.sh
 
-    # 3) Clean up the script
-    rm -f ./script${lumval}.sh
+            # 3) Clean up the script
+            rm -f ./script${lumval}${FIXLUM}${GAP_MS}.sh
 
+        done
+    done
 done
