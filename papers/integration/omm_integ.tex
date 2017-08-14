@@ -32,9 +32,9 @@
 
 \def\keyFont{\fontsize{8}{11}\helveticabold }
 \def\firstAuthorLast{James {et~al.}}
-\def\Authors{Sebastian James\,$^{1,2,*}$, Alexander Blenkinsop\,$^{1,2}$, \\
-  Alexander Cope\,$^3$, Sean Anderson\,$^{2,4}$, Dimitrios Stanev\,$^5$, \\
-  Chris Papapavlou\,$^5$, Konstantinos Moustakas\,$^5$, Kevin Gurney\,$^{1,2}$}
+\def\Authors{Sebastian James\,$^{1,2,*}$, Chris Papapavlou\,$^5$, Alexander Blenkinsop\,$^{1,2}$, \\
+  Alexander Cope\,$^3$,  \\
+  Sean Anderson\,$^{2,4}$, Konstantinos Moustakas\,$^5$, Kevin Gurney\,$^{1,2}$}
 % Affiliations should be keyed to the author's name with superscript
 % numbers and be listed as follows: Laboratory, Institute, Department,
 % Organization, City, State abbreviation (USA, Canada, Australia), and
@@ -426,21 +426,20 @@ in \stob~providing the inputs (constant inputs, time-varying inputs,
 etc) which the modeller specifies in the experiment layer.
 
 In addition to the brain model components, all of which are
-code-generated using \stob~as described above, three hand-written
-components are integrated into the model: The biomechanical eye model;
-a component which computes the centroid of a neural layer; and a sensory input
-component. The sensory input component takes the eye's rotational state and the
-state of the experimental luminances as its inputs and projects a retinotopic
-activity map into the brain model. Each of these three BRAHMS
-components was hand written in C++. To incorporate these components
-into the SpineML model, a model-specific modification was
-applied in \stob~(\mycite{cope_spineml_2_brahms_2015}) making use of a \stob~feature designed for this purpose (The external.xsl file).
+code-generated using \stob~as described above, two hand-written
+components are integrated into the model: The biomechanical eye model
+and a sensory input component. The sensory input component takes the
+eye's rotational state and the state of the experimental luminances
+and projects a retinotopic activity map into the brain model. Both of
+these BRAHMS components were hand-written in C++. To incorporate these
+components into the SpineML model, a model-specific modification was
+applied in \stob~(\mycite{cope_spineml_2_brahms_2015}) making use of
+a \stob~feature designed for this purpose (The external.xsl file).
 
-%\footnote{See the \branch{NoTremor\_Oculomotor\_201603} branch of \url{https://github.com/SpineML/SpineML\_2\_BRAHMS/}}.
-
-Figure \ref{fig:model_framework} shows the workflow, in which the model
-specification files (blue box), a combination of SpineML files and C++
-code, are processed (green box) into a BRAHMS system (red box).
+Figure \ref{fig:model_framework} shows the workflow, in which the
+model specification files (blue box - a combination of SpineML files
+and C++ code), are processed (green box) into a BRAHMS system (red
+box).
 
 \subsection{Existing brain model}
 
@@ -453,11 +452,11 @@ the superior colliculus~(\mycite{robinson_eye_1972}). % FIXME: and frontal eye f
 
 \subsubsection{Components}
 
-With the exceptions of the World and
-FEF\_add\_noise populations, each neural element represents an
-activation whose dynamics depend on the component definition. In the
-brain model, there are six different components in use; LINlinear,
-LINlinearNoisy, LINret, LINexp, D1MSN and D2MSN.
+With the exceptions of the World and FEF\_add\_noise populations, each
+neural element represents an activation; the activation is governed by
+a first order differential equation specified in the SpineML
+component. In the brain model, there are six different components in
+use: LINlinear; LINret; LINexp; D1MSN and D2MSN.
 
 The LINlinear component governs the activation $a$ with a first order
 leaky integrator differential equation:
@@ -468,7 +467,7 @@ where $\tau$ is the time constant for the neural activation and
 $a_{in}$ is the input to the neural element. $a_{in}$ is defined by an
 activation input and a shunting inhibition input according to:
 \[
-   a_{in} = A(1-s_a)+0.01 R_N
+   a_{in} = A(1-s_a)+\alpha R_N
 \]
 Here, $A$ is the activation input and $s_a$ is the shunting inhibition
 state variable whose value is related to the shunting input, $S$ by
@@ -478,9 +477,10 @@ state variable whose value is related to the shunting input, $S$ by
       1 & S > 1
    \end{cases}
 \]
-$R_N$ is a random number drawn from a
-standard normal distribution ($\sigma$=1, $\mu$=0) and introduces noise
-to the activation of the neural element.
+$R_N$ is a random number drawn from a standard normal distribution
+($\sigma$=1, $\mu$=0) and introduces noise to the activation of the
+neural element, with the parameter $\alpha$ controlling the noise
+amplitude.
 
 The output, $y$, of LINlinear is related to the activation $a$ by the
 piecewise linear transfer function
@@ -495,12 +495,6 @@ where $c$ is a parameter defining the slope of the transfer
 function. At this point, the naming scheme for the component becomes
 apparent; this is a Leaky Integrator with a linear transfer function.
 
-LINlinearNoisy is identical to LINlinear with the single exception
-that the level of noise is increased. This means that the equation for
-$a_{in}$ must be rewritten:
-\[
-   a_{in} = A(1-s_a)+0.2 R_N
-\]
 The LINret component used for the retinal populations is again similar
 to the LINlinear component, but with no intrinsic noise and no
 shunting inhibitory input. It has a neural input which is identical to
@@ -536,32 +530,62 @@ which has been shown to allow the mapping of the basal ganglia network
 architecture onto an optimal decision making
 model \mycite{bogacz_basal_2007}.
 
+The D1MSN and D2MSN components are both leaky integrators, similar to
+LINlinear. They differ in that they have no shunting inhibition and a
+dopamine parameter dependent modulation of the input activation, so
+that their equations for $a_{in}$ are:
+\[
+   a_{in}^{D1} = (0.2 + d)A + 0.01 R_N
+\]
+for D1MSN, and
+\[
+   a_{in}^{D2} = (1 - d)A + 0.01 R_N
+\]
+for D2MSN, where $d$ is a dopamine parameter. Increasing dopamine from
+0 to 1 enhances the activation in the D1 model neurons, whereas it
+decreases the activation of the D2 model neurons, in line with
+experimental observations~\cite{refs}. Note that the equation for
+$a_{in}^{D1}$ differs from that used in the \ccg~model, for which the
+cortico-striatal weights are multiplied by $(1+d)$ rather than $(0.2+d)$
+
+The equations given above apply to each element in the population
+whose behaviour is defined by the component. The value of the
+activation $A$ (and where relevant the shunting input, $S$, also) is
+determined by summing the weighted inputs to the population:
+\[
+A = \sum_{i}w_i^{act} x_i^{act}
+\]
+\[
+S = \sum_{i}w_i^{sh} x_i^{sh}
+\]
+
 %
 % That's the components described. Next up is to have a figure of the
 % activity for representative input to the model.
 %
 
-\subsubsection{Population activity}
+\subsubsection{Population activity and retinotopic mapping}
 
 Each population of 2500 neural elements is arranged in a 50 by 50
 grid, with positions on the grid representing a retinotopic
-mapping. Locations on the grid specify radial and azimuthal angles r
+mapping. Locations on the grid specify radial and azimuthal angles $r$
 and $\phi$ for the location of activity on the retina relative to the
-fovea. r and $\phi$ can be converted into rotations about the $x$ and
+fovea. $r$ and $\phi$ can be converted into rotations about the $x$ and
 $y$ Cartesian axes ($\theta_x$ and $\theta_y$). The result of a
 positive rotation about the $x$ axis in a right-handed Cartesian
 coordinate system results in an upward movement of the fovea's view
 of the environment. Note that a positive rotation about the $y$ axis
-results in a \emph{leftward} movement.
+results in a \emph{leftward} movement of the eye's focal point, with
+respect to the world.
 
 Note that the mapping encompases the entire visual field. The value of
-$\phi$ is allowed to vary from 0 to 360\degrees along its axis.
+$\phi$ is allowed to vary from 0$\deg$ to 360$\deg$ along its axis.
 Effectively, the two contralateral colliculi are incorporated into a
 single, square map, avoiding the need to carry out `colliculus
 gluing'~\cite{tabareau_geometry_2007}.
 
 The magnification factor, $M_f$, gives the relationship between the
-radial angle r and the retinal neural density. It is given by:
+radial angle $r$ and the retinal neural density. It is given by:
 \[
    M_f = {W_{nfs} \over E_2 ln ({W_{fov} \over 2 E_2} + 1)}
 \]
@@ -590,40 +614,43 @@ It is straightforward to show that the reverse mapping is given by:
    r = M_f E_2 \ln ({1\over E_2}\sqrt{{\theta_x}^2 + {\theta_y}^2}+1) \tag{4}
 \]
 
-Figure \ref{fig:mapping} shows the result of the mapping for a view of two
-cross-shaped luminances. One cross illuminates the fovea, which
+Figure \ref{fig:mapping} shows the result of the mapping for a view of
+two cross-shaped luminances. One cross illuminates the fovea, which
 results in a large comb-shape of activity. The more peripheral cross
-produces an indistinct object centered at a larger value of r.
+produces (in FEF) an indistinct object centered at a larger value of
+r.
 
 \subsubsection{Network}
 
-Briefly, the model consists of input from the World population
-producing activity in an `express' pathway to superior colliculus
-and simultaneously in cortex, represented here by the FEF
-population. The express pathway causes short latency activity in the
-superficial superior colliculus, which directly innervates the deeper
-layers of the superior colliculus (SC\_deep). Activity in FEF
-generates firing in a thalamo-cortico-basal ganglia loop. The output
-of the basal ganglia is the substantia nigra pars reticulata (SNr)
-which tonically inhibits SC\_deep. If a location of activity in FEF is
-able to dominate selection in the basal ganglia circuit, the
-corresponding location in SNr will dis-inhibit and activity will build
-up in SC\_deep encoding the saccade end point.
+Briefly, the model consists of input from the World population (see
+Fig.~\ref{fig:brain_model}, green population box) producing activity
+in an `express' pathway to superior colliculus (purple) and
+simultaneously in cortex, represented here by the FEF population (grey
+boxes in Fig.~\ref{fig:brain_model}). The express pathway causes short
+latency activity in the superficial superior colliculus, which
+directly innervates the deeper layers of the superior colliculus
+(SC\_deep). Activity in FEF generates firing in a
+thalamo-cortico-basal ganglia loop. The output of the basal ganglia is
+the substantia nigra pars reticulata (SNr) which tonically inhibits
+SC\_deep. If a location of activity in FEF is able to dominate
+selection in the basal ganglia circuit, the corresponding location in
+SNr will dis-inhibit and activity will build up in SC\_deep encoding
+the saccade end point.
 
 Connections shown in red are one to one connections; dark blue
-connections indicate a connectivity pattern which `fans out' with a 2-D
-Gaussian kernel; lighter blue connections from STN to SNr and GPe are
-diffuse, all to all connections and connections in green are one to one
-connections that decay towards the fovea so that foveal activity in
-FEF does not swamp the basal ganglia which would prevent peripheral
-luminances from being selected.
+projections indicate a connectivity pattern which `fans out' with a
+2-D Gaussian kernel; lighter blue connections from STN to SNr and GPe
+are diffuse, all-to-all connections and projections coloured green are
+one-to-one connections that decay towards the fovea so that foveal
+activity in FEF does not swamp the basal ganglia which would prevent
+peripheral luminances from ever being selected.
 
 Note that SC\_deep contains two recurrent connections; one is
 excitatory, with a Gaussian kernel mapping and the other implements
 tecto-tectal inhibition, which increases the inhibition between
 activity in opposite hemispheres of the field of view (refs). The
-tecto-tectal inhibitory connection is \emph{not} present in the \ccg
-model.
+tecto-tectal inhibitory connection is \emph{not} present in
+the \ccg~model.
 
 %However, it does not describe deeper, motor regions of the
 %brainstem, instead regarding the centroid of the activity in SC as
@@ -633,10 +660,23 @@ model.
 % Section - description of new brainstem model
 \subsection{brainstem model}
 
-Neurons in the deep layers of the superior colliculus called long lead
-burst neurons innervate excitatory burst neurons in the reticular
-formation (ref). In this model, we implement a network based
-on \cite{gancarz_neural_1998}.
+In this model, we implement a saccadic burst generator (SBG) based
+on \cite{gancarz_neural_1998}. The SBG network for two of the model's
+six channels is shown in Fig.~\ref{fig:sbg}. Activity from the output
+layer of superior colliculus (SC\_avg) is fed into each channel, which
+sums the activity it receives and processes it in populations each of
+a single neural element representing all the neurons in that
+population.
+
+Neurons in the deep
+layers of the superior colliculus called long lead burst neurons
+innervate excitatory burst neurons in the reticular formation (REF,
+and check if LLBNs are really in SC).
+
+Alex B to write this section?
+
+Note that inhibition from IBN populations is fed back - or is this
+detail for the `integration' subsection?
 
 % Section - description of biomechanical model
 \subsection{biomechanical eye}
@@ -680,20 +720,116 @@ $\mathbf{t} = -K\mathbf{R}-C\mathbf{U}$ where $\mathbf{R}$ is the
 eye's orientation and $\mathbf{U}$ is its angular velocity. $K$ and
 $C$ are constants.
 
-% Section - description of the integration
+% Section - description of the integration. scientific and
+% technical. Already
 \subsection{Integrating the models and closing the loop}
 
+The \ccg~model closed its loop by passing the centroid of activity in
+SC\_deep (once it had surpassed a threshold) back to the code that
+controlled the world, which would then use this location to
+instantaneously change the model's view of the world. In our extended
+model, it was necessary to connect the output of the brain model back
+to its input via the saccadic burst generator model and the
+biomechanical eye. The resulting state of the eye, rather than the
+centroid of the superior colliculus, was used to compute the input to
+the brain, given the luminances visible in the world.
 
+% Brain to SBG, seeing as that's how I explained it above.
+A number of studies have considered the form of the connection between
+the deeper layers of the superior colliculus and the saccadic burst
+generator~\cite{van_gisbergen_experimental_1985,ottes_visuomotor_1986,waitzman_superior_1991,groh_converting_2001,arai_model_2004,goossens_dynamic_2006,tabareau_geometry_2007,van_opstal_linear_2008,goossens_optimal_2012},
+which has become known as the spatial temporal transform (STT).  The
+spatial part of the STT is thought to be implemented by a
+weight-mapping~\cite{tabareau_geometry_2007,arai_model_2004} and we
+follow this idea.
+
+% Words along the lines of:
+Arai and co-workers trained their neural network model to discover the
+weight map~\cite{arai_model_2004}.
+
+% Then...
+Tabareau and co-workers wrote down the theoretical form of the weight
+map and found it matches well to the results of Arai et
+al.~\cite{tabareau_geometry_2007}.
+
+The approach of Arai~et.~al. was
+not feasible with the present model due to the length of time required
+to run the model, its stochasticity and the increased size of the maps
+here compared with those used by Arai~et.~al.
+
+The saccadic burst generator model was originally conceived with the
+assumption of a step input~\cite{gancarz_neural_1998}.
+
+% SBG to worldDataMaker
+The output signals from the six channels of the SBG were connected to
+the six motoneuron inputs of the biomechanical eye. The signal was
+normalised; a value of 1 meaning that all the motoneurons in the
+output population were firing at their maximum rate and the force
+exerted by the relevant extraocular muscle was maximal. Channels
+innervated extraocular muscles as follows: Up: superior rectus; Down:
+inferior rectus; Right: medial rectus; Left: lateral rectus; Z+:
+superior oblique; Z-: inferior oblique. Because the medial rectus
+induces a rightward rotation of the eye, our single virtual eye is
+a \emph{left} eye. The OpenSim implementation of the biomechanical eye
+was `wrapped' (in the software sense) in a BRAHMS component. This made
+it possible to integrate the OpenSim model into the BRAHMS
+framework. The wrapper ensured that the input and output signals were
+correctly transferred and, importantly, handled the disparity in the
+solver timesteps used in the OpenSim model (25~ms) and the neural
+model (1~ms). This was achieved by having the BRAHMS wrapper create a
+separate thread to run the OpenSim model. The BRAHMS wrapper component
+was called on each 1 ms timestep, receiving the instantaneous
+activations from the motoneurons in the SBG. These activations, and
+the current simulation time, were written into a shared memory area,
+accessible by the OpenSim thread. Running independently, the OpenSim
+thread would update its inputs (using the most recent values in the
+shared memory area) whenever the simulation time had increased by 25
+ms. It would then recompute its outputs (the rotational state of the
+eye) and write these into the same, shared memory. The BRAHMS wrapper
+would update its outputs whenever they were changed in the shared
+memory by the OpenSim thread. A direct connection of the six outputs
+of the BRAHMS eye model component to the six inputs of the
+worldDataMaker BRAHMS component was specified in
+the \stob~external.xsl file.
+
+% worldDataMaker to brain, but Re-work:
+The eye model outputs its rotational state at each
+timestep. The rotational state is used to compute the view of the
+world in the eye's frame of reference. To simplify
+the calculation, the luminances exist on a spherical surface at the
+centre of which is the eye. A hand-coded BRAHMS component called
+worldDataMaker computes the projection of the luminances into the
+eye's frame of reference and then converts this representation into a
+retinotopic map to pass into the brain model. The input to the brain
+model is thus able to change continuously, on every timestep, rather
+than in a step-wise fashion when a saccade occurs, as in the \ccg~model.
+
+
+In the worldDataMaker BRAHMS component, the rotational state of the
+eye was used to construct Euler rotation matrices which transformed
+between the world's frame of reference and the eye's frame of
+reference. The worldDataMaker component received a specification of
+the world luminances in a JSON file called luminances.json at the
+start of each simulation. luminances.json specified the position,
+shape, size, luminance, appearance time and disappearance time of an
+arbitrary number of luminances. With this information, the
+instantaneous rotational state of the eye and the parameters of the
+retinotopic transform, it was able to compute the instantaneous input
+to the brain model.
 
 %\end{methods}
-
 
 \section{Results}
 
 % trajectories, neuron activations (esp. brainstem). latency vs
 % dopamine, latency vs gap.
 %
-% The importance of an even sized hill of activity in SC_deep. The difficulties of achieving this.
+% The importance of an even sized hill of activity in SC_deep. The
+% difficulties of achieving this.
+
+\subsection{Weight maps (here?)}
+
+\subsection{Single saccades}
 
 \section{Discussion}
 
@@ -740,9 +876,10 @@ potential conflict of interest.
 
 SJ, AB and AC implemented existing parts of the model in SpineML. AB
 developed the saccade generator brainstem model. SJ performed the
-technical and scientific integration of the biomechanical eye.
-DS, CP and KM developed the biomechanical eye model. SJ wrote the 
-manuscript. KG conceived the experiment. % FIXME: This needs correcting/developing.
+technical and scientific integration of the biomechanical eye.  CP and
+KM developed the biomechanical eye model. SJ wrote the manuscript; SA,
+AB, KG and KM contributed to the manuscript. KG conceived the
+project.
 
 \section*{Acknowledgments}
 
@@ -801,9 +938,10 @@ for running the model.
 \includegraphics[width=0.9\textwidth]{./figures/intro_graphic.png}
 \end{center}
 \textbf{\refstepcounter{figure}\label{fig:intro_graphic} Figure \arabic{figure}.}
-{ \textbf{fig:intro\_graphic} An isolated brain model. Crafted inputs are introduced into one of
-the model's n state variables. The output of another of the state
-variables implies behavioural change or onset.}
+{ \textbf{fig:intro\_graphic} An isolated brain model. Crafted inputs
+are introduced into one of the model's n state variables. The output
+of another of the state variables implies behavioural change or
+onset.}
 \end{figure}
 
 \begin{figure}[h!]
@@ -828,39 +966,29 @@ executable. In practice, this call is made by \stob.}
 \includegraphics[width=0.9\textwidth]{./figures/mapping.png}
 \end{center}
 \textbf{\refstepcounter{figure}\label{fig:mapping} Figure \arabic{figure}.}
-{ \textbf{fig:mapping} Representative mapping from eye's frame of reference in cartesian
-coordinates to retinotopic coordinates. (a) The mapping of luminances
-in the eye's frame of reference. The world input is pre-defined by a
-JSON configuration file. luminance position, size and shape can be
-defined in this file, along with the times at which luminances appear
-and disappear. The worldDataMaker.cpp code computes the locations of
-the luminances in the eye's frame of reference, given its rotational
-state. Here, there are two cross shaped luminances, one at the
-fixation point (0,0) and one at a peripheral position (4,-10). (b) The
-locations of the luminances in the eye's frame of reference are then
-converted into retinotopic coordinates, with centrally located
-luminances being represented at low values of $r$ and more peripheral
-luminances having higher values of $r$. $phi$ encodes rotational
-angle: 12.5 is up, [etc etc]. The output of the World component is fed
-into FEF\_add\_noise and into the retinal neuron populations. (c) The
-FEF\_add\_noise populations adds a level of noise to the signal
-representing processing of the signal in visual cortex. (d) The
-activity in FEF is the input to the basal ganglia and one input to
-superior collicus.}
-\end{figure}
-
-\begin{figure}[h!]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{./figures/Brain_Stem_1channel.png}
-\end{center}
-\textbf{\refstepcounter{figure}\label{fig:sbg} Figure \arabic{figure}.}
-{ \textbf{fig:sbg} One pair of channels of the saccadic burst generator (SBG) for left (cyan)
-or right (green) movements. Collicular activity in SC\_avg excites the channels
-via SBG weight maps. Each box represents a neural population and shows the
-population name, the number of neural elements (here 2500 or 1) and the SpineML
-component name; \emph{LIN} for Leaky integrator or \emph{integrator}. Key: LLBN:
-Long lead burst neurons; IBN: Inhibitory burst neurons; OPN: Omnipause neurons;
-EBN: Excitatory burst neurons; TN: Tonic neurons; MN: Motoneurons.}
+{ \textbf{fig:mapping} Representative mapping from eye's frame of
+reference in cartesian coordinates to retinotopic coordinates. (a) The
+mapping of luminances in the eye's frame of reference. The world input
+is pre-defined by a JSON configuration file. Luminance position, size
+and shape can be defined in this file, along with the times at which
+luminances appear and disappear. The worldDataMaker.cpp code computes
+the locations of the luminances in the eye's frame of reference, given
+its rotational state. It also computes a 2D gaussian convolution of
+the luminances. Here, there are two cross shaped luminances spanning
+10$\deg$, one of value 0.8 at the fixation point (0,0) and one of
+value 0.5 at a peripheral position (0,-12$\deg$). (b) The locations of
+the luminances in the eye's frame of reference are then converted into
+retinotopic coordinates, with centrally located luminances being
+represented at low values of $r$ and more peripheral luminances having
+higher values of $r$. $\phi$ encodes rotational angle: 1 and 50 encode
+upward movement; 13 is left; 25 is down; 37 is right. The output of
+the World component is fed into FEF\_add\_noise and into the retinal
+neuron populations. The colour map makes it possible to distinguish
+between the two crosses. (c) The FEF\_add\_noise populations adds a level
+of noise to the signal representing processing of the signal in visual
+cortex. (d) A Gaussian projection from FEF\_add\_noise to FEF further
+blurs the activity in FEF. FEF is the input to the basal ganglia and
+one input to superior collicus.}
 \end{figure}
 
 \begin{figure}[htb!]
@@ -868,16 +996,56 @@ EBN: Excitatory burst neurons; TN: Tonic neurons; MN: Motoneurons.}
 \includegraphics[width=0.9\textwidth]{./figures/Brain_Model.png}
 \end{center}
 \textbf{\refstepcounter{figure}\label{fig:brain_model} Figure \arabic{figure}.}
-{ \textbf{fig:brain\_model}  The brain model. This is the SpineCreator `network layer' view of the model. Each box represents a neural population with 2500 elements, arranged in a 50$\times$50 grid. The SpineML component name is printed on the bottom right corner of each population box and the population name is at the top. The overall connectivity between populations is represented by the projection arrows with the colour indicating the connectivity scheme (one-to-one connections are red, gaussian kernel connections are dark blue and so on). Excitatory connections have arrowheads and inhibitory connections have circles, although for details of the behaviour of the connections, the weight-update and post-synapse components must be studied. Briefly, the model comprises a \emph{World} population, into which a retinotopically organised view of the world is introduced. This information is passed into cortical populations (FEF) and subcortical populations (SC) via a simple model of the retina. These feed a cortico-thalamo-basal ganglia loop, which selects which region of the deep layer of superior colliculus should be disinhibited, allowing activity to build up therein. The five populations comprising the basal ganglia are enclosed in a grey outline. Note that substantia nigra pars compacta is not modelled here, instead the level of dopamine in the striatum is set via a parameter in the Str\_D1 and Str\_D2 populations}
+{ \textbf{fig:brain\_model} The brain model. This is the SpineCreator
+`network layer' view of the model. Each box represents a neural
+population with 2500 elements, arranged in a 50$\times$50 grid. The
+SpineML component name is printed on the bottom right corner of each
+population box and the population name is at the top. The overall
+connectivity between populations is represented by the projection
+arrows with the colour indicating the connectivity scheme (one-to-one
+connections are red, gaussian kernel connections are dark blue and so
+on). Excitatory connections have arrowheads and inhibitory connections
+have circles, although for details of the behaviour of the
+connections, the weight-update and post-synapse components must be
+studied. Briefly, the model comprises a \emph{World} population, into
+which a retinotopically organised view of the world is
+introduced. This information is passed into cortical populations (FEF)
+and subcortical populations (SC) via a simple model of the
+retina. These feed a cortico-thalamo-basal ganglia loop, which selects
+which region of the deep layer of superior colliculus should be
+disinhibited, allowing activity to build up therein. The five
+populations comprising the basal ganglia are enclosed in a grey
+outline. Note that substantia nigra pars compacta is not modelled
+here, instead the level of dopamine in the striatum is set via a
+parameter in the Str\_D1 and Str\_D2 populations}
 \end{figure}
 
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{./figures/Brain_Stem_1channel.png}
+\end{center}
+\textbf{\refstepcounter{figure}\label{fig:sbg} Figure \arabic{figure}.}
+{ \textbf{fig:sbg} One pair of channels of the saccadic burst
+generator (SBG) for left (cyan) or right (green) movements. Collicular
+activity in SC\_avg excites the channels via SBG weight maps. Each box
+represents a neural population and shows the population name, the
+number of neural elements (here 2500 or 1) and the SpineML component
+name; \emph{LIN} for Leaky integrator or \emph{integrator}. Key: LLBN:
+Long lead burst neurons; IBN: Inhibitory burst neurons; OPN: Omnipause
+neurons; EBN: Excitatory burst neurons; TN: Tonic neurons; MN:
+Motoneurons.}
+\end{figure}
 
 \begin{figure}[htb!]
 \begin{center}
 \includegraphics[width=\textwidth]{./figures/weightmaps.png}
 \end{center}
 \textbf{\refstepcounter{figure}\label{fig:weightmaps} Figure \arabic{figure}.}
-{ \textbf{fig:weightmaps} Weight maps}
+{ \textbf{fig:weightmaps} Weight maps for the connections between the
+output layer of superior colliculus and the six long lead burst
+neurons of the saccadic burst generator model. Each map increases
+exponentially with increasing $r$, multiplied by cosine($\phi$) about
+its `active' axis. \textbf{FIXME: Left \& Right are wrong way round}}
 \end{figure}
 
 \begin{figure}[htb!]
@@ -885,7 +1053,19 @@ EBN: Excitatory burst neurons; TN: Tonic neurons; MN: Motoneurons.}
 \includegraphics[width=0.8\textwidth]{./figures/outmany.png}
 \end{center}
 \textbf{\refstepcounter{figure}\label{fig:outmany} Figure \arabic{figure}.}
-{ \textbf{fig:outmany} Representative single saccades.}
+{ \textbf{fig:outmany} Representative single saccades. a) Trajectories
+from 9 saccades to a single target at 9 different locations. In each
+case, a fixation cross luminance of magnitude 0.2 was displayed at
+(0,0), the start position of the eye, until time 0.4~s. The target
+luminance, magnitude 0.3 was illuminated at time 0.4~s. Trajectory
+shape is dependent on the target position, and there is a variable
+amount of error in the end-points achieved by the model. Colour is
+used in this diagram as an aid to distinguishing different saccades
+and their targets; for a given saccade, the target location is given
+by the cross of the same colour closest to the end of the
+trajectory. b) The three rotational components of the `blue' saccade,
+to target location (-7,-7). c) The three rotational components of the
+`red' saccade, to target location (0,-10).}
 \end{figure}
 
 \begin{figure}[htb!]
