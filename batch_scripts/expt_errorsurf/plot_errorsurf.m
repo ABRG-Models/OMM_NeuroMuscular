@@ -56,9 +56,11 @@ actuals = rr(:,6:8);
 errs = targs - actuals;
 errmags = sqrt(errs(:,1).*errs(:,1) + errs(:,2).*errs(:,2) + errs(:,3).*errs(:,3));
 
+xyerr = sqrt(errs(:,1).*errs(:,1) + errs(:,2).*errs(:,2));
+
 X=rr(:,1);
 Y=rr(:,2);
-Z=errmags;
+Z=errmags;%errmags;
 trisurf(delaunay(X,Y),X,Y,Z);
 hold on;
 plot ([15,-15],[-15,15],'b')
@@ -73,6 +75,21 @@ zlim([0 7]);
 eesetgrid([0, 0], yposn);
 
 figure(startfig+4); clf;
+Z=xyerr;
+trisurf(delaunay(X,Y),X,Y,Z);
+hold on;
+plot ([15,-15],[-15,15],'b')
+plot ([15,-15],[15,-15],'b')
+hold off;
+xlabel('Target X');
+ylabel('Target Y');
+zlabel('mag. of error vector');
+title ([ommodel ': X/Y Error magnitude (Total: ' num2str(sum(xyerr)) ')']);
+view([viewx viewy]);
+zlim([0 7]);
+eesetgrid([0, 0], yposn);
+
+figure(startfig+5); clf;
 trisurf(delaunay(X,Y),X,Y,abs(errs(:,1)));
 hold on;
 plot ([15,-15],[-15,15],'b')
@@ -86,7 +103,7 @@ view([viewx viewy]);
 zlim([0 7]);
 eesetgrid([1, 0], yposn);
 
-figure(startfig+5); clf;
+figure(startfig+6); clf;
 trisurf(delaunay(X,Y),X,Y,abs(errs(:,2)));
 hold on;
 plot ([15,-15],[-15,15],'b')
@@ -100,7 +117,7 @@ view([viewx viewy]);
 zlim([0 5]);
 eesetgrid([2, 0], yposn);
 
-figure(startfig+6); clf;
+figure(startfig+7); clf;
 trisurf(delaunay(X,Y),X,Y,abs(errs(:,3)));
 hold on;
 plot ([15,-15],[-15,15],'b')
