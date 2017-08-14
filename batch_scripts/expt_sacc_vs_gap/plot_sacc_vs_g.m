@@ -3,13 +3,17 @@ r = struct();
 rr = [];
 
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
+markers = {'o','x','s','d','^','*','v'};
 
-flist = glob('results/r*.dat');
+output_veusz = 1
+modeldir = 'TModel4'
+
+flist = glob(['results/' modeldir '/r*.dat']);
 llen = size(flist)(1);
 for i = [1 : llen]
 
     rnm = flist{i};
-    resdatname = substr(rnm, 9); % strips initial 'results/' string
+    resdatname = substr(rnm, 9+length(modeldir)+1); % strips initial 'results/' string
     resdatname = substr(resdatname, 1, size(resdatname)(2)-4); % Strips '.dat' off
     resdatname = strrep (resdatname, '.', 'p');
     resdatname = strrep (resdatname, '-', 'm');
@@ -34,22 +38,58 @@ rr = sortrows(rr,4);
 
 % Sort also by luminance (col 4) and separate out into lat vs. gap
 % for differing luminances.
-luminances = unique(rr(:,5));
+dops = unique(rr(:,14));
 
-% lat vs gap
-figure(32);
-clf;
-legend_str='';
-colcount = 1;
-for l = luminances'
-    rr_1 = [];
-    rr_1 = rr(find(rr(:,5)==l),:);
-    errorbar (rr_1(:,4),rr_1(:,12),rr_1(:,13), colours{colcount})
-    hold on;
-    legend_str = [legend_str; 'L: ' num2str(l) ' DA: ' num2str(rr_1(1,14))];
-    colcount = colcount + 1;
+fixlums = unique(rr(:,3));
+
+% lat vs gap, one figure for each dopamine value.
+fn = 32;
+
+for d = dops'
+
+    _rr = [];
+    _rr = rr(find(rr(:,14)==d),:);
+
+    fixlums = unique(_rr(:,3));
+
+    figure(fn);
+    clf;
+    legend_str='';
+    colcount = 1;
+    markcount = 1;
+
+    for f = fixlums'
+        rr_ = [];
+        rr_ = _rr(find(_rr(:,3)==f),:);
+
+        luminances = unique(rr_(:,5));
+
+        colcount = 1;
+        for l = luminances'
+            rr__ = [];
+            rr__ = rr_(find(rr_(:,5)==l),:);
+            %ph = errorbar (rr__(:,4),rr__(:,12),rr__(:,13),colours{colcount})
+            ph = plot (rr__(:,4),rr__(:,12));
+            set(ph, 'marker', markers{markcount}, 'color', colours{colcount});
+            hold on;
+            legend_str = [legend_str; 'FL: ' num2str(rr_(1,3)) ' TL: ' num2str(l)];
+            colcount = colcount + 1;
+
+            if output_veusz
+                datatosave = [rr__(:,14),rr__(:,12),rr__(:,13)];
+                f = fopen (['results/' modeldir '/lat_vs_gap_D_' num2str(rr__(1,14)) '_FL' num2str(f) '_L' num2str(l) '.csv'], 'w');
+                fprintf (f, 'Gap,Latency,+-\n');
+                dlmwrite (f, datatosave, '-append');
+                fclose(f);
+            end
+
+        end
+        markcount = markcount + 1;
+    end
+    xlabel('gap (ms)');
+    ylabel('Latency (ms)');
+    title(['X/Y ' num2str(rr(1,1)) '/' num2str(rr(1,2)) ', DA: ' num2str(rr_(1,14)) ]);
+    legend(legend_str);
+
+    fn = fn + 1;
 end
-xlabel('gap (ms)');
-ylabel('Latency (ms)');
-title(['X/Y ' num2str(rr(1,1)) '/' num2str(rr(1,2)) ]);
-legend(legend_str);
