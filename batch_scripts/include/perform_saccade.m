@@ -37,7 +37,7 @@ function perform_saccade (resultdir, targetThetaX, targetThetaY, num_par_runs, g
 
     [d, msg, msgid] = mkdir (['/fastdata/' getenv('USER')])
     [d, msg, msgid] = mkdir (['/fastdata/' getenv('USER') '/OMM_NeuroMuscular'])
-    model_dir = ['/fastdata/' getenv('USER') '/OMM_NeuroMuscular/PFSC_X' num2str(targetThetaX) '_Y' num2str(targetThetaY) '_G' num2str(gap_ms) '_L' num2str(lum) '_D' num2str(dop)]
+    model_dir = ['/fastdata/' getenv('USER') '/OMM_NeuroMuscular/PFSC_X' num2str(targetThetaX) '_Y' num2str(targetThetaY) '_G' num2str(gap_ms) '_F' num2str(fixlum) '_L' num2str(lum) '_D' num2str(dop)]
 
     model_tag = getenv('OMMODEL');
     if isempty(model_tag)
