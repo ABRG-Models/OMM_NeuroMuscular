@@ -46,7 +46,7 @@ popd
 pushd ${S2B_DIR}
 
 for i in 1 2 3 4 5; do
-    ./convert_script_s2b -m ${OMMPATH} -e8 -o temp/${OMMODEL}
+    ./convert_script_s2b -g -m ${OMMPATH} -e8 -o temp/${OMMODEL}
 
     # Now extract the movement data and save it off, then re-run several times.
     cp ${S2B_DIR}/temp/${OMMODEL}/run/saccsim_side.log ${STARTDIR}/results/${i}_saccsim_side.log
