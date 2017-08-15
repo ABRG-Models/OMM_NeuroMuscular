@@ -1,4 +1,4 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{42}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -11,14 +11,6 @@
 \providecommand{\bibAnnote}[2]{%
   \begin{quotation}\noindent\textsc{Key:} #1\\
   \textsc{Annotation:}\ #2\end{quotation}}
-
-\bibitem[{{Alex Cope} et~al.(2015){Alex Cope}, {John Chambers}, and {Kevin
-  Gurney}}]{alex_cope_integrative_2015}
-{Alex Cope}, {John Chambers}, and {Kevin Gurney} (2015).
-\newblock An integrative model of reflexive saccades: physiology meets anatomy
-  in understanding gaze control.
-\newblock \emph{In press}
-\bibAnnoteFile{alex_cope_integrative_2015}
 
 \bibitem[{Bevan and Wilson(1999)}]{bevan_mechanisms_1999}
 Bevan, M.~D. and Wilson, C.~J. (1999).
@@ -46,18 +38,49 @@ Cope, A.~J. and James, S.~S. (2015{\natexlab{b}}).
 \newblock {SpineML}\_2\_brahms ({NoTremor} {Oculomotor} branch)
 \bibAnnoteFile{cope_spineml_2_brahms_2015}
 
+\bibitem[{Cope et~al.(2016)Cope, Richmond, James, Gurney, and
+  Allerton}]{cope_spinecreator:_2016}
+Cope, A.~J., Richmond, P., James, S.~S., Gurney, K., and Allerton, D.~J.
+  (2016).
+\newblock {\selectlanguage{en}{SpineCreator}: a {Graphical} {User} {Interface}
+  for the {Creation} of {Layered} {Neural} {Models}}.
+\newblock \emph{Neuroinformatics} \doi{10.1007/s12021-016-9311-z}
+\bibAnnoteFile{cope_spinecreator:_2016}
+
 \bibitem[{Fuchs and Luschei(1970)}]{fuchs_firing_1970}
-Fuchs, A.~F. and Luschei, E.~S. (1970).
+Fuchs, A. and Luschei, E. (1970).
 \newblock Firing patterns of abducens neurons of alert monkeys in relationship
   to horizontal eye movement.
-\newblock \emph{J Neurophysiol} 33, 382--392
+\newblock \emph{Journal of Neurophysiology} 33, 382--392
 \bibAnnoteFile{fuchs_firing_1970}
 
 \bibitem[{Gancarz and Grossberg(1998)}]{gancarz_neural_1998}
 Gancarz, G. and Grossberg, S. (1998).
 \newblock A neural model of the saccade generator in the reticular formation.
-\newblock \emph{Neural Networks} 11, 1159--1174
+\newblock \emph{Neural Networks} 11, 1159--1174.
+\newblock \doi{10.1016/S0893-6080(98)00096-3}
 \bibAnnoteFile{gancarz_neural_1998}
+
+\bibitem[{Goossens(2006)}]{goossens_dynamic_2006}
+Goossens, H. (2006).
+\newblock {\selectlanguage{en}Dynamic {Ensemble} {Coding} of {Saccades} in the
+  {Monkey} {Superior} {Colliculus}}.
+\newblock \emph{Journal of Neurophysiology} 95, 2326--2341.
+\newblock \doi{10.1152/jn.00889.2005}
+\bibAnnoteFile{goossens_dynamic_2006}
+
+\bibitem[{Goossens and van Opstal(2012)}]{goossens_optimal_2012}
+Goossens, H. and van Opstal, A.~J. (2012).
+\newblock Optimal control of saccades by spatial-temporal activity patterns in
+  the monkey superior colliculus.
+\newblock \emph{PLoS computational biology} 8, e1002508
+\bibAnnoteFile{goossens_optimal_2012}
+
+\bibitem[{Groh(2001)}]{groh_converting_2001}
+Groh, J.~M. (2001).
+\newblock Converting neural signals from place codes to rate codes.
+\newblock \emph{Biological cybernetics} 85, 159--165
+\bibAnnoteFile{groh_converting_2001}
 
 \bibitem[{Hallworth et~al.(2003)Hallworth, Wilson, and
   Bevan}]{hallworth_apamin-sensitive_2003}
@@ -65,9 +88,8 @@ Hallworth, N.~E., Wilson, C.~J., and Bevan, M.~D. (2003).
 \newblock Apamin-sensitive small conductance calcium-activated potassium
   channels, through their selective coupling to voltage-gated calcium channels,
   are critical determinants of the precision, pace, and pattern of action
-  potential generation in rat subthalamic nu.
-\newblock \emph{The Journal of neuroscience : the official journal of the
-  Society for Neuroscience} 23, 7525--42
+  potential generation in rat subthalamic nucleus neurons in vitro.
+\newblock \emph{The Journal of neuroscience} 23, 7525--7542
 \bibAnnoteFile{hallworth_apamin-sensitive_2003}
 
 \bibitem[{Hepp et~al.(1993)Hepp, Van~Opstal, Straumann, Hess, and
@@ -76,8 +98,7 @@ Hepp, K., Van~Opstal, A.~J., Straumann, D., Hess, B.~J., and Henn, V. (1993).
 \newblock Monkey superior colliculus represents rapid eye movements in a
   two-dimensional motor map.
 \newblock \emph{Journal of neurophysiology} 69, 965--979
-\bibAnnote{hepp_monkey_1993}{On the fact that SC encodes end point positions as
-  2D information, excluding oblique information.}
+\bibAnnoteFile{hepp_monkey_1993}
 
 \bibitem[{Hikosaka et~al.(2000)Hikosaka, Takikawa, and
   Kawagoe}]{hikosaka_role_2000}
@@ -103,6 +124,13 @@ Kühn, A.~A., Williams, D., Kupsch, A., Limousin, P., Hariz, M., Schneider,
 \newblock \emph{Brain : a journal of neurology} 127, 735--46.
 \newblock \doi{10.1093/brain/awh106}
 \bibAnnoteFile{kuhn_event-related_2004}
+
+\bibitem[{McILWAIN(1982)}]{mcilwain_lateral_1982}
+McILWAIN, J.~T. (1982).
+\newblock Lateral spread of neural excitation during microstimulation in
+  intermediate gray layer of cat's superior colliculus.
+\newblock \emph{Journal of Neurophysiology} 47, 167--178
+\bibAnnoteFile{mcilwain_lateral_1982}
 
 \bibitem[{McPeek et~al.(2003)McPeek, Han, and Keller}]{mcpeek_competition_2003}
 McPeek, R.~M., Han, J.~H., and Keller, E.~L. (2003).
@@ -160,6 +188,14 @@ Nowotny, T., Cope, A.~J., Yavuz, E., Stimberg, M., Goodman, D.~F., Marshall,
 \newblock \doi{10.1186/1471-2202-15-S1-P148}
 \bibAnnoteFile{nowotny_spineml_2014}
 
+\bibitem[{Ottes et~al.(1986)Ottes, Van~Gisbergen, and
+  Eggermont}]{ottes_visuomotor_1986}
+Ottes, F.~P., Van~Gisbergen, J.~A., and Eggermont, J.~J. (1986).
+\newblock Visuomotor fields of the superior colliculus: {A} quantitative model.
+\newblock \emph{Vision Research} 26, 857--873.
+\newblock \doi{10.1016/0042-6989(86)90144-6}
+\bibAnnoteFile{ottes_visuomotor_1986}
+
 \bibitem[{Port and Wurtz(2003)}]{port_sequential_2003}
 Port, N.~L. and Wurtz, R.~H. (2003).
 \newblock Sequential {Activity} of {Simultaneously} {Recorded} {Neurons} in the
@@ -195,12 +231,30 @@ Schall, J.~D. and Thompson, K.~G. (1999).
 \newblock \emph{Annual review of neuroscience} 22, 241--259
 \bibAnnoteFile{schall_neural_1999}
 
+\bibitem[{Seth et~al.(2011)Seth, Sherman, Reinbolt, and
+  Delp}]{seth_opensim:_2011}
+Seth, A., Sherman, M., Reinbolt, J.~a., and Delp, S.~L. (2011).
+\newblock {OpenSim}: a musculoskeletal modeling and simulation framework for in
+  silico investigations and exchange.
+\newblock \emph{Procedia IUTAM} 2, 212--232.
+\newblock \doi{10.1016/j.piutam.2011.04.021}
+\bibAnnoteFile{seth_opensim:_2011}
+
 \bibitem[{Sparks(2002)}]{sparks_brainstem_2002}
 Sparks, D.~L. (2002).
 \newblock The brainstem control of saccadic eye movements.
 \newblock \emph{Nature Reviews Neuroscience} 3, 952--964.
 \newblock \doi{10.1038/nrn986}
 \bibAnnoteFile{sparks_brainstem_2002}
+
+\bibitem[{Tabareau et~al.(2007)Tabareau, Bennequin, Berthoz, Slotine, and
+  Girard}]{tabareau_geometry_2007}
+Tabareau, N., Bennequin, D., Berthoz, A., Slotine, J.-J., and Girard, B.
+  (2007).
+\newblock Geometry of the superior colliculus mapping and efficient oculomotor
+  computation.
+\newblock \emph{Biological cybernetics} 97, 279--292
+\bibAnnoteFile{tabareau_geometry_2007}
 
 \bibitem[{Van~der Stigchel(2010)}]{van_der_stigchel_recent_2010}
 Van~der Stigchel, S. (2010).
@@ -217,6 +271,65 @@ Van~der Stigchel, S., Meeter, M., and Theeuwes, J. (2006).
 \newblock \emph{Neuroscience \& Biobehavioral Reviews} 30, 666--679.
 \newblock \doi{10.1016/j.neubiorev.2005.12.001}
 \bibAnnoteFile{van_der_stigchel_eye_2006}
+
+\bibitem[{Van~Gisbergen et~al.(1987)Van~Gisbergen, Van~Opstal, and
+  Tax}]{van_gisbergen_collicular_1987}
+Van~Gisbergen, J., Van~Opstal, A., and Tax, A. (1987).
+\newblock Collicular ensemble coding of saccades based on vector summation.
+\newblock \emph{Neuroscience} 21, 541--555.
+\newblock \doi{10.1016/0306-4522(87)90140-0}
+\bibAnnoteFile{van_gisbergen_collicular_1987}
+
+\bibitem[{Van~Gisbergen et~al.(1985)Van~Gisbergen, Van~Opstal, and
+  Schoenmakers}]{van_gisbergen_experimental_1985}
+Van~Gisbergen, J. A.~M., Van~Opstal, A.~J., and Schoenmakers, J. J.~M. (1985).
+\newblock Experimental test of two models for the generation of oblique
+  saccades.
+\newblock \emph{Experimental brain research} 57, 321--336
+\bibAnnoteFile{van_gisbergen_experimental_1985}
+
+\bibitem[{van Opstal and Goossens(2008)}]{van_opstal_linear_2008}
+van Opstal, A.~J. and Goossens, H. H. L.~M. (2008).
+\newblock {\selectlanguage{en}Linear ensemble-coding in midbrain superior
+  colliculus specifies the saccade kinematics}.
+\newblock \emph{Biological Cybernetics} 98, 561--577.
+\newblock \doi{10.1007/s00422-008-0219-z}
+\bibAnnoteFile{van_opstal_linear_2008}
+
+\bibitem[{Vokoun et~al.(2014)Vokoun, Huang, Jackson, and
+  Basso}]{vokoun_response_2014}
+Vokoun, C.~R., Huang, X., Jackson, M.~B., and Basso, M.~A. (2014).
+\newblock {\selectlanguage{en}Response {Normalization} in the {Superficial}
+  {Layers} of the {Superior} {Colliculus} as a {Possible} {Mechanism} for
+  {Saccadic} {Averaging}}.
+\newblock \emph{Journal of Neuroscience} 34, 7976--7987.
+\newblock \doi{10.1523/JNEUROSCI.3022-13.2014}
+\bibAnnoteFile{vokoun_response_2014}
+
+\bibitem[{Vokoun et~al.(2010)Vokoun, Jackson, and
+  Basso}]{vokoun_intralaminar_2010}
+Vokoun, C.~R., Jackson, M.~B., and Basso, M.~A. (2010).
+\newblock {\selectlanguage{en}Intralaminar and {Interlaminar} {Activity} within
+  the {Rodent} {Superior} {Colliculus} {Visualized} with {Voltage} {Imaging}}.
+\newblock \emph{Journal of Neuroscience} 30, 10667--10682.
+\newblock \doi{10.1523/JNEUROSCI.1387-10.2010}
+\bibAnnoteFile{vokoun_intralaminar_2010}
+
+\bibitem[{Waitzman et~al.(1991)Waitzman, Ma, Optican, and
+  Wurtz}]{waitzman_superior_1991}
+Waitzman, D.~M., Ma, T.~P., Optican, L.~M., and Wurtz, R.~H. (1991).
+\newblock Superior colliculus neurons mediate the dynamic characteristics of
+  saccades.
+\newblock \emph{Journal of Neurophysiology} 66, 1716--1737
+\bibAnnoteFile{waitzman_superior_1991}
+
+\bibitem[{Wilson(2004)}]{wilson_model_2004}
+Wilson, C.~J. (2004).
+\newblock {\selectlanguage{en}A {Model} of {Reverse} {Spike} {Frequency}
+  {Adaptation} and {Repetitive} {Firing} of {Subthalamic} {Nucleus} {Neurons}}.
+\newblock \emph{Journal of Neurophysiology} 91, 1963--1980.
+\newblock \doi{10.1152/jn.00924.2003}
+\bibAnnoteFile{wilson_model_2004}
 
 \bibitem[{Wurtz and Goldberg(1971)}]{wurtz_superior_1971}
 Wurtz, R.~H. and Goldberg, M.~E. (1971).

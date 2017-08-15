@@ -345,7 +345,7 @@ participates in the selection of the winning saccade end point
 
 % A very short introduction to the section.
 The integrated brain and biomechanical model described here is a
-development of the model in \mycite{alex_cope_integrative_2015},
+development of the model in \mycite{cope_basal_2017},
 referred to here as the \ccg~model. This was a rate-coded neural
 network model incorporating retinal populations, frontal eye fields
 (FEF), the basal ganglia (BG), and the superior colliculus (SC). In
@@ -532,26 +532,26 @@ model \mycite{bogacz_basal_2007}.
 
 The D1MSN and D2MSN components are both leaky integrators, similar to
 LINlinear. They differ in that they have no shunting inhibition and a
-dopamine parameter dependent modulation of the input activation, so
-that their equations for $a_{in}$ are:
+dopamine parameter that modulates the input activation, so
+that their equations for $a_{in}$ are thus:
 \[
    a_{in}^{D1} = (0.2 + d)A + 0.01 R_N
 \]
-for D1MSN, and
 \[
    a_{in}^{D2} = (1 - d)A + 0.01 R_N
 \]
-for D2MSN, where $d$ is a dopamine parameter. Increasing dopamine from
-0 to 1 enhances the activation in the D1 model neurons, whereas it
-decreases the activation of the D2 model neurons, in line with
-experimental observations~\cite{refs}. Note that the equation for
-$a_{in}^{D1}$ differs from that used in the \ccg~model, for which the
-cortico-striatal weights are multiplied by $(1+d)$ rather than $(0.2+d)$
+where $d$ is a dopamine parameter. Varying dopamine from 0 to 1
+enhances the activation in the D1 model, whereas it decreases
+the activation of the D2 model elements, in line with experimental
+observations~\cite{refs}. Note that the equation for $a_{in}^{D1}$
+differs from that used in the \ccg~model, for which the
+cortico-striatal weights are multiplied by $(1+d)$ rather than
+$(0.2+d)$.
 
-The equations given above apply to each element in the population
-whose behaviour is defined by the component. The value of the
-activation $A$ (and where relevant the shunting input, $S$, also) is
-determined by summing the weighted inputs to the population:
+The equations given above are applied to each element in a
+population. The value of the activation $A$ (and where relevant, the
+shunting input, $S$) is determined by summing the weighted
+inputs to the population:
 \[
 A = \sum_{i}w_i^{act} x_i^{act}
 \]
@@ -586,7 +586,7 @@ gluing'~\cite{tabareau_geometry_2007}.
 
 The magnification factor, $M_f$, gives the relationship between the
 radial angle $r$ and the retinal neural density. It is given by:
-\[
+\[ \label{eq:mf}
    M_f = {W_{nfs} \over E_2 ln ({W_{fov} \over 2 E_2} + 1)}
 \]
 where $W_{nfs}$ is the width of the retinotopic neural fields (50),
@@ -739,23 +739,72 @@ A number of studies have considered the form of the connection between
 the deeper layers of the superior colliculus and the saccadic burst
 generator~\cite{van_gisbergen_experimental_1985,ottes_visuomotor_1986,waitzman_superior_1991,groh_converting_2001,arai_model_2004,goossens_dynamic_2006,tabareau_geometry_2007,van_opstal_linear_2008,goossens_optimal_2012},
 which has become known as the spatial temporal transform (STT).  The
-spatial part of the STT is thought to be implemented by a
+spatial transform is thought to be implemented by a
 weight-mapping~\cite{tabareau_geometry_2007,arai_model_2004} and we
 follow this idea.
-
 % Words along the lines of:
-Arai and co-workers trained their neural network model to discover the
-weight map~\cite{arai_model_2004}.
+Arai and co-workers trained a 20x20 neural network model of the
+superior colliculs to discover the weight map under the assumption of
+2D Gaussian activation profiles~\cite{arai_model_2004}.
+%
+The training approach of Arai~et.~al. was not feasible in this study
+due to the length of time required to run our model and its
+stochasticity, which means multiple runs of the model were necessary
+in order to generate output statistics.
+%
+Tabareau and co-workers wrote down a theoretical form of the weight
+map, which follows from the mapping of \cite{ottes_visuomotor_1986}
+and the assumption of invariant 2D Gaussian activity profiles in
+SC~\cite{tabareau_geometry_2007}. As they found it closely resembles the
+results of Arai et al., and it is a simple formulation, we considered
+it as the means to generate the six weight maps in our own model.
+%
+One barrier to the use of the weight map
+in \cite{tabareau_geometry_2007} was the \ccg~model's violation of the
+\emph{invariant integral hypothesis}. This states that the number of spikes
+emitted by a neural element during a saccade (or in our model, the
+integral of the neuron's output during the saccade) should be a
+function only of its position within the hill of collicular
+activity. That is, for any time-dependent hill of activity
+$\mathcal{A}(\mathbf{z},t)$ at $\mathbf{z} = (r,\phi)$ on the collicular
+surface, the integrated activity  $A_{\mathbf{x}}$ in an element at a
+vector $\mathbf{x}$ away from $\mathbf{z}$ is
+\[
+A_{\mathbf{x}} = \int_t \mathcal{A}(\mathbf{z}-\mathbf{x}, t) dt
+\]
+which is invariant for all $\mathbf{z}$. However, the very mapping on
+which the \cite{tabareau_geometry_2007} result is based leads to a
+very \emph{variant} activity profile in the \ccg~model. A luminance of
+a given size which excites activity near to the fovea causes activity
+in a large number of neurons, whereas activity far from the fovea
+excites a much smaller region. This effect is clearly demonstrated in
+Fig.~\ref{fig:mapping} for equal sized targets both on and distal from
+the fovea.
 
-% Then...
-Tabareau and co-workers wrote down the theoretical form of the weight
-map and found it matches well to the results of Arai et
-al.~\cite{tabareau_geometry_2007}.
+This led us to hypothesize that the retinotopic mapping be accompanied
+by an associated widening projection field such that the hill of
+activity in superior colliculus is invariant with position on the
+collicular surface. There are a number of locations in the system in
+which this widening projection field could exist. It could be
+implemented in the projections between the retinal populations and the
+superficial layer of SC along with the projection between the World
+and the FEF population. However, this would affect activity within the
+basal ganglia of the model, contradicting a result
+in \cite{cope_basal_2017} which explains the `hockey stick' profile
+for saccade latency as a function of saccade eccentricity. Instead, we
+suggest that a widening projection field is encoded within the
+superior colliculus itself, a complex, multi-layered structure which
+could quite plausibly support such a function. Indeed, such widening
+activity can be seen in the stimulation experiments
+in \cite{vokoun_intralaminar_2010}
+and \cite{vokoun_response_2014}. Although in this work we do not model
+the SC in detail, we extended the model with a third functional layer
+(\ccg has two layers; SC\_sup) and SC\_deep) named SC\_deep2. We
+introduced a widening projection based on a Gaussian projection field
+whose width varies in inverse proportion to the magnification factor.
 
-The approach of Arai~et.~al. was
-not feasible with the present model due to the length of time required
-to run the model, its stochasticity and the increased size of the maps
-here compared with those used by Arai~et.~al.
+A further problem - the temporal profile of the hill? No - 6 channels
+not 4!
 
 The saccadic burst generator model was originally conceived with the
 assumption of a step input~\cite{gancarz_neural_1998}.
