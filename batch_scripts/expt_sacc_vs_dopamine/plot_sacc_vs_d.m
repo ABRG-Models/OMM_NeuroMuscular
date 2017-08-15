@@ -9,6 +9,7 @@ modeldir = 'TModel4'
 r = struct();
 rr = [];
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
+markers = {'o','x','s','d','^','*','v'};
 
 flist = glob(['results/' modeldir '/r*.dat']);
 llen = size(flist)(1);
@@ -44,34 +45,61 @@ rr = sortrows(rr,14);
 % Sort also by luminance (col 5) and separate out into lat vs. gap
 % for differing luminances.
 luminances = unique(rr(:,5));
+fixlums = unique(rr(:,3));
 
-% lat vs dopamine
-figure(42);
-clf;
-legend_str='';
-colcount = 1;
-for l = luminances'
-    rr_1 = [];
-    rr_1 = rr(find(rr(:,5)==l),:);
-    errorbar (rr_1(:,14),rr_1(:,12),rr_1(:,13), colours{colcount})
-    hold on;
-    % G is "gap"
-    legend_str = [legend_str; 'G: ' num2str(rr_1(1,4)) ' L: ' num2str(l)];
-    colcount = colcount + 1;
+fn = 40;
 
-    if output_veusz
-        datatosave = [rr_1(:,14),rr_1(:,12),rr_1(:,13)];
-        f = fopen (['results/' modeldir '/lat_vs_dop_G_' num2str(rr_1(1,4)) '_L' num2str(l) '.csv'], 'w');
-        fprintf (f, 'Dopamine,Latency,+-\n');
-        dlmwrite (f, datatosave, '-append');
-        fclose(f);
+for f = fixlums'
+
+    _rr = [];
+    _rr = rr(find(rr(:,3)==f),:);
+
+    luminances = unique(_rr(:,5));
+
+    figure(fn);
+    clf;
+    legend_str='';
+    colcount = 1;
+    markcount = 1;
+
+    for l = luminances'
+    rr_ = [];
+        rr_ = _rr(find(_rr(:,5)==l),:);
+
+        gaps = unique(rr_(:,4));
+
+        colcount = 1;
+        for g = gaps'
+
+            rr_1 = rr_(find(rr_(:,4)==g),:);
+            ph = errorbar (rr_1(:,14),rr_1(:,12),rr_1(:,13));
+            set(ph, 'marker', markers{markcount}, 'color', colours{colcount});
+            hold on;
+            % G is "gap"
+            legend_str = [legend_str; 'G: ' num2str(rr_1(1,4)) ' L: ' num2str(l) ' FL: ' num2str(rr_1(1,3)) ];
+            colcount = colcount + 1;
+
+            if output_veusz
+                datatosave = [rr_1(:,14),rr_1(:,12),rr_1(:,13)];
+                f = fopen (['results/' modeldir '/lat_vs_dop_G_' num2str(rr_1(1,4)) '_L' num2str(l) '_F' num2str(rr_1(1,3))  '.csv'], 'w');
+                fprintf (f, 'Dopamine,Latency,+-\n');
+                dlmwrite (f, datatosave, '-append');
+                fclose(f);
+            end
+        end
+        markcount = markcount + 1;
     end
 
+    xlabel('dopamine');
+    ylabel('Latency (ms)');
+    legend(legend_str);
+    title([modeldir ' lat vs dop for X/Y ' num2str(rr(1,1)) '/' num2str(rr(1,2)) ' and FixLum ' num2str(_rr(1,3)) ]);
+
+    fn = fn + 1;
 end
-xlabel('dopamine');
-ylabel('Latency (ms)');
-legend(legend_str);
-title([modeldir ' lat vs dop for X/Y ' num2str(rr(1,1)) '/' num2str(rr(1,2)) ]);
+
+
+return
 
 % Accuracy vs dopamine
 figure(43);
