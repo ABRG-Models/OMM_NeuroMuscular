@@ -11,11 +11,11 @@ FRAMEWIDTH="200"
 FRAMERATE=25
 
 # MODIFY this to suit your environment.
-LOGDIR='/fastdata/pc1ssj/oculomotor/log/'
+LOGDIR='/fastdata/co1ssj/oculomotor/log/'
 
 # Paths to ImageMagick tools
-MONTAGE='/home/pc1ssj/usr/bin/montage'
-CONVERT='/home/pc1ssj/usr/bin/convert'
+MONTAGE='/home/co1ssj/usr/bin/montage'
+CONVERT='/home/co1ssj/usr/bin/convert'
 
 POPULATIONS=('Retina_1' 'Retina_2' 'FEF' 'SC_deep' 'GPe' 'SC_sup' 'SNr' 'STN' 'Str_D1' 'Thalamus' 'FEF_add_noise' 'World')
 #             0          1          2     3         4     5        6      7    8        9          10             11
