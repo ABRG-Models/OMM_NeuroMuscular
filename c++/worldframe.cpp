@@ -216,7 +216,13 @@ WorldFrame::luminanceThetaMapToCartesian (void)
                 this->luminanceCoords (iter, 2) = negdist;
 
             } else if (this->screenShape == SCREENSHAPE_SPHERICAL) {
+
+                // Aug 2017: There's a sign error HERE! should be//
+                // -1 * dist * sin (thetaYrad). I belive this is
+                // compensated for in the slightly "wrong" Euler
+                // rotation matrices in eyeframe.cpp.
                 this->luminanceCoords (iter, 0) = dist * sin (thetaYrad);
+
                 this->luminanceCoords (iter, 1) = dsinrotxrad; // dist * sin (thetaXrad);
                 this->luminanceCoords (iter, 2) = negdist * cos (sqrt (thetaXrad * thetaXrad + thetaYrad * thetaYrad));
                 DBG2 ("x=" << this->luminanceCoords (iter, 0)
