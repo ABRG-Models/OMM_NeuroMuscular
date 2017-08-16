@@ -57,7 +57,9 @@ EyeFrame::setEyeField (const MatrixXd& worldCoords)
 
     // 2. Apply transform
 
-    // Construct rotation matrices
+    // Construct rotation matrices. These don't quite match up to the
+    // rotation matrices you'll find on Wikipedia. I think this
+    // compensates for the sign error at line 224 of worldframe.cpp.
     Matrix3d RMx, RMy, RMz;
     RMx << 1, 0,         0,
            0, cos(ROTX), sin(ROTX),
