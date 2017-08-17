@@ -56,11 +56,14 @@ actuals = rr(:,6:8);
 errs = targs - actuals;
 errmags = sqrt(errs(:,1).*errs(:,1) + errs(:,2).*errs(:,2) + errs(:,3).*errs(:,3));
 
+targmags = sqrt(rr(:,1).*rr(:,1) + rr(:,2).*rr(:,2));
+
 xyerr = sqrt(errs(:,1).*errs(:,1) + errs(:,2).*errs(:,2));
 
 X=rr(:,1);
 Y=rr(:,2);
-Z=errmags;%errmags;
+Z=errmags;%./targmags;%errmags;
+
 trisurf(delaunay(X,Y),X,Y,Z);
 hold on;
 plot ([15,-15],[-15,15],'b')
@@ -71,8 +74,24 @@ ylabel('Target Y');
 zlabel('mag. of error vector');
 title ([ommodel ': Error magnitude (total: ' num2str(sum(errmags)) ')']);
 view([viewx viewy]);
-zlim([0 7]);
+zlim([0 1]);
 eesetgrid([0, 0], yposn);
+
+figure(startfig+40); clf;
+Z=errmags./targmags.*100;
+trisurf(delaunay(X,Y),X,Y,Z);
+hold on;
+plot ([15,-15],[-15,15],'b')
+plot ([15,-15],[15,-15],'b')
+hold off;
+xlabel('Target X');
+ylabel('Target Y');
+zlabel('mag. of error vector');
+title ([ommodel ': Error percentage']);
+view([viewx viewy]);
+zlim([0 100]);
+eesetgrid([1, 1], yposn);
+
 
 figure(startfig+4); clf;
 Z=xyerr;
