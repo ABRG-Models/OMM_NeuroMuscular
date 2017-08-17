@@ -46,7 +46,19 @@ popd
 pushd ${S2B_DIR}
 
 for i in 1 2 3 4 5; do
-    ./convert_script_s2b -g -m ${OMMPATH} -e8 -o temp/${OMMODEL}
+    ./convert_script_s2b -g -m ${OMMPATH} -e8 -o temp/${OMMODEL} \
+                         -p "IBN left to FEF Synapse 0 weight_update:w:0" \
+                         -p "IBN left to Thalamus Synapse 0 weight_update:w:0" \
+                         -p "IBN left to SC_deep Synapse 0 weight_update:w:0" \
+                         -p "IBN right to FEF Synapse 0 weight_update:w:0" \
+                         -p "IBN right to Thalamus Synapse 0 weight_update:w:0" \
+                         -p "IBN right to SC_deep Synapse 0 weight_update:w:0" \
+                         -p "IBN up to FEF Synapse 0 weight_update:w:0" \
+                         -p "IBN up to Thalamus Synapse 0 weight_update:w:0" \
+                         -p "IBN up to SC_deep Synapse 0 weight_update:w:0" \
+                         -p "IBN down to FEF Synapse 0 weight_update:w:0" \
+                         -p "IBN down to Thalamus Synapse 0 weight_update:w:0" \
+                         -p "IBN down to SC_deep Synapse 0 weight_update:w:0"
 
     # Now extract the movement data and save it off, then re-run several times.
     cp ${S2B_DIR}/temp/${OMMODEL}/run/saccsim_side.log ${STARTDIR}/results/${i}_saccsim_side.log

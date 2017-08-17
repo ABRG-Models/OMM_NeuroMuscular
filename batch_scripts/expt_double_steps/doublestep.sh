@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Do a single out and return saccade.
+# Do a saccade with a double step.
 
 # Fixed parameters for this run:
 LUMVAL=0.3
@@ -9,7 +9,9 @@ GAP_MS=0
 
 # Negative ThetaX is a downward movement and avoids edge effects in the model.
 TARGX=0
-TARGY=-10
+TARGY=-8
+TARGX2=0
+TARGY2=-12
 
 STARTDIR=`pwd`
 mkdir -p results
@@ -31,12 +33,12 @@ cat > luminances.json <<EOF
      {"shape":"cross","thetaX":${TARGX},"thetaY":${TARGY},
      "widthThetaX":6,"widthThetaY":2,
      "luminance":0.3,
-     "timeOn":0.4,"timeOff":0.8},
+     "timeOn":0.4,"timeOff":0.5},
 
-     {"shape":"cross","thetaX":0,"thetaY":0,
+     {"shape":"cross","thetaX":${TARGX2},"thetaY":${TARGY2},
      "widthThetaX":6,"widthThetaY":2,
      "luminance":0.3,
-     "timeOn":0.8,"timeOff":2}
+     "timeOn":0.5,"timeOff":0.8}
  ]
 }
 EOF
@@ -45,7 +47,7 @@ popd
 
 pushd ${S2B_DIR}
 
-for i in 1 2 3 4 5; do
+for i in 1; do
     ./convert_script_s2b -g -m ${OMMPATH} -e8 -o temp/${OMMODEL}
 
     # Now extract the movement data and save it off, then re-run several times.
