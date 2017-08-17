@@ -11,7 +11,7 @@ W_nfs = 50;
 %
 % The sigma multiplier from which sigma(r) is computed (as
 % sigma_m/M_f +- offsets)
-sigma_m = 50
+sigma_m = 50 % m_sigma in the paper
 
 % An offset applied to sigma(r). Needs to be a new parameter.
 sigma_0 = 0.3
@@ -46,6 +46,7 @@ ylabel('MagFactor(r)');
 title ('MagFactor');
 omsetgrid([2,2]);
 
+% sigma(r) in the paper
 _sigma = (sigma_m./M_f) - (sigma_m./M_f_start) + sigma_0;
 
 _SIGMA=repmat(_sigma, 50, 1);
