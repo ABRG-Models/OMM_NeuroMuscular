@@ -13,6 +13,9 @@ TARGY=-8
 TARGX2=0
 TARGY2=-12
 
+TARGT=0.4
+TARGT2=0.44 # 0.43: Single sacc, 0.44: Double step
+
 STARTDIR=`pwd`
 mkdir -p results
 
@@ -28,17 +31,17 @@ cat > luminances.json <<EOF
     {"shape":"cross","thetaX":0,"thetaY":0,
      "widthThetaX":6,"widthThetaY":2,
      "luminance":0.200000,
-     "timeOn":0,"timeOff":0.4},
+     "timeOn":0,"timeOff":${TARGT}},
 
      {"shape":"cross","thetaX":${TARGX},"thetaY":${TARGY},
      "widthThetaX":6,"widthThetaY":2,
      "luminance":0.3,
-     "timeOn":0.4,"timeOff":0.5},
+     "timeOn":${TARGT},"timeOff":${TARGT2}},
 
      {"shape":"cross","thetaX":${TARGX2},"thetaY":${TARGY2},
      "widthThetaX":6,"widthThetaY":2,
      "luminance":0.3,
-     "timeOn":0.5,"timeOff":0.8}
+     "timeOn":${TARGT2},"timeOff":100}
  ]
 }
 EOF
