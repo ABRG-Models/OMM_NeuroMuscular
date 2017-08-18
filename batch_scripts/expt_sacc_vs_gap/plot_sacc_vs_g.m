@@ -50,7 +50,7 @@ for d = dops'
     _rr = [];
     _rr = rr(find(rr(:,14)==d),:);
 
-    fixlums = unique(_rr(:,3));
+    fixlums = unique(_rr(:,3))
 
     figure(fn);
     clf;
@@ -76,11 +76,12 @@ for d = dops'
             colcount = colcount + 1;
 
             if output_veusz
-                datatosave = [rr__(:,14),rr__(:,12),rr__(:,13)];
-                f = fopen (['results/' modeldir '/lat_vs_gap_D_' num2str(rr__(1,14)) '_FL' num2str(f) '_L' num2str(l) '.csv'], 'w');
-                fprintf (f, 'Gap,Latency,+-\n');
-                dlmwrite (f, datatosave, '-append');
-                fclose(f);
+                datatosave = [rr__(:,4),rr__(:,12),rr__(:,13)];
+                display(['f=' num2str(f)])
+                fh = fopen (['results/' modeldir '/lat_vs_gap_D_' num2str(rr__(1,14)) '_FL' num2str(f) '_L' num2str(l) '.csv'], 'w');
+                fprintf (fh, 'Gap,Latency,+-\n');
+                dlmwrite (fh, datatosave, '-append');
+                fclose(fh);
             end
 
         end
