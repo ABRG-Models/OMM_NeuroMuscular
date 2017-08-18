@@ -1,5 +1,5 @@
 %% Load the data and plot the error surface. Only plot up to maxr.
-function [rr, errs, errmags] = load_errorsurf (ommodel, maxr=100)
+function [rr, errs, targmags, errmags, errpcnt] = load_errorsurf (ommodel, maxr=100)
 
 r = struct();
 rr = [];
@@ -41,8 +41,10 @@ end
 rr = sortrows(rr,1);
 
 targs = [rr(:,1),rr(:,2),zeros(size(rr)(1),1)];
+targmags = sqrt(rr(:,1).*rr(:,1) + rr(:,2).*rr(:,2));
 actuals = rr(:,6:8);
 errs = targs - actuals;
 errmags = sqrt(errs(:,1).*errs(:,1) + errs(:,2).*errs(:,2) + errs(:,3).*errs(:,3));
-
+% Also compute error percentage:
+errpcnt = errmags ./ targmags .* 100;
 end
