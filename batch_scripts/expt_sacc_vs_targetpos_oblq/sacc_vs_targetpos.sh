@@ -18,7 +18,7 @@ DOPAMINE=0.7
 GAP_MS=0
 
 # Range -5 to -12 at 45 degree angle is rougly equivalent to -7 to -17 pure horz or vert
-THETAYSTART=-5
+THETAYSTART=-2
 THETAYINC=-1 # Stick to integers! Design of eyeframe/worldframe code requires this.
 THETAYEND=-12
 

@@ -8,7 +8,7 @@ lumval=1;
 colours = {'r','b','g','k','c','m','r--','b--','g--','k--','c--','m--'};
 colcount = 1;
 
-flist = glob('results/TModel0/r*.dat');
+flist = glob('results/TModel4/r*.dat');
 llen = size(flist)(1);
 for i = [1 : llen]
 
@@ -42,7 +42,7 @@ figure(72);
 errorbar (rr(:,2),rr(:,7),rr(:,10),'o-')
 hold on;
 errorbar (rr(:,1),rr(:,6),rr(:,9),'ro-')
-plot ([-15,-8],[-15,-8], 'g--');
+plot ([-12,-2],[-12,-2], 'g--');
 hold off;
 xlabel('Target y');
 ylabel('eyeRy');
