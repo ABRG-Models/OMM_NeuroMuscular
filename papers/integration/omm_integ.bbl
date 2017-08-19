@@ -1,4 +1,4 @@
-\begin{thebibliography}{42}
+\begin{thebibliography}{62}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -12,6 +12,20 @@
   \begin{quotation}\noindent\textsc{Key:} #1\\
   \textsc{Annotation:}\ #2\end{quotation}}
 
+\bibitem[{Arai et~al.(1994)Arai, Keller, and
+  Edelman}]{arai_two-dimensional_1994}
+Arai, K., Keller, E., and Edelman, J. (1994).
+\newblock Two-dimensional neural network model of the primate saccadic system.
+\newblock \emph{Neural Networks} 7, 1115.
+\newblock \doi{10.1016/S0893-6080(05)80162-5}
+\bibAnnoteFile{arai_two-dimensional_1994}
+
+\bibitem[{Bahill and Stark(1979)}]{bahill_trajectories_1979}
+Bahill, A.~T. and Stark, L. (1979).
+\newblock The trajectories of saccadic eye movements.
+\newblock \emph{Scientific American} 240, 108--117
+\bibAnnoteFile{bahill_trajectories_1979}
+
 \bibitem[{Bevan and Wilson(1999)}]{bevan_mechanisms_1999}
 Bevan, M.~D. and Wilson, C.~J. (1999).
 \newblock Mechanisms underlying spontaneous oscillation and rhythmic firing in
@@ -20,6 +34,14 @@ Bevan, M.~D. and Wilson, C.~J. (1999).
   Society for Neuroscience} 19, 7617--28
 \bibAnnoteFile{bevan_mechanisms_1999}
 
+\bibitem[{Blenkinsop et~al.(2017)Blenkinsop, Anderson, and
+  Gurney}]{blenkinsop_frequency_2017}
+Blenkinsop, A., Anderson, S., and Gurney, K. (2017).
+\newblock {\selectlanguage{en}Frequency and function in the basal ganglia: the
+  origins of beta and gamma band activity}.
+\newblock \emph{The Journal of Physiology} \doi{10.1113/JP273760}
+\bibAnnoteFile{blenkinsop_frequency_2017}
+
 \bibitem[{Bogacz and Gurney(2007)}]{bogacz_basal_2007}
 Bogacz, R. and Gurney, K. (2007).
 \newblock The basal ganglia and cortex implement optimal decision making
@@ -27,6 +49,15 @@ Bogacz, R. and Gurney, K. (2007).
 \newblock \emph{Neural Computation} 19, 442--477.
 \newblock \doi{10.1162/neco.2007.19.2.442}
 \bibAnnoteFile{bogacz_basal_2007}
+
+\bibitem[{Cope et~al.(2017)Cope, Chambers, Prescott, and
+  Gurney}]{cope_basal_2017}
+Cope, A., Chambers, J.~M., Prescott, T.~J., and Gurney, K.~N. (2017).
+\newblock Basal {Ganglia} {Control} {Of} {Reflexive} {Saccades}: {A}
+  {Computational} {Model} {Integrating} {Physiology} {Anatomy} {And}
+  {Behaviour}.
+\newblock \emph{bioRxiv} \doi{10.1101/135251}
+\bibAnnoteFile{cope_basal_2017}
 
 \bibitem[{Cope and James(2015{\natexlab{a}})}]{cope_spineml_2_brahms_2015-1}
 Cope, A.~J. and James, S.~S. (2015{\natexlab{a}}).
@@ -46,6 +77,13 @@ Cope, A.~J., Richmond, P., James, S.~S., Gurney, K., and Allerton, D.~J.
   for the {Creation} of {Layered} {Neural} {Models}}.
 \newblock \emph{Neuroinformatics} \doi{10.1007/s12021-016-9311-z}
 \bibAnnoteFile{cope_spinecreator:_2016}
+
+\bibitem[{Edelman and Keller(1996)}]{edelman_activity_1996}
+Edelman, J.~A. and Keller, E.~L. (1996).
+\newblock Activity of visuomotor burst neurons in the superior colliculus
+  accompanying express saccades.
+\newblock \emph{Journal of Neurophysiology} 76, 908
+\bibAnnoteFile{edelman_activity_1996}
 
 \bibitem[{Fuchs and Luschei(1970)}]{fuchs_firing_1970}
 Fuchs, A. and Luschei, E. (1970).
@@ -92,6 +130,15 @@ Hallworth, N.~E., Wilson, C.~J., and Bevan, M.~D. (2003).
 \newblock \emph{The Journal of neuroscience} 23, 7525--7542
 \bibAnnoteFile{hallworth_apamin-sensitive_2003}
 
+\bibitem[{Hazy et~al.(2007)Hazy, Frank, and O'Reilly}]{hazy_towards_2007}
+Hazy, T.~E., Frank, M.~J., and O'Reilly, R.~C. (2007).
+\newblock {\selectlanguage{en}Towards an executive without a homunculus:
+  computational models of the prefrontal cortex/basal ganglia system}.
+\newblock \emph{Philosophical Transactions of the Royal Society B: Biological
+  Sciences} 362, 1601--1613.
+\newblock \doi{10.1098/rstb.2007.2055}
+\bibAnnoteFile{hazy_towards_2007}
+
 \bibitem[{Hepp et~al.(1993)Hepp, Van~Opstal, Straumann, Hess, and
   Henn}]{hepp_monkey_1993}
 Hepp, K., Van~Opstal, A.~J., Straumann, D., Hess, B.~J., and Henn, V. (1993).
@@ -125,12 +172,27 @@ Kühn, A.~A., Williams, D., Kupsch, A., Limousin, P., Hariz, M., Schneider,
 \newblock \doi{10.1093/brain/awh106}
 \bibAnnoteFile{kuhn_event-related_2004}
 
-\bibitem[{McILWAIN(1982)}]{mcilwain_lateral_1982}
-McILWAIN, J.~T. (1982).
+\bibitem[{Linden and Perry(1983)}]{linden_massive_1983}
+Linden, R. and Perry, V. (1983).
+\newblock Massive retinotectal projection in rats.
+\newblock \emph{Brain research} 272, 145--149
+\bibAnnoteFile{linden_massive_1983}
+
+\bibitem[{McIlwain(1982)}]{mcilwain_lateral_1982}
+McIlwain, J.~T. (1982).
 \newblock Lateral spread of neural excitation during microstimulation in
   intermediate gray layer of cat's superior colliculus.
 \newblock \emph{Journal of Neurophysiology} 47, 167--178
 \bibAnnoteFile{mcilwain_lateral_1982}
+
+\bibitem[{McPeek(2006)}]{mcpeek_incomplete_2006}
+McPeek, R.~M. (2006).
+\newblock {\selectlanguage{en}Incomplete {Suppression} of
+  {Distractor}-{Related} {Activity} in the {Frontal} {Eye} {Field} {Results} in
+  {Curved} {Saccades}}.
+\newblock \emph{Journal of Neurophysiology} 96, 2699--2711.
+\newblock \doi{10.1152/jn.00564.2006}
+\bibAnnoteFile{mcpeek_incomplete_2006}
 
 \bibitem[{McPeek et~al.(2003)McPeek, Han, and Keller}]{mcpeek_competition_2003}
 McPeek, R.~M., Han, J.~H., and Keller, E.~L. (2003).
@@ -139,6 +201,13 @@ McPeek, R.~M., Han, J.~H., and Keller, E.~L. (2003).
 \newblock \emph{Journal of Neurophysiology} 89, 2577--2590.
 \newblock \doi{10.1152/jn.00657.2002}
 \bibAnnoteFile{mcpeek_competition_2003}
+
+\bibitem[{McPeek and Keller(2002)}]{mcpeek_saccade_2002}
+McPeek, R.~M. and Keller, E.~L. (2002).
+\newblock Saccade {Target} {Selection} in the {Superior} {Colliculus} {During}
+  a {Visual} {Search} {Task}.
+\newblock \emph{Journal of Neurophysiology} 88, 2019--2034
+\bibAnnoteFile{mcpeek_saccade_2002}
 
 \bibitem[{Mitchinson et~al.(2010)Mitchinson, Chan, Chambers, Pearson,
   Humphries, Fox et~al.}]{mitchinson_brahms:_2010}
@@ -196,6 +265,11 @@ Ottes, F.~P., Van~Gisbergen, J.~A., and Eggermont, J.~J. (1986).
 \newblock \doi{10.1016/0042-6989(86)90144-6}
 \bibAnnoteFile{ottes_visuomotor_1986}
 
+\bibitem[{Papapavlou and Moustakas(2014)}]{papapavlou_physics-based_2014}
+Papapavlou, C. and Moustakas, K. (2014).
+\newblock Physics-based modelling and animation of saccadic eye movement
+\bibAnnoteFile{papapavlou_physics-based_2014}
+
 \bibitem[{Port and Wurtz(2003)}]{port_sequential_2003}
 Port, N.~L. and Wurtz, R.~H. (2003).
 \newblock Sequential {Activity} of {Simultaneously} {Recorded} {Neurons} in the
@@ -225,11 +299,34 @@ Robinson, D. (1972).
 \newblock \doi{10.1016/0042-6989(72)90070-3}
 \bibAnnoteFile{robinson_eye_1972}
 
+\bibitem[{Rovamo and Virsu(1979)}]{rovamo_estimation_1979}
+Rovamo, J. and Virsu, V. (1979).
+\newblock {\selectlanguage{en}An estimation and application of the human
+  cortical magnification factor}.
+\newblock \emph{Experimental Brain Research} 37, 495--510.
+\newblock \doi{10.1007/BF00236819}
+\bibAnnoteFile{rovamo_estimation_1979}
+
 \bibitem[{Schall and Thompson(1999)}]{schall_neural_1999}
 Schall, J.~D. and Thompson, K.~G. (1999).
 \newblock Neural selection and control of visually guided eye movements.
 \newblock \emph{Annual review of neuroscience} 22, 241--259
 \bibAnnoteFile{schall_neural_1999}
+
+\bibitem[{Schiller et~al.(1987)Schiller, Sandell, and
+  Maunsell}]{schiller_effect_1987}
+Schiller, P.~H., Sandell, J.~H., and Maunsell, J.~H. (1987).
+\newblock The effect of frontal eye field and superior colliculus lesions on
+  saccadic latencies in the rhesus monkey.
+\newblock \emph{Journal of Neurophysiology} 57, 1033
+\bibAnnoteFile{schiller_effect_1987}
+
+\bibitem[{Schwartz(1980)}]{eric_l._schwartz_computational_1980}
+Schwartz, E.~L. (1980).
+\newblock Computational anatomy and functional architecture of striate cortex:
+  {A} spatial mapping approach to perceptual coding.
+\newblock \emph{Vision Res.} 20, 645--669
+\bibAnnoteFile{eric_l._schwartz_computational_1980}
 
 \bibitem[{Seth et~al.(2011)Seth, Sherman, Reinbolt, and
   Delp}]{seth_opensim:_2011}
@@ -240,12 +337,45 @@ Seth, A., Sherman, M., Reinbolt, J.~a., and Delp, S.~L. (2011).
 \newblock \doi{10.1016/j.piutam.2011.04.021}
 \bibAnnoteFile{seth_opensim:_2011}
 
+\bibitem[{Slotnick et~al.(2001)Slotnick, Klein, Carney, and
+  Sutter}]{slotnick_electrophysiological_2001}
+Slotnick, S.~D., Klein, S.~A., Carney, T., and Sutter, E.~E. (2001).
+\newblock Electrophysiological estimate of human cortical magnification.
+\newblock \emph{Clinical Neurophysiology} 112, 1349--1356
+\bibAnnoteFile{slotnick_electrophysiological_2001}
+
 \bibitem[{Sparks(2002)}]{sparks_brainstem_2002}
 Sparks, D.~L. (2002).
 \newblock The brainstem control of saccadic eye movements.
 \newblock \emph{Nature Reviews Neuroscience} 3, 952--964.
 \newblock \doi{10.1038/nrn986}
 \bibAnnoteFile{sparks_brainstem_2002}
+
+\bibitem[{Stanton et~al.(1988{\natexlab{a}})Stanton, Goldberg, and
+  Bruce}]{stanton_frontal_1988}
+Stanton, G.~B., Goldberg, M.~E., and Bruce, C.~J. (1988{\natexlab{a}}).
+\newblock Frontal eye field efferents in the macaque monkey: {I}. {Subcortical}
+  pathways and topography of striatal and thalamic terminal fields.
+\newblock \emph{Journal of Comparative Neurology} 271, 473--492.
+\newblock \doi{10.1002/cne.902710402}
+\bibAnnoteFile{stanton_frontal_1988}
+
+\bibitem[{Stanton et~al.(1988{\natexlab{b}})Stanton, Goldberg, and
+  Bruce}]{stanton_frontal_1988-1}
+Stanton, G.~B., Goldberg, M.~E., and Bruce, C.~J. (1988{\natexlab{b}}).
+\newblock Frontal eye field efferents in the macaque monkey: {II}. {Topography}
+  of terminal fields in midbrain and pons.
+\newblock \emph{The Journal of Comparative Neurology} 271, 493--506.
+\newblock \doi{10.1002/cne.902710403}
+\bibAnnoteFile{stanton_frontal_1988-1}
+
+\bibitem[{Sterling(1971)}]{sterling_receptive_1971}
+Sterling, P. (1971).
+\newblock Receptive fields and synaptic organization of the superficial gray
+  layer of the cat superior colliculus.
+\newblock \emph{Vision Research} 11, 309--IN47.
+\newblock \doi{10.1016/0042-6989(71)90048-4}
+\bibAnnoteFile{sterling_receptive_1971}
 
 \bibitem[{Tabareau et~al.(2007)Tabareau, Bennequin, Berthoz, Slotine, and
   Girard}]{tabareau_geometry_2007}
@@ -296,6 +426,14 @@ van Opstal, A.~J. and Goossens, H. H. L.~M. (2008).
 \newblock \doi{10.1007/s00422-008-0219-z}
 \bibAnnoteFile{van_opstal_linear_2008}
 
+\bibitem[{Van~Opstal et~al.(1991)Van~Opstal, Hepp, Hess, Straumann, and
+  Henn}]{van_opstal_two-rather_1991}
+Van~Opstal, A.~J., Hepp, K., Hess, B.~J., Straumann, D., and Henn, V. (1991).
+\newblock Two-rather than three-dimensional representation of saccades in
+  monkey superior colliculus.
+\newblock \emph{Science} 252, 1313--1315
+\bibAnnoteFile{van_opstal_two-rather_1991}
+
 \bibitem[{Vokoun et~al.(2014)Vokoun, Huang, Jackson, and
   Basso}]{vokoun_response_2014}
 Vokoun, C.~R., Huang, X., Jackson, M.~B., and Basso, M.~A. (2014).
@@ -331,11 +469,25 @@ Wilson, C.~J. (2004).
 \newblock \doi{10.1152/jn.00924.2003}
 \bibAnnoteFile{wilson_model_2004}
 
+\bibitem[{Wu et~al.(1994)Wu, Williams, and McLoon}]{wu_involvement_1994}
+Wu, H.~H., Williams, C.~V., and McLoon, S.~C. (1994).
+\newblock Involvement of nitric oxide in the elimination of a transient
+  retinotectal projection in development.
+\newblock \emph{SCIENCE-NEW YORK THEN WASHINGTON-} , 1593--1593
+\bibAnnoteFile{wu_involvement_1994}
+
 \bibitem[{Wurtz and Goldberg(1971)}]{wurtz_superior_1971}
 Wurtz, R.~H. and Goldberg, M.~E. (1971).
 \newblock Superior colliculus cell responses related to eye movements in awake
   monkeys.
 \newblock \emph{Science} 171, 82--84
 \bibAnnoteFile{wurtz_superior_1971}
+
+\bibitem[{Wurtz and Goldberg(1972)}]{wurtz_activity_1972}
+Wurtz, R.~H. and Goldberg, M.~E. (1972).
+\newblock Activity of superior colliculus in behaving monkey. {III}. {Cells}
+  discharging before eye movements.
+\newblock \emph{J Neurophysiol} 35, 575--586
+\bibAnnoteFile{wurtz_activity_1972}
 
 \end{thebibliography}
