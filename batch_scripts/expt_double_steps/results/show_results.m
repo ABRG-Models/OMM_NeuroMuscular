@@ -72,29 +72,49 @@ figure(1); clf; hold on;
 %plot (sm3t, -sm3Y_3, 'b')
 %plot (sm3t, -sm3Y_4, 'b')
 %plot (sm3t, -sm3Y_5, 'b')
-plot (sm3t, -sm3Y_all_mn, 'b-')
-plot (sm3t, -(sm3Y_all_mn+2.*sm3Y_all_sd), 'b--')
-plot (sm3t, -(sm3Y_all_mn-2.*sm3Y_all_sd), 'b--')
+plot (sm3t(1:1000), -sm3Y_all_mn(1:1000), 'b-')
+plot (sm3t(1:1000), -(sm3Y_all_mn(1:1000)+2.*sm3Y_all_sd(1:1000)), 'b--')
+plot (sm3t(1:1000), -(sm3Y_all_mn(1:1000)-2.*sm3Y_all_sd(1:1000)), 'b--')
 
 %plot (lgt, -lgY, 'g')
 %plot (lgt_2, -lgY_2, 'g')
 %plot (lgt_3, -lgY_3, 'g')
 %plot (lgt_4, -lgY_4, 'g')
 %plot (lgt_5, -lgY_5, 'g')
-plot (lgt, -lgY_all_mn, 'g-')
-plot (lgt, -(lgY_all_mn+2.*lgY_all_sd), 'g--')
-plot (lgt, -(lgY_all_mn-2.*lgY_all_sd), 'g--')
+plot (lgt(1:1000), -lgY_all_mn(1:1000), 'g-')
+plot (lgt(1:1000), -(lgY_all_mn(1:1000)+2.*lgY_all_sd(1:1000)), 'g--')
+plot (lgt(1:1000), -(lgY_all_mn(1:1000)-2.*lgY_all_sd(1:1000)), 'g--')
 
 %plot (sm4t, -sm4Y, 'r')
 %plot (sm4t, -sm4Y_2, 'r')
 %plot (sm4t, -sm4Y_3, 'r')
 %plot (sm4t, -sm4Y_4, 'r')
 %plot (sm4t, -sm4Y_5, 'r')
-plot (sm4t, -sm4Y_all_mn, 'r-')
-plot (sm4t, -(sm4Y_all_mn+2.*sm4Y_all_sd), 'r--')
-plot (sm4t, -(sm4Y_all_mn-2.*sm4Y_all_sd), 'r--')
+plot (sm4t(1:1000), -sm4Y_all_mn(1:1000), 'r-')
+plot (sm4t(1:1000), -(sm4Y_all_mn(1:1000)+2.*sm4Y_all_sd(1:1000)), 'r--')
+plot (sm4t(1:1000), -(sm4Y_all_mn(1:1000)-2.*sm4Y_all_sd(1:1000)), 'r--')
 
 title('scatter')
+
+% Save those numbers out for veusz
+outdata = [sm3t(1:1000), sm3Y_all_mn(1:1000), sm3Y_all_mn(1:1000)+sm3Y_all_sd(1:1000), sm3Y_all_mn(1:1000)-sm3Y_all_sd(1:1000)];
+f = fopen (['./sm3t.csv'], 'w');
+fprintf (f, 't,eyeRy,eyeRyUpper,eyeRyLower\n');
+dlmwrite (f, outdata, '-append');
+fclose(f);
+
+outdata = [sm4t(1:1000), sm4Y_all_mn(1:1000), sm4Y_all_mn(1:1000)+sm4Y_all_sd(1:1000), sm4Y_all_mn(1:1000)-sm4Y_all_sd(1:1000)];
+f = fopen (['./sm4t.csv'], 'w');
+fprintf (f, 't,eyeRy,eyeRyUpper,eyeRyLower\n');
+dlmwrite (f, outdata, '-append');
+fclose(f);
+
+outdata = [lgt(1:1000), lgY_all_mn(1:1000), lgY_all_mn(1:1000)+lgY_all_sd(1:1000), lgY_all_mn(1:1000)-lgY_all_sd(1:1000)];
+f = fopen (['./lgt.csv'], 'w');
+fprintf (f, 't,eyeRy,eyeRyUpper,eyeRyLower\n');
+dlmwrite (f, outdata, '-append');
+fclose(f);
+
 
 figure(2); clf; hold on;
 plot (smt, -smY, 'b')
