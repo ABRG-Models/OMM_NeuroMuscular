@@ -11,7 +11,7 @@ FRAMEWIDTH="200"
 FRAMERATE=25
 
 # MODIFY this to suit your environment.
-LOGDIR='/home/seb/src/SpineML_2_BRAHMS/temp/log/'
+LOGDIR='/home/seb/src/SpineML_2_BRAHMS/temp/TModel4/log/'
 
 # Paths to ImageMagick tools
 MONTAGE='/usr/bin/montage'
