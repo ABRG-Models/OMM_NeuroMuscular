@@ -62,7 +62,7 @@ for i in 1 2 3; do
     ./convert_script_s2b -g -m ${OMMPATH} -e9 -o temp/${OMMODEL}
 
     # Now extract the movement data and save it off, then re-run several times.
-    cp ${S2B_DIR}/temp/${OMMODEL}/run/saccsim_side.log ${STARTDIR}/results/${i}_dist_saccsim_side.log
+    cp ${S2B_DIR}/temp/${OMMODEL}/run/saccsim_side.log ${STARTDIR}/results/${i}_dist_DX${DISTX}DY${DISTY}_saccsim_side.log
 done
 popd
 
@@ -132,6 +132,6 @@ for i in 1 2 3; do
     ./convert_script_s2b -g -m ${OMMPATH} -e9 -o temp/${OMMODEL}
 
     # Now extract the movement data and save it off, then re-run several times.
-    cp ${S2B_DIR}/temp/${OMMODEL}/run/saccsim_side.log ${STARTDIR}/results/${i}_mdist_saccsim_side.log
+    cp ${S2B_DIR}/temp/${OMMODEL}/run/saccsim_side.log ${STARTDIR}/results/${i}_mdist_DX${DISTX}DY${DISTY}_saccsim_side.log
 done
 popd

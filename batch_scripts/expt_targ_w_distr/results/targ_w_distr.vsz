@@ -2,11 +2,10 @@
 # Saved at 2017-08-10T15:41:53.239065
 
 AddImportPath(u'/home/seb/models/OMM_NeuroMuscular/batch_scripts/expt_targ_w_distr/results')
-ImportFileCSV(u'targets.csv', headermode='1st', linked=True, numericlocale=u'en_GB')
-ImportFileCSV(u'1_dist_saccsim_side.log', headermode='1st', linked=True, numericlocale=u'en_GB', dsprefix=u'D_', dssuffix=u'_1')
-ImportFileCSV(u'2_dist_saccsim_side.log', headermode='1st', linked=True, numericlocale=u'en_GB', dsprefix=u'D_', dssuffix=u'_2')
-ImportFileCSV(u'3_dist_saccsim_side.log', headermode='1st', linked=True, numericlocale=u'en_GB', dsprefix=u'D_', dssuffix=u'_3')
-ImportFileCSV(u'1_mdist_saccsim_side.log', headermode='1st', linked=True, numericlocale=u'en_GB', dsprefix=u'MD_', dssuffix=u'_1')
+ImportFileCSV(u'1_dist_DX-7DY-7_saccsim_side.log', headermode='1st', linked=True, numericlocale=u'en_GB', dsprefix=u'D_', dssuffix=u'_1')
+ImportFileCSV(u'2_dist_DX-7DY-7_saccsim_side.log', headermode='1st', linked=True, numericlocale=u'en_GB', dsprefix=u'D_', dssuffix=u'_2')
+ImportFileCSV(u'3_dist_DX-7DY-7_saccsim_side.log', headermode='1st', linked=True, numericlocale=u'en_GB', dsprefix=u'D_', dssuffix=u'_3')
+ImportFileCSV(u'1_mdist_DX-7DY-7_saccsim_side.log', headermode='1st', linked=True, numericlocale=u'en_GB', dsprefix=u'MD_', dssuffix=u'_1')
 ImportFileCSV(u'1_nodist_saccsim_side.log', headermode='1st', linked=True, numericlocale=u'en_GB', dsprefix=u'ND_', dssuffix=u'_1')
 ImportFileCSV(u'2_nodist_saccsim_side.log', headermode='1st', linked=True, numericlocale=u'en_GB', dsprefix=u'ND_', dssuffix=u'_2')
 ImportFileCSV(u'3_nodist_saccsim_side.log', headermode='1st', linked=True, numericlocale=u'en_GB', dsprefix=u'ND_', dssuffix=u'_3')
