@@ -120,10 +120,46 @@ popd
 
 pushd ${S2B_DIR}
 
-for i in 1; do
+for i in 1 2 3; do
     ./convert_script_s2b  -m ${OMMPATH} -e10 -o temp/${OMMODEL}
 
     # Now extract the movement data and save it off, then re-run several times.
-    cp ${S2B_DIR}/temp/${OMMODEL}/run/saccsim_side.log ${STARTDIR}/results/${i}_saccsim_side.log
+    FNAME=${i}_TX${TARGX}TY${TARGY}T2X${TARG2X}T2Y${TARG2Y}
+
+    #
+    # Eye rotations
+    #
+    cp ${S2B_DIR}/temp/${OMMODEL}/run/saccsim_side.log ${STARTDIR}/results/${FNAME}_saccsim_side.log
+
+    #
+    # LLBN
+    #
+    cp ${S2B_DIR}/temp/${OMMODEL}/log/LLBN_down_a_log.bin ${STARTDIR}/results/${FNAME}_LLBN_down_a_log.bin
+    cp ${S2B_DIR}/temp/${OMMODEL}/log/LLBN_down_a_logrep.xml ${STARTDIR}/results/${FNAME}_LLBN_down_a_logrep.xml
+
+    cp ${S2B_DIR}/temp/${OMMODEL}/log/LLBN_up_a_log.bin ${STARTDIR}/results/${FNAME}_LLBN_up_a_log.bin
+    cp ${S2B_DIR}/temp/${OMMODEL}/log/LLBN_up_a_logrep.xml ${STARTDIR}/results/${FNAME}_LLBN_up_a_logrep.xml
+
+    cp ${S2B_DIR}/temp/${OMMODEL}/log/LLBN_left_a_log.bin ${STARTDIR}/results/${FNAME}_LLBN_left_a_log.bin
+    cp ${S2B_DIR}/temp/${OMMODEL}/log/LLBN_left_a_logrep.xml ${STARTDIR}/results/${FNAME}_LLBN_left_a_logrep.xml
+
+    cp ${S2B_DIR}/temp/${OMMODEL}/log/LLBN_right_a_log.bin ${STARTDIR}/results/${FNAME}_LLBN_right_a_log.bin
+    cp ${S2B_DIR}/temp/${OMMODEL}/log/LLBN_right_a_logrep.xml ${STARTDIR}/results/${FNAME}_LLBN_right_a_logrep.xml
+
+    #
+    # MN
+    #
+    cp ${S2B_DIR}/temp/${OMMODEL}/log/MN_right_a_log.bin ${STARTDIR}/results/${FNAME}_MN_right_a_log.bin
+    cp ${S2B_DIR}/temp/${OMMODEL}/log/MN_right_a_logrep.xml ${STARTDIR}/results/${FNAME}_MN_right_a_logrep.xml
+
+    cp ${S2B_DIR}/temp/${OMMODEL}/log/MN_left_a_log.bin ${STARTDIR}/results/${FNAME}_MN_left_a_log.bin
+    cp ${S2B_DIR}/temp/${OMMODEL}/log/MN_left_a_logrep.xml ${STARTDIR}/results/${FNAME}_MN_left_a_logrep.xml
+
+    cp ${S2B_DIR}/temp/${OMMODEL}/log/MN_up_a_log.bin ${STARTDIR}/results/${FNAME}_MN_up_a_log.bin
+    cp ${S2B_DIR}/temp/${OMMODEL}/log/MN_up_a_logrep.xml ${STARTDIR}/results/${FNAME}_MN_up_a_logrep.xml
+
+    cp ${S2B_DIR}/temp/${OMMODEL}/log/MN_down_a_log.bin ${STARTDIR}/results/${FNAME}_MN_down_a_log.bin
+    cp ${S2B_DIR}/temp/${OMMODEL}/log/MN_down_a_logrep.xml ${STARTDIR}/results/${FNAME}_MN_down_a_logrep.xml
+
 
 done

@@ -1,0 +1,9 @@
+<LogReport>
+	<AnalogLog>
+		<LogFile>MN_down_a_log.bin</LogFile>
+		<LogFileType>binary</LogFileType>
+		<LogEndTime>4000.000000</LogEndTime>
+		<LogAll size="1" headings="a" type="double" dims=""/>
+		<TimeStep dt="1.000000"/>
+	</AnalogLog>
+</LogReport>
