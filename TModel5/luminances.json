@@ -1,0 +1,67 @@
+{"luminances":
+ [
+    {"shape":"cross","thetaX":0,"thetaY":0,
+     "widthThetaX":6,"widthThetaY":2,"luminance":0.300000,
+     "timeOn":0,"timeOff":0.4},
+
+     {"shape":"cross","thetaX":0,"thetaY":-10,
+     "widthThetaX":6,"widthThetaY":2,"luminance":0.3,
+     "timeOn":0.4,"timeOff":1.0},
+
+     {"shape":"cross","thetaX":0,"thetaY":0,
+     "widthThetaX":6,"widthThetaY":2,"luminance":0.3,
+     "timeOn":1.0,"timeOff":1.6},
+
+     {"shape":"cross","thetaX":0,"thetaY":-10,
+     "widthThetaX":6,"widthThetaY":2,"luminance":0.3,
+     "timeOn":1.6,"timeOff":2.2},
+
+     {"shape":"cross","thetaX":0,"thetaY":0,
+     "widthThetaX":6,"widthThetaY":2,"luminance":0.3,
+     "timeOn":2.2,"timeOff":2.8},
+
+     {"shape":"cross","thetaX":0,"thetaY":-10,
+     "widthThetaX":6,"widthThetaY":2,"luminance":0.3,
+     "timeOn":2.8,"timeOff":3.4},
+
+     {"shape":"cross","thetaX":0,"thetaY":0,
+     "widthThetaX":6,"widthThetaY":2,"luminance":0.3,
+     "timeOn":3.4,"timeOff":4.0},
+
+     {"shape":"cross","thetaX":0,"thetaY":-10,
+     "widthThetaX":6,"widthThetaY":2,"luminance":0.3,
+     "timeOn":4.0,"timeOff":4.6},
+
+     {"shape":"cross","thetaX":0,"thetaY":0,
+     "widthThetaX":6,"widthThetaY":2,"luminance":0.3,
+     "timeOn":4.6,"timeOff":5.2},
+
+     {"shape":"cross","thetaX":0,"thetaY":-10,
+     "widthThetaX":6,"widthThetaY":2,"luminance":0.3,
+     "timeOn":5.2,"timeOff":5.8},
+
+     {"shape":"cross","thetaX":0,"thetaY":0,
+     "widthThetaX":6,"widthThetaY":2,"luminance":0.3,
+     "timeOn":5.8,"timeOff":6.4},
+
+     {"shape":"cross","thetaX":0,"thetaY":-10,
+     "widthThetaX":6,"widthThetaY":2,"luminance":0.3,
+     "timeOn":6.4,"timeOff":7.0},
+
+     {"shape":"cross","thetaX":0,"thetaY":0,
+     "widthThetaX":6,"widthThetaY":2,"luminance":0.3,
+     "timeOn":7.0,"timeOff":7.6},
+
+     {"shape":"cross","thetaX":0,"thetaY":-10,
+     "widthThetaX":6,"widthThetaY":2,"luminance":0.3,
+     "timeOn":7.6,"timeOff":8.2},
+
+     {"shape":"cross","thetaX":0,"thetaY":0,
+     "widthThetaX":6,"widthThetaY":2,"luminance":0.3,
+     "timeOn":8.2,"timeOff":8.8},
+
+    {"shape":"cross","thetaX":0,"thetaY":0,
+     "widthThetaX":6,"widthThetaY":2,"luminance":0.3,
+     "timeOn":9.4,"timeOff":100}
+ ]
+}
