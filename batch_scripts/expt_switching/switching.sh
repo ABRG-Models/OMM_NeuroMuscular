@@ -41,7 +41,7 @@ STARTDIR=`pwd`
 mkdir -p results
 
 # Write out luminaces file and then run the model.
-OMMODEL='TModel4'
+OMMODEL='TModel5'
 OMMPATH="/home/seb/models/OMM_NeuroMuscular/${OMMODEL}"
 S2B_DIR='/home/seb/src/SpineML_2_BRAHMS'
 
@@ -120,8 +120,9 @@ popd
 
 pushd ${S2B_DIR}
 
-for i in 1 2 3; do
-    ./convert_script_s2b  -m ${OMMPATH} -e10 -o temp/${OMMODEL}
+for i in 1; do
+    # Normally -e10
+    ./convert_script_s2b  -m ${OMMPATH} -e8 -o temp/${OMMODEL}
 
     # Now extract the movement data and save it off, then re-run several times.
     FNAME=${i}_TX${TARGX}TY${TARGY}T2X${TARG2X}T2Y${TARG2Y}
