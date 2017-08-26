@@ -31,3 +31,13 @@ TModel1: Like TModel0, but with a modification to improve the oblique saccades
 
 TModel2: To be like TModel0 with WideningGaussian from SC_deep to SC_deep2 and
          a demonstrations that this resolves problems in TModel0.
+
+TModel3: Back to the naive model - Model1 - but with the
+         exponential/sine wave weight maps predicted by the Ottes
+         mapping and Tabareau et al. 2007.
+
+TModel4: To TModel3 is added a widening Gaussian projection field from
+         SC_deep to a new layer, SC_deep2.
+
+TModel5: This adds a mechanism to reset the TN firing in the SBG,
+         which was missing in the first iteration of the SBG.
