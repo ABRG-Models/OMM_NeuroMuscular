@@ -87,7 +87,7 @@ function perform_saccade (resultdir, targetThetaX, targetThetaY, num_par_runs, g
 
     output_dirs = setup_latency_directories (params, 1);
 
-    [ eyeRAvg, eyeRSD, eyeRFinals, peakPos, startMove ] = run_simulation_multi (model_dir, output_dirs, params)
+    [ eyeRAvg, eyeRSD, eyeRFinals, peakPos, startMove, endMove ] = run_simulation_multi (model_dir, output_dirs, params)
 
     resname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_G' num2str(gap_ms) '_F' num2str(fixlum) '_L' num2str(lum) '_D' num2str(dop) '.dat'];
     resdatname = ['r_' num2str(targetThetaX) '_' num2str(targetThetaY) '_G' num2str(gap_ms) '_F' num2str(fixlum) '_L' num2str(lum) '_D' num2str(dop)];
@@ -95,7 +95,10 @@ function perform_saccade (resultdir, targetThetaX, targetThetaY, num_par_runs, g
     % You can't put minus signs in the resdat name, either.
     resdatname = strrep (resdatname, '-', 'm');
 
-    vs = [targetThetaX, targetThetaY, params.fixLuminance, gap_ms, lum, eyeRAvg, eyeRSD, mean(startMove)-(1000.*params.targetOn), std(startMove), dop];
+    % Saccade duration:
+    dur = endMove .- startMove;
+
+    vs = [targetThetaX, targetThetaY, params.fixLuminance, gap_ms, lum, eyeRAvg, eyeRSD, mean(startMove)-(1000.*params.targetOn), std(startMove), dop, mean(dur), std(dur)];
 
     result = struct();
     result.params = params;

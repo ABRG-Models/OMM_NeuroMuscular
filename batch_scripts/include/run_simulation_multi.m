@@ -1,4 +1,4 @@
-function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulation_multi (model_dir, output_dirs, params)
+function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove, endsacc ] = run_simulation_multi (model_dir, output_dirs, params)
 %% Run a simulation specified in model_dir, sending results to
 %% output_dirs.root params.num_runs times. Do this by submitting using the
 %% qsub system and use calls to Qstat to determine when the runs
@@ -165,6 +165,7 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
     display ('Read output...');
     eyeposFinals = [];
     startMove = [];
+    endMove = [];
     alla = [];
     allb = [];
     allc_x = [];
@@ -233,8 +234,10 @@ function [ eyeposAvg, eyeposSD, eyeposFinals, peakPos, startMove ] = run_simulat
 
             if (endsacc > 0)
                 eyeposFinals = [eyeposFinals [eyeRx(endsacc); eyeRy(endsacc); eyeRz(endsacc)]];
+                endMove = [endMove endsacc];
             else
                 display ('Warning: Couldn''t find end saccade');
+                endMove = [endMove -1];
             end
 
             % Determine the pixel which is active in the sc deep output
