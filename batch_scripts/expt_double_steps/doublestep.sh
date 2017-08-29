@@ -20,7 +20,7 @@ STARTDIR=`pwd`
 mkdir -p results
 
 # Write out luminaces file and then run the model.
-OMMODEL='TModel5'
+OMMODEL='TModel4'
 OMMPATH="/home/seb/models/OMM_NeuroMuscular/${OMMODEL}"
 S2B_DIR='/home/seb/src/SpineML_2_BRAHMS'
 
