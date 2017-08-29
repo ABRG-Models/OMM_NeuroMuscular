@@ -5,11 +5,10 @@
 % Load the data
 do_load = 1
 if do_load
-    %[rr3, errs3, targmags3, errmags3, errpcnt3] = load_errorsurf ('TModel3', 14.5);
-    [rr4, errs4, targmags4, errmags4, errpcnt4] = load_errorsurf ('TModel4', 14.5);
+    [rr4, errs4, targmags4, errmags4, errpcnt4] = load_errorsurf ('TModel3', 14.5);
 end
 
-h_f = figure (1); clf;
+h_f = figure (3); clf;
 h_f_pos = get(h_f, 'Position');
 set(h_f, 'Position', [20, 1050, 2100, 1300]);
 
@@ -18,7 +17,7 @@ viewx=90; viewy=90;
 %viewx=230; viewy=30;
 
 % max limit for colour map
-zmax = 25;
+zmax = 100;
 
 %text (0, 0, ['Time = ' num2str(t) ' ms']);
 
@@ -88,7 +87,7 @@ offsetylabel(hyl(1));
 % Compute mean percentage error:
 meanpcnterr = sum(abs(errpcnt4)) ./ length(errpcnt4);
 
-zlabel('Error magnitude (%)');
+zlabel('Error magnitude (\deg)');
 title (['a) Error magnitude (mean:' sprintf('%5.1f', meanpcnterr) '%)'], 'fontsize', fs1);
 view([viewx viewy]);
 zlim([0 zmax]);
@@ -114,7 +113,7 @@ offsetxlabel(hxl(2));
 hyl(2)=ylabel(targytxt, 'fontsize', fs1);
 offsetylabel(hyl(2));
 
-zlabel('|E_{RotX}|  (%)');
+zlabel('|E_{RotX}|  (\deg)');
 title (['b) X Error magnitude (mean:' sprintf('%5.1f', sum(abs(errs4(:,1))./abs(targmags4).*100) ./ length(errs4(:,1)) ) '%)'], 'fontsize', fs1);
 view([viewx viewy]);
 zlim([0 zmax]);
@@ -172,17 +171,21 @@ view([viewx viewy]);
 zlim([0 zmax]);
 xlim([-15,1]);
 
-clim=[0 20]; % Data range...
+clim=[0 80]; % The common data range...
 caxis(clim);
 set(hax,'CLim',clim);
 
-opos = get (hax(4), 'position'); % Original Position
+opos = get (hax(4), 'position'); % Original POSition
 cbh = colorbar('position', [opos(1)+opos(3)+0.04  opos(2)  0.02  opos(2)+opos(3)*2.1])
 set (hax(4), 'position', opos);
-set(cbh,'linewidth', 0.5, 'tickdir', 'out', 'ticklength', [0.01,0.01], 'ytick', [0, 5, 10, 15]);
+set(cbh,'linewidth', 0.5, 'tickdir', 'out', 'ticklength', [0.01,0.01], 'ytick', [0, 25, 50, 75]);
 %'yticklabel',{'zero','ten','23','42','fifty'},
 
 set(cbh, 'position', [opos(1)+opos(3)+0.04  opos(2)  0.02 opos(2)+opos(3)*2.1], 'fontsize', fs1)
 title(cbh, 'Error (%)');
+
+figure(4)
+trisurf(delaunay(X,Y),X,Y,abs(errpcnt4));
+
 
 display('Done. I just use a screenshot of this and then crop it for my png');
