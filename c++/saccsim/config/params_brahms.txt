@@ -1,0 +1,58 @@
+######################################################################
+### Directory paths
+######################################################################
+
+result_dir = results/
+resources_dir = resources/
+brahms_model_file = results/LeftEye.osim
+obj_dir = resources/obj/
+eye_obj_file = resources/obj/art-3d-eye_obj.obj
+eye_tex_file = resources/obj/tex/art-3d-eyeball-color.jpg
+head_obj_file = resources/obj/head.obj
+
+######################################################################
+### Inverse Simulation input file
+### The last line is the one actually used.
+### Change order to change input.
+######################################################################
+
+#saccrec_file = resources/saccrec_one_per_file/saccrec_t1.txt
+saccrec_file = resources/saccrec_jr441-pro2-resampled.txt
+
+######################################################################
+### Eye globe parameters
+######################################################################
+
+eye_mass = 0.007
+eye_radius = 0.016
+eye_range = 45
+eye_dist = 0.045
+
+######################################################################
+### EOM parameters (forces in grams)
+######################################################################
+
+stiffness = 0.00544
+viscosity = 0.00034
+force_med_rect = 40
+force_lat_rect = 40
+force_inf_rect = 30
+force_sup_rect = 30
+force_sup_obl = 20
+force_inf_obl = 20
+optimal_fiber_length = 0.043
+tendon_slack_length = 0.005
+
+####################################################################
+### Brain params (For BRAHMS only)
+####################################################################
+
+dopamine_level = 1
+prosaccade = 1
+
+####################################################################
+### Saccade parameters
+####################################################################
+
+rot_from = 0,0,0
+rot_to = 0,10,0

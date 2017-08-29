@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8.11)
+project(SaccadeSimulator_BRAHMS_Component)
+option(BUILD_WITHOUT_CPP11 "Build without a C++-11 compatible compiler" ON)
+add_subdirectory(Saccsim)
+add_subdirectory(BRAHMS)

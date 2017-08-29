@@ -1,0 +1,11 @@
+Copy text data from brahms report file for the saccsim component output.
+
+Open this file in octave:
+
+A = textread ('data.out');
+B = reshape (A, 6, 300);
+B = B';
+
+Now B is 6 cols, where cols are (I think):
+
+rotX, rotY, rotZ, rotXu, rotYu, rotZu.

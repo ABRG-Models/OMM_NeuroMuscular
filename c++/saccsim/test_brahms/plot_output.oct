@@ -1,0 +1,20 @@
+#!/usr/bin/octave
+
+A = csvread('saccsim_side.log');
+clf
+hold on
+plot (A(:,14), A(:,5), 'or');
+plot (A(:,14), A(:,5).*15, 'or');
+plot (A(:,14), A(:,8), 'ob');
+plot (A(:,14), A(:,9), 'og');
+plot (A(:,14), A(:,10), 'op');
+
+xlabel ('time (s)', 'fontsize', 14);
+ylabel ('Activation or Rotation', 'fontsize', 14);
+
+%set (h1, 'marker', 'o', 'color', 'blue');
+%set (h2, 'marker', 'o', 'color', 'red');
+%set (ax(2), 'color', 'green');
+
+input ('rtn to exit','s');
+

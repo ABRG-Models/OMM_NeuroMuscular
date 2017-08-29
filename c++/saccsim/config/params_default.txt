@@ -1,0 +1,73 @@
+####################################################################
+### Mode of Execution ##############################################
+####################################################################
+mode_gui     = 1
+mode_forward = 0
+mode_inverse = 0
+
+####################################################################
+### Directory paths ################################################
+####################################################################
+resultDir               = results/
+resourcesDir            = resources/
+objDir                  = resources/obj/
+eyeObjFile              = resources/obj/art-3d-eye_obj.obj
+eyeTexFile              = resources/obj/tex/art-3d-eyeball-color.jpg
+headObjFile             = resources/obj/head.obj
+recsaccdir              = resources/crystalinas_saccade_data.txt
+
+####################################################################
+### Eye parameters #################################################
+####################################################################
+
+### Anatomy
+eyeMass                 =  0.007
+eyeRadius               =  0.012
+eyeRange                =  45
+eyeDist                 =  0.045
+
+### Active (Forces in grams)
+force_med_rect          =  20
+force_lat_rect          =  20
+force_inf_rect          =  20
+force_sup_rect          =  20
+force_sup_obl           =  20
+force_inf_obl           =  20
+optimalFiberLength      =  0.04
+tendonSlackLength       =  0.005
+
+### Passive
+passiveStiffness        =  2.2e-3
+passiveViscosity        =  1.8e-4
+
+####################################################################
+### Non-graphic mode saccade parameters ############################
+####################################################################
+rotIx                   =  0
+rotIy                   =  0
+rotFx                   =  0
+rotFy                   =  20
+
+####################################################################
+### Graphics parameters ############################################
+####################################################################
+GUImode                 =  0
+useQT                   =  1
+perspective_proj        =  1
+storeOnGraphMode        =  0
+useMouseMove            =  1
+sceneWidth              =  0.3
+cameraDist              =  1.2
+registerMode            =  0
+bgcolor                 =  334734
+headColor               =  996363
+targetDist              =  0.7
+linSaccDur              =  0.1
+tsf                     =  1
+
+####################################################################
+### Head parameters ################################################
+####################################################################
+headTransY              = -0.056
+headTransZ              =  0.0177
+headEyeRatio            =  17
