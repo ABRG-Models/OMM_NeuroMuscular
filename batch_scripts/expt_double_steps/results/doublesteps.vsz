@@ -1,5 +1,5 @@
 # Veusz saved document (version 1.21.1)
-# Saved at 2017-08-21T13:00:26.690173
+# Saved at 2017-08-29T07:34:29.559382
 
 AddImportPath(u'/home/seb/models/OMM_NeuroMuscular/batch_scripts/expt_double_steps/results')
 ImportFileCSV(u'lgt.csv', headermode='1st', linked=True, numericlocale=u'en_GB', dsprefix=u'LGT_')
