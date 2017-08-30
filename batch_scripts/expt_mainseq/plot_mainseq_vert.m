@@ -10,7 +10,7 @@ colcount = 1;
 
 modeldir = 'TModel4'
 
-flist = glob(['results/' modeldir '_horz/r*.dat']);
+flist = glob(['results/' modeldir '_vert/r*.dat']);
 llen = size(flist)(1);
 for i = [1 : llen]
 
@@ -37,40 +37,40 @@ end
 
 %
 % sort rr on target position value
-rr = sortrows(rr,2);
+rr = sortrows(rr,1);
 
-% Achieved position (Rot Y)
-figure(62);
-errorbar (rr(:,2),rr(:,7),rr(:,10),'o-')
+% Achieved position (Rot X)
+figure(72);
+errorbar (rr(:,1),rr(:,6),rr(:,9),'o-')
 hold on;
 plot ([-15,-7],[-15,-7], 'g--');
 hold off;
 xlabel('Target y');
-ylabel('eyeRy');
+ylabel('eyeRx');
 legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))])
-title ('Horizontal');
+title ('Vertical');
 
 % Latency
-figure(65);
-errorbar (rr(:,2),rr(:,12),rr(:,13),'o-')
+figure(75);
+errorbar (rr(:,1),rr(:,12),rr(:,13),'o-')
 xlabel('Target y');
 ylabel('Latency (ms)');
 legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))]);
-title ('Horizontal');
+title ('Vertical');
 
 % Duration
-figure(66);
-errorbar (rr(:,2),rr(:,15),rr(:,16),'o-')
+figure(76);
+errorbar (rr(:,1),rr(:,15),rr(:,16),'o-')
 xlabel('Target y');
 ylabel('Dur (ms)');
 legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))]);
 ylim([80 160]);
-title ('Horizontal');
+title ('Vertical');
 
-% Duration shared fig
 figure(100);
 hold on;
-errorbar (rr(:,2),rr(:,15),rr(:,16),'bo-')
+errorbar (rr(:,1),rr(:,15),rr(:,16),'ko-')
+
 
 % Output for Veusz
 output_veusz = 0

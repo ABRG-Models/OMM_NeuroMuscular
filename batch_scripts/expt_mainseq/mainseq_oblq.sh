@@ -14,9 +14,9 @@ DOPAMINE=0.7
 GAP_MS=0
 
 # Negative theta Y is a leftward movement.
-RSTART=-2
+RSTART=-4
 RINC=-1 # Stick to integers! Design of eyeframe/worldframe code requires this.
-REND=-12
+REND=-10
 
 THETAX=0
 NUM_RUNS=6
