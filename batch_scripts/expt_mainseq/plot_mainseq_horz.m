@@ -15,7 +15,7 @@ llen = size(flist)(1);
 for i = [1 : llen]
 
     rnm = flist{i};
-    resdatname = substr(rnm, 9+length(modeldir)+1); % strips initial 'results' string
+    resdatname = substr(rnm, 14+length(modeldir)+1); % strips initial 'results' string
     resdatname = substr(resdatname, 1, size(resdatname)(2)-4); % Strips '.dat' off
     resdatname = strrep (resdatname, '.', 'p');
     resdatname = strrep (resdatname, '-', 'm');
