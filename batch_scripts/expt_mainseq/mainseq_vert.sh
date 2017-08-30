@@ -13,12 +13,12 @@ LUMVAL=0.3
 DOPAMINE=0.7
 GAP_MS=0
 
-# Negative theta Y is a leftward movement.
-THETAYSTART=-7
-THETAYINC=-1 # Stick to integers! Design of eyeframe/worldframe code requires this.
-THETAYEND=-14
+# Negative theta X is a downward movement.
+THETAXSTART=-7
+THETAXINC=-1 # Stick to integers! Design of eyeframe/worldframe code requires this.
+THETAXEND=-14
 
-THETAX=0
+THETAY=0
 NUM_RUNS=6
 
 mkdir -p results
@@ -31,11 +31,11 @@ fi
 # Use an env. variable to select which model to run.
 export OMMODEL='TModel4'
 
-for targyval in `seq ${THETAYSTART} ${THETAYINC} ${THETAYEND}`; do
+for targval in `seq ${THETAXSTART} ${THETAXINC} ${THETAXEND}`; do
 
     if [ ${P_STR} = 'iceberg' ]; then
         # 1) write out a script we can qsub for the luminance:
-        cat > script${targyval}.sh <<EOF
+        cat > script${targval}.sh <<EOF
 #!/bin/bash
 #$ -l mem=4G
 #$ -l rmem=4G
@@ -45,13 +45,13 @@ for targyval in `seq ${THETAYSTART} ${THETAYINC} ${THETAYEND}`; do
 
 EOF
     elif [ ${P_STR} = 'ace2' ]; then
-c        cat > script${targyval}.sh <<EOF
+c        cat > script${targval}.sh <<EOF
 #!/bin/bash
 
 EOF
     fi
 
-    cat >> script${targyval}.sh <<EOF
+    cat >> script${targval}.sh <<EOF
 env
 pushd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_mainseq
 octave -q --eval "octave_run_test"
@@ -63,8 +63,8 @@ if [ \$oct_run_rtn -gt "0" ]; then
 fi
 popd
 
-mkdir -p ./results/${OMMODEL}_horz
-octave -q --eval "perform_saccade('./results/${OMMODEL}_horz',${THETAX},${targyval},${NUM_RUNS},${GAP_MS},${LUMVAL},${DOPAMINE})"
+mkdir -p ./results/${OMMODEL}_vert
+octave -q --eval "perform_saccade('./results/${OMMODEL}_vert',${targval},${THETAY},${NUM_RUNS},${GAP_MS},${LUMVAL},${DOPAMINE})"
 exit 0
 EOF
 
@@ -75,9 +75,9 @@ EOF
     fi
     # On iceberg, the environment, and hence OMMODEL is available on
     # qsubbed jobs, on ace2 it isn't, hence use of -v option here.
-    qsub ${PROJECT_TAG} -v OMMODEL=${OMMODEL} -N MSEQY${targyval} -wd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_mainseq -o results/MSEQY${targyval}.out -j y ./script${targyval}.sh
+    qsub ${PROJECT_TAG} -v OMMODEL=${OMMODEL} -N MSEQX${targval} -wd ${HOME}/OMM_NeuroMuscular/batch_scripts/expt_mainseq -o results/MSEQX${targval}.out -j y ./script${targval}.sh
 
     # 3) Clean up the script
-    rm -f ./script${targyval}.sh
+    rm -f ./script${targval}.sh
 
 done
