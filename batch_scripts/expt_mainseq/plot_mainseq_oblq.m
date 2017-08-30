@@ -1,6 +1,6 @@
 % Load the data generated for oblique movements.
 r = struct();
-rr = [];
+rro = [];
 
 lumval=1;
 
@@ -22,25 +22,25 @@ for i = [1 : llen]
     load (rnm); % loads struct variable called result
     r = struct_merge (r, result);
 
-    % For expected size of rr, consult sacc_vs_targetpos.m
+    % For expected size of rro, consult sacc_vs_targetpos.m
     sz_2 = size(result.(resdatname))(2);
 
     if (sz_2 == 16)
-        rr = [rr; result.(resdatname)];
+        rro = [rro; result.(resdatname)];
     end
 
 end
 
-% The rr array contains these columns:
+% The rro array contains these columns:
 % thetaX, thetaY, fix_lum, gap_ms, lumval, eyeRxAvg, eyeRyAvg, eyeRzAvg, eyeRxSD, eyeRySD, eyeRzSD, latmean, latsd, dopamine, durmean, dursd
 
 %
-% sort rr on target position value
-rr = sortrows(rr,1); % or 2; doesn't matter for oblq
+% sort rro on target position value
+rro = sortrows(rro,1); % or 2; doesn't matter for oblq
 
-targr = -sqrt(rr(:,1).*rr(:,1) + rr(:,2).*rr(:,2));
-achvr = -sqrt(rr(:,6).*rr(:,6) + rr(:,7).*rr(:,7));
-achvrsd = sqrt(rr(:,9).*rr(:,9) + rr(:,10).*rr(:,10));
+targr = -sqrt(rro(:,1).*rro(:,1) + rro(:,2).*rro(:,2));
+achvr = -sqrt(rro(:,6).*rro(:,6) + rro(:,7).*rro(:,7));
+achvrsd = sqrt(rro(:,9).*rro(:,9) + rro(:,10).*rro(:,10));
 
 % Achieved position
 figure(82);
@@ -50,33 +50,33 @@ plot ([-15,-5],[-15,-5], 'g--');
 hold off;
 xlabel('Target y');
 ylabel('eyeRy');
-legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))])
+legend(['Lum: ' num2str(rro(1,5)) ' Dopa: ' num2str(rro(1,14))])
 title ('Oblique');
 
 % Latency
 figure(85);
-errorbar (targr,rr(:,12),rr(:,13),'o-')
+errorbar (targr,rro(:,12),rro(:,13),'o-')
 xlabel('Target y');
 ylabel('Latency (ms)');
-legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))]);
+legend(['Lum: ' num2str(rro(1,5)) ' Dopa: ' num2str(rro(1,14))]);
 title ('Oblique');
 
 % Duration
 figure(86);
-errorbar (targr,rr(:,15),rr(:,16),'o-')
+errorbar (targr,rro(:,15),rro(:,16),'o-')
 xlabel('Target y');
 ylabel('Dur (ms)');
-legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))]);
+legend(['Lum: ' num2str(rro(1,5)) ' Dopa: ' num2str(rro(1,14))]);
 ylim([80 160]);
 title ('Oblique');
 
 % Duration shared fig
 figure(100);
 hold on;
-errorbar (targr,rr(:,15),rr(:,16),'ro-')
+errorbar (-targr,rro(:,15),rro(:,16),'ro-')
 %xlabel('Target y');
 %ylabel('Dur (ms)');
-%legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))]);
+%legend(['Lum: ' num2str(rro(1,5)) ' Dopa: ' num2str(rro(1,14))]);
 %ylim([80 160]);
 %title ('Oblique');
 
@@ -84,13 +84,13 @@ errorbar (targr,rr(:,15),rr(:,16),'ro-')
 output_veusz = 0
 if output_veusz
     % REWRITE
-    targrot = [rr(:,2),rr(:,7),rr(:,10)];
+    targrot = [rro(:,2),rro(:,7),rro(:,10)];
     f = fopen (['results/' modeldir '/sacc_eyery_vs_targ.csv'], 'w');
     fprintf (f, 'TargY,eyeRy,+-\n');
     dlmwrite (f, targrot, '-append');
     fclose(f);
 
-    latrot = [rr(:,2),rr(:,12),rr(:,13)];
+    latrot = [rro(:,2),rro(:,12),rro(:,13)];
     f = fopen (['results/' modeldir '/sacc_lat_vs_targ.csv'], 'w');
     fprintf (f, 'TargY,Latency,+-\n');
     dlmwrite (f, latrot, '-append');
