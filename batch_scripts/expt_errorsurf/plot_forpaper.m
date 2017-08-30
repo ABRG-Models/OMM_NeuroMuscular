@@ -15,6 +15,7 @@ set(h_f, 'Position', [20, 1050, 2100, 1300]);
 
 % Best viewing angle for the surfaces
 viewx=90; viewy=90;
+%viewx=230; viewy=30;
 
 % max limit for colour map
 zmax = 25;
@@ -84,8 +85,11 @@ offsetxlabel(hxl(1));
 hyl(1)=ylabel(targytxt, 'fontsize', fs1);
 offsetylabel(hyl(1));
 
-zlabel('Error magnitude (\deg)');
-title (['a) Error magnitude (total: ' num2str(sum(abs(errmags4))) ')'], 'fontsize', fs1);
+% Compute mean percentage error:
+meanpcnterr = sum(abs(errpcnt4)) ./ length(errpcnt4);
+
+zlabel('Error magnitude (%)');
+title (['a) Error magnitude (mean:' sprintf('%5.1f', meanpcnterr) '%)'], 'fontsize', fs1);
 view([viewx viewy]);
 zlim([0 zmax]);
 xlim([-15,1]);
@@ -110,8 +114,8 @@ offsetxlabel(hxl(2));
 hyl(2)=ylabel(targytxt, 'fontsize', fs1);
 offsetylabel(hyl(2));
 
-zlabel('|E_{RotX}|  (\deg)');
-title (['b) X Error magnitude (total: ' num2str(sum(abs(errs4(:,1)))) ')'], 'fontsize', fs1);
+zlabel('|E_{RotX}|  (%)');
+title (['b) X Error magnitude (mean:' sprintf('%5.1f', sum(abs(errs4(:,1))./abs(targmags4).*100) ./ length(errs4(:,1)) ) '%)'], 'fontsize', fs1);
 view([viewx viewy]);
 zlim([0 zmax]);
 xlim([-15,1]);
@@ -137,7 +141,7 @@ hyl(3)=ylabel(targytxt, 'fontsize', fs1);
 offsetylabel(hyl(3));
 
 zlabel('mag. of errorRotY)');
-title (['c) Y Error magnitude (total: ' num2str(sum(abs(errs4(:,2)))) ')'], 'fontsize', fs1);
+title (['c) Y Error magnitude (mean:' sprintf('%5.1f', sum(abs(errs4(:,2))./abs(targmags4).*100) ./ length(errs4(:,2)) ) '%)'], 'fontsize', fs1);
 view([viewx viewy]);
 zlim([0 zmax]);
 xlim([-15,1]);
@@ -163,12 +167,16 @@ hyl(4)=ylabel(targytxt, 'fontsize', fs1);
 offsetylabel(hyl(4));
 
 zlabel('mag. of errorRotZ)');
-title (['d) Z Error magnitude (total: ' num2str(sum(abs(errs4(:,3)))) ')'], 'fontsize', fs1);
+title (['d) Y Error magnitude (mean:' sprintf('%5.1f', sum(abs(errs4(:,3))./abs(targmags4).*100) ./ length(errs4(:,3)) ) '%)'], 'fontsize', fs1);
 view([viewx viewy]);
 zlim([0 zmax]);
 xlim([-15,1]);
 
-opos = get (hax(4), 'position'); % Original POSition
+clim=[0 20]; % Data range...
+caxis(clim);
+set(hax,'CLim',clim);
+
+opos = get (hax(4), 'position'); % Original Position
 cbh = colorbar('position', [opos(1)+opos(3)+0.04  opos(2)  0.02  opos(2)+opos(3)*2.1])
 set (hax(4), 'position', opos);
 set(cbh,'linewidth', 0.5, 'tickdir', 'out', 'ticklength', [0.01,0.01], 'ytick', [0, 5, 10, 15]);

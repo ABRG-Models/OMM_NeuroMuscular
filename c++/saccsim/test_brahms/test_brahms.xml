@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<System Version="1.0" AuthTool="SystemML Toolbox" AuthToolVersion="0">
+
+<!-- There is one input per eye muscle. For debugging, pass in activity from one muscle only. -->
+<Process>
+  <Name>SuperiorRectus</Name>
+  <!-- Use the readOutputFile tool from SpineML_2_BRAHMS to read data for the Sup. Rect. -->
+  <Class>dev/SpineML/tools/readOutputFile</Class>
+  <Time><SampleRate>1000</SampleRate></Time>
+  <State c="z" a="datapointsPerTimestep;binpath;_bin_file_name;" Format="DataML" Version="5" AuthTool="SystemML Toolbox" AuthToolVersion="0">
+    <m c="l">1</m>
+<!--    <m>/home/seb/greenbrain/SpineML_2_BRAHMS/temp/</m>-->
+    <m>/home/vvr/dev/saccsim/test_brahms/</m>
+    <m>mn4seb.dat</m>
+  </State>
+</Process>
+
+<!-- and its opposite: -->
+
+<!-- Could use the readOutputFile tool from SpineML_2_BRAHMS to read data for the Inf. Rect. -->
+<!--
+<Process>
+  <Name>InferiorRectus</Name>
+  <Class>dev/SpineML/tools/readOutputFile</Class>
+  <Time><SampleRate>1000</SampleRate></Time>
+  <State c="z" a="datapointsPerTimestep;binpath;_bin_file_name;" Format="DataML" Version="5" AuthTool="SystemML Toolbox" AuthToolVersion="0">
+    <m c="l">1</m>
+    <m>/home/seb/greenbrain/SpineML_2_BRAHMS/temp/</m>
+    <m>MN_right_a_log.bin</m>
+  </State>
+</Process>
+-->
+
+<!-- Or make it zero: -->
+<Process>
+  <Name>InferiorRectus</Name>
+  <Class>std/2009/source/numeric</Class>
+  <Time><SampleRate>1000</SampleRate></Time>
+  <State c="z" a="data;repeat;" Format="DataML" Version="5" AuthTool="SystemML Toolbox" AuthToolVersion="0">
+    <m b="1 1" c="d">0</m>
+    <m c="l">1</m>
+  </State>
+</Process>
+
+
+<!-- For my debugging the rest have 0 activation. -->
+<Process>
+  <Name>MedialRectus</Name>
+  <Class>std/2009/source/numeric</Class>
+  <Time><SampleRate>1000</SampleRate></Time>
+  <State c="z" a="data;repeat;" Format="DataML" Version="5" AuthTool="SystemML Toolbox" AuthToolVersion="0">
+    <m b="1 1" c="d">0</m>
+    <m c="l">1</m>
+  </State>
+</Process>
+
+<Process>
+  <Name>LateralRectus</Name>
+  <Class>std/2009/source/numeric</Class>
+  <Time><SampleRate>1000</SampleRate></Time>
+  <State c="z" a="data;repeat;" Format="DataML" Version="5" AuthTool="SystemML Toolbox" AuthToolVersion="0">
+    <m b="1 1" c="d">0</m>
+    <m c="l">1</m>
+  </State>
+</Process>
+
+<Process>
+  <Name>SuperiorOblique</Name>
+  <Class>std/2009/source/numeric</Class>
+  <Time><SampleRate>1000</SampleRate></Time>
+  <State c="z" a="data;repeat;" Format="DataML" Version="5" AuthTool="SystemML Toolbox" AuthToolVersion="0">
+    <m b="1 1" c="d">0</m>
+    <m c="l">1</m>
+  </State>
+</Process>
+
+<Process>
+  <Name>InferiorOblique</Name>
+  <Class>std/2009/source/numeric</Class>
+  <Time><SampleRate>1000</SampleRate></Time>
+  <State c="z" a="data;repeat;" Format="DataML" Version="5" AuthTool="SystemML Toolbox" AuthToolVersion="0">
+    <m b="1 1" c="d">0</m>
+    <m c="l">1</m>
+  </State>
+</Process>
+
+<!-- This is the destination process - the Saccade simulator itself. -->
+<Process>
+  <Name>SaccSim</Name>
+  <Class>dev/NoTremor/saccsim</Class>
+  <State c="z" a="output_data_path;simtk_integrator;" Format="DataML" Version="5" AuthTool="SystemML Toolbox" AuthToolVersion="0">
+    <m>/home/vvr/dev/saccsim/test_brahms</m>
+    <m>ExplicitEuler</m> <!-- Options: ExplicitEuler; RungeKuttaMerson; RungeKuttaFeldberg (sic); RungeKutta3 -->
+  </State>
+  <Time><SampleRate>2000</SampleRate></Time>
+  <State></State>
+</Process>
+
+<!-- Here, we link each muscle input activity process to the Saccade simulator. -->
+<Link>
+  <Src>SuperiorRectus&gt;out</Src>
+  <Dst>SaccSim&lt;&lt;&lt;suprect</Dst>
+  <Lag>0</Lag>
+</Link>
+<Link>
+  <Src>InferiorRectus&gt;out</Src>
+  <Dst>SaccSim&lt;&lt;&lt;infrect</Dst>
+  <Lag>0</Lag>
+</Link>
+<Link>
+  <Src>MedialRectus&gt;out</Src>
+  <Dst>SaccSim&lt;&lt;&lt;medrect</Dst>
+  <Lag>0</Lag>
+</Link>
+<Link>
+  <Src>LateralRectus&gt;out</Src>
+  <Dst>SaccSim&lt;&lt;&lt;latrect</Dst>
+  <Lag>0</Lag>
+</Link>
+<Link>
+  <Src>SuperiorOblique&gt;out</Src>
+  <Dst>SaccSim&lt;&lt;&lt;supobl</Dst>
+  <Lag>0</Lag>
+</Link>
+<Link>
+  <Src>InferiorOblique&gt;out</Src>
+  <Dst>SaccSim&lt;&lt;&lt;infobl</Dst>
+  <Lag>0</Lag>
+</Link>
+
+</System>

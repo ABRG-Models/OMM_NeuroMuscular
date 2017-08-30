@@ -25,7 +25,7 @@ echo "TX,TY,DX,DY" > results/targets.csv
 echo "${TARGX},${TARGY},${DISTX},${DISTY}" >> results/targets.csv
 
 # Write out luminaces file and then run the model.
-OMMODEL='TModel4'
+OMMODEL='TModel5'
 OMMPATH="/home/seb/models/OMM_NeuroMuscular/${OMMODEL}"
 S2B_DIR='/home/seb/src/SpineML_2_BRAHMS'
 

@@ -1,0 +1,26 @@
+#!/usr/bin/octave
+
+A = csvread('saccsimdata.log');
+clf
+hold on
+[ax, h1, h2] = plotyy(A(:,14), A(:,5), A(:,14), A(:,8));
+%[~, h3, h4] = plotyy(A(:,14), A(:,9), A(:,14), A(:,10));
+
+xlabel ('time (s)', 'fontsize', 14);
+ylabel (ax(1), 'Activation', 'fontsize', 14);
+ylabel (ax(2), 'Eye rotation (degrees)', 'fontsize', 14, 'color', 'red');
+set (h1, 'marker', 'o', 'color', 'blue');
+set (h2, 'marker', 'o', 'color', 'red');
+%set (ax(2), 'color', 'green');
+
+%hold on
+%ax = plotyy(A(:,14), A(:,9), A(:,14), A(:,10));
+
+%ylabel (ax(3), 'RotY', 'fontsize', 14);
+%ylabel (ax(4), 'RotZ', 'fontsize', 14);
+% Model records rotns in degrees.
+%plot(A(:,14),A(:,9),'or');
+
+
+input ('rtn to exit','s');
+

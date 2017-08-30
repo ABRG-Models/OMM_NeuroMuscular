@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Execution Version="1.0" AuthTool="Hand written" AuthToolVersion="1.0">
+	<Title>Saccsimm testing</Title>
+	<SystemFileIn>test_brahms.xml</SystemFileIn>
+	<SystemFileOut/>
+	<ReportFile>test_brahms-rep-((VOICE)).xml</ReportFile>
+	<WorkingDirectory/>
+	<ExecutionStop>0.6</ExecutionStop>
+	<Seed/>
+        <!-- Encapsulated flag here gives us binary output -->
+        <Logs Encapsulated="1" Precision="6" All="1"/>
+	<Voices><Voice/></Voices>
+	<Affinity/>
+	<ExecutionParameters/>
+</Execution>
