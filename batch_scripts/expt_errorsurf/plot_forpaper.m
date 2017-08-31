@@ -68,14 +68,16 @@ end
 X=rr4(:,1);
 Y=rr4(:,2);
 
+colormap('hot')
+
 hax(1) = subaxis (2,2,1, 'SpacingVert', sa_spc, 'SpacingHoriz', sa_spc, ...
                   'PaddingLeft', 0, 'PaddingRight', sa_pad_mid, 'PaddingTop', 0, 'PaddingBottom', sa_pad, ...
                   'MarginLeft', sa_marg_sideout, 'MarginRight', sa_marg, 'MarginTop', sa_marg, 'MarginBottom', sa_marg_mid);
 
 trisurf(delaunay(X,Y),X,Y,abs(errpcnt4));
 hold on;
-plot ([1,-15],[-1,15],'b','linewidth',lw,'markersize',ms)
-plot ([-15,1],[-15,1],'b','linewidth',lw,'markersize',ms)
+plot ([1,-15],[-1,15],'k','linewidth',lw,'markersize',ms)
+plot ([-15,1],[-15,1],'k','linewidth',lw,'markersize',ms)
 hold off;
 
 setaxprops (hax(1), fs1);
@@ -103,8 +105,8 @@ hax(2) = subaxis (2,2,2, 'SpacingVert', sa_spc, 'SpacingHoriz', sa_spc, ...
 
 trisurf(delaunay(X,Y),X,Y,abs(errs4(:,1))./abs(targmags4).*100);
 hold on;
-plot ([1,-15],[-1,15],'b','linewidth',lw,'markersize',ms)
-plot ([-15,1],[-15,1],'b','linewidth',lw,'markersize',ms)
+plot ([1,-15],[-1,15],'k','linewidth',lw,'markersize',ms)
+plot ([-15,1],[-15,1],'k','linewidth',lw,'markersize',ms)
 hold off;
 
 setaxprops (hax(2), fs1);
@@ -129,8 +131,8 @@ hax(3) = subaxis (2,2,3, 'SpacingVert', sa_spc, 'SpacingHoriz', sa_spc, ...
 
 trisurf(delaunay(X,Y),X,Y,abs(errs4(:,2))./abs(targmags4).*100);
 hold on;
-plot ([1,-15],[-1,15],'b','linewidth',lw,'markersize',ms)
-plot ([-15,1],[-15,1],'b','linewidth',lw,'markersize',ms)
+plot ([1,-15],[-1,15],'k','linewidth',lw,'markersize',ms)
+plot ([-15,1],[-15,1],'k','linewidth',lw,'markersize',ms)
 hold off;
 
 setaxprops (hax(3), fs1);
@@ -155,8 +157,8 @@ hax(4) = subaxis (2,2,4, 'SpacingVert', sa_spc, 'SpacingHoriz', sa_spc, ...
 
 trisurf(delaunay(X,Y),X,Y,abs(errs4(:,3))./abs(targmags4).*100);
 hold on;
-plot ([1,-15],[-1,15],'b','linewidth',lw,'markersize',ms)
-plot ([-15,1],[-15,1],'b','linewidth',lw,'markersize',ms)
+plot ([1,-15],[-1,15],'k','linewidth',lw,'markersize',ms)
+plot ([-15,1],[-15,1],'k','linewidth',lw,'markersize',ms)
 hold off;
 
 setaxprops (hax(4), fs1);
@@ -167,19 +169,19 @@ hyl(4)=ylabel(targytxt, 'fontsize', fs1);
 offsetylabel(hyl(4));
 
 zlabel('mag. of errorRotZ)');
-title (['d) Y Error magnitude (mean:' sprintf('%5.1f', sum(abs(errs4(:,3))./abs(targmags4).*100) ./ length(errs4(:,3)) ) '%)'], 'fontsize', fs1);
+title (['d) Z Error magnitude (mean:' sprintf('%5.1f', sum(abs(errs4(:,3))./abs(targmags4).*100) ./ length(errs4(:,3)) ) '%)'], 'fontsize', fs1);
 view([viewx viewy]);
 zlim([0 zmax]);
 xlim([-15,1]);
 
-clim=[0 20]; % Data range...
+clim=[0 80]; % Data range matching that for TModel3
 caxis(clim);
 set(hax,'CLim',clim);
 
 opos = get (hax(4), 'position'); % Original Position
 cbh = colorbar('position', [opos(1)+opos(3)+0.04  opos(2)  0.02  opos(2)+opos(3)*2.1])
 set (hax(4), 'position', opos);
-set(cbh,'linewidth', 0.5, 'tickdir', 'out', 'ticklength', [0.01,0.01], 'ytick', [0, 5, 10, 15]);
+set(cbh,'linewidth', 0.5, 'tickdir', 'out', 'ticklength', [0.01,0.01], 'ytick', [0, 5, 10, 15, 30, 50, 70]);
 %'yticklabel',{'zero','ten','23','42','fifty'},
 
 set(cbh, 'position', [opos(1)+opos(3)+0.04  opos(2)  0.02 opos(2)+opos(3)*2.1], 'fontsize', fs1)
