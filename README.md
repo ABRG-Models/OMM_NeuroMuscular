@@ -1,7 +1,17 @@
-This is the James et al. oculomotor model. The main paper for this
+# A SpineML Model of saccadic eye movements
+
+This is the James et al. oculomotor model, which builds on many years of 
+work carried out in Kevin Gurney's group at the ABRG at The University of 
+Sheffield. The main paper for this
 model is "Integrating brain and biomechanical models - a new paradigm
 for understanding neuro-muscular control". The paper can be found at
 papers/integration/omm_integ.pdf
+
+It builds on work which has been carried out by the following individuals: 
+Jon Chambers, Alex Cope, Alex Blenkinsop, Seb James, Jen Lewis and
+indeed, Kevin Gurney. The biomechanics work - saccsim, our virtual eye -
+has been provided by Kostas Moustakas' group at The University of Patras:
+Chris Papapavlou and Dimitris Stanev were involved.
 
 To run this model fully, and reproduce the results, you need the
 saccsim biomechanical eye, BRAHMS and SpineML_2_BRAHMS. To view the
@@ -87,6 +97,8 @@ able to run the models (from the experiments interface of SpineCreator
 or from the SpineML_2_BRAHMS command line program
 'convert_script_s2b'), which are:
 
+## ModelN models
+
 The 'ModelN' models were those which were used to develop a training
 procedure for the SC_deep to LLBN weight maps. I also used some of
 these to investigate a widening projection field *within* the brain
@@ -112,6 +124,8 @@ Model4: Like Model3, but parameters modified to give this the most linear
 
 Model5: A copy of 4, which I will tweak to try to get vertical rotations to
         work reasonably well in conjunction with horizontal rotations.
+
+## TModelN models
 
 The TModel0-2 models were a first set of models employing the
 theoretical weight mapping from Ottes et al. and Tabareau et al.
