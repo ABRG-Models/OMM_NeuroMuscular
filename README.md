@@ -151,7 +151,40 @@ TModel4: To TModel3 is added a widening Gaussian projection field from
 TModel5: This adds a mechanism to reset the TN firing in the SBG,
          which was missing in the first iteration of the SBG.
 
-Note: This repository was extracted from Oculomotor branch of our
+## Experiment scripts
+
+The 'experiments' are carried out using scripts in the batch_scripts subdirectory.
+In there, there's a set of expt_* dirs. Typically, these contain a shell script to
+run the simulations, and some octave/matlab (octave preferred, you may need to 
+tweak if you use matlab) scripts to plot the results for a quick view. There are
+Veusz files scattered about that were used to generate the figures in the paper.
+
+Within batch_scripts there are also two directories containing octave code for
+running the sims; analysis and include.
+
+Note that some of the sim scripts were set up to run on my laptop/PC but most were
+set up to run on Sheffield's HPC system Iceberg, which uses Son of Grid Engine to 
+manage jobs.
+
+## lab_book sub-directory
+
+My labbook is found in the lab_book subdirectory.
+
+## matlab sub-directory
+
+This contains some old code that was used to generate matlab movies
+
+## movies sub-directory
+
+Contains scripts to generate movies from a sim run.
+
+## papers sub-directory
+
+Contains two papers that I wrote about this project; a mini-conference paper and the main integration paper.
+
+## Providence
+
+This repository was extracted from Oculomotor branch of our
 private abrg_local repository on 3rd May 2017, with a view to making
 it public with the paper. Earlier history on model/code changes is
 held there.
