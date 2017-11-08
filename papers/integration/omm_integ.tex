@@ -324,12 +324,14 @@ To summarize, the \ccg~model takes as \e{input} the positions of
 luminances on a topographic map and produces as output a saccade
 target.
 
-To the \ccg~model, we added a rate-coded brainstem model (a `saccadic
-burst generator') and a biomechanical eye, implemented using the
-biomechanical modelling framework OpenSim.  These will be described
-below, along with a review of the \ccg~model, but first we will give a
-description of the co-ordinate systems and the modelling framework
-used.
+To the \ccg~model, we added a brainstem model and a biomechanical
+eye model. The rate-coded brainstem model was taken from the
+literature~\cite{gancarz_neural_1998} as the best-of-breed saccadic
+burst generator~\cite{girard_brainstem_2005}.  The biomechanical eye
+was implemented using the biomechanical modelling framework OpenSim.
+These will be described below, along with a review of the \ccg~model,
+but first we will give a description of the co-ordinate systems and
+the modelling framework used.
 
 \subsubsection{Co-ordinates in the world}
 
@@ -752,7 +754,7 @@ The generation of the `tonic' phase of the required time series is
 achieved simply by integrating the bump over time and multiplying by a
 some small gain factor.  This is the function of the tonic neurons
 (TNs).  The firing rate of the motor neuron defines the amount of
-force applied to the eye by that muscle.  Thus, the size of the `bump'
+force applied to the eye by that muscle.  Thus, the integral of the `bump'
 defines how far the eye moves in that channel's direction.  The gain
 and delay parameters in the LLBN-EBN-IBN-LLBN feedback loop therefore
 have to be tuned such that the endpoint of the saccade is reasonably
@@ -1090,7 +1092,7 @@ and 0.3) but with the fixation offset and target onset occurring at
 location at which the saccade velocity had dropped below 0.005 of its
 peak. We iterated until the mean saccade endpoint plotted versus
 target was close to the ideal straight line---see
-Fig.~\ref{sacc_vs_targ}(a) \& (c). We applied the same parameters to
+Fig.~\ref{sacc_vs_targ}(a) \& (b). We applied the same parameters to
 both directions of each channel; $i_{up} = i_{down} = 0.00195$,
 $j_{up} = j_{down} = 0.075$, $i_{left} = i_{right} = 0.0016$ and
 $j_{left} = j_{right} = 0.067$. The resulting weight maps (where the
@@ -1767,8 +1769,7 @@ between SC\_deep and SC\_deep2.}
 { Weight maps for the connections between the output layer of superior
 colliculus and the six long lead burst neurons of the saccadic burst
 generator model. Each map increases exponentially with increasing $r$,
-multiplied by cosine($\phi$) about its `active' axis. \cmnt{Check
-whether Left \& Right are wrong way round}}
+multiplied by cosine($\phi$) about its `active' axis.}
 \end{figure}
 
 \begin{figure}[htb!]

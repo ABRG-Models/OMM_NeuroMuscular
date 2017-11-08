@@ -1,0 +1,29 @@
+REVIEWER 1
+
+INTRO
+
+1) The paragraph starting at line 45 makes several references to virtual biomechanical systems (e.g. virtual arm, virtual robot). I will also ensure that I explicitly state that the biomechanical eye in this study is a purely computational, virtual model, as I take the point that from the abstract, it is not clear that the eye is virtual rather than physical. The paragraph at line 57 changed to: In an attempt to build a model combining brain, realistic biomechanics \e{and} sensory feedback, we sought to extend our previous work modelling the oculomotor system by adding a virtual, biomechanical eye model able to make physically realistic movements. The rotational state of the eye would then determine how visual features in the virtual world were projected back into the brain model.
+
+2) I've re-written the sentence to: Building a behaving oculomotor system will therefore assist future computational neurobehavioural modelling efforts that involve reaching.
+
+3) Good point, I've removed the word channels from that sentence and clarified its meaning where it first appears at the start of the section "Brainstem model".
+
+4) Changed as suggested.
+
+5) This was engineer speak - I've changed the sentence to explicitly describe the mathematical eye in the referenced papers (a second order diff. equatio
+
+MAT & METH
+
+1) The rate coded model was chosen from the literature as the best saccadic burst generator available. I've modified the text to say this.
+
+2) The first reference there seems ok - it's an RRID referencing the SpineML markup language SCR_015641.
+
+3) I'll describe this.
+
+4) Changed; size="integral" or "area under the curve"
+
+5) YET TO ADDRESS.
+
+RESULTS
+
+1) Line 501 updated to 6 (a) & (b). NOT DONE YET: Will add introduction and description of results for the weight maps. Left and Right checked for Fig 7. They WERE correct.
