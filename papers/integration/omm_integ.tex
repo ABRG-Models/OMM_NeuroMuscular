@@ -206,7 +206,13 @@ name of \e{computational neurobehaviour}.
 % Solution described means we now need to do background of eye movements:
 In an attempt to build a model combining brain, realistic
 biomechanics \e{and} sensory feedback, we sought to extend our
-previous work modelling the oculomotor system.  The existing
+previous work modelling the oculomotor system by adding a virtual,
+biomechanical eye model able to make physically realistic
+movements. The rotational state of the eye would then determine how
+visual features in the virtual world were projected back into the
+brain model.
+%
+The existing
 model \citep{cope_basal_2017} is already able to capture sensory input
 and convert it into a neural signal, assumed to specify the target of
 a \e{saccadic eye movement}; a fast movement of the eyes which directs
@@ -214,7 +220,7 @@ the fovea to a region of interest in the field of view.
 %
 The oculomotor system is an excellent candidate for modelling because
 its movements can be specified with only three degrees of freedom,
-making it one of the simplest neuro-muscular system in the body.
+making it one of the simplest neuro-muscular systems in the body.
 %
 It is nevertheless behaviourally interesting, as saccadic eye
 movements reveal information about decision making at a subconscious
@@ -227,7 +233,7 @@ many anatomical studies of the neural substrates involved
 \citep{meredith_intrinsic_1998,isa_intrinsic_2002,isa_exploring_2009}
 and electrophysiological data linking these together
 \citep{hepp_spatio-temporal_1983,dorris_neuronal_1997,mcpeek_competition_2003,vokoun_circuit_2011}.
-Furthermore, in the context of building \e{behaving} systems a
+Furthermore, in the context of building \e{behaving} systems, a
 necessary part of any model for which the behaviour requires visual
 attention and decision making is a realistic mechanism for gathering
 visual information.  This is obvious from extrinsic considerations---a
@@ -237,9 +243,9 @@ example, \cite{howard_hand_1997} showed that visual cues affect reach
 trajectories and the same group later demonstrated that reaching
 affects the saccadic system
 \citep{tipper_reaching_2001} suggesting a close relationship between these
-neural systems. Building the simplest, behaving oculomotor system will
+neural systems. Building a behaving oculomotor system will
 therefore assist future computational neurobehavioural modelling
-efforts.
+efforts that involve reaching.
 
 Many neural populations are involved in the coding of saccadic eye
 movements, only a very brief overview is given here; for a review,
@@ -248,9 +254,8 @@ the retina directly into the superficial layers of the superior
 colliculus in the brainstem
 \citep{sterling_receptive_1971,linden_massive_1983,wu_involvement_1994}.
 Activity within the superior colliculus then excites neurons in the
-pons, medulla and rostral mid-brain \citep{sparks_brainstem_2002} and
-then through channels to the motor neurons which innervate the
-extraocular muscles
+pons, medulla and rostral mid-brain \citep{sparks_brainstem_2002}.
+and finally the motor neurons which innervate the extraocular muscles
 \citep{fuchs_firing_1970,sparks_brainstem_2002}. This direct pathway
 is responsible for the low latency saccades called express saccades
 \citep{schiller_effect_1987,edelman_activity_1996}.
@@ -282,14 +287,14 @@ eye movements \citep{kleine_saccade-related_2003,takagi_effects_1998}.
 
 There is a long history of modelling the oculomotor system. For a
 comprehensive review, see \cite{girard_brainstem_2005}. Models of
-individual systems have been proposed for brainstem
+individual subsystems have been proposed for brainstem
 \citep{robinson_oculomotor_1975,scudder_new_1988,gancarz_neural_1998},
 cerebellum \citep{quaia_model_1999,dean_modelling_1995,dean_learning_1994}
 and superior colliculus
 \citep{arai_two-dimensional_1994,moren_mechanism_2013,marino_spatial_2012}.
 More recently, combined models have also been developed incorporating
-sensory input \citep{cope_basal_2017} and driving simple physical
-plants representing the eye
+sensory input \citep{cope_basal_2017} and driving a second order
+differential equation representing the eye
 \citep{tabareau_geometry_2007,nguyen_saccade_2014,thurat_biomimetic_2015}.
 None of these models has yet fully closed the loop to produce a
 behaving system operating freely within its environment. We argue that
@@ -322,8 +327,9 @@ target.
 To the \ccg~model, we added a rate-coded brainstem model (a `saccadic
 burst generator') and a biomechanical eye, implemented using the
 biomechanical modelling framework OpenSim.  These will be described
-below, but first we will give a description of the co-ordinate systems
-and the modelling framework used.
+below, along with a review of the \ccg~model, but first we will give a
+description of the co-ordinate systems and the modelling framework
+used.
 
 \subsubsection{Co-ordinates in the world}
 
@@ -530,7 +536,7 @@ model \citep{bogacz_basal_2007}.
 
 The D1MSN and D2MSN components are both leaky integrators, similar to
 LINlinear. They differ in that they have no shunting inhibition. They
-are used in to model medium spiny neuron (MSN) populations in the
+are used to model medium spiny neuron (MSN) populations in the
 striatum. As they model the fact that most MSN neurons fall into two
 groups; those expressing D1 dopamine receptors and those expressing D2
 receptors, they have a dopamine parameter that modulates the input
@@ -713,8 +719,11 @@ The easiest way to access this information is by using SpineCreator.
 
 We implemented a saccadic burst generator (SBG) based on the
 connectivity outlined in \cite{gancarz_neural_1998}. The SBG network
-for two of the model's six channels is shown in
-Fig.~\ref{sbg}. Activity from the output layer of superior colliculus
+for two of the model's six channels is shown in Fig.~\ref{sbg}. We use
+the word `channel' to mean a set of populations of neurons which are
+involved in actuating a single extraocular muscle). Activity from the
+output layer of superior colliculus
+%
 (SC\_avg) is fed into each channel, which sums the activity it
 receives and processes it in populations each of a single neural
 element representing all the neurons in that population. Each channel
