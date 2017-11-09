@@ -56,6 +56,13 @@ Barash, S., Melikyan, A., Sivakov, A., Zhang, M., Glickstein, M., and Thier, P.
 \newblock \emph{Journal of Neuroscience} 19, 10931--10939
 \bibAnnoteFile{barash_saccadic_1999}
 
+\bibitem[{Bayguinov et~al.(2015)Bayguinov, Ghitani, Jackson, and
+  Basso}]{bayguinov_hard-wired_2015}
+Bayguinov, P.~O., Ghitani, N., Jackson, M.~B., and Basso, M.~A. (2015).
+\newblock A hard-wired priority map in the superior colliculus shaped by
+  asymmetric inhibitory circuitry \doi{10.1152/jn.00144.2015}
+\bibAnnoteFile{bayguinov_hard-wired_2015}
+
 \bibitem[{Becker and J\"urgens(1979)}]{becker_analysis_1979}
 Becker, W. and J\"urgens, R. (1979).
 \newblock An analysis of the saccadic system by means of double step stimuli.
@@ -229,6 +236,15 @@ Gancarz, G. and Grossberg, S. (1998).
 \newblock \emph{Neural Networks} 11, 1159--1174.
 \newblock \doi{10.1016/S0893-6080(98)00096-3}
 \bibAnnoteFile{gancarz_neural_1998}
+
+\bibitem[{Ghitani et~al.(2014)Ghitani, Bayguinov, Vokoun, {McMahon}, Jackson,
+  and Basso}]{ghitani_excitatory_2014}
+Ghitani, N., Bayguinov, P.~O., Vokoun, C.~R., {McMahon}, S., Jackson, M.~B.,
+  and Basso, M.~A. (2014).
+\newblock Excitatory synaptic feedback from the motor layer to the sensory
+  layers of the superior colliculus 34, 6822--6833.
+\newblock \doi{10.1523/JNEUROSCI.3137-13.2014}
+\bibAnnoteFile{ghitani_excitatory_2014}
 
 \bibitem[{{Gian G. Mascetti} and {Jorge R.
   Arriagada}(1981)}]{gian_g._mascetti_tectotectal_1981}
