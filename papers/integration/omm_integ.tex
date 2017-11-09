@@ -9,6 +9,7 @@
 \usepackage{amsmath}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{gensymb} % For \degree
+\usepackage[usenames, dvipsnames]{color}
 
 \linenumbers
 
@@ -74,6 +75,18 @@ $^{5}$Department of Electrical and Computer Engineering,
 \newcommand{\branch}[1]{\textbf{\texttt{#1}}}
 \newcommand{\cmnt}[1]{\blue{#1}}
 \newcommand{\dg}{$\degree$}
+
+% Use colour to indicate changes made following review. Can be
+% set to this 'black' colour prior to final publication:
+\newcommand{\black}{\textcolor{black}}
+% Colour for reviewer 1 changes:
+\newcommand{\rvwcolour}{\textcolor{OrangeRed}}
+% Colour for reviewer 2 changes:
+\newcommand{\rvwcolourtwo}{\textcolor{Cerulean}}
+% Commands to use in the text. Change 'rvwcolour/rvwcolourtwo' to
+% 'black' to hide review changes.
+\newcommand{\rvw}[1]{\rvwcolour{#1}}
+\newcommand{\rvwt}[1]{\rvwcolourtwo{#1}}
 
 
 \onecolumn
@@ -148,6 +161,10 @@ a controller for movement and behaviour.
 
 \section{Introduction}
 
+% Remove after review:
+Note: Changes based on Reviewer 1's comments \rvw{are in this colour}. For
+Reviewer 2 \rvwt{we use this colour}.
+
 % Background
 The field of computational neuroscience has provided many \e{systems
 models} of the
@@ -206,11 +223,11 @@ name of \e{computational neurobehaviour}.
 % Solution described means we now need to do background of eye movements:
 In an attempt to build a model combining brain, realistic
 biomechanics \e{and} sensory feedback, we sought to extend our
-previous work modelling the oculomotor system by adding a virtual,
+\rvw{previous work modelling the oculomotor system by adding a virtual,
 biomechanical eye model able to make physically realistic
 movements. The rotational state of the eye would then determine how
 visual features in the virtual world were projected back into the
-brain model.
+brain model.}
 %
 The existing
 model \citep{cope_basal_2017} is already able to capture sensory input
@@ -243,9 +260,9 @@ example, \cite{howard_hand_1997} showed that visual cues affect reach
 trajectories and the same group later demonstrated that reaching
 affects the saccadic system
 \citep{tipper_reaching_2001} suggesting a close relationship between these
-neural systems. Building a behaving oculomotor system will
+neural systems. \rvw{Building a behaving oculomotor system will
 therefore assist future computational neurobehavioural modelling
-efforts that involve reaching.
+efforts that involve reaching.}
 
 Many neural populations are involved in the coding of saccadic eye
 movements, only a very brief overview is given here; for a review,
@@ -255,7 +272,7 @@ colliculus in the brainstem
 \citep{sterling_receptive_1971,linden_massive_1983,wu_involvement_1994}.
 Activity within the superior colliculus then excites neurons in the
 pons, medulla and rostral mid-brain \citep{sparks_brainstem_2002}.
-and finally the motor neurons which innervate the extraocular muscles
+and \rvw{finally the motor neurons} which innervate the extraocular muscles
 \citep{fuchs_firing_1970,sparks_brainstem_2002}. This direct pathway
 is responsible for the low latency saccades called express saccades
 \citep{schiller_effect_1987,edelman_activity_1996}.
@@ -287,14 +304,14 @@ eye movements \citep{kleine_saccade-related_2003,takagi_effects_1998}.
 
 There is a long history of modelling the oculomotor system. For a
 comprehensive review, see \cite{girard_brainstem_2005}. Models of
-individual subsystems have been proposed for brainstem
+individual \rvw{subsystems} have been proposed for brainstem
 \citep{robinson_oculomotor_1975,scudder_new_1988,gancarz_neural_1998},
 cerebellum \citep{quaia_model_1999,dean_modelling_1995,dean_learning_1994}
 and superior colliculus
 \citep{arai_two-dimensional_1994,moren_mechanism_2013,marino_spatial_2012}.
 More recently, combined models have also been developed incorporating
-sensory input \citep{cope_basal_2017} and driving a second order
-differential equation representing the eye
+sensory input \citep{cope_basal_2017} and driving \rvw{a second order
+differential equation} representing the eye
 \citep{tabareau_geometry_2007,nguyen_saccade_2014,thurat_biomimetic_2015}.
 None of these models has yet fully closed the loop to produce a
 behaving system operating freely within its environment. We argue that
@@ -324,14 +341,14 @@ To summarize, the \ccg~model takes as \e{input} the positions of
 luminances on a topographic map and produces as output a saccade
 target.
 
-To the \ccg~model, we added a brainstem model and a biomechanical
-eye model. The rate-coded brainstem model was taken from the
-literature~\cite{gancarz_neural_1998} as the best-of-breed saccadic
+To the \ccg~model, we added a brainstem model and a biomechanical eye
+model. \rvw{The rate-coded brainstem model was taken from the
+literature}~\cite{gancarz_neural_1998} as the best-of-breed saccadic
 burst generator~\cite{girard_brainstem_2005}.  The biomechanical eye
 was implemented using the biomechanical modelling framework OpenSim.
-These will be described below, along with a review of the \ccg~model,
-but first we will give a description of the co-ordinate systems and
-the modelling framework used.
+These will be described below, \rvwt{along with a review of
+the \ccg~model}, but first we will give a description of the
+co-ordinate systems and the modelling framework used.
 
 \subsubsection{Co-ordinates in the world}
 
@@ -721,10 +738,18 @@ The easiest way to access this information is by using SpineCreator.
 
 We implemented a saccadic burst generator (SBG) based on the
 connectivity outlined in \cite{gancarz_neural_1998}. The SBG network
-for two of the model's six channels is shown in Fig.~\ref{sbg}. We use
-the word `channel' to mean a set of populations of neurons which are
-involved in actuating a single extraocular muscle). Activity from the
-output layer of superior colliculus
+for two of the model's six channels is shown in
+Fig.~\ref{sbg}. \rvw{We use the word `channel' to mean a set of
+populations of neurons which are involved in actuating a single
+extraocular muscle. SBG channels are arranged in pairs, actuating
+opposing muscles. There is one pair of channels which actuates the
+superior and inferior rectus muscles, causing vertical rotations of
+the eye in a roughly parasaggital plane (the eye moves up or
+down). Another pair actuates the lateral and medial rectus muscles,
+causing horizontal rotations of the eye. The third pair actuates the
+superior and inferior oblique muscles which contribute to vertical as
+well as oblique rotations.} Activity from the output layer of superior
+colliculus
 %
 (SC\_avg) is fed into each channel, which sums the activity it
 receives and processes it in populations each of a single neural
@@ -754,7 +779,8 @@ The generation of the `tonic' phase of the required time series is
 achieved simply by integrating the bump over time and multiplying by a
 some small gain factor.  This is the function of the tonic neurons
 (TNs).  The firing rate of the motor neuron defines the amount of
-force applied to the eye by that muscle.  Thus, the integral of the `bump'
+force applied to the eye by that muscle.  Thus, \rvw{the integral}
+of the `bump'
 defines how far the eye moves in that channel's direction.  The gain
 and delay parameters in the LLBN-EBN-IBN-LLBN feedback loop therefore
 have to be tuned such that the endpoint of the saccade is reasonably
@@ -1092,7 +1118,7 @@ and 0.3) but with the fixation offset and target onset occurring at
 location at which the saccade velocity had dropped below 0.005 of its
 peak. We iterated until the mean saccade endpoint plotted versus
 target was close to the ideal straight line---see
-Fig.~\ref{sacc_vs_targ}(a) \& (b). We applied the same parameters to
+Fig.~\ref{sacc_vs_targ}(a) \& \rvw{(b)}. We applied the same parameters to
 both directions of each channel; $i_{up} = i_{down} = 0.00195$,
 $j_{up} = j_{down} = 0.075$, $i_{left} = i_{right} = 0.0016$ and
 $j_{left} = j_{right} = 0.067$. The resulting weight maps (where the
