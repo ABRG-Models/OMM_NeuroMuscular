@@ -1206,8 +1206,8 @@ then fed to the weight maps of the SBG. This model was called
 vertical error was similar---so that its equivalent of
 Fig.~\ref{sacc_vs_targ} showed a similar sum of squares error.
 
-Figs.~\ref{errorsurface}(a)--(d) show the same percentage errors for
-TModel4 as Fig.~\ref{errorsurfaceTM3} shows for TModel3.  First of
+Figs.~\ref{errorsurface}(a)--(d) show the \rvw{percentage errors for
+TModel4}.  First of
 all, note that the error magnitudes are much smaller. The mean errors
 are smaller for every axis. The largest errors produced by the model
 are approximately 15\%, which are within the boundaries of what some
@@ -1344,8 +1344,8 @@ followed by a target at (0,-10\dg) from 0.4~s until 0.8~s. Finally,
 the fixation was again shown from 0.8~s until the end of the
 simulation at 2~s. This induced a saccade to a 10\dg~eccentricity,
 followed by a return saccade back to the null point. We noticed some
-irregularities in the return saccades, which though surprisingly
-accurate, had a significant overshoot.  More perplexingly, if the
+irregularities in the return saccades, which \rvw{were
+accurate}, but had a significant overshoot.  More perplexingly, if the
 target was switched repeatedly between 0\dg~and 10\dg, second and
 subsequent \e{outward} saccades also showed this overshoot. We found
 that the cause of these irregularties was the lack (in `TModel4') of
@@ -1353,9 +1353,10 @@ any mechanism to reset the tonic neurons in the SBG after the first
 saccade. This resulted in TN activity in the left channel \e{and also}
 in the right channel. Interestingly, this ensured that, at least for a
 few, consecutive out-and-return saccades, the saccade accuracy was
-relatively good, with trajectories resembling experimental data
-(\cite{bahill_trajectories_1979}, p.~6). % Poss. figure.
-Nevertheless, the lack of a reset of TN activity was an oversight, and
+accidently relatively good, with trajectories resembling experimental data
+(\cite{bahill_trajectories_1979}, p.~6). \rvw{Had the return accuracy not
+been so accurate, we may have noticed the lack of a tonic neuron reset
+mechanism and corrected this oversight earlier.} Such a mechanism
 is indeed proposed and included in the connectivity of the
 \cite{gancarz_neural_1998} model. We implemented this feature by adding an
 additional inhibitory input to the `integrator' component of TModel4,
