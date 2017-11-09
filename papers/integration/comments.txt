@@ -27,3 +27,9 @@ MAT & METH
 RESULTS
 
 1) Line 501 updated to 6 (a) & (b). NOT DONE YET: Will add introduction and description of results for the weight maps. Left and Right checked for Fig 7. They WERE correct.
+
+2) Yes, though not exactly of the excitatory nature required of the
+connection we hypothesise here. The methods section referred to some
+evidence; I have added two important references, extended the text in
+the methods section and referred to this at the equivalent of line
+531 in the reviewed draft.

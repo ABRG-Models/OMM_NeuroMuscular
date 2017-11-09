@@ -9,7 +9,6 @@
 \usepackage{amsmath}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{gensymb} % For \degree
-\usepackage[usenames, dvipsnames]{color}
 
 \linenumbers
 
@@ -940,7 +939,7 @@ a much smaller region. This effect is clearly demonstrated in
 Fig.~\ref{fig:mapping} for equal sized targets both on and distal from
 the fovea.
 
-This led us to hypothesize that the retinotopic mapping be accompanied
+This led us to hypothesise that the retinotopic mapping be accompanied
 by an associated widening projection field such that the hill of
 activity in superior colliculus is invariant with position on the
 collicular surface. There are a number of locations in the system in
@@ -955,8 +954,23 @@ suggest that a widening projection field is encoded within the
 superior colliculus itself, a complex, multi-layered structure which
 could quite plausibly support such a function. Indeed, such widening
 activity can be seen in the stimulation experiments
-in \cite{vokoun_intralaminar_2010}
-and \cite{vokoun_response_2014}. Although in this work we do not model
+in \cite{vokoun_intralaminar_2010} and \cite{vokoun_response_2014}.
+%
+\rvw{In \cite{ghitani_excitatory_2014}, from the same research group,
+evidence is presented for an excitatory and widely projecting pathway
+from the stratum griseum intermediale (equivalent to our SC\_deep) to
+the more superficial layers stratum opticum and stratum griseum
+superficiale. Although this pathway is a `wide' projecting field, the
+experiments do not indicate whether the projection \e{widens} along
+the rostral-caudal axis of the SC. \cite{bayguinov_hard-wired_2015}
+presents evidence for another projecting field within SC whose
+connectivity pattern \e{does} change along the rostral-caudal
+axis. This projection is inhibitory in nature. Although neither of
+these results precisely match the widening, excitatory projection
+field hypothesised here, they do indicate that such connection
+patterns are plausible.}
+%
+Although in this work we do not model
 the SC in detail, we extended the model with a third functional layer
 named SC\_deep2, shown in Fig.~\ref{scdeep} (\ccg~has only the two
 layers SC\_sup and SC\_deep). We introduced a widening projection
@@ -1031,7 +1045,7 @@ successful, accurate saccade towards a target luminance will remove
 the excitation which caused the activity in SC\_deep by bringing the
 target luminance within the masked, foveal region, the activity in SC
 decays too slowly to avoid additional saccadic movements. We found it
-necessary to hypothesize an inhibitory feedback mechanism from the SBG
+necessary to hypothesise an inhibitory feedback mechanism from the SBG
 to the brain model.  This is shown in Fig.~\ref{sbg}, which indicates
 how the output from the inhibitory burst neurons (IBN) of the SBG
 model are used to feed back an inhibitory signal to the SC\_deep,
@@ -1178,7 +1192,10 @@ layer~\citep{anderson_two-dimensional_1998}.
 To bring our model in line with these results, whilst maintaining the
 eccentricity dependent activity in basal ganglia, we hypothesised that
 a `widening projection' exists between two maps in superior
-colliculus. Activities in one SC\_deep layer remains
+colliculus. \rvw{As described in the Methods section, there is
+now experimental evidence for similar projections
+\citep{ghitani_excitatory_2014,bayguinov_hard-wired_2015} making this
+a plausible suggestion.}  Activities in one SC\_deep layer remains
 eccentricity-dependent, with loops back to thalamus and cortex and
 through basal ganglia.  This activity is then fed through a
 projection, which applies a Gaussian projection field, whose width
