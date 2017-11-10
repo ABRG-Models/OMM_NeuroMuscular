@@ -26,28 +26,28 @@ MAT & METH
 
 RESULTS
 
-1) Line 501 updated to 6 (a) & (b). NOT DONE YET: Will add introduction and description of results for the weight maps. Left and Right checked for Fig 7. They WERE correct.
+1) Line 501 updated to 6 (a) & (b). I've added a much fuller
+description of the results for the weight maps. Left and Right checked
+for Fig 7. They were correct.
 
 2) Yes, though not exactly of the excitatory nature required of the
 connection we hypothesise here. The methods section referred to some
 evidence; I have added two important references, extended the text in
-the methods section and referred to this at the equivalent of line
-531 in the reviewed draft.
+the methods section and referred to this at the equivalent of line 531
+in the reviewed draft.
 
 3) Sentence modified as suggested.
 
-4) End points were not shown in Fig 10(b) and (c) in order to zoom in
-on the most dynamic part of the movement (between 0.55 and 0.6 s).
+4) End points were not shown in Fig 10(b) and (c) in order to zoom
+inon the most dynamic part of the movement (between 0.55 and 0.6 s).
 
 5) Surprising with hindsight perhaps - I removed that word. Later on
 in that paragraph, after describing that the TNs were left 'active'
-rather than being reset, I remarked:
-
-"Interestingly, this ensured that, at least for a
-few, consecutive out-and-return saccades, the saccade accuracy was
-relatively good, with trajectories resembling experimental data"
-
-That is, the TN populations were firing away on both out and return
-channels and yet the eye was returning nearly to the null position. If
-this "accidental return accuracy" hadn't occurred, we probably would
-have spotted the lack of TN reset sooner. I added text to this effect.
+rather than being reset, I remarked: "Interestingly, this ensured
+that, at least for a few, consecutive out-and-return saccades, the
+saccade accuracy was relatively good, with trajectories resembling
+experimental data". That is, the TN populations were firing away on
+both out and return channels and yet the eye was returning nearly to
+the null position. If this "accidental return accuracy" hadn't
+occurred, we probably would have spotted the lack of TN reset
+sooner. I added text to this effect.
