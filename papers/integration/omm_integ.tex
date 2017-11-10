@@ -158,7 +158,7 @@ a controller for movement and behaviour.
 \end{abstract}
 
 
-\section{Introduction}
+\section{Introduction} \label{sec:introduction}
 
 % Remove after review:
 Note: Changes based on Reviewer 1's comments \rvw{are in this colour}. For
@@ -319,7 +319,7 @@ insights into the operation of neural systems that are not available
 from input-~or output-assumption models.
 
 
-\section{Material \& Methods}
+\section{Material \& Methods} \label{sec:methods}
 
 % A very short introduction to the section.
 The integrated brain and biomechanical model described here is a
@@ -349,7 +349,7 @@ These will be described below, \rvwt{along with a review of
 the \ccg~model}, but first we will give a description of the
 co-ordinate systems and the modelling framework used.
 
-\subsubsection{Co-ordinates in the world}
+\subsubsection{Co-ordinates in the world} \label{sec:methods:coords}
 
 Before describing the biomechanical eye and the brain model, which
 consisted of retinotopically mapped neural sheets, we describe the
@@ -387,7 +387,7 @@ the luminances in the world frame into co-ordinates in the eye
 frame. The luminance co-ordinates in the eye's frame of reference were
 used to determine the input to the brain model.
 
-\subsection{Model development framework}
+\subsection{Model development framework} \label{sec:methods:framework}
 
 The \ccg~model was originally developed to run on the BRAHMS model
 execution framework
@@ -460,7 +460,7 @@ which the model specification files (blue box - a combination of
 SpineML files and C++ code), are processed (green box) into a BRAHMS
 system (red box).
 
-\subsection{Existing brain model}
+\subsection{Existing brain model} \label{sec:methods:existing}
 
 The brain model, excluding the brainstem, is a re-implementation of
 the \ccg~model. Fig.~\ref{brain_model} shows the layout of the
@@ -588,6 +588,7 @@ $i^{th}$ activation or shunting connection; $x_i^{act}$ and $x_i^{sh}$
 are the signals input to the activation and shunting connections.
 
 \subsubsection{Population activity and retinotopic mapping}
+\label{sec:mapping}
 
 Each population of 2500 neural elements was arranged in a 50 by 50
 grid, with positions on the grid representing a retinotopic mapping
@@ -733,7 +734,7 @@ The easiest way to access this information is by using SpineCreator.
 
 
 % Section - description of new brainstem model
-\subsection{Brainstem model}
+\subsection{Brainstem model} \label{sec:methods:brainstem}
 
 We implemented a saccadic burst generator (SBG) based on the
 connectivity outlined in \cite{gancarz_neural_1998}. The SBG network
@@ -829,7 +830,7 @@ with an identical piecewise linear transfer function as the other SBG
 populations.
 
 % Section - description of biomechanical model
-\subsection{biomechanical eye}
+\subsection{biomechanical eye} \label{sec:methods:eye}
 
 The output signals of the brainstem are used to drive the
 biomechanical model.  The latter is not only used to get tangible
@@ -880,6 +881,7 @@ can be found in \cite{papapavlou_physics-based_2014}.
 % Section - description of the integration. scientific and
 % technical. Already
 \subsection{Integrating the models and closing the loop}
+\label{sec:methods:integrating}
 
 The \ccg~model closed its loop by passing the centroid of activity in
 SC\_deep (once it had surpassed a threshold) back to the code that
@@ -1115,9 +1117,9 @@ earlier versions of the model can be found in the code repository
 given in SUPPLEMENTAL DATA.
 
 
-\section{Results}
+\section{Results} \label{sec:results}
 
-\subsection{Weight maps}
+\subsection{Weight maps} \label{sec:results:weightmaps}
 
 We found the best parameters for the exponential in
 Eq.~\ref{eq:weightmaps} ($i$ and $j$) by a manual tuning
@@ -1125,7 +1127,7 @@ process. After selecting values for $i$ and $j$ in either the
 horizontal or vertical/oblique channels, we ran the model 6 times at
 each of 8 target eccentricities (7\dg--14\dg) which were purely in the
 direction of the newly parameterised channel. The training saccades
-were produced as described below in Sect.~\ref{sec:singlesaccades},
+were produced as described below in Sect.~\ref{sec:results:singlesaccades},
 with the same fixation and target luminances (crosses of magnitude 0.2
 and 0.3) but with the fixation offset and target onset occurring at
 0.2~s. We measured the end-point of the saccade by detecting the
@@ -1135,30 +1137,53 @@ target was close to the ideal straight line---see
 Fig.~\ref{sacc_vs_targ}(a) \& \rvw{(b)}. We applied the same parameters to
 both directions of each channel; $i_{up} = i_{down} = 0.00195$,
 $j_{up} = j_{down} = 0.075$, $i_{left} = i_{right} = 0.0016$ and
-$j_{left} = j_{right} = 0.067$. The resulting weight maps (where the
-oblique maps are 1/10$^{\mathrm{th}}$ of the vertical maps, as
-described earlier) are shown in Fig.~\ref{weightmaps}.
+$j_{left} = j_{right} = 0.067$.
 
-\rvw{Fig.~\ref{weightmaps}(a) shows the weight map for the muscle
-which rotates the eye to the left. As we modelled a left eye, this
-actuates the lateral rectus muscle. The exponential rise is seen in
-the $r$ direction; as $r$ increases, so the connection strength to the
-SBG channel rises exponentially. The connection strength is greatest
-along the centre line, for a value of $\phi$ which corresponds to a
-purely leftward movement. Note that $\phi$ is presented in neural
-coordinates, and not in degrees or radians. $\phi=$37.5 corresponds
-to movements left. In regions of the map for which there is no
-leftward movement, that is, in the half of the map which corresponds
-to any movement with a rightward component, the `left' weight map is
-0. Fig.~\ref{weightmaps}(d) shows the weight map for rightward
-movements, actuating the medial rectus muscle of the eye. The map is a
-mirror of Fig.~\ref{weightmaps}(a), reflected about the line
-$phi$=25. ETC ETC for DOWN UP and Z+, Z-.}
+The resulting weight maps (where the oblique maps are
+1/10$^{\mathrm{th}}$ of the vertical maps, as described earlier) are
+shown in Fig.~\ref{weightmaps}.
+%
+\rvw{First, recall that the $r$ axis of the neural surface corresponds
+to the amplitude of a saccade and the $\phi$ axis indicates the polar
+direction of the saccade, as described in Sect.~\ref{sec:mapping} and
+Fig.~\ref{fig:mapping}. Fig.~\ref{weightmaps}(a) shows the weight map
+for the muscle which rotates the eye to the left. As we modelled a
+left eye, this actuates the lateral rectus muscle. The exponential
+rise of Eq.~\ref{eq:weightmaps} is seen in the $r$ direction; as $r$
+increases, so the connection strength to the SBG channel rises
+exponentially. The connection strength is greatest along the centre
+line, for a value of $\phi$ which corresponds to a purely leftward
+movement. Note that $\phi$ is presented in neural coordinates, and not
+in degrees or radians; 1$\leq\phi\leq$50 corresponds to a range of
+0\dg~to 360\dg; $\phi=$38.5 corresponds to movements left. The
+connections strength drops away sinusoidally as $\phi$ moves away from
+the centre line at $\phi=$38.5. In regions of the map for which there
+is no leftward movement, that is, in the half of the map which
+corresponds to any movement with a rightward component, the `left'
+weight map is 0. Fig.~\ref{weightmaps}(d) shows the weight map for
+rightward movements, actuating the medial rectus muscle of the
+eye. The line of maximum connection strength is along $\phi=$13.5. The
+map is a mirror of Fig.~\ref{weightmaps}(a), reflected about the line
+$\phi$=26. The `left' and `right' weight maps are orthogonal; the
+non-zero region of the `left' map is zero in the `right' map and vice
+versa. Fig~\ref{weightmaps}(b) \& (d) show the weight maps for
+downward and upward eye movements; the `down' map activates the SBG
+channel for the inferior rectus muscle, the `up' map activates the
+superior rectus. Note that `down' is not orthogonal either to `left'
+or `right' because a saccade down and left is achieved by
+simultaneously activating both the lateral and inferior rectus
+muscles. However, the `up' map \e{is} orthogonal to the `down' map and
+spans the edges of the surface where $\phi$ rolls over from 1 to
+50. The line of maximum connection strength for the `up' map is along
+$\phi=$1; for `down' $\phi=$26. Based on the training described in
+Sect.~\ref{sec:methods:integrating}, the maps driving the superior
+oblique (`Z+') and inferior oblique (`Z-') muscles were set to
+1/10$^{\mathrm{th}}$ of the `down' and `up' maps.}
 % From map_modelling2.m:
 %    yh=0.0016*exp(0.067.*x);
 %    yv=0.00195*exp(0.075.*x);
 
-\subsection{Saccade accuracy}
+\subsection{Saccade accuracy} \label{sec:results:accuracy}
 
 In Fig.~\ref{sacc_vs_targ}, we showed the result of running the model
 to targets located on the principle axes, on which the model was
@@ -1208,7 +1233,8 @@ layer~\citep{anderson_two-dimensional_1998}.
 To bring our model in line with these results, whilst maintaining the
 eccentricity dependent activity in basal ganglia, we hypothesised that
 a `widening projection' exists between two maps in superior
-colliculus. \rvw{As described in the Methods section, there is
+colliculus. \rvw{As described in
+Sect.~\ref{sec:methods:integrating}, there is
 now experimental evidence for similar projections
 \citep{ghitani_excitatory_2014,bayguinov_hard-wired_2015} making this
 a plausible suggestion.}  Activities in one SC\_deep layer remains
@@ -1241,7 +1267,7 @@ eccentricity-independent activity width occurs within the superior
 colliculus and works alongside a simple, monotonically increasing
 weight map between SC and the SBG channels.
 
-\subsection{Single saccades} \label{sec:singlesaccades}
+\subsection{Single saccades} \label{sec:results:singlesaccades}
 
 Having finalised the model by setting the weight maps, we then
 proceeded to exercise the model (TModel4), starting with saccades to a
@@ -1266,7 +1292,7 @@ Euler rotational components in the world frame of reference.
 % These errors are larger than those in Thurat due to the hill of
 % activity not being `perfect' Discussion point.
 
-\subsection{Saccade Latencies}
+\subsection{Saccade Latencies} \label{sec:results:latencies}
 
 To verify that our implementation of the brain model has the same
 functionality as that reported in \cite{cope_basal_2017}, we
@@ -1344,7 +1370,7 @@ below 2.5, but meets the step condition above this value, at which the
 0.2 fixation luminance appears to have a negligible effect on the
 system.
 
-\subsection{Saccade sequences}
+\subsection{Saccade sequences} \label{sec:results:sequences}
 
 We now present results derived from the fully parameterised and
 integrated model; where we took advantage of the fact that it is a
@@ -1448,7 +1474,7 @@ executed \e{more quickly} than if it were programmed on its
 own~\citep{becker_analysis_1979}.
 
 
-\section{Discussion}
+\section{Discussion} \label{sec:discussion}
 
 The aim of this study was to demonstrate the importance of modelling
 neurological systems \e{in concert with} the biomechanical systems
