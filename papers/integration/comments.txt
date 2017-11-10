@@ -1,4 +1,5 @@
 REVIEWER 1
+----------
 
 INTRO
 
@@ -51,3 +52,44 @@ both out and return channels and yet the eye was returning nearly to
 the null position. If this "accidental return accuracy" hadn't
 occurred, we probably would have spotted the lack of TN reset
 sooner. I added text to this effect.
+
+
+
+REVIEWER 2
+----------
+
+MATERIAL AND METHODS
+
+1)
+
+2)
+
+3)
+
+4)
+
+5)
+
+6)
+
+7)
+
+8)
+
+9)
+
+10)
+
+RESULTS
+
+1)
+
+2)
+
+3)
+
+4)
+
+DISCUSSION
+
+1)
