@@ -1138,6 +1138,22 @@ $j_{up} = j_{down} = 0.075$, $i_{left} = i_{right} = 0.0016$ and
 $j_{left} = j_{right} = 0.067$. The resulting weight maps (where the
 oblique maps are 1/10$^{\mathrm{th}}$ of the vertical maps, as
 described earlier) are shown in Fig.~\ref{weightmaps}.
+
+\rvw{Fig.~\ref{weightmaps}(a) shows the weight map for the muscle
+which rotates the eye to the left. As we modelled a left eye, this
+actuates the lateral rectus muscle. The exponential rise is seen in
+the $r$ direction; as $r$ increases, so the connection strength to the
+SBG channel rises exponentially. The connection strength is greatest
+along the centre line, for a value of $\phi$ which corresponds to a
+purely leftward movement. Note that $\phi$ is presented in neural
+coordinates, and not in degrees or radians. $\phi=$37.5 corresponds
+to movements left. In regions of the map for which there is no
+leftward movement, that is, in the half of the map which corresponds
+to any movement with a rightward component, the `left' weight map is
+0. Fig.~\ref{weightmaps}(d) shows the weight map for rightward
+movements, actuating the medial rectus muscle of the eye. The map is a
+mirror of Fig.~\ref{weightmaps}(a), reflected about the line
+$phi$=25. ETC ETC for DOWN UP and Z+, Z-.}
 % From map_modelling2.m:
 %    yh=0.0016*exp(0.067.*x);
 %    yv=0.00195*exp(0.075.*x);
