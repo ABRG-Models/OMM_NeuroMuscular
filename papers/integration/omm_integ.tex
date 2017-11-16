@@ -465,30 +465,66 @@ system (red box).
 The brain model, excluding the brainstem, is a re-implementation of
 the \ccg~model, \rvwt{of reflexive saccadic behaviour}.
 %
-\rvwt{Reflexive saccades are elicited by peripheral changes in the visual
-scene and are distinct from voluntary saccades. Reflexive saccades can
-occur also as a result of auditory and somatosensory stimuli, but
-these modalities are ignored in this work and
-in \cite{cope_basal_2017}. The functionality reproduced by
-the \ccg~model is `the selection of the best target end-point for a
-reflexive saccade'. A competition such as this between competing,
-incompatible movements is often referred to as an \e{action selection}
-problem. The brain must choose one location to foveate, because the
-eyes of most animals can only look in one direction at a time.} % Maybe cite norman_attention_1986, maes_dynamics_1989 on action selection.
+\rvwt{Reflexive saccades are fast eye movements elicited by abrupt
+changes in the peripheral visual scene (reflexive saccades can occur
+also as a result of auditory and somatosensory stimuli, but these
+modalities are ignored here are in \cite{cope_basal_2017}). A
+reflexive saccade has a starting position defined by the initial
+orientation of the eye and an end-point position in which the eye is
+directed towards a new target. Regardless of the number of targets
+within the visual scene, the brain must choose one location as the
+end-point, because the eyes can only look in one direction at a
+time. The functionality reproduced by the \ccg~model is `the selection
+of the best target end-point for a reflexive saccade'. A competition
+such as this between competing, incompatible movements is often
+referred to as an \e{action selection}
+problem \citep{norman_attention_1986,maes_dynamics_1989,redgrave_basal_1999}.}
 
-\rvwt{It is thought that in vertebrates, the basal ganglia (BG) play an important
-r\^ole in action
-selection~\citep{redgrave,graybiel,grillner,hikosaka after the
-evolutionary paper}. The \ccg~model
-places the BG at the centre of the oculomotor system, adopting a
-`channel based' model from previous
-work~\citep{gurney_basal_2004,etc}. Within the context of the basal
-ganglia model, a `channel' is a sub-set of neurons which are
-associated with an action. In the oculomotor model, an action
+\rvwt{It is thought that in vertebrates, the basal ganglia (BG) play
+an important r\^ole in action selection
+\citep{mink_basal_1996,graybiel_basal_1998,hikosaka_role_2000}.
+The \ccg~model places the BG at the centre of the oculomotor system,
+following the known anatomy of the region.  The BG receives excitatory
+inputs directly from retinotopic regions of the cortex including the
+frontal eye fields (FEF), supplementary eye fields (SEF), lateral
+intraparietal cortex (LIP) and dorsolateral prefrontal cortex. The BG
+receives input indirectly from the superior colliculus, which also has
+a retinotopic arrangement. The dorsolateral prefrontal cortex, which
+participates in voluntary saccades
+\citep{funahashi_prefrontal_1993,munoz_look_2004}, is not
+modelled because the model concerns reflexive rather than voluntary
+eye movements. Several other regions of the brain that are associated
+with eye movements are also omitted from the model. The early visual
+processing stream in cortex, from V1, through to the LIP is subsumed
+into a `sustained retinal' signal. The justification here is that the
+model reacts to simple luminant targets and does not need to carry out
+the feature extraction performed by these visual areas. The
+supplementary eye fields are involved in the programming of
+saccades \citep{} and memory guided saccades \citep{}. Lesions of SEF
+do not affect visually guided saccades \citep{} and so the SEF is also
+omitted from the model.
+%
+% Figure here is the ``macroscopic architecture'' one.
+%
+The
+BG's output is inhibitory and shapes the build-up of activity in both
+of these regions.
+%
+The \ccg~model adopts a `channel based' model from previous
+work~\citep{redgrave_basal_1999,gurney_basal_2004}. Within the context
+of the basal ganglia model, a `channel' is a sub-set of neurons which
+are associated with an individual action. Each channel in BG loops back via
+relays in the thalamus through cortex. Input into this
+thalamo-cortical loop is
+termed `salience'. Because it is a loop, input salience to the channel
+may originate cortically or sub-cortically. The higher the salience of
+the channel, the greater is the behavioural relevance of the
+associated action.
+
+In the oculomotor model, an action
 corresponds to a distinct saccade end point. It can be seen that the
-action space for reflexive saccade end points is therefore a
-continuous space, rather than being selection between distinct
-acts. Etc etc. }
+action space for reflexive saccade end points is therefore
+continuous rather than descrete.}
 
 Fig.~\ref{brain_model} shows the layout of the populations in the
 brain model and the interconnections between them. Each population of
