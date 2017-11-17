@@ -34,9 +34,9 @@
 
 \def\keyFont{\fontsize{8}{11}\helveticabold }
 \def\firstAuthorLast{James {et~al.}}
-\def\Authors{Sebastian James\,$^{1,2,*}$, Chris Papapavlou\,$^5$, Alexander Blenkinsop\,$^{1,2}$, \\
+\def\Authors{Sebastian James\,$^{1,2}$, Chris Papapavlou\,$^5$, Alexander Blenkinsop\,$^{1,2}$, \\
   Alexander Cope\,$^3$,  \\
-  Sean Anderson\,$^{2,4}$, Konstantinos Moustakas\,$^5$, Kevin Gurney\,$^{1,2}$}
+  Sean Anderson\,$^{2,4}$, Konstantinos Moustakas\,$^5$, Kevin Gurney\,$^{1,2,*}$}
 
 \def\Address{\\
 $^{1}$Adaptive Behaviour Research Group, Department of Psychology,
@@ -284,7 +284,7 @@ eye fields is transferred to the intermediate layers of the superior
 colliculus
 \citep{stanton_frontal_1988-1} and is also processed by the basal ganglia,
 which participates in the selection of the winning saccade end point
-\citep{stanton_frontal_1988}.
+\citep{stanton_frontal_1988,hikosaka_role_2000}.
 %
 Although both cortical and subcortical paths produce a saccade target
 signal in the superior colliculus, it is also possible for animals to
@@ -323,22 +323,29 @@ from input-~or output-assumption models.
 
 % A very short introduction to the section.
 The integrated brain and biomechanical model described here is a
-development of the model in \cite{cope_basal_2017},
-referred to here as the \ccg~model. This was a rate-coded neural
-network model incorporating retinal populations, frontal eye fields
-(FEF), the basal ganglia (BG), and the superior colliculus (SC). In
-the \ccg~model, the centroid of the activity in the deep
-layers of superior colliculus was assumed to accurately encode the
-location of the eye at the end of the saccade
-\citep{wurtz_activity_1972,robinson_eye_1972,van_gisbergen_collicular_1987,mcilwain_lateral_1982}.
-This location was used to recalculate the positions of the luminances
-in the eye's frame of reference at each time step. The model included
-no brainstem populations other than superior colliculus, nor a
-neuromuscular model.
-
-To summarize, the \ccg~model takes as \e{input} the positions of
-luminances on a topographic map and produces as output a saccade
-target.
+development of the model in \cite{cope_basal_2017}, referred to here
+as the \ccg~model. This was a rate-coded neural network model
+incorporating retinal populations, frontal eye fields (FEF), the basal
+ganglia (BG), and the superior colliculus (SC).  The \ccg~model takes
+as \e{input} the positions of luminances \rvwt{(of fixed shape and
+intensity)} on a topographic map. \rvwt{Whilst certain assumptions
+were made about the input---that a luminant input excites activity on
+a retinotopic layer, with computer code carrying out the
+transformation achieved in the brain by a neural connectivity
+map \citep{thivierge_topographic_2007}---it is nonetheless \e{not} an
+input-assumption model according to our definition because the
+activity generated in the neural input layer is modelled as a response
+to the luminances, rather than being crafted.}  In the \ccg~model, the
+centroid of the activity in the deep layers of superior colliculus was
+assumed to accurately encode the location of the eye at the end of the
+saccade
+\citep{wurtz_activity_1972,robinson_eye_1972,van_gisbergen_collicular_1987,mcilwain_lateral_1982}.  This location was used to
+recalculate the positions of the luminances in the eye's frame of
+reference at each time step. \rvwt{Because a pattern of neural
+activity in the output population was assumed to have a behavioural
+outcome, it was thus an \e{output-assumption model}}.  The model
+included no brainstem populations other than superior colliculus, nor
+a neuromuscular model.
 
 To the \ccg~model, we added a brainstem model and a biomechanical eye
 model. \rvw{The rate-coded brainstem model was taken from the
@@ -462,35 +469,40 @@ system (red box).
 
 \subsection{Existing brain model} \label{sec:methods:existing}
 
+% Describe what is modelled first
 The brain model, excluding the brainstem, is a re-implementation of
-the \ccg~model, \rvwt{of reflexive saccadic behaviour}.
-%
+the \ccg~model, \rvwt{of reflexive saccadic behaviour \citep{cope_basal_2017}}.
 \rvwt{Reflexive saccades are fast eye movements elicited by abrupt
 changes in the peripheral visual scene (reflexive saccades can occur
 also as a result of auditory and somatosensory stimuli, but these
-modalities are ignored here are in \cite{cope_basal_2017}). A
-reflexive saccade has a starting position defined by the initial
-orientation of the eye and an end-point position in which the eye is
-directed towards a new target. Regardless of the number of targets
-within the visual scene, the brain must choose one location as the
-end-point, because the eyes can only look in one direction at a
-time. The functionality reproduced by the \ccg~model is `the selection
-of the best target end-point for a reflexive saccade'. A competition
-such as this between competing, incompatible movements is often
-referred to as an \e{action selection}
+modalities are ignored in this model). A reflexive saccade has a
+starting position defined by the initial orientation of the eye and an
+end-point position in which the eye is directed towards a new
+target. Regardless of the number of targets within the visual scene,
+the brain must choose one location as the end-point, because the eyes
+can look only in one direction at a time. The functionality reproduced
+by the \ccg~model is `the selection of the best target end-point for a
+reflexive saccade'. A competition such as this between incompatible
+movements is often referred to as an \e{action selection}
 problem \citep{norman_attention_1986,maes_dynamics_1989,redgrave_basal_1999}.}
 
-\rvwt{It is thought that in vertebrates, the basal ganglia (BG) play
-an important r\^ole in action selection
-\citep{mink_basal_1996,graybiel_basal_1998,hikosaka_role_2000}.
+\rvwt{One hypothesis for the r\^ole played by the basal ganglia (BG)
+is that the system performs \e{action selection}
+\citep{mink_basal_1996,redgrave_basal_1999,hikosaka_role_2000}.
 The \ccg~model places the BG at the centre of the oculomotor system,
-following the known anatomy of the region.  The BG receives excitatory
+following the known anatomy of the
+region \citep{hikosaka_role_2000}. The BG receives input indirectly
+from the superior colliculus, which has a retinotopic
+arrangement \citep{ottes_visuomotor_1986}.
+%and a signal which is associated with saccadic eye
+%movements \citep{wurtz_superior_1971}, specifying the saccade
+%end-point.
+The BG receives excitatory
 inputs directly from retinotopic regions of the cortex including the
 frontal eye fields (FEF), supplementary eye fields (SEF), lateral
-intraparietal cortex (LIP) and dorsolateral prefrontal cortex. The BG
-receives input indirectly from the superior colliculus, which also has
-a retinotopic arrangement. The dorsolateral prefrontal cortex, which
-participates in voluntary saccades
+intraparietal cortex (LIP) and dorsolateral prefrontal cortex. The
+dorsolateral prefrontal cortex, which participates in voluntary
+saccades
 \citep{funahashi_prefrontal_1993,munoz_look_2004}, is not
 modelled because the model concerns reflexive rather than voluntary
 eye movements. Several other regions of the brain that are associated
@@ -499,38 +511,128 @@ processing stream in cortex, from V1, through to the LIP is subsumed
 into a `sustained retinal' signal. The justification here is that the
 model reacts to simple luminant targets and does not need to carry out
 the feature extraction performed by these visual areas. The
-supplementary eye fields are involved in the programming of
-saccades \citep{} and memory guided saccades \citep{}. Lesions of SEF
-do not affect visually guided saccades \citep{} and so the SEF is also
-omitted from the model.
+supplementary eye fields are involved in the programming of saccade
+sequences \citep{tehovnik_eye_2000} and memory guided
+saccades \citep{chen_supplementary_1995,schlag_neurons_2002}. Lesions
+of SEF do not affect visually guided
+saccades \citep{gaymard_cortical_1998} and so the SEF is also omitted
+from the model.}
 %
 % Figure here is the ``macroscopic architecture'' one.
 %
-The
-BG's output is inhibitory and shapes the build-up of activity in both
-of these regions.
-%
-The \ccg~model adopts a `channel based' model from previous
-work~\citep{redgrave_basal_1999,gurney_basal_2004}. Within the context
-of the basal ganglia model, a `channel' is a sub-set of neurons which
-are associated with an individual action. Each channel in BG loops back via
-relays in the thalamus through cortex. Input into this
-thalamo-cortical loop is
-termed `salience'. Because it is a loop, input salience to the channel
-may originate cortically or sub-cortically. The higher the salience of
-the channel, the greater is the behavioural relevance of the
-associated action.
 
-In the oculomotor model, an action
+% Now describe each bit a little more, with help of the figure.
+\rvwt{Fig.~\ref{fig:ccg_model}(a) shows the macroscopic architecture of
+the \ccg~model. The figure shows the relationships between the retinal
+input populations, the FEF, the populations comprising the BG
+sub-system (the red border indicates that the box represents a number
+of populations as a sub-system), the thalamus and the superior
+colliculus. Excitatory connections are indicated with arrow heads;
+inhibitory connections with circles in place of the arrow heads. The
+blue and green connection lines indicate two thalamo-basal ganglia
+loops, one cortical loop through FEF (green), the other a sub-cortical
+loop through SC. It is important to note that although they are given
+different colours in the diagram, these loops are in no way
+independent, with loop activity combining both in thalamus and in the
+basal ganglia and a direct excitatory, feed-forward connection from
+FEF to SC.}
+
+% More on BG model here
+\rvwt{The basal ganglia sub-system is the most complex component of
+the \ccg~model. The BG model is based on previous
+work \citep{gurney_computational_2001,gurney_computational_2001-1} and is referred to as the GPR
+model. The GPR model incorporates the following main components of the
+primate BG \citep{mink_basal_1996,wickens_basal_1997}: (i) The
+striatum (the main input station to the BG) which is divided into two
+iterdigitated poulations of projection neurons expressing primarily D1
+or D2-type dopaminergic receptors (named Str\_D1 and Str\_D2); (ii)
+The subthalamic nucleus (STN); (iii) the external segment of the
+globus pallidus (GPe); (iv) the output nucleus relevant for saccadic
+control---the substantia nigra pars reticulata
+(SNr) \citep{hikosaka_role_2000}.}
+
+\rvwt{The connectivity of the GPR model (Fig.~\ref{fig:ccg_model}(b)
+is constrained by the known anatomy and physiology of the
+BG~\citep{bolam_synaptic_2000}. Physiologically, the only source of
+glutamate within the BG is the STN, whose projections are therefore
+excitatory; all other nuclei have GABAergic projection neurons and are
+therefore inhibitory. The cortex sends glutamatergic projections to
+both the Str\_D1 striatal population, which projects preferentially to
+the SNr, and to Str\_D2, which projects primarily to
+GPe \citep{gerfen_d1_1990}. The cortex also projects to the STN, which
+sends diffuse projections to the SNr and
+GPe \citep{parent_anatomical_1993}. The GPe projects to the SNr and
+also projects back to the STN, completing a GPe--STN loop.}
+
+\rvwt{Within the BG, there are several mechanisms supporting
+competitive processing for selecting channels whose inhibitory output
+is reduced. The selection mechanism of the GPR model is the
+`off-centre, on-surround' scheme proposed
+by \cite{mink_basal_1993}. The `on-surround' is provided by
+diffuse, excitatory projections from the STN to the SNr. Focussed
+inhibition from the Str\_D1 neurons in striatum contributes the
+`off-centre' part of the mechanism. This arrangement leads to
+selection behaviour via a release of target inhibition, since
+channels that have strong saliencel (input) have weak output at the
+level of SNr, and channels with weak salience have enhanced output.}
+
+\rvwt{The GPe is not included in the centre-surround circuit described
+above, but still plays a key r\^ole in selection. Operating alone, the
+Str\_D1/STN/SNr circuit can suffer from the following problem: if the
+input for all channels is relatively high, then the diffuse projection
+from STN, which effectively supplies a sum of the STN inputs to each
+channel in SNr, will provide so much excitation that Str\_D1 may
+become unable to inhibit one of the channels in SNr and selection may
+become
+impossible. \cite{gurney_computational_2001,gurney_computational_2001-1}
+showed that the inhibitory feedback from GPe to STN acts as an
+`automatic gain control' to help prevent this from occurring.}
+
+\rvwt{At the neuronal level, the STN, GPe and SNr have tonic output
+levels \citep{chevalier_disinhibition_1990,delong_primate_1985,kita_intracellular_1991}. This
+is modelled using piecewise linear output functions with zero offsets,
+$c$ (see Eq.~\ref{eq:lintransfunc}). In striatum, Str\_D1 and Str\_D2
+have positive offset $c$, mimicking the so-called `down-state' of
+medium spiny neurons which have a resting potential far below spiking
+threshold and require co-ordinated input to generate action
+potentials \citep{wilson_origins_1996}.
+% Note, in Cope's paper, there is an error with the offsets for
+% D1,D2. These are set to -0.05 instead of 0.05. A quick trial with
+% the model suggests this doesn't make a very large difference to the
+% operation, and I have the sign correct in any case.
+In addition, the Str\_D1 and Str\_D2 neurons are influenced by
+dopamine in different ways; facilitating cortico-striatal transmission
+at medium spiny neurons with D1 receptors \citep{hernandez-lopez_D1_1997,gonon_prolonged_1997} and reducing
+transmission at those with D2 receptors \citep{delgado_inhibitory_1999}. These effects are
+modelled using a dopamine parameter which modulates the input
+activation as described below in Eqs~\ref{eq:a_in_d1} \& \ref{eq:a_in_d2}.}
+
+
+% Change this - we already talked about channels?
+\rvwt{The \ccg~model adopts a `channel based' model from previous
+work~\citep{redgrave_basal_1999,gurney_computational_2001}.
+Within the context of the basal ganglia model, a `channel' is a
+sub-set of neurons which are associated with an individual
+action. Each channel in BG loops back via relays in the thalamus
+through cortex. Input into this thalamo-cortical loop is termed
+`salience'. Because it is a loop, input salience to the channel may
+originate cortically or sub-cortically. The higher the salience of the
+channel, the greater is the behavioural relevance of the associated
+action.}
+
+\rvwt{In the oculomotor model, an action
 corresponds to a distinct saccade end point. It can be seen that the
 action space for reflexive saccade end points is therefore
-continuous rather than descrete.}
+continuous rather than discrete. MORE HERE}
+
+% FEF stuff taken from Alex's pre-pub
 
 Fig.~\ref{brain_model} shows the layout of the populations in the
-brain model and the interconnections between them. Each population of
-2500 elements is arranged as a 50 by 50 grid which forms a map in a
-retinotopic co-ordinate system, roughly matching the known layout of
-the superior colliculus \citep{robinson_eye_1972}.
+brain model, as implemented in SpineCreator, and the interconnections
+between them. Each population of 2500 elements is arranged as a 50 by
+50 grid which forms a map in a retinotopic co-ordinate system, roughly
+matching the known layout of the superior
+colliculus \citep{robinson_eye_1972}.
 % and frontal eye field?
 
 \subsubsection{Components}
@@ -567,17 +669,21 @@ amplitude.
 
 The output, $y$, of LINlinear is related to the activation $a$ by the
 piecewise linear transfer function
-\begin{equation}
+\begin{equation} \label{eq:lintransfunc}
    y(a) = \begin{cases}
       0   & a < c \\
       a-c & c \leq a \leq 1+c \\
       1   & a > 1+c
    \end{cases}
 \end{equation}
-where $c$ is a parameter defining the slope of the transfer
-function. At this point, the naming scheme for the component becomes
-apparent; this is a Leaky Integrator with a piecewise-linear transfer
-function.
+where $c$ is a parameter defining the offset of the transfer
+function. \rvwt{If $c<0$, then for zero activation ($a=0$), the output
+will be positive. This simulates the effect of a neural population
+having tonic firing. If $c>0$ then the output will be zero until the
+activation exceeds $c$, simulating neurons which only fire when driven
+by excitatory input.} At this point, the naming scheme for the
+component becomes apparent; this is a Leaky Integrator with a
+piecewise-linear transfer function.
 
 The LINret component used for the retinal populations is similar to
 the LINlinear component, but with no intrinsic noise and no shunting
@@ -622,10 +728,10 @@ striatum. As they model the fact that most MSN neurons fall into two
 groups; those expressing D1 dopamine receptors and those expressing D2
 receptors, they have a dopamine parameter that modulates the input
 activation, so that their equations for $a_{in}$ are thus:
-\begin{equation}
+\begin{equation} \label{eq:a_in_d1}
    a_{in}^{D1} = (0.2 + d)A + 0.01 R_N
 \end{equation}
-\begin{equation}
+\begin{equation} \label{eq:a_in_d2}
    a_{in}^{D2} = (1 - d)A + 0.01 R_N
 \end{equation}
 where $d$ is the dopamine parameter. Varying dopamine from 0 to 1
@@ -1090,7 +1196,7 @@ synergy between the vertical and oblique channels in the eye, although
 the results will show there is some systematic change in the oblique error
 with saccade end-point location.
 
-\cite{tabareau_geometry_2007} gives a formulation for the weight maps
+\cite{tabareau_geometry_2007} give a formulation for the weight maps
 in which it is possible to project both a positive and a negative
 weight. In our model, all projections from SC\_deep are excitatory.
 This means that each channel has a weight which follows the form:
@@ -1150,7 +1256,7 @@ of the BRAHMS eye model component to the six inputs of the
 worldDataMaker BRAHMS component was specified in
 the \stob~external.xsl file.
 
-% worldDataMaker to brain, but Re-work:
+% worldDataMaker to brain:
 The eye model outputs its rotational state at each timestep. The
 rotational state is used to compute the view of the world in the eye's
 frame of reference. To simplify the calculation, the luminances exist
@@ -1811,6 +1917,24 @@ compiled and installed within the BRAHMS Namespace, allowing the
 BRAHMS executable to locate them at runtime. c) The red box shows the
 resulting BRAHMS system ready to be executed by the BRAHMS
 executable. In practice, this call is made by \stob.}
+\end{figure}
+
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{./figures/ccg_model.png}
+\end{center}
+\textbf{\refstepcounter{figure}\label{fig:ccg_model} Figure \arabic{figure}.}
+{ The macroscopic architecture of the \ccg~model. The main nuclei
+modelled as brain systems are: basal ganglia (BG), frontal eye fields
+(FEF), thalamus (THAL) and superior colliculus (SC). The retinal input
+is presented via non-biologically plausible retinal populations. The
+loops through basal ganglia, which define the architecture, are shown
+with coloured lines: the cortical loop (through FEF and THAL) in green
+and the sub-cortical loop (through SC and THAL) in blue. Connections
+with arrowheads indicate excitatory connections, those with circles
+are inhibitory. A red border indicates that the box represents a
+sub-system of two or more populations; a black box indicates,
+within the context of the model, a single neural population.}
 \end{figure}
 
 \begin{figure}[htb!]

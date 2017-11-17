@@ -1,4 +1,4 @@
-\begin{thebibliography}{108}
+\begin{thebibliography}{135}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -59,8 +59,9 @@ Barash, S., Melikyan, A., Sivakov, A., Zhang, M., Glickstein, M., and Thier, P.
 \bibitem[{Bayguinov et~al.(2015)Bayguinov, Ghitani, Jackson, and
   Basso}]{bayguinov_hard-wired_2015}
 Bayguinov, P.~O., Ghitani, N., Jackson, M.~B., and Basso, M.~A. (2015).
-\newblock A hard-wired priority map in the superior colliculus shaped by
-  asymmetric inhibitory circuitry \doi{10.1152/jn.00144.2015}
+\newblock A {Hard}-{Wired} {Priority} {Map} in the {Superior} {Colliculus}
+  {Shaped} by {Asymmetric} {Inhibitory} {Circuitry}.
+\newblock \emph{Journal of Neurophysiology} \doi{10.1152/jn.00144.2015}
 \bibAnnoteFile{bayguinov_hard-wired_2015}
 
 \bibitem[{Becker and J\"urgens(1979)}]{becker_analysis_1979}
@@ -94,6 +95,13 @@ Bogacz, R. and Gurney, K. (2007).
 \newblock \doi{10.1162/neco.2007.19.2.442}
 \bibAnnoteFile{bogacz_basal_2007}
 
+\bibitem[{Bolam et~al.(2000)Bolam, Hanley, Booth, and
+  Bevan}]{bolam_synaptic_2000}
+Bolam, J., Hanley, J., Booth, P., and Bevan, M. (2000).
+\newblock Synaptic organisation of the basal ganglia.
+\newblock \emph{Journal of Anatomy} 196, 527--542
+\bibAnnoteFile{bolam_synaptic_2000}
+
 \bibitem[{Brown et~al.(2001)Brown, Oliviero, Mazzone, Insola, Tonali, and
   Di~Lazzaro}]{brown_dopamine_2001}
 Brown, P., Oliviero, A., Mazzone, P., Insola, A., Tonali, P., and Di~Lazzaro,
@@ -110,6 +118,20 @@ Casteau, S. and Vitu, F. (2012).
 \newblock \emph{Journal of vision} 12, 14
 \bibAnnoteFile{casteau_effect_2012}
 
+\bibitem[{Chen and Wise(1995)}]{chen_supplementary_1995}
+Chen, L.~L. and Wise, S.~P. (1995).
+\newblock Supplementary eye field contrasted with the frontal eye field during
+  acquisition of conditional oculomotor associations.
+\newblock \emph{Journal of Neurophysiology} 73, 1122--1134
+\bibAnnoteFile{chen_supplementary_1995}
+
+\bibitem[{Chevalier and Deniau(1990)}]{chevalier_disinhibition_1990}
+Chevalier, G. and Deniau, J.~M. (1990).
+\newblock Disinhibition as a basic process in the expression of striatal
+  functions.
+\newblock \emph{Trends in Neurosciences} 13, 277--280
+\bibAnnoteFile{chevalier_disinhibition_1990}
+
 \bibitem[{Cope et~al.(2017)Cope, Chambers, Prescott, and
   Gurney}]{cope_basal_2017}
 Cope, A., Chambers, J.~M., Prescott, T.~J., and Gurney, K.~N. (2017).
@@ -121,8 +143,7 @@ Cope, A., Chambers, J.~M., Prescott, T.~J., and Gurney, K.~N. (2017).
 
 \bibitem[{Cope and James(2015)}]{cope_spineml_2_brahms_2015-1}
 Cope, A.~J. and James, S.~S. (2015).
-\newblock {SpineML}\_2\_BRAHMS.
-\newblock RRID: SCR\_015640
+\newblock {SpineML}\_2\_brahms ({NoTremor} {Oculomotor} branch)
 \bibAnnoteFile{cope_spineml_2_brahms_2015-1}
 
 \bibitem[{Cope et~al.(2014)Cope, Richmond, and Allerton}]{cope_spineml_2014}
@@ -175,6 +196,23 @@ Dean, P. and Porrill, J. (2008).
 \newblock \emph{Cerebellum} 7, 567--571
 \bibAnnoteFile{dean_adaptive_2008}
 
+\bibitem[{Delgado et~al.(1999)Delgado, Sierra, Querejeta, Valdiosera, and
+  Aceves}]{delgado_inhibitory_1999}
+Delgado, A., Sierra, A., Querejeta, E., Valdiosera, R., and Aceves, J. (1999).
+\newblock Inhibitory control of the {GABAergic} transmission in the rat
+  neostriatum by {D}2 dopamine receptors.
+\newblock \emph{Neuroscience} 95, 1043--1048.
+\newblock \doi{10.1016/S0306-4522(99)00495-9}
+\bibAnnoteFile{delgado_inhibitory_1999}
+
+\bibitem[{DeLong et~al.(1985)DeLong, Crutcher, and
+  Georgopoulos}]{delong_primate_1985}
+DeLong, M., Crutcher, M.~D., and Georgopoulos, A. (1985).
+\newblock Primate globus pallidus and subthalamic nucleus:functional
+  organization.
+\newblock \emph{Journal of Neurphysiology} 53, 530--543
+\bibAnnoteFile{delong_primate_1985}
+
 \bibitem[{Deubel and Schneider(1996)}]{deubel_saccade_1996}
 Deubel, H. and Schneider, W.~X. (1996).
 \newblock Saccade target selection and object recognition: {Evidence} for a
@@ -223,6 +261,14 @@ Fuchs, A. and Luschei, E. (1970).
 \newblock \emph{Journal of Neurophysiology} 33, 382--392
 \bibAnnoteFile{fuchs_firing_1970}
 
+\bibitem[{Funahashi et~al.(1993)Funahashi, Chafee, and
+  Goldman-Rakic}]{funahashi_prefrontal_1993}
+Funahashi, S., Chafee, M.~V., and Goldman-Rakic, P.~S. (1993).
+\newblock Prefrontal neuronal activity in rhesus monkeys performing a delayed
+  anti-saccade task.
+\newblock \emph{Nature} 365, 753
+\bibAnnoteFile{funahashi_prefrontal_1993}
+
 \bibitem[{Galvan and Wichmann(2008)}]{galvan_pathophysiology_2008}
 Galvan, A. and Wichmann, T. (2008).
 \newblock Pathophysiology of {Parkinsonism}.
@@ -237,12 +283,31 @@ Gancarz, G. and Grossberg, S. (1998).
 \newblock \doi{10.1016/S0893-6080(98)00096-3}
 \bibAnnoteFile{gancarz_neural_1998}
 
-\bibitem[{Ghitani et~al.(2014)Ghitani, Bayguinov, Vokoun, {McMahon}, Jackson,
-  and Basso}]{ghitani_excitatory_2014}
-Ghitani, N., Bayguinov, P.~O., Vokoun, C.~R., {McMahon}, S., Jackson, M.~B.,
-  and Basso, M.~A. (2014).
-\newblock Excitatory synaptic feedback from the motor layer to the sensory
-  layers of the superior colliculus 34, 6822--6833.
+\bibitem[{Gaymard et~al.(1998)Gaymard, Ploner, Rivaud, Vermersch, and
+  Pierrot-Deseilligny}]{gaymard_cortical_1998}
+Gaymard, B., Ploner, C.~J., Rivaud, S., Vermersch, A.~I., and
+  Pierrot-Deseilligny, C. (1998).
+\newblock Cortical control of saccades.
+\newblock \emph{Experimental Brain Research} 123, 159--163.
+\newblock \doi{10.1007/s002210050557}
+\bibAnnoteFile{gaymard_cortical_1998}
+
+\bibitem[{Gerfen et~al.(1990)Gerfen, Engbar, Mahan, Susel, Chase, Monsma
+  et~al.}]{gerfen_d1_1990}
+Gerfen, C.~R., Engbar, T.~M., Mahan, L.~C., Susel, Z., Chase, T.~N., Monsma,
+  F.~J., et~al. (1990).
+\newblock D1 and {D}2 dopamine receptor regulated gene-expression of
+  striatonigral and striatopallidal neurons.
+\newblock \emph{Science} 250, 1429--1432
+\bibAnnoteFile{gerfen_d1_1990}
+
+\bibitem[{Ghitani et~al.(2014)Ghitani, Bayguinov, Vokoun, McMahon, Jackson, and
+  Basso}]{ghitani_excitatory_2014}
+Ghitani, N., Bayguinov, P.~O., Vokoun, C.~R., McMahon, S., Jackson, M.~B., and
+  Basso, M.~A. (2014).
+\newblock Excitatory {Synaptic} {Feedback} from the {Motor} {Layer} to the
+  {Sensory} {Layers} of the {Superior} {Colliculus}.
+\newblock \emph{The Journal of Neuroscience} 34, 6822--6833.
 \newblock \doi{10.1523/JNEUROSCI.3137-13.2014}
 \bibAnnoteFile{ghitani_excitatory_2014}
 
@@ -278,8 +343,8 @@ Goossens, H. (2006).
 \newblock \doi{10.1152/jn.00889.2005}
 \bibAnnoteFile{goossens_dynamic_2006}
 
-\bibitem[{Goossens and Van Opstal(2012)}]{goossens_optimal_2012}
-Goossens, H. and Van Opstal, A.~J. (2012).
+\bibitem[{Goossens and van Opstal(2012)}]{goossens_optimal_2012}
+Goossens, H. and van Opstal, A.~J. (2012).
 \newblock Optimal control of saccades by spatial-temporal activity patterns in
   the monkey superior colliculus.
 \newblock \emph{PLoS computational biology} 8, e1002508
@@ -299,6 +364,22 @@ Groh, J.~M. (2011).
 \newblock \emph{Frontiers in Integrative Neuroscience} 4.
 \newblock \doi{10.3389/fnint.2010.00130}
 \bibAnnoteFile{groh_effects_2011}
+
+\bibitem[{Gurney et~al.(2001{\natexlab{a}})Gurney, Prescott, and
+  Redgrave}]{gurney_computational_2001-1}
+Gurney, K., Prescott, T.~J., and Redgrave, P. (2001{\natexlab{a}}).
+\newblock A computational model of action selection in the basal ganglia. {I}.
+  {A} new functional anatomy.
+\newblock \emph{Biological cybernetics} 84, 401--10
+\bibAnnoteFile{gurney_computational_2001-1}
+
+\bibitem[{Gurney et~al.(2001{\natexlab{b}})Gurney, Prescott, and
+  Redgrave}]{gurney_computational_2001}
+Gurney, K., Prescott, T.~J., and Redgrave, P. (2001{\natexlab{b}}).
+\newblock A computational model of action selection in the basal ganglia. {II}.
+  {Analysis} and simulation of behaviour.
+\newblock \emph{Biological cybernetics} 84, 411--23
+\bibAnnoteFile{gurney_computational_2001}
 
 \bibitem[{Hallworth et~al.(2003)Hallworth, Wilson, and
   Bevan}]{hallworth_apamin-sensitive_2003}
@@ -341,6 +422,24 @@ Hepp, K., Van~Opstal, A.~J., Straumann, D., Hess, B.~J., and Henn, V. (1993).
 \newblock \emph{Journal of neurophysiology} 69, 965--979
 \bibAnnoteFile{hepp_monkey_1993}
 
+\bibitem[{Hernández-López et~al.(1997)Hernández-López, Bargas, Surmeier,
+  Reyes, and Galarraga}]{hernandez-lopez_D1_1997}
+Hernández-López, S., Bargas, J., Surmeier, D.~J., Reyes, A., and Galarraga,
+  E. (1997).
+\newblock D1 receptor activation enhances evoked discharge in neostriatal
+  medium spiny neurons by modulating an {L}-type {Ca}2+ conductance.
+\newblock \emph{The Journal of neuroscience : the official journal of the
+  Society for Neuroscience} 17, 3334--42
+\bibAnnoteFile{hernandez-lopez_D1_1997}
+
+\bibitem[{Hikosaka et~al.(2000)Hikosaka, Takikawa, and
+  Kawagoe}]{hikosaka_role_2000}
+Hikosaka, O., Takikawa, Y., and Kawagoe, R. (2000).
+\newblock Role of the basal ganglia in the control of purposive saccadic eye
+  movements.
+\newblock \emph{Physiological reviews} 80, 953--978
+\bibAnnoteFile{hikosaka_role_2000}
+
 \bibitem[{Howard and Tipper(1997)}]{howard_hand_1997}
 Howard, L.~A. and Tipper, S. (1997).
 \newblock Hand deviations away from visual cues: indirect evidence for
@@ -380,6 +479,13 @@ James, S., Bell, O.~A., Nazli, M. A.~M., Pearce, R.~E., Spencer, J., Tyrrell,
 \newblock \doi{10.1371/journal.pone.0176945}
 \bibAnnoteFile{james_target-distractor_2017}
 
+\bibitem[{Kita and Kitai(1991)}]{kita_intracellular_1991}
+Kita, H. and Kitai, S.~T. (1991).
+\newblock Intracellular study of rat globus pallidus neurons: membrane
+  properties and responses to neostriatal, subthalamic and nigral stimulation.
+\newblock \emph{Brain research} 564, 296--305
+\bibAnnoteFile{kita_intracellular_1991}
+
 \bibitem[{Kleine(2003)}]{kleine_saccade-related_2003}
 Kleine, J.~F. (2003).
 \newblock {\selectlanguage{en}Saccade-{Related} {Neurons} in the {Primate}
@@ -418,6 +524,12 @@ Ling, L., Fuchs, A.~F., Siebold, C., and Dean, P. (2007).
   abducens nucleus neurons in the primate.
 \newblock \emph{Journal of Neurophysiology} 98, 3581--3599
 \bibAnnoteFile{ling_effects_2007}
+
+\bibitem[{Maes(1989)}]{maes_dynamics_1989}
+Maes, P. (1989).
+\newblock \emph{The dynamics of action selection} (Artificial Intelligence
+  Laboratory, Vrije Universiteit Brussel)
+\bibAnnoteFile{maes_dynamics_1989}
 
 \bibitem[{Marcos and Genovesio(2016)}]{marcos_determining_2016}
 Marcos, E. and Genovesio, A. (2016).
@@ -487,6 +599,19 @@ Meredith, M.~A. and Ramoa, A.~S. (1998).
 \newblock \emph{Journal of Neurophysiology} 79, 1597--1602
 \bibAnnoteFile{meredith_intrinsic_1998}
 
+\bibitem[{Mink(1996)}]{mink_basal_1996}
+Mink, J.~W. (1996).
+\newblock The basal ganglia: focused selection and inhibition of competeing
+  motor programs.
+\newblock \emph{Progress in Neurobiology} 50, 381--425
+\bibAnnoteFile{mink_basal_1996}
+
+\bibitem[{Mink and Thach(1993)}]{mink_basal_1993}
+Mink, J.~W. and Thach, W.~T. (1993).
+\newblock Basal ganglia intrinsic circuits and their role in behavior.
+\newblock \emph{Current opinion in Neurobiology} 3, 950--957
+\bibAnnoteFile{mink_basal_1993}
+
 \bibitem[{Mitchinson et~al.(2010)Mitchinson, Chan, Chambers, Pearson,
   Humphries, Fox et~al.}]{mitchinson_brahms:_2010}
 Mitchinson, B., Chan, T.-S., Chambers, J., Pearson, M., Humphries, M., Fox, C.,
@@ -519,6 +644,14 @@ Munoz, D.~P. (2002).
   Heide {and} R.~Radach (Elsevier), vol. Volume 140. 89--96
 \bibAnnoteFile{munoz_commentary:_2002}
 
+\bibitem[{Munoz and Everling(2004)}]{munoz_look_2004}
+Munoz, D.~P. and Everling, S. (2004).
+\newblock Look away: the anti-saccade task and the voluntary control of eye
+  movement.
+\newblock \emph{Nature Reviews Neuroscience} 5, 218--228.
+\newblock \doi{10.1038/nrn1345}
+\bibAnnoteFile{munoz_look_2004}
+
 \bibitem[{Nambu et~al.(1990)Nambu, Yoshida, and Jinnai}]{nambu_discharge_1990}
 Nambu, A., Yoshida, S.-i., and Jinnai, K. (1990).
 \newblock Discharge patterns of pallidal neurons with input from various
@@ -536,11 +669,16 @@ N'Guyen, S., Thurat, C., and Girard, B. (2014).
 \newblock \doi{10.3389/fncom.2014.00048}
 \bibAnnoteFile{nguyen_saccade_2014}
 
+\bibitem[{Norman and Shallice(1986)}]{norman_attention_1986}
+Norman, D.~A. and Shallice, T. (1986).
+\newblock Attention to action.
+\newblock In \emph{Consciousness and self-regulation} (Springer). 1--18
+\bibAnnoteFile{norman_attention_1986}
+
 \bibitem[{Nowotny(2011)}]{nowotny_flexible_2011}
 Nowotny, T. (2011).
 \newblock {\selectlanguage{en}Flexible neuronal network simulation framework
-  using code generation for {NVidia}\textsuperscript{\textregistered}
-  {CUDA}\textsuperscript{TM}}.
+  using code generation for {NVidia}\textsuperscript{\textregistered} {CUDA}\textsuperscript{TM}}.
 \newblock \emph{BMC Neuroscience} 12, P239.
 \newblock \doi{10.1186/1471-2202-12-S1-P239}
 \bibAnnoteFile{nowotny_flexible_2011}
@@ -576,6 +714,13 @@ Papapavlou, C. and Moustakas, K. (2014).
 \newblock Physics-based modelling and animation of saccadic eye movement
 \bibAnnoteFile{papapavlou_physics-based_2014}
 
+\bibitem[{Parent and Hazrati(1993)}]{parent_anatomical_1993}
+Parent, A. and Hazrati, L. (1993).
+\newblock Anatomical aspects of information processing in primate basal
+  ganglia.
+\newblock \emph{Trends in Neuroscience} 16, 111--116
+\bibAnnoteFile{parent_anatomical_1993}
+
 \bibitem[{Quaia et~al.(1999)Quaia, Lef\`evre, and Optican}]{quaia_model_1999}
 Quaia, C., Lef\`evre, P., and Optican, L.~M. (1999).
 \newblock Model of the {Control} of {Saccades} by {Superior} {Colliculus} and
@@ -591,6 +736,13 @@ Quaia, C., Par\'e, M., Wurtz, R.~H., and Optican, L.~M. (2000).
 \newblock \emph{Experimental Brain Research} 132, 39--51.
 \newblock \doi{10.1007/s002219900324}
 \bibAnnoteFile{quaia_extent_2000}
+
+\bibitem[{Redgrave et~al.(1999)Redgrave, Prescott, and
+  Gurney}]{redgrave_basal_1999}
+Redgrave, P., Prescott, T.~J., and Gurney, K. (1999).
+\newblock The basal ganglia: a vertebrate solution to the selection problem?
+\newblock \emph{Neuroscience} 89, 1009--1023
+\bibAnnoteFile{redgrave_basal_1999}
 
 \bibitem[{Reppert et~al.(2015)Reppert, Lempert, Glimcher, and
   Shadmehr}]{reppert_modulation_2015}
@@ -651,6 +803,12 @@ Schiller, P.~H., Sandell, J.~H., and Maunsell, J.~H. (1987).
   saccadic latencies in the rhesus monkey.
 \newblock \emph{Journal of Neurophysiology} 57, 1033
 \bibAnnoteFile{schiller_effect_1987}
+
+\bibitem[{Schlag(2002)}]{schlag_neurons_2002}
+Schlag, J.~D. (2002).
+\newblock Neurons that program what to do and in what order.
+\newblock \emph{Neuron} 34, 177--178
+\bibAnnoteFile{schlag_neurons_2002}
 
 \bibitem[{Schwartz(1977)}]{schwartz_spatial_1977}
 Schwartz, E.~L. (1977).
@@ -760,6 +918,22 @@ Talbot, S. and Marshall, W. (1941).
 \newblock \doi{10.1016/S0002-9394(41)91363-6}
 \bibAnnoteFile{talbot_physiological_1941}
 
+\bibitem[{Tehovnik et~al.(2000)Tehovnik, Sommer, Chou, Slocum, and
+  Schiller}]{tehovnik_eye_2000}
+Tehovnik, E.~J., Sommer, M.~A., Chou, I.-H., Slocum, W.~M., and Schiller, P.~H.
+  (2000).
+\newblock Eye fields in the frontal lobes of primates.
+\newblock \emph{Brain Research Reviews} 32, 413--448.
+\newblock \doi{10.1016/S0165-0173(99)00092-2}
+\bibAnnoteFile{tehovnik_eye_2000}
+
+\bibitem[{Thivierge and Marcus(2007)}]{thivierge_topographic_2007}
+Thivierge, J.-P. and Marcus, G.~F. (2007).
+\newblock The topographic brain: from neural connectivity to cognition.
+\newblock \emph{Trends in Neurosciences} 30, 251--259.
+\newblock \doi{10.1016/j.tins.2007.04.004}
+\bibAnnoteFile{thivierge_topographic_2007}
+
 \bibitem[{Thurat et~al.(2015)Thurat, N’Guyen, and
   Girard}]{thurat_biomimetic_2015}
 Thurat, C., N’Guyen, S., and Girard, B. (2015).
@@ -791,8 +965,8 @@ Van~Gisbergen, J. A.~M., Van~Opstal, A.~J., and Schoenmakers, J. J.~M. (1985).
 \newblock \emph{Experimental brain research} 57, 321--336
 \bibAnnoteFile{van_gisbergen_experimental_1985}
 
-\bibitem[{Van Opstal and Goossens(2008)}]{van_opstal_linear_2008}
-Van Opstal, A.~J. and Goossens, H. H. L.~M. (2008).
+\bibitem[{van Opstal and Goossens(2008)}]{van_opstal_linear_2008}
+van Opstal, A.~J. and Goossens, H. H. L.~M. (2008).
 \newblock {\selectlanguage{en}Linear ensemble-coding in midbrain superior
   colliculus specifies the saccade kinematics}.
 \newblock \emph{Biological Cybernetics} 98, 561--577.
@@ -849,6 +1023,19 @@ Walker, R., Deubel, H., Schneider, W.~X., and Findlay, J.~M. (1997).
   extended fixation zone.
 \newblock \emph{Journal of neurophysiology} 78, 1108--1119
 \bibAnnoteFile{walker_effect_1997}
+
+\bibitem[{Wickens(1997)}]{wickens_basal_1997}
+Wickens, J. (1997).
+\newblock Basal ganglia: structure and computations.
+\newblock \emph{Network: Computation in Neural Systems} 8, 77--109
+\bibAnnoteFile{wickens_basal_1997}
+
+\bibitem[{Wilson and Kawaguchi(1996)}]{wilson_origins_1996}
+Wilson, C. and Kawaguchi, Y. (1996).
+\newblock The origins of the two-state spontaneous membrane potential
+  fluctuations of neostriatal spiny neurons.
+\newblock \emph{The Journal of Neuroscience} 16, 2397--2410
+\bibAnnoteFile{wilson_origins_1996}
 
 \bibitem[{Wilson(2004)}]{wilson_model_2004}
 Wilson, C.~J. (2004).
