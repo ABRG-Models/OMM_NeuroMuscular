@@ -303,7 +303,7 @@ eye movements \citep{kleine_saccade-related_2003,takagi_effects_1998}.
 
 There is a long history of modelling the oculomotor system. For a
 comprehensive review, see \cite{girard_brainstem_2005}. Models of
-individual \rvw{subsystems} have been proposed for brainstem
+individual \rvw{sub-systems} have been proposed for brainstem
 \citep{robinson_oculomotor_1975,scudder_new_1988,gancarz_neural_1998},
 cerebellum \citep{quaia_model_1999,dean_modelling_1995,dean_learning_1994}
 and superior colliculus
@@ -351,12 +351,13 @@ To the \ccg~model, we added a brainstem model and a biomechanical eye
 model. \rvw{The rate-coded brainstem model was taken from the
 literature} \citep{gancarz_neural_1998} as the best-of-breed saccadic
 burst generator \citep{girard_brainstem_2005}.  The biomechanical eye
-was implemented using the biomechanical modelling framework OpenSim.
+was implemented using the biomechanical modelling framework OpenSim;
+the brain and brainstem were modelled using the SpineML toolchain.
 These will be described below, \rvwt{along with a review of
 the \ccg~model}, but first we will give a description of the
-co-ordinate systems and the modelling framework used.
+co-ordinate systems.
 
-\subsubsection{Co-ordinates in the world} \label{sec:methods:coords}
+\subsection{Co-ordinates in the world} \label{sec:methods:coords}
 
 Before describing the biomechanical eye and the brain model, which
 consisted of retinotopically mapped neural sheets, we describe the
@@ -393,79 +394,6 @@ was used to translate the three dimensional Cartesian co-ordinates of
 the luminances in the world frame into co-ordinates in the eye
 frame. The luminance co-ordinates in the eye's frame of reference were
 used to determine the input to the brain model.
-
-\subsection{Model development framework} \label{sec:methods:framework}
-
-The \ccg~model was originally developed to run on the BRAHMS model
-execution framework
-\citep{mitchinson_brahms:_2010,mitchinson_brahms_2015}. To run a
-BRAHMS model, the researcher must develop \e{BRAHMS components} for
-the various neural elements. A BRAHMS component is a programmatically
-coded implementation of the behaviour of the component. It may have an
-arbitrary number of inputs and outputs and may be written in C, C++,
-Python or MATLAB. The \ccg~model's components were hand written in C++
-and MATLAB. A BRAHMS \e{SystemML} file describes how the different
-components connect together and how data is passed between them
-\citep{mitchinson_brahms:_2010}. The main BRAHMS program first
-reads the SystemML file, then dynamically loads all the required
-components before executing the system.
-
-In the current work, the \ccg~model was reproduced using the
-declarative SpineML markup
-language \citep{alex_cope_spineml_2014,richmond_model_2014}, with the
-help of the graphical SpineML model editing software called
-SpineCreator
-\citep{cope_spinecreator_2015,cope_spinecreator:_2016}. SpineML,
-which is a development of the NineML specification
-\citep{incf_task_force_on_multi-scale_modeling_network_2011},
-describes neural populations and their projections in a highly
-structured format in which neuron bodies, pre- and post-synapses are
-described in terms of \e{SpineML components}. These are similar to the
-components provided by BRAHMS, but in this case, the components are an
-XML description of the functionality of the component, rather than a
-programmatic implementation, with one XML file per component. A
-SpineML \e{network layer} file then describes which components are
-used in the model, and how they are connected together. Finally, a
-number of SpineML \e{experiment layer} files specify how the model
-described in the network layer can be executed. In the experiment
-layer, the execution duration and timestep can be specified, along
-with input conditions, connection lesions and component parameter
-updates. A description of SpineML is given
-in \cite{richmond_model_2014}; the definitive definition is found in
-the schemas \citep{cope_spineml_2014}.  SpineCreator, in its r\^ole as
-a graphical editor for the SpineML format, was used to generate the
-SpineML files describing the model. It was also used to generate the
-diagrams of the model.
-
-As a declarative format for model specification, SpineML is agnostic
-about how the model is executed. A number of simulation engines can be
-utilised, including DAMSON \citep{richmond_damson_2015}, GeNN
-\citep{nowotny_flexible_2011,nowotny_spineml_2014} and BRAHMS (used
-here). The simulation engine incorporating BRAHMS is called \stob~
-\citep{cope_spineml_2_brahms_2015-1}. \stob~is a collection of XSLT
-stylesheets which first generate and compile C++ BRAHMS components
-from the SpineML component layer description files. \stob~then uses
-the SpineML network and experiment layer files to generate a BRAHMS
-SystemML description of the model. Finally, \stob~executes the model,
-now described entirely as a BRAHMS system, via a call to the BRAHMS
-binary. A number of additional hand-written components are present
-in \stob~providing the inputs (constant inputs, time-varying inputs,
-etc) which the modeller specifies in the experiment layer.
-
-In addition to the brain model components, all of which are
-code-generated using \stob~as described above, two hand-written
-components are integrated into the model: The biomechanical eye model
-and a sensory input component. The sensory input component takes the
-eye's rotational state and the state of the experimental luminances
-and projects a retinotopic activity map into the brain model. Both of
-these BRAHMS components were hand-written in C++. To incorporate these
-components into the SpineML model, a \stob~\e{external.xsl} file was
-used.  The external.xsl file scheme for incorporating external BRAHMS
-components into a SpineML model was a new \stob~feature motivated by
-the current work.  Fig.~\ref{model_framework} shows the workflow, in
-which the model specification files (blue box - a combination of
-SpineML files and C++ code), are processed (green box) into a BRAHMS
-system (red box).
 
 \subsection{Existing brain model} \label{sec:methods:existing}
 
@@ -508,20 +436,19 @@ modelled because the model concerns reflexive rather than voluntary
 eye movements. Several other regions of the brain that are associated
 with eye movements are also omitted from the model. The early visual
 processing stream in cortex, from V1, through to the LIP is subsumed
-into a `sustained retinal' signal. The justification here is that the
-model reacts to simple luminant targets and does not need to carry out
-the feature extraction performed by these visual areas. The
-supplementary eye fields are involved in the programming of saccade
-sequences \citep{tehovnik_eye_2000} and memory guided
+into a `sustained retinal' signal which arrives at FEF. The
+justification here is that the model reacts to simple luminant targets
+and does not need to carry out the feature extraction performed by
+these visual areas. The supplementary eye fields are involved in the
+programming of saccade sequences \citep{tehovnik_eye_2000} and memory
+guided
 saccades \citep{chen_supplementary_1995,schlag_neurons_2002}. Lesions
 of SEF do not affect visually guided
 saccades \citep{gaymard_cortical_1998} and so the SEF is also omitted
 from the model.}
-%
-% Figure here is the ``macroscopic architecture'' one.
-%
 
-% Now describe each bit a little more, with help of the figure.
+% Now describe each bit a little more, with help of the CCG
+% macroscopic architecture figure.
 \rvwt{Fig.~\ref{fig:ccg_model}(a) shows the macroscopic architecture of
 the \ccg~model. The figure shows the relationships between the retinal
 input populations, the FEF, the populations comprising the BG
@@ -544,14 +471,14 @@ work \citep{gurney_computational_2001,gurney_computational_2001-1} and is referr
 model. The GPR model incorporates the following main components of the
 primate BG \citep{mink_basal_1996,wickens_basal_1997}: (i) The
 striatum (the main input station to the BG) which is divided into two
-iterdigitated poulations of projection neurons expressing primarily D1
+iterdigitated populations of projection neurons expressing primarily D1
 or D2-type dopaminergic receptors (named Str\_D1 and Str\_D2); (ii)
 The subthalamic nucleus (STN); (iii) the external segment of the
 globus pallidus (GPe); (iv) the output nucleus relevant for saccadic
 control---the substantia nigra pars reticulata
 (SNr) \citep{hikosaka_role_2000}.}
 
-\rvwt{The connectivity of the GPR model (Fig.~\ref{fig:ccg_model}(b)
+\rvwt{The connectivity of the GPR model [Fig.~\ref{fig:ccg_model}(b)]
 is constrained by the known anatomy and physiology of the
 BG~\citep{bolam_synaptic_2000}. Physiologically, the only source of
 glutamate within the BG is the STN, whose projections are therefore
@@ -564,23 +491,41 @@ sends diffuse projections to the SNr and
 GPe \citep{parent_anatomical_1993}. The GPe projects to the SNr and
 also projects back to the STN, completing a GPe--STN loop.}
 
+\rvwt{The GPR model is arranged into `action channels';
+Fig.~\ref{fig:ccg_model}(b) shows an example network containing three
+channels. It is between these channels that competition occurs, with
+the winning channel succeeding in reducing activity in the output
+nucleus, SNr, and thereby disinhibiting its target. The complete
+connectivity pattern for this small network is shown in
+Fig.~\ref{fig:ccg_model}(b); the left channel in cortex innervates the
+left channels of Str\_D1, STN and Str\_D2. Connections are one-to-one,
+so it follows that the middle channel of cortex innervates the middle
+channels of STN and the striatal populations and the right channel of
+cortex innervates right channels in striatum and STN. Striatal
+population channels also inhibit SNr and GPe on a one-to-one basis and
+GPe feeds inhibition to SNr and STN in a one-to-one manner. The
+outputs from STN however are not one-to-one. The output from all
+channels of STN is summed together and then the sum is fed into each
+channel of SNr and GPe. This models the diffuse excitation from STN
+which has been observed in the BG \citep{parent_anatomical_1993}.}
+
 \rvwt{Within the BG, there are several mechanisms supporting
 competitive processing for selecting channels whose inhibitory output
-is reduced. The selection mechanism of the GPR model is the
+should be reduced. The selection mechanism of the GPR model is the
 `off-centre, on-surround' scheme proposed
 by \cite{mink_basal_1993}. The `on-surround' is provided by
 diffuse, excitatory projections from the STN to the SNr. Focussed
 inhibition from the Str\_D1 neurons in striatum contributes the
 `off-centre' part of the mechanism. This arrangement leads to
 selection behaviour via a release of target inhibition, since
-channels that have strong saliencel (input) have weak output at the
+channels that have strong salience (input) have weak output at the
 level of SNr, and channels with weak salience have enhanced output.}
 
 \rvwt{The GPe is not included in the centre-surround circuit described
 above, but still plays a key r\^ole in selection. Operating alone, the
 Str\_D1/STN/SNr circuit can suffer from the following problem: if the
 input for all channels is relatively high, then the diffuse projection
-from STN, which effectively supplies a sum of the STN inputs to each
+from STN, which effectively supplies a sum of \e{all} of the STN inputs to each
 channel in SNr, will provide so much excitation that Str\_D1 may
 become unable to inhibit one of the channels in SNr and selection may
 become
@@ -591,48 +536,40 @@ showed that the inhibitory feedback from GPe to STN acts as an
 \rvwt{At the neuronal level, the STN, GPe and SNr have tonic output
 levels \citep{chevalier_disinhibition_1990,delong_primate_1985,kita_intracellular_1991}. This
 is modelled using piecewise linear output functions with zero offsets,
-$c$ (see Eq.~\ref{eq:lintransfunc}). In striatum, Str\_D1 and Str\_D2
-have positive offset $c$, mimicking the so-called `down-state' of
-medium spiny neurons which have a resting potential far below spiking
-threshold and require co-ordinated input to generate action
+$c$ (see Eq.~\ref{eq:lintransfunc}) but with noise added to the
+input. In striatum, Str\_D1 and Str\_D2 have positive offset $c$,
+mimicking the so-called `down-state' of medium spiny neurons which
+have a resting potential far below spiking threshold and require
+co-ordinated input to generate action
 potentials \citep{wilson_origins_1996}.
-% Note, in Cope's paper, there is an error with the offsets for
-% D1,D2. These are set to -0.05 instead of 0.05. A quick trial with
-% the model suggests this doesn't make a very large difference to the
-% operation, and I have the sign correct in any case.
+% Note, in Alex's paper, there is an error with the offsets for D1,
+% D2. These are set to -0.05 instead of 0.05. A quick trial with the
+% model suggests this doesn't make a very large difference to the
+% overall operation (you just see a background of noise around the
+% signals in Str), and I have the sign correct in any case.
 In addition, the Str\_D1 and Str\_D2 neurons are influenced by
 dopamine in different ways; facilitating cortico-striatal transmission
 at medium spiny neurons with D1 receptors \citep{hernandez-lopez_D1_1997,gonon_prolonged_1997} and reducing
 transmission at those with D2 receptors \citep{delgado_inhibitory_1999}. These effects are
 modelled using a dopamine parameter which modulates the input
-activation as described below in Eqs~\ref{eq:a_in_d1} \& \ref{eq:a_in_d2}.}
+activation as described below in
+Eqs~\ref{eq:a_in_d1} \& \ref{eq:a_in_d2}; Str\_D1 activation is enhanced;
+Str\_D2 activation is suppressed.}
 
-
-% Change this - we already talked about channels?
-\rvwt{The \ccg~model adopts a `channel based' model from previous
-work~\citep{redgrave_basal_1999,gurney_computational_2001}.
-Within the context of the basal ganglia model, a `channel' is a
-sub-set of neurons which are associated with an individual
-action. Each channel in BG loops back via relays in the thalamus
-through cortex. Input into this thalamo-cortical loop is termed
-`salience'. Because it is a loop, input salience to the channel may
-originate cortically or sub-cortically. The higher the salience of the
-channel, the greater is the behavioural relevance of the associated
-action.}
-
-\rvwt{In the oculomotor model, an action
-corresponds to a distinct saccade end point. It can be seen that the
+% Change this - we already talked about channels in the context of the
+% three channel model show. Perhaps modify to talk about how we have a
+% map of channels - almost a continuous space in the \ccg model. This
+% can then lead on to Fig 3.
+\rvwt{Expand along lines of `the
 action space for reflexive saccade end points is therefore
-continuous rather than discrete. MORE HERE}
+continuous rather than discrete' (FIXME).}
 
-% FEF stuff taken from Alex's pre-pub
+% Now some FEF stuff taken from Alex's pre-pub
+\rvwt{Add description of FEF. (FIXME).}
 
 Fig.~\ref{brain_model} shows the layout of the populations in the
 brain model, as implemented in SpineCreator, and the interconnections
-between them. Each population of 2500 elements is arranged as a 50 by
-50 grid which forms a map in a retinotopic co-ordinate system, roughly
-matching the known layout of the superior
-colliculus \citep{robinson_eye_1972}.
+between them. \rvwt{Describe this figure in more detail. (FIXME).}
 % and frontal eye field?
 
 \subsubsection{Components}
@@ -1046,6 +983,79 @@ governed by $\mathbf{t} = -K\mathbf{R}-C\mathbf{U}$ where $\mathbf{R}$
 is the eye's orientation and $\mathbf{U}$ is its angular velocity. $K$
 and $C$ are constants. A fuller description of the biomechanical model
 can be found in \cite{papapavlou_physics-based_2014}.
+
+\subsection{Model development framework} \label{sec:methods:framework}
+
+The \ccg~model was originally developed to run on the BRAHMS model
+execution framework
+\citep{mitchinson_brahms:_2010,mitchinson_brahms_2015}. To run a
+BRAHMS model, the researcher must develop \e{BRAHMS components} for
+the various neural elements. A BRAHMS component is a programmatically
+coded implementation of the behaviour of the component. It may have an
+arbitrary number of inputs and outputs and may be written in C, C++,
+Python or MATLAB. The \ccg~model's components were hand written in C++
+and MATLAB. A BRAHMS \e{SystemML} file describes how the different
+components connect together and how data is passed between them
+\citep{mitchinson_brahms:_2010}. The main BRAHMS program first
+reads the SystemML file, then dynamically loads all the required
+components before executing the system.
+
+In the current work, the \ccg~model was reproduced using the
+declarative SpineML markup
+language \citep{alex_cope_spineml_2014,richmond_model_2014}, with the
+help of the graphical SpineML model editing software called
+SpineCreator
+\citep{cope_spinecreator_2015,cope_spinecreator:_2016}. SpineML,
+which is a development of the NineML specification
+\citep{incf_task_force_on_multi-scale_modeling_network_2011},
+describes neural populations and their projections in a highly
+structured format in which neuron bodies, pre- and post-synapses are
+described in terms of \e{SpineML components}. These are similar to the
+components provided by BRAHMS, but in this case, the components are an
+XML description of the functionality of the component, rather than a
+programmatic implementation, with one XML file per component. A
+SpineML \e{network layer} file then describes which components are
+used in the model, and how they are connected together. Finally, a
+number of SpineML \e{experiment layer} files specify how the model
+described in the network layer can be executed. In the experiment
+layer, the execution duration and timestep can be specified, along
+with input conditions, connection lesions and component parameter
+updates. A description of SpineML is given
+in \cite{richmond_model_2014}; the definitive definition is found in
+the schemas \citep{cope_spineml_2014}.  SpineCreator, in its r\^ole as
+a graphical editor for the SpineML format, was used to generate the
+SpineML files describing the model. It was also used to generate the
+diagrams of the model.
+
+As a declarative format for model specification, SpineML is agnostic
+about how the model is executed. A number of simulation engines can be
+utilised, including DAMSON \citep{richmond_damson_2015}, GeNN
+\citep{nowotny_flexible_2011,nowotny_spineml_2014} and BRAHMS (used
+here). The simulation engine incorporating BRAHMS is called \stob~
+\citep{cope_spineml_2_brahms_2015-1}. \stob~is a collection of XSLT
+stylesheets which first generate and compile C++ BRAHMS components
+from the SpineML component layer description files. \stob~then uses
+the SpineML network and experiment layer files to generate a BRAHMS
+SystemML description of the model. Finally, \stob~executes the model,
+now described entirely as a BRAHMS system, via a call to the BRAHMS
+binary. A number of additional hand-written components are present
+in \stob~providing the inputs (constant inputs, time-varying inputs,
+etc) which the modeller specifies in the experiment layer.
+
+In addition to the brain model components, all of which are
+code-generated using \stob~as described above, two hand-written
+components are integrated into the model: The biomechanical eye model
+and a sensory input component. The sensory input component takes the
+eye's rotational state and the state of the experimental luminances
+and projects a retinotopic activity map into the brain model. Both of
+these BRAHMS components were hand-written in C++. To incorporate these
+components into the SpineML model, a \stob~\e{external.xsl} file was
+used.  The external.xsl file scheme for incorporating external BRAHMS
+components into a SpineML model was a new \stob~feature motivated by
+the current work.  Fig.~\ref{model_framework} shows the workflow, in
+which the model specification files (blue box - a combination of
+SpineML files and C++ code), are processed (green box) into a BRAHMS
+system (red box).
 
 % Section - description of the integration. scientific and
 % technical. Already
@@ -1904,38 +1914,41 @@ https://github.com/ABRG-Models/OMM\_NeuroMuscular
 
 \begin{figure}[htb!]
 \begin{center}
-\includegraphics[width=0.9\textwidth]{./figures/model_framework.png}
-\end{center}
-\textbf{\refstepcounter{figure}\label{model_framework} Figure \arabic{figure}.}
-{ The model framework. The model is specified using a combination of
-declarative XML files and hand-coded C++. These original model
-specifications are shown within the blue box. b) The green box shows
-the processes which are applied to the model specification to produce
-the BRAHMS system. Most of the process is defined within the scripts
-which make up \stob, but the hand-written components must be manually
-compiled and installed within the BRAHMS Namespace, allowing the
-BRAHMS executable to locate them at runtime. c) The red box shows the
-resulting BRAHMS system ready to be executed by the BRAHMS
-executable. In practice, this call is made by \stob.}
-\end{figure}
-
-\begin{figure}[htb!]
-\begin{center}
-\includegraphics[width=0.9\textwidth]{./figures/ccg_model.png}
+\includegraphics[width=0.8\textwidth]{./figures/ccg_model.png}
 \end{center}
 \textbf{\refstepcounter{figure}\label{fig:ccg_model} Figure \arabic{figure}.}
-{ The macroscopic architecture of the \ccg~model. The main nuclei
-modelled as brain systems are: basal ganglia (BG), frontal eye fields
-(FEF), thalamus (THAL) and superior colliculus (SC). The retinal input
-is presented via non-biologically plausible retinal populations. The
-loops through basal ganglia, which define the architecture, are shown
-with coloured lines: the cortical loop (through FEF and THAL) in green
-and the sub-cortical loop (through SC and THAL) in blue. Connections
-with arrowheads indicate excitatory connections, those with circles
-are inhibitory. A red border indicates that the box represents a
-sub-system of two or more populations; a black box indicates,
-within the context of the model, a single neural population.}
+{ \bol{a) The macroscopic architecture of the \ccg~model.} The main
+nuclei modelled as brain systems are: basal ganglia (BG), frontal eye
+fields (FEF), thalamus (THAL) and superior colliculus (SC). The
+retinal input is presented via non-biologically plausible retinal
+populations. The loops through basal ganglia, which define the
+architecture, are shown with coloured lines: the cortical loop
+(through FEF and THAL) in green and the sub-cortical loop (through SC
+and THAL) in blue. Connections with arrowheads indicate excitatory
+connections, those with circles are inhibitory. A red border indicates
+that the box represents a sub-system of two or more populations; a
+black box indicates (at least, within the context of the model) a
+single neural population. The BG box is expanded in: \bol{b) The basal
+ganglia model component.}
+%
+This shows a basal ganglia comprising striatum (Str\_D1 \& Str\_D2),
+subthalamic nucleus (STN), globus pallidum externum (GPe) and
+substantia nigra reticulata (SNr). The model has three action channels
+shown as black boxes within each blue population border. Three
+channels of cortical input to the BG are also depicted. Red indicates
+the activation level of a given channel, helping to illustrate the
+selection mechanism. For example, the channel indicated by the
+leftmost bar has a high salience (cortical input) and excites activity
+in Str\_D1 which then inhibits the leftmost bar in SNr. The diffuse
+projection from STN is equivalent to summing its projections
+channel-wise, and then projecting the sum to all channels of its
+target populations (the blue arrows indicate that all channels of GPe
+and SNr are targeted by the connection). Dopaminergic modulation of
+the inputs to the striatum are indicated by the blue circles labelled
+`d' and the dotted lines. The SNr sends inhibitory output projections
+to its targets.}
 \end{figure}
+
 
 \begin{figure}[htb!]
 \begin{center}
@@ -2011,6 +2024,23 @@ elements (here 2500 or 1) and the SpineML component name; \e{LIN} for
 Leaky integrator or \e{integrator}. Key: LLBN: Long lead burst
 neurons; IBN: Inhibitory burst neurons; OPN: Omnipause neurons; EBN:
 Excitatory burst neurons; TN: Tonic neurons; MN: Motoneurons.}
+\end{figure}
+
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{./figures/model_framework.png}
+\end{center}
+\textbf{\refstepcounter{figure}\label{model_framework} Figure \arabic{figure}.}
+{ The model framework. The model is specified using a combination of
+declarative XML files and hand-coded C++. These original model
+specifications are shown within the blue box. b) The green box shows
+the processes which are applied to the model specification to produce
+the BRAHMS system. Most of the process is defined within the scripts
+which make up \stob, but the hand-written components must be manually
+compiled and installed within the BRAHMS Namespace, allowing the
+BRAHMS executable to locate them at runtime. c) The red box shows the
+resulting BRAHMS system ready to be executed by the BRAHMS
+executable. In practice, this call is made by \stob.}
 \end{figure}
 
 \begin{figure}[htb!]
