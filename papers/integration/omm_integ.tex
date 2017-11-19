@@ -973,6 +973,42 @@ point of the EOMs. In our model, a pulley for each EOM has been
 modeled by a point on the orbit whose location depends on the current
 eye orientation.
 
+% KM
+An illustration of the biomechanical eye model is given in
+Figure \ref{fig:eye_muscles}, while Figure \ref{fig:eye_head} depicts
+the head model used in the proposed framework.
+
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{./figures/bio_eye1.png}
+\end{center}
+\textbf{\refstepcounter{figure}\label{fig:eye_muscles} Figure \arabic{figure}.}
+{Example of the biomechanical eye model.}
+\end{figure}
+
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{./figures/bio_eye2.png}
+\end{center}
+\textbf{\refstepcounter{figure}\label{fig:eye_head} Figure \arabic{figure}.}
+{Example of the head model used.}
+\end{figure}
+
+% KM
+Two types of muscle models of different complexity are supported. The
+first models muscles using linear path actuators. This simplistic
+model of ideal muscles can be easily integrated with high level brain
+models. As described above the muscles are wrapped around the eye.
+The more complex model supported is based on the Thelen model
+[Thelen_ref.ris] that is also supported by OpenSim and implements
+Hill-type muscles. It includes realistic muscle wrapping geometric
+entities of the muscle fibers, while it accommodates for both
+activation and contraction dynamics.  The dynamics of muscular forces
+can be split into: 1) The elasticity of the muscles. 2) A delay
+between the onset of the afferent excitatory signal and the actual
+muscle contraction, caused by the transmission time of the action
+potentials and by the necessary calcium release at the muscle fibres.
+
 %EOM dynamics
 The force applied by EOMs is controlled by an excitatory signal
 supplied by motoneurons in the brainstem. The neural drive to produce
@@ -981,12 +1017,6 @@ overcome the viscoelasticity of the orbital plant, a step component to
 stabilize the eye in the new position, and a slide component that
 models the gradual transition between the pulse and step.
 
-The dynamics of muscular forces can be split into: 1) The elasticity
-of the muscles. 2) A delay between the onset of the afferent
-excitatory signal and the actual muscle contraction, caused by the
-transmission time of the action potentials and by the necessary
-calcium release at the muscle fibres. We developed a custom
-extraocular muscle model which captures these features.
 
 % Orbital fat force
 Passive forces due to the fatty tissues inside the eye orbit also
@@ -1071,6 +1101,42 @@ the current work.  Fig.~\ref{model_framework} shows the workflow, in
 which the model specification files (blue box - a combination of
 SpineML files and C++ code), are processed (green box) into a BRAHMS
 system (red box).
+
+% KM
+Finally, numerical integration of the biomechanical eye model is based
+on the Kutta-Merson integration method.
+
+% KM
+Figure \ref{fig:eye_sim0} illustrates an example of the experimental
+set-up of the proposed framework, while Figures \ref{fig:eye_sim1}
+and \ref{fig:eye_sim2} depict the developed eye oculomotor simulation
+system.
+
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{./figures/Eye_sim0.png}
+\end{center}
+\textbf{\refstepcounter{figure}\label{fig:eye_sim0} Figure \arabic{figure}.}
+{Example of the experimental set-up.}
+\end{figure}
+
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{./figures/Eye_sim1.png}
+\end{center}
+\textbf{\refstepcounter{figure}\label{fig:eye_sim1} Figure \arabic{figure}.}
+{Example of the eye simulator system.}
+\end{figure}
+
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{./figures/Eye_sim2.png}
+\end{center}
+\textbf{\refstepcounter{figure}\label{fig:eye_sim2} Figure \arabic{figure}.}
+{Example of use of the eye simulator system.}
+\end{figure}
+
+
 
 % Section - description of the integration. scientific and
 % technical. Already
