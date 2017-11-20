@@ -60,25 +60,69 @@ REVIEWER 2
 
 MATERIAL AND METHODS
 
-1)
+1) In agreement with the reviewer that a more comprehensive
+description of the brain model was required, we have added
+substantialy to that section of the paper.
 
-2)
+2) We hope that the more extensive explanation, and an additional
+figure, now help to make it clearer that information enters the model
+via the 'World' population and becomes output in SC_deep. I have also
+added the suggested paragraph to the section 'Integrating the models and
+closing the loop'
 
-3)
+3) Information about the parameterisation of the Cope-Chambers model
+has been added to the material and methods section.
 
-4)
+The section referred to here by the reviewer is a section describing
+the components from which the model was built; w_i^act (etc) are
+weights in a D1/D2MSN component. The actual parameterisation of the
+weights in the model was carried out by taking the GPR BG model as
+starting point, and then reproducing experimental behavioural and
+electrophysiological results for simple prosaccades. I have updated
+the text to try to make this clearer.
 
-5)
+4) Dopamine d. We've added to the paragraph regarding dopamine in
+materials and methods to describe how a change in d affects the BG
+model. We have added a sentence to make it clear that we did not
+implement learning in the model and for this reason we do not discuss
+the hypothesis that dopamine is a signal for prediction error.
 
-6)
+5) Weight connectivity
 
-7)
+6) Widening gaussian. The point
 
-8)
+7) We hope that the extended description of the brain model makes it
+more clear that the key difference between the activity coming into
+the brain model via the sustained retinal path and into FEF, and the
+activity that enters via the SC_sup layers is in the timing of the
+activity.
 
-9)
+8) The proposed implementation of the biomechanical eye includes
+modeling and simulation of two types of muscle models of different
+complexity.  The first models muscles using linear path
+actuators. This simplistic model of ideal muscles can be easily
+integrated with high level brain models. Muscle wrapping around the
+eye can be supported while in the proposed implementation we also
+include in the simplistic model passive forces that stem from the
+mechanical interaction of the eye globe and the surrounding soft
+tissues.  The more complex model supported is a modification of the
+Thelen model that is also supported by OpenSim and is based on a
+Hill-type model. It includes realistic muscle wrapping geometric
+entities of the muscle fibers, while it accommodates for both
+activation and contraction dynamics.
 
-10)
+Based on the above and also considering that the research question to
+be addressed is not directly affected by the muscle dynamics we used
+the simplistic muscle models to extract the experimental results
+presented in the paper.
+
+9) The brain does not need to know the rotational state of the eye; a
+change in the rotational state of the eye physically re-directs the
+fovea, causing any luminances in the world to fall on a new part of
+the retina, exciting activity in different locations in the maps
+within the brain model.
+
+10) This diagram has been incorporated. (TODO).
 
 RESULTS
 
