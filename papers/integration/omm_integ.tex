@@ -1178,25 +1178,8 @@ eye orientation.
 
 % KM
 \rvwt{An illustration of the biomechanical eye model is given in
-Figure \ref{fig:eye_muscles}, while Figure \ref{fig:eye_head} depicts
+Figure \ref{fig:bioeye}, while Figure \ref{fig:bioeye} depicts
 the head model used in the proposed framework.}
-
-% To be moved in due course
-\begin{figure}[htb!]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{./figures/bio_eye1.png}
-\end{center}
-\textbf{\refstepcounter{figure}\label{fig:eye_muscles} Figure \arabic{figure}.}
-{Example of the biomechanical eye model.}
-\end{figure}
-
-\begin{figure}[htb!]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{./figures/bio_eye2.png}
-\end{center}
-\textbf{\refstepcounter{figure}\label{fig:eye_head} Figure \arabic{figure}.}
-{Example of the head model used.}
-\end{figure}
 
 % KM
 \rvwt{Two types of muscle models of different complexity are supported. The
@@ -1308,37 +1291,6 @@ system (red box).
 % KM
 \rvwt{Finally, numerical integration of the biomechanical eye model is based
 on the Kutta-Merson integration method.}
-
-% KM
-\rvwt{Figure \ref{fig:eye_sim0} illustrates an example of the experimental
-set-up of the proposed framework, while Figures \ref{fig:eye_sim1}
-and \ref{fig:eye_sim2} depict the developed eye oculomotor simulation
-system.}
-
-% Figures to merge together into a single panel or move.
-\begin{figure}[htb!]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{./figures/Eye_sim0.png}
-\end{center}
-\textbf{\refstepcounter{figure}\label{fig:eye_sim0} Figure \arabic{figure}.}
-{Example of the experimental set-up.}
-\end{figure}
-
-\begin{figure}[htb!]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{./figures/Eye_sim1.png}
-\end{center}
-\textbf{\refstepcounter{figure}\label{fig:eye_sim1} Figure \arabic{figure}.}
-{Example of the eye simulator system.}
-\end{figure}
-
-\begin{figure}[htb!]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{./figures/Eye_sim2.png}
-\end{center}
-\textbf{\refstepcounter{figure}\label{fig:eye_sim2} Figure \arabic{figure}.}
-{Example of use of the eye simulator system.}
-\end{figure}
 
 % Section - description of the integration. scientific and
 % technical.
@@ -2327,6 +2279,20 @@ elements (here 2500 or 1) and the SpineML component name; \e{LIN} for
 Leaky integrator or \e{integrator}. Key: LLBN: Long lead burst
 neurons; IBN: Inhibitory burst neurons; OPN: Omnipause neurons; EBN:
 Excitatory burst neurons; TN: Tonic neurons; MN: Motoneurons.}
+\end{figure}
+
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{./figures/eye_screen_plus.png}
+\end{center}
+\textbf{\refstepcounter{figure}\label{fig:bioeye} Figure \arabic{figure}.}
+{ The biomechanical eye. a) an OpenSim rendering of a pair of
+biomechanical eyes showing the positions of the extraocular
+muscles. b) OpenSim rendering of biomechanical eye within a head
+model c) Top-down schematic cross-sectional view of the biomechanical eye situated
+within a spherical screen, with a horizontal rotation towards a
+luminances at an angle of $-\theta_{y}$ about the $y$ axis, which
+points up out of the page.}
 \end{figure}
 
 \begin{figure}[htb!]
