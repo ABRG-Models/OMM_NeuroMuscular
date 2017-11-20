@@ -951,7 +951,7 @@ with an identical piecewise linear transfer function as the other SBG
 populations.
 
 % Section - description of biomechanical model
-\subsection{biomechanical eye} \label{sec:methods:eye}
+\subsection{Biomechanical eye} \label{sec:methods:eye}
 
 The output signals of the brainstem are used to drive the
 biomechanical model.  The latter is not only used to get tangible
@@ -974,10 +974,11 @@ modeled by a point on the orbit whose location depends on the current
 eye orientation.
 
 % KM
-An illustration of the biomechanical eye model is given in
+\rvwt{An illustration of the biomechanical eye model is given in
 Figure \ref{fig:eye_muscles}, while Figure \ref{fig:eye_head} depicts
-the head model used in the proposed framework.
+the head model used in the proposed framework.}
 
+% To be moved in due course
 \begin{figure}[htb!]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{./figures/bio_eye1.png}
@@ -995,28 +996,27 @@ the head model used in the proposed framework.
 \end{figure}
 
 % KM
-Two types of muscle models of different complexity are supported. The
+\rvwt{Two types of muscle models of different complexity are supported. The
 first models muscles using linear path actuators. This simplistic
 model of ideal muscles can be easily integrated with high level brain
 models. As described above the muscles are wrapped around the eye.
 The more complex model supported is based on the Thelen model
-[Thelen_ref.ris] that is also supported by OpenSim and implements
+\citep{thelen_adjustment_2003} that is also supported by OpenSim and implements
 Hill-type muscles. It includes realistic muscle wrapping geometric
 entities of the muscle fibers, while it accommodates for both
 activation and contraction dynamics.  The dynamics of muscular forces
 can be split into: 1) The elasticity of the muscles. 2) A delay
 between the onset of the afferent excitatory signal and the actual
 muscle contraction, caused by the transmission time of the action
-potentials and by the necessary calcium release at the muscle fibres.
+potentials and by the necessary calcium release at the muscle fibres.}
 
-%EOM dynamics
+% EOM dynamics
 The force applied by EOMs is controlled by an excitatory signal
 supplied by motoneurons in the brainstem. The neural drive to produce
 a saccadic eye movement can be characterized by a pulse component to
 overcome the viscoelasticity of the orbital plant, a step component to
 stabilize the eye in the new position, and a slide component that
 models the gradual transition between the pulse and step.
-
 
 % Orbital fat force
 Passive forces due to the fatty tissues inside the eye orbit also
@@ -1103,15 +1103,16 @@ SpineML files and C++ code), are processed (green box) into a BRAHMS
 system (red box).
 
 % KM
-Finally, numerical integration of the biomechanical eye model is based
-on the Kutta-Merson integration method.
+\rvwt{Finally, numerical integration of the biomechanical eye model is based
+on the Kutta-Merson integration method.}
 
 % KM
-Figure \ref{fig:eye_sim0} illustrates an example of the experimental
+\rvwt{Figure \ref{fig:eye_sim0} illustrates an example of the experimental
 set-up of the proposed framework, while Figures \ref{fig:eye_sim1}
 and \ref{fig:eye_sim2} depict the developed eye oculomotor simulation
-system.
+system.}
 
+% Figures to merge together into a single panel or move.
 \begin{figure}[htb!]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{./figures/Eye_sim0.png}
@@ -1136,10 +1137,8 @@ system.
 {Example of use of the eye simulator system.}
 \end{figure}
 
-
-
 % Section - description of the integration. scientific and
-% technical. Already
+% technical.
 \subsection{Integrating the models and closing the loop}
 \label{sec:methods:integrating}
 
