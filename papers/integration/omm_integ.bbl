@@ -1,4 +1,4 @@
-\begin{thebibliography}{163}
+\begin{thebibliography}{164}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -72,8 +72,8 @@ Bayguinov, P.~O., Ghitani, N., Jackson, M.~B., and Basso, M.~A. (2015).
 \newblock \emph{Journal of Neurophysiology} \doi{10.1152/jn.00144.2015}
 \bibAnnoteFile{bayguinov_hard-wired_2015}
 
-\bibitem[{Becker and J\"urgens(1979)}]{becker_analysis_1979}
-Becker, W. and J\"urgens, R. (1979).
+\bibitem[{Becker and Jürgens(1979)}]{becker_analysis_1979}
+Becker, W. and Jürgens, R. (1979).
 \newblock An analysis of the saccadic system by means of double step stimuli.
 \newblock \emph{Vision Research} 19, 967--983.
 \newblock \doi{10.1016/0042-6989(79)90222-0}
@@ -272,8 +272,8 @@ DeWolf, T., Stewart, T.~C., Slotine, J.-J., and Eliasmith, C. (2016).
 \newblock \doi{10.1098/rspb.2016.2134}
 \bibAnnoteFile{dewolf_spiking_2016}
 
-\bibitem[{Dorris et~al.(1997)Dorris, Par\'e, and Munoz}]{dorris_neuronal_1997}
-Dorris, M.~C., Par\'e, M., and Munoz, D.~P. (1997).
+\bibitem[{Dorris et~al.(1997)Dorris, Paré, and Munoz}]{dorris_neuronal_1997}
+Dorris, M.~C., Paré, M., and Munoz, D.~P. (1997).
 \newblock Neuronal {Activity} in {Monkey} {Superior} {Colliculus} {Related} to
   the {Initiation} of {Saccadic} {Eye} {Movements}.
 \newblock \emph{The Journal of Neuroscience} 17, 8566
@@ -572,9 +572,9 @@ Kleine, J.~F. (2003).
 \newblock \doi{10.1152/jn.00021.2003}
 \bibAnnoteFile{kleine_saccade-related_2003}
 
-\bibitem[{K\"uhn et~al.(2004)K\"uhn, Williams, Kupsch, Limousin, Hariz, Schneider
+\bibitem[{Kühn et~al.(2004)Kühn, Williams, Kupsch, Limousin, Hariz, Schneider
   et~al.}]{kuhn_event-related_2004}
-K\"uhn, A.~A., Williams, D., Kupsch, A., Limousin, P., Hariz, M., Schneider,
+Kühn, A.~A., Williams, D., Kupsch, A., Limousin, P., Hariz, M., Schneider,
   G.-H., et~al. (2004).
 \newblock Event-related beta desynchronization in human subthalamic nucleus
   correlates with motor performance.
@@ -597,9 +597,9 @@ Lee, C., Rohrer, W.~H., and Sparks, D.~L. (1988).
 \newblock \doi{10.1038/332357a0}
 \bibAnnoteFile{lee_population_1988}
 
-\bibitem[{Lef\`evre et~al.(1998)Lef\`evre, Quaia, and
+\bibitem[{Lefèvre et~al.(1998)Lefèvre, Quaia, and
   Optican}]{lefevre_distributed_1998}
-Lef\`evre, P., Quaia, C., and Optican, L.~M. (1998).
+Lefèvre, P., Quaia, C., and Optican, L.~M. (1998).
 \newblock Distributed model of control of saccades by superior colliculus and
   cerebellum.
 \newblock \emph{Neural Networks} 11, 1175--1190
@@ -759,8 +759,8 @@ Monosov, I.~E., Trageser, J.~C., and Thompson, K.~G. (2008).
 \newblock \emph{Neuron} 57, 614--625
 \bibAnnoteFile{monosov_measurements_2008}
 
-\bibitem[{Mor\'en et~al.(2013)Mor\'en, Shibata, and Doya}]{moren_mechanism_2013}
-Mor\'en, J., Shibata, T., and Doya, K. (2013).
+\bibitem[{Morén et~al.(2013)Morén, Shibata, and Doya}]{moren_mechanism_2013}
+Morén, J., Shibata, T., and Doya, K. (2013).
 \newblock {\selectlanguage{en}The {Mechanism} of {Saccade} {Motor} {Pattern}
   {Generation} {Investigated} by a {Large}-{Scale} {Spiking} {Neuron} {Model}
   of the {Superior} {Colliculus}}.
@@ -809,7 +809,7 @@ Norman, D.~A. and Shallice, T. (1986).
 \bibitem[{Nowotny(2011)}]{nowotny_flexible_2011}
 Nowotny, T. (2011).
 \newblock {\selectlanguage{en}Flexible neuronal network simulation framework
-  using code generation for {NVidia}\textsuperscript{\textregistered} {CUDA}\textsuperscript{TM}}.
+  using code generation for {NVidia}® {CUDA}™}.
 \newblock \emph{BMC Neuroscience} 12, P239.
 \newblock \doi{10.1186/1471-2202-12-S1-P239}
 \bibAnnoteFile{nowotny_flexible_2011}
@@ -852,16 +852,16 @@ Parent, A. and Hazrati, L. (1993).
 \newblock \emph{Trends in Neuroscience} 16, 111--116
 \bibAnnoteFile{parent_anatomical_1993}
 
-\bibitem[{Quaia et~al.(1999)Quaia, Lef\`evre, and Optican}]{quaia_model_1999}
-Quaia, C., Lef\`evre, P., and Optican, L.~M. (1999).
+\bibitem[{Quaia et~al.(1999)Quaia, Lefèvre, and Optican}]{quaia_model_1999}
+Quaia, C., Lefèvre, P., and Optican, L.~M. (1999).
 \newblock Model of the {Control} of {Saccades} by {Superior} {Colliculus} and
   {Cerebellum}.
 \newblock \emph{Journal of Neurophysiology} 82, 999
 \bibAnnoteFile{quaia_model_1999}
 
-\bibitem[{Quaia et~al.(2000)Quaia, Par\'e, Wurtz, and
+\bibitem[{Quaia et~al.(2000)Quaia, Paré, Wurtz, and
   Optican}]{quaia_extent_2000}
-Quaia, C., Par\'e, M., Wurtz, R.~H., and Optican, L.~M. (2000).
+Quaia, C., Paré, M., Wurtz, R.~H., and Optican, L.~M. (2000).
 \newblock {\selectlanguage{en}Extent of compensation for variations in monkey
   saccadic eye movements}.
 \newblock \emph{Experimental Brain Research} 132, 39--51.
@@ -883,6 +883,13 @@ Reppert, T.~R., Lempert, K.~M., Glimcher, P.~W., and Shadmehr, R. (2015).
 \newblock \emph{Journal of Neuroscience} 35, 15369--15378.
 \newblock \doi{10.1523/JNEUROSCI.2621-15.2015}
 \bibAnnoteFile{reppert_modulation_2015}
+
+\bibitem[{Reulen(1984)}]{reulen_latency_1984}
+Reulen, J. P.~H. (1984).
+\newblock Latency of visually evoked saccadic eye movements.
+\newblock \emph{Biological Cybernetics} 50, 251--262.
+\newblock \doi{10.1007/BF00337075}
+\bibAnnoteFile{reulen_latency_1984}
 
 \bibitem[{Richmond(2015)}]{richmond_damson_2015}
 Richmond, P. (2015).

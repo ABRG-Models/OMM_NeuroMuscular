@@ -49,10 +49,18 @@ that, at least for a few, consecutive out-and-return saccades, the
 saccade accuracy was relatively good, with trajectories resembling
 experimental data". That is, the TN populations were firing away on
 both out and return channels and yet the eye was returning nearly to
-the null position. If this "accidental return accuracy" hadn't
+the null position. If this" accidental return accuracy" hadn't
 occurred, we probably would have spotted the lack of TN reset
 sooner. I added text to this effect.
 
+
+DISCUSSION (Come back to this?)
+
+1) Inhibitory feedback
+
+2) Inaccuracies in biomechanical model
+
+3)
 
 
 REVIEWER 2
@@ -61,10 +69,10 @@ REVIEWER 2
 MATERIAL AND METHODS
 
 1) In agreement with the reviewer that a more comprehensive
-description of the brain model was required, we have added
-substantialy to that section of the paper.
+description of the brain model was required, I have added
+substantially to that section of the paper.
 
-2) We hope that the more extensive explanation, and an additional
+2) I hope that the more extensive explanation, and an additional
 figure, now help to make it clearer that information enters the model
 via the 'World' population and becomes output in SC_deep. I have also
 added the suggested paragraph to the section 'Integrating the models and
@@ -81,25 +89,55 @@ starting point, and then reproducing experimental behavioural and
 electrophysiological results for simple prosaccades. I have updated
 the text to try to make this clearer.
 
-4) Dopamine d. We've added to the paragraph regarding dopamine in
+4) Dopamine d. I've added to the paragraph regarding dopamine in
 materials and methods to describe how a change in d affects the BG
-model. We have added a sentence to make it clear that we did not
-implement learning in the model and for this reason we do not discuss
+model. I have added a sentence to make it clear that we did not
+implement learning in the model and for this reason I do not discuss
 the hypothesis that dopamine is a signal for prediction error.
 
-5) Weight connectivity
+5) "The idea the weight connectivity from the deep SC to the SBG is
+implemented by the widening projection field is not clear for the
+reader."
 
-6) Widening gaussian. The point
+I think that's true; I've tried to make the wording clearer in this
+part of the paper.
 
-7) We hope that the extended description of the brain model makes it
+"The authors mention in lines 406-407 "This led us to hypothesize that
+the retinotopic mapping be accompanied by an associated widening
+projection field such that the hill of activity in superior colliculus
+is invariant with position on the collicular surface". What is the
+collicular surface here..."
+
+I've changed the wording; I meant "position within the collicular map".
+
+"...and given the fact that the activity is large in the SC for stimuli
+closer to the fovea shouldn't the connectivity be convergent?"
+
+I don't think I understand this comment; if I've not covered it with
+the changes I've made, then please let me know.
+
+"This part is very confusing and needs further explanation."
+
+Indeed, and I've tried to expand this section to help the reader, and
+I've added a sub-figure (Now in Fig. 7) to help illustrate my point.
+
+6) Widening gaussian. It's true that the exponential of the SBG map
+could be parameterised to compensate for a SC hill which gets smaller
+with increasing r. However, when there are two dimensions to the eye
+movement, the exponential parameter can't compensate for all of the
+end-point error introduced by varying the size of the hill as a
+function of r. I've added an explanation, and a figure to try to
+explain this clearly.
+
+7) I hope that the extended description of the brain model makes it
 more clear that the key difference between the activity coming into
 the brain model via the sustained retinal path and into FEF, and the
 activity that enters via the SC_sup layers is in the timing of the
 activity.
 
-8) The proposed implementation of the biomechanical eye includes
-modeling and simulation of two types of muscle models of different
-complexity.  The first models muscles using linear path
+8) Response from KM: The proposed implementation of the biomechanical
+eye includes modeling and simulation of two types of muscle models of
+different complexity.  The first models muscles using linear path
 actuators. This simplistic model of ideal muscles can be easily
 integrated with high level brain models. Muscle wrapping around the
 eye can be supported while in the proposed implementation we also
@@ -116,24 +154,54 @@ be addressed is not directly affected by the muscle dynamics we used
 the simplistic muscle models to extract the experimental results
 presented in the paper.
 
+I added a little more description of what signal from the brainstem
+model is used to drive the biomechanical eye.
+
 9) The brain does not need to know the rotational state of the eye; a
 change in the rotational state of the eye physically re-directs the
 fovea, causing any luminances in the world to fall on a new part of
 the retina, exciting activity in different locations in the maps
 within the brain model.
 
-10) This diagram has been incorporated. (TODO).
+10) This diagram has been incorporated (see Fig. 5 in new manuscript).
 
 RESULTS
 
-1)
+1) Results from the Cope paper have been included in the relevant
+figure (Fig. 13 in the new manuscript).
 
-2)
+2) I've incorporated a fuller description of the foveal mask
+connectivity into the materials and methods section and so I think
+this statement should be comprehensible to the reader - I did slightly
+change the wording, too.
 
-3)
+3) Double step. The stimuli could not be presented at 15 and 30
+degrees because 30 degree saccades were outside the range of the
+model. The precision of the model to distinguish between targets,
+especially towards the periphery of the field of view is limited by
+the 50x50 size of the neural layers. In order to optimise this
+precision, both the Cope-Chambers model and our implementation of it
+had their effective eccentricity range limited. Our implementation was
+limited more than the Cope-Chambers model, because hills of activity
+in SC_deep had to be kept fully within each layer. When a hill `falls
+off the edge' of the layer, the amount of activation being passed to
+the SBG is reduced and the saccades become inaccurate. I didn't want
+to investigate effects at the edge of the SC, so I had an effective
+limit of the model of about 22 degrees of eccentricity for a
+saccade. I've added text to this effect to the manuscript.
 
-4)
+4) There is indeed significant overshoot - the model fails for this
+case of returning to the origin. While the reset mechanism in the TN of the
+brainstem model is certainly interesting, I do not want to change the
+brainstem model in this paper; the intention of the paper is to build
+a model out of existing components to find the problems. I did
+experiment briefly by looking at reducing the weights from EBN to
+contra-lateral TN neurons, but I think a gradual reset of the type you
+describe will need either another component with a slower time constant to
+"leak" the activity of the TN away, or experimentation with the time
+constant in the TN neurons themselves.
 
-DISCUSSION
+DISCUSSION (Come back to discussion later, submit comments responses
+on methods/results first).
 
-1)
+1) A point about inhibitory feedback to add to discussion.

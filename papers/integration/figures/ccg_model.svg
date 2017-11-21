@@ -7,6 +7,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="246.98535mm"
@@ -829,9 +830,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.0000001"
-     inkscape:cx="333.28146"
-     inkscape:cy="183.89959"
+     inkscape:zoom="1.4142137"
+     inkscape:cx="312.01408"
+     inkscape:cy="183.84267"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -2026,37 +2027,49 @@
        ry="13.692335"
        inkscape:export-xdpi="600"
        inkscape:export-ydpi="600" />
+    <image
+       sodipodi:absref="/home/seb/models/OMM_NeuroMuscular/papers/integration/figures/gaussian_twod.png"
+       xlink:href="gaussian_twod.png"
+       width="172.00006"
+       height="129.00005"
+       preserveAspectRatio="none"
+       id="image5693"
+       x="731.11328"
+       y="17.57575" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:Sans;-inkscape-font-specification:Sans;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="734.42896"
-       y="290.97635"
+       x="729.47919"
+       y="38.539253"
        id="text6919-1-7"
        sodipodi:linespacing="125%"
        inkscape:export-xdpi="600"
        inkscape:export-ydpi="600"><tspan
          sodipodi:role="line"
          id="tspan6921-2-5"
-         x="734.42896"
-         y="290.97635">c)</tspan></text>
+         x="729.47919"
+         y="38.539253">c)</tspan></text>
+    <image
+       sodipodi:absref="/home/seb/models/OMM_NeuroMuscular/papers/integration/figures/StrD2_to_GPe_n320_n810_cropped.png"
+       xlink:href="StrD2_to_GPe_n320_n810_cropped.png"
+       width="129.35149"
+       height="148.1864"
+       preserveAspectRatio="none"
+       id="image4785"
+       x="766.46863"
+       y="146.22223" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:Sans;-inkscape-font-specification:Sans;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="759.74133"
-       y="132.73618"
-       id="text7719"
-       sodipodi:linespacing="125%"><tspan
+       x="729.47919"
+       y="160.09908"
+       id="text6919-1-7-3"
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="600"
+       inkscape:export-ydpi="600"><tspan
          sodipodi:role="line"
-         id="tspan7721"
-         x="759.74133"
-         y="132.73618">Diagram</tspan><tspan
-         sodipodi:role="line"
-         x="759.74133"
-         y="157.73618"
-         id="tspan8035">of Gaussian</tspan><tspan
-         sodipodi:role="line"
-         x="759.74133"
-         y="182.73618"
-         id="tspan8037">Kernel here</tspan></text>
+         id="tspan6921-2-5-6"
+         x="729.47919"
+         y="160.09908">d)</tspan></text>
   </g>
 </svg>

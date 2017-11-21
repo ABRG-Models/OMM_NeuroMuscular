@@ -162,7 +162,7 @@ a controller for movement and behaviour.
 \section{Introduction} \label{sec:introduction}
 
 % Remove after review:
-Note: Changes based on Reviewer 1's comments \rvw{are in this colour}. For
+\bol{Note:} Changes based on Reviewer 1's comments \rvw{are in this colour}. For
 Reviewer 2 \rvwt{we use this colour}.
 
 % Background
@@ -779,12 +779,12 @@ a prosaccade task in which a fixed luminance point is fixated by teh
 model. After a fixed duration, the fixation point was extinguished and
 a target point of fixed luminance was presented. The model was tuned
 so that the latency between the presentation of the target and the
-initiation of an eye movement matched experimental data, while also
-matching the electrophysiological evidence of activity in a variety of
-brain regions. The tuning of the BG model attempted to preserve as
-closely as possible the weights used in the original paper. Further
-details on the parameterisation of the \ccg~model are
-in \cite{cope_basal_2017}.}
+initiation of an eye movement matched experimental
+data \citep{reulen_latency_1984}, while also matching the
+electrophysiological evidence of activity in a variety of brain
+regions. The tuning of the BG model attempted to preserve as closely
+as possible the weights used in the original paper. Further details on
+the parameterisation of the \ccg~model are in \cite{cope_basal_2017}.}
 % Differences between ccg and existing brain model or can I do that
 % above? Better in the preceding text, I think and wherever it crops
 % up.
@@ -962,6 +962,20 @@ $W_{fov}$ is set to 61\dg, a reduction from the biophysically accurate
 field. $E_2$ is
 2.5 \citep{cope_basal_2017,slotnick_electrophysiological_2001}.
 
+% Was looking for somewhere for this, possibly:
+%The precision of the model to distinguish between
+%targets, especially towards the periphery of the field of view was
+%limited by the 50$\times$50 size of the neural layers. In order to optimise
+%this precision, both the \ccg~model and our implementation of
+%it had their effective eccentricity range limited. Our implementation
+%was limited more than the Cope-Chambers model, because hills of
+%activity in SC_deep had to be kept fully within each layer. When a
+%hill `falls off the edge' of the layer, the amount of activation being
+%passed to the SBG is reduced and the saccades become inaccurate. I
+%didn't want to investigate effects at the edge of the SC, so I had an
+%effective limit of the model of about 22 degrees of eccentricity for a
+%saccade.
+
 The mapping from the retinotopic co-ordinates in the brain to
 rotational co-ordinates of the stimulus/response was written down by
 \cite{schwartz_spatial_1977,eric_l._schwartz_computational_1980}
@@ -1063,13 +1077,13 @@ The easiest way to access this information is by using SpineCreator.
 We implemented a saccadic burst generator (SBG) based on the
 connectivity outlined in \cite{gancarz_neural_1998}. The SBG network
 for two of the model's six channels is shown in
-Fig.~\ref{sbg}. \rvw{We use the word `channel' to mean a set of
-populations of neurons which are involved in actuating a single
-extraocular muscle. SBG channels are arranged in pairs, actuating
-opposing muscles. There is one pair of channels which actuates the
-superior and inferior rectus muscles, causing vertical rotations of
-the eye in a roughly parasaggital plane (the eye moves up or
-down). Another pair actuates the lateral and medial rectus muscles,
+Fig.~\ref{sbg}. \rvw{In the brainstem model, we use the word `channel'
+to mean a set of populations of neurons which are involved in
+actuating a single extraocular muscle. SBG channels are arranged in
+pairs, actuating opposing muscles. There is one pair of channels which
+actuates the superior and inferior rectus muscles, causing vertical
+rotations of the eye in a roughly parasaggital plane (the eye moves up
+or down). Another pair actuates the lateral and medial rectus muscles,
 causing horizontal rotations of the eye. The third pair actuates the
 superior and inferior oblique muscles which contribute to vertical as
 well as oblique rotations.} Activity from the output layer of superior
@@ -1156,11 +1170,15 @@ populations.
 % Section - description of biomechanical model
 \subsection{Biomechanical eye} \label{sec:methods:eye}
 
-The output signals of the brainstem are used to drive the
-biomechanical model.  The latter is not only used to get tangible
-feedback on the simulated saccades including motion trajectories, but
-adds one more modelling dimension related to the inertial properties
-of the eye plant including muscle properties.
+The output signals of the brainstem's \rvwt{motoneuron (MN)
+populations} are used to drive the biomechanical model. \rvwt{The MN
+output signal in each brainstem channel is normalised in the range [0
+1] and represents the mean firing rate of the neurons that innervate
+the extraocular muscle for that channel.} The biomechanics are used
+not only to get tangible feedback on the simulated saccades including
+motion trajectories, but to add one more modelling dimension related
+to the inertial properties of the eye plant including muscle
+properties.
 
 The biomechanical eye model, implemented using the OpenSim framework
 \citep{seth_opensim:_2011}, is anatomically represented by a sphere of
@@ -1336,7 +1354,10 @@ and we follow this idea.
 %
 Arai and co-workers trained a 20x20 neural network model of the
 superior colliculus to discover the weight map under the assumption of
-2D Gaussian activation profiles~\citep{arai_two-dimensional_1994}.
+2D Gaussian activation
+profiles~\citep{arai_two-dimensional_1994}---\rvwt{that is, they
+assumed that the activity in superior colliculus for any saccade was a
+size-invariant 2D Gaussian hill of activity}.
 %
 The training approach of \cite{arai_two-dimensional_1994} was not
 feasible in this study due to the length of time required to run our
@@ -1344,15 +1365,24 @@ model and its stochasticity, which meant multiple runs of the model
 were necessary in order to generate output statistics.
 %
 \cite{tabareau_geometry_2007} wrote down a theoretical form of the weight
-map, which follows from the mapping of \cite{ottes_visuomotor_1986}
-and the assumption of invariant 2D Gaussian activity profiles in
-SC. As they found it closely resembles the results
+map, \rvwt{obtained by inverting the mapping} of \cite{ottes_visuomotor_1986}
+and the assumption of invariant 2D Gaussian activity profiles in SC,
+\rvwt{which is equivalent to:}
+%
+\begin{equation} \label{eq:tabareau_eq3}
+w(r,\phi) = i\;e\,^{jr}\;\sin\left(l\phi + k\right)
+\end{equation}
+\rvwt{where $r$ and $\phi$ are co-ordinates on the collicular map and
+$i$, $j$, $k$ and $l$ are parameters of the
+function (compare with Eq.~3 of \cite{tabareau_geometry_2007}).}
+%
+As they found it closely resembles the results
 of \cite{arai_two-dimensional_1994}, and it is a simple formulation,
 we considered it as the means to generate the six weight maps in our
 own model.
 %
-One barrier to the use of the weight map
-in \cite{tabareau_geometry_2007} was the \ccg~model's violation of the
+One barrier to the use of this weight map was the \ccg~model's
+violation of the
 \e{invariant integral hypothesis}. This states that the number of spikes
 emitted by a neural element during a saccade (or in our model, the
 integral of the neuron's output during the saccade) should be a
@@ -1364,25 +1394,55 @@ vector $\mathbf{x}$ away from $\mathbf{z}$ is
 \begin{equation}
 A_{\mathbf{x}} = \int_t \mathcal{A}(\mathbf{z}-\mathbf{x}, t)\;dt
 \end{equation}
-which is invariant for all $\mathbf{z}$. However, the very mapping on
-which the \cite{tabareau_geometry_2007} result is based leads to a
-very \e{variant} activity profile in the \ccg~model. A luminance of a
-given size which excites activity near to the fovea causes activity in
-a large number of neurons, whereas activity far from the fovea excites
-a much smaller region. This effect is clearly demonstrated in
-Fig.~\ref{fig:mapping} for equal sized targets both on and distal from
-the fovea.
-% Try to make this clearer for Reviewer 2, Methods Comments, point 5.
+which is invariant for all $\mathbf{z}$. \rvwt{This requirement is
+fulfilled by spatially invariant 2D Gaussian profiles, whose
+time-course (how quickly they grow and then diminish) is always the
+same.}
 
-This led us to hypothesise that the retinotopic mapping be accompanied
-by an associated widening projection field such that the hill of
-activity in superior colliculus is invariant with position on the
-collicular surface. There are a number of locations in the system in
-which this widening projection field could exist. It could be
-implemented in the projections between the retinal populations and the
-superficial layer of SC along with the projection between the World
-and the FEF population. However, this would affect activity within the
-basal ganglia of the model, contradicting a result
+However, the very mapping on which the \cite{tabareau_geometry_2007}
+result is based leads to a very \e{variant} activity profile \rvwt{in
+the SC\_deep layer} of the \ccg~model. A luminance of a given size
+which excites activity near to the fovea causes activity in a large
+number of neurons in each retinotopic layer, whereas activity far from
+the fovea excites a much smaller region. This effect is clearly
+demonstrated in Fig.~\ref{fig:mapping} for equal sized targets both on
+and distal from the fovea.
+
+% Try to make this clearer for Reviewer 2, Methods Comments, point 5.
+\rvwt{To understand the need for this invariance,
+consider the effect of a 2D Gaussian hill in SC\_deep which elicits a
+successful horizontal saccade of 10\dg. Activity from the 2D Gaussian,
+passing through the weight maps will excite the superior and inferior
+rectus channels by an equal, balanced amount, so these cancel out,
+allowing the eye movement to be horizontal. The amount of activation
+passed to the lateral rectus muscle results from a convolution of the
+Gaussian and the exponential component of the weight map relationship
+in Eq.~\ref{eq:tabareau_eq3}. If the Gaussian hill now appears further
+along the collicular surface, coding for a 20\dg~saccade, \e{and also
+becomes smaller}, we can still argue that the vertical component
+signals to superior/inferior rectus muscles will cancel out, and we
+could imagine that the exponential component of
+Eq.~\ref{eq:tabareau_eq3} is correctly parameterised to compensate for
+the smaller hill. However. Now consider a 2-D Gaussian hill which
+codes for a 10\dg saccade which is `up, and to the right' in equal
+proportions. That means that the hill will sit on the boundary between
+the weight maps for the `up', and the `right' muscles. Now, if the
+hill moves to the $r=$20\dg~location on the colliculus, \e{and also
+reduces in size}, it will excite only the periphery of the sine; the
+exponential increase of the map along $r$ is not guaranteed to
+compensate for the reduction in the convolution of the Gaussian hill
+and the sinusoidal component of the weight map.}
+% Add figure for this.
+
+This led us to hypothesise that the retinotopic mapping \rvwt{to the
+SBG be preceded} by an associated widening projection field such that
+the hill of activity in \rvwt{a `final' deep layer of superior
+colliculus is invariant with position on the map}. There are a number of
+locations in the system in which this widening projection field could
+exist. It could be implemented in the projections between the retinal
+populations and the superficial layer of SC along with the projection
+between the World and the FEF population. However, this would affect
+activity within the basal ganglia of the model, contradicting a result
 in \cite{cope_basal_2017} which explains the `hockey stick' profile
 for saccade latency as a function of saccade eccentricity. Instead, we
 suggest that a widening projection field is encoded within the
@@ -1407,7 +1467,7 @@ patterns are plausible.}
 %
 Although in this work we do not model
 the SC in detail, we extended the model with a third functional layer
-named SC\_deep2, shown in Fig.~\ref{scdeep} (\ccg~has only the two
+named SC\_deep2, shown in Fig.~\ref{scdeep}(b) (\ccg~has only the two
 layers SC\_sup and SC\_deep). We introduced a widening projection
 based on a Gaussian projection field whose width, $\sigma(r)$ varies
 in inverse proportion to the magnification factor, $M(r)$, given in
@@ -1736,11 +1796,11 @@ stick' shape shown in Fig. 7 of \cite{cope_basal_2017} for horizontal
 [Fig.~\ref{lat_vs_all}(a)], vertical [Fig.~\ref{lat_vs_all}(b)] and
 oblique saccades (not shown). The latency increases with eccentricity
 far from the fovea because the retinotopic mapping reduces the
-activity in the basal ganglia for more eccentric targets (this effect
-is described in detail in \cite{cope_basal_2017}). Closer to the
-fovea, the interaction between the foveal mask and the activity in FEF
-again leads to reduced input into into the basal ganglia and an
-increased time to achieve disinhibition in SNr.
+activity in the basal ganglia for more eccentric targets (see
+Fig.~\ref{mapping}). Closer to the fovea, the \rvwt{effect of} the
+foveal mask \rvwt{on} the activity in FEF again leads to reduced input
+into the basal ganglia and an increased time to achieve disinhibition
+in SNr.
 
 Fig.~\ref{lat_vs_all}(c) shows latencies achieved when varying the
 time between fixation offset and target onset. This is termed
@@ -1880,7 +1940,11 @@ this was called a `staircase' presentation.
 We carried out a `staircase' presentation, shown in
 Fig.~\ref{doublesteps}, where our small eccentricity luminance was at
 8\dg~and our more distal luminance was at 12\dg~(both to the right of
-centre). We found that there was a critical time delay between the
+centre). \rvwt{The stimuli could not be presented at 15\dg and 30\dg
+to match the experiment, because 30\dg saccades were outside the range
+of the model.}
+
+We found that there was a critical time delay between the
 luminances of about 30~ms. If they were presented with a delay smaller
 than this value, then a single, slightly hypermetric saccade was
 made. This response type is called a \e{final angle response}. A delay
@@ -2169,7 +2233,7 @@ https://github.com/ABRG-Models/OMM\_NeuroMuscular
 
 \begin{figure}[htb!]
 \begin{center}
-\includegraphics[width=0.9\textwidth]{./figures/ccg_model.png}
+\includegraphics[width=\textwidth]{./figures/ccg_model.png}
 \end{center}
 \textbf{\refstepcounter{figure}\label{fig:ccg_model} Figure \arabic{figure}.}
 { \bol{a) The macroscopic architecture of the \ccg~model.} The main
@@ -2201,7 +2265,23 @@ target populations (the blue arrows indicate that all channels of GPe
 and SNr are targeted by the connection). Dopaminergic modulation of
 the inputs to the striatum are indicated by the blue circles labelled
 `d' and the dotted lines. The SNr sends inhibitory output projections
-to its targets.}
+to its targets. \bol{c) 2D Gaussian weights.} The `GaussianKernel'
+connectivity pattern is based on the horizontal distance between the
+location of a neural element in one layer, and the location of a
+target neural element in the target layer for the connection. The
+potential weight of the connection is given by a 2D Gaussian function,
+which is maximum for the target neuron which exactly corresponds to
+the source neuron, and drops down for target neurons which are
+horizontally displaced from the source neuron. A threshold is applied
+to avoid a computationally expensive all-to-all connectivity (with
+most of these connections having negligible weight values).  If the
+weight is non-zero, then a connection is made from source to target,
+otherwise no connection is made. \bol{d) Gaussian connectivity.} This
+image shows connectivity (green rays) from two source neurons (in
+Str\_D2, brown spheres) to target neurons (in GPe, blue spheres). The
+circular connectivity pattern is seen. This does not show the weights,
+which reduce `towards the edge of the circle' and follow the
+relationship shown in (c).}
 \end{figure}
 
 
@@ -2288,11 +2368,15 @@ Excitatory burst neurons; TN: Tonic neurons; MN: Motoneurons.}
 \textbf{\refstepcounter{figure}\label{fig:bioeye} Figure \arabic{figure}.}
 { The biomechanical eye. a) an OpenSim rendering of a pair of
 biomechanical eyes showing the positions of the extraocular
-muscles. b) OpenSim rendering of biomechanical eye within a head
-model c) Top-down schematic cross-sectional view of the biomechanical eye situated
-within a spherical screen, with a horizontal rotation towards a
-luminances at an angle of $-\theta_{y}$ about the $y$ axis, which
-points up out of the page.}
+muscles. Note that i) volume visualization of muscles should not be
+confused with FEM muscle models; it is provided for user feedback
+purposes, i.e. shape and color change depending on the muscle
+activation, ii) superior and inferior oblique are visualized up to
+their respective muscle pulleys. b) OpenSim rendering of biomechanical
+eye within a head model c) Top-down schematic cross-sectional view of
+the biomechanical eye situated within a spherical screen, with a
+horizontal rotation towards a luminances at an angle of $-\theta_{y}$
+about the $y$ axis. The $y$ axis points up, out of the page.}
 \end{figure}
 
 \begin{figure}[htb!]
@@ -2314,10 +2398,15 @@ executable. In practice, this call is made by \stob.}
 
 \begin{figure}[htb!]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{./figures/SC_to_brainstem.png}
+\includegraphics[width=0.9\textwidth]{./figures/scdeep_plus.png}
 \end{center}
 \textbf{\refstepcounter{figure}\label{scdeep} Figure \arabic{figure}.}
-{ Showing the additional deep layer of superior colliculus (SC\_deep2)
+{ a) \& b) Tabareau-style weight maps for `left' and `down' components
+of a saccade. c) The two weight maps in a) and b) shown on the same
+graph, viewed from above. Circles show the locations of potential
+hills of activity. Purple, dashed circles encode saccades down;
+red circles encode saccades with both a left and a down component. d)
+Showing the additional deep layer of superior colliculus (SC\_deep2)
 and the output layer (SC\_avg, named for the fact that in an earlier
 version of the model, it received the output of the centroid of
 SC\_deep).  The widening Gaussian projection is shown as the arrow
@@ -2405,10 +2494,19 @@ three rotational components of the `red' saccade, to target location
 { Exploring saccade latencies. a) Latency to first movement as a
 function of target eccentricity for horizontal targets. b) Latency
 vs. eccentricity for vertical targets. c) Latency vs. gap at three
-different luminance values. d) The effect of the dopamine parameter on
-saccade latencies in gap, step and overlap conditions, for two
-different target luminances.  e) Saccade vs. luminance showing gradual
-transition between reflexive and express behaviour.
+different luminance values. The data are shown alongside
+the \ccg~model results from Fig.~5 of \cite{cope_basal_2017} in blue,
+and the experimental results used in that model in red. The fixation
+luminance for the \ccg~curve was 0.5, the target lumianance 0.6 and
+the target eccentricity was 8\dg. The difference between
+the \ccg~model data and the data from the current model results from
+the different mechanism by which activity in SC\_deep causes a
+movement, the differing target angle and the reduced fixation
+luminance used here. d) The effect
+of the dopamine parameter on saccade latencies in gap, step and
+overlap conditions, for two different target luminances.  e) Saccade
+vs. luminance showing gradual transition between reflexive and express
+behaviour.
 %f) Saccade duration vs. saccade eccentricity for horizontal
 %(rightwards), vertical (downwards) and 45\dg~oblique (down \& right) saccades.
 }
