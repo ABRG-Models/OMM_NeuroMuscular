@@ -1997,8 +1997,7 @@ components \e{in hardware} could fall within our new category.
 Using a number of examples, we will attempt to illustrate what we mean
 by computational neurobehaviour. We'll consider which examples fall
 into the new category and which are covered by other fields of
-robotics or computational neuroscience. We will then attempt to
-provide a definition of computational neurobehaviour.}
+robotics or computational neuroscience.}
 
 \rvw{\cite{pearson_whiskerbot:_2007} describes a wheeled robot which has a
 biomimetic whisker sensory system, along with a biomimetic neural
@@ -2037,29 +2036,46 @@ robot's reach-and-grasp function, rather than a study which aims to
 learn more about the biology of a primate arm. For this reason, we
 would describe the study of \cite{knips_neural_2017} as embodied
 robotics or neuro-robotics.}
-%
-\rvw{\cite{arena_motor-skill_2017} describes a
-robotic insect system based on the fly species \e{Drosophila
-Melanogaster}. It has biomimetic insect legs implemented in a virtual
-robot and a neuro-mimetic brain. Closing the loop is a visual sensory
-input system which is able to determine the distance between the robot
-and an obstacle and the obstacle's height. The visual system is not
-described in detail and may not be biologically modelled (much in the
-way that the visual processing stream is not modelled in detail in the
-present work). Nevertheless, this study may reasonably be described as
-compuational neurobehaviour; the authors demonstrate that the virtual
-robot is able to learn to climb obstacles in a realistic manner and
-suggest that the model may be compared with experimental data from
-future Drosophila experiments addressing obstacle climbing and
-learning.}
 
-\rvw{To summarise, we give a definition of computational
-neurobehaviour as \e{the study of biological sensory-motor system
+\rvw{Modern programming platforms, often originating from the world
+of computer gaming, make it relatively easy to model a virtual
+environment. Consequently, an increasing number of studies into
+robotic or neuro-mimetic control are carried out with virtual robots
+operating within a virtual environment. \cite{arena_motor-skill_2017}
+describes a robotic insect system based on the fly
+species \e{Drosophila Melanogaster}. It has biomimetic insect legs
+implemented in a virtual robot and a neuro-mimetic brain. Closing the
+loop is a visual sensory input system which is able to determine the
+distance between the robot and an obstacle and the obstacle's
+height. The visual system is not described in detail and may not be
+biologically modelled (much in the way that the visual processing
+stream is not modelled in detail in the present work). Nevertheless,
+this study may reasonably be described as compuational neurobehaviour;
+the authors demonstrate that the virtual robot is able to learn to
+climb obstacles in a realistic manner and suggest that the model may
+be compared with experimental data from future Drosophila experiments
+addressing obstacle climbing and learning.}
+%
+\rvw{\cite{nguyen_saccade_2014} and
+\cite{thurat_biomimetic_2015} are two studies of the oculomotor system
+which model sensory input, neural control and motor output. These
+studies fall outside the remit of computational neurobehaviour only
+because they omit to close the sensory
+loop. \cite{dewolf_spiking_2016} describes a reach model comprising a
+simplified virtual arm (with fewere degrees of freedom than a primate
+arm), and a biologically inspired brain model. This model also omits
+to close the sensory feedback loop and we consider it a traditional
+computational neuroscience study.}
+
+\rvw{We can now offer a definition of computational
+neurobehaviour as: \e{The study of biological sensory-motor system
 behaviour using biophysically accurate models of sensory input, brain
 and motor sub-systems operating in a closed-loop}. The sub-system
 models may be implemented in software or hardware, provided that they
 attempt to reproduce and explain features of the biological
-sub-system.}
+sub-system. We favour virtual biomechanics, for the ease with which
+the biomechanical model can be modified and the flexibility of
+computational modelling over hardware modelling.}
 
 To demonstrate the validity of the computational neurobehaviour
 approach, we built an integrated model and then identified the
@@ -2200,15 +2216,31 @@ as the connections within each model.
 \subsection{Concluding remarks}
 
 % Reviewer 1's point 2.
-\rvw{Address reviewer's question of ``whether inaccuracies in the
-biomechanical model may introduce
-errors that propagate through the closed loop system and cannot be
-counteracted by the nervous system part of the simulation. How can you
-(or someone using this or related models) exclude introducing
-(biomechanical) properties that are not present in the biological
-system, or make sure to not miss critical biomechanical properties
-that might help remedy some of the shortcomings of the closed loop
-model?''.}
+\rvw{\bol{FIXME}. We should consider whether inaccuracies within one sub-system,
+such as the musculo-skeletal model, may introduce errors that
+propagate through the closed loop system and cannot be counteracted by
+the nervous system part of the simulation.  My thoughts: You have to
+do this alongside other research so that sub-systems are informed by
+the best knowledge available.
+%
+How can you (or someone using this or related models)
+exclude introducing (biomechanical) properties that are not present in
+the biological system, or make sure to not miss critical biomechanical
+properties that might help remedy some of the shortcomings of the
+closed loop model?.}
+
+% Reviewer 1's point 4.
+\rvw{There are also experimental closed-loop approaches to
+understanding sensorimotor control. \cite{ejaz_closed-loop_2013}
+places a fly in a fixed position, and couples it with a free-to-move
+robot. The sensory input collected by the robot is projected onto the
+eyes of the fly, and activity from a selected neuron in the fly's
+brain is used to drive a control system for the robot's
+movements. This allows the experimenters to study the behaviour of the
+fly's brain operating in a closed-loop condition that is more natural
+than the open-loop condition that many other experimental techniques
+mandate. The results from closed-loop experiments will undoubtedly
+inform future neurobehavioural models.}
 
 % Cerebellum omitted
 The omission of the cerebellum will not have escaped the reader's
@@ -2356,8 +2388,8 @@ and SNr are targeted by the connection). Dopaminergic modulation of
 the inputs to the striatum are indicated by the blue circles labelled
 `d' and the dotted lines. The SNr sends inhibitory output projections
 to its targets. \bol{c) 2D Gaussian weights.} The `GaussianKernel'
-connectivity pattern is based on the horizontal distance between the
-location of a neural element in one layer, and the location of a
+connectivity pattern is based on the `in-plane displacement' between
+the location of a neural element in one layer, and the location of a
 target neural element in the target layer for the connection. The
 potential weight of the connection is given by a 2D Gaussian function,
 which is maximum for the target neuron which exactly corresponds to
@@ -2369,8 +2401,8 @@ weight is non-zero, then a connection is made from source to target,
 otherwise no connection is made. \bol{d) Gaussian connectivity.} This
 image shows connectivity (green rays) from two source neurons (in
 Str\_D2, brown spheres) to target neurons (in GPe, blue spheres). The
-circular connectivity pattern is seen. This does not show the weights,
-which reduce `towards the edge of the circle' and follow the
+circular connectivity pattern is seen. This does not show the weight
+\e{values}, which reduce `towards the edge of the circle' and follow the
 relationship shown in (c).}
 \end{figure}
 

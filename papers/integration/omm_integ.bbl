@@ -1,4 +1,4 @@
-\begin{thebibliography}{164}
+\begin{thebibliography}{171}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -49,6 +49,15 @@ Arai, K. and Keller, E.~L. (2005).
 \newblock \doi{10.1007/s00422-004-0526-y}
 \bibAnnoteFile{arai_model_2005}
 
+\bibitem[{Arena et~al.(2017)Arena, Arena, Strauss, and
+  Patan\'e}]{arena_motor-skill_2017}
+Arena, E., Arena, P., Strauss, R., and Patan\'e, L. (2017).
+\newblock {\selectlanguage{English}Motor-{Skill} {Learning} in an {Insect}
+  {Inspired} {Neuro}-{Computational} {Control} {System}}.
+\newblock \emph{Frontiers in Neurorobotics} 11.
+\newblock \doi{10.3389/fnbot.2017.00012}
+\bibAnnoteFile{arena_motor-skill_2017}
+
 \bibitem[{Bahill and Stark(1979)}]{bahill_trajectories_1979}
 Bahill, A.~T. and Stark, L. (1979).
 \newblock The trajectories of saccadic eye movements.
@@ -72,8 +81,8 @@ Bayguinov, P.~O., Ghitani, N., Jackson, M.~B., and Basso, M.~A. (2015).
 \newblock \emph{Journal of Neurophysiology} \doi{10.1152/jn.00144.2015}
 \bibAnnoteFile{bayguinov_hard-wired_2015}
 
-\bibitem[{Becker and Jürgens(1979)}]{becker_analysis_1979}
-Becker, W. and Jürgens, R. (1979).
+\bibitem[{Becker and J\"urgens(1979)}]{becker_analysis_1979}
+Becker, W. and J\"urgens, R. (1979).
 \newblock An analysis of the saccadic system by means of double step stimuli.
 \newblock \emph{Vision Research} 19, 967--983.
 \newblock \doi{10.1016/0042-6989(79)90222-0}
@@ -182,11 +191,11 @@ Cope, A. and Gurney, K.~N. (2011).
   13--20
 \bibAnnoteFile{cope_biologically_2011}
 
-\bibitem[{Cope and James(2015)}]{cope_spineml_2_brahms_2015-1}
+\bibitem[{Cope and James(2015)}]{cope_spineml_2_brahms_2015}
 Cope, A.~J. and James, S.~S. (2015).
 \newblock {SpineML}\_2\_brahms.
 \newblock RRID: SCR\_015640
-\bibAnnoteFile{cope_spineml_2_brahms_2015-1}
+\bibAnnoteFile{cope_spineml_2_brahms_2015}
 
 \bibitem[{Cope et~al.(2014)Cope, Richmond, and Allerton}]{cope_spineml_2014}
 Cope, A.~J., Richmond, P., and Allerton, D. (2014).
@@ -272,8 +281,8 @@ DeWolf, T., Stewart, T.~C., Slotine, J.-J., and Eliasmith, C. (2016).
 \newblock \doi{10.1098/rspb.2016.2134}
 \bibAnnoteFile{dewolf_spiking_2016}
 
-\bibitem[{Dorris et~al.(1997)Dorris, Paré, and Munoz}]{dorris_neuronal_1997}
-Dorris, M.~C., Paré, M., and Munoz, D.~P. (1997).
+\bibitem[{Dorris et~al.(1997)Dorris, Par\'e, and Munoz}]{dorris_neuronal_1997}
+Dorris, M.~C., Par\'e, M., and Munoz, D.~P. (1997).
 \newblock Neuronal {Activity} in {Monkey} {Superior} {Colliculus} {Related} to
   the {Initiation} of {Saccadic} {Eye} {Movements}.
 \newblock \emph{The Journal of Neuroscience} 17, 8566
@@ -286,6 +295,14 @@ Edelman, J.~A. and Keller, E.~L. (1996).
 \newblock \emph{Journal of Neurophysiology} 76, 908
 \bibAnnoteFile{edelman_activity_1996}
 
+\bibitem[{Ejaz et~al.(2013)Ejaz, Krapp, and Tanaka}]{ejaz_closed-loop_2013}
+Ejaz, N., Krapp, H.~G., and Tanaka, R.~J. (2013).
+\newblock {\selectlanguage{English}Closed-loop response properties of a visual
+  interneuron involved in fly optomotor control}.
+\newblock \emph{Frontiers in Neural Circuits} 7.
+\newblock \doi{10.3389/fncir.2013.00050}
+\bibAnnoteFile{ejaz_closed-loop_2013}
+
 \bibitem[{Federighi et~al.(2011)Federighi, Cevenini, Dotti, Rosini, Pretegiani,
   Federico et~al.}]{federighi_differences_2011}
 Federighi, P., Cevenini, G., Dotti, M.~T., Rosini, F., Pretegiani, E.,
@@ -295,6 +312,13 @@ Federighi, P., Cevenini, G., Dotti, M.~T., Rosini, F., Pretegiani, E.,
 \newblock \emph{Brain} 134, 879--891.
 \newblock \doi{10.1093/brain/awr009}
 \bibAnnoteFile{federighi_differences_2011}
+
+\bibitem[{Fend et~al.(2004)Fend, Bovet, and Hafner}]{fend_artificial_2004}
+Fend, M., Bovet, S., and Hafner, V. (2004).
+\newblock The artificial mouse-a robot with whiskers and vision.
+\newblock \emph{Proceedings of the 35th International Symposium on Robotics,
+  Paris, 2004.} , 1--6
+\bibAnnoteFile{fend_artificial_2004}
 
 \bibitem[{Fuchs and Luschei(1970)}]{fuchs_firing_1970}
 Fuchs, A. and Luschei, E. (1970).
@@ -572,9 +596,19 @@ Kleine, J.~F. (2003).
 \newblock \doi{10.1152/jn.00021.2003}
 \bibAnnoteFile{kleine_saccade-related_2003}
 
-\bibitem[{Kühn et~al.(2004)Kühn, Williams, Kupsch, Limousin, Hariz, Schneider
+\bibitem[{Knips et~al.(2017)Knips, Zibner, Reimann, and
+  Schöner}]{knips_neural_2017}
+Knips, G., Zibner, S. K.~U., Reimann, H., and Schöner, G. (2017).
+\newblock {\selectlanguage{English}A {Neural} {Dynamic} {Architecture} for
+  {Reaching} and {Grasping} {Integrates} {Perception} and {Movement}
+  {Generation} and {Enables} {On}-{Line} {Updating}}.
+\newblock \emph{Frontiers in Neurorobotics} 11.
+\newblock \doi{10.3389/fnbot.2017.00009}
+\bibAnnoteFile{knips_neural_2017}
+
+\bibitem[{K\"uhn et~al.(2004)K\"uhn, Williams, Kupsch, Limousin, Hariz, Schneider
   et~al.}]{kuhn_event-related_2004}
-Kühn, A.~A., Williams, D., Kupsch, A., Limousin, P., Hariz, M., Schneider,
+K\"uhn, A.~A., Williams, D., Kupsch, A., Limousin, P., Hariz, M., Schneider,
   G.-H., et~al. (2004).
 \newblock Event-related beta desynchronization in human subthalamic nucleus
   correlates with motor performance.
@@ -597,9 +631,9 @@ Lee, C., Rohrer, W.~H., and Sparks, D.~L. (1988).
 \newblock \doi{10.1038/332357a0}
 \bibAnnoteFile{lee_population_1988}
 
-\bibitem[{Lefèvre et~al.(1998)Lefèvre, Quaia, and
+\bibitem[{Lef\`evre et~al.(1998)Lef\`evre, Quaia, and
   Optican}]{lefevre_distributed_1998}
-Lefèvre, P., Quaia, C., and Optican, L.~M. (1998).
+Lef\`evre, P., Quaia, C., and Optican, L.~M. (1998).
 \newblock Distributed model of control of saccades by superior colliculus and
   cerebellum.
 \newblock \emph{Neural Networks} 11, 1175--1190
@@ -722,8 +756,8 @@ Middleton, F.~A. and Strick, P.~L. (2000).
 \bibAnnoteFile{middleton_basal_2000}
 
 \bibitem[{Mink(1996)}]{mink_basal_1996}
-Mink, J. (1996).
-\newblock The basal ganglia: {Focused} selection and inhibition of competing
+Mink, J.~W. (1996).
+\newblock The basal ganglia: focused selection and inhibition of competeing
   motor programs.
 \newblock \emph{Progress in Neurobiology} 50, 381--425
 \bibAnnoteFile{mink_basal_1996}
@@ -759,8 +793,8 @@ Monosov, I.~E., Trageser, J.~C., and Thompson, K.~G. (2008).
 \newblock \emph{Neuron} 57, 614--625
 \bibAnnoteFile{monosov_measurements_2008}
 
-\bibitem[{Morén et~al.(2013)Morén, Shibata, and Doya}]{moren_mechanism_2013}
-Morén, J., Shibata, T., and Doya, K. (2013).
+\bibitem[{Mor\'en et~al.(2013)Mor\'en, Shibata, and Doya}]{moren_mechanism_2013}
+Mor\'en, J., Shibata, T., and Doya, K. (2013).
 \newblock {\selectlanguage{en}The {Mechanism} of {Saccade} {Motor} {Pattern}
   {Generation} {Investigated} by a {Large}-{Scale} {Spiking} {Neuron} {Model}
   of the {Superior} {Colliculus}}.
@@ -809,7 +843,7 @@ Norman, D.~A. and Shallice, T. (1986).
 \bibitem[{Nowotny(2011)}]{nowotny_flexible_2011}
 Nowotny, T. (2011).
 \newblock {\selectlanguage{en}Flexible neuronal network simulation framework
-  using code generation for {NVidia}® {CUDA}™}.
+  using code generation for {NVidia}\textsuperscript{\textregistered} {CUDA}\textsuperscript{TM}}.
 \newblock \emph{BMC Neuroscience} 12, P239.
 \newblock \doi{10.1186/1471-2202-12-S1-P239}
 \bibAnnoteFile{nowotny_flexible_2011}
@@ -852,16 +886,25 @@ Parent, A. and Hazrati, L. (1993).
 \newblock \emph{Trends in Neuroscience} 16, 111--116
 \bibAnnoteFile{parent_anatomical_1993}
 
-\bibitem[{Quaia et~al.(1999)Quaia, Lefèvre, and Optican}]{quaia_model_1999}
-Quaia, C., Lefèvre, P., and Optican, L.~M. (1999).
+\bibitem[{Pearson et~al.(2007)Pearson, Pipe, Melhuish, Mitchinson, and
+  Prescott}]{pearson_whiskerbot:_2007}
+Pearson, M.~J., Pipe, A.~G., Melhuish, C., Mitchinson, B., and Prescott, T.~J.
+  (2007).
+\newblock Whiskerbot: {A} robotic active touch system modeled on the rat
+  whisker sensory system.
+\newblock \emph{Adaptive Behaviour} 15
+\bibAnnoteFile{pearson_whiskerbot:_2007}
+
+\bibitem[{Quaia et~al.(1999)Quaia, Lef\`evre, and Optican}]{quaia_model_1999}
+Quaia, C., Lef\`evre, P., and Optican, L.~M. (1999).
 \newblock Model of the {Control} of {Saccades} by {Superior} {Colliculus} and
   {Cerebellum}.
 \newblock \emph{Journal of Neurophysiology} 82, 999
 \bibAnnoteFile{quaia_model_1999}
 
-\bibitem[{Quaia et~al.(2000)Quaia, Paré, Wurtz, and
+\bibitem[{Quaia et~al.(2000)Quaia, Par\'e, Wurtz, and
   Optican}]{quaia_extent_2000}
-Quaia, C., Paré, M., Wurtz, R.~H., and Optican, L.~M. (2000).
+Quaia, C., Par\'e, M., Wurtz, R.~H., and Optican, L.~M. (2000).
 \newblock {\selectlanguage{en}Extent of compensation for variations in monkey
   saccadic eye movements}.
 \newblock \emph{Experimental Brain Research} 132, 39--51.
@@ -1006,7 +1049,7 @@ Scudder, C.~A. (1988).
 
 \bibitem[{Segraves and Goldberg(1987)}]{segraves_functional_1987}
 Segraves, M.~A. and Goldberg, M.~E. (1987).
-\newblock Functional properties of corticotectal neurons in the monkey\{'\}s
+\newblock Functional properties of corticotectal neurons in the monkey's
   frontal eye field.
 \newblock \emph{Journal of Neurophysiology} 58, 1387--1419
 \bibAnnoteFile{segraves_functional_1987}
@@ -1154,6 +1197,13 @@ Tipper, S.~P., Howard, L.~A., and Paul, M.~A. (2001).
 \newblock \emph{Experimental Brain Research} 136, 241--249
 \bibAnnoteFile{tipper_reaching_2001}
 
+\bibitem[{Ungerleider and Mishkin(1982)}]{ungerleider_two_1982}
+Ungerleider, L.~G. and Mishkin, M. (1982).
+\newblock Two cortical visual systems.
+\newblock In \emph{Analysis of {Visual} {Behavior}}, eds. D.~J. Ingle, A.~M.
+  Goodale, and R.~J.~W. Mansfield (Cambridge, MA: MIT Press). 549--586
+\bibAnnoteFile{ungerleider_two_1982}
+
 \bibitem[{Van~Gisbergen et~al.(1987)Van~Gisbergen, Van~Opstal, and
   Tax}]{van_gisbergen_collicular_1987}
 Van~Gisbergen, J., Van~Opstal, A., and Tax, A. (1987).
@@ -1276,5 +1326,12 @@ Wurtz, R.~H. and Goldberg, M.~E. (1972).
   discharging before eye movements.
 \newblock \emph{J Neurophysiol} 35, 575--586
 \bibAnnoteFile{wurtz_activity_1972}
+
+\bibitem[{Yu et~al.(2004)Yu, Tan, Wang, and Chen}]{yu_development_2004}
+Yu, J., Tan, M., Wang, S., and Chen, E. (2004).
+\newblock Development of a biomimetic robotic fish and its control algorithm.
+\newblock \emph{IEEE Tranactions on System, Man and Cybernetics - Part B} 34,
+  1798--1810
+\bibAnnoteFile{yu_development_2004}
 
 \end{thebibliography}
