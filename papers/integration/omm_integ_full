@@ -2,6 +2,6 @@
 
 latex omm_integ.tex
 bibtex omm_integ.aux
-./bbl_utf8_to_latex.sh ./omm_intex.bbl
+./bbl_utf8_to_latex.sh ./omm_integ.bbl
 pdflatex omm_integ.tex
 pdflatex omm_integ.tex

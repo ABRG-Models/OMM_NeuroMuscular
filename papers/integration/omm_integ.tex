@@ -601,7 +601,7 @@ scope of the current work.}
 % three channel model shown. Now talk about how we have a map of
 % channels - a continuous space in the \ccg model. This can then lead
 % on to Fig 3.
-\rvwt{The GPR model in Fig.~\ref{ccg_model}(b) has only three
+\rvwt{The GPR model in Fig.~\ref{fig:ccg_model}(b) has only three
 channels, with the focussed inhibition from striatum to SNr and GPe
 defined by a simple one-to-one scheme. The action channels represent
 discrete, incompatible motor action choices. In the oculomotor model,
@@ -636,9 +636,9 @@ of the model, based on a diagram output directly from
 SpineCreator. Populations for Str\_D1, Str\_D2, STN, SNr and GPe are
 shown within the `Basal Ganglia' box. Input comes into the model via
 the `World' population and the output population is SC\_deep. Compare
-this diagram with Figs.~\ref{ccg_model}(a) \&
+this diagram with Figs.~\ref{fig:ccg_model}(a) \&
 (b). Fig.~\ref{brain_model} expands the `SC', `BG' and `slow retinal'
-boxes from Fig.~\ref{ccg_model}(a).}
+boxes from Fig.~\ref{fig:ccg_model}(a).}
 
 % Now some FEF stuff taken from Alex's pre-pub
 \rvwt{The frontal eye fields (FEF) are a key cortical area for the
@@ -731,8 +731,8 @@ visual input via cortical (FEF) and sub-cortical (thalamus)
 pathways. Due to the retinotopic mapping (Sect.~\ref{sec:mapping}),
 foveal luminances deliver a strong signal to the BG; roughly one third
 of the map is activated for the foveal targets used in this work
-(Fig.~\ref{mapping}, red cross). This makes it virtually impossible
-for a peripheral target (Fig.~\ref{mapping}, yellow cross) to win
+(Fig.~\ref{fig:mapping}, red cross). This makes it virtually impossible
+for a peripheral target (Fig.~\ref{fig:mapping}, yellow cross) to win
 selection in the BG. Even if the peripheral target competed
 successfully to generate a saccade, this process would cause a
 significant delay, leading to latencies much larger than those
@@ -1077,7 +1077,7 @@ The easiest way to access this information is by using SpineCreator.
 We implemented a saccadic burst generator (SBG) based on the
 connectivity outlined in \cite{gancarz_neural_1998}. The SBG network
 for two of the model's six channels is shown in
-Fig.~\ref{sbg}. \rvw{In the brainstem model, we use the word `channel'
+Fig.~\ref{fig:sbg}. \rvw{In the brainstem model, we use the word `channel'
 to mean a set of populations of neurons which are involved in
 actuating a single extraocular muscle. SBG channels are arranged in
 pairs, actuating opposing muscles. There is one pair of channels which
@@ -1281,7 +1281,7 @@ about how the model is executed. A number of simulation engines can be
 utilised, including DAMSON \citep{richmond_damson_2015}, GeNN
 \citep{nowotny_flexible_2011,nowotny_spineml_2014} and BRAHMS (used
 here). The simulation engine incorporating BRAHMS is called \stob~
-\citep{cope_spineml_2_brahms_2015-1}. \stob~is a collection of XSLT
+\citep{cope_spineml_2_brahms_2015}. \stob~is a collection of XSLT
 stylesheets which first generate and compile C++ BRAHMS components
 from the SpineML component layer description files. \stob~then uses
 the SpineML network and experiment layer files to generate a BRAHMS
@@ -1541,7 +1541,7 @@ the excitation which caused the activity in SC\_deep by bringing the
 target luminance within the masked, foveal region, the activity in SC
 decays too slowly to avoid additional saccadic movements. We found it
 necessary to hypothesise an inhibitory feedback mechanism from the SBG
-to the brain model.  This is shown in Fig.~\ref{sbg}, which indicates
+to the brain model.  This is shown in Fig.~\ref{fig:sbg}, which indicates
 how the output from the inhibitory burst neurons (IBN) of the SBG
 model are used to feed back an inhibitory signal to the SC\_deep,
 thalamus and FEF populations in the brain model, resetting them ready
@@ -1976,28 +1976,107 @@ own~\citep{becker_analysis_1979}.
 
 The aim of this study was to demonstrate the importance of modelling
 neurological systems \e{in concert with} the biomechanical systems
-with which they have evolved in parallel. We hypothesised that by
+with which they have evolved. We hypothesised that by
 combining existing neurophysiological models with an accurate model of
 a musculo-skeletal system, and then `closing the loop' by allowing the
 movements of the virtual muscles to modulate sensory feedback to the
 brain model, shortcomings in the constituent models would be revealed,
-leading to new knowledge. To demonstrate the validity of this
-hypothesis, we built an integrated model and then identified the
+leading to new knowledge.
+%
+\rvw{We call this closed-loop approach \e{computational
+neurobehaviour}, meaning a complete, behaving model, with attention
+paid to the biological accuracy of each brain and biomechanical
+sub-system. There already exist many closed-loop \e{robotic} systems which
+receive sensory input from the world, process that input and generate
+behaviour by activating motor
+systems
+\citep{yu_development_2004,fend_artificial_2004,pearson_whiskerbot:_2007}. We
+now consider whether robotic systems which model biological
+components \e{in hardware} could fall within our new category.
+%
+Using a number of examples, we will attempt to illustrate what we mean
+by computational neurobehaviour. We'll consider which examples fall
+into the new category and which are covered by other fields of
+robotics or computational neuroscience. We will then attempt to
+provide a definition of computational neurobehaviour.}
+
+\rvw{\cite{pearson_whiskerbot:_2007} describes a wheeled robot which has a
+biomimetic whisker sensory system, along with a biomimetic neural
+system imitating the behaviour of the rat's sensory processing systems
+and controlling the movement of the robot. \cite{fend_artificial_2004}
+is a similar, wheeled, whiskered robot, with a repertoire of three
+behaviours organised in a subsumption architecture. In both robots,
+actions that are selected within the brain model drive a
+non-biologically accurate wheel motor control algorithm to achieve
+rotational and translational movements. Although both have
+sensory and processing systems which are guided by biology, the
+non-biological motor control stage prevents us from considering these
+as being studies of computational neurobehaviour.}
+%
+\rvw{\cite{yu_development_2004} report on a biomimetic fish robot,
+whose motor system closely resembles that of the real fish. The robot
+is able to operate in a closed-loop mode, where sensory input is
+provided to the non-biomimetic control algorithms from overhead
+cameras, but its control system is also able to operate in open-loop
+mode. Neither the control system, nor the sensory system are
+biophysically accurate and we would not describe this study as
+computational neurobehaviour. Nevertheless, the biophysically accurate
+motor system could certainly form part of a computational
+neurobehavioural study of swimming behaviour in the fish, if it were
+combined with suitable sensory input and sensory processing models.}
+%
+\rvw{\cite{knips_neural_2017} is a report of a reach-and-grasp robot
+arm controlled via a dynamic neural field brain model. The sensory
+input for this system---its `eyes'---is a Microsoft Kinect sensor; it
+also has somatosensory feedback from the fingers of the robot's
+hand. The neural field `brain' controls the seven degrees of freedom
+of the arm to carry out the reach-and-grasp action. While this robot
+has closed-loop control and is clearly inspired by biology, it remains
+a study of robotics and of the improvement of the control of the
+robot's reach-and-grasp function, rather than a study which aims to
+learn more about the biology of a primate arm. For this reason, we
+would describe the study of \cite{knips_neural_2017} as embodied
+robotics or neuro-robotics.}
+%
+\rvw{\cite{arena_motor-skill_2017} describes a
+robotic insect system based on the fly species \e{Drosophila
+Melanogaster}. It has biomimetic insect legs implemented in a virtual
+robot and a neuro-mimetic brain. Closing the loop is a visual sensory
+input system which is able to determine the distance between the robot
+and an obstacle and the obstacle's height. The visual system is not
+described in detail and may not be biologically modelled (much in the
+way that the visual processing stream is not modelled in detail in the
+present work). Nevertheless, this study may reasonably be described as
+compuational neurobehaviour; the authors demonstrate that the virtual
+robot is able to learn to climb obstacles in a realistic manner and
+suggest that the model may be compared with experimental data from
+future Drosophila experiments addressing obstacle climbing and
+learning.}
+
+\rvw{To summarise, we give a definition of computational
+neurobehaviour as \e{the study of biological sensory-motor system
+behaviour using biophysically accurate models of sensory input, brain
+and motor sub-systems operating in a closed-loop}. The sub-system
+models may be implemented in software or hardware, provided that they
+attempt to reproduce and explain features of the biological
+sub-system.}
+
+To demonstrate the validity of the computational neurobehaviour
+approach, we built an integrated model and then identified the
 modifications which were necessary to give it the ability to make
 accurate movements under one type of stimulus. We then examined its
-behaviour with other stimuli.
-
-We chose the oculomotor model as a basis for this study because it has
-only three degrees of freedom, making it one of the simplest
-musculo-skeletal systems. Furthermore, eye movements fall into several
-well-defined categories, each being controlled by separate brain
-circuits, we were therefore justified in modelling a system which
-produced only saccadic eye movements. Nevertheless, we are aware that
-we did not create a complete model of the system; no treatment of the
-cerebellum was attempted, justified because cerebellum appears to have
-only a minor effect on saccade accuracy \citep{dean_adaptive_2008},
-probably correcting for slow to medium timescale changes in the
-physical dynamics of the eyeball \citep{dean_learning_1994}.
+behaviour with other stimuli. We chose the oculomotor model as a basis
+for this study because it has only three degrees of freedom, making it
+one of the simplest musculo-skeletal systems. Furthermore, eye
+movements fall into several well-defined categories, each being
+controlled by separate brain circuits, we were therefore justified in
+modelling a system which produced only saccadic eye
+movements. Nevertheless, we are aware that we did not create a
+complete model of the system; no treatment of the cerebellum was
+attempted, justified because cerebellum appears to have only a minor
+effect on saccade accuracy \citep{dean_adaptive_2008}, probably
+correcting for slow to medium timescale changes in the physical
+dynamics of the eyeball \citep{dean_learning_1994}.
 
 To summarise our model integration: We combined
 the \ccg~model \citep{cope_basal_2017} with a saccadic burst generator
@@ -2094,7 +2173,7 @@ saccade. When a target luminance is projected onto the World
 population in the model, this induces activity which `reverberates' in
 loops through FEF, basal ganglia, SC and thalamus. The brainstem
 contains a mechanism to limit the timescale of a saccade (inhibitory
-feedback from EBN, via IBN to LLBN; see Fig.~\ref{sbg}). However, if
+feedback from EBN, via IBN to LLBN; see Fig.~\ref{fig:sbg}). However, if
 the activity in SC is not reset, then following the completion of the
 first saccade, a series of subsequent `staircase' saccades will be
 executed. There needs to be a mechanism to extinguish activity in SC,
@@ -2102,7 +2181,7 @@ but also in FEF and thalamus, as activity in either of these
 populations can build up and eventually cause repeat activity in SC
 and another saccade. We added hypothetical inhibitory feedback
 connections to our model, such that the IBN populations in the SBG
-would inhibit activity in FEF, thalamus and SC\_deep (Fig.~\ref{sbg}),
+would inhibit activity in FEF, thalamus and SC\_deep (Fig.~\ref{fig:sbg}),
 preventing the occurrence of staircase saccades.
 
 An examination of the behaviour of the model when presented with
@@ -2119,6 +2198,17 @@ that connections \e{between} component models are quite as important
 as the connections within each model.
 
 \subsection{Concluding remarks}
+
+% Reviewer 1's point 2.
+\rvw{Address reviewer's question of ``whether inaccuracies in the
+biomechanical model may introduce
+errors that propagate through the closed loop system and cannot be
+counteracted by the nervous system part of the simulation. How can you
+(or someone using this or related models) exclude introducing
+(biomechanical) properties that are not present in the biological
+system, or make sure to not miss critical biomechanical properties
+that might help remedy some of the shortcomings of the closed loop
+model?''.}
 
 % Cerebellum omitted
 The omission of the cerebellum will not have escaped the reader's
@@ -2348,9 +2438,9 @@ ganglia and one input to superior colliculus.}
 
 \begin{figure}[htb!]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{./figures/Brain_Stem_1channel.png}
+\includegraphics[width=0.6\textwidth]{./figures/Brain_Stem_1channel.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{sbg} Figure \arabic{figure}.}
+\textbf{\refstepcounter{figure}\label{fig:sbg} Figure \arabic{figure}.}
 { One pair of channels of the saccadic burst generator (SBG) for left
 (cyan) or right (green) movements. Collicular activity in SC\_avg
 excites the channels via SBG weight maps. Each box represents a neural
