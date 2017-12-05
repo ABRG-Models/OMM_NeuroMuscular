@@ -631,13 +631,13 @@ the connectivity from Str\_D2 to GPe and for a number of the other
 connections in the \ccg~model; in the SpineML implementation of the
 model, this connectivity scheme is named `GaussianKernel'.
 % NB - having this Fig. ref here is important for figure ordering!
-Fig.~\ref{brain_model} shows a schematic of the SpineML implementation
+Fig.~\ref{fig:brainmodel} shows a schematic of the SpineML implementation
 of the model, based on a diagram output directly from
 SpineCreator. Populations for Str\_D1, Str\_D2, STN, SNr and GPe are
 shown within the `Basal Ganglia' box. Input comes into the model via
 the `World' population and the output population is SC\_deep. Compare
 this diagram with Figs.~\ref{fig:ccg_model}(a) \&
-(b). Fig.~\ref{brain_model} expands the `SC', `BG' and `slow retinal'
+(b). Fig.~\ref{fig:brainmodel} expands the `SC', `BG' and `slow retinal'
 boxes from Fig.~\ref{fig:ccg_model}(a).}
 
 % Now some FEF stuff taken from Alex's pre-pub
@@ -750,8 +750,8 @@ pattern looks almost identical to a one-to-one connection.}
 \rvwt{Input to the \ccg~model is provided through a simple retina
 model which directly samples from a larger `world array' of pixel
 values. In the current model, the input for the retina is named
-`World' and is the retinotopic projection [Fig.~\ref{brain_model}(b)]
-of the eye's field of view of the world [Fig.~\ref{brain_model}(a)]
+`World' and is the retinotopic projection [Fig.~\ref{fig:brainmodel}(b)]
+of the eye's field of view of the world [Fig.~\ref{fig:brainmodel}(a)]
 and the luminant targets therein. The raw input in `World' is fed into
 a population which adds noise, and then via a delayed connection to
 FEF (the sustained retinal input path), to simulate processing through
@@ -1032,10 +1032,10 @@ $r$.
 \subsubsection{Network}
 
 Briefly, the model consists of input from the World population (see
-Fig.~\ref{brain_model}, green population box) producing activity in an
+Fig.~\ref{fig:brainmodel}, green population box) producing activity in an
 `express' pathway to superior colliculus (purple) and simultaneously
 in cortex, represented here by the FEF population (grey boxes in
-Fig.~\ref{brain_model}). The express pathway causes short latency
+Fig.~\ref{fig:brainmodel}). The express pathway causes short latency
 activity in the superficial superior colliculus, which directly
 innervates the deeper layers of the superior colliculus
 (SC\_deep). Activity in FEF generates firing in a
@@ -1301,7 +1301,7 @@ these BRAHMS components were hand-written in C++. To incorporate these
 components into the SpineML model, a \stob~\e{external.xsl} file was
 used.  The external.xsl file scheme for incorporating external BRAHMS
 components into a SpineML model was a new \stob~feature motivated by
-the current work.  Fig.~\ref{model_framework} shows the workflow, in
+the current work.  Fig.~\ref{fig:modelframework} shows the workflow, in
 which the model specification files (blue box - a combination of
 SpineML files and C++ code), are processed (green box) into a BRAHMS
 system (red box).
@@ -1467,7 +1467,7 @@ patterns are plausible.}
 %
 Although in this work we do not model
 the SC in detail, we extended the model with a third functional layer
-named SC\_deep2, shown in Fig.~\ref{scdeep}(b) (\ccg~has only the two
+named SC\_deep2, shown in Fig.~\ref{fig:scdeep}(b) (\ccg~has only the two
 layers SC\_sup and SC\_deep). We introduced a widening projection
 based on a Gaussian projection field whose width, $\sigma(r)$ varies
 in inverse proportion to the magnification factor, $M(r)$, given in
@@ -1630,19 +1630,19 @@ and 0.3) but with the fixation offset and target onset occurring at
 location at which the saccade velocity had dropped below 0.005 of its
 peak. We iterated until the mean saccade endpoint plotted versus
 target was close to the ideal straight line---see
-Fig.~\ref{sacc_vs_targ}(a) \& \rvw{(b)}. We applied the same parameters to
+Fig.~\ref{fig:saccvstarg}(a) \& \rvw{(b)}. We applied the same parameters to
 both directions of each channel; $i_{up} = i_{down} = 0.00195$,
 $j_{up} = j_{down} = 0.075$, $i_{left} = i_{right} = 0.0016$ and
 $j_{left} = j_{right} = 0.067$.
 
 The resulting weight maps (where the oblique maps are
 1/10$^{\mathrm{th}}$ of the vertical maps, as described earlier) are
-shown in Fig.~\ref{weightmaps}.
+shown in Fig.~\ref{fig:weightmaps}.
 %
 \rvw{First, recall that the $r$ axis of the neural surface corresponds
 to the amplitude of a saccade and the $\phi$ axis indicates the polar
 direction of the saccade, as described in Sect.~\ref{sec:mapping} and
-Fig.~\ref{fig:mapping}. Fig.~\ref{weightmaps}(a) shows the weight map
+Fig.~\ref{fig:mapping}. Fig.~\ref{fig:weightmaps}(a) shows the weight map
 for the muscle which rotates the eye to the left. As we modelled a
 left eye, this actuates the lateral rectus muscle. The exponential
 rise of Eq.~\ref{eq:weightmaps} is seen in the $r$ direction; as $r$
@@ -1656,13 +1656,13 @@ connections strength drops away sinusoidally as $\phi$ moves away from
 the centre line at $\phi=$38.5. In regions of the map for which there
 is no leftward movement, that is, in the half of the map which
 corresponds to any movement with a rightward component, the `left'
-weight map is 0. Fig.~\ref{weightmaps}(d) shows the weight map for
+weight map is 0. Fig.~\ref{fig:weightmaps}(d) shows the weight map for
 rightward movements, actuating the medial rectus muscle of the
 eye. The line of maximum connection strength is along $\phi=$13.5. The
-map is a mirror of Fig.~\ref{weightmaps}(a), reflected about the line
+map is a mirror of Fig.~\ref{fig:weightmaps}(a), reflected about the line
 $\phi$=26. The `left' and `right' weight maps are orthogonal; the
 non-zero region of the `left' map is zero in the `right' map and vice
-versa. Fig~\ref{weightmaps}(b) \& (d) show the weight maps for
+versa. Fig~\ref{fig:weightmaps}(b) \& (d) show the weight maps for
 downward and upward eye movements; the `down' map activates the SBG
 channel for the inferior rectus muscle, the `up' map activates the
 superior rectus. Note that `down' is not orthogonal either to `left'
@@ -1681,26 +1681,26 @@ oblique (`Z+') and inferior oblique (`Z-') muscles were set to
 
 \subsection{Saccade accuracy} \label{sec:results:accuracy}
 
-In Fig.~\ref{sacc_vs_targ}, we showed the result of running the model
+In Fig.~\ref{fig:saccvstarg}, we showed the result of running the model
 to targets located on the principle axes, on which the model was
 trained. We then simulated single saccades to targets in one hemifield
 of the eye's field of view, with eccentricities between 6\dg~and
 14.5\dg. As in the training, we ran the simulation 6 times for each
 target, $\mathbf{\theta}^t = (\theta_{x}^t, \theta_{y}^t, 0)$ to
-obtain mean saccade end-points.  Fig.~\ref{errorsurfaceTM3} shows
+obtain mean saccade end-points.  Fig.~\ref{fig:errorsurfaceTM3} shows
 saccade accuracy results for an entire hemifield in the na\"ive model
 which passed the output of SC\_deep directly to SBG via the weight
 maps. The ratio of the magnitude of the error vector to the magnitude
 of the target vector is plotted using a colour map. This ratio is
 shown for the full, three dimensional error vector in
-Fig.~\ref{errorsurfaceTM3}(a) and for the $x$, $y$ and $z$ components
-in Figs.~\ref{errorsurfaceTM3}(b)--(c).  Inspection of
-Fig.~\ref{errorsurfaceTM3}(a) shows that the end-point error is
+Fig.~\ref{fig:errorsurfaceTM3}(a) and for the $x$, $y$ and $z$ components
+in Figs.~\ref{fig:errorsurfaceTM3}(b)--(c).  Inspection of
+Fig.~\ref{fig:errorsurfaceTM3}(a) shows that the end-point error is
 minimal along the principle axes ($\theta_{x}^t=\;$0 or
 $\theta_{y}^t=\;$0) and maximal near the 45\dg~oblique targets (blue
 lines) with the end point error as high as 80\% of the programmed
 saccade magnitude.  The $x$ component error map in
-Fig.~\ref{errorsurfaceTM3}(b) shows the same trend, mirrored about the
+Fig.~\ref{fig:errorsurfaceTM3}(b) shows the same trend, mirrored about the
 `Target X' axis, whereas the $y$ and $z$ component errors are,
 relatively, much smaller.  Because the $x$ component of the error is
 clearly contributing to end point errors which would not be considered
@@ -1742,9 +1742,9 @@ Eq.~\ref{eq:widening}.  The activity in this second SC\_deep layer is
 then fed to the weight maps of the SBG. This model was called
 `TModel4'. TModel4 was parameterised such that its horizontal and
 vertical error was similar---so that its equivalent of
-Fig.~\ref{sacc_vs_targ} showed a similar sum of squares error.
+Fig.~\ref{fig:saccvstarg} showed a similar sum of squares error.
 
-Figs.~\ref{errorsurface}(a)--(d) show the \rvw{percentage errors for
+Figs.~\ref{fig:errorsurface}(a)--(d) show the \rvw{percentage errors for
 TModel4}.  First of
 all, note that the error magnitudes are much smaller. The mean errors
 are smaller for every axis. The largest errors produced by the model
@@ -1767,7 +1767,7 @@ weight map between SC and the SBG channels.
 
 Having finalised the model by setting the weight maps, we then
 proceeded to exercise the model (TModel4), starting with saccades to a
-single target; prosaccades. Fig.~\ref{outmany}(a) shows 9
+single target; prosaccades. Fig.~\ref{fig:outmany}(a) shows 9
 representative saccades to a single target luminance. Initially, the
 eye had rotational state $\theta_x=\theta_y=\theta_z=0$ with its fovea
 directed at a fixation luminance cross (span 6\dg, bar width 2\dg) of
@@ -1775,13 +1775,13 @@ magnitude 0.2 (in arbitrary units). At a simulation time of 0.4~s, the
 fixation luminance was set to 0 and a target luminance cross of the
 same dimensions as the fixation but with magnitude 0.3 was illuminated
 at one of the 9 different locations, marked by crosses in
-Fig.~\ref{outmany}(a).  The resulting trajectories are plotted, with
+Fig.~\ref{fig:outmany}(a).  The resulting trajectories are plotted, with
 colour indicating the relationship between trajectories and target
 crosses. The approximate end-point error is visible in this figure,
 although the last point in each trajectory is the saccade position at
 0.8~s and not the velocity-based end-point described
-above. Figs.~\ref{outmany}(b) and (c) show the rotational components
-of the blue and red trajectories in Fig.~\ref{outmany}(a) along with
+above. Figs.~\ref{fig:outmany}(b) and (c) show the rotational components
+of the blue and red trajectories in Fig.~\ref{fig:outmany}(a) along with
 the target and fixation luminance values. Rotations are the eye's
 Euler rotational components in the world frame of reference.
 
@@ -1796,7 +1796,7 @@ investigated the effect on saccadic response times of: target
 eccentricity; and any gap or overlap between fixation off-time and
 target on-time. We showed that the full model reproduces the `hockey
 stick' shape shown in Fig. 7 of \cite{cope_basal_2017} for horizontal
-[Fig.~\ref{lat_vs_all}(a)], vertical [Fig.~\ref{lat_vs_all}(b)] and
+[Fig.~\ref{fig:latvsall}(a)], vertical [Fig.~\ref{fig:latvsall}(b)] and
 oblique saccades (not shown). The latency increases with eccentricity
 far from the fovea because the retinotopic mapping reduces the
 activity in the basal ganglia for more eccentric targets (see
@@ -1805,7 +1805,7 @@ foveal mask \rvwt{on} the activity in FEF again leads to reduced input
 into the basal ganglia and an increased time to achieve disinhibition
 in SNr.
 
-Fig.~\ref{lat_vs_all}(c) shows latencies achieved when varying the
+Fig.~\ref{fig:latvsall}(c) shows latencies achieved when varying the
 time between fixation offset and target onset. This is termed
 the \e{gap condition}; and is represented by a scalar value which, if
 positive, refers to a gap between fixation offset and target onset,
@@ -1818,7 +1818,7 @@ condition, when the fixation luminance is removed, activity in STN
 immediately begins to decay, allowing SNr activity to reduce and
 thereby reducing inhibition on thalamus, allowing the target luminance
 to build up quickly in FEF, thalamus and through the basal ganglia's
-striatum and SNr. The shape of the curves in Fig.~\ref{lat_vs_all}(c)
+striatum and SNr. The shape of the curves in Fig.~\ref{fig:latvsall}(c)
 matches the results in \cite{cope_basal_2017} for target luminances of
 1 and 0.6; for overlaps longer than 100~ms (gap $<$ -100~ms), the
 latency becomes constant; the saccade is programmed whilst the
@@ -1828,7 +1828,7 @@ the fixation. If the target luminance is reduced to 0.3, the balance
 is altered in favour of the fixation and the latency vs.~gap becomes
 approximately linear and equal to the overlap time plus around 100~ms.
 
-Fig.~\ref{lat_vs_all}(d) shows the effect of the dopamine parameter on
+Fig.~\ref{fig:latvsall}(d) shows the effect of the dopamine parameter on
 saccade latencies in gap, step and overlap conditions. In general, the
 effect of decreasing the dopamine parameter was a smooth, monotonic
 and undramatic increase in saccade latency. However, the data for the
@@ -1844,7 +1844,7 @@ the thalamo-cortical loop, in spite of the fixation
 overlap.
 
 The relationship between latency and the target luminance is given in
-Fig.~\ref{lat_vs_all}(e). This shows latency for a 100~ms gap, step
+Fig.~\ref{fig:latvsall}(e). This shows latency for a 100~ms gap, step
 and 100~ms overlap conditions for a given fixation luminance of 0.2,
 and a horizontally located target at $\theta_{y}^{t}=$-10\dg. For the
 gap condition, we see very short latencies for luminances of about
@@ -1910,14 +1910,14 @@ none of the single saccade results were affected by this modification.
 % location purely RIGHT. You'd need to remove the TN activity on the
 % UP channel, but you'd not be inducing any DOWN with the new target.
 
-Fig.~\ref{outrtn} shows the outward and return trajectories produced
+Fig.~\ref{fig:outrtn} shows the outward and return trajectories produced
 by the experiment with the TN reset mechanism. Panel (a) shows the $x$
 and $y$ rotation trajectory; panel (b) shows individual rotational
-components of the eye. Fig.~\ref{outrtn}(c) shows out and return
+components of the eye. Fig.~\ref{fig:outrtn}(c) shows out and return
 trajectories for three other saccade targets; horizontal, vertical and
 oblique. The trajectories have characteristic shapes and also show
 some stochastic variation caused by the noise in the model [see dashed
-trajectories in Fig.~\ref{outrtn}(a)].
+trajectories in Fig.~\ref{fig:outrtn}(a)].
 
 The return trajectories (magenta lines) showed a distinctly different
 form from the outward trajectories. They overshot their destination
@@ -1941,7 +1941,7 @@ this was called a `staircase' presentation.
 % If the more distal stimulus preceded the 15\dg~stimulus (again with
 % both in the same hemifield), this was called `pulse undershoot'.
 We carried out a `staircase' presentation, shown in
-Fig.~\ref{doublesteps}, where our small eccentricity luminance was at
+Fig.~\ref{fig:doublesteps}, where our small eccentricity luminance was at
 8\dg~and our more distal luminance was at 12\dg~(both to the right of
 centre). \rvwt{The stimuli could not be presented at 15\dg and 30\dg
 to match the experiment, because 30\dg saccades were outside the range
@@ -1955,12 +1955,12 @@ greater than 30~ms between the stimuli would lead to double step
 saccades (a so-called \e{initial angle response}), with the first
 saccade arriving at 8\dg~(though with greater variability than
 normal), and a second saccade being made to a location hypometric of
-12\dg~after a pause of about 240~ms.  Fig.~\ref{doublesteps}(a) shows
+12\dg~after a pause of about 240~ms.  Fig.~\ref{fig:doublesteps}(a) shows
 the mean trajectories from 5 simulations of the staircase doublestep
 presentation alongside the result for a single saccade to the final
 angle of 12\dg. Dash-dot lines show $\pm$1 standard deviation about
 the mean. The corresponding trajectories are shown in
-Fig.~\ref{doublesteps}(b).
+Fig.~\ref{fig:doublesteps}(b).
 
 Inspection of the activity maps in FEF and SC\_deep (not shown)
 indicates that when the 8\dg~target is illuminated for 30~ms or more,
@@ -2136,7 +2136,7 @@ The original combination of the \ccg~model with the theoretical weight
 maps of \cite{ottes_visuomotor_1986} and \cite{tabareau_geometry_2007}
 resulted in a model which was able to produce accurate saccades only
 along the principle rotational axes
-(Fig.~\ref{errorsurfaceTM3}). Thus, \e{the integration of the models}
+(Fig.~\ref{fig:errorsurfaceTM3}). Thus, \e{the integration of the models}
 suggested that an additional layer was required to achieve accurate
 saccades for oblique, as well as for horizontal and vertical
 saccades. Although the \e{need} for an invariant integral is discussed
@@ -2144,7 +2144,7 @@ in \cite{tabareau_geometry_2007} as resulting from their theoretical
 study, the mechanism by which such an invariant Gaussian hill is
 generated is not. By combining the models, we were forced to consider
 this mechanism, and hypothesised that a widening projection field
-would be a candidate mechanism. The results of Fig.~\ref{errorsurface}
+would be a candidate mechanism. The results of Fig.~\ref{fig:errorsurface}
 indicate that a substantial improvement in accuracy is indeed achieved
 by this new mechanism.
 
@@ -2154,8 +2154,8 @@ The implementation of a biophysically accurate model of the eye, and
 the closed-loop nature of the model makes it very natural to consider
 how the model will behave when making saccades from arbitrary starting
 positions, or how it would respond to a sequence of stimuli. This was
-the motivation for the out-and-return experiment (Fig.~\ref{outrtn})
-as well as for the double step experiment (Fig.~\ref{doublesteps}).
+the motivation for the out-and-return experiment (Fig.~\ref{fig:outrtn})
+as well as for the double step experiment (Fig.~\ref{fig:doublesteps}).
 We found that return saccades were substantially affected by the
 biomechanics of the eye, as the brain and brainstem model had no
 mechanism to account for the position-dependent restoring forces
@@ -2207,7 +2207,7 @@ An examination of the behaviour of the model when presented with
 `double-step stimuli' reveals a problem with our inhibitory feedback
 connections. We found that when double-step stimuli were presented (where
 an initial target at 8\dg~was replaced with a 12\dg~target after 30 or
-40~ms) and a double saccade was made [Fig.~\ref{doublesteps}(a), black
+40~ms) and a double saccade was made [Fig.~\ref{fig:doublesteps}(a), black
 lines] the second saccade latency was \e{longer} even than the initial
 saccade. This contrasts with \cite{becker_analysis_1979} who find that
 second, corrective saccades occur with \e{shorter} latencies.  This
@@ -2455,7 +2455,7 @@ relationship shown in (c).}
 \begin{center}
 \includegraphics[width=0.9\textwidth]{./figures/Brain_Model.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{brain_model} Figure \arabic{figure}.}
+\textbf{\refstepcounter{figure}\label{fig:brainmodel} Figure \arabic{figure}.}
 { The brain model. This is the SpineCreator `network layer' view of
 the model. Each box represents a neural population with 2500 elements,
 arranged in a 50$\times$50 grid. The SpineML component name is printed
@@ -2552,7 +2552,7 @@ about the $y$ axis. The $y$ axis points up, out of the page.}
 \begin{center}
 \includegraphics[width=0.9\textwidth]{./figures/model_framework.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{model_framework} Figure \arabic{figure}.}
+\textbf{\refstepcounter{figure}\label{fig:modelframework} Figure \arabic{figure}.}
 { The model framework. The model is specified using a combination of
 declarative XML files and hand-coded C++. These original model
 specifications are shown within the blue box. b) The green box shows
@@ -2569,7 +2569,7 @@ executable. In practice, this call is made by \stob.}
 \begin{center}
 \includegraphics[width=0.9\textwidth]{./figures/scdeep_plus.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{scdeep} Figure \arabic{figure}.}
+\textbf{\refstepcounter{figure}\label{fig:scdeep} Figure \arabic{figure}.}
 { a) \& b) Tabareau-style weight maps for `left' and `down' components
 of a saccade. c) The two weight maps in a) and b) shown on the same
 graph, viewed from above. Circles show the locations of potential
@@ -2586,7 +2586,7 @@ between SC\_deep and SC\_deep2.}
 \begin{center}
 \includegraphics[width=0.8\textwidth]{./figures/sacc_vs_targetpos.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{sacc_vs_targ} Figure \arabic{figure}.}
+\textbf{\refstepcounter{figure}\label{fig:saccvstarg} Figure \arabic{figure}.}
 { Accuracy at different target eccentricities for fixation luminance
 0.2 and target luminance 0.3.}
 \end{figure}
@@ -2595,7 +2595,7 @@ between SC\_deep and SC\_deep2.}
 \begin{center}
 \includegraphics[width=\textwidth]{./figures/weightmaps.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{weightmaps} Figure \arabic{figure}.}
+\textbf{\refstepcounter{figure}\label{fig:weightmaps} Figure \arabic{figure}.}
 { Weight maps for the connections between the output layer of superior
 colliculus and the six long lead burst neurons of the saccadic burst
 generator model. Each map increases exponentially with increasing $r$,
@@ -2606,7 +2606,7 @@ multiplied by cosine($\phi$) about its `active' axis.}
 \begin{center}
 \includegraphics[width=0.95\textwidth]{./figures/errorsurface_TModel3.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{errorsurfaceTM3} Figure \arabic{figure}.}
+\textbf{\refstepcounter{figure}\label{fig:errorsurfaceTM3} Figure \arabic{figure}.}
 { The end-point error surface for the original, na\"ive model
 (TModel3). a) The ratio of the magnitudes of the total error vector
 and the target vector, expressed as a percentage. b) The ratio of the
@@ -2621,7 +2621,7 @@ $\theta_{y}^t$ are denoted `Target X' and `Target Y' in the figure.}
 \begin{center}
 \includegraphics[width=0.95\textwidth]{./figures/errorsurface.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{errorsurface} Figure \arabic{figure}.}
+\textbf{\refstepcounter{figure}\label{fig:errorsurface} Figure \arabic{figure}.}
 { The end-point error surface for the model in which a widening
 projection field was added to the model of the superior colliculus. a)
 The ratio of the magnitudes of the total error vector and the target
@@ -2632,14 +2632,14 @@ component. d) As (b), for $z$ component. All colour maps are shown
 with the same scale. The target rotations, $\theta_{x}^t$ and
 $\theta_{y}^t$ are denoted `Target X' and `Target Y' in the figure.
 Note that the range of the colour scale is 0 to 20\%, a much smaller
-range than the range in Fig~\ref{errorsurfaceTM3}.}
+range than the range in Fig~\ref{fig:errorsurfaceTM3}.}
 \end{figure}
 
 \begin{figure}[t]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{./figures/outmany.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{outmany} Figure \arabic{figure}.}
+\textbf{\refstepcounter{figure}\label{fig:outmany} Figure \arabic{figure}.}
 { Representative single saccades. a) Trajectories from 9 saccades to a
 single target at 9 different locations. In each case, a fixation cross
 luminance of magnitude 0.2 was displayed at (0,0), the start position
@@ -2659,7 +2659,7 @@ three rotational components of the `red' saccade, to target location
 \begin{center}
 \includegraphics[width=0.8\textwidth]{./figures/lat_vs_everything.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{lat_vs_all} Figure \arabic{figure}.}
+\textbf{\refstepcounter{figure}\label{fig:latvsall} Figure \arabic{figure}.}
 { Exploring saccade latencies. a) Latency to first movement as a
 function of target eccentricity for horizontal targets. b) Latency
 vs. eccentricity for vertical targets. c) Latency vs. gap at three
@@ -2685,7 +2685,7 @@ behaviour.
 \begin{center}
 \includegraphics[width=0.8\textwidth]{./figures/outrtn.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{outrtn} Figure \arabic{figure}.}
+\textbf{\refstepcounter{figure}\label{fig:outrtn} Figure \arabic{figure}.}
 { There and back - a saccade to a target, followed by return to the
 original fixation. a) Out and return saccade to a target at (0,-10\dg)
 b) Rotational components of the saccade shown in (a). c) Outward and
@@ -2697,7 +2697,7 @@ three other targets.}
 \begin{center}
 \includegraphics[width=0.8\textwidth]{./figures/doublesteps.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{doublesteps} Figure \arabic{figure}.}
+\textbf{\refstepcounter{figure}\label{fig:doublesteps} Figure \arabic{figure}.}
 { Double steps. The effect of illuminating a first target at 8\dg~or
 12\dg, followed by a second target at 12\dg~or 8\dg. a) Horizontal
 rotation of the eye plotted vs.~time for a saccade to the 12\dg~target
