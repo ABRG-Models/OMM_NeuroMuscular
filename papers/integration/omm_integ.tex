@@ -2396,12 +2396,11 @@ https://github.com/ABRG-Models/OMM\_NeuroMuscular
 \section*{Figures}
 
 % Figure 1
-\begin{figure}[t]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=\textwidth]{./figures/ccg_model.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{fig:ccg_model} Figure \arabic{figure}.}
-{ \bol{a) The macroscopic architecture of the \ccg~model.} The main
+\caption{ \bol{a) The macroscopic architecture of the \ccg~model.} The main
 nuclei modelled as brain systems are: basal ganglia (BG), frontal eye
 fields (FEF), thalamus (THAL) and superior colliculus (SC). The
 retinal input is presented via non-biologically plausible retinal
@@ -2447,16 +2446,16 @@ Str\_D2, brown spheres) to target neurons (in GPe, blue spheres). The
 circular connectivity pattern is seen. This does not show the weight
 \e{values}, which reduce `towards the edge of the circle' and follow the
 relationship shown in (c).}
+\label{fig:ccg_model}
 \end{figure}
 
 
 % Figure 2
-\begin{figure}[t]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{./figures/Brain_Model.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{fig:brainmodel} Figure \arabic{figure}.}
-{ The brain model. This is the SpineCreator `network layer' view of
+\caption{ The brain model. This is the SpineCreator `network layer' view of
 the model. Each box represents a neural population with 2500 elements,
 arranged in a 50$\times$50 grid. The SpineML component name is printed
 on the bottom right corner of each population box and the population
@@ -2477,15 +2476,15 @@ populations comprising the basal ganglia are enclosed in a grey
 outline. Note that substantia nigra pars compacta is not modelled
 here, instead the level of dopamine in the striatum is set via a
 parameter in the Str\_D1 and Str\_D2 populations}
+\label{fig:brainmodel}
 \end{figure}
 
 % Figure 3
-\begin{figure}[t]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{./figures/mapping.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{fig:mapping} Figure \arabic{figure}.}
-{ Representative mapping from eye's frame of reference in Cartesian
+\caption{ Representative mapping from eye's frame of reference in Cartesian
 co-ordinates to retinotopic co-ordinates. (a) The mapping of
 luminances in the eye's frame of reference. The world input is
 pre-defined by a JSON configuration file. Luminance position, size and
@@ -2511,15 +2510,15 @@ level of noise to the signal representing processing of the signal in
 visual cortex. (d) A Gaussian projection from FEF\_add\_noise to FEF
 further blurs the activity in FEF. FEF is the input to the basal
 ganglia and one input to superior colliculus.}
+\label{fig:mapping}
 \end{figure}
 
 % Figure 4
-\begin{figure}[t]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.6\textwidth]{./figures/Brain_Stem_1channel.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{fig:sbg} Figure \arabic{figure}.}
-{ One pair of channels of the saccadic burst generator (SBG) for left
+\caption{ One pair of channels of the saccadic burst generator (SBG) for left
 (cyan) or right (green) movements. Collicular activity in SC\_avg
 excites the channels via SBG weight maps. Each box represents a neural
 population and shows the population name, the number of neural
@@ -2527,15 +2526,15 @@ elements (here 2500 or 1) and the SpineML component name; \e{LIN} for
 Leaky integrator or \e{integrator}. Key: LLBN: Long lead burst
 neurons; IBN: Inhibitory burst neurons; OPN: Omnipause neurons; EBN:
 Excitatory burst neurons; TN: Tonic neurons; MN: Motoneurons.}
+\label{fig:sbg}
 \end{figure}
 
 % Figure 5
-\begin{figure}[t]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{./figures/eye_screen_plus.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{fig:bioeye} Figure \arabic{figure}.}
-{ The biomechanical eye. a) an OpenSim rendering of a pair of
+\caption{ The biomechanical eye. a) an OpenSim rendering of a pair of
 biomechanical eyes showing the positions of the extraocular
 muscles. Note that i) volume visualization of muscles should not be
 confused with FEM muscle models; it is provided for user feedback
@@ -2546,14 +2545,14 @@ eye within a head model c) Top-down schematic cross-sectional view of
 the biomechanical eye situated within a spherical screen, with a
 horizontal rotation towards a luminances at an angle of $-\theta_{y}$
 about the $y$ axis. The $y$ axis points up, out of the page.}
+\label{fig:bioeye}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{./figures/model_framework.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{fig:modelframework} Figure \arabic{figure}.}
-{ The model framework. The model is specified using a combination of
+\caption{ The model framework. The model is specified using a combination of
 declarative XML files and hand-coded C++. These original model
 specifications are shown within the blue box. b) The green box shows
 the processes which are applied to the model specification to produce
@@ -2563,14 +2562,14 @@ compiled and installed within the BRAHMS Namespace, allowing the
 BRAHMS executable to locate them at runtime. c) The red box shows the
 resulting BRAHMS system ready to be executed by the BRAHMS
 executable. In practice, this call is made by \stob.}
+\label{fig:modelframework}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{./figures/scdeep_plus.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{fig:scdeep} Figure \arabic{figure}.}
-{ a) \& b) Tabareau-style weight maps for `left' and `down' components
+\caption{ a) \& b) Tabareau-style weight maps for `left' and `down' components
 of a saccade. c) The two weight maps in a) and b) shown on the same
 graph, viewed from above. Circles show the locations of potential
 hills of activity. Purple, dashed circles encode saccades down;
@@ -2580,34 +2579,34 @@ and the output layer (SC\_avg, named for the fact that in an earlier
 version of the model, it received the output of the centroid of
 SC\_deep).  The widening Gaussian projection is shown as the arrow
 between SC\_deep and SC\_deep2.}
+\label{fig:scdeep}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{./figures/sacc_vs_targetpos.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{fig:saccvstarg} Figure \arabic{figure}.}
-{ Accuracy at different target eccentricities for fixation luminance
+\caption{ Accuracy at different target eccentricities for fixation luminance
 0.2 and target luminance 0.3.}
+\label{fig:saccvstarg}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=\textwidth]{./figures/weightmaps.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{fig:weightmaps} Figure \arabic{figure}.}
-{ Weight maps for the connections between the output layer of superior
+\caption{ Weight maps for the connections between the output layer of superior
 colliculus and the six long lead burst neurons of the saccadic burst
 generator model. Each map increases exponentially with increasing $r$,
 multiplied by cosine($\phi$) about its `active' axis.}
+\label{fig:weightmaps}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.95\textwidth]{./figures/errorsurface_TModel3.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{fig:errorsurfaceTM3} Figure \arabic{figure}.}
-{ The end-point error surface for the original, na\"ive model
+\caption{ The end-point error surface for the original, na\"ive model
 (TModel3). a) The ratio of the magnitudes of the total error vector
 and the target vector, expressed as a percentage. b) The ratio of the
 magnitude of the $x$ component of the error vector to the magnitude of
@@ -2615,14 +2614,14 @@ the target vector, expressed as a percentage. c) As (b) but for the
 $y$ component. d) As (b), for $z$ component. All colour maps are shown
 with the same scale. The target rotations, $\theta_{x}^t$ and
 $\theta_{y}^t$ are denoted `Target X' and `Target Y' in the figure.}
+\label{fig:errorsurfaceTM3}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.95\textwidth]{./figures/errorsurface.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{fig:errorsurface} Figure \arabic{figure}.}
-{ The end-point error surface for the model in which a widening
+\caption{ The end-point error surface for the model in which a widening
 projection field was added to the model of the superior colliculus. a)
 The ratio of the magnitudes of the total error vector and the target
 vector, expressed as a percentage. b) The ratio of the magnitude of
@@ -2633,14 +2632,14 @@ with the same scale. The target rotations, $\theta_{x}^t$ and
 $\theta_{y}^t$ are denoted `Target X' and `Target Y' in the figure.
 Note that the range of the colour scale is 0 to 20\%, a much smaller
 range than the range in Fig~\ref{fig:errorsurfaceTM3}.}
+\label{fig:errorsurface}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{./figures/outmany.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{fig:outmany} Figure \arabic{figure}.}
-{ Representative single saccades. a) Trajectories from 9 saccades to a
+\caption{ Representative single saccades. a) Trajectories from 9 saccades to a
 single target at 9 different locations. In each case, a fixation cross
 luminance of magnitude 0.2 was displayed at (0,0), the start position
 of the eye, until time 0.4~s. The target luminance, magnitude 0.3 was
@@ -2653,14 +2652,14 @@ closest to the end of the trajectory. b) The three rotational
 components of the `blue' saccade, to target location (-7,-7). c) The
 three rotational components of the `red' saccade, to target location
 (0,-10).}
+\label{fig:outmany}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{./figures/lat_vs_everything.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{fig:latvsall} Figure \arabic{figure}.}
-{ Exploring saccade latencies. a) Latency to first movement as a
+\caption{ Exploring saccade latencies. a) Latency to first movement as a
 function of target eccentricity for horizontal targets. b) Latency
 vs. eccentricity for vertical targets. c) Latency vs. gap at three
 different luminance values. The data are shown alongside
@@ -2679,26 +2678,26 @@ behaviour.
 %f) Saccade duration vs. saccade eccentricity for horizontal
 %(rightwards), vertical (downwards) and 45\dg~oblique (down \& right) saccades.
 }
+\label{fig:latvsall}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{./figures/outrtn.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{fig:outrtn} Figure \arabic{figure}.}
-{ There and back - a saccade to a target, followed by return to the
+\caption{ There and back - a saccade to a target, followed by return to the
 original fixation. a) Out and return saccade to a target at (0,-10\dg)
 b) Rotational components of the saccade shown in (a). c) Outward and
 return trajectories for the saccade shown in (a) alongside saccades to
 three other targets.}
+\label{fig:outrtn}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{./figures/doublesteps.png}
 \end{center}
-\textbf{\refstepcounter{figure}\label{fig:doublesteps} Figure \arabic{figure}.}
-{ Double steps. The effect of illuminating a first target at 8\dg~or
+\caption{ Double steps. The effect of illuminating a first target at 8\dg~or
 12\dg, followed by a second target at 12\dg~or 8\dg. a) Horizontal
 rotation of the eye plotted vs.~time for a saccade to the 12\dg~target
 only (red), and to an 8\dg~target at 0.4~s followed by a 12\dg~target
@@ -2714,6 +2713,7 @@ to the second target. In this graph, the mean of five separate
 simulations is plotted along with $\pm$1 standard deviation around the
 mean. b) The $\theta_{x}$/$\theta_{y}$ trajectories corresponding to
 the data presented in (a).}
+\label{fig:doublesteps}
 \end{figure}
 
 \end{document}
