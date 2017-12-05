@@ -23,20 +23,40 @@ if [ ${e} -ne "0" ]; then
     exit 1
 fi
 
+count=0
+
 # Search/replace u umlauts
-sed 's/\xc3\xbc/\\"u/g' < "$1" > /tmp/utf8tolatex/1.bbl
+sed 's/\xc3\xbc/\\"u/g' < "$1" > /tmp/utf8tolatex/$((count+1)).bbl
+count=$((count+1))
+
+# Search/replace U umlauts
+sed 's/\xc3\x9c/\\"U/g' < "$1" > /tmp/utf8tolatex/$((count+1)).bbl
+count=$((count+1))
+
+# o umlaut
+sed 's/\xc3\xb6/\\"o/g' < /tmp/utf8tolatex/${count}.bbl > /tmp/utf8tolatex/$((count+1)).bbl
+count=$((count+1))
+
+# O umlaut
+sed 's/\xc3\x96/\\"O/g' < /tmp/utf8tolatex/${count}.bbl > /tmp/utf8tolatex/$((count+1)).bbl
+count=$((count+1))
 
 # e acute (Moren)
-sed 's/\xc3\xa9/\\'\''e/g' < /tmp/utf8tolatex/1.bbl >  /tmp/utf8tolatex/2.bbl
+sed 's/\xc3\xa9/\\'\''e/g' < /tmp/utf8tolatex/${count}.bbl >  /tmp/utf8tolatex/$((count+1)).bbl
+count=$((count+1))
 
 # e grave (Lefevre)
-sed 's/\xc3\xa8/\\\`e/g' < /tmp/utf8tolatex/2.bbl >  /tmp/utf8tolatex/3.bbl
+sed 's/\xc3\xa8/\\\`e/g' < /tmp/utf8tolatex/${count}.bbl >  /tmp/utf8tolatex/$((count+1)).bbl
+count=$((count+1))
 
 # Reg
-sed 's/\xc2\xae/\\textsuperscript\{\\textregistered\}/g' < /tmp/utf8tolatex/3.bbl >  /tmp/utf8tolatex/4.bbl
+sed 's/\xc2\xae/\\textsuperscript\{\\textregistered\}/g' < /tmp/utf8tolatex/${count}.bbl >  /tmp/utf8tolatex/$((count+1)).bbl
+count=$((count+1))
 
 # TM
-sed 's/\xe2\x84\xa2/\\textsuperscript\{TM\}/g' < /tmp/utf8tolatex/4.bbl >  /tmp/utf8tolatex/5.bbl
+sed 's/\xe2\x84\xa2/\\textsuperscript\{TM\}/g' < /tmp/utf8tolatex/${count}.bbl >  /tmp/utf8tolatex/$((count+1)).bbl
+count=$((count+1))
+
 
 # Copy back
-cp /tmp/utf8tolatex/5.bbl ${1}
+cp /tmp/utf8tolatex/${count}.bbl ${1}

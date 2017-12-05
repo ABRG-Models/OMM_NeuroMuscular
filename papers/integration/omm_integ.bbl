@@ -1,4 +1,4 @@
-\begin{thebibliography}{171}
+\begin{thebibliography}{179}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -81,8 +81,8 @@ Bayguinov, P.~O., Ghitani, N., Jackson, M.~B., and Basso, M.~A. (2015).
 \newblock \emph{Journal of Neurophysiology} \doi{10.1152/jn.00144.2015}
 \bibAnnoteFile{bayguinov_hard-wired_2015}
 
-\bibitem[{Becker and J\"urgens(1979)}]{becker_analysis_1979}
-Becker, W. and J\"urgens, R. (1979).
+\bibitem[{Becker and Jürgens(1979)}]{becker_analysis_1979}
+Becker, W. and Jürgens, R. (1979).
 \newblock An analysis of the saccadic system by means of double step stimuli.
 \newblock \emph{Vision Research} 19, 967--983.
 \newblock \doi{10.1016/0042-6989(79)90222-0}
@@ -193,8 +193,7 @@ Cope, A. and Gurney, K.~N. (2011).
 
 \bibitem[{Cope and James(2015)}]{cope_spineml_2_brahms_2015}
 Cope, A.~J. and James, S.~S. (2015).
-\newblock {SpineML}\_2\_brahms.
-\newblock RRID: SCR\_015640
+\newblock {SpineML}\_2\_brahms ({NoTremor} {Oculomotor} branch)
 \bibAnnoteFile{cope_spineml_2_brahms_2015}
 
 \bibitem[{Cope et~al.(2014)Cope, Richmond, and Allerton}]{cope_spineml_2014}
@@ -218,6 +217,23 @@ Cope, A.~J., Richmond, P., James, S.~S., Gurney, K., and Allerton, D.~J.
   for the {Creation} of {Layered} {Neural} {Models}}.
 \newblock \emph{Neuroinformatics} \doi{10.1007/s12021-016-9311-z}
 \bibAnnoteFile{cope_spinecreator:_2016}
+
+\bibitem[{Corvisier and Hardy(1991)}]{corvisier_possible_1991}
+Corvisier, J. and Hardy, O. (1991).
+\newblock Possible excitatory and inhibitory feedback to the superior
+  colliculus: a combined retrograde and immunocytochemical study in the
+  prepositus hypoglossi nucleus of the guinea pig.
+\newblock \emph{Neuroscience Research} 12, 486--502.
+\newblock \doi{10.1016/S0168-0102(09)80002-3}
+\bibAnnoteFile{corvisier_possible_1991}
+
+\bibitem[{Dale and Cullen(2013)}]{dale_nucleus_2013}
+Dale, A. and Cullen, K.~E. (2013).
+\newblock The nucleus prepositus predominantly outputs eye movement-related
+  information during passive and active self-motion.
+\newblock \emph{Journal of Neurophysiology} 109, 1900.
+\newblock \doi{10.1152/jn.00788.2012}
+\bibAnnoteFile{dale_nucleus_2013}
 
 \bibitem[{Daniel and Whitteridge(1961)}]{daniel_representation_1961}
 Daniel, P.~M. and Whitteridge, D. (1961).
@@ -287,6 +303,13 @@ Dorris, M.~C., Par\'e, M., and Munoz, D.~P. (1997).
   the {Initiation} of {Saccadic} {Eye} {Movements}.
 \newblock \emph{The Journal of Neuroscience} 17, 8566
 \bibAnnoteFile{dorris_neuronal_1997}
+
+\bibitem[{Douglas and Martin(2004)}]{douglas_neuronal_2004}
+Douglas, R.~J. and Martin, K. A.~C. (2004).
+\newblock Neuronal {Circuits} of the {Neocortex}.
+\newblock \emph{Annual Review of Neuroscience} 27, 419--451.
+\newblock \doi{10.1146/annurev.neuro.27.070203.144152}
+\bibAnnoteFile{douglas_neuronal_2004}
 
 \bibitem[{Edelman and Keller(1996)}]{edelman_activity_1996}
 Edelman, J.~A. and Keller, E.~L. (1996).
@@ -480,6 +503,14 @@ Hazy, T.~E., Frank, M.~J., and O'Reilly, R.~C. (2007).
 \newblock \doi{10.1098/rstb.2007.2055}
 \bibAnnoteFile{hazy_towards_2007}
 
+\bibitem[{Helms et~al.(2004)Helms, \"Ozen, and Hall}]{helms_organization_2004}
+Helms, M.~C., \"Ozen, G., and Hall, W.~C. (2004).
+\newblock {\selectlanguage{en}Organization of the {Intermediate} {Gray} {Layer}
+  of the {Superior} {Colliculus}. {I}. {Intrinsic} {Vertical} {Connections}}.
+\newblock \emph{Journal of Neurophysiology} 91, 1706--1715.
+\newblock \doi{10.1152/jn.00705.2003}
+\bibAnnoteFile{helms_organization_2004}
+
 \bibitem[{Hepp and Henn(1983)}]{hepp_spatio-temporal_1983}
 Hepp, K. and Henn, V. (1983).
 \newblock Spatio-temporal recoding of rapid eye movement signals in the monkey
@@ -581,6 +612,17 @@ Jiang, H., Stein, B.~E., and McHaffie, J.~G. (2003).
 \newblock \doi{10.1038/nature01698}
 \bibAnnoteFile{jiang_opposing_2003}
 
+\bibitem[{Kaneda et~al.(2008)Kaneda, Phongphanphanee, Katoh, Isa, Yanagawa,
+  Obata et~al.}]{kaneda_regulation_2008}
+Kaneda, K., Phongphanphanee, P., Katoh, T., Isa, K., Yanagawa, Y., Obata, K.,
+  et~al. (2008).
+\newblock {\selectlanguage{en}Regulation of {Burst} {Activity} through
+  {Presynaptic} and {Postsynaptic} {GABAB} {Receptors} in {Mouse} {Superior}
+  {Colliculus}}.
+\newblock \emph{Journal of Neuroscience} 28, 816--827.
+\newblock \doi{10.1523/JNEUROSCI.4666-07.2008}
+\bibAnnoteFile{kaneda_regulation_2008}
+
 \bibitem[{Kita and Kitai(1991)}]{kita_intracellular_1991}
 Kita, H. and Kitai, S.~T. (1991).
 \newblock Intracellular study of rat globus pallidus neurons: membrane
@@ -597,8 +639,8 @@ Kleine, J.~F. (2003).
 \bibAnnoteFile{kleine_saccade-related_2003}
 
 \bibitem[{Knips et~al.(2017)Knips, Zibner, Reimann, and
-  Schöner}]{knips_neural_2017}
-Knips, G., Zibner, S. K.~U., Reimann, H., and Schöner, G. (2017).
+  Sch\"oner}]{knips_neural_2017}
+Knips, G., Zibner, S. K.~U., Reimann, H., and Sch\"oner, G. (2017).
 \newblock {\selectlanguage{English}A {Neural} {Dynamic} {Architecture} for
   {Reaching} and {Grasping} {Integrates} {Perception} and {Movement}
   {Generation} and {Enables} {On}-{Line} {Updating}}.
@@ -606,9 +648,9 @@ Knips, G., Zibner, S. K.~U., Reimann, H., and Schöner, G. (2017).
 \newblock \doi{10.3389/fnbot.2017.00009}
 \bibAnnoteFile{knips_neural_2017}
 
-\bibitem[{K\"uhn et~al.(2004)K\"uhn, Williams, Kupsch, Limousin, Hariz, Schneider
+\bibitem[{Kühn et~al.(2004)Kühn, Williams, Kupsch, Limousin, Hariz, Schneider
   et~al.}]{kuhn_event-related_2004}
-K\"uhn, A.~A., Williams, D., Kupsch, A., Limousin, P., Hariz, M., Schneider,
+Kühn, A.~A., Williams, D., Kupsch, A., Limousin, P., Hariz, M., Schneider,
   G.-H., et~al. (2004).
 \newblock Event-related beta desynchronization in human subthalamic nucleus
   correlates with motor performance.
@@ -684,6 +726,14 @@ Marino, R.~A., Trappenberg, T.~P., Dorris, M., and Munoz, D.~P. (2012).
 \newblock \doi{10.1162/jocn_a_00139}
 \bibAnnoteFile{marino_spatial_2012}
 
+\bibitem[{Massone(1994)}]{massone_neural-network_1994}
+Massone, L. L.~E. (1994).
+\newblock {\selectlanguage{en}A neural-network system for control of eye
+  movements: basic mechanisms}.
+\newblock \emph{Biological Cybernetics} 71, 293--305.
+\newblock \doi{10.1007/BF00239617}
+\bibAnnoteFile{massone_neural-network_1994}
+
 \bibitem[{Mays and Sparks(1980)}]{mays_dissociation_1980}
 Mays, L.~E. and Sparks, D.~L. (1980).
 \newblock Dissociation of visual and saccade-related responses in superior
@@ -756,8 +806,8 @@ Middleton, F.~A. and Strick, P.~L. (2000).
 \bibAnnoteFile{middleton_basal_2000}
 
 \bibitem[{Mink(1996)}]{mink_basal_1996}
-Mink, J.~W. (1996).
-\newblock The basal ganglia: focused selection and inhibition of competeing
+Mink, J. (1996).
+\newblock The basal ganglia: {Focused} selection and inhibition of competing
   motor programs.
 \newblock \emph{Progress in Neurobiology} 50, 381--425
 \bibAnnoteFile{mink_basal_1996}
@@ -816,6 +866,13 @@ Munoz, D.~P. and Everling, S. (2004).
 \newblock \emph{Nature Reviews Neuroscience} 5, 218--228.
 \newblock \doi{10.1038/nrn1345}
 \bibAnnoteFile{munoz_look_2004}
+
+\bibitem[{Munoz and Istvan(1998)}]{munoz_lateral_1998}
+Munoz, D.~P. and Istvan, P.~J. (1998).
+\newblock Lateral inhibitory interactions in the intermediate layers of the
+  monkey superior colliculus.
+\newblock \emph{Journal of Neurophysiology} 79, 1193--1209
+\bibAnnoteFile{munoz_lateral_1998}
 
 \bibitem[{Nambu et~al.(1990)Nambu, Yoshida, and Jinnai}]{nambu_discharge_1990}
 Nambu, A., Yoshida, S.-i., and Jinnai, K. (1990).
@@ -1077,6 +1134,15 @@ Sommer, M.~A. and Wurtz, R.~H. (2000).
 \newblock \emph{Journal of Neurophysiology} 83, 1979--2001
 \bibAnnoteFile{sommer_composition_2000}
 
+\bibitem[{Sooksawate et~al.(2011)Sooksawate, Isa, Behan, Yanagawa, and
+  Isa}]{sooksawate_organization_2011}
+Sooksawate, T., Isa, K., Behan, M., Yanagawa, Y., and Isa, T. (2011).
+\newblock {\selectlanguage{en}Organization of {GABAergic} inhibition in the
+  motor output layer of the superior colliculus}.
+\newblock \emph{European Journal of Neuroscience} 33, 421--432.
+\newblock \doi{10.1111/j.1460-9568.2010.07535.x}
+\bibAnnoteFile{sooksawate_organization_2011}
+
 \bibitem[{Sparks(2002)}]{sparks_brainstem_2002}
 Sparks, D.~L. (2002).
 \newblock The brainstem control of saccadic eye movements.
@@ -1168,10 +1234,11 @@ Thivierge, J.-P. and Marcus, G.~F. (2007).
 \bibitem[{Thompson and Bichot(2005)}]{thompson_visual_2005}
 Thompson, K.~G. and Bichot, N.~P. (2005).
 \newblock A visual salience map in the primate frontal eye field.
-\newblock In \emph{Progress in {Brain} {Research}}, ed. A.~v. O. G. J. A. R. a.
-  P. R. R. M.~K. J.~van Pelt, C. N.~Levelt (Elsevier), vol. 147 of
-  \emph{Development, {Dynamics} and {Pathiology} of {Neuronal} {Networks}: from
-  {Molecules} to {Functional} {Circuits}}. 249--262
+\newblock In \emph{Progress in {Brain} {Research}}, eds. J.~van Pelt,
+  M.~Kamermans, C.~N. Levelt, A.~van Ooyen, G.~J.~A. Ramakers, and P.~R.
+  Roelfsema (Elsevier), vol. 147 of \emph{Development, {Dynamics} and
+  {Pathiology} of {Neuronal} {Networks}: from {Molecules} to {Functional}
+  {Circuits}}. 249--262
 \bibAnnoteFile{thompson_visual_2005}
 
 \bibitem[{Thompson et~al.(2005)Thompson, Bichot, and

@@ -38,7 +38,7 @@
   Alexander Cope\,$^3$,  \\
   Sean Anderson\,$^{2,4}$, Konstantinos Moustakas\,$^5$, Kevin Gurney\,$^{1,2,*}$}
 
-\def\Address{\\
+\def\Address{
 $^{1}$Adaptive Behaviour Research Group, Department of Psychology,
   The University of Sheffield, Sheffield, UK \\
 $^{2}$Insigneo Institute for in-silico Medicine,
@@ -48,7 +48,7 @@ $^{3}$Department of Computer Science,
 $^{4}$Department of Automatic Control Systems Engineering,
   The University of Sheffield, Sheffield, UK \\
 $^{5}$Department of Electrical and Computer Engineering,
-  The University of Patras, Patras, Greece \\
+  The University of Patras, Patras, Greece
 }
 
 \def\corrAuthor{Kevin Gurney}
@@ -308,7 +308,7 @@ individual \rvw{sub-systems} have been proposed for brainstem
 \citep{robinson_oculomotor_1975,scudder_new_1988,gancarz_neural_1998},
 cerebellum \citep{quaia_model_1999,dean_modelling_1995,dean_learning_1994}
 and superior colliculus
-\citep{arai_two-dimensional_1994,moren_mechanism_2013,marino_spatial_2012}.
+\citep{massone_neural-network_1994,arai_two-dimensional_1994,moren_mechanism_2013,marino_spatial_2012}.
 More recently, combined models have also been developed incorporating
 sensory input \citep{cope_basal_2017} and driving \rvw{a second order
 differential equation} representing the eye
@@ -1541,12 +1541,15 @@ the excitation which caused the activity in SC\_deep by bringing the
 target luminance within the masked, foveal region, the activity in SC
 decays too slowly to avoid additional saccadic movements. We found it
 necessary to hypothesise an inhibitory feedback mechanism from the SBG
-to the brain model.  This is shown in Fig.~\ref{fig:sbg}, which indicates
-how the output from the inhibitory burst neurons (IBN) of the SBG
-model are used to feed back an inhibitory signal to the SC\_deep,
-thalamus and FEF populations in the brain model, resetting them ready
-for the next saccade.
-% Might have to justify the above a bit more.
+to the brain model.  This is shown in Fig.~\ref{fig:sbg}, which
+indicates how the output from the inhibitory burst neurons (IBN) of
+the SBG model are used to feed back an inhibitory signal to the
+SC\_deep, thalamus and FEF populations in the brain model, resetting
+them ready for the next saccade. \rvw{There is evidence for inhibitory
+projections to SC from the propositus
+hypoglossi nucleus \citep{corvisier_possible_1991}, which lies within the
+brainstem, upstream from motoneurons, and has been shown to encode eye
+velocity \citep{dale_nucleus_2013}.}
 
 % SBG to worldDataMaker
 The output signals from the six channels of the SBG were connected to
@@ -1797,7 +1800,7 @@ stick' shape shown in Fig. 7 of \cite{cope_basal_2017} for horizontal
 oblique saccades (not shown). The latency increases with eccentricity
 far from the fovea because the retinotopic mapping reduces the
 activity in the basal ganglia for more eccentric targets (see
-Fig.~\ref{mapping}). Closer to the fovea, the \rvwt{effect of} the
+Fig.~\ref{fig:mapping}). Closer to the fovea, the \rvwt{effect of} the
 foveal mask \rvwt{on} the activity in FEF again leads to reduced input
 into the basal ganglia and an increased time to achieve disinhibition
 in SNr.
@@ -2037,8 +2040,8 @@ learn more about the biology of a primate arm. For this reason, we
 would describe the study of \cite{knips_neural_2017} as embodied
 robotics or neuro-robotics.}
 
-\rvw{Modern programming platforms, often originating from the world
-of computer gaming, make it relatively easy to model a virtual
+\rvw{Modern programming platforms, often originating from the
+computer game industry, make it relatively easy to model a virtual
 environment. Consequently, an increasing number of studies into
 robotic or neuro-mimetic control are carried out with virtual robots
 operating within a virtual environment. \cite{arena_motor-skill_2017}
@@ -2149,7 +2152,7 @@ by this new mechanism.
 
 The implementation of a biophysically accurate model of the eye, and
 the closed-loop nature of the model makes it very natural to consider
-how the model will behave making saccades from arbitrary starting
+how the model will behave when making saccades from arbitrary starting
 positions, or how it would respond to a sequence of stimuli. This was
 the motivation for the out-and-return experiment (Fig.~\ref{outrtn})
 as well as for the double step experiment (Fig.~\ref{doublesteps}).
@@ -2201,11 +2204,11 @@ would inhibit activity in FEF, thalamus and SC\_deep (Fig.~\ref{fig:sbg}),
 preventing the occurrence of staircase saccades.
 
 An examination of the behaviour of the model when presented with
-`double-step stimuli' reveals a problem with this scheme. We found
-that when double-step stimuli were presented (where an initial target
-at 8\dg~was replaced with a 12\dg~target after 30 or 40~ms) and a
-double saccade was made [Fig.~\ref{doublesteps}(a), black lines] the
-second saccade latency was \e{longer} even than the initial
+`double-step stimuli' reveals a problem with our inhibitory feedback
+connections. We found that when double-step stimuli were presented (where
+an initial target at 8\dg~was replaced with a 12\dg~target after 30 or
+40~ms) and a double saccade was made [Fig.~\ref{doublesteps}(a), black
+lines] the second saccade latency was \e{longer} even than the initial
 saccade. This contrasts with \cite{becker_analysis_1979} who find that
 second, corrective saccades occur with \e{shorter} latencies.  This
 suggests that the inhibitory reset signal implemented in this model is
@@ -2213,21 +2216,60 @@ too strong or has the wrong timescales. This issue highlights the fact
 that connections \e{between} component models are quite as important
 as the connections within each model.
 
-\subsection{Concluding remarks}
+% Inhibition experimental evidence
+\rvw{There is some evidence for an inhibitory projection to SC from the
+brainstem. \cite{corvisier_possible_1991} offer evidence for a
+projection from the propositus hypoglossi nucleus. This lies upstream
+from motoneurons and (in primates) encodes eye
+velocity \citep{dale_nucleus_2013}, rather than head movement
+velocity. Although the propositus hypoglossi does not lie in exactly
+the same functional location as our IBN population (instead it sits
+between TN and MN), it offers a possible inhibitory feedback signal
+proportional to eye velocity and may help to reduce activity in SC
+post-saccade.}
+%
+\rvwt{Alternatively, it is possible that activity in
+FEF and thalamus are reset via a `timed signal'. Feasibly, after
+activity in FEF exceeds a threshold, an internal, inhibitory feedback
+signal could be activated. This inhibition should have a timescale of
+sufficient duration to reduce activity in FEF, thalamus and, via an
+increase in inhibitory output from SNr, also in SC. Indeed, the
+cortical microcircuit contains a variety of morphologically distinct
+gabaergic neurons \citep{douglas_neuronal_2004} which could fulfil
+this functionality. A similar mechanism would then be required in SC,
+to reset activity generated by direct excitation via the
+retinal-collicular pathway which generates express saccades. Again, SC
+is a multi-layered structure, containing gabaergic interneurons
+\citep{munoz_lateral_1998,meredith_intrinsic_1998,helms_organization_2004,sooksawate_organization_2011}
+and there is mounting evidence that saccade dynamics are generated
+within
+SC \citep{kaneda_regulation_2008,goossens_optimal_2012,bayguinov_hard-wired_2015}. Thus,
+a more complex treatment of the SC and FEF regions in the model may
+well obviate the need for inhibitory feedback from brainstem to SC,
+FEF and thalamus.}
 
 % Reviewer 1's point 2.
-\rvw{\bol{FIXME}. We should consider whether inaccuracies within one sub-system,
-such as the musculo-skeletal model, may introduce errors that
-propagate through the closed loop system and cannot be counteracted by
-the nervous system part of the simulation.  My thoughts: You have to
-do this alongside other research so that sub-systems are informed by
-the best knowledge available.
-%
-How can you (or someone using this or related models)
-exclude introducing (biomechanical) properties that are not present in
-the biological system, or make sure to not miss critical biomechanical
-properties that might help remedy some of the shortcomings of the
-closed loop model?.}
+\rvw{Considering whether a feedback connection, or internal,
+recurrent inhibition is responsible for activity-reset in the brain
+model raises a more general question about modelling the central
+nervous system. We should consider whether inaccuracies within one
+part of the model may propagate errors through the closed-loop system
+that cannot be counteracted by another part of the simulation. There
+is no way to know, from integrating sub-systems, which properties hold
+true, and which are false. However, by integrating models and
+examining the behaviour of the combined model, we are presented with
+the right questions to ask of the model and the experimental data. In
+the case of activity-reset, this is to re-assess whether there exists
+inhibitory feedback from brainstem to the SC and FEF regions, and to
+find out how an integrated model with self-regulatory mechanisms in SC
+and FEF may perform.}
+
+% In a model of SC, \cite{massone_neural-network_1994} suggests that
+% internal mechanisms, learned via a supervised method, are sufficient
+% to generate dynamics.
+
+
+\subsection{Concluding remarks}
 
 % Reviewer 1's point 4.
 \rvw{There are also experimental closed-loop approaches to
@@ -2353,7 +2395,8 @@ https://github.com/ABRG-Models/OMM\_NeuroMuscular
 
 \section*{Figures}
 
-\begin{figure}[htb!]
+% Figure 1
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=\textwidth]{./figures/ccg_model.png}
 \end{center}
@@ -2407,7 +2450,8 @@ relationship shown in (c).}
 \end{figure}
 
 
-\begin{figure}[htb!]
+% Figure 2
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{./figures/Brain_Model.png}
 \end{center}
@@ -2435,7 +2479,8 @@ here, instead the level of dopamine in the striatum is set via a
 parameter in the Str\_D1 and Str\_D2 populations}
 \end{figure}
 
-\begin{figure}[htb!]
+% Figure 3
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{./figures/mapping.png}
 \end{center}
@@ -2468,7 +2513,8 @@ further blurs the activity in FEF. FEF is the input to the basal
 ganglia and one input to superior colliculus.}
 \end{figure}
 
-\begin{figure}[htb!]
+% Figure 4
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=0.6\textwidth]{./figures/Brain_Stem_1channel.png}
 \end{center}
@@ -2483,7 +2529,8 @@ neurons; IBN: Inhibitory burst neurons; OPN: Omnipause neurons; EBN:
 Excitatory burst neurons; TN: Tonic neurons; MN: Motoneurons.}
 \end{figure}
 
-\begin{figure}[htb!]
+% Figure 5
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{./figures/eye_screen_plus.png}
 \end{center}
@@ -2501,7 +2548,7 @@ horizontal rotation towards a luminances at an angle of $-\theta_{y}$
 about the $y$ axis. The $y$ axis points up, out of the page.}
 \end{figure}
 
-\begin{figure}[htb!]
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{./figures/model_framework.png}
 \end{center}
@@ -2518,7 +2565,7 @@ resulting BRAHMS system ready to be executed by the BRAHMS
 executable. In practice, this call is made by \stob.}
 \end{figure}
 
-\begin{figure}[htb!]
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{./figures/scdeep_plus.png}
 \end{center}
@@ -2535,7 +2582,7 @@ SC\_deep).  The widening Gaussian projection is shown as the arrow
 between SC\_deep and SC\_deep2.}
 \end{figure}
 
-\begin{figure}[htb!]
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{./figures/sacc_vs_targetpos.png}
 \end{center}
@@ -2544,7 +2591,7 @@ between SC\_deep and SC\_deep2.}
 0.2 and target luminance 0.3.}
 \end{figure}
 
-\begin{figure}[htb!]
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=\textwidth]{./figures/weightmaps.png}
 \end{center}
@@ -2555,7 +2602,7 @@ generator model. Each map increases exponentially with increasing $r$,
 multiplied by cosine($\phi$) about its `active' axis.}
 \end{figure}
 
-\begin{figure}[htb!]
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=0.95\textwidth]{./figures/errorsurface_TModel3.png}
 \end{center}
@@ -2570,7 +2617,7 @@ with the same scale. The target rotations, $\theta_{x}^t$ and
 $\theta_{y}^t$ are denoted `Target X' and `Target Y' in the figure.}
 \end{figure}
 
-\begin{figure}[htb!]
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=0.95\textwidth]{./figures/errorsurface.png}
 \end{center}
@@ -2588,7 +2635,7 @@ Note that the range of the colour scale is 0 to 20\%, a much smaller
 range than the range in Fig~\ref{errorsurfaceTM3}.}
 \end{figure}
 
-\begin{figure}[htb!]
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{./figures/outmany.png}
 \end{center}
@@ -2608,7 +2655,7 @@ three rotational components of the `red' saccade, to target location
 (0,-10).}
 \end{figure}
 
-\begin{figure}[htb!]
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{./figures/lat_vs_everything.png}
 \end{center}
@@ -2634,7 +2681,7 @@ behaviour.
 }
 \end{figure}
 
-\begin{figure}[htb!]
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{./figures/outrtn.png}
 \end{center}
@@ -2646,7 +2693,7 @@ return trajectories for the saccade shown in (a) alongside saccades to
 three other targets.}
 \end{figure}
 
-\begin{figure}[htb!]
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{./figures/doublesteps.png}
 \end{center}
