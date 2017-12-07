@@ -81,8 +81,8 @@ Bayguinov, P.~O., Ghitani, N., Jackson, M.~B., and Basso, M.~A. (2015).
 \newblock \emph{Journal of Neurophysiology} \doi{10.1152/jn.00144.2015}
 \bibAnnoteFile{bayguinov_hard-wired_2015}
 
-\bibitem[{Becker and Jürgens(1979)}]{becker_analysis_1979}
-Becker, W. and Jürgens, R. (1979).
+\bibitem[{Becker and J\"urgens(1979)}]{becker_analysis_1979}
+Becker, W. and J\"urgens, R. (1979).
 \newblock An analysis of the saccadic system by means of double step stimuli.
 \newblock \emph{Vision Research} 19, 967--983.
 \newblock \doi{10.1016/0042-6989(79)90222-0}
@@ -193,7 +193,8 @@ Cope, A. and Gurney, K.~N. (2011).
 
 \bibitem[{Cope and James(2015)}]{cope_spineml_2_brahms_2015}
 Cope, A.~J. and James, S.~S. (2015).
-\newblock {SpineML}\_2\_brahms ({NoTremor} {Oculomotor} branch)
+\newblock {SpineML}\_2\_brahms.
+\newblock RRID: SCR\_015640
 \bibAnnoteFile{cope_spineml_2_brahms_2015}
 
 \bibitem[{Cope et~al.(2014)Cope, Richmond, and Allerton}]{cope_spineml_2014}
@@ -648,9 +649,9 @@ Knips, G., Zibner, S. K.~U., Reimann, H., and Sch\"oner, G. (2017).
 \newblock \doi{10.3389/fnbot.2017.00009}
 \bibAnnoteFile{knips_neural_2017}
 
-\bibitem[{Kühn et~al.(2004)Kühn, Williams, Kupsch, Limousin, Hariz, Schneider
+\bibitem[{K\"uhn et~al.(2004)K\"uhn, Williams, Kupsch, Limousin, Hariz, Schneider
   et~al.}]{kuhn_event-related_2004}
-Kühn, A.~A., Williams, D., Kupsch, A., Limousin, P., Hariz, M., Schneider,
+K\"uhn, A.~A., Williams, D., Kupsch, A., Limousin, P., Hariz, M., Schneider,
   G.-H., et~al. (2004).
 \newblock Event-related beta desynchronization in human subthalamic nucleus
   correlates with motor performance.
@@ -806,8 +807,8 @@ Middleton, F.~A. and Strick, P.~L. (2000).
 \bibAnnoteFile{middleton_basal_2000}
 
 \bibitem[{Mink(1996)}]{mink_basal_1996}
-Mink, J. (1996).
-\newblock The basal ganglia: {Focused} selection and inhibition of competing
+Mink, J.~W. (1996).
+\newblock The basal ganglia: focused selection and inhibition of competeing
   motor programs.
 \newblock \emph{Progress in Neurobiology} 50, 381--425
 \bibAnnoteFile{mink_basal_1996}

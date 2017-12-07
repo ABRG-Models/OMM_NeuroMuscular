@@ -30,7 +30,7 @@ sed 's/\xc3\xbc/\\"u/g' < "$1" > /tmp/utf8tolatex/$((count+1)).bbl
 count=$((count+1))
 
 # Search/replace U umlauts
-sed 's/\xc3\x9c/\\"U/g' < "$1" > /tmp/utf8tolatex/$((count+1)).bbl
+sed 's/\xc3\x9c/\\"U/g' < /tmp/utf8tolatex/${count}.bbl > /tmp/utf8tolatex/$((count+1)).bbl
 count=$((count+1))
 
 # o umlaut
