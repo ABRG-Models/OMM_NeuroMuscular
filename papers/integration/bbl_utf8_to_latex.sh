@@ -45,6 +45,14 @@ count=$((count+1))
 sed 's/\xc3\xa9/\\'\''e/g' < /tmp/utf8tolatex/${count}.bbl >  /tmp/utf8tolatex/$((count+1)).bbl
 count=$((count+1))
 
+# a acute (Hernandez)
+sed 's/\xc3\xa1/\\'\''a/g' < /tmp/utf8tolatex/${count}.bbl >  /tmp/utf8tolatex/$((count+1)).bbl
+count=$((count+1))
+
+# o acute (Lopez)
+sed 's/\xc3\xb3/\\'\''o/g' < /tmp/utf8tolatex/${count}.bbl >  /tmp/utf8tolatex/$((count+1)).bbl
+count=$((count+1))
+
 # e grave (Lefevre)
 sed 's/\xc3\xa8/\\\`e/g' < /tmp/utf8tolatex/${count}.bbl >  /tmp/utf8tolatex/$((count+1)).bbl
 count=$((count+1))
