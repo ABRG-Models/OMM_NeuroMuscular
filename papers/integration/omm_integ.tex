@@ -1348,8 +1348,12 @@ the deeper layers of the superior colliculus and the saccadic burst
 generator \citep{van_gisbergen_experimental_1985,ottes_visuomotor_1986,waitzman_superior_1991,groh_converting_2001,arai_two-dimensional_1994,goossens_dynamic_2006,tabareau_geometry_2007,van_opstal_linear_2008,goossens_optimal_2012},
 which has become known as the spatial temporal transform (STT).  The
 spatial aspect of the transform is thought to be implemented by a
-weight-mapping \citep{tabareau_geometry_2007,arai_two-dimensional_1994}
-and we follow this idea.
+weight-mapping \citep{tabareau_geometry_2007,arai_two-dimensional_1994}.
+\rvwt{Although there is no definitive experimental proof for such a mapping,
+there exists evidence for spatially variable synapse
+density \citep{moschovakis_anatomical_1998,herrero_influence_1998} and
+connection density \citep{grantyn_density_2002} and we therefore adopt
+the idea.}
 %
 Arai and co-workers trained a 20x20 neural network model of the
 superior colliculus to discover the weight map under the assumption of
@@ -1505,8 +1509,10 @@ but the eye is actuated by six extraocular muscles. In order to find
 out a possible form for the input to the oblique muscles we carried
 out a training process
 % possibly descibe this training process in supplemental data
-which depended on a centroid computation in SC\_deep. For the four
-rectus muscles, the resulting weight maps resembled those found by
+which depended on a centroid computation in SC\_deep and was designed
+to maintain a null torsional eye rotation for all saccade
+end-points. For the four rectus muscles, the resulting weight map
+solutions resembled those found by
 \cite{arai_two-dimensional_1994}. The trained
 maps for the oblique muscles had a form very close to those for the
 inferior and superior rectus channels, but with a smaller magnitude.
@@ -1518,6 +1524,8 @@ maps, respectively. Interestingly, this suggests that there is a built-in
 synergy between the vertical and oblique channels in the eye, although
 the results will show there is some systematic change in the oblique error
 with saccade end-point location.
+% Could elaborate here on Listings Law, and why I didn't train to
+% Listings Law. Do this in the chapter, rather than here in the paper.
 
 \cite{tabareau_geometry_2007} give a formulation for the weight maps
 in which it is possible to project both a positive and a negative
@@ -1616,7 +1624,6 @@ given in SUPPLEMENTAL DATA.
 
 \subsection{Weight maps} \label{sec:results:weightmaps}
 
-% FIXME: Add reference to weight maps neuroscience if possible.
 We found the best parameters for the exponential in
 Eq.~\ref{eq:weightmaps} ($i$ and $j$) by a manual tuning
 process. After selecting values for $i$ and $j$ in either the
@@ -1642,26 +1649,28 @@ shown in Fig.~\ref{fig:weightmaps}.
 \rvw{First, recall that the $r$ axis of the neural surface corresponds
 to the amplitude of a saccade and the $\phi$ axis indicates the polar
 direction of the saccade, as described in Sect.~\ref{sec:mapping} and
-Fig.~\ref{fig:mapping}. Fig.~\ref{fig:weightmaps}(a) shows the weight map
-for the muscle which rotates the eye to the left. As we modelled a
+Fig.~\ref{fig:mapping}. Fig.~\ref{fig:weightmaps}(a) shows the weight
+map for the muscle which rotates the eye to the left. As we modelled a
 left eye, this actuates the lateral rectus muscle. The exponential
-rise of Eq.~\ref{eq:weightmaps} is seen in the $r$ direction; as $r$
-increases, so the connection strength to the SBG channel rises
-exponentially. The connection strength is greatest along the centre
-line, for a value of $\phi$ which corresponds to a purely leftward
-movement. Note that $\phi$ is presented in neural coordinates, and not
-in degrees or radians; 1$\leq\phi\leq$50 corresponds to a range of
-0\dg~to 360\dg; $\phi=$38.5 corresponds to movements left. The
-connections strength drops away sinusoidally as $\phi$ moves away from
-the centre line at $\phi=$38.5. In regions of the map for which there
-is no leftward movement, that is, in the half of the map which
-corresponds to any movement with a rightward component, the `left'
-weight map is 0. Fig.~\ref{fig:weightmaps}(d) shows the weight map for
-rightward movements, actuating the medial rectus muscle of the
-eye. The line of maximum connection strength is along $\phi=$13.5. The
-map is a mirror of Fig.~\ref{fig:weightmaps}(a), reflected about the line
-$\phi$=26. The `left' and `right' weight maps are orthogonal; the
-non-zero region of the `left' map is zero in the `right' map and vice
+rise of Eq.~\ref{eq:weightmaps} [for experimental evidence,
+see Figs.~7 \& 8 of \cite{herrero_influence_1998}] is seen in the
+$r$ direction; as $r$ increases, so the connection strength to the SBG
+channel rises exponentially. The connection strength is greatest along
+the centre line, for a value of $\phi$ which corresponds to a purely
+leftward movement. Note that $\phi$ is presented in neural
+coordinates, and not in degrees or radians; 1$\leq\phi\leq$50
+corresponds to a range of 0\dg~to 360\dg; $\phi=$38.5 corresponds to
+movements left. The connections strength drops away sinusoidally as
+$\phi$ moves away from the centre line at $\phi=$38.5. In regions of
+the map for which there is no leftward movement, that is, in the half
+of the map which corresponds to any movement with a rightward
+component, the `left' weight map is 0. Fig.~\ref{fig:weightmaps}(d)
+shows the weight map for rightward movements, actuating the medial
+rectus muscle of the eye. The line of maximum connection strength is
+along $\phi=$13.5. The map is a mirror of
+Fig.~\ref{fig:weightmaps}(a), reflected about the line $\phi$=26. The
+`left' and `right' weight maps are orthogonal; the non-zero region of
+the `left' map is zero in the `right' map and vice
 versa. Fig~\ref{fig:weightmaps}(b) \& (d) show the weight maps for
 downward and upward eye movements; the `down' map activates the SBG
 channel for the inferior rectus muscle, the `up' map activates the
@@ -1795,7 +1804,8 @@ functionality as that reported in \cite{cope_basal_2017}, we
 investigated the effect on saccadic response times of: target
 eccentricity; and any gap or overlap between fixation off-time and
 target on-time. We showed that the full model reproduces the `hockey
-stick' shape shown in Fig. 7 of \cite{cope_basal_2017} for horizontal
+stick' shape shown in Fig. 7 of \cite{cope_basal_2017} and discovered in
+experimental data \citep{reulen_latency_1984} for horizontal
 [Fig.~\ref{fig:latvsall}(a)], vertical [Fig.~\ref{fig:latvsall}(b)] and
 oblique saccades (not shown). The latency increases with eccentricity
 far from the fovea because the retinotopic mapping reduces the
@@ -1986,102 +1996,8 @@ a musculo-skeletal system, and then \rvw{closing the
 movements of the virtual muscles to modulate sensory feedback to the
 brain model, shortcomings in the constituent models would be revealed,
 leading to new knowledge.
-%
-\rvw{We call this closed-loop approach \e{computational
-neurobehaviour}, meaning a complete, behaving model, with attention
-paid to the biological accuracy of each brain and biomechanical
-sub-system. There already exist many closed-loop \e{robotic} systems which
-receive sensory input from the world, process that input and generate
-behaviour by activating motor
-systems
-\citep{yu_development_2004,fend_artificial_2004,pearson_whiskerbot:_2007}. We
-now consider whether robotic systems which model biological
-components \e{in hardware} could fall within our new category.
-%
-Using a number of examples, we will attempt to illustrate what we mean
-by computational neurobehaviour. We'll consider which examples fall
-into the new category and which are covered by other fields of
-robotics or computational neuroscience.}
 
-\rvw{\cite{pearson_whiskerbot:_2007} describes a wheeled robot which has a
-biomimetic whisker sensory system, along with a biomimetic neural
-system imitating the operation of the rat's sensory processing
-and controlling the movement of the robot. \cite{fend_artificial_2004}
-is a similar, wheeled, whiskered robot, with a repertoire of three
-behaviours organised in a subsumption architecture. In both robots,
-actions that are selected within the brain model drive a
-non-biologically accurate wheel motor control algorithm to achieve
-rotational and translational movements. Although both have
-sensory and processing systems which are guided by biology, the
-non-biological motor control stage prevents us from considering these
-as being studies of computational neurobehaviour.}
-%
-\rvw{\cite{yu_development_2004} report on a biomimetic fish robot,
-whose motor system closely resembles that of the real fish. The robot
-is able to operate in a closed-loop mode, where sensory input is
-provided to the non-biomimetic control algorithms from overhead
-cameras, but its control system is also able to operate in open-loop
-mode. Neither the control system, nor the sensory system are
-biophysically accurate and we would not describe this study as
-computational neurobehaviour. Nevertheless, the biophysically accurate
-motor system could certainly form part of a computational
-neurobehavioural study of swimming behaviour in the fish, if it were
-combined with suitable sensory input and sensory processing models.}
-%
-\rvw{\cite{knips_neural_2017} is a report of a reach-and-grasp robot
-arm controlled via a dynamic neural field brain model. The sensory
-input for this system---its `eyes'---is a Microsoft Kinect sensor; it
-also has somatosensory feedback from the fingers of the robot's
-hand. The neural field `brain' controls the seven degrees of freedom
-of the arm to carry out the reach-and-grasp action. While this robot
-has closed-loop control and is clearly inspired by biology, it remains
-a study of robotics and of the improvement of the control of the
-robot's reach-and-grasp function, rather than a study which aims to
-learn more about the biology of a primate arm. For this reason, we
-would describe the study of \cite{knips_neural_2017} as embodied
-robotics or neuro-robotics.}
-
-\rvw{Modern programming platforms, often originating from the
-computer game industry, make it relatively easy to model a virtual
-environment. Consequently, an increasing number of studies into
-robotic or neuro-mimetic control are carried out with virtual robots
-operating within a virtual environment. \cite{arena_motor-skill_2017}
-describes a robotic insect system based on the fly
-species \e{Drosophila Melanogaster}. It has biomimetic insect legs
-implemented in a virtual robot and a neuro-mimetic brain. Closing the
-loop is a visual sensory input system which is able to determine the
-distance between the robot and an obstacle and the obstacle's
-height. The visual system is not described in detail and may not be
-biologically modelled (much in the way that the visual processing
-stream is not modelled in detail in the present work). Nevertheless,
-this study may reasonably be described as compuational neurobehaviour;
-the authors demonstrate that the virtual robot is able to learn to
-climb obstacles in a realistic manner and suggest that the model may
-be compared with experimental data from future Drosophila experiments
-addressing obstacle climbing and learning.}
-%
-\rvw{\cite{nguyen_saccade_2014} and
-\cite{thurat_biomimetic_2015} are two studies of the oculomotor system
-which model sensory input, neural control and motor output. These
-studies fall outside the remit of computational neurobehaviour only
-because they omit to close the sensory
-loop. \cite{dewolf_spiking_2016} describes a reach model comprising a
-simplified virtual arm (with fewere degrees of freedom than a primate
-arm), and a biologically inspired brain model. This model also omits
-to close the sensory feedback loop and we consider it a traditional
-computational neuroscience study.}
-
-\rvw{We can now offer a definition of computational
-neurobehaviour as: \e{The study of biological sensory-motor system
-behaviour using biophysically accurate models of sensory input, brain
-and motor sub-systems operating in a closed-loop}. The sub-system
-models may be implemented in software or hardware, provided that they
-attempt to reproduce and explain features of the biological
-sub-system. We favour virtual biomechanics, for the ease with which
-the biomechanical model can be modified and the flexibility of
-computational modelling over hardware modelling.}
-
-To demonstrate the validity of the computational neurobehaviour
+To demonstrate the validity of this closed-loop
 approach, we built an integrated model and then identified the
 modifications which were necessary to give it the ability to make
 accurate movements under one type of stimulus. We then examined its
@@ -2119,10 +2035,11 @@ the view retinotopically into the brain model.
 This paper serves to describe how we achieved the integration in order
 to test our hypothesis, and we intend that the material and methods
 section, along with the model code itself, will help others to carry
-out similar studies. However, we wish to devote the majority of this
-discussion to what can be learned from an integrated model of a
-combined brain and biomechanical system, using our oculomotor system
-as an example.
+out similar studies. We will discuss what can be learned from an
+integrated model of a combined brain and biomechanical system, using
+our oculomotor system as an example and then consider how this study
+compares with other modelling and robotic studies of closed-loop
+systems.
 
 Our integration approach revealed three ways in which this model fails
 to provide a full understanding of the saccadic system. In each case,
@@ -2249,6 +2166,10 @@ a more complex treatment of the SC and FEF regions in the model may
 well obviate the need for inhibitory feedback from brainstem to SC,
 FEF and thalamus.}
 
+%
+% A couple of last points to round up the discussion of THIS model
+%
+
 % Reviewer 1's point 2.
 \rvw{Considering whether a feedback connection, or internal,
 recurrent inhibition is responsible for activity-reset in the brain
@@ -2268,22 +2189,6 @@ and FEF may perform.}
 % In a model of SC, \cite{massone_neural-network_1994} suggests that
 % internal mechanisms, learned via a supervised method, are sufficient
 % to generate dynamics.
-
-
-\subsection{Concluding remarks}
-
-% Reviewer 1's point 4.
-\rvw{There are also experimental closed-loop approaches to
-understanding sensorimotor control. \cite{ejaz_closed-loop_2013}
-places a fly in a fixed position, and couples it with a free-to-move
-robot. The sensory input collected by the robot is projected onto the
-eyes of the fly, and activity from a selected neuron in the fly's
-brain is used to drive a control system for the robot's
-movements. This allows the experimenters to study the behaviour of the
-fly's brain operating in a closed-loop condition that is more natural
-than the open-loop condition that many other experimental techniques
-mandate. The results from closed-loop experiments will undoubtedly
-inform future neurobehavioural models.}
 
 % Cerebellum omitted
 The omission of the cerebellum will not have escaped the reader's
@@ -2331,33 +2236,164 @@ complicated interplay between the dynamics of the superior colliculus
 driving the dynamic system of the SBG, we feel this is outside the
 scope of the current work and a subject for a future paper.
 
-% Significance of this work.
-This work represents a step forward in the modelling of neuromuscular
-systems, not because it significantly advances any of the constituent
-models, but because it \e{integrates} the models into a
-complete, \e{behaving} system.  This is not the first integrated brain
-model composed of separately developed components. The works
-of \cite{nguyen_saccade_2014} and
-\cite{thurat_biomimetic_2015} are both based
-on an example of a brain model which drives a simple, second order
-model of the eye. \cite{dewolf_spiking_2016} describes a reach model
-which integrates models of cortex and cerebellum to drive a two
-degree-of-freedom arm model. Both of these example systems
-nevertheless operate using `curated' inputs supplied by the modeller.
 
-In contrast, the current work allows the state of the system to
-determine the input delivered to the model. The modeller only curates
-the state of the world at each time point, but the actual input to the
-model depends on the eye's rotational state.  This is, to our
-knowledge, the first model which integrates the brain with an accurate
-biophysical system and closes the loop in this way, enabling the
-system to reproduce behaviour.  As such, it offers a platform for
-testing more complex saccadic behaviour such as antisaccades or
-saccades in the presence of distractor stimuli. We believe that by
-building closed loop systems which express behaviour, we, and others
-will develop a new field of \e{computational neurobehaviour}, which
-will share themes from neuroscience, artificial intelligence, decision
-science and embodied robotics.
+\subsection{Comparison with other studies}
+
+\rvw{We have called this closed-loop, biomimetic modelling approach \e{computational
+neurobehaviour}, in which a complete, behaving model is constructed,
+with attention paid to the biological accuracy of each brain and
+biomechanical sub-system. There already exist many
+closed-loop \e{robotic} systems which receive sensory input from the
+world, process that input and generate behaviour by activating motor
+systems
+\citep{yu_development_2004,fend_artificial_2004,pearson_whiskerbot:_2007}. We
+now consider whether robotic systems which model biological
+components \e{in hardware} could fall within our new category.
+%
+Using a number of examples, we will attempt to illustrate what we mean
+by computational neurobehaviour. We'll consider which examples fall
+into the new category and which are covered by other fields of
+robotics or computational neuroscience.}
+
+\rvw{\cite{pearson_whiskerbot:_2007} describes a wheeled robot which has a
+biomimetic whisker sensory system, along with a biomimetic neural
+system imitating the operation of the rat's sensory processing and
+controlling the movement of the robot. \cite{fend_artificial_2004} is
+a similar, wheeled, whiskered robot, with a repertoire of three
+behaviours organised in a subsumption architecture. In both robots,
+actions that are selected within the brain model drive a
+non-biologically accurate wheel motor control algorithm to achieve
+rotational and translational movements. Although both have sensory and
+processing systems which are guided by biology, the non-biological
+motor control stage prevents us from considering these as being
+studies of computational neurobehaviour. Instead, we would refer to
+these as \e{embodied models}, as described
+in \cite{bolado-gomez_biologically_2013}, a study in which the
+learning behaviour of a biomimetic `core' model is embedded within an
+engineered `architecture' (a wheeled robot) which closes the
+agent-environment loop.}
+%
+\rvw{\cite{yu_development_2004} report on a biomimetic fish robot,
+whose motor system closely resembles that of the real fish. The robot
+is able to operate in a closed-loop mode, where sensory input is
+provided to the non-biomimetic control algorithms from overhead
+cameras, but its control system is also able to operate in open-loop
+mode. Neither the control system, nor the sensory system are
+biophysically accurate and we would not describe this study as
+computational neurobehaviour. Nevertheless, the biophysically accurate
+motor system they describe has the potential to form part of a
+computational neurobehavioural study of swimming behaviour in the
+fish, if it were combined in a loop with suitable sensory input and
+sensory processing models.}
+%
+\rvw{\cite{knips_neural_2017} is a report of a reach-and-grasp robot
+arm controlled via a dynamic neural field brain model. The sensory
+input for this system---its `eyes'---is a Microsoft Kinect sensor; it
+also has somatosensory feedback from the fingers of the robot's
+hand. The neural field `brain' controls the seven degrees of freedom
+of the arm to carry out the reach-and-grasp action. While this robot
+has closed-loop control and is clearly inspired by biology, it remains
+a study of robotics and of the improvement of the control of the
+robot's reach-and-grasp function, rather than a study which aims to
+learn more about the biology of a primate arm. For this reason, we
+would describe the study of \cite{knips_neural_2017} as an embodied
+model.}
+
+\rvw{To summarise, in most closed-loop robotic studies which
+incorporate neuro-mimetic models, the hardware forms an `engineered
+surround architecture', allowing for the examination of the behaviour
+of the embodied model. However, suitably \e{biomimetic} hardware such as
+the fish in \cite{yu_development_2004} would not be excluded from
+computational neurobehavioural studies.}
+
+\rvw{Modern programming platforms, often originating from the
+computer game industry, make it relatively easy to model a virtual
+environment. Consequently, an increasing number of studies into
+robotic or neuro-mimetic control are carried out with virtual robots
+operating within a virtual environment.}
+%
+\rvw{\cite{nguyen_saccade_2014} and
+\cite{thurat_biomimetic_2015} are two studies of the oculomotor system
+which model sensory input, neural control \e{and} motor output in
+software. These studies fall outside the remit of computational
+neurobehaviour only because they omit to close the sensory
+loop. \cite{dewolf_spiking_2016} describes a reach model comprising a
+simplified virtual arm (with fewer degrees of freedom than a primate
+arm), and a biologically inspired brain model. This model also omits
+to close the sensory feedback loop and we consider it a computational
+neuroscience study of a (virtually) embodied model.}
+%
+
+% Reviewer 1's point 4.
+\rvw{There are also experimental closed-loop approaches to
+understanding sensorimotor control. \cite{ejaz_closed-loop_2013}
+places a fly in a fixed position, and couples it with a free-to-move
+robot. The sensory input collected by the robot is projected onto the
+eyes of the fly, and activity from a selected neuron in the fly's
+brain is used to drive a control system for the robot's
+movements. This allows the experimenters to study the behaviour of the
+fly's brain operating in a closed-loop condition that is more natural
+than the open-loop condition that many other experimental techniques
+mandate. The results from closed-loop experiments will undoubtedly
+inform future neurobehavioural models.}
+
+%
+% Now the closing section of the discussion.
+%
+
+\rvw{Thus, while there are many models that close the
+agent-environment loop and display partial biological plausibility,
+the biomimetic features are usually confined to a sub-system of the
+entire model. This leads us to formalise a definition of computational
+neurobehaviour as: \e{The study of biological sensory-motor system
+behaviour using biologically accurate models of sensory input, brain
+and motor sub-systems operating in a closed-loop}.}
+%
+% Another computational neurobehavioural study?
+\rvw{We believe our oculomotor model is one of the first such models
+using this approach and shares many features with that
+of \cite{arena_motor-skill_2017} which describes a robotic insect
+system based on the fly species \e{Drosophila Melanogaster}. It has
+biomimetic insect legs implemented in a virtual robot and a
+neuro-mimetic brain. Closing the loop is a visual sensory input system
+which is able to determine the distance between the robot and an
+obstacle and the obstacle's height. The authors demonstrate that the
+virtual robot is able to learn to climb obstacles in a realistic
+manner and suggest that the model may be compared with experimental
+data from future Drosophila experiments addressing obstacle climbing
+and learning. The visual system is not described in detail, but if it
+is modelled in a biologically plausible manner, then this work may
+reasonably be described as a computational neurobehaviour study,
+contemporaneous with our own.}
+
+
+% Significance of this work.
+%% This work represents a step forward in the modelling of neuromuscular
+%% systems, not because it significantly advances any of the constituent
+%% models, but because it \e{integrates} the models into a
+%% complete, \e{behaving} system.  This is not the first integrated brain
+%% model composed of separately developed components. The works
+%% of \cite{nguyen_saccade_2014} and
+%% \cite{thurat_biomimetic_2015} are both based
+%% on an example of a brain model which drives a simple, second order
+%% model of the eye. \cite{dewolf_spiking_2016} describes a reach model
+%% which integrates models of cortex and cerebellum to drive a two
+%% degree-of-freedom arm model. Both of these example systems
+%% nevertheless operate using `curated' inputs supplied by the modeller.
+
+%% In contrast, the current work allows the state of the system to
+%% determine the input delivered to the model. The modeller only curates
+%% the state of the world at each time point, but the actual input to the
+%% model depends on the eye's rotational state.  This is, to our
+%% knowledge, the first model which integrates the brain with an accurate
+%% biophysical system and closes the loop in this way, enabling the
+%% system to reproduce behaviour.  As such, it offers a platform for
+%% testing more complex saccadic behaviour such as antisaccades or
+%% saccades in the presence of distractor stimuli. We believe that by
+%% building closed loop systems which express behaviour, we, and others
+%% will develop a new field of \e{computational neurobehaviour}, which
+%% will share themes from neuroscience, artificial intelligence, decision
+%% science and embodied robotics.
 
 
 \section*{Disclosure/Conflict-of-Interest Statement}

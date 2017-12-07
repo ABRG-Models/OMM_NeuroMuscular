@@ -1,4 +1,4 @@
-\begin{thebibliography}{179}
+\begin{thebibliography}{183}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -112,6 +112,13 @@ Bogacz, R. and Gurney, K. (2007).
 \newblock \doi{10.1162/neco.2007.19.2.442}
 \bibAnnoteFile{bogacz_basal_2007}
 
+\bibitem[{Bolado-Gomez and Gurney(2013)}]{bolado-gomez_biologically_2013}
+Bolado-Gomez, R. and Gurney, K. (2013).
+\newblock A biologically plausible embodied model of action discovery.
+\newblock \emph{Frontiers in Neurorobotics} 7.
+\newblock \doi{10.3389/fnbot.2013.00004}
+\bibAnnoteFile{bolado-gomez_biologically_2013}
+
 \bibitem[{Bolam et~al.(2000)Bolam, Hanley, Booth, and
   Bevan}]{bolam_synaptic_2000}
 Bolam, J., Hanley, J., Booth, P., and Bevan, M. (2000).
@@ -193,8 +200,7 @@ Cope, A. and Gurney, K.~N. (2011).
 
 \bibitem[{Cope and James(2015)}]{cope_spineml_2_brahms_2015}
 Cope, A.~J. and James, S.~S. (2015).
-\newblock {SpineML}\_2\_brahms.
-\newblock RRID: SCR\_015640
+\newblock {SpineML}\_2\_brahms ({NoTremor} {Oculomotor} branch)
 \bibAnnoteFile{cope_spineml_2_brahms_2015}
 
 \bibitem[{Cope et~al.(2014)Cope, Richmond, and Allerton}]{cope_spineml_2014}
@@ -447,6 +453,17 @@ Goossens, H. and van Opstal, A.~J. (2012).
 \newblock \emph{PLoS computational biology} 8, e1002508
 \bibAnnoteFile{goossens_optimal_2012}
 
+\bibitem[{Grantyn et~al.(2002)Grantyn, Brandi, Dubayle, Graf, Ugolini,
+  Hadjidimitrakis et~al.}]{grantyn_density_2002}
+Grantyn, A., Brandi, A.-M., Dubayle, D., Graf, W., Ugolini, G.,
+  Hadjidimitrakis, K., et~al. (2002).
+\newblock {\selectlanguage{en}Density gradients of trans-synaptically labeled
+  collicular neurons after injections of rabies virus in the lateral rectus
+  muscle of the rhesus monkey}.
+\newblock \emph{The Journal of Comparative Neurology} 451, 346--361.
+\newblock \doi{10.1002/cne.10353}
+\bibAnnoteFile{grantyn_density_2002}
+
 \bibitem[{Groh(2001)}]{groh_converting_2001}
 Groh, J.~M. (2001).
 \newblock Converting neural signals from place codes to rate codes.
@@ -536,6 +553,15 @@ Hernández-López, S., Bargas, J., Surmeier, D.~J., Reyes, A., and Galarraga,
 \newblock \emph{The Journal of neuroscience : the official journal of the
   Society for Neuroscience} 17, 3334--42
 \bibAnnoteFile{hernandez-lopez_D1_1997}
+
+\bibitem[{Herrero et~al.(1998)Herrero, Corvisier, Hardy~and, and
+  Torres}]{herrero_influence_1998}
+Herrero, L., Corvisier, J., Hardy~and, O., and Torres, B. (1998).
+\newblock {\selectlanguage{en}Influence of the tectal zone on the distribution
+  of synaptic boutons in the brainstem of goldfish}.
+\newblock \emph{The Journal of Comparative Neurology} 401, 411--428.
+\newblock \doi{10.1002/(SICI)1096-9861(19981123)401:3<411::AID-CNE8>3.0.CO;2-2}
+\bibAnnoteFile{herrero_influence_1998}
 
 \bibitem[{Hikosaka et~al.(2000)Hikosaka, Takikawa, and
   Kawagoe}]{hikosaka_role_2000}
@@ -807,8 +833,8 @@ Middleton, F.~A. and Strick, P.~L. (2000).
 \bibAnnoteFile{middleton_basal_2000}
 
 \bibitem[{Mink(1996)}]{mink_basal_1996}
-Mink, J.~W. (1996).
-\newblock The basal ganglia: focused selection and inhibition of competeing
+Mink, J. (1996).
+\newblock The basal ganglia: {Focused} selection and inhibition of competing
   motor programs.
 \newblock \emph{Progress in Neurobiology} 50, 381--425
 \bibAnnoteFile{mink_basal_1996}
@@ -852,6 +878,15 @@ Mor\'en, J., Shibata, T., and Doya, K. (2013).
 \newblock \emph{PLoS ONE} 8, e57134.
 \newblock \doi{10.1371/journal.pone.0057134}
 \bibAnnoteFile{moren_mechanism_2013}
+
+\bibitem[{Moschovakis et~al.(1998)Moschovakis, Kitama, Dalezios, Petit, Brandi,
+  and Grantyn}]{moschovakis_anatomical_1998}
+Moschovakis, A.~K., Kitama, T., Dalezios, Y., Petit, J., Brandi, A.~M., and
+  Grantyn, A.~A. (1998).
+\newblock {\selectlanguage{en}An {Anatomical} {Substrate} for the
+  {Spatiotemporal} {Transformation}}.
+\newblock \emph{Journal of Neuroscience} 18, 10219--10229
+\bibAnnoteFile{moschovakis_anatomical_1998}
 
 \bibitem[{Munoz(2002)}]{munoz_commentary:_2002}
 Munoz, D.~P. (2002).
