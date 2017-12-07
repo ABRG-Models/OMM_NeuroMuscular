@@ -793,11 +793,12 @@ the parameterisation of the \ccg~model are in \cite{cope_basal_2017}.}
 
 With the exceptions of the World and FEF\_add\_noise populations, each
 neural element represents an activation; the activation is governed by
-a first order differential equation specified in the SpineML
-component. In the brain model, there are six different components in
-use: LINlinear; LINret; LINexp; D1MSN and D2MSN.
+a first order differential equation specified in a \e{SpineML
+component}. SpineML, which will be outlined in
+Sect.~\ref{sec:methods:framework}, provides a means to mathematically
+define the five distinct components in use in the brain model.
 
-The LINlinear component governs the activation $a$ with a first order
+The \e{LINlinear} component governs the activation $a$ with a first order
 leaky integrator differential equation:
 \begin{equation}
    \dot{a} = \frac{1}{\tau}(a_{in}-a)
@@ -835,18 +836,16 @@ function. \rvwt{If $c<0$, then for zero activation ($a=0$), the output
 will be positive. This simulates the effect of a neural population
 having tonic firing. If $c>0$ then the output will be zero until the
 activation exceeds $c$, simulating neurons which only fire when driven
-by excitatory input.} At this point, the naming scheme for the
-component becomes apparent; this is a Leaky Integrator with a
-piecewise-linear transfer function.
+by excitatory input.}
 
-The LINret component used for the retinal populations is similar to
+The \e{LINret} component used for the retinal populations is similar to
 the LINlinear component, but with no intrinsic noise and no shunting
 inhibitory input. It has a neural input which is identical to the
 activation input $A$:
 \begin{equation}
    a_{in} = A
 \end{equation}
-The LINexp component is a leaky integrator with an exponential
+The \e{LINexp} component is a leaky integrator with an exponential
 transfer function. It shares the same differential equation with
 LINlinear, but has a different input equation and a different output
 transfer function. It has the following equation for the neural
@@ -875,7 +874,7 @@ which has been shown to allow the mapping of the basal ganglia network
 architecture onto an optimal decision making
 model \citep{bogacz_basal_2007}.
 
-The D1MSN and D2MSN components are both leaky integrators, similar to
+The \e{D1MSN} and \e{D2MSN} components are both leaky integrators, similar to
 LINlinear. They differ in that they have no shunting inhibition. They
 are used to model medium spiny neuron (MSN) populations in the
 striatum. As they model the fact that most MSN neurons fall into two
@@ -1617,6 +1616,7 @@ given in SUPPLEMENTAL DATA.
 
 \subsection{Weight maps} \label{sec:results:weightmaps}
 
+% FIXME: Add reference to weight maps neuroscience if possible.
 We found the best parameters for the exponential in
 Eq.~\ref{eq:weightmaps} ($i$ and $j$) by a manual tuning
 process. After selecting values for $i$ and $j$ in either the
@@ -1981,7 +1981,8 @@ The aim of this study was to demonstrate the importance of modelling
 neurological systems \e{in concert with} the biomechanical systems
 with which they have evolved. We hypothesised that by
 combining existing neurophysiological models with an accurate model of
-a musculo-skeletal system, and then `closing the loop' by allowing the
+a musculo-skeletal system, and then \rvw{closing the
+`agent-environment-agent' loop} by allowing the
 movements of the virtual muscles to modulate sensory feedback to the
 brain model, shortcomings in the constituent models would be revealed,
 leading to new knowledge.
@@ -2004,7 +2005,7 @@ robotics or computational neuroscience.}
 
 \rvw{\cite{pearson_whiskerbot:_2007} describes a wheeled robot which has a
 biomimetic whisker sensory system, along with a biomimetic neural
-system imitating the behaviour of the rat's sensory processing systems
+system imitating the operation of the rat's sensory processing
 and controlling the movement of the robot. \cite{fend_artificial_2004}
 is a similar, wheeled, whiskered robot, with a repertoire of three
 behaviours organised in a subsumption architecture. In both robots,
