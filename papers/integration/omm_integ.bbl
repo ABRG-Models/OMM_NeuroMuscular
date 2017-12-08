@@ -1,4 +1,4 @@
-\begin{thebibliography}{183}
+\begin{thebibliography}{185}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -833,7 +833,7 @@ Middleton, F.~A. and Strick, P.~L. (2000).
 \bibAnnoteFile{middleton_basal_2000}
 
 \bibitem[{Mink(1996)}]{mink_basal_1996}
-Mink, J. (1996).
+Mink, J.~W. (1996).
 \newblock The basal ganglia: {Focused} selection and inhibition of competing
   motor programs.
 \newblock \emph{Progress in Neurobiology} 50, 381--425
@@ -966,6 +966,15 @@ Ottes, F.~P., Van~Gisbergen, J.~A., and Eggermont, J.~J. (1986).
 \newblock \emph{Vision Research} 26, 857--873.
 \newblock \doi{10.1016/0042-6989(86)90144-6}
 \bibAnnoteFile{ottes_visuomotor_1986}
+
+\bibitem[{O’Halloran et~al.(2008)O’Halloran, O’Malley, and
+  McHugh}]{ohalloran_review_2008}
+O’Halloran, A., O’Malley, F., and McHugh, P. (2008).
+\newblock A review on dielectric elastomer actuators, technology, applications,
+  and challenges.
+\newblock \emph{Journal of Applied Physics} 104, 071101.
+\newblock \doi{10.1063/1.2981642}
+\bibAnnoteFile{ohalloran_review_2008}
 
 \bibitem[{Papapavlou and Moustakas(2014)}]{papapavlou_physics-based_2014}
 Papapavlou, C. and Moustakas, K. (2014).
@@ -1408,6 +1417,16 @@ Wilson, C.~J. (2004).
 \newblock \emph{Journal of Neurophysiology} 91, 1963--1980.
 \newblock \doi{10.1152/jn.00924.2003}
 \bibAnnoteFile{wilson_model_2004}
+
+\bibitem[{Wilson et~al.(2016)Wilson, Assaf, Pearson, Rossiter, Anderson,
+  Porrill et~al.}]{wilson_cerebellar-inspired_2016}
+Wilson, E.~D., Assaf, T., Pearson, M.~J., Rossiter, J.~M., Anderson, S.~R.,
+  Porrill, J., et~al. (2016).
+\newblock {\selectlanguage{en}Cerebellar-inspired algorithm for adaptive
+  control of nonlinear dielectric elastomer-based artificial muscle}.
+\newblock \emph{Journal of The Royal Society Interface} 13, 20160547.
+\newblock \doi{10.1098/rsif.2016.0547}
+\bibAnnoteFile{wilson_cerebellar-inspired_2016}
 
 \bibitem[{Wu et~al.(1994)Wu, Williams, and McLoon}]{wu_involvement_1994}
 Wu, H.~H., Williams, C.~V., and McLoon, S.~C. (1994).
