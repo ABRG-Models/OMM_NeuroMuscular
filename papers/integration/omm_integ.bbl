@@ -1,4 +1,4 @@
-\begin{thebibliography}{185}
+\begin{thebibliography}{193}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -172,6 +172,34 @@ Chevalier, G. and Deniau, J.~M. (1990).
 \newblock \emph{Trends in Neurosciences} 13, 277--280
 \bibAnnoteFile{chevalier_disinhibition_1990}
 
+\bibitem[{Chiel et~al.(2009)Chiel, Ting, Ekeberg, and
+  Hartmann}]{chiel_brain_2009}
+Chiel, H.~J., Ting, L.~H., Ekeberg, \"O, and Hartmann, M. J.~Z. (2009).
+\newblock {\selectlanguage{en}The {Brain} in {Its} {Body}: {Motor} {Control}
+  and {Sensing} in a {Biomechanical} {Context}}.
+\newblock \emph{Journal of Neuroscience} 29, 12807--12814.
+\newblock \doi{10.1523/JNEUROSCI.3338-09.2009}
+\bibAnnoteFile{chiel_brain_2009}
+
+\bibitem[{Cofer et~al.(2010{\natexlab{a}})Cofer, Cymbalyuk, Heitler, and
+  Edwards}]{cofer_neuromechanical_2010}
+Cofer, D., Cymbalyuk, G., Heitler, W.~J., and Edwards, D.~H.
+  (2010{\natexlab{a}}).
+\newblock Neuromechanical simulation of the locust jump.
+\newblock \emph{The Journal of Experimental Biology} 213, 1060.
+\newblock \doi{10.1242/jeb.034678}
+\bibAnnoteFile{cofer_neuromechanical_2010}
+
+\bibitem[{Cofer et~al.(2010{\natexlab{b}})Cofer, Cymbalyuk, Reid, Zhu, Heitler,
+  and Edwards}]{cofer_animatlab:_2010}
+Cofer, D., Cymbalyuk, G., Reid, J., Zhu, Y., Heitler, W.~J., and Edwards, D.~H.
+  (2010{\natexlab{b}}).
+\newblock {AnimatLab}: {A} 3d graphics environment for neuromechanical
+  simulations.
+\newblock \emph{Journal of Neuroscience Methods} 187, 280--288.
+\newblock \doi{10.1016/j.jneumeth.2010.01.005}
+\bibAnnoteFile{cofer_animatlab:_2010}
+
 \bibitem[{Cohen et~al.(2009)Cohen, Heitz, Woodman, and
   Schall}]{cohen_neural_2009}
 Cohen, J.~Y., Heitz, R.~P., Woodman, G.~F., and Schall, J.~D. (2009).
@@ -200,7 +228,8 @@ Cope, A. and Gurney, K.~N. (2011).
 
 \bibitem[{Cope and James(2015)}]{cope_spineml_2_brahms_2015}
 Cope, A.~J. and James, S.~S. (2015).
-\newblock {SpineML}\_2\_brahms ({NoTremor} {Oculomotor} branch)
+\newblock {SpineML}\_2\_brahms.
+\newblock RRID: SCR\_015640
 \bibAnnoteFile{cope_spineml_2_brahms_2015}
 
 \bibitem[{Cope et~al.(2014)Cope, Richmond, and Allerton}]{cope_spineml_2014}
@@ -216,14 +245,25 @@ Cope, A.~J., Richmond, P., and James, S.~S. (2015).
 \newblock RRID: SCR\_015637
 \bibAnnoteFile{cope_spinecreator_2015}
 
-\bibitem[{Cope et~al.(2016)Cope, Richmond, James, Gurney, and
+\bibitem[{Cope et~al.(2016{\natexlab{a}})Cope, Richmond, James, Gurney, and
   Allerton}]{cope_spinecreator:_2016}
 Cope, A.~J., Richmond, P., James, S.~S., Gurney, K., and Allerton, D.~J.
-  (2016).
+  (2016{\natexlab{a}}).
 \newblock {\selectlanguage{en}{SpineCreator}: a {Graphical} {User} {Interface}
   for the {Creation} of {Layered} {Neural} {Models}}.
 \newblock \emph{Neuroinformatics} \doi{10.1007/s12021-016-9311-z}
 \bibAnnoteFile{cope_spinecreator:_2016}
+
+\bibitem[{Cope et~al.(2016{\natexlab{b}})Cope, Sabo, Gurney, Vasilaki, and
+  Marshall}]{cope_model_2016}
+Cope, A.~J., Sabo, C., Gurney, K., Vasilaki, E., and Marshall, J. A.~R.
+  (2016{\natexlab{b}}).
+\newblock A {Model} for an {Angular} {Velocity}-{Tuned} {Motion} {Detector}
+  {Accounting} for {Deviations} in the {Corridor}-{Centering} {Response} of the
+  {Bee}.
+\newblock \emph{PLOS Computational Biology} 12, e1004887.
+\newblock \doi{10.1371/journal.pcbi.1004887}
+\bibAnnoteFile{cope_model_2016}
 
 \bibitem[{Corvisier and Hardy(1991)}]{corvisier_possible_1991}
 Corvisier, J. and Hardy, O. (1991).
@@ -304,6 +344,14 @@ DeWolf, T., Stewart, T.~C., Slotine, J.-J., and Eliasmith, C. (2016).
 \newblock \doi{10.1098/rspb.2016.2134}
 \bibAnnoteFile{dewolf_spiking_2016}
 
+\bibitem[{Dickson et~al.(2006)Dickson, Straw, Poelma, and
+  Dickinson}]{dickson_integrative_2006}
+Dickson, W., Straw, A., Poelma, C., and Dickinson, M. (2006).
+\newblock {\selectlanguage{en}An {Integrative} {Model} of {Insect} {Flight}
+  {Control} ({Invited})} (American Institute of Aeronautics and Astronautics).
+\newblock \doi{10.2514/6.2006-34}
+\bibAnnoteFile{dickson_integrative_2006}
+
 \bibitem[{Dorris et~al.(1997)Dorris, Par\'e, and Munoz}]{dorris_neuronal_1997}
 Dorris, M.~C., Par\'e, M., and Munoz, D.~P. (1997).
 \newblock Neuronal {Activity} in {Monkey} {Superior} {Colliculus} {Related} to
@@ -324,6 +372,13 @@ Edelman, J.~A. and Keller, E.~L. (1996).
   accompanying express saccades.
 \newblock \emph{Journal of Neurophysiology} 76, 908
 \bibAnnoteFile{edelman_activity_1996}
+
+\bibitem[{Edwards(2010)}]{edwards_neuromechanical_2010}
+Edwards, D.~H. (2010).
+\newblock Neuromechanical {Simulation}.
+\newblock \emph{Frontiers in Behavioral Neuroscience} 4.
+\newblock \doi{10.3389/fnbeh.2010.00040}
+\bibAnnoteFile{edwards_neuromechanical_2010}
 
 \bibitem[{Ejaz et~al.(2013)Ejaz, Krapp, and Tanaka}]{ejaz_closed-loop_2013}
 Ejaz, N., Krapp, H.~G., and Tanaka, R.~J. (2013).
@@ -927,6 +982,16 @@ N'Guyen, S., Thurat, C., and Girard, B. (2014).
 \newblock \doi{10.3389/fncom.2014.00048}
 \bibAnnoteFile{nguyen_saccade_2014}
 
+\bibitem[{Nishikawa et~al.(2007)Nishikawa, Biewener, Aerts, Ahn, Chiel, Daley
+  et~al.}]{nishikawa_neuromechanics:_2007}
+Nishikawa, K., Biewener, A.~A., Aerts, P., Ahn, A.~N., Chiel, H.~J., Daley,
+  M.~A., et~al. (2007).
+\newblock {\selectlanguage{eng}Neuromechanics: an integrative approach for
+  understanding motor control}.
+\newblock \emph{Integrative and Comparative Biology} 47, 16--54.
+\newblock \doi{10.1093/icb/icm024}
+\bibAnnoteFile{nishikawa_neuromechanics:_2007}
+
 \bibitem[{Norman and Shallice(1986)}]{norman_attention_1986}
 Norman, D.~A. and Shallice, T. (1986).
 \newblock Attention to action.
@@ -987,6 +1052,15 @@ Parent, A. and Hazrati, L. (1993).
   ganglia.
 \newblock \emph{Trends in Neuroscience} 16, 111--116
 \bibAnnoteFile{parent_anatomical_1993}
+
+\bibitem[{Pearson et~al.(2006)Pearson, Ekeberg, and
+  B\"uschges}]{pearson_assessing_2006}
+Pearson, K., Ekeberg, \"O, and B\"uschges, A. (2006).
+\newblock Assessing sensory function in locomotor systems using
+  neuro-mechanical simulations.
+\newblock \emph{Trends in Neurosciences} 29, 625--631.
+\newblock \doi{10.1016/j.tins.2006.08.007}
+\bibAnnoteFile{pearson_assessing_2006}
 
 \bibitem[{Pearson et~al.(2007)Pearson, Pipe, Melhuish, Mitchinson, and
   Prescott}]{pearson_whiskerbot:_2007}

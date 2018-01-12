@@ -41,6 +41,10 @@ count=$((count+1))
 sed 's/\xc3\x96/\\"O/g' < /tmp/utf8tolatex/${count}.bbl > /tmp/utf8tolatex/$((count+1)).bbl
 count=$((count+1))
 
+# O umlaut 2
+sed 's/\xc3\x2e/\\"O/g' < /tmp/utf8tolatex/${count}.bbl > /tmp/utf8tolatex/$((count+1)).bbl
+count=$((count+1))
+
 # e acute (Moren)
 sed 's/\xc3\xa9/\\'\''e/g' < /tmp/utf8tolatex/${count}.bbl >  /tmp/utf8tolatex/$((count+1)).bbl
 count=$((count+1))

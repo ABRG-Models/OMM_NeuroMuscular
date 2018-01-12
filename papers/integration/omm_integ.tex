@@ -76,18 +76,11 @@ $^{5}$Department of Electrical and Computer Engineering,
 \newcommand{\cmnt}[1]{\blue{#1}}
 \newcommand{\dg}{$\degree$}
 
-% Use colour to indicate changes made following review. Can be
-% set to this 'black' colour prior to final publication:
-\newcommand{\black}{\textcolor{black}}
-% Colour for reviewer 1 changes:
-\newcommand{\rvwcolour}{\textcolor{OrangeRed}}
-% Colour for reviewer 2 changes:
-\newcommand{\rvwcolourtwo}{\textcolor{Cerulean}}
-% Commands to use in the text. Change 'rvwcolour/rvwcolourtwo' to
-% 'black' to hide review changes.
-\newcommand{\rvw}[1]{\rvwcolour{#1}}
-\newcommand{\rvwt}[1]{\rvwcolourtwo{#1}}
-
+% Used colour to indicate changes made following review.
+% These commands are now defined to be no-ops
+\newcommand{\rvw}[1]{#1}  % Reviewer 1.
+\newcommand{\rvwf}[1]{#1} % Reviewer 1, final comment
+\newcommand{\rvwt}[1]{#1} % Reviwer 2.
 
 \onecolumn
 \firstpage{1}
@@ -154,16 +147,12 @@ a controller for movement and behaviour.
 \tiny
  \keyFont{
    \section{Keywords:}
-   integrated brain biomechanics neuromuscular oculomotor saccade basal ganglia
+   integrated brain biomechanics neuromuscular neuromechanics oculomotor saccade basal-ganglia
  } % 5 to 8 keywords
 \end{abstract}
 
 
 \section{Introduction} \label{sec:introduction}
-
-% Remove after review:
-\bol{Note:} Changes based on Reviewer 1's comments \rvw{are in this colour}. For
-Reviewer 2 \rvwt{we use this colour}.
 
 % Background
 The field of computational neuroscience has provided many \e{systems
@@ -2246,7 +2235,24 @@ scope of the current work and a subject for a future paper.
 \rvw{We have called this closed-loop, biomimetic modelling approach \e{computational
 neurobehaviour}, in which a complete, behaving model is constructed,
 with attention paid to the biological accuracy of each brain and
-biomechanical sub-system. There already exist many
+biomechanical sub-system.
+% Address final comment from Reviewer 1
+\rvwf{We are by no means the first researchers to consider this
+interaction between brain and biomechanics. Integrative approaches to
+motor control have been referred to as \e{neuromechanics} by some
+authors~\citep{nishikawa_neuromechanics:_2007}. This field appears to
+have developed from detailed and low level studies of the mechanics of
+muscle control systems, focussing on the neural systems `closest' to
+the muscle~\citep{chiel_brain_2009}. It is evident that a recognition
+of the importance of sensory input to these systems has evolved within
+this field. Indeed, \cite{edwards_neuromechanical_2010} specifically
+reviews closed-loop, \e{neuromechanical simulations} of behaviour in
+three organisms; fly, locust and cat. The term neuromechanical
+simulation \citep{pearson_assessing_2006,edwards_neuromechanical_2010}
+is analogous to our computational neurobehaviour, although it does not
+emphasise the important \e{behavioural} aspect of the works.}
+
+There also exist many
 closed-loop \e{robotic} systems which receive sensory input from the
 world, process that input and generate behaviour by activating motor
 systems
@@ -2316,6 +2322,22 @@ computer game industry, make it relatively easy to model a virtual
 environment. Consequently, an increasing number of studies into
 robotic or neuromimetic control are carried out with virtual robots
 operating within a virtual environment.}
+%
+\rvwf{This approach is taken in the studies described
+in \cite{edwards_neuromechanical_2010}. \cite{dickson_integrative_2006}
+describes an integrated model of Drosophila flight in which visual
+input is processed by an algorithmic (that is, non-neural) `brain' to
+control a biomechanically accurate representation of the fly. As the
+virtual fly traverses its environment, its visual input updates,
+closing the loop of the simulation. \cite{cope_model_2016} is a recent
+study which omits the biomechanically accurate component of the model
+but could provide the biologically plausible brain to make a
+computational neurobehavioural fly
+model. \cite{cofer_neuromechanical_2010} use an environment called
+AnimatLab \citep{cofer_animatlab:_2010} to simulate the locust's
+jumping mechanism in an open-loop, software-only investigation. As
+this appears to be a feed-forward model without sensory feedback, we
+would describe it as an input-assumption model.}
 %
 \rvw{\cite{nguyen_saccade_2014} and
 \cite{thurat_biomimetic_2015} are two studies of the oculomotor system
