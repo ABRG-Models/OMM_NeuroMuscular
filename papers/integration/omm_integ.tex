@@ -1410,30 +1410,31 @@ and distal from the fovea.
 \rvwt{To understand the need for this invariance,
 consider the effect of a 2D Gaussian hill in SC\_deep which elicits a
 successful horizontal saccade of 10\dg~using the weight maps shown in
-Figures 7(a)--(c). Activity from the 2D Gaussian (schematically
-represented as the large purple dashed circle in Figure 7C),
-passing through the weight maps will excite the superior (not shown) and inferior
-rectus [Figure 7(b)] channels by an equal, balanced amount, so these cancel out,
-allowing the eye movement to be horizontal. The amount of activation
-passed to the lateral rectus muscle results from a convolution of the
-Gaussian and the exponential component of the weight map relationship
-in Eq.~\ref{eq:tabareau_eq3}. If the Gaussian hill now appears further
-along the collicular surface, coding for a 20\dg~saccade, \e{and also
-becomes smaller} (small purple dashed circle), we can still argue that the vertical component
-signals to superior/inferior rectus muscles will cancel out, and we
-could imagine that the exponential component of
-Eq.~\ref{eq:tabareau_eq3} is correctly parameterised to compensate for
-the smaller hill. Now consider a 2-D Gaussian hill which
-codes for a 10\dg~saccade which is `down, and to the left' in equal
-proportions (large red circle). That means that the hill will sit on the boundary between
-the weight maps for the `down', and the `left' muscles. Now, if the
-hill moves to the $r=\mathrm{20}$\dg~location on the colliculus (small
-red circle), \e{and also
-reduces in size}, it will excite only the periphery of the sine; the
-exponential increase of the map along $r$ is not guaranteed to
-compensate for the reduction in the convolution of the Gaussian hill
-and the sinusoidally varying component of the weight map along the $\phi$ axis in
-Figure 7(a).}
+Figs.~\ref{fig:scdeep}(a)--(c). Activity from the 2D Gaussian
+(schematically represented as the large purple dashed circle in
+Fig.~\ref{fig:scdeep}(c)), passing through the weight maps will excite
+the superior (not shown) and inferior rectus
+[Fig.~\ref{fig:scdeep}(b)] channels by an equal, balanced amount, so
+these cancel out, allowing the eye movement to be horizontal. The
+amount of activation passed to the lateral rectus muscle results from
+a convolution of the Gaussian and the exponential component of the
+weight map relationship in Eq.~\ref{eq:tabareau_eq3}. If the Gaussian
+hill now appears further along the collicular surface, coding for a
+20\dg~saccade, \e{and also becomes smaller} (small purple dashed
+circle), we can still argue that the vertical component signals to
+superior/inferior rectus muscles will cancel out, and we could imagine
+that the exponential component of Eq.~\ref{eq:tabareau_eq3} is
+correctly parameterised to compensate for the smaller hill. Now
+consider a 2-D Gaussian hill which codes for a 10\dg~saccade which is
+`down, and to the left' in equal proportions (large red circle). That
+means that the hill will sit on the boundary between the weight maps
+for the `down', and the `left' muscles. Now, if the hill moves to the
+$r=\mathrm{20}$\dg~location on the colliculus (small red
+circle), \e{and also reduces in size}, it will excite only the
+periphery of the sine; the exponential increase of the map along $r$
+is not guaranteed to compensate for the reduction in the convolution
+of the Gaussian hill and the sinusoidally varying component of the
+weight map along the $\phi$ axis in Fig.~\ref{fig:scdeep}(a).}
 % Add figure for this.
 
 This led us to hypothesise that the retinotopic mapping \rvwt{to the
@@ -1469,7 +1470,7 @@ patterns are plausible.}
 %
 Although in this work we do not model
 the SC in detail, we extended the model with a third functional layer
-named SC\_deep2, shown in Fig.~\ref{fig:scdeep}(b) (\ccg~has only the two
+named SC\_deep2, shown in Fig.~\ref{fig:scdeep}(d) (\ccg~has only the two
 layers SC\_sup and SC\_deep). We introduced a widening projection
 based on a Gaussian projection field whose width, $\sigma(r)$ varies
 in inverse proportion to the magnification factor, $M(r)$, given in
