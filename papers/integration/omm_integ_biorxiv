@@ -1,0 +1,7 @@
+#!/bin/sh
+
+latex omm_integ_biorxiv.tex
+bibtex omm_integ_biorxiv.aux
+./bbl_utf8_to_latex.sh ./omm_integ_biorxiv.bbl
+pdflatex omm_integ_biorxiv.tex
+pdflatex omm_integ_biorxiv.tex

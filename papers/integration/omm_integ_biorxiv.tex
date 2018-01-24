@@ -1,0 +1,2815 @@
+% This version of the manuscript is for biorxiv, and does not have the
+% Frontiers template.
+
+% While writing, don't stop for errors
+\nonstopmode
+
+% The Frontiers-like template
+\documentclass{mybiorxiv}
+
+\usepackage{url,hyperref,lineno,microtype}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{gensymb} % For \degree
+
+%\linenumbers
+
+% Trick to define a language alias and permit language = {en} in the .bib file.
+% From: http://tex.stackexchange.com/questions/199254/babel-define-language-synonym
+\usepackage{letltxmacro}
+\LetLtxMacro{\ORIGselectlanguage}{\selectlanguage}
+\makeatletter
+\DeclareRobustCommand{\selectlanguage}[1]{%
+  \@ifundefined{alias@\string#1}
+    {\ORIGselectlanguage{#1}}
+    {\begingroup\edef\x{\endgroup
+       \noexpand\ORIGselectlanguage{\@nameuse{alias@#1}}}\x}%
+}
+\newcommand{\definelanguagealias}[2]{%
+  \@namedef{alias@#1}{#2}%
+}
+\makeatother
+\definelanguagealias{en}{english}
+\definelanguagealias{eng}{english}
+% End language alias trick
+
+
+\def\keyFont{\fontsize{8}{11}\helveticabold }
+\def\firstAuthorLast{James {et~al.}}
+\def\Authors{Sebastian S.~James\,$^{1,2}$, Chris Papapavlou\,$^5$, Alexander Blenkinsop\,$^{1,2}$, \\
+  Alexander J.~Cope\,$^3$,  \\
+  Sean Anderson\,$^{2,4}$, Konstantinos Moustakas\,$^5$, Kevin N.~Gurney\,$^{1,2,*}$}
+
+\def\Address{
+$^{1}$Adaptive Behaviour Research Group, Department of Psychology,
+  The University of Sheffield, Sheffield, UK \\
+$^{2}$Insigneo Institute for in-silico Medicine,
+  The University of Sheffield, Sheffield, UK \\
+$^{3}$Department of Computer Science,
+  The University of Sheffield, Sheffield, UK \\
+$^{4}$Department of Automatic Control Systems Engineering,
+  The University of Sheffield, Sheffield, UK \\
+$^{5}$Department of Electrical and Computer Engineering,
+  The University of Patras, Patras, Greece
+}
+
+\def\corrAuthor{Kevin N.~Gurney}
+\def\corrAddress{Department of Psychology, The University of Sheffield,
+  Western Bank, Sheffield, S10 2TP, UK}
+\def\corrEmail{k.gurney@sheffield.ac.uk}
+
+
+\begin{document}
+
+% Aliases
+\newcommand{\ccg}{Cope-Chambers} % Omit Prescott-Gurney from the name,
+                                % too unweildy.
+\newcommand{\stob}{SpineML\_2\_BRAHMS}
+% Emphasis and bold.
+\newcommand{\e}{\emph}
+\newcommand{\bol}{\textbf}
+\newcommand{\blue}{\textcolor{blue}}
+% I like my citations in blue
+\newcommand{\mycite}[1]{\blue{\cite{#1}}}
+% expon function is roman e
+\newcommand{\expon}{\mathrm{e}}
+% A font to indicate a branch of a github repository
+\newcommand{\branch}[1]{\textbf{\texttt{#1}}}
+\newcommand{\cmnt}[1]{\blue{#1}}
+\newcommand{\dg}{$\degree$}
+
+% Used colour to indicate changes made following review.
+% These commands are now defined to be no-ops
+\newcommand{\rvw}[1]{#1}  % Reviewer 1.
+\newcommand{\rvwf}[1]{#1} % Reviewer 1, final comment
+\newcommand{\rvwt}[1]{#1} % Reviwer 2.
+
+\onecolumn
+\firstpage{1}
+
+\title[Integrated brain and biomechanics]{
+Integrating brain and biomechanical models - a new paradigm
+for understanding  neuro-muscular control
+}
+
+\author[\firstAuthorLast ]{\Authors}
+\address{}
+\correspondance{}
+\extraAuth{} % If more than 1 corr. author refer to original template
+             % and fill this in
+
+\maketitle
+\begin{abstract}
+
+\section{}
+To date, realistic models of how the central nervous system governs
+behaviour have been restricted in scope to the brain, brainstem or
+spinal column, as if these existed as disembodied organs.  Further,
+the model is often exercised in relation to an in vivo physiological
+experiment with input comprising an impulse, a periodic signal or
+constant activation, and output as a pattern of neural activity in one
+or more neural populations. Any link to behaviour is inferred only
+indirectly via these activity patterns.
+%
+We argue that to discover the principles of operation of neural
+systems, it is necessary to express their behaviour in terms of
+physical movements of a realistic motor system, and to supply inputs
+that mimic sensory experience. To do this with confidence, we must
+connect our brain models to neuro-muscular models and provide relevant
+visual and proprioceptive feedback signals, thereby closing the loop
+of the simulation.
+%
+This paper describes an effort to develop just such an integrated
+brain and biomechanical system using a number of pre-existing
+models. It describes a model of the saccadic oculomotor system
+incorporating a neuromuscular model of the eye and its six extraocular
+muscles. The position of the eye determines how illumination of a
+retinotopic input population projects information about the location
+of a saccade target into the system.
+%
+A pre-existing saccadic burst generator model was incorporated into
+the system, which generated motoneuron activity patterns suitable for
+driving the biomechanical eye. The model was demonstrated to make
+accurate saccades to a target luminance under a set of environmental
+constraints.
+%
+Challenges encountered in the development of this model showed the
+importance of this integrated modelling approach. Thus, we exposed
+shortcomings in individual model components which were only apparent
+when these were supplied with the more plausible inputs available in a
+closed loop design. Consequently we were able to suggest missing
+functionality which the system would require to reproduce more
+realistic behaviour.
+%
+The construction of such closed-loop animal models constitutes a new
+paradigm of \e{computational neurobehaviour} and promises a more
+thoroughgoing approach to our understanding of the brain's function as
+a controller for movement and behaviour.
+
+\tiny
+ \keyFont{
+   \section{Keywords:}
+   integrated brain biomechanics neuromuscular neuromechanics oculomotor saccade basal-ganglia
+ } % 5 to 8 keywords
+\end{abstract}
+
+
+\section{Introduction} \label{sec:introduction}
+
+% Background
+The field of computational neuroscience has provided many \e{systems
+models} of the
+brain \citep{arai_two-dimensional_1994,gancarz_neural_1998,hazy_towards_2007,blenkinsop_frequency_2017}.
+We refer to these as \e{mechanistic computational models}, meaning
+models which consist of populations of neural elements, interconnected
+in a biologically plausible manner, which simulate the operation of
+the brain. Whilst they differ in scale and complexity, these models
+all seek to describe the fundamental mechanisms behind common animal
+behaviours such as locomotion, threat evasion, reaching or
+feeding. However, none of the models cited here actually reproduce
+these behaviours. In each case, the activity in a certain population
+of neurons is taken to be representative of a behavioural outcome.
+% Sometimes, ok to just have a brain model
+In some cases, it \e{is} reasonable to take the activity of an
+internal population within the brain model as being representative of
+the induced behaviour. For example, a choice made in a \e{go/no-go}
+task could be determined from activity in a population within a basal
+ganglia model
+\citep{nambu_discharge_1990,kuhn_event-related_2004}. The decision
+to \e{go} is selected by a reduction of activity in this population;
+maintenance of activity implies \e{no-go}. To validate the model, the
+error rates which it generates could be compared with experimentally
+determined error rates in primate subjects. We refer to this as
+an \e{output assumption model} because the output is assumed to
+signify behaviour. (An \e{input assumption model} assumes that sensory
+input produces some particular form of neural activity in an input
+population of the model.)
+
+% Gap
+However, we may be interested in reproducing accurate
+simulated \e{trajectories}, in order to find out how degradation of
+parts of the model affect movement. In Parkinson's Disease,
+degradation of the dopamine neurons originating in the substantia
+nigra pars compacta (SNc) causes
+diskinesia \citep{galvan_pathophysiology_2008}, as well as abnormal
+network activity in the basal
+ganglia \citep{brown_dopamine_2001,mccarthy_striatal_2011}.  Sufferers
+of the disease would be expected to produce abnormal
+decision-making \e{and} movement trajectories in a
+reach-to-the-correct-target task such as the one described in
+\cite{james_target-distractor_2017}.
+%
+% Solution
+A model which sought to explore in detail the effects of the SNc
+degradation both on the decision making \e{and} on the movement
+dynamics would need a physically accurate virtual arm, as well as
+physically realistic sensory input for the brain. This is no less than
+a complete model of those sections of the brain and body which act to
+fulfil the task. Such a modelling effort, if successful, would result
+in a virtual robot capable of expressing behaviour \e{in response to
+sensory input from its environment}. This would represent a paradigm
+shift in the field of computational neuroscience worthy of the new
+name of \e{computational neurobehaviour}.
+
+% Solution described means we now need to do background of eye movements:
+In an attempt to build a model combining brain, realistic
+biomechanics \e{and} sensory feedback, we sought to extend our
+\rvw{previous work modelling the oculomotor system by adding a virtual,
+biomechanical eye model able to make physically realistic
+movements. The rotational state of the eye would then determine how
+visual features in the virtual world were projected back into the
+brain model.}
+%
+The existing
+model \citep{cope_basal_2017} is already able to capture sensory input
+and convert it into a neural signal, assumed to specify the target of
+a \e{saccadic eye movement}; a fast movement of the eyes which directs
+the fovea to a region of interest in the field of view.
+%
+The oculomotor system is an excellent candidate for modelling because
+its movements can be specified with only three degrees of freedom,
+making it one of the simplest neuro-muscular systems in the body.
+%
+It is nevertheless behaviourally interesting, as saccadic eye
+movements reveal information about decision making at a subconscious
+level
+\citep{deubel_saccade_1996,reppert_modulation_2015,marcos_determining_2016}.
+The modelling of the oculomotor system is served by a large body of
+behavioural data describing
+saccades \citep{tipper_reaching_2001,walker_effect_1997,casteau_effect_2012},
+many anatomical studies of the neural substrates involved
+\citep{meredith_intrinsic_1998,isa_intrinsic_2002,isa_exploring_2009}
+and electrophysiological data linking these together
+\citep{hepp_spatio-temporal_1983,dorris_neuronal_1997,mcpeek_competition_2003,vokoun_circuit_2011}.
+Furthermore, in the context of building \e{behaving} systems, a
+realistic mechanism for gathering visual information is a necessary
+part of any model for which the behaviour requires visual attention
+and decision making.  This is obvious from extrinsic
+considerations---a subject must look at a scene to make decisions or
+navigate within it. It also follows for \e{intrinsic} reasons. For
+example, \cite{howard_hand_1997} showed that visual cues affect reach
+trajectories and the same group later demonstrated that reaching
+affects the saccadic system
+\citep{tipper_reaching_2001} suggesting a close relationship between these
+neural systems. \rvw{Building a behaving oculomotor system will
+therefore assist future computational neurobehavioural modelling
+efforts that involve reaching.}
+
+Many neural populations are involved in the coding of saccadic eye
+movements, only a very brief overview is given here; for a review,
+see \cite{munoz_commentary:_2002}. One pathway takes information from
+the retina directly into the superficial layers of the superior
+colliculus in the brainstem
+\citep{sterling_receptive_1971,linden_massive_1983,wu_involvement_1994}.
+Activity within the superior colliculus then excites neurons in the
+pons, medulla and rostral mid-brain \citep{sparks_brainstem_2002}
+and \rvw{finally the motor neurons}, which innervate the extraocular
+muscles
+\citep{fuchs_firing_1970,sparks_brainstem_2002}. This direct pathway
+is responsible for the low latency saccades called express saccades
+\citep{schiller_effect_1987,edelman_activity_1996}.
+%
+Information from the retina is also processed by visual cortex which
+feeds through to the frontal eye fields in which activity is related
+to reflexive and voluntary
+saccades \citep{schall_neural_1999}. Activity build-up in the frontal
+eye fields is transferred to the intermediate layers of the superior
+colliculus
+\citep{stanton_frontal_1988-1} and is also processed by the basal ganglia,
+which participates in the selection of the winning saccade end point
+\citep{stanton_frontal_1988,hikosaka_role_2000}.
+%
+Although both cortical and subcortical paths produce a saccade target
+signal in the superior colliculus, it is also possible for animals to
+make relatively normal saccades even after the colliculus has been
+ablated
+\citep{wurtz_activity_1972,aizawa_reversible_1998},
+though express saccades are lost with collicular lesions
+\citep{schiller_effect_1987}. This makes the superior colliculus
+a perplexing structure, being both critically involved in saccade
+target specification \citep{sparks_sensory_1987} and saccade dynamic control
+\citep{waitzman_superior_1991,goossens_optimal_2012} and yet dispensible.
+The `backup pathway' likely incorporates the oculomotor vermis and
+fastigial oculomotor region of the cerebellum which are known to
+participate in the specification, dynamics and adaptation of saccadic
+eye movements \citep{kleine_saccade-related_2003,takagi_effects_1998}.
+
+There is a long history of modelling the oculomotor system. For a
+comprehensive review, see \cite{girard_brainstem_2005}. Models of
+individual \rvw{sub-systems} have been proposed for brainstem
+\citep{robinson_oculomotor_1975,scudder_new_1988,gancarz_neural_1998},
+cerebellum \citep{quaia_model_1999,dean_modelling_1995,dean_learning_1994}
+and superior colliculus
+\citep{massone_neural-network_1994,arai_two-dimensional_1994,moren_mechanism_2013,marino_spatial_2012}.
+More recently, combined models have also been developed incorporating
+sensory input \citep{cope_basal_2017} and driving \rvw{a second order
+differential equation} representing the eye
+\citep{tabareau_geometry_2007,nguyen_saccade_2014,thurat_biomimetic_2015}.
+None of these models has yet fully closed the loop to produce a
+behaving system operating freely within its environment. We argue that
+developing integrated, closed-loop models of behaving systems offers
+insights into the operation of neural systems that are not available
+from input-~or output-assumption models.
+
+
+\section{Material \& Methods} \label{sec:methods}
+
+% A very short introduction to the section.
+The integrated brain and biomechanical model described here is a
+development of the model in \cite{cope_basal_2017}, referred to here
+as the \e{\ccg~model}. This was a rate-coded neural network model
+incorporating retinal populations, frontal eye fields (FEF), the basal
+ganglia (BG), and the superior colliculus (SC).  The \ccg~model takes
+as \e{input} the positions of luminances \rvwt{(of fixed shape and
+intensity)} on a topographic map. \rvwt{While certain assumptions
+were made about the input---that a luminant input excites activity on
+a retinotopic layer, with computer code carrying out the
+transformation achieved in the brain by a neural connectivity
+map \citep{thivierge_topographic_2007}---it is nonetheless \e{not} an
+input-assumption model according to our definition because the
+activity generated in the neural input layer is modelled as a response
+to the luminances, rather than being crafted.}  In the \ccg~model, the
+centroid of the activity in the deep layers of superior colliculus was
+assumed to accurately encode the location of the eye at the end of the
+saccade
+\citep{wurtz_activity_1972,robinson_eye_1972,van_gisbergen_collicular_1987,mcilwain_lateral_1982}.  This location was used to
+recalculate the positions of the luminances in the eye's frame of
+reference at each time step. \rvwt{Because a pattern of neural
+activity in the output population was assumed to have a behavioural
+outcome, it was thus an \e{output-assumption model}}.  The model
+included no brainstem populations other than superior colliculus, nor
+a neuromuscular model.
+
+To the \ccg~model, we added a brainstem model and a biomechanical eye
+model. \rvw{The rate-coded brainstem model was taken from the
+literature} \citep{gancarz_neural_1998} as the best-of-breed saccadic
+burst generator \citep{girard_brainstem_2005}.  The biomechanical eye
+was implemented using the biomechanical modelling framework OpenSim;
+the brain and brainstem were modelled using the SpineML toolchain.
+These will be described below, \rvwt{along with a review of
+the \ccg~model}, but first we will give a description of the
+co-ordinate systems that were used.
+
+\subsection{Co-ordinates in the world} \label{sec:methods:coords}
+
+Before describing the biomechanical eye and the brain model, which
+consisted of retinotopically mapped neural sheets, we describe the
+co-ordinate system used in the world. The eye was located at the
+origin of a three-dimensional, right-handed Cartesian co-ordinate
+system, with its fovea directed in the $-z$ direction.  There was a
+notional spherical screen which was also centred at the origin of the
+co-ordinate system and had a radius of 50 (in arbitrary
+units). The \e{fixation point} was the point on the screen at which
+the eye was initially directed.  Onto the screen were projected target
+luminances, each of which having a position described by two
+co-ordinates; $\theta_{x}^{t}$, a rotation of the horizon plane about
+the $x$ axis, and $\theta_{y}^{t}$, a rotation of the meridian plane
+about the $y$ axis. The position is the intersection of these rotated
+planes with the spherical screen (disregarding the intersection point
+of these three surfaces behind the eye).
+%
+Note that a luminance with positive $\theta_{x}^{t}$ was above the
+horizon of this world; one whose $\theta_{y}^{t}$ was positive lay to
+the left of the world's meridian. For this reason, many of the figures
+in this paper are plotted with $-\theta_{y}$ on the $x$-axis and
+$\theta_{x}$ on the $y$-axis so that targets that lay up and to the
+right in the world do so in the graphs, also.
+
+Luminances were crosses of height and width subtending $\pm$3\dg~and
+whose `bars' were 2\dg~thick. Luminances were oriented like $+$
+symbols with their vertical bar aligned with the meridian plane and
+their horizontal bar aligned with the horizon.
+
+The eye's frame of reference was initially aligned with the world's
+frame of reference.  At each timestep, the eye's rotational state
+(described by the Euler rotations $\theta_x$, $\theta_y$, $\theta_z$)
+was used to translate the three dimensional Cartesian co-ordinates of
+the luminances in the world frame into co-ordinates in the eye
+frame. The luminance co-ordinates in the eye's frame of reference were
+used to determine the input to the brain model.
+
+\subsection{Existing brain model} \label{sec:methods:existing}
+
+% Describe what is modelled first. This para is 'The OM system
+% performs action selection and the BG will do that for us.'
+The brain model, excluding the brainstem, is a re-implementation of
+the \ccg~model \rvwt{of reflexive saccadic behaviour \citep{cope_basal_2017}}.
+\rvwt{Reflexive saccades are fast eye movements elicited by abrupt
+changes in the peripheral visual scene (reflexive saccades can occur
+also as a result of auditory and somatosensory stimuli, but these
+modalities are ignored in this model). A reflexive saccade has a
+starting position defined by the initial orientation of the eye and an
+end-point position in which the eye is directed towards a new
+target. Regardless of the number of targets within the visual scene,
+the brain must choose one location as the end-point, because the eyes
+can look only in one direction at a time. The functionality reproduced
+by the \ccg~model is `the selection of the best target end-point for a
+reflexive saccade'. A competition such as this between incompatible
+movements is often referred to as an \e{action selection}
+problem \citep{norman_attention_1986,maes_dynamics_1989,redgrave_basal_1999}.
+The \ccg~model is therefore a model of action-selection in the
+oculomotor system for reflexive saccades.  One hypothesis for the
+r\^ole played by the basal ganglia (BG) is that the system
+performs \e{action selection}
+\citep{mink_basal_1996,redgrave_basal_1999,hikosaka_role_2000}.
+The \ccg~model places the BG at the centre of the oculomotor system;
+this follows the known anatomy of the
+region \citep{hikosaka_role_2000} and provides a mechanism for action
+selection of the best saccade. The BG receives input indirectly from
+the superior colliculus, which has a retinotopic
+arrangement \citep{ottes_visuomotor_1986}.}
+
+% This para describes some anatomical stuff, and talks about what was
+% omitted from the ccg model.
+\rvwt{The BG receives excitatory inputs directly from retinotopic regions of
+the cortex including the frontal eye fields (FEF), supplementary eye
+fields (SEF), lateral intraparietal cortex (LIP) and dorsolateral
+prefrontal cortex. The dorsolateral prefrontal cortex, which
+participates in voluntary saccades
+\citep{funahashi_prefrontal_1993,munoz_look_2004}, is not
+modelled because the model concerns reflexive rather than voluntary
+eye movements. Several other regions of the brain that are associated
+with eye movements are also omitted from the model. The early visual
+processing stream in cortex, from V1, through to the LIP is subsumed
+into a `sustained retinal' signal which arrives at FEF. The
+justification here is that the model reacts to simple luminant targets
+and does not need to carry out the feature extraction performed by
+these visual areas. The supplementary eye fields are involved in the
+programming of saccade sequences \citep{tehovnik_eye_2000} and memory
+guided
+saccades \citep{chen_supplementary_1995,schlag_neurons_2002}. Lesions
+of SEF do not affect visually guided
+saccades \citep{gaymard_cortical_1998} and so the SEF is also omitted
+from the model.}
+
+% Figure 1
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{./figures/ccg_model.png}
+\end{center}
+\caption{ \bol{a) The macroscopic architecture of the \ccg~model.} The main
+nuclei modelled as brain systems are: basal ganglia (BG), frontal eye
+fields (FEF), thalamus (THAL) and superior colliculus (SC). The
+retinal input is presented via non-biologically accurate retinal
+populations. The loops through basal ganglia, which define the
+architecture, are shown with coloured lines: the cortical loop
+(through FEF and THAL) in green and the sub-cortical loop (through SC
+and THAL) in blue. Connections with arrowheads indicate excitatory
+connections, those with circles are inhibitory. A red border indicates
+that the box represents a sub-system of two or more populations; a
+black box indicates (at least, within the context of the model) a
+single neural population. The BG box is expanded in: \bol{b) The basal
+ganglia model component.}
+%
+This shows a basal ganglia comprising striatum (Str\_D1 \& Str\_D2),
+subthalamic nucleus (STN), globus pallidum externum (GPe) and
+substantia nigra reticulata (SNr). The model has three action channels
+shown as black boxes within each blue population border. Three
+channels of cortical input to the BG are also depicted. Red indicates
+the activation level of a given channel, helping to illustrate the
+selection mechanism. For example, the channel indicated by the
+leftmost bar has a high salience (cortical input) and excites activity
+in Str\_D1 which then inhibits the leftmost bar in SNr. The diffuse
+projection from STN is equivalent to summing its projections
+channel-wise, and then projecting the sum to all channels of its
+target populations (the blue arrows indicate that all channels of GPe
+and SNr are targeted by the connection). Dopaminergic modulation of
+the inputs to the striatum are indicated by the blue circles labelled
+`d' and the dotted lines. The SNr sends inhibitory output projections
+to its targets. \bol{c) 2D Gaussian weights.} The `GaussianKernel'
+connectivity pattern is based on the in-plane component of the
+displacement between
+the location of a neural element in one layer, and the location of a
+target neural element in the target layer for the connection. The
+potential weight of the connection is given by a 2D Gaussian function,
+which is maximum for the target neuron which exactly corresponds to
+the source neuron, and drops down for target neurons which are
+horizontally displaced from the source neuron. A threshold is applied
+to avoid a computationally expensive all-to-all connectivity (with
+most of these connections having negligible weight values).  If the
+weight is non-zero, then a connection is made from source to target,
+otherwise no connection is made. \bol{d) Gaussian connectivity.} This
+image shows connectivity (green rays) from two source neurons (in
+Str\_D2, brown spheres) to target neurons (in GPe, blue spheres). The
+circular connectivity pattern is seen. This does not show the weight
+\e{values}, which reduce `towards the edge of the circle' and follow the
+relationship shown in (c).}
+\label{fig:ccg_model}
+\end{figure}
+
+% Now describe each bit a little more, with help of the CCG
+% macroscopic architecture figure.
+\rvwt{Fig.~\ref{fig:ccg_model}(a) shows the macroscopic architecture of
+the \ccg~model. The figure shows the relationships between the retinal
+input populations, the FEF, the populations comprising the BG
+sub-system (the red border indicates that the box represents a number
+of populations as a sub-system), the thalamus and the superior
+colliculus. Excitatory connections are indicated with arrowheads;
+inhibitory connections with circles in place of the arrowheads. The
+blue and green connection lines indicate two thalamo-basal ganglia
+loops, one cortical loop through FEF (green), the other a sub-cortical
+loop through SC. It is important to note that although they are given
+different colours in the diagram, these loops are in no way
+independent, with loop activity combining both in thalamus and in the
+basal ganglia and a direct excitatory, feed-forward connection from
+FEF to SC.}
+
+% More on BG model and mechanism; GPR recap
+\rvwt{The basal ganglia sub-system is the most complex component of
+the \ccg~model. The BG model is based on previous
+work \citep{gurney_computational_2001,gurney_computational_2001-1} and
+is referred to as the GPR model. The GPR model incorporates the
+following main components of the primate
+BG \citep{mink_basal_1996,wickens_basal_1997}: (i) The striatum (the
+main input station to the BG) which is divided into two iterdigitated
+populations of projection neurons expressing primarily D1 or D2-type
+dopaminergic receptors (named Str\_D1 and Str\_D2); (ii) The
+subthalamic nucleus (STN); (iii) the external segment of the globus
+pallidus (GPe); (iv) the output nucleus relevant for saccadic
+control---the substantia nigra pars reticulata
+(SNr) \citep{hikosaka_role_2000}.}
+
+% More GPR recap
+\rvwt{The connectivity of the GPR model [Fig.~\ref{fig:ccg_model}(b)]
+is constrained by the known anatomy and physiology of the
+BG~\citep{bolam_synaptic_2000}. Physiologically, the only source of
+glutamate within the BG is the STN, whose projections are therefore
+excitatory; all other nuclei have GABAergic projection neurons and are
+therefore inhibitory. The cortex sends glutamatergic projections to
+both the Str\_D1 striatal population, which projects preferentially to
+the SNr, and to Str\_D2, which projects primarily to
+GPe \citep{gerfen_d1_1990}. The cortex also projects to the STN, which
+sends diffuse projections to the SNr and
+GPe \citep{parent_anatomical_1993}. The GPe projects to the SNr and
+also projects back to the STN, completing a GPe--STN loop.}
+
+% GPR model and action channels
+\rvwt{The GPR model is arranged into `action channels';
+Fig.~\ref{fig:ccg_model}(b) shows an example network containing three
+channels. It is between these channels that competition occurs, with
+the winning channel succeeding in reducing activity in the output
+nucleus, SNr, and thereby disinhibiting its target. The complete
+connectivity pattern for this small network is shown in
+Fig.~\ref{fig:ccg_model}(b); the left channel in cortex innervates the
+left channels of Str\_D1, STN and Str\_D2. Connections are one-to-one,
+so it follows that the middle channel of cortex innervates the middle
+channels of STN and the striatal populations and the right channel of
+cortex innervates right channels in striatum and STN. Striatal
+population channels also inhibit SNr and GPe on a one-to-one basis and
+GPe feeds inhibition to SNr and STN in a one-to-one manner. The
+outputs from STN however are not one-to-one. The output from all
+channels of STN is summed together and then the sum is fed into each
+channel of SNr and GPe. This models the diffuse excitation from STN
+which has been observed in the BG \citep{parent_anatomical_1993}.}
+
+% BG selection mechanism in GPR model
+\rvwt{Within the BG, there are several mechanisms supporting
+competitive processing for selecting channels whose inhibitory output
+should be reduced. The selection mechanism of the GPR model is the
+`off-centre, on-surround' scheme proposed
+by \cite{mink_basal_1993}. The `on-surround' is provided by
+diffuse, excitatory projections from the STN to the SNr. Focussed
+inhibition from the Str\_D1 neurons in striatum contributes the
+`off-centre' part of the mechanism. This arrangement leads to
+selection behaviour via a release of target inhibition, since
+channels that have strong salience (input) have weak output at the
+level of SNr, and channels with weak salience have enhanced output.}
+
+% BG mechanism - GPe's role
+\rvwt{The GPe is not included in the centre-surround circuit described
+above, but still plays a key r\^ole in selection. Operating alone, the
+Str\_D1/STN/SNr circuit can suffer from the following problem: if the
+input for all channels is relatively high, then the diffuse projection
+from STN, which effectively supplies a sum of \e{all} of the STN
+inputs to each channel in SNr, will provide so much excitation that
+Str\_D1 may become unable to inhibit one of the channels in SNr and
+selection may become
+impossible. \cite{gurney_computational_2001,gurney_computational_2001-1}
+showed that the inhibitory feedback from GPe to STN acts as an
+`automatic gain control' to help prevent this from occurring.}
+
+% Dopamine, tonic output.
+\rvwt{At the neuronal level, the STN, GPe and SNr have tonic output
+activity \citep{chevalier_disinhibition_1990,delong_primate_1985,kita_intracellular_1991}. This
+is modelled using piecewise linear output functions with zero offsets,
+$c$ (see Eq.~\ref{eq:lintransfunc}) but with noise added to the
+input. In striatum, Str\_D1 and Str\_D2 have positive offset $c$,
+mimicking the so-called `down-state' of medium spiny neurons which
+have a resting potential far below spiking threshold and require
+co-ordinated input to generate action
+potentials \citep{wilson_origins_1996}.
+% Note, in Alex's paper, there is an error with the offsets for D1,
+% D2. These are set to -0.05 instead of 0.05. A quick trial with the
+% model suggests this doesn't make a very large difference to the
+% overall operation (you just see a background of noise around the
+% signals in Str), and I have the sign correct in any case.
+In addition, the Str\_D1 and Str\_D2 neurons are influenced by
+dopamine in different ways; facilitating cortico-striatal transmission
+at medium spiny neurons with D1
+receptors \citep{hernandez-lopez_D1_1997,gonon_prolonged_1997} and
+reducing transmission at those with D2
+receptors \citep{delgado_inhibitory_1999}. These effects are modelled
+using a dopamine parameter, $d$, which modulates the input activations
+$a_{in}^{D1}$ and $a_{in}^{D2}$ as:
+\begin{equation}
+   a_{in}^{D1} = (0.2 + d)A
+\end{equation}
+\begin{equation}
+   a_{in}^{D2} = (1 - d)A
+\end{equation}
+where $A$ is the input activation (see also
+Eqns.~\ref{eq:a_in_d1} \& \ref{eq:a_in_d2}). For the `normal, healthy'
+value for $d$ of 0.7, Str\_D1 activation is relatively enhanced
+(0.9$A$); Str\_D2 activation is one third of this value (0.3$A$). The
+major effect of this difference in the relative strength of the
+activity in Str\_D1 versus Str\_D2 is simply that a change in the
+level of activity in Str\_D1 affects the off-centre, on-surround
+mechanism. The effect of varying the input into Str\_D2 is much more
+subtle, with only a small change in the amount of inhibition fed from
+GPe into STN (via a focussed, one-to-one connection) being affected by
+the change, along with a small change in the inhibition fed into SNr
+from GPe (also via a one-to-one connection). It is not possible to
+ascribe the dynamic effect of the dopamine parameter to any single
+population, because the activity is recurrently
+connected through multiple loops. Thus, a line of reasoning such as
+``reduced activity for a luminance in Str\_D2 will lead to less
+inhibition in that region in GPe, which means that there will be
+higher activity there, and hence more inhibition for that region
+passed to STN leading us to expect less activity in STN'' is verified
+by running a suitable simulation with the model, but the effect is
+small. }
+%
+\rvwt{Note that
+the effect of dopamine in the model is only to modulate the strength
+of cortico-striatal synapses; no learning is modelled and so the
+significance of dopamine as a prediction error signal is outside the
+scope of the current work.}
+
+% Change this - we already talked about channels in the context of the
+% three channel model shown. Now talk about how we have a map of
+% channels - a continuous space in the \ccg model. This can then lead
+% on to Fig 3.
+\rvwt{The GPR model in Fig.~\ref{fig:ccg_model}(b) has only three
+channels, with the focussed inhibition from striatum to SNr and GPe
+defined by a simple one-to-one scheme. The action channels represent
+discrete, incompatible motor action choices. In the oculomotor model,
+an action channel represents the end-point of saccade, and the
+competition carried out in the basal ganglia is between potential
+saccade end-points. However, eye movements have a \e{continuous}
+end-point space; the eye can rotate to any orientation within its
+biomechanically permissible range. Some end-points within this range
+are mutually exclusive---it's not possible to look to the left and to
+the right simultaneously---but \e{nearby} end-points are not
+necessarily incompatible. A small enough error in the end-point of a
+saccade will not prevent the eye from foveating on a target as the
+foveal region of high visual acuity is not infinitesimally small. To
+cope with this requirement, the populations within the oculomotor
+basal ganglia are conceived of as two-dimensional topographic grids of
+leaky integrator neural elements. Activity in each element corresponds
+to a spatial location in the visual field. Neighbouring elements
+correspond to locations which are close to each other in the visual
+field. Focussed one-to-one projections in the GPR model are replaced
+by projective fields with many weighted connections. Specifically,
+each unit in Str\_D1 projects to a counterpart SNr$_j$ in SNr with
+some weight $w_{max}$, but also connects to neighbouring nodes in SNr
+with a weight given by $w_{max}.G(d)$, where $G(d)$ is a circularly
+symmetric, 2D-Gaussian which is a function of distance $d$ from
+SNr$_j$ [Figs.~\ref{fig:ccg_model}(c)\&(d)]. A similar scheme applies for
+the connectivity from Str\_D2 to GPe and for a number of the other
+connections in the \ccg~model; in the SpineML implementation of the
+model, this connectivity scheme is named `GaussianKernel'.
+% NB - having this Fig. ref here is important for figure ordering!
+Fig.~\ref{fig:brainmodel} shows a schematic of the SpineML implementation
+of the model, based on a diagram produced by SpineCreator. Populations
+for Str\_D1, Str\_D2, STN, SNr and GPe are
+shown within the `Basal Ganglia' box. Input comes into the model via
+the `World' population and the output population is SC\_deep. Compare
+this diagram with Figs.~\ref{fig:ccg_model}(a) \&
+(b). Fig.~\ref{fig:brainmodel} expands the `SC', `BG' and `slow retinal'
+boxes from Fig.~\ref{fig:ccg_model}(a).}
+
+% Figure 2
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{./figures/Brain_Model.png}
+\end{center}
+\caption{ The brain model. This is the SpineCreator `network layer' view of
+the model. Each box represents a neural population with 2500 elements,
+arranged in a 50$\times$50 grid. The SpineML component name is printed
+on the bottom right corner of each population box and the population
+name is at the top. The overall connectivity between populations is
+represented by the projection arrows with the colour indicating the
+connectivity scheme (one-to-one connections are red, Gaussian kernel
+connections are dark blue and so on). Excitatory connections have
+arrowheads and inhibitory connections have circles, although for
+full details of the behaviour of the connections, the weight-update and
+post-synapse component associated with each connection must be
+referred to. Briefly, the model comprises
+a \e{World} population, into which a retinotopically organised view of
+the world is introduced. This information is passed into cortical
+populations (FEF) and subcortical populations (SC) via a simple model
+of the retina. These feed a cortico-thalamo-basal ganglia loop, which
+selects which region of the deep layer of superior colliculus should
+be disinhibited, allowing activity to build up therein. The five
+populations comprising the basal ganglia are enclosed in a grey
+outline. Note that substantia nigra pars compacta is not modelled
+here, instead the level of dopamine in the striatum is set via a
+parameter in the Str\_D1 and Str\_D2
+populations. \bol{a)} Fixation cross input in Cartesian eye
+frame. \bol{b)} Fixation cross input in retinotopic
+co-ordinates. \bol{c)} Fixation cross with noise added. \bol{d)}
+After blurring, input is passed to BG populations.}
+\label{fig:brainmodel}
+\end{figure}
+
+% Now some FEF stuff taken from Alex's pre-pub
+\rvwt{The frontal eye fields (FEF) are a key cortical area for the
+generation of saccadic eye movements
+\citep{hikosaka_role_2000,tehovnik_eye_2000,robinson_eye_1969,bruce_primate_1985}.
+Saccadic targets are retinotopically mapped on its
+surface \citep{robinson_eye_1969,bruce_primate_1985,sabes_parietal_2002},
+and increased neural activity at a location on the map precedes a
+saccade to that location. Importantly, the FEF is also associated with
+visual decision making
+\citep{thompson_visual_2005,schall_saccade_1995,monosov_measurements_2008,cohen_neural_2009}.
+Thus, in a saccade choice, increased FEF activity is predictive of the
+eye movement whether correct or
+incorrect \citep{thompson_frontal_2005}, rather than of the correct
+response.}
+
+\rvwt{FEF neurons can be divided into three functional groups,
+related to whether their activity corresponds with visual stimuli,
+motor action, or both \citep{segraves_functional_1987}. The \ccg~model
+simplifies this categorisation using a single layer of 50 by 50 units
+representing the mean of all three groups. This layer therefore
+responds to both visual stimuli and the buildup of activity associated
+with motor (saccadic) action. The retina provides a persistent
+luminance signal into the FEF through the dorsal visual
+pathway \citep{ungerleider_two_1982} which is abbreviated in this
+model to a direct connection with delay and noise.}
+
+\rvwt{The FEF provides input into the
+BG \citep{saint-cyr_organization_1990} (to Str\_D1, Str\_D2 and STN)
+which, in turn, projects back to thalamus in a retinotopically
+organised way \citep{middleton_basal_2000,lynch_input_1994}. In
+addition, the thalamic targets of this path are regions with strong
+reciprocal connections to the FEF \citep{mcfarland_thalamic_2002}. In
+this way, the FEF forms channel-based loops through basal ganglia of
+the kind described above. Such circuits formed the basis of the model
+of \cite{humphries_role_2002}.
+%In that model, the
+%thalamic component included the thalamic reticular nucleus which
+%implemented an additional selection mechanism (via a feed-forward
+%competitive network within the cortico-thalamic loop). However, in the
+%interests of model simplicity, this was not implemented in the \ccg
+%oculomotor architecture.
+The thalamo-cortical loop may be thought of as an integrator of
+information, whose gain is modulated by inhibition from basal
+ganglia \citep{chambers_mechanisms_2012,cope_biologically_2011}.}
+
+\rvwt{The superior colliculus (SC) is a sub-cortical nucleus which
+also plays a critical r\^ole in the generation of
+saccades \citep{hikosaka_visual_1983}. Both FEF and SC have direct
+connections to the saccadic burst generator (SBG, see
+Sect.~\ref{sec:methods:brainstem}). If either is lesioned, the other
+can direct gaze, following a period of
+adjustment \citep{latto_effects_1977}, albeit with some persistent
+deficits. The SC is also a direct target of output from the
+SNr \citep{jayaraman_nigrotectal_1977,jiang_opposing_2003} and can be
+influenced by the action selection mechanisms of the BG. In
+particular, it forms a loop with BG, but unlike its cortical
+counterpart in FEF, the input to basal ganglia comes via the thalamus
+[Fig~\ref{fig:ccg_model}(a), blue arrows].}
+
+\rvwt{While the SC has seven alternating cell-~and fibre-rich
+layers \citep{wurtz_visual-motor_1980}, in most cases these are
+categorised as the `superficial' and `deep' layers, which have
+significantly different response properties. Cells in the superficial
+layers, which receive input from the retina, are mainly visually
+responsive, with a preferred response to phasic events (luminance
+onsets and offsets) and movement on the visual
+field \citep{goldberg_activity_1972}. In contrast, cells in the deep
+layers receive multi-modal input, including inhibitory input from the
+output structures of the BG \citep{jayaraman_nigrotectal_1977}, and
+are directly involved in the generation of saccadic eye
+movements. Saccade related activity in the deep layers appears to
+generate saccades through `population coding', with a weighted sum of
+activity across the retinotopy of SC determining the saccade target
+\citep{lee_population_1988,van_opstal_role_1990,mays_dissociation_1980}.
+The deep layers of SC receive input from the FEF in a topographic
+manner \citep{stanton_frontal_1988,sommer_composition_2000}.}
+
+\rvwt{The SC in the \ccg~model is based on the the model described
+in \cite{arai_model_2005}, with the difference that the SNr input to
+the SC is generated by the BG model, rather than being
+hand-crafted. The SC model has a superficial and a deep layer, each of
+which is a 2-D array of 50 by 50 leaky integrator units arranged in
+the same retinotopic manner as the
+FEF \citep{wurtz_visual-motor_1980}.}
+
+% Figure 3
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{./figures/mapping.png}
+\end{center}
+\caption{ Representative mapping from eye's frame of reference in Cartesian
+co-ordinates to retinotopic co-ordinates. \bol{a)} The mapping of
+luminances in the eye's frame of reference. The world input is
+pre-defined by a JSON configuration file. Luminance position, size and
+shape can be defined in this file, along with the times at which
+luminances appear and disappear. The worldDataMaker.cpp code computes
+the locations of the luminances in the eye's frame of reference, given
+its rotational state. It also computes a 2D Gaussian convolution of
+the luminances. Here, there are two cross shaped luminances spanning
+10\dg, one of value 0.8 at the fixation point (0,0) and one of value
+0.5 at a peripheral position (0,-12\dg). Note that these crosses have
+the same `bar width' of 2\dg~as the crosses used in the simulations,
+but their span of 10\dg~is greater than the 6\dg~used in the
+simulations, to make these images clearer. \bol{b)} The locations of the
+luminances in the eye's frame of reference are then converted into
+retinotopic co-ordinates, with centrally located luminances being
+represented at low values of $r$ and more peripheral luminances having
+higher values of $r$. $\phi$ encodes rotational angle: 1 and 50 encode
+upward movement; 13.5 is left; 26 is down; 38.5 is right. The output of
+the World component is fed into FEF\_add\_noise and into the retinal
+neuron populations. The colour map makes it possible to distinguish
+between the two crosses. \bol{c)} The FEF\_add\_noise populations adds a
+level of noise to the signal representing processing of the signal in
+visual cortex. \bol{d)} A Gaussian projection from FEF\_add\_noise to FEF
+further blurs the activity in FEF. FEF is the input to the basal
+ganglia and one input to superior colliculus.}
+\label{fig:mapping}
+\end{figure}
+
+% Foveal mask
+\rvwt{The \ccg~model incorporates a special connectivity pattern for
+visual input to the BG via cortical (FEF) and sub-cortical (thalamus)
+pathways. Due to the retinotopic mapping (Sect.~\ref{sec:mapping}),
+foveal luminances deliver a strong signal to the BG; roughly one third
+of the map is activated for the foveal targets used in this work
+(Fig.~\ref{fig:mapping}, red cross). This makes it virtually impossible
+for a peripheral target (Fig.~\ref{fig:mapping}, yellow cross) to win
+selection in the BG. Even if the peripheral target competed
+successfully to generate a saccade, this process would cause a
+significant delay, leading to latencies much larger than those
+observed experimentally. To overcome this problem, the \ccg~model
+incorporates a mechanism in which the synaptic strength of connections
+between FEF, thalamus and striatum are reduced close to the fovea
+according to a shifted hyperbolic tangent. This connection is named
+`DecayingAtFovea' in the SpineML implementation and follows a modified
+sigmoidal curve rather than tanh. In either case, the relation is
+`S-shaped' and normalised to the range [0 1]. Far from the fovea
+(where the S-shaped curve has the value $\approx$1), the connectivity
+pattern looks almost identical to a one-to-one connection.}
+
+% Retinal model
+\rvwt{Input to the \ccg~model is provided through a simple retina
+model which directly samples from a larger `world array' of pixel
+values. In the current model, the input for the retina is named
+`World' and is the retinotopic projection [Fig.~\ref{fig:brainmodel}(b)]
+of the eye's field of view of the world [Fig.~\ref{fig:brainmodel}(a)]
+and the luminant targets therein. The raw input in `World' is fed into
+a population which adds noise, and then via a delayed connection to
+FEF (the sustained retinal input path), to simulate processing through
+the dorsal visual stream. It is also fed, without substantial delay,
+into two leaky integrator layers (Retina\_1 and Retina\_2) with
+different time constants, with the more slowly reacting layer
+(Retina\_2) inhibiting its faster counterpart. The faster layer
+responds quickly to the appearance of a prolonged stimulus before it
+is inhibited by the slow layer, forming a phasic response to stimulus
+onset. The mechanism ensures that phasic rather than tonic responses
+arrive at the superficial SC from the retina.}
+
+% CCG model output
+\rvwt{The output of the \ccg~model is determined by the activity in the
+SC\_deep population. The activity in SC\_deep is first transformed
+from retinotopic co-ordinates into Cartesian co-ordinates. The
+centroid of the activity is then computed. The position of this
+centroid in the Cartesian frame determines the saccadic end-point. The
+current model differs in that it does not compute a centroid, instead
+feeding the SC\_deep activity into the saccadic burst generator.}
+
+% Parameterisation here?
+\rvwt{The \ccg~model was parameterised by tuning the model to perform
+a prosaccade task in which a central luminance point was fixated by the
+model. After a fixed duration, the fixation point was extinguished and
+a target point of fixed luminance was presented. The model was tuned
+so that the latency between the presentation of the target and the
+initiation of an eye movement matched experimental
+data \citep{reulen_latency_1984}, while also matching the
+electrophysiological evidence of activity in a variety of brain
+regions. The tuning of the BG model attempted to preserve as closely
+as possible the weights used in the original paper
+\citep{gurney_computational_2001}. Further details on
+the parameterisation of the \ccg~model are given in \cite{cope_basal_2017}.}
+% Differences between ccg and existing brain model or can I do that
+% above? Better in the preceding text, I think and wherever it crops
+% up.
+
+\subsubsection{Components}
+
+With the exceptions of the World and FEF\_add\_noise populations, each
+neural element represents an activation; the activation is governed by
+a first order differential equation specified in a \e{SpineML
+component}. SpineML, which will be outlined in
+Sect.~\ref{sec:methods:framework}, provides a means to mathematically
+define the five distinct components in use in the brain model.
+
+The \e{LINlinear} component, which is used in FEF, Thalamus, SC, SNr
+and GPe populations, governs the activation $a$ with a first order
+leaky integrator differential equation:
+\begin{equation}
+   \dot{a} = \frac{1}{\tau}(a_{in}-a)
+\end{equation}
+where $\tau$ is the time constant for the neural activation and
+$a_{in}$ is the input to the neural element. $a_{in}$ is defined by an
+activation input and a shunting inhibition input according to:
+\begin{equation}
+   a_{in} = A(1-s_a)+\alpha R_N
+\end{equation}
+Here, $A$ is the activation input and $s_a$ is the shunting inhibition
+state variable whose value is related to the shunting input, $S$ by
+\begin{equation}
+   s_a = \begin{cases}
+      S & S\leq 1 \\
+      1 & S > 1
+   \end{cases}
+\end{equation}
+$R_N$ is a random number drawn from a standard normal distribution
+($\sigma=\mathrm{1}$, $\mu=\mathrm{0}$) and introduces noise to the activation of the
+neural element, with the parameter $\alpha$ controlling the noise
+amplitude.
+
+The output, $y$, of LINlinear is related to the activation $a$ by the
+piecewise linear transfer function
+\begin{equation} \label{eq:lintransfunc}
+   y(a) = \begin{cases}
+      0   & a < c \\
+      a-c & c \leq a \leq 1+c \\
+      1   & a > 1+c
+   \end{cases}
+\end{equation}
+where $c$ is a parameter defining the offset of the transfer
+function. \rvwt{If $c<0$, then for zero activation ($a=0$), the output
+will be positive. This simulates the effect of a neural population
+having tonic firing. If $c>0$ then the output will be zero until the
+activation exceeds $c$, simulating neurons which only fire when driven
+by excitatory input.}
+
+The \e{LINret} component used for the retinal populations is similar to
+the LINlinear component, but with no intrinsic noise and no shunting
+inhibitory input. It has a neural input which is identical to the
+activation input $A$:
+\begin{equation}
+   a_{in} = A
+\end{equation}
+The \e{LINexp} component is a leaky integrator with an exponential
+transfer function. It shares the same differential equation with
+LINlinear, but has a different input equation and a different output
+transfer function. It has the following equation for the neural
+element input $a_{in}$:
+\begin{equation}
+   a_{in} = [A+N(a-V_{r}^{-})] (1-S) + 0.01 R_N
+\end{equation}
+where $A$ is the activation input and $N$ is an input which is
+modulated by $V_{r}^{-}$, a reversal potential, and $a$, the current
+activation of the element. These inputs are summed and then reduced by
+a factor which is dependent on $S$, the shunting input. As in
+LINlinear, $R_N$ introduces normally distributed noise to the element.
+
+The output, $y$, of the LINexp component is given by
+\begin{equation}
+   y(a) = \begin{cases}
+      \mathrm{e}^{a}-0.9   & \mathrm{e}^a \leq 1+0.9 \\
+      1   & \mathrm{e}^a > 1+0.9
+   \end{cases}
+\end{equation}
+This component is used in the subthalamic nucleus (STN) population, as
+it gives a more physiologically accurate f-I
+behaviour
+\citep{wilson_model_2004,bevan_mechanisms_1999,hallworth_apamin-sensitive_2003}
+which has been shown to allow the mapping of the basal ganglia network
+architecture onto an optimal decision making
+model \citep{bogacz_basal_2007}.
+
+The \e{D1MSN} and \e{D2MSN} components are both leaky integrators, similar to
+LINlinear. They differ in that they have no shunting inhibition. They
+are used to model medium spiny neuron (MSN) populations in the
+striatum. As they model the fact that most MSN neurons fall into two
+groups; those expressing D1 dopamine receptors and those expressing D2
+receptors, they have a dopamine parameter that modulates the input
+activation, so that their equations for $a_{in}$ are thus:
+\begin{equation} \label{eq:a_in_d1}
+   a_{in}^{D1} = (0.2 + d)A + 0.01 R_N
+\end{equation}
+\begin{equation} \label{eq:a_in_d2}
+   a_{in}^{D2} = (1 - d)A + 0.01 R_N
+\end{equation}
+where $d$ is the dopamine parameter. Varying dopamine from 0 to 1
+enhances the activation in the D1 model, whereas it decreases the
+activation of the D2 model elements, in line with experimental
+observations \citep{harsing_influence_1997,gonon_prolonged_1997}.
+Note that the equation for $a_{in}^{D1}$ differs from that used in
+the \ccg~model, for which the cortico-striatal weights are multiplied
+by $(1+d)$ rather than $(0.2+d)$. A typical value of $d$ is 0.7.
+
+In the typical components given above, the value of the activation $A$
+(and where relevant, the shunting input, $S$) is determined by summing
+the weighted inputs to the population:
+\begin{equation}
+A = \sum_{i}w_i^{act} x_i^{act}
+\end{equation}
+\begin{equation}
+S = \sum_{i}w_i^{sh} x_i^{sh}
+\end{equation}
+$w_i^{act}$ and $w_i^{sh}$ are, respectively, the weights of the
+$i^{th}$ activation or shunting connections \rvwt{received by the component};
+$x_i^{act}$ and $x_i^{sh}$ are the signals input to the activation and
+shunting connections.
+
+\subsubsection{Population activity and retinotopic mapping}
+\label{sec:mapping}
+
+Each population of 2500 neural elements was arranged in a 50 by 50
+grid, with positions on the grid representing a retinotopic mapping
+similar to that found empirically both in the superior
+colliculus \citep{ottes_visuomotor_1986} and in visual cortex
+\citep{eric_l._schwartz_computational_1980}
+and assumed in this work to persist throughout the oculomotor system.
+
+In a retinotopic mapping, the Cartesian co-ordinates of the
+light-sensitive cells in the retina, whose density varies with
+distance from the fovea, are transformed into the Cartesian
+co-ordinates of the correspondingly active cells on the
+colliculus. The mapping ensures that an even density of cells can be
+maintained in the colliculus, but ensures that a group of adjoining,
+active, retinal neurons will always activate an adjoining group of
+neurons on the collicular surface.
+
+The mapping turns out to resemble polar co-ordinates. That is, one
+axis of the collicular surface specifies the eccentricity of a retinal
+location (how far it is from the fovea) and the second axis specifies
+the rotational angle of the retinal location; we therefore use the
+convention of referring to the eccentricity axis on the colliculus as
+$r$ and the rotation axis as $\phi$.
+
+The \e{cortical magnification factor}, $M(r)$, gives the relationship
+between the radial eccentricity $r$ and the retinal neural density. As
+in
+\cite{cope_basal_2017}, we use a first-order approximation of the form
+for $M(r)$ given in \cite{rovamo_estimation_1979}:
+\begin{equation} \label{eq:cmf}
+M(r) = \frac{M_f}{1+\frac{r}{E_2}}
+\end{equation}
+The foveal magnification, $M_f$, is the magnification of the most
+central region of the retina and has a value in the human of about 7.8
+mm/\dg~\citep{rovamo_estimation_1979}.
+
+In our model, $M_f$ is related to $W_{nfs}$, the width of the
+retinotopic neural field, $W_{fov}$, the width of the eye's field of
+view and $E_2$, the eccentricity at which the retinal density has
+halved by:
+\begin{equation} \label{eq:fm}
+   M_f = \frac {W_{nfs}} {E_2\;\ln\left(\frac{W_{fov}}{2 E_2} + 1\right)}
+\end{equation}
+Here, $W_{nfs}$ is 50 (the side length of the 50x50 grid) and
+$W_{fov}$ is set to 61\dg, a reduction from the biologically accurate
+150\dg~due to the small number of neurons in the retinotopic neural
+field. $E_2$ is
+2.5 \citep{cope_basal_2017,slotnick_electrophysiological_2001}.
+
+% Was looking for somewhere for this, possibly:
+%The precision of the model to distinguish between
+%targets, especially towards the periphery of the field of view was
+%limited by the 50$\times$50 size of the neural layers. In order to optimise
+%this precision, both the \ccg~model and our implementation of
+%it had their effective eccentricity range limited. Our implementation
+%was limited more than the Cope-Chambers model, because hills of
+%activity in SC_deep had to be kept fully within each layer. When a
+%hill `falls off the edge' of the layer, the amount of activation being
+%passed to the SBG is reduced and the saccades become inaccurate. I
+%didn't want to investigate effects at the edge of the SC, so I had an
+%effective limit of the model of about 22 degrees of eccentricity for a
+%saccade.
+
+The mapping from the retinotopic co-ordinates in the brain to
+rotational co-ordinates of the stimulus/response was written down by
+\cite{schwartz_spatial_1977,eric_l._schwartz_computational_1980}
+for measurements of striate cortex [visual stimulus to
+electrophysiological response---\cite{daniel_representation_1961,
+talbot_physiological_1941}] and by \cite{ottes_visuomotor_1986} for
+superior colliculus data [electrophysiological SC stimulus to eye
+movement response---\cite{robinson_eye_1972}].
+% Ottes et al. fit to stimulus-to-movement data, and give a
+% movement-to-collicular-coordinate mapping in the paper.
+We used the following statement of this mapping to introduce stimuli
+into the `World' input population of the brain model:
+\begin{equation}\label{eq:thetas_to_phi}
+   \phi = \frac{W_{nfs}} {2 \pi}\arctan\left(\frac{\theta_{y}^{t}}{\theta_{x}^{t}}\right)
+\end{equation}
+\begin{equation}\label{eq:thetas_to_r}
+   r = M_fE_2\,\ln\left(\frac{1}{E_2}\sqrt{{\theta_{x}^{t}}^2 + {\theta_{y}^{t}}^2}+1\right)
+\end{equation}
+Note that we use $r$ and $\phi$ as the co-ordinates on the `collicular
+surface'. Schwartz uses $r$ and $\phi$ as the polar co-ordinates of the
+retinal stimulus; Ottes et al.~use $r$ and $\phi$ as polar co-ordinates
+for the eye movement response; both use $u$ and $v$ as the Cartesian
+co-ordinates of the neural map. We use $\theta_{x}^{t}$ and
+$\theta_{y}^{t}$ to give Euler rotations for the retinal target
+stimulus. Note also that the form of
+Eqns.~\ref{eq:thetas_to_phi} \& \ref{eq:thetas_to_r} is slightly
+different from that given in
+\cite{ottes_visuomotor_1986} because our $\theta_{x}^{t}$ and
+$\theta_{y}^{t}$ are not the polar co-ordinates used in that work.
+
+The mapping encompases the entire visual field; the value of $\phi$ is
+allowed to vary from 0\dg~to 360\dg~along its axis.  Effectively, the
+two contralateral colliculi found in the biology are incorporated into
+a single, square map, avoiding the need to carry out the kind of
+`colliculus gluing' described in \cite{tabareau_geometry_2007}.
+
+It is straightforward to show that the reverse mapping is given by:
+\begin{equation}
+   \theta_x = E_2 \left(e^{\frac{r}{M_f E_2}} - 1\right).\cos\left(\frac{2 \pi \phi}{W_{nfs}}\right)
+\end{equation}
+\begin{equation}
+   \theta_y = E_2 \left(e^{\frac{r}{M_f E_2}} - 1\right).\sin\left(\frac{2 \pi \phi}{W_{nfs}}\right)
+\end{equation}
+where we have dropped the $t$ superscript on $\theta_x$ \& $\theta_y$,
+as these equations transform a collicular location into rotations of
+the eye.
+
+Fig.~\ref{fig:mapping} shows the result of the mapping for a view of
+two cross-shaped luminances. One cross illuminates the fovea, which
+results in a large comb-shape of activity. The more peripheral cross
+produces (in FEF) an indistinct object centred at a larger value of
+$r$.
+
+\subsubsection{Network}
+
+Briefly, the model consists of input from the World population (see
+Fig.~\ref{fig:brainmodel}, green population box) producing activity in an
+`express' pathway to superior colliculus (purple) and simultaneously
+in cortex, represented here by the FEF population (grey boxes in
+Fig.~\ref{fig:brainmodel}). The express pathway causes short latency
+activity in the superficial superior colliculus, which directly
+innervates the deeper layers of the superior colliculus
+(SC\_deep). Activity in FEF generates firing in a
+thalamo-cortico-basal ganglia loop. The output of the basal ganglia is
+the substantia nigra pars reticulata (SNr) which tonically inhibits
+SC\_deep. If a location of activity in FEF is able to dominate
+selection in the basal ganglia circuit, the corresponding location in
+SNr will dis-inhibit and activity will build up in SC\_deep encoding
+the saccade end point.
+
+Connections shown in red are one-to-one connections; dark blue
+projections indicate a connectivity pattern which `fans out' with a
+2-D Gaussian kernel [Fig.~\ref{fig:ccg_model}(c)]; lighter blue
+connections from the STN to SNr and GPe are diffuse, all-to-all
+connections and projections coloured green are one-to-one connections
+that decay towards the fovea so that foveal activity in FEF does not
+swamp the basal ganglia which would prevent peripheral luminances from
+ever being selected.
+%
+Note that SC\_deep contains two recurrent connections; one is
+excitatory, with a Gaussian kernel mapping and the other implements
+tecto-tectal inhibition, which increases the inhibition between
+activity in opposite hemispheres of the field of
+view \citep{gian_g._mascetti_tectotectal_1981,olivier_evidence_2000}
+helping to resolve competition between saccades to the left and
+right. The tecto-tectal inhibitory connection is \e{not} present in
+the \ccg~model. In all other respects the model is as described in
+\cite{cope_basal_2017}.
+%
+We have not listed the parameters of the network in tabular form here,
+instead, the reader is referred to the SpineML declarative
+specification of the model from the link given in SUPPLEMENTAL DATA.
+The easiest way to access this information is by using SpineCreator.
+
+
+% Section - description of new brainstem model
+\subsection{Brainstem model} \label{sec:methods:brainstem}
+
+We implemented a saccadic burst generator (SBG) based on the
+connectivity outlined in \cite{gancarz_neural_1998}. The SBG network
+for two of the model's six channels is shown in
+Fig.~\ref{fig:sbg}. \rvw{In the brainstem model, we use the word `channel'
+to mean a set of populations of neurons which are involved in
+actuating a single extraocular muscle. SBG channels are arranged in
+pairs, actuating opposing muscles. There is one pair of channels which
+actuates the superior and inferior rectus muscles, causing vertical
+rotations of the eye in a roughly parasaggital plane (the eye moves up
+or down). Another pair actuates the lateral and medial rectus muscles,
+causing horizontal rotations of the eye. The third pair actuates the
+superior and inferior oblique muscles which contribute to vertical as
+well as oblique rotations.} Activity from the output layer of superior
+colliculus
+%
+(SC\_avg) is fed into each channel, which sums the activity it
+receives and processes it in populations each of a single neural
+element representing all the neurons in that population. Each channel
+of the SBG functions to create the motor neuron activations that are
+required to accelerate the eye in a particular direction, then hold
+the eye in its new position against the returning force generated by
+the elastic properties of the muscles.  The required motor neuron
+activations are therefore a combination of features: a brief burst of
+increased activity that accelerates the eye; followed by a period of
+activity that is less than the burst firing rate but higher than the
+tonic rate that exists when the eye is at the centre. This holds the
+eye in its new position.
+
+% Figure 4
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{./figures/Brain_Stem_1channel.png}
+\end{center}
+\caption{ One pair of channels of the saccadic burst generator (SBG) for left
+(cyan) or right (green) movements. Collicular activity in SC\_avg
+excites the channels via SBG weight maps, which are encoded as
+explicit lists of connection weights in the blue connection arrows
+from SC\_avg to the LLBN populations. Each box represents a neural
+population and shows the population name, the number of neural
+elements (here 2500 or 1) and the SpineML component name; \e{LIN} for
+Leaky integrator or \e{integrator}. Key: LLBN: Long lead burst
+neurons; IBN: Inhibitory burst neurons; OPN: Omnipause neurons; EBN:
+Excitatory burst neurons; TN: Tonic neurons; MN: Motoneurons.}
+\label{fig:sbg}
+\end{figure}
+
+The SBG connectivity produces each of the these features separately,
+then sums them to create the desired `bump and tonic' activation time
+series.  The input to the first population in the SBG, the long-lead
+burst neurons (LLBNs), is conceived as originating from one of the
+deep layers of the superior colliculus.  The activity of the LLBNs are
+passed to excitatory burst neurons (EBNs) which, in turn, inhibit the
+LLBNs via the activity of the inhibitory burst neurons (IBNs).  This
+feedback loop has a transmission delay, which allows activity to build
+up in the EBNs before the inhibition is activated and the activity is
+then reduced again.  This mechanism generates the `bump'.
+
+The generation of the `tonic' phase of the required time series is
+achieved simply by integrating the bump over time and multiplying by a
+some small gain factor.  This is the function of the tonic neurons
+(TNs).  The firing rate of the motor neuron defines the amount of
+force applied to the eye by that muscle.  Thus, \rvw{the integral}
+of the `bump'
+defines how far the eye moves in that channel's direction.  The gain
+and delay parameters in the LLBN-EBN-IBN-LLBN feedback loop therefore
+have to be tuned such that the endpoint of the saccade is reasonably
+accurate.  Furthermore the restoring force generated by the elasticity
+of the muscles is dependent on the radial distance.  The value of the
+new tonic firing rate, after the `bump' is dependent on the end
+location of the eye.  If the ratio between the EBN firing rate and the
+TN firing rate is not exactly correct, the eye will drift away from
+the saccade endpoint after the saccade has been completed.  The EBN-TN
+connection strength is therefore tuned such that the TN firing rate
+yields a stable eye position across a range of eye eccentricities.
+
+The omnipause neurons (OPNs) are tonically active and inhibit the
+EBNs.  The activity of the OPNs is itself inhibited by activity in the
+LLBNs.  The purpose of this arrangement is to ensure the eye does not
+move in response to neural noise.
+
+Each mean activity of all the neurons in each SBG population (except
+the TNs) is defined by a single leaky integrator, first order
+differential equation.
+\begin{equation}\label{eq:LIN}
+   \frac{da}{dt} = \frac{1}{\tau}(y-a)
+\end{equation}
+where $a$ is the activation of the nucleus, and $\tau$ is the time
+constant of the nucleus. $y$ is a piecewise linear function of the
+weighted sum of inputs to the nucleus and is given by
+\begin{equation}
+       y(IN) = \begin{cases}
+       0    & IN \leq b \\
+      IN-b   & b \leq IN \leq 1+b \\
+      1   & IN \geq 1+b \\
+   \end{cases}
+\end{equation}
+where $b$ is the $IN$ axis offset.  $IN$ is the weighted sum of inputs
+to the nucleus and is given by,
+\begin{equation}
+    IN = \sum_{m}^{M} w_{mn} a_{m}
+\end{equation}
+where $a_{m}$ is the activation of the $m^{th}$ afferent nucleus.
+$w_{mn}$ is the connection strength between the $m^{th}$ afferent
+nucleus and the current nucleus. The activity of the TNs are defined
+as
+\begin{equation}
+   \frac{da}{dt} = \frac{1}{\tau}\,y
+\end{equation}
+with the same piecewise linear transfer function as in the other SBG
+populations.
+
+% Section - description of biomechanical model
+\subsection{Biomechanical eye} \label{sec:methods:eye}
+
+The output signals of the brainstem's \rvwt{motoneuron (MN)
+populations} are used to drive the biomechanical model. \rvwt{The MN
+output signal in each brainstem channel is normalised in the range [0
+1] and represents the mean firing rate of the neurons that innervate
+the extraocular muscle for that channel.} The biomechanics are used
+not only to get tangible feedback on the simulated saccades including
+motion trajectories, but to add one more modelling dimension related
+to the inertial properties of the eye plant including muscle
+properties.
+
+The biomechanical eye model, implemented using the OpenSim framework
+\citep{seth_opensim:_2011}, is anatomically represented by a sphere of
+uniform mass distribution. The diameter of the eye is 24 mm for
+adults, with small variations between individuals; the mass of the eye
+is 7.5 grams.  The eyeball is actuated by six extraocular muscles
+(EOMs). The EOMs are arranged in three pairs forming a cone inside the
+orbit with the apex being located inside the cranium in a tendonous
+ring called the annulus of Zinn. An important feature of the
+oculomotor system which greatly affects its overall behavior is the
+existence of dynamic EOM pulleys. Their role is to guide the pivot
+point of the EOMs. In our model, a pulley for each EOM has been
+modeled by a point on the orbit whose location depends on the current
+eye orientation.
+
+% Figure 5
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{./figures/eye_screen_plus.png}
+\end{center}
+\caption{ The biomechanical eye. \bol{a)} an OpenSim rendering of a pair of
+biomechanical eyes showing the positions of the extraocular
+muscles. Note that i) volume visualization of muscles should not be
+confused with FEM muscle models; it is provided for user feedback
+purposes, i.e. shape and color change depending on the muscle
+activation, ii) superior and inferior oblique are visualized up to
+their respective muscle pulleys. \bol{b)} OpenSim rendering of biomechanical
+eye within a head model \bol{c)} Top-down schematic cross-sectional view of
+the biomechanical eye situated within a spherical screen, with a
+horizontal rotation towards a luminance at an angle of $-\theta_{y}$
+about the $y$ axis. The $y$ axis points up, out of the page.}
+\label{fig:bioeye}
+\end{figure}
+
+% KM
+\rvwt{An illustration of the biomechanical eye model is given in
+Figure \ref{fig:bioeye}(a), while Figure \ref{fig:bioeye}(b) depicts
+the head model used in the proposed
+framework. Figure \ref{fig:bioeye}(c) shows a cross-sectional view of
+the eye and the spherical screen on which targets were projected.}
+
+% KM
+\rvwt{Two types of muscle models of different complexity are supported. The
+first models muscles using linear path actuators. This simplistic
+model of ideal muscles can be easily integrated with high level brain
+models. As described above the muscles are wrapped around the eye.
+The more complex model supported is based on the Thelen model
+\citep{thelen_adjustment_2003} that is also supported by OpenSim and implements
+Hill-type muscles. It includes realistic muscle wrapping geometric
+entities of the muscle fibers, while it accommodates for both
+activation and contraction dynamics.  The dynamics of muscular forces
+can be split into: 1) The elasticity of the muscles. 2) A delay
+between the onset of the afferent excitatory signal and the actual
+muscle contraction, caused by the transmission time of the action
+potentials and by the necessary calcium release at the muscle fibres.}
+
+% EOM dynamics
+The force applied by EOMs is controlled by an excitatory signal
+supplied by motoneurons in the brainstem. The neural drive to produce
+a saccadic eye movement can be characterized by a pulse component to
+overcome the viscoelasticity of the orbital plant, a step component to
+stabilize the eye in the new position, and a slide component that
+models the gradual transition between the pulse and step.
+
+% Orbital fat force
+Passive forces due to the fatty tissues inside the eye orbit also
+affect eye dynamics. Their role is critical in eliminating the
+influence of head and body movements. We incorporated a custom torque,
+$\mathbf{t}$, which acts like a rotational spring-damper apparatus,
+resisting eyeball movements. It has elastic and viscous properties
+governed by $\mathbf{t} = -K\mathbf{R}-C\mathbf{U}$ where $\mathbf{R}$
+is the eye's orientation and $\mathbf{U}$ is its angular velocity. $K$
+and $C$ are constants. A fuller description of the biomechanical model
+can be found in \cite{papapavlou_physics-based_2014}.
+
+% KM
+\rvwt{Finally, numerical integration of the biomechanical eye model is based
+on the Kutta-Merson integration method.}
+
+\subsection{Model development framework} \label{sec:methods:framework}
+
+The \ccg~model was originally developed to run on the BRAHMS model
+execution framework
+\citep{mitchinson_brahms:_2010,mitchinson_brahms_2015}. To run a
+BRAHMS model, the researcher must develop \e{BRAHMS components} for
+the various neural elements. A BRAHMS component is a programmatically
+coded implementation of the behaviour of the component. It may have an
+arbitrary number of inputs and outputs and may be written in C, C++,
+Python or MATLAB. The \ccg~model components were hand written in C++
+and MATLAB. A BRAHMS \e{SystemML} file describes how the different
+components connect together and how data is passed between them
+\citep{mitchinson_brahms:_2010}. The main BRAHMS program first
+reads the SystemML file, then dynamically loads all the required
+components before executing the system.
+
+In the current work, the \ccg~model was reproduced using the
+declarative SpineML markup
+language \citep{alex_cope_spineml_2014,richmond_model_2014}, with the
+help of the graphical SpineML model editing software called
+SpineCreator
+\citep{cope_spinecreator_2015,cope_spinecreator:_2016}. SpineML,
+which is a development of the NineML specification
+\citep{incf_task_force_on_multi-scale_modeling_network_2011},
+describes neural populations and their projections in a highly
+structured format in which neuron bodies, pre- and post-synapses are
+described in terms of \e{SpineML components}. These are similar to the
+components provided by BRAHMS, but in this case, the components are an
+XML description of the functionality of the component, rather than a
+programmatic implementation, with one XML file per component. A
+SpineML \e{network layer} file then describes which components are
+used in the model, and how they are connected together. Finally, a
+number of SpineML \e{experiment layer} files specify how the model
+described in the network layer can be executed. In the experiment
+layer, the execution duration and timestep can be specified, along
+with input conditions, connection lesions and component parameter
+updates. A description of SpineML is given
+in \cite{richmond_model_2014}; the definitive definition is found in
+the schemas \citep{cope_spineml_2014}.  SpineCreator, in its r\^ole as
+a graphical editor for the SpineML format, was used to generate the
+SpineML files describing the model. It was also used to generate the
+diagrams of the model.
+
+As a declarative format for model specification, SpineML is agnostic
+about how the model is executed. A number of simulation engines can be
+utilised, including DAMSON \citep{richmond_damson_2015}, GeNN
+\citep{nowotny_flexible_2011,nowotny_spineml_2014} and BRAHMS (used
+here). The simulation engine incorporating BRAHMS is called \stob~
+\citep{cope_spineml_2_brahms_2015}. \stob~is a collection of XSLT
+stylesheets which first generate and compile C++ BRAHMS components
+(which implement a simple, Forward-Euler solver) from the SpineML
+component layer description files. \stob~then uses the SpineML
+network and experiment layer files to generate a BRAHMS SystemML
+description of the model. Finally, \stob~executes the model now
+described entirely as a BRAHMS system, via a call to the BRAHMS
+binary. A number of additional, hand-written components are present
+in \stob~providing the inputs (constant inputs, time-varying inputs,
+etc) which the modeller specifies in the experiment layer.
+
+% Figure 6
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{./figures/model_framework.png}
+\end{center}
+\caption{ The model framework. \bol{a)} The model is specified using a combination of
+declarative XML files and hand-coded C++. These original model
+specifications are shown within the blue box. \bol{b)} The green box shows
+the processes which are applied to the model specification to produce
+the BRAHMS system. Most of the process is defined within the scripts
+which make up \stob, but the hand-written components must be manually
+compiled and installed within the BRAHMS Namespace, allowing the
+BRAHMS executable to locate them at runtime. \bol{c)} The red box shows the
+resulting BRAHMS system ready to be executed by the BRAHMS
+executable. In practice, this call is made by \stob.}
+\label{fig:modelframework}
+\end{figure}
+
+In addition to the brain model components, all of which are
+code-generated using \stob~as described above, two hand-written
+components are integrated into the model: The biomechanical eye model
+and a sensory input component. The sensory input component takes the
+eye's rotational state and the state of the experimental luminances
+and projects a retinotopic activity map into the brain model. Both of
+these BRAHMS components were hand-written in C++. To incorporate these
+components into the SpineML model, a \stob~\e{external.xsl} file was
+used.  The external.xsl file scheme for incorporating external BRAHMS
+components into a SpineML model was a new \stob~feature motivated by
+the current work.  Fig.~\ref{fig:modelframework} shows the workflow, in
+which the model specification files (blue box - a combination of
+SpineML files and C++ code), are processed (green box) into a BRAHMS
+system (red box).
+
+% Section - description of the integration. scientific and
+% technical.
+\subsection{Integrating the models and closing the loop}
+\label{sec:methods:integrating}
+
+The \ccg~model closes its loop by passing the centroid of activity in
+SC\_deep (once it has surpassed a threshold) back to the code that
+controls the world, which then uses this location to
+instantaneously change the model's view of the world. In our extended
+model, it was necessary to connect the output of the brain model back
+to its input via the saccadic burst generator model and the
+biomechanical eye. The resulting state of the eye, rather than the
+centroid of the superior colliculus, was used to compute the input to
+the brain, given the luminances visible in the world.
+
+\rvwt{Thus, the information flow in the model is as follows:
+Luminances in the world have their locations computed in the eye's
+frame of reference, based on the rotational state of the eye. The
+locations of the luminances on the retina are transformed into a
+retinotopic co-ordinate system which determines the activity in the
+`World' population (named to mean the `world as the brain sees it',
+rather than the world frame of reference) which is the input for the
+brain model. The target luminance for a saccade is selected, as
+described earlier, via cortical and sub-cortical loops through the
+basal ganglia model and activity for the winning end-point builds up
+in the deep layer of superior colliculus. This activity excites the 6
+channels of the saccadic burst generator in the correct proportions
+for the saccade. The motoneurons, which are the output of the SBG,
+send a rate-code signal (normalised between 0 and 1) into the
+biomechanical eye model. The rotational state of the eye model is fed
+back to participate in the computation of the retinotopic luminance
+activity in `World', completing the loop.}
+
+% Brain to SBG, seeing as that's how I explained it above.
+A number of studies have considered the form of the connection between
+the deeper layers of the superior colliculus and the saccadic burst
+generator \citep{van_gisbergen_experimental_1985,ottes_visuomotor_1986,waitzman_superior_1991,groh_converting_2001,arai_two-dimensional_1994,goossens_dynamic_2006,tabareau_geometry_2007,van_opstal_linear_2008,goossens_optimal_2012},
+which has become known as the spatial temporal transform (STT).  The
+spatial aspect of the transform is thought to be implemented by a
+weight-mapping \citep{tabareau_geometry_2007,arai_two-dimensional_1994}.
+\rvwt{Although there is no definitive experimental proof for such a mapping,
+there exists evidence for spatially variable synapse
+density \citep{moschovakis_anatomical_1998,herrero_influence_1998} and
+connection density \citep{grantyn_density_2002} and we therefore adopt
+the idea.}
+%
+Arai and co-workers trained a 20 by 20 neural network model of the
+superior colliculus to discover the weight map under the assumption of
+2D Gaussian activation
+profiles~\citep{arai_two-dimensional_1994}---\rvwt{that is, they
+assumed that the activity in superior colliculus for any saccade was a
+size-invariant 2D Gaussian hill of activity}.
+%
+The training approach of \cite{arai_two-dimensional_1994} was not
+feasible in this study due to the length of time required to run our
+model and its stochasticity, which meant multiple runs of the model
+were necessary in order to generate output statistics.
+%
+\cite{tabareau_geometry_2007} wrote down a theoretical form of the weight
+map, \rvwt{obtained by inverting the mapping} of \cite{ottes_visuomotor_1986}
+and the assumption of invariant 2D Gaussian activity profiles in SC,
+\rvwt{which is equivalent to:}
+%
+\begin{equation} \label{eq:tabareau_eq3}
+w(r,\phi) = i\;e\,^{jr}\;\sin\left(l\phi + k\right)
+\end{equation}
+\rvwt{where $r$ and $\phi$ are co-ordinates on the collicular map and
+$i$, $j$, $k$ and $l$ are parameters of the
+function (compare with Eq.~3 of \cite{tabareau_geometry_2007}).}
+%
+As they found it closely resembles the results
+of \cite{arai_two-dimensional_1994}, and it is a simple formulation,
+we considered it as the means to generate the six weight maps in our
+own model.
+%
+One barrier to the use of this weight map was the \ccg~model's
+violation of the
+\e{invariant integral hypothesis}. This states that the number of spikes
+emitted by a neural element during a saccade (or in our model, the
+integral of the neuron's output during the saccade) should be a
+function only of its position within the hill of collicular
+activity. That is, for any time-dependent hill of activity
+$\mathcal{A}(\mathbf{z},t)$ at $\mathbf{z} = (r,\phi)$ on the collicular
+surface, the integrated activity  $A_{\mathbf{x}}$ in an element at a
+vector $\mathbf{x}$ away from $\mathbf{z}$ is
+\begin{equation}
+A_{\mathbf{x}} = \int_t \mathcal{A}(\mathbf{z}-\mathbf{x}, t)\;dt
+\end{equation}
+which is invariant for all $\mathbf{z}$. \rvwt{This requirement is
+fulfilled by spatially invariant 2D Gaussian profiles, whose
+time-course (how quickly they grow and then diminish) is always the
+same.}
+
+However, the very mapping on which the \cite{tabareau_geometry_2007}
+result is based leads to a very \e{variant} activity profile \rvwt{in
+the SC\_deep layer} of the \ccg~model. A luminance of a given size
+which excites activity near to the fovea causes activity in a large
+number of neurons in each retinotopic layer, whereas activity far from
+the fovea excites a much smaller region. This effect is clearly
+demonstrated in Fig.~\ref{fig:mapping} for equal sized targets both on
+and distal from the fovea.
+
+% Figure 7
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{./figures/scdeep_plus.png}
+\end{center}
+\caption{ \bol{a)} \& \bol{b)} Tabareau-style weight maps for `left' and `down' components
+of a saccade. \bol{c)} The two weight maps in (a) and (b) shown on the same
+graph, viewed from above. Circles show the locations of potential
+hills of activity. Purple, dashed circles encode saccades left;
+red circles encode saccades with both a left and a down component. \bol{d)}
+Showing the additional deep layer of superior colliculus (SC\_deep2)
+and the output layer (SC\_avg, named for the fact that in an earlier
+version of the model, it received the output of the centroid of
+SC\_deep).  The widening Gaussian projection is shown as the arrow
+between SC\_deep and SC\_deep2.}
+\label{fig:scdeep}
+\end{figure}
+
+% Try to make this clearer for Reviewer 2, Methods Comments, point 5.
+\rvwt{To understand the need for this invariance,
+consider the effect of a 2D Gaussian hill in SC\_deep which elicits a
+successful horizontal saccade of 10\dg~using the weight maps shown in
+Figs.~\ref{fig:scdeep}(a)--(c). Activity from the 2D Gaussian
+(schematically represented as the large purple dashed circle in
+Fig.~\ref{fig:scdeep}(c)), passing through the weight maps will excite
+the superior (not shown) and inferior rectus
+[Fig.~\ref{fig:scdeep}(b)] channels by an equal, balanced amount, so
+these cancel out, allowing the eye movement to be horizontal. The
+amount of activation passed to the lateral rectus muscle results from
+a convolution of the Gaussian and the exponential component of the
+weight map relationship in Eq.~\ref{eq:tabareau_eq3}. If the Gaussian
+hill now appears further along the collicular surface, coding for a
+20\dg~saccade, \e{and also becomes smaller} (small purple dashed
+circle), we can still argue that the vertical component signals to
+superior/inferior rectus muscles will cancel out, and we could imagine
+that the exponential component of Eq.~\ref{eq:tabareau_eq3} is
+correctly parameterised to compensate for the smaller hill. Now
+consider a 2-D Gaussian hill which codes for a 10\dg~saccade which is
+`down, and to the left' in equal proportions (large red circle). That
+means that the hill will sit on the boundary between the weight maps
+for the `down', and the `left' muscles. Now, if the hill moves to the
+$r=\mathrm{20}$\dg~location on the colliculus (small red
+circle), \e{and also reduces in size}, it will excite only the
+periphery of the sine; the exponential increase of the map along $r$
+is not guaranteed to compensate for the reduction in the convolution
+of the Gaussian hill and the sinusoidally varying component of the
+weight map along the $\phi$ axis in Fig.~\ref{fig:scdeep}(a).}
+% Add figure for this.
+
+This led us to hypothesise that the retinotopic mapping \rvwt{to the
+SBG be preceded} by an associated widening projection field such that
+the hill of activity in \rvwt{a `final' deep layer of superior
+colliculus is invariant with position on the map}. There are a number of
+locations in the system in which this widening projection field could
+exist. It could be implemented in the projections between the retinal
+populations and the superficial layer of SC along with the projection
+between the World and the FEF population. However, this would affect
+activity within the basal ganglia of the model, contradicting a result
+in \cite{cope_basal_2017} which explains the `hockey stick' profile
+for saccade latency as a function of saccade eccentricity. Instead, we
+suggest that a widening projection field is encoded within the
+superior colliculus itself, a complex, multi-layered structure which
+could quite plausibly support such a function. Indeed, such widening
+activity can be seen in the stimulation experiments
+in \cite{vokoun_intralaminar_2010} and \cite{vokoun_response_2014}.
+%
+\rvw{In \cite{ghitani_excitatory_2014}, from the same research group,
+evidence is presented for an excitatory and widely projecting pathway
+from the stratum griseum intermediale (equivalent to our SC\_deep) to
+the more superficial layers stratum opticum and stratum griseum
+superficiale. Although this pathway is a `wide' projecting field, the
+experiments do not indicate whether the projection \e{widens} along
+the rostral-caudal axis of the SC. \cite{bayguinov_hard-wired_2015}
+present evidence for another projecting field within SC whose
+connectivity pattern \e{does} change along the rostral-caudal
+axis. This projection is inhibitory in nature. Although neither of
+these results precisely match the widening, excitatory projection
+field hypothesised here, they do indicate that such connection
+patterns are plausible.}
+%
+Although in this work we do not model
+the SC in detail, we extended the model with a third functional layer
+named SC\_deep2, shown in Fig.~\ref{fig:scdeep}(d) (\ccg~has only the two
+layers SC\_sup and SC\_deep). We introduced a widening projection
+based on a Gaussian projection field whose width, $\sigma(r)$ varies
+in inverse proportion to the magnification factor, $M(r)$, given in
+Eq.~\ref{eq:cmf} according to:
+\begin{equation} \label{eq:sigmar}
+\sigma(r) = \frac{m_{\sigma}}{M(r)} - \frac{m_{\sigma}}{M^0} + \sigma_0 \qquad r > r_0
+\end{equation}
+$m_{\sigma}$ is a scalar parameter which determines the `magnitude of
+the widening'. $M^0$ is the `starting' magnification factor. Within
+the foveal region ($0 \leq r \leq r_0$), the projection field is not
+allowed to widen and so
+\begin{equation} \label{eq:sigmar2}
+\sigma(r) = \sigma_0 \qquad r \leq r_0
+\end{equation}
+which makes $\sigma_0$ the width of the Gaussian projection field
+within the foveal region. (Note that the value chosen for the width of
+the foveal region, $r_0$ is not identical to the foveal shift
+parameter used in the \e{DecayingAtFovea} projections into striatum.)
+The \e{Widening Gaussian} projection weight, $w(r,d)$ is then computed
+as:
+\begin{equation} \label{eq:widening}
+w(r,d) = e^{-\frac{d^2}{2\sigma\left(r\right)^2}}
+\end{equation}
+where $d$ is the distance between the source and destination elements
+in the collicular plane.  $m_\sigma$ was set to 50, $\sigma_0$ was
+0.3, $M^0$ was 12.43 and $r_0$ was 20.
+% Could have a figure here, made from widening_gaussian.m
+
+A further issue regarding the use of the theoretical weight map
+in \cite{tabareau_geometry_2007} was that it does not consider the
+existence of the oblique extraocular muscles. There is evidence that
+only two dimensional information is encoded in superior
+colliculus
+\citep{wurtz_activity_1972,hepp_monkey_1993,van_opstal_two-rather_1991},
+but the eye is actuated by six extraocular muscles. In order to find
+out a possible form for the input to the oblique muscles we carried
+out a training process
+% possibly descibe this training process in supplemental data
+which depended on a centroid computation in SC\_deep and was designed
+to maintain a null torsional eye rotation for all saccade
+end-points. For the four rectus muscles, the resulting weight map
+solutions resembled those found by
+\cite{arai_two-dimensional_1994}. The trained
+maps for the oblique muscles had a form very close to those for the
+inferior and superior rectus channels, but with a smaller magnitude.
+The inferior oblique map resembled the superior rectus map and the
+superior oblique map resembled the inferior rectus. When parameterising
+the theoretical weight maps, we set the inferior/superior
+oblique maps to be 1/10$^{\mathrm{th}}$ of the superior/inferior rectus
+maps, respectively. Interestingly, this suggests that there is a built-in
+synergy between the vertical and oblique channels in the eye, although
+the results will show there is some systematic change in the oblique error
+with saccade end-point location.
+% Could elaborate here on Listings Law, and why I didn't train to
+% Listings Law. Do this in the chapter, rather than here in the paper.
+
+\cite{tabareau_geometry_2007} give a formulation for the weight maps
+in which it is possible to project both a positive and a negative
+weight. In our model, all projections from SC\_deep are excitatory.
+This means that each channel has a weight which follows the form:
+\begin{equation} \label{eq:weightmaps}
+w(r,\phi) = i\;e\,^{jr}\;\sin\left(\frac{2\pi\phi}{W_{nfs}} + k\right)
+\end{equation}
+where $i$, $j$ and $k$ are per-channel parameters for the weight
+maps. $k$ is determined by the mapping. Only the positive part of the
+sine is utilised. $i$ and $j$ are parameters to be found.
+
+The saccadic burst generator model was originally conceived with the
+assumption of a step input, which returns to zero activity at a
+suitable time to curtail the saccade and avoid staircase
+saccades \citep{gancarz_neural_1998}. In our model there is no such
+mechanism to reduce activity in SC\_deep, and elsewhere.  Although a
+successful, accurate saccade towards a target luminance will remove
+the excitation which caused the activity in SC\_deep by bringing the
+target luminance within the masked, foveal region, the activity in SC
+decays too slowly to avoid additional saccadic movements. We found it
+necessary to hypothesise an inhibitory feedback mechanism from the SBG
+to the brain model.  This is shown in Fig.~\ref{fig:sbg}, which
+indicates how the output from the inhibitory burst neurons (IBN) of
+the SBG model are used to feed back an inhibitory signal to the
+SC\_deep, thalamus and FEF populations in the brain model, resetting
+them ready for the next saccade. \rvw{There is evidence for inhibitory
+projections to SC from the propositus
+hypoglossi nucleus \citep{corvisier_possible_1991}, which lies within the
+brainstem, upstream from motoneurons, and has been shown to encode eye
+velocity \citep{dale_nucleus_2013}.}
+
+% SBG to worldDataMaker
+The output signals from the six channels of the SBG were connected to
+the six motoneuron inputs of the biomechanical eye. The signal was
+normalised; a value of 1 meaning that all the motoneurons in the
+output population were firing at their maximum rate and the force
+exerted by the relevant extraocular muscle was maximal. Channels
+innervated extraocular muscles as follows: Up: superior rectus; Down:
+inferior rectus; Right: medial rectus; Left: lateral rectus; Z+:
+superior oblique; Z-: inferior oblique. Because the medial rectus
+induces a rightward rotation of the eye, our single virtual eye is
+a \e{left} eye. The OpenSim implementation of the biomechanical eye
+was `wrapped' (in the software sense) in a BRAHMS component. This made
+it possible to integrate the OpenSim model into the BRAHMS
+framework. The wrapper ensured that the input and output signals were
+correctly transferred and, importantly, handled the disparity in the
+solver timesteps used in the OpenSim model (25~ms) and the neural
+model (1~ms). This was achieved by having the BRAHMS wrapper create a
+separate thread to run the OpenSim model. The BRAHMS wrapper component
+was called on each 1 ms timestep, receiving the instantaneous
+activations from the motoneurons in the SBG. These activations, and
+the current simulation time, were written into a shared memory area,
+accessible by the OpenSim thread. Running independently, the OpenSim
+thread would update its inputs (using the most recent values in the
+shared memory area) whenever the simulation time had increased by 25
+ms. It would then recompute its outputs (the rotational state of the
+eye) and write these into the same shared memory. The BRAHMS wrapper
+would update its outputs whenever they were changed in the shared
+memory by the OpenSim thread. A direct connection of the six outputs
+of the BRAHMS eye model component to the six inputs of the
+worldDataMaker BRAHMS component was specified in
+the \stob~external.xsl file.
+
+% worldDataMaker to brain:
+The eye model outputs its rotational state at each timestep. The
+rotational state is used to compute the view of the world in the eye's
+frame of reference. To simplify the calculation, the luminances exist
+on a spherical surface at the centre of which is the eye. A hand-coded
+BRAHMS component called worldDataMaker computes the projection of the
+luminances into the eye's frame of reference and then converts this
+representation into a retinotopic map to pass into the brain
+model. The input to the brain model is thus able to change
+continuously, on every timestep, rather than in a step-wise fashion
+when a saccade occurs, as in the \ccg~model.
+
+In the worldDataMaker BRAHMS component, the rotational state of the
+eye was used to construct Euler rotation matrices which transformed
+between the world's frame of reference and the eye's frame of
+reference. The worldDataMaker component received a specification of
+the world luminances in a JSON file called luminances.json at the
+start of each simulation. This file specified the position,
+shape, size, luminance, appearance time and disappearance time of an
+arbitrary number of luminances. With this information, the
+instantaneous rotational state of the eye and the parameters of the
+retinotopic transform, it was able to compute the instantaneous input
+to the brain model.
+
+The final models, on which the results of this paper are based are
+named `TModel3', `TModel4' and `TModel5'. Descriptions of these, and
+earlier versions of the model can be found in the code repository
+given in SUPPLEMENTAL DATA.
+
+
+\section{Results} \label{sec:results}
+
+\subsection{Weight maps} \label{sec:results:weightmaps}
+
+We found the best parameters for the exponential in
+Eq.~\ref{eq:weightmaps} ($i$ and $j$) by a manual tuning
+process. After selecting values for $i$ and $j$ in either the
+horizontal or vertical/oblique channels, we ran the model 6 times at
+each of 8 target eccentricities (7\dg--14\dg) which were purely in the
+direction of the newly parameterised channel. The training saccades
+were produced as described below in Sect.~\ref{sec:results:singlesaccades},
+with the same fixation and target luminances (crosses of magnitude 0.2
+and 0.3) but with the fixation offset and target onset occurring at
+0.2~s. We measured the end-point of the saccade by detecting the
+location at which the saccade velocity had dropped below 0.005 of its
+peak. We iterated until the mean saccade endpoint plotted versus
+target was close to the ideal straight line---see
+Fig.~\ref{fig:saccvstarg}(a) \& \rvw{(b)}. We applied the same parameters to
+both directions of each channel; $i_{up} = i_{down} = 0.00195$,
+$j_{up} = j_{down} = 0.075$, $i_{left} = i_{right} = 0.0016$ and
+$j_{left} = j_{right} = 0.067$.
+
+% Figure 8
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{./figures/sacc_vs_targetpos.png}
+\end{center}
+\caption{ Accuracy of single saccades at different target eccentricities for fixation luminance
+0.2 and target luminance 0.3. \bol{a)} Horizontal rotations about the
+y axis. \bol{b)} Vertical rotations of the eye about the x axis.}
+\label{fig:saccvstarg}
+\end{figure}
+
+The resulting weight maps (where the oblique maps are
+1/10$^{\mathrm{th}}$ of the vertical maps, as described earlier) are
+shown in Fig.~\ref{fig:weightmaps}.
+%
+\rvw{First, recall that the $r$ axis of the neural surface corresponds
+to the amplitude of a saccade and the $\phi$ axis indicates the polar
+direction of the saccade, as described in Sect.~\ref{sec:mapping} and
+Fig.~\ref{fig:mapping}. Fig.~\ref{fig:weightmaps}(a) shows the weight
+map for the muscle which rotates the eye to the left. As we modelled a
+left eye, this actuates the lateral rectus muscle. The exponential
+rise of Eq.~\ref{eq:weightmaps} [for experimental evidence,
+see Figs.~7 \& 8 of \cite{herrero_influence_1998}] is seen in the
+$r$ direction; as $r$ increases, so the connection strength to the SBG
+channel rises exponentially. The connection strength is greatest along
+the centre line, for a value of $\phi$ which corresponds to a purely
+leftward movement. Note that $\phi$ is presented in neural
+co-ordinates, and not in degrees or radians; $\mathrm{1}\leq\phi\leq\mathrm{50}$
+corresponds to a range of 0\dg~to 360\dg; $\phi=\mathrm{38.5}$ corresponds to
+movements left. The connection strength drops away sinusoidally as
+$\phi$ moves away from the centre line at $\phi=\mathrm{38.5}$. In regions of
+the map for which there is no leftward movement, that is, in the half
+of the map which corresponds to any movement with a rightward
+component, the `left' weight map is 0. Fig.~\ref{fig:weightmaps}(d)
+shows the weight map for rightward movements, actuating the medial
+rectus muscle of the eye. The line of maximum connection strength is
+along $\phi=\mathrm{13.5}$. The map is a mirror of
+Fig.~\ref{fig:weightmaps}(a), reflected about the line $\phi=\mathrm{26}$. The
+`left' and `right' weight maps are orthogonal; the non-zero region of
+the `left' map is zero in the `right' map and vice
+versa. Fig~\ref{fig:weightmaps}(b) \& (d) show the weight maps for
+downward and upward eye movements; the `down' map activates the SBG
+channel for the inferior rectus muscle, the `up' map activates the
+superior rectus. Note that `down' is not orthogonal either to `left'
+or `right' because a saccade down and left is achieved by
+simultaneously activating both the lateral and inferior rectus
+muscles. However, the `up' map \e{is} orthogonal to the `down' map and
+spans the edges of the surface where $\phi$ rolls over from 1 to
+50. The line of maximum connection strength for the `up' map is along
+$\phi=\mathrm{1}$; for `down' $\phi=\mathrm{26}$. Based on the training described in
+Sect.~\ref{sec:methods:integrating}, the maps driving the superior
+oblique (`Z+') and inferior oblique (`Z-') muscles were set to
+1/10$^{\mathrm{th}}$ of the `down' and `up' maps.}
+% From map_modelling2.m:
+%    yh=0.0016*exp(0.067.*x);
+%    yv=0.00195*exp(0.075.*x);
+
+% Figure 9
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{./figures/weightmaps.png}
+\end{center}
+\caption{ Weight maps for the connections between the output layer of superior
+colliculus and the six long lead burst neurons of the saccadic burst
+generator model. Each map increases exponentially with increasing $r$,
+multiplied by cosine($\phi$) about its `active' axis. \bol{a)} Weight
+map for leftward movements which innervates the lateral rectus in this
+single left-eye model. \bol{b)} Map for downward movements; innervates
+the inferior rectus. \bol{c)} Superior oblique muscle weight
+map. \bol{d)} Weight map for rightward movements/medial rectus
+muscle. \bol{e)} Weight map for the superior rectus muscle which
+generates upward movements. \bol{f)} Inferior oblique map.}
+\label{fig:weightmaps}
+\end{figure}
+
+\subsection{Saccade accuracy} \label{sec:results:accuracy}
+
+% Figure 10
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.95\textwidth]{./figures/errorsurface_TModel3.png}
+\end{center}
+\caption{ The end-point error surface for the original, na\"ive model
+(TModel3). \bol{a)} The ratio of the magnitudes of the total error vector
+and the target vector, expressed as a percentage. \bol{b)} The ratio of the
+magnitude of the $x$ component of the error vector to the magnitude of
+the target vector, expressed as a percentage. \bol{c)} As (b) but for the
+$y$ component. \bol{d)} As (b), for $z$ component. All colour maps are shown
+with the same scale. The target rotations, $\theta_{x}^t$ and
+$\theta_{y}^t$ are denoted `Target X' and `Target Y' in the figure.}
+\label{fig:errorsurfaceTM3}
+\end{figure}
+
+In Fig.~\ref{fig:saccvstarg}, we showed the result of running the model
+to targets located on the principle axes, on which the model was
+trained. We then simulated single saccades to targets in one hemifield
+of the eye's field of view, with eccentricities between 6\dg~and
+14.5\dg. As in the training, we ran the simulation 6 times for each
+target, $\mathbf{\theta}^t = (\theta_{x}^t, \theta_{y}^t, 0)$ to
+obtain mean saccade end-points.  Fig.~\ref{fig:errorsurfaceTM3} shows
+saccade accuracy results for an entire hemifield in the na\"ive model
+which passed the output of SC\_deep directly to SBG via the weight
+maps. The ratio of the magnitude of the error vector to the magnitude
+of the target vector is plotted using a colour map. This ratio is
+shown for the full, three dimensional error vector in
+Fig.~\ref{fig:errorsurfaceTM3}(a) and for the $x$, $y$ and $z$ components
+in Figs.~\ref{fig:errorsurfaceTM3}(b)--(c).  Inspection of
+Fig.~\ref{fig:errorsurfaceTM3}(a) shows that the end-point error is
+minimal along the principle axes ($\theta_{x}^t=\;$0 or
+$\theta_{y}^t=\;$0) and maximal near the 45\dg~oblique targets (blue
+lines) with the end point error as high as 80\% of the programmed
+saccade magnitude.  The $x$ component error map in
+Fig.~\ref{fig:errorsurfaceTM3}(b) shows the same trend, mirrored about the
+`Target X' axis, whereas the $y$ and $z$ component errors are,
+relatively, much smaller.  Because the $x$ component of the error is
+clearly contributing to end point errors which would not be considered
+`on target', especially for oblique saccades, we considered the effect
+of the non-uniform size of the hill of activity in SC\_deep.
+
+In our model, the location, \e{size} and shape of activity in FEF, the
+basal ganglia, thalamus and superior colliculus is eccentricity
+dependent, in line with the retinotopic mapping stated by
+\cite{ottes_visuomotor_1986}. More eccentric targets generate reduced
+activity, because fewer retinal neurons are excited far from the
+fovea. \cite{cope_basal_2017} showed that this relationship can
+explain increased saccadic latencies for distal targets, resulting
+from reduced activity in the decision making circuitry of the basal
+ganglia.  However, the notion that activity in superior colliculus is
+eccentricity-dependent conflicts with the result of
+\cite{tabareau_geometry_2007}, who showed
+that an invariant hill of activity was required if this complex
+logarithmic weight mapping was to be used to drive a
+two-degree-of-freedom saccadic burst generator, and also with
+experimental findings, which do not show significant eccentricity
+dependence, at least in the burst
+layer~\citep{anderson_two-dimensional_1998}.
+% Nice ref that - see Fig 16
+
+To bring our model in line with these results, whilst maintaining the
+eccentricity dependent activity in basal ganglia, we hypothesised that
+a `widening projection' exists between two maps in superior
+colliculus. \rvw{As described in
+Sect.~\ref{sec:methods:integrating}, there is
+now experimental evidence for similar projections
+\citep{ghitani_excitatory_2014,bayguinov_hard-wired_2015} making this
+a plausible suggestion.}  Activities in one SC\_deep layer remains
+eccentricity-dependent, with loops back to thalamus and cortex and
+through basal ganglia.  This activity is then fed through a
+projection, which applies a Gaussian projection field, whose width
+increases with increasing stimulus eccentricity according to
+Eq.~\ref{eq:widening}.  The activity in this second SC\_deep layer is
+then fed to the weight maps of the SBG. This model was called
+`TModel4'. TModel4 was parameterised such that its horizontal and
+vertical error was similar---so that its equivalent of
+Fig.~\ref{fig:saccvstarg} showed a similar sum of squares error.
+
+% Figure 11
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.95\textwidth]{./figures/errorsurface.png}
+\end{center}
+\caption{ The end-point error surface for the model in which a widening
+projection field was added to the model of the superior colliculus. \bol{a)}
+The ratio of the magnitudes of the total error vector and the target
+vector, expressed as a percentage. \bol{b)} The ratio of the magnitude of
+the $x$ component of the error vector to the magnitude of the target
+vector, expressed as a percentage. \bol{c)} As (b) but for the $y$
+component. \bol{d)} As (b), for $z$ component. All colour maps are shown
+with the same scale. The target rotations, $\theta_{x}^t$ and
+$\theta_{y}^t$ are denoted `Target X' and `Target Y' in the figure.
+Note that the range of the colour scale is 0 to 20\%, a much smaller
+range than the range in Fig~\ref{fig:errorsurfaceTM3}.}
+\label{fig:errorsurface}
+\end{figure}
+
+Figs.~\ref{fig:errorsurface}(a)--(d) show the \rvw{percentage errors for
+TModel4}.  First of
+all, note that the error magnitudes are much smaller. The mean errors
+are smaller for every axis. The largest errors produced by the model
+are approximately 15\%, which are within the boundaries of what some
+authors regard as an accurate
+saccade \citep{mcpeek_saccade_2002,mcpeek_incomplete_2006}.  The
+magnitude of the largest error vector is approximately 1.5\dg.
+
+This result indicates that the exponential part of the Ottes et
+al.~weight map from SC to the SBG cannot on its own compensate for the
+eccentricity-dependent size of the hill of activity. The introduction
+of a widening projection field substantially improves the mean
+accuracy of saccades across the field of view.  We therefore suggest
+that the transformation between retinotopically mapped activity, and
+eccentricity-independent activity width occurs within the superior
+colliculus and works alongside a simple, monotonically increasing
+weight map between SC and the SBG channels.
+
+\subsection{Single saccades} \label{sec:results:singlesaccades}
+
+% Figure 12
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{./figures/outmany.png}
+\end{center}
+\caption{ Representative single saccades. \bol{a)} Trajectories from 9 saccades to a
+single target at 9 different locations. In each case, a fixation cross
+luminance of magnitude 0.2 was displayed at (0,0), the start position
+of the eye, until time 0.4~s. The target luminance, magnitude 0.3, was
+illuminated at time 0.4~s. Trajectory shape is dependent on the target
+position, and there is a variable amount of error in the end-points
+achieved by the model. Colour is used in this diagram as an aid to
+distinguishing different saccades and their targets; for a given
+saccade, the target location is given by the cross of the same colour
+closest to the end of the trajectory. \bol{b)} The three rotational
+components of the `dark blue' saccade, to target location (-7,-7). \bol{c)} The
+three rotational components of the `red' saccade, to target location
+(0,-10).}
+\label{fig:outmany}
+\end{figure}
+
+Having finalised the model by setting the weight maps, we then
+proceeded to exercise the model (TModel4), starting with saccades to a
+single target; prosaccades. Fig.~\ref{fig:outmany}(a) shows 9
+representative saccades to a single target luminance. Initially, the
+eye had rotational state $\theta_x=\theta_y=\theta_z=0$ with its fovea
+directed at a fixation luminance cross (span 6\dg, bar width 2\dg) of
+magnitude 0.2 (in arbitrary units). At a simulation time of 0.4~s, the
+fixation luminance was set to 0 and a target luminance cross of the
+same dimensions as the fixation but with magnitude 0.3 was illuminated
+at one of the 9 different locations, marked by crosses in
+Fig.~\ref{fig:outmany}(a).  The resulting trajectories are plotted, with
+colour indicating the relationship between trajectories and target
+crosses. The approximate end-point error is visible in this figure,
+although the last point in each trajectory is the saccade position at
+0.8~s and not the velocity-based end-point described
+above. Figs.~\ref{fig:outmany}(b) and (c) show the rotational components
+of the blue and red trajectories in Fig.~\ref{fig:outmany}(a) along with
+the target and fixation luminance values. Rotations are the eye's
+Euler rotational components in the world frame of reference.
+
+% These errors are larger than those in Thurat due to the hill of
+% activity not being `perfect' Discussion point.
+
+\subsection{Saccade Latencies} \label{sec:results:latencies}
+
+To verify that our implementation of the brain model has the same
+functionality as that reported in \cite{cope_basal_2017}, we
+investigated the effect on saccadic response times of: target
+eccentricity; and any gap or overlap between fixation off-time and
+target on-time. We showed that the full model reproduces the `hockey
+stick' shape shown in Fig. 7 of \cite{cope_basal_2017} and discovered in
+experimental data \citep{reulen_latency_1984} for horizontal
+[Fig.~\ref{fig:latvsall}(a)], vertical [Fig.~\ref{fig:latvsall}(b)] and
+oblique saccades (not shown). The latency increases with eccentricity
+far from the fovea because the retinotopic mapping reduces the
+activity in the basal ganglia for more eccentric targets (see
+Fig.~\ref{fig:mapping}). Closer to the fovea, the \rvwt{effect of} the
+foveal mask \rvwt{on} the activity in FEF again leads to reduced input
+into the basal ganglia and an increased time to achieve disinhibition
+in SNr.
+
+% Figure 13
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{./figures/lat_vs_everything.png}
+\end{center}
+\caption{ Exploring saccade latencies. \bol{a)} Latency to first movement as a
+function of target eccentricity for horizontal targets. \bol{b)} Latency
+vs. eccentricity for vertical targets. \bol{c)} Latency vs. gap at three
+different luminance values. The data are shown alongside
+the \ccg~model results from Fig.~5 of \cite{cope_basal_2017} in blue,
+and the experimental results used in that model in red. The fixation
+luminance for the \ccg~curve was 0.5, the target luminance 0.6 and
+the target eccentricity was 8\dg. The difference between
+the \ccg~model data and the data from the current model results from
+the different mechanism by which activity in SC\_deep causes a
+movement, the differing target angle and the reduced fixation
+luminance used here. \bol{d)} The effect
+of the dopamine parameter on saccade latencies in gap, step and
+overlap conditions, for two different target luminances.  \bol{e)} Saccade
+vs. luminance showing gradual transition between reflexive and express
+behaviour.
+%f) Saccade duration vs. saccade eccentricity for horizontal
+%(rightwards), vertical (downwards) and 45\dg~oblique (down \& right) saccades.
+}
+\label{fig:latvsall}
+\end{figure}
+
+Fig.~\ref{fig:latvsall}(c) shows latencies achieved when varying the
+time between fixation offset and target onset. This is termed
+the \e{gap condition}; and is represented by a scalar value which, if
+positive, refers to a gap between fixation offset and target onset,
+and when negative, signifies an overlap, with the fixation luminance
+persisting past the time at which the target is illuminated. A
+negative gap is also termed an \e{overlap}.  Again, we verify the
+behaviour presented in \cite{cope_basal_2017}, explained as resulting
+from the inhibition of the cortico-thalamic loop by SNr. In the gap
+condition, when the fixation luminance is removed, activity in STN
+immediately begins to decay, allowing SNr activity to reduce and
+thereby reducing inhibition on thalamus, allowing the target luminance
+to build up quickly in FEF, thalamus and through the basal ganglia's
+striatum and SNr. The shape of the curves in Fig.~\ref{fig:latvsall}(c)
+matches the results in \cite{cope_basal_2017} for target luminances of
+1 and 0.6; for overlaps longer than 100~ms (gap $<$ -100~ms), the
+latency becomes constant; the saccade is programmed whilst the
+fixation is present, with the target luminance inducing sufficient
+activity in striatum to `break through' the SNr inhibition caused by
+the fixation. If the target luminance is reduced to 0.3, the balance
+is altered in favour of the fixation and the latency vs.~gap becomes
+approximately linear and equal to the overlap time plus around 100~ms.
+
+Fig.~\ref{fig:latvsall}(d) shows the effect of the dopamine parameter on
+saccade latencies in gap, step and overlap conditions. In general, the
+effect of decreasing the dopamine parameter was a smooth, monotonic
+and undramatic increase in saccade latency. However, the data for the
+overlap condition with a target luminance which was 3 times as bright
+as the fixation luminance was more interesting. Here we see a
+transition around a dopamine value if 0.7.  Below this value, the
+basal ganglia is not able to select the target luminance until the
+fixation is removed, reducing the excitatory drive from STN to SNr,
+and consequently the inhibition from SNr to the thalamo-cortical
+loop. For the target luminance 0.6, 0.7 dopamine allows the basal
+ganglia to select sufficiently well so that the target can build up in
+the thalamo-cortical loop, in spite of the fixation
+overlap.
+
+The relationship between latency and the target luminance is given in
+Fig.~\ref{fig:latvsall}(e). This shows latency for a 100~ms gap, step
+and 100~ms overlap conditions for a given fixation luminance of 0.2,
+and a horizontally located target at $\theta_{y}^{t}=\mathrm{-10}$\dg. For the
+gap condition, we see very short latencies for luminances of about
+0.75 and above.  Finally, the activity driving these express saccades
+is initiated by high firing rates in the superficial layer of SC
+(SCs), which then drives activity in thalamus and through the basal
+ganglia. A gradual transition from express saccades to reflexive
+saccades is observed as the contribution of the SCs becomes weaker and
+the drive from FEF into the thalamo-cortical loop becomes necessary to
+elicit a saccade.
+%
+A similar gradual transition, albeit for higher latencies is seen for
+the step condition. At higher target luminances, the SCs has a greater
+effect on the activity in the thalamo-cortical loop. However, the
+activity in STN caused by the fixation luminance increases the latency
+at all luminance values compared with the gap condition.
+%
+The overlap condition leads to increased latencies for luminances
+below 2.5, but meets the step condition above this value, at which the
+0.2 fixation luminance appears to have a negligible effect on the
+system.
+
+\subsection{Saccade sequences} \label{sec:results:sequences}
+
+We now present results derived from the fully parameterised and
+integrated model; where we took advantage of the fact that it is a
+closed loop system. This allowed us to present sequences of target
+luminances and allow the model to direct its fovea at the most salient
+target.
+
+\subsubsection{Out \& return}
+
+We investigated the behaviour of the model for saccade sequences.  In
+one experiment, we illuminated a fixation cross from 0~s until 0.4~s,
+followed by a target at (0,-10\dg) from 0.4~s until 0.8~s. Finally,
+the fixation was again shown from 0.8~s until the end of the
+simulation at 2~s. This induced a saccade to a 10\dg~eccentricity,
+followed by a return saccade back to the null point. We noticed some
+irregularities in the return saccades, which \rvw{were
+accurate}, but had a significant overshoot.  More perplexingly, if the
+target was switched repeatedly between 0\dg~and 10\dg, second and
+subsequent \e{outward} saccades also showed this overshoot. We found
+that the cause of these irregularties was the lack (in `TModel4') of
+any mechanism to reset the tonic neurons in the SBG after the first
+saccade. This resulted in TN activity in the left channel \e{and also}
+in the right channel. Interestingly, this ensured that, at least for a
+few, consecutive out-and-return saccades, the saccade accuracy was
+accidently relatively good, with trajectories resembling experimental data
+(\cite{bahill_trajectories_1979}, p.~6). \rvw{Had the return saccades not
+been so accurate, we may have noticed the lack of a tonic neuron reset
+mechanism and corrected this oversight earlier.} Such a mechanism
+is indeed proposed and included in the connectivity of the
+\cite{gancarz_neural_1998} model. We implemented this feature by adding an
+additional inhibitory input to the `integrator' SBG component of TModel4,
+driven by the contralateral EBN population, naming the new model
+`TModel5'.  Now, when the eye is directed towards an eccentric target
+which is then exchanged with a target at the null point, the EBN
+activity toward the null point will tend to extinguish the TN activity
+which was holding the eye at the eccentric position.  We verified that
+none of the single saccade results were affected by this modification.
+% This doesn't account for *all* cases where you'd want to remove the
+% TN activity. Imagine a saccade purely UP then a saccade to a
+% location purely RIGHT. You'd need to remove the TN activity on the
+% UP channel, but you'd not be inducing any DOWN with the new target.
+
+% Figure 14
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{./figures/outrtn.png}
+\end{center}
+\caption{ There and back - a saccade to a target, followed by return to the
+original fixation. \bol{a)} Out and return saccade to a target at
+(0,-10\dg). The outward trajectory is shown in blue, the return in pink.
+\bol{b)} Rotational components of the saccade shown in (a). \bol{c)} Outward and
+return trajectories for the saccade shown in (a) alongside saccades to
+three other targets.}
+\label{fig:outrtn}
+\end{figure}
+
+Fig.~\ref{fig:outrtn} shows the outward and return trajectories produced
+by the experiment with the TN reset mechanism. Panel (a) shows the $x$
+and $y$ rotation trajectory; panel (b) shows individual rotational
+components of the eye. Fig.~\ref{fig:outrtn}(c) shows out and return
+trajectories for three other saccade targets; horizontal, vertical and
+oblique. The trajectories have characteristic shapes and also show
+some stochastic variation caused by the noise in the model [see dashed
+trajectories in Fig.~\ref{fig:outrtn}(a)].
+
+The return trajectories (magenta lines) showed a distinctly different
+form from the outward trajectories. They overshot their destination
+(the null point) significantly. This resulted from the removal of the
+TN activity which was holding the eye at the eccentric target
+location. Removal of this activity, and thus the static force exerted
+by the corresponding extraocular muscle, meant that the eye was
+subject both to a new muscular force towards the null point
+\e{alongside} the restorative spring force of the lengthened rectus
+muscle. This stands as a shortcoming of the model.
+
+\subsubsection{Double steps}
+
+In another experiment, we probed the response of the model to double
+step stimuli of the type described in \cite{becker_analysis_1979}. In
+that work, the response of human subjects was investigated when shown
+stimuli at 15\dg~and 30\dg~eccentricity with variable delay between
+the stimuli. If the smaller eccentricity stimulus was shown first,
+followed by the more distal on the same side of the field of view,
+this was called a `staircase' presentation.
+% If the more distal stimulus preceded the 15\dg~stimulus (again with
+% both in the same hemifield), this was called `pulse undershoot'.
+We carried out a `staircase' presentation, shown in
+Fig.~\ref{fig:doublesteps}, where our small eccentricity luminance was
+at 8\dg~and our more distal luminance was at 12\dg~(both to the right
+of centre). \rvwt{The stimuli could not be presented at 15\dg~and
+30\dg~to match the experiment, because 30\dg~saccades were outside the
+range of the model.}
+
+% Figure 15
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{./figures/doublesteps.png}
+\end{center}
+\caption{ Double steps. The effect of illuminating a first target at 8\dg~or
+12\dg, followed by a second target at 12\dg~or 8\dg. \bol{a)} Horizontal
+rotation of the eye plotted vs.~time for a saccade to the 12\dg~target
+only (red), and to an 8\dg~target at 0.4~s followed by a 12\dg~target
+after 30~ms (blue) or 40~ms (black). The timings are indicated by
+vertical lines. When the second target is presented up to 30~ms after
+the initial target, the initial target has not had time to dominate
+the output saccade and a saccade to a location close to the second
+target is made. If the delay is 40~ms or more, the activity from the
+initial target has time to cause a built up of actiivty in SC\_deep
+and an initial saccade close to the first target is made, followed,
+after a longer than usual latency period, with a second saccade closer
+to the second target. In this graph, the mean of five separate
+simulations is plotted along with $\pm$1 standard deviation around the
+mean. \bol{b)} The $\theta_{x}$/$\theta_{y}$ trajectories corresponding to
+the data presented in (a).}
+\label{fig:doublesteps}
+\end{figure}
+
+We found that there was a critical time delay between the
+luminances of about 30~ms. If they were presented with a delay smaller
+than this value, then a single, slightly hypermetric saccade was
+made. This response type is called a \e{final angle response}. A delay
+greater than 30~ms between the stimuli would lead to double step
+saccades (a so-called \e{initial angle response}), with the first
+saccade arriving at 8\dg~(though with greater variability than
+normal), and a second saccade being made to a location hypometric of
+12\dg~after a pause of about 240~ms.  Fig.~\ref{fig:doublesteps}(a) shows
+the mean trajectories from 5 simulations of the staircase doublestep
+presentation alongside the result for a single saccade to the final
+angle of 12\dg. Dash-dot lines show $\pm$1 standard deviation about
+the mean. The corresponding trajectories are shown in
+Fig.~\ref{fig:doublesteps}(b).
+
+Inspection of the activity maps in FEF and SC\_deep (not shown)
+indicates that when the 8\dg~target is illuminated for 30~ms or more,
+the activity associated with this target angle is able to dominate the
+activity, hence the execution of a reasonably accurate saccade. The
+inhibitory feedback from the SBG then extinguishes activity in FEF,
+thalamus and SC, which means that a full 200~ms or more is required to
+allow activity in these populations to build up again in order to make
+the smaller saccade from 8\dg~to 12\dg. This is in contrast to
+experimental findings in which the corrective second saccade is often
+executed \e{more quickly} than if it were programmed on its
+own~\citep{becker_analysis_1979}.
+
+
+\section{Discussion} \label{sec:discussion}
+
+The aim of this study was to demonstrate the importance of modelling
+neurological systems \e{in concert with} the biomechanical systems
+with which they have evolved. We hypothesised that by
+combining existing neurophysiological models with an accurate model of
+a musculo-skeletal system, and then \rvw{closing the
+`agent-environment-agent' loop} by allowing the
+movements of the virtual muscles to modulate sensory feedback to the
+brain model, shortcomings in the constituent models would be revealed,
+leading to new knowledge.
+
+To demonstrate the validity of this closed-loop
+approach, we built an integrated model and then identified the
+modifications which were necessary to give it the ability to make
+accurate movements under one type of stimulus. We then examined its
+behaviour with other stimuli. We chose the oculomotor model as a basis
+for this study because it has only three degrees of freedom, making it
+one of the simplest musculo-skeletal systems. Furthermore, eye
+movements fall into several well-defined categories, each being
+controlled by separate brain circuits, we were therefore justified in
+modelling a system which produced only saccadic eye
+movements. Nevertheless, we are aware that we did not create a
+complete model of the system; no treatment of the cerebellum was
+attempted, justified because cerebellum appears to have only a minor
+effect on saccade accuracy \citep{dean_adaptive_2008}, probably
+correcting for slow to medium timescale changes in the physical
+dynamics of the eyeball \citep{dean_learning_1994}.
+
+To summarise our model integration: We combined
+the \ccg~model \citep{cope_basal_2017} with a saccadic burst generator
+model based on the work of \cite{gancarz_neural_1998}, using this to
+drive the input of a new biomechanical eye model. To achieve the
+spatial transformation from the retinotopic maps of the \ccg~model to
+the six `muscle channel' inputs for the saccadic burst generator, we
+used the mapping of \cite{ottes_visuomotor_1986} to produce
+parameterised weight maps along with an empirically discovered synergy
+for the torsional weight maps. We introduced an additional
+transformation to the brain model to achieve invariant sized hills of
+activity in superior colliculus to fulfil the invariant integral
+hypothesis of \cite{tabareau_geometry_2007}. We closed the loop using
+a software component which transformed a view of a world containing
+luminous cross shapes into the eye's frame of reference, given its
+instantaneous rotational state. This component also computed the
+inverse of the mapping from \cite{ottes_visuomotor_1986} to project
+the view retinotopically into the brain model.
+%
+This paper serves to describe how we achieved the integration in order
+to test our hypothesis, and we intend that the material and methods
+section, along with the model code itself, will help others to carry
+out similar studies. We will discuss what can be learned from an
+integrated model of a combined brain and biomechanical system, using
+our oculomotor system as an example and then consider how this study
+compares with other modelling and robotic studies of closed-loop
+systems.
+
+Our integration approach revealed three ways in which this model fails
+to provide a full understanding of the saccadic system. In each case,
+the issue is made clear \e{as a result of the integration}. This is
+not to say that other approaches may not also reveal shortcomings; we
+will see that one of our cases has been independently identified
+\citep{groh_effects_2011}.
+
+\subsection{The need for a widening projection field}
+
+The original combination of the \ccg~model with the theoretical weight
+maps of \cite{ottes_visuomotor_1986} and \cite{tabareau_geometry_2007}
+resulted in a model which was able to produce accurate saccades only
+along the principle rotational axes
+(Fig.~\ref{fig:errorsurfaceTM3}). Thus, \e{the integration of the models}
+suggested that an additional layer was required to achieve accurate
+saccades for oblique, as well as for horizontal and vertical
+saccades. Although the \e{need} for an invariant integral is discussed
+in \cite{tabareau_geometry_2007} as resulting from their theoretical
+study, the mechanism by which such an invariant Gaussian hill is
+generated is not. By combining the models, we were forced to consider
+this mechanism, and hypothesised that a widening projection field
+would be a candidate mechanism. The results of Fig.~\ref{fig:errorsurface}
+indicate that a substantial improvement in accuracy is indeed achieved
+by this new mechanism.
+
+\subsection{Saccades from non-null starting positions}
+
+The implementation of a biologically accurate model of the eye, and
+the closed-loop nature of the model makes it very natural to consider
+how the model will behave when making saccades from arbitrary starting
+positions, or how it would respond to a sequence of stimuli. This was
+the motivation for the out-and-return experiment (Fig.~\ref{fig:outrtn})
+as well as for the double step experiment (Fig.~\ref{fig:doublesteps}).
+We found that return saccades were substantially affected by the
+biomechanics of the eye, as the brain and brainstem model had no
+mechanism to account for the position-dependent restoring forces
+applied by the eye. This question has been addressed by other authors;
+\cite{groh_effects_2011} investigates the effect of
+initial eye position on stimulated saccades and finds a need for the
+signal in superior colliculus to be modulated by an eye position
+signal. \cite{ling_effects_2007} shows the existence of a position
+dependent firing rate offset in abducens neurons. Though we will not
+speculate here on the mechanism by which return saccades may be made
+accurate whilst also resetting the activity of tonic neurons in the
+SBG, it is interesting that in the model in which we omitted to reset
+TN activity (TModel4), we obtained relatively accurate out-and-return
+saccades which closely resembled experimental data.  We suggest that
+residual activity in TN populations may offer an explanation for how
+the restorative force exerted by the elastic oculomotor muscles is
+compensated for. A comparison of this idea with that
+of \cite{groh_effects_2011} (that there is a modulation, from a
+brainstem signal, of the SC readout) would make a subject for a future
+study. Although these existing studies have highlighted this issue,
+the inaccurate return saccades which the model makes from eccentric
+starting positions provide a clear example of the way in which
+integrating known models into a closed-loop system can highlight
+deficiencies in the model.
+
+\subsection{Inhibitory feedback from saccadic burst generator to brain}
+
+The third issue raised by the integration of the component models of
+the saccadic system has, like the return saccades, to do with
+resetting activity. In this case, rather than the reset of activity in
+the TN population in the brainstem, it is the question of how the
+activity in the \e{brain} model should be reset after each
+saccade. When a target luminance is projected onto the World
+population in the model, this induces activity which `reverberates' in
+loops through FEF, basal ganglia, SC and thalamus. The brainstem
+contains a mechanism to limit the timescale of a saccade (inhibitory
+feedback from EBN, via IBN to LLBN; see Fig.~\ref{fig:sbg}). However, if
+the activity in SC is not reset, then following the completion of the
+first saccade, a series of subsequent `staircase' saccades will be
+executed. There needs to be a mechanism to extinguish activity in SC,
+but also in FEF and thalamus, as activity in either of these
+populations can build up and eventually cause repeat activity in SC
+and another saccade. We added hypothetical inhibitory feedback
+connections to our model, such that the IBN populations in the SBG
+would inhibit activity in FEF, thalamus and SC\_deep (Fig.~\ref{fig:sbg}),
+preventing the occurrence of staircase saccades.
+
+An examination of the behaviour of the model when presented with
+`double-step stimuli' reveals a problem with our inhibitory feedback
+connections. We found that when double-step stimuli were presented (where
+an initial target at 8\dg~was replaced with a 12\dg~target after 30 or
+40~ms) and a double saccade was made [Fig.~\ref{fig:doublesteps}(a), black
+lines] the second saccade latency was \e{longer} even than the initial
+saccade. This contrasts with \cite{becker_analysis_1979} who find that
+second, corrective saccades occur with \e{shorter} latencies.  This
+suggests that the inhibitory reset signal implemented in this model is
+too strong or has the wrong timescales. This issue highlights the fact
+that connections \e{between} component models are quite as important
+as the connections within each model.
+
+% Inhibition experimental evidence
+\rvw{There is some evidence for an inhibitory projection to SC from the
+brainstem. \cite{corvisier_possible_1991} offer evidence for a
+projection from the propositus hypoglossi nucleus. This lies upstream
+from motoneurons and (in primates) encodes eye
+velocity \citep{dale_nucleus_2013}, rather than head movement
+velocity. Although the propositus hypoglossi does not lie in exactly
+the same functional location as our IBN population (instead it sits
+between TN and MN), it offers a possible inhibitory feedback signal
+proportional to eye velocity and may help to reduce activity in SC
+post-saccade.}
+%
+\rvwt{Alternatively, it is possible that activity in
+FEF and thalamus are reset via a `timed signal'. Feasibly, after
+activity in FEF exceeds a threshold, an internal, inhibitory feedback
+signal could be activated. This inhibition should have a timescale of
+sufficient duration to reduce activity in FEF, thalamus and, via an
+increase in inhibitory output from SNr, also in SC. Indeed, the
+cortical microcircuit contains a variety of morphologically distinct
+GABAergic neurons \citep{douglas_neuronal_2004} which could fulfil
+this functionality. A similar mechanism would then be required in SC,
+to reset activity generated by direct excitation via the
+retinal-collicular pathway which generates express saccades. Again, SC
+is a multi-layered structure, containing GABAergic interneurons
+\citep{munoz_lateral_1998,meredith_intrinsic_1998,helms_organization_2004,sooksawate_organization_2011}
+and there is mounting evidence that saccade dynamics are generated
+within
+SC \citep{kaneda_regulation_2008,goossens_optimal_2012,bayguinov_hard-wired_2015}. Thus,
+a more complex treatment of the SC and FEF regions in the model may
+well obviate the need for inhibitory feedback from brainstem to SC,
+FEF and thalamus.}
+
+%
+% A couple of last points to round up the discussion of THIS model
+%
+
+% Reviewer 1's point 2.
+\rvw{Considering whether a feedback connection, or internal,
+recurrent inhibition is responsible for activity-reset in the brain
+model raises a more general question about modelling the central
+nervous system. We should consider whether inaccuracies within one
+part of the model may propagate errors through the closed-loop system
+that cannot be counteracted by another part of the simulation. There
+is no way to know, from integrating sub-systems, which properties hold
+true, and which are false. However, by integrating models and
+examining the behaviour of the combined model, we are presented with
+the right questions to ask of the model and the experimental data. In
+the case of activity-reset, this is to re-assess whether there exists
+inhibitory feedback from brainstem to the SC and FEF regions, and to
+find out how an integrated model with self-regulatory mechanisms in SC
+and FEF may perform.}
+
+% In a model of SC, \cite{massone_neural-network_1994} suggests that
+% internal mechanisms, learned via a supervised method, are sufficient
+% to generate dynamics.
+
+% Cerebellum omitted
+The omission of the cerebellum will not have escaped the reader's
+notice.  Whilst many of the nuclei known to be involved in the
+production of saccadic eye movements are incorporated within the
+model, the cerebellum is not. The cerebellum is known to play an
+important r\^ole in saccade programming
+\citep{dean_learning_1994, schweighofer_model_1996,quaia_extent_2000,kleine_saccade-related_2003}.
+It may be able to completely replace the functionality of the
+colliculus when
+lesioned \citep{aizawa_reversible_1998,lefevre_distributed_1998}.
+However, this r\^ole is typically considered to be one of accuracy
+tuning
+\citep{barash_saccadic_1999,dean_learning_1994}; operating as an additive
+model. Furthermore, saccades made by individuals with cerebellar
+ataxias perform with only moderate loss of saccade accuracy
+\citep{barash_saccadic_1999,federighi_differences_2011}. Because we
+did not address learning in our model, and because our aim was to
+demonstrate the utility of integrating brain with biomechanics in
+order to highlight deficiencies, we considered the omission of the
+cerebellar nuclei acceptable in the present work.
+
+% Component stretching/main sequence not addressed
+We have not addressed the question of saccade duration in this paper.
+Saccade duration is of interest in models which produce two (or three)
+dimensional saccades, because the dynamics of a saccade follow well
+known relationships with the saccade eccentricity, regardless of the
+saccade angle. This causes a problem for models (such as the present
+one) for which some of the dynamic behaviour is generated within
+orthogonal components.  For example, saccade duration increases with
+target eccentricity. A 10\dg~eccentricity oblique (45\dg~up and right)
+saccade is composed (approximately) of a 7\dg~upwards component and a
+7\dg~rightwards component. If the component based model is responsible
+for the dynamics, then the 10\dg~oblique saccade would be expected to
+have the dynamics of a 7\dg~up or 7\dg~right saccade. This is not
+found in practice, and the components are said to have been stretched,
+hence the name for this effect `component
+stretching'. The \cite{gancarz_neural_1998} model is reported to take
+account of the component stretching effect via the OPN neuron
+population. We did not find this effect in our implementation of the
+model; the duration of oblique saccades at a given eccentricity was
+always substantially different from the duration of the corresponding
+purely vertical or horizontal saccade. Because there is a somewhat
+complicated interplay between the dynamics of the superior colliculus
+driving the dynamic system of the SBG, we feel this is outside the
+scope of the current work and a subject for a future paper.
+
+
+\subsection{Comparison with other studies}
+
+\rvw{We have called this closed-loop, biomimetic modelling approach \e{computational
+neurobehaviour}, in which a complete, behaving model is constructed,
+with attention paid to the biological accuracy of each brain and
+biomechanical sub-system.
+% Address final comment from Reviewer 1
+\rvwf{We are by no means the first researchers to consider this
+interaction between brain and biomechanics. Integrative approaches to
+motor control have been referred to as \e{neuromechanics} by some
+authors~\citep{nishikawa_neuromechanics:_2007}. This field appears to
+have developed from detailed and low level studies of the mechanics of
+muscle control systems, focussing on the neural systems `closest' to
+the muscle~\citep{chiel_brain_2009}. It is evident that a recognition
+of the importance of sensory input to these systems has evolved within
+this field. Indeed, \cite{edwards_neuromechanical_2010} specifically
+reviews closed-loop, \e{neuromechanical simulations} of behaviour in
+three organisms; fly, locust and cat. The term neuromechanical
+simulation \citep{pearson_assessing_2006,edwards_neuromechanical_2010}
+is analogous to our computational neurobehaviour, although it does not
+emphasise the important \e{behavioural} aspect of the works.}
+
+There also exist many
+closed-loop \e{robotic} systems which receive sensory input from the
+world, process that input and generate behaviour by activating motor
+systems
+\citep{yu_development_2004,fend_artificial_2004,pearson_whiskerbot:_2007}. We
+now consider whether robotic systems which model biological
+components \e{in hardware} could fall within our new category.
+%
+Using a number of examples, we will attempt to illustrate what we mean
+by computational neurobehaviour. We'll consider which examples fall
+into the new category and which are covered by other fields of
+robotics or computational neuroscience.}
+
+\rvw{\cite{pearson_whiskerbot:_2007} describe a wheeled robot which has a
+biomimetic whisker sensory system, along with a biomimetic neural
+system imitating the operation of the rat's sensory processing and
+controlling the movement of the robot. \cite{fend_artificial_2004} is
+a similar, wheeled, whiskered robot, with a repertoire of three
+behaviours organised in a subsumption architecture. In both robots,
+actions that are selected within the brain model drive a
+non-biologically accurate motor control algorithm to achieve
+rotational and translational movements. Although both have sensory and
+processing systems which are guided by biology, the non-biological
+motor control stage prevents us from considering these as being
+studies of computational neurobehaviour. Instead, we would refer to
+these as \e{embodied models}, as described
+in \cite{bolado-gomez_biologically_2013}, a study in which the
+learning behaviour of a biomimetic `core' model is embedded within an
+engineered `architecture' (a wheeled robot) which closes the
+agent-environment loop.}
+%
+\rvw{\cite{yu_development_2004} report on a biomimetic fish robot,
+whose motor system closely resembles that of the real fish. The robot
+is able to operate in a closed-loop mode, where sensory input is
+provided to the non-biomimetic control algorithms from overhead
+cameras, but its control system is also able to operate in open-loop
+mode. Neither the control system, nor the sensory system are
+biologically accurate and we would not describe this study as
+computational neurobehaviour. Nevertheless, the biomechanically accurate
+motor system they describe has the potential to form part of a
+computational neurobehavioural study of swimming behaviour in the
+fish, if it were combined in a loop with suitable sensory input and
+sensory processing models.}
+%
+\rvw{\cite{knips_neural_2017} is a report of a reach-and-grasp robot
+arm controlled via a dynamic neural field brain model. The sensory
+input for this system---its `eyes'---is a Microsoft Kinect sensor; it
+also has somatosensory feedback from the fingers of the robot's
+hand. The neural field `brain' controls the seven degrees of freedom
+of the arm to carry out the reach-and-grasp action. While this robot
+has closed-loop control and is clearly inspired by biology, it remains
+a study of robotics and of the improvement of the control of the
+robot's reach-and-grasp function, rather than a study which aims to
+learn more about the biology of a primate arm. For this reason, we
+would describe the study of \cite{knips_neural_2017} as an embodied
+model.}
+
+\rvw{To summarise, in most closed-loop robotic studies which
+incorporate neuromimetic models, the hardware forms an `engineered
+surround architecture' allowing for the examination of the behaviour
+of the embodied model. However, suitably \e{biomimetic} hardware such as
+the fish in \cite{yu_development_2004} would not be excluded from
+computational neurobehavioural studies, especially if movement is by
+biomimetic muscle actuators \citep{wilson_cerebellar-inspired_2016,ohalloran_review_2008}.}
+
+\rvw{Modern programming platforms, often originating from the
+computer game industry, make it relatively easy to model a virtual
+environment. Consequently, an increasing number of studies into
+robotic or neuromimetic control are carried out with virtual robots
+operating within a virtual environment.}
+%
+\rvwf{This approach is taken in the studies described
+in \cite{edwards_neuromechanical_2010}. \cite{dickson_integrative_2006}
+describes an integrated model of Drosophila flight in which visual
+input is processed by an algorithmic (that is, non-neural) `brain' to
+control a biomechanically accurate representation of the fly. As the
+virtual fly traverses its environment, its visual input updates,
+closing the loop of the simulation. \cite{cope_model_2016} is a recent
+study which omits the biomechanically accurate component of the model
+but could provide the biologically plausible brain to make a
+computational neurobehavioural fly
+model. \cite{cofer_neuromechanical_2010} use an environment called
+AnimatLab \citep{cofer_animatlab:_2010} to simulate the locust's
+jumping mechanism in an open-loop, software-only investigation. As
+this appears to be a feed-forward model without sensory feedback, we
+would describe it as an input-assumption model.}
+%
+\rvw{\cite{nguyen_saccade_2014} and
+\cite{thurat_biomimetic_2015} are two studies of the oculomotor system
+which model sensory input, neural control \e{and} motor output in
+software. These studies fall outside the remit of computational
+neurobehaviour only because they omit to close the sensory
+loop. \cite{dewolf_spiking_2016} describes a reach model comprising a
+simplified virtual arm (with fewer degrees of freedom than a primate
+arm), and a biologically inspired brain model. This model also omits
+to close the sensory feedback loop and we consider it a computational
+neuroscience study of a (virtually) embodied model.}
+%
+
+% Reviewer 1's point 4.
+\rvw{There are also experimental closed-loop approaches to
+understanding sensorimotor control. \cite{ejaz_closed-loop_2013}
+places a fly in a fixed position, and couples it with a free-to-move
+robot. The sensory input collected by the robot is projected onto the
+eyes of the fly, and activity from a selected neuron in the fly's
+brain is used to drive a control system for the robot's
+movements. This allows the experimenters to study the behaviour of the
+fly's brain operating in a closed-loop condition that is more natural
+than the open-loop condition that many other experimental techniques
+mandate. The results from closed-loop experiments will undoubtedly
+inform future neurobehavioural models.}
+
+%
+% Now the closing section of the discussion.
+%
+
+\rvw{Thus, while there are many models that close the
+agent-environment loop and display partial biological plausibility,
+the biomimetic features are usually confined to a sub-system of the
+entire model. This leads us to formalise a definition of computational
+neurobehaviour as: \e{The study of biological sensory-motor system
+behaviour using biologically accurate models of sensory input, brain
+and motor sub-systems operating in a closed-loop}.}
+%
+% Another computational neurobehavioural study?
+\rvw{We believe our oculomotor model is one of the first such models
+using this approach and shares many features with that
+of \cite{arena_motor-skill_2017} which describes a robotic insect
+system based on the fly species \e{Drosophila Melanogaster}. It has
+biomimetic insect legs implemented in a virtual robot and a
+neuromimetic brain. Closing the loop is a visual sensory input system
+which is able to determine the distance to an
+on-coming obstacle and the obstacle's height. The authors demonstrate that the
+virtual robot is able to learn to climb in a realistic
+manner and suggest it may be compared with experimental
+data from future Drosophila experiments addressing obstacle climbing
+and learning. The visual system is not described in detail, but if it
+is modelled in a biologically plausible manner, then this work may
+reasonably be described as a computational neurobehaviour study,
+contemporaneous with our own.}
+
+
+% Significance of this work.
+%% This work represents a step forward in the modelling of neuromuscular
+%% systems, not because it significantly advances any of the constituent
+%% models, but because it \e{integrates} the models into a
+%% complete, \e{behaving} system.  This is not the first integrated brain
+%% model composed of separately developed components. The works
+%% of \cite{nguyen_saccade_2014} and
+%% \cite{thurat_biomimetic_2015} are both based
+%% on an example of a brain model which drives a simple, second order
+%% model of the eye. \cite{dewolf_spiking_2016} describes a reach model
+%% which integrates models of cortex and cerebellum to drive a two
+%% degree-of-freedom arm model. Both of these example systems
+%% nevertheless operate using `curated' inputs supplied by the modeller.
+
+%% In contrast, the current work allows the state of the system to
+%% determine the input delivered to the model. The modeller only curates
+%% the state of the world at each time point, but the actual input to the
+%% model depends on the eye's rotational state.  This is, to our
+%% knowledge, the first model which integrates the brain with an accurate
+%% biological system and closes the loop in this way, enabling the
+%% system to reproduce behaviour.  As such, it offers a platform for
+%% testing more complex saccadic behaviour such as antisaccades or
+%% saccades in the presence of distractor stimuli. We believe that by
+%% building closed loop systems which express behaviour, we, and others
+%% will develop a new field of \e{computational neurobehaviour}, which
+%% will share themes from neuroscience, artificial intelligence, decision
+%% science and embodied robotics.
+
+
+\section*{Disclosure/Conflict-of-Interest Statement}
+
+The authors declare that the research was conducted in the absence of
+any commercial or financial relationships that could be construed as a
+potential conflict of interest.
+
+
+\section*{Author Contributions}
+
+SJ, AB and AC implemented existing parts of the model in SpineML. AB
+developed the saccade generator brainstem model. SJ performed the
+technical and scientific integration of the biomechanical eye.  CP and
+KM developed the biomechanical eye model. SJ wrote the manuscript; SA,
+AB, KG and KM contributed to the manuscript. KG conceived the project.
+
+
+\section*{Acknowledgements}
+
+\textit{Funding\textcolon} European Union FP7 Grant 610391 `NoTremor'.
+
+
+\section*{Supplemental Data}
+
+The model specification, results and all code required to reproduce
+the results of this work are available at:
+https://github.com/ABRG-Models/OMM\_NeuroMuscular
+
+
+\selectlanguage{English}
+\bibliographystyle{frontiersinSCNS_ENG_HUMS}
+% The bibliography NoTremor.bib is the one exported from Zotero.
+\bibliography{NoTremor}
+
+\end{document}
