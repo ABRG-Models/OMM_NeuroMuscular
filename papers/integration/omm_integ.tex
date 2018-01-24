@@ -34,9 +34,9 @@
 
 \def\keyFont{\fontsize{8}{11}\helveticabold }
 \def\firstAuthorLast{James {et~al.}}
-\def\Authors{Sebastian James\,$^{1,2}$, Chris Papapavlou\,$^5$, Alexander Blenkinsop\,$^{1,2}$, \\
-  Alexander Cope\,$^3$,  \\
-  Sean Anderson\,$^{2,4}$, Konstantinos Moustakas\,$^5$, Kevin Gurney\,$^{1,2,*}$}
+\def\Authors{Sebastian S.~James\,$^{1,2}$, Chris Papapavlou\,$^5$, Alexander Blenkinsop\,$^{1,2}$, \\
+  Alexander J.~Cope\,$^3$,  \\
+  Sean Anderson\,$^{2,4}$, Konstantinos Moustakas\,$^5$, Kevin N.~Gurney\,$^{1,2,*}$}
 
 \def\Address{
 $^{1}$Adaptive Behaviour Research Group, Department of Psychology,
@@ -51,7 +51,7 @@ $^{5}$Department of Electrical and Computer Engineering,
   The University of Patras, Patras, Greece
 }
 
-\def\corrAuthor{Kevin Gurney}
+\def\corrAuthor{Kevin N.~Gurney}
 \def\corrAddress{Department of Psychology, The University of Sheffield,
   Western Bank, Sheffield, S10 2TP, UK}
 \def\corrEmail{k.gurney@sheffield.ac.uk}
@@ -617,7 +617,7 @@ each unit in Str\_D1 projects to a counterpart SNr$_j$ in SNr with
 some weight $w_{max}$, but also connects to neighbouring nodes in SNr
 with a weight given by $w_{max}.G(d)$, where $G(d)$ is a circularly
 symmetric, 2D-Gaussian which is a function of distance $d$ from
-SNr$_j$ [Fig.~\ref{fig:ccg_model}(c)]. A similar scheme applies for
+SNr$_j$ [Figs.~\ref{fig:ccg_model}(c)\&(d)]. A similar scheme applies for
 the connectivity from Str\_D2 to GPe and for a number of the other
 connections in the \ccg~model; in the SpineML implementation of the
 model, this connectivity scheme is named `GaussianKernel'.
@@ -1188,7 +1188,9 @@ eye orientation.
 % KM
 \rvwt{An illustration of the biomechanical eye model is given in
 Figure \ref{fig:bioeye}(a), while Figure \ref{fig:bioeye}(b) depicts
-the head model used in the proposed framework.}
+the head model used in the proposed
+framework. Figure \ref{fig:bioeye}(c) shows a cross-sectional view of
+the eye and the spherical screen on which targets were projected.}
 
 % KM
 \rvwt{Two types of muscle models of different complexity are supported. The
@@ -1407,27 +1409,31 @@ and distal from the fovea.
 % Try to make this clearer for Reviewer 2, Methods Comments, point 5.
 \rvwt{To understand the need for this invariance,
 consider the effect of a 2D Gaussian hill in SC\_deep which elicits a
-successful horizontal saccade of 10\dg. Activity from the 2D Gaussian,
-passing through the weight maps will excite the superior and inferior
-rectus channels by an equal, balanced amount, so these cancel out,
+successful horizontal saccade of 10\dg~using the weight maps shown in
+Figures 7(a)--(c). Activity from the 2D Gaussian (schematically
+represented as the large purple dashed circle in Figure 7C),
+passing through the weight maps will excite the superior (not shown) and inferior
+rectus [Figure 7(b)] channels by an equal, balanced amount, so these cancel out,
 allowing the eye movement to be horizontal. The amount of activation
 passed to the lateral rectus muscle results from a convolution of the
 Gaussian and the exponential component of the weight map relationship
 in Eq.~\ref{eq:tabareau_eq3}. If the Gaussian hill now appears further
 along the collicular surface, coding for a 20\dg~saccade, \e{and also
-becomes smaller}, we can still argue that the vertical component
+becomes smaller} (small purple dashed circle), we can still argue that the vertical component
 signals to superior/inferior rectus muscles will cancel out, and we
 could imagine that the exponential component of
 Eq.~\ref{eq:tabareau_eq3} is correctly parameterised to compensate for
-the smaller hill. However. Now consider a 2-D Gaussian hill which
-codes for a 10\dg~saccade which is `up, and to the right' in equal
-proportions. That means that the hill will sit on the boundary between
-the weight maps for the `up', and the `right' muscles. Now, if the
-hill moves to the $r=\mathrm{20}$\dg~location on the colliculus, \e{and also
+the smaller hill. Now consider a 2-D Gaussian hill which
+codes for a 10\dg~saccade which is `down, and to the left' in equal
+proportions (large red circle). That means that the hill will sit on the boundary between
+the weight maps for the `down', and the `left' muscles. Now, if the
+hill moves to the $r=\mathrm{20}$\dg~location on the colliculus (small
+red circle), \e{and also
 reduces in size}, it will excite only the periphery of the sine; the
 exponential increase of the map along $r$ is not guaranteed to
 compensate for the reduction in the convolution of the Gaussian hill
-and the sinusoidal component of the weight map.}
+and the sinusoidally varying component of the weight map along the $\phi$ axis in
+Figure 7(a).}
 % Add figure for this.
 
 This led us to hypothesise that the retinotopic mapping \rvwt{to the
@@ -2625,7 +2631,7 @@ about the $y$ axis. The $y$ axis points up, out of the page.}
 \begin{center}
 \includegraphics[width=0.9\textwidth]{./figures/model_framework.png}
 \end{center}
-\caption{ The model framework. The model is specified using a combination of
+\caption{ The model framework. \bol{a)} The model is specified using a combination of
 declarative XML files and hand-coded C++. These original model
 specifications are shown within the blue box. \bol{b)} The green box shows
 the processes which are applied to the model specification to produce
@@ -2646,7 +2652,7 @@ executable. In practice, this call is made by \stob.}
 \caption{ \bol{a)} \& \bol{b)} Tabareau-style weight maps for `left' and `down' components
 of a saccade. \bol{c)} The two weight maps in (a) and (b) shown on the same
 graph, viewed from above. Circles show the locations of potential
-hills of activity. Purple, dashed circles encode saccades down;
+hills of activity. Purple, dashed circles encode saccades left;
 red circles encode saccades with both a left and a down component. \bol{d)}
 Showing the additional deep layer of superior colliculus (SC\_deep2)
 and the output layer (SC\_avg, named for the fact that in an earlier
@@ -2662,7 +2668,8 @@ between SC\_deep and SC\_deep2.}
 \includegraphics[width=0.8\textwidth]{./figures/sacc_vs_targetpos.png}
 \end{center}
 \caption{ Accuracy of single saccades at different target eccentricities for fixation luminance
-0.2 and target luminance 0.3.}
+0.2 and target luminance 0.3. \bol{a)} Horizontal rotations about the
+y axis. \bol{b)} Vertical rotations of the eye about the x axis.}
 \label{fig:saccvstarg}
 \end{figure}
 
@@ -2674,7 +2681,13 @@ between SC\_deep and SC\_deep2.}
 \caption{ Weight maps for the connections between the output layer of superior
 colliculus and the six long lead burst neurons of the saccadic burst
 generator model. Each map increases exponentially with increasing $r$,
-multiplied by cosine($\phi$) about its `active' axis.}
+multiplied by cosine($\phi$) about its `active' axis. \bol{a)} Weight
+map for leftward movements which innervates the lateral rectus in this
+single left-eye model. \bol{b)} Map for downward movements; innervates
+the inferior rectus. \bol{c)} Superior oblique muscle weight
+map. \bol{d)} Weight map for rightward movements/medial rectus
+muscle. \bol{e)} Weight map for the superior rectus muscle which
+generates upward movements. \bol{f)} Inferior oblique map.}
 \label{fig:weightmaps}
 \end{figure}
 
