@@ -73,8 +73,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="352.85726"
-     inkscape:cy="182.21987"
+     inkscape:cx="256.12798"
+     inkscape:cy="242.30088"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -83,9 +83,9 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:window-width="2560"
-     inkscape:window-height="1364"
+     inkscape:window-height="1335"
      inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:window-y="35"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
@@ -95,7 +95,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -107,13 +107,13 @@
     <image
        sodipodi:absref="/home/seb/models/OMM_NeuroMuscular/papers/integration/figures/weight_maps_theory.png"
        xlink:href="weight_maps_theory.png"
-       y="0.57648659"
-       x="-1.6964247"
-       id="image3463"
-       preserveAspectRatio="none"
-       height="461.50153"
+       sodipodi:insensitive="true"
        width="745.32642"
-       sodipodi:insensitive="true" />
+       height="461.50153"
+       preserveAspectRatio="none"
+       id="image3463"
+       x="-1.6964247"
+       y="0.57648659" />
     <g
        style="font-style:normal;font-weight:400;font-size:6.94443989px;font-family:Monospace;fill:#800080;fill-opacity:0.39215698;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
        id="g56"
@@ -939,12 +939,26 @@
        id="path5677"
        inkscape:connector-curvature="0" />
     <ellipse
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#d72500;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path4804-7"
-       cx="256.39755"
-       cy="306.00943"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#b657e4;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3,6;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4804-7-0-9"
+       cx="320.03714"
+       cy="329.74805"
+       rx="6.4043593"
+       ry="6.004087" />
+    <ellipse
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#4dee4f;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 6;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4804-3"
+       cx="256.03766"
+       cy="284.79623"
        rx="22.857143"
        ry="21.428572" />
+    <ellipse
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#4dee4f;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 6;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4804-7-0-9-6"
+       cx="319.67725"
+       cy="284.69577"
+       rx="6.4043593"
+       ry="6.004087" />
     <ellipse
        style="opacity:1;fill:none;fill-opacity:1;stroke:#d72500;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path4804-7-0"
@@ -953,11 +967,11 @@
        rx="6.4043593"
        ry="6.004087" />
     <ellipse
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#b657e4;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3,6;stroke-dashoffset:0;stroke-opacity:1"
-       id="path4804-7-0-9"
-       cx="320.03714"
-       cy="329.74805"
-       rx="6.4043593"
-       ry="6.004087" />
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#d72500;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4804-7"
+       cx="256.39755"
+       cy="306.00943"
+       rx="22.857143"
+       ry="21.428572" />
   </g>
 </svg>
