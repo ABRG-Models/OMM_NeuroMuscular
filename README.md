@@ -5,7 +5,8 @@ work carried out in Kevin Gurney's group at the ABRG at The University of
 Sheffield. The main paper for this
 model is "Integrating brain and biomechanical models - a new paradigm
 for understanding neuro-muscular control". The paper can be found at
-papers/integration/omm_integ.pdf
+papers/integration/omm_integ.pdf. The published (open-access) version is at
+https://www.frontiersin.org/articles/10.3389/fnins.2018.00039/full
 
 It builds on work which has been carried out by the following individuals: 
 Jon Chambers, Alex Cope, Alex Blenkinsop, Seb James, Jen Lewis and
