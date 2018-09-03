@@ -2,6 +2,7 @@
 % horizontal movements.
 r = struct();
 rr = [];
+rr2 = [];
 
 lumval=1;
 
@@ -26,8 +27,8 @@ for i = [1 : llen]
     % For expected size of rr, consult sacc_vs_targetpos.m
     sz_2 = size(result.(resdatname))(2);
 
-    if (sz_2 == 14)
-        rr = [rr; result.(resdatname)];
+    if (sz_2 >= 14)
+        rr = [rr; result.(resdatname)(1:14)];
     end
 
 end
@@ -38,6 +39,15 @@ end
 %
 % sort rr on target position value
 rr = sortrows(rr,2);
+
+rrr = struct();
+for da = unique(rr(:,14))'
+    da
+    num2str(da)
+    dname = ['da' num2str(da)];
+
+    rrr.(dname) = rr(rr(:,14)==da,:);
+end
 
 % Achieved position (Rot Y)
 figure(62);
@@ -51,12 +61,18 @@ legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))])
 title ('Horizontal');
 
 % Latency
-figure(65);
-errorbar (rr(:,2),rr(:,12),rr(:,13),'o-')
-xlabel('Target y');
-ylabel('Latency (ms)');
-legend(['Lum: ' num2str(rr(1,5)) ' Dopa: ' num2str(rr(1,14))]);
-title ('Horizontal');
+fs = 24;
+figure(65); clf; hold on;
+for da = unique(rr(:,14))'
+    dname = ['da' num2str(da)];
+    errorbar (-rrr.(dname)(:,2),rrr.(dname)(:,12),rrr.(dname)(:,13),'o-')
+end
+xlabel('Target eccentricity (deg)', 'fontsize', fs);
+ylabel('Latency (ms)', 'fontsize', fs);
+h_l = legend(['DA: ' num2str(rrr.('da0.3')(1,14))], ['DA: ' num2str(rrr.('da0.7')(1,14))], ['DA: ' num2str(rr3(1,14))]);
+set (h_l, 'fontsize', fs)
+title ('Horizontal', 'fontsize', fs);
+set(gca, 'fontsize', fs);
 
 % Output for Veusz
 output_veusz = 1

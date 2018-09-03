@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LL:SpineML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.shef.ac.uk/SpineMLNetworkLayer" xmlns:LL="http://www.shef.ac.uk/SpineMLLowLevelNetworkLayer" xsi:schemaLocation="http://www.shef.ac.uk/SpineMLLowLevelNetworkLayer SpineMLLowLevelNetworkLayer.xsd http://www.shef.ac.uk/SpineMLNetworkLayer SpineMLNetworkLayer.xsd" name="FEFOnly">
+    <LL:Population>
+        <LL:Annotation>
+            <SpineCreator>
+                <xPos value="-4.61474"/>
+                <yPos value="12.2578"/>
+                <animSpeed value="0.2"/>
+                <aspectRatio value="1.66667"/>
+                <colour red="0" green="255" blue="0"/>
+                <size value="1"/>
+                <tag value="1"/>
+                <x3D value="0"/>
+                <y3D value="0"/>
+                <z3D value="-29"/>
+                <is_visualised value="0"/>
+            </SpineCreator>
+        </LL:Annotation>
+        <LL:Neuron name="World" size="2500" url="WorldToBrain.xml">
+            <Property name="thrsh" dimension="?">
+                <FixedValue value="500.05"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile0.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="FEF_add_noise">
+            <LL:Annotation>
+                <SpineCreator>
+                    <DrawOptions style="4" showlabel="0"/>
+                    <start x="-5.02814" y="12.7583"/>
+                    <curves>
+                        <curve>
+                            <C1 xpos="-4.94649" ypos="13.9642"/>
+                            <C2 xpos="-5.01" ypos="14.72"/>
+                            <end xpos="-3.46559" ypos="14.5094"/>
+                        </curve>
+                    </curves>
+                </SpineCreator>
+            </LL:Annotation>
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="World to FEF_add_noise Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="World to FEF_add_noise Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Annotation>
+            <SpineCreator>
+                <xPos value="1.83017"/>
+                <yPos value="14.6852"/>
+                <animSpeed value="0.2"/>
+                <aspectRatio value="1.66667"/>
+                <colour red="0" green="0" blue="0"/>
+                <size value="1"/>
+                <tag value="4"/>
+                <x3D value="0"/>
+                <y3D value="0"/>
+                <z3D value="19"/>
+                <is_visualised value="0"/>
+            </SpineCreator>
+        </LL:Annotation>
+        <LL:Neuron name="FEF" size="2500" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="noise" dimension="?">
+                <FixedValue value="0.01"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile7.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile8.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="sa" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile9.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+    </LL:Population>
+    <LL:Population>
+        <LL:Annotation>
+            <SpineCreator>
+                <xPos value="-2.6314"/>
+                <yPos value="14.5701"/>
+                <animSpeed value="0.2"/>
+                <aspectRatio value="1.66667"/>
+                <colour red="0" green="0" blue="0"/>
+                <size value="1"/>
+                <tag value="1"/>
+                <x3D value="0"/>
+                <y3D value="0"/>
+                <z3D value="0"/>
+                <is_visualised value="0"/>
+            </SpineCreator>
+        </LL:Annotation>
+        <LL:Neuron name="FEF_add_noise" size="2500" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="20"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="noise" dimension="?">
+                <FixedValue value="0.2"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile42.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile43.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="sa" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile44.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="FEF">
+            <LL:Annotation>
+                <SpineCreator>
+                    <DrawOptions style="4" showlabel="0"/>
+                    <start x="-1.79865" y="14.6347"/>
+                    <curves>
+                        <curve>
+                            <C1 xpos="-1.24905" ypos="14.6758"/>
+                            <C2 xpos="-0.0604393" ypos="14.6651"/>
+                            <end xpos="0.997224" ypos="14.7101"/>
+                        </curve>
+                    </curves>
+                </SpineCreator>
+            </LL:Annotation>
+            <LL:Synapse>
+                <ConnectionList>
+                    <LL:Annotation>
+                        <SpineCreator>
+                            <Script text="&#10;#PARNAME=sigma #LOC=1,1&#10;#HASWEIGHT&#10;&#10;def connectionFunc(srclocs,dstlocs,sigma):&#10;&#10;  import math&#10;&#10;  # Corrected normterm (2015/01/16):&#10;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#10;&#10;  i = 0&#10;  out = []&#10;  for srcloc in srclocs:&#10;    j = 0&#10;    for dstloc in dstlocs:&#10;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#10;&#10;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#10;&#10;      if gauss &gt; 0.001:&#10;        #sys.stdout.write('gauss&gt;0.0001: i={0} gauss={1}'.format( i, gauss))&#10;        conn = (i,j,0,gauss)&#10;        out.append(conn)&#10;&#10;      j = j + 1&#10;    i = i + 1&#10;  #sys.stdout.write('out length: %d' % len(out))&#10;  return out&#10;" name="GaussianKernel" sigma="1"/>
+                            <Config weightProperty="w"/>
+                        </SpineCreator>
+                    </LL:Annotation>
+                    <BinaryFile file_name="conn_FEF_add_noise_to_FEF_syn0.bin" num_connections="87360" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay dimension="ms">
+                        <FixedValue value="50"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="FEF_add_noise to FEF Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile23.bin" num_elements="87360"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="FEF_add_noise to FEF Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+</LL:SpineML>

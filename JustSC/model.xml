@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LL:SpineML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.shef.ac.uk/SpineMLNetworkLayer" xmlns:LL="http://www.shef.ac.uk/SpineMLLowLevelNetworkLayer" xsi:schemaLocation="http://www.shef.ac.uk/SpineMLLowLevelNetworkLayer SpineMLLowLevelNetworkLayer.xsd http://www.shef.ac.uk/SpineMLNetworkLayer SpineMLNetworkLayer.xsd" name="JustSC">
+    <LL:Population>
+        <LL:Annotation>
+            <SpineCreator>
+                <xPos value="-3.19812"/>
+                <yPos value="9.06841"/>
+                <animSpeed value="0.2"/>
+                <aspectRatio value="1.66667"/>
+                <colour red="255" green="0" blue="0"/>
+                <size value="1"/>
+                <tag value="2"/>
+                <x3D value="0"/>
+                <y3D value="0"/>
+                <z3D value="30"/>
+                <is_visualised value="1"/>
+            </SpineCreator>
+        </LL:Annotation>
+        <LL:Neuron name="Retina_1" size="2500" url="LINret.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile3.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile4.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="SC_sup">
+            <LL:Annotation>
+                <SpineCreator>
+                    <DrawOptions style="4" showlabel="0"/>
+                    <start x="-2.35353" y="9.03523"/>
+                    <curves>
+                        <curve>
+                            <C1 xpos="-1.51178" ypos="9.03704"/>
+                            <C2 xpos="-2.45156" ypos="9.50837"/>
+                            <end xpos="-1.35669" ypos="9.43698"/>
+                        </curve>
+                    </curves>
+                </SpineCreator>
+            </LL:Annotation>
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Retina_1 to SC_sup Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Retina_1 to SC_sup Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Annotation>
+            <SpineCreator>
+                <xPos value="-0.522816"/>
+                <yPos value="9.41634"/>
+                <animSpeed value="0.2"/>
+                <aspectRatio value="1.66667"/>
+                <colour red="128" green="0" blue="128"/>
+                <size value="1"/>
+                <tag value="6"/>
+                <x3D value="0"/>
+                <y3D value="0"/>
+                <z3D value="15"/>
+                <is_visualised value="1"/>
+            </SpineCreator>
+        </LL:Annotation>
+        <LL:Neuron name="SC_sup" size="2500" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="noise" dimension="?">
+                <FixedValue value="0.01"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile20.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile21.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="sa" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile22.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="SC_deep">
+            <LL:Annotation>
+                <SpineCreator>
+                    <DrawOptions style="4" showlabel="0"/>
+                    <start x="-0.666361" y="8.91768"/>
+                    <curves>
+                        <curve>
+                            <C1 xpos="-0.677384" ypos="8.21691"/>
+                            <C2 xpos="-1.64834" ypos="9.11527"/>
+                            <end xpos="-1.63038" ypos="7.71475"/>
+                        </curve>
+                    </curves>
+                </SpineCreator>
+            </LL:Annotation>
+            <LL:Synapse>
+                <ConnectionList>
+                    <LL:Annotation>
+                        <SpineCreator>
+                            <Script text="&#10;#PARNAME=sigma #LOC=1,1&#10;#HASWEIGHT&#10;&#10;def connectionFunc(srclocs,dstlocs,sigma):&#10;&#10;  import math&#10;&#10;  # Corrected normterm (2015/01/16):&#10;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#10;&#10;  i = 0&#10;  out = []&#10;  for srcloc in srclocs:&#10;    j = 0&#10;    for dstloc in dstlocs:&#10;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#10;&#10;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#10;&#10;      if gauss &gt; 0.001:&#10;        #sys.stdout.write('gauss&gt;0.0001: i={0} gauss={1}'.format( i, gauss))&#10;        conn = (i,j,0,gauss)&#10;        out.append(conn)&#10;&#10;      j = j + 1&#10;    i = i + 1&#10;  #sys.stdout.write('out length: %d' % len(out))&#10;  return out&#10;" name="GaussianKernel" sigma="0.6"/>
+                            <Config weightProperty="w"/>
+                        </SpineCreator>
+                    </LL:Annotation>
+                    <BinaryFile file_name="conn_SC_sup_to_SC_deep_syn0.bin" num_connections="31504" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay dimension="ms">
+                        <FixedValue value="0"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="SC_sup to SC_deep Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile46.bin" num_elements="31504"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SC_sup to SC_deep Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="5"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Annotation>
+            <SpineCreator>
+                <xPos value="-1.657"/>
+                <yPos value="7.21427"/>
+                <animSpeed value="0.2"/>
+                <aspectRatio value="1.66667"/>
+                <colour red="128" green="0" blue="128"/>
+                <size value="1"/>
+                <tag value="7"/>
+                <x3D value="0"/>
+                <y3D value="0"/>
+                <z3D value="0"/>
+                <is_visualised value="1"/>
+            </SpineCreator>
+        </LL:Annotation>
+        <LL:Neuron name="SC_deep" size="2500" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="noise" dimension="?">
+                <FixedValue value="0.01"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile24.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile25.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="sa" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile26.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="SC_deep">
+            <LL:Annotation>
+                <SpineCreator>
+                    <DrawOptions style="4" showlabel="0"/>
+                    <start x="-0.823562" y="7.25738"/>
+                    <curves>
+                        <curve>
+                            <C1 xpos="0.565364" ypos="7.71385"/>
+                            <C2 xpos="-1.11401" ypos="8.87526"/>
+                            <end xpos="-1.08633" ypos="7.71513"/>
+                        </curve>
+                    </curves>
+                </SpineCreator>
+            </LL:Annotation>
+            <LL:Synapse>
+                <ConnectionList>
+                    <LL:Annotation>
+                        <SpineCreator>
+                            <Script text="&#10;#PARNAME=sigma #LOC=1,1&#10;#HASWEIGHT&#10;&#10;def connectionFunc(srclocs,dstlocs,sigma):&#10;&#10;  import math&#10;&#10;  # Corrected normterm (2015/01/16):&#10;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#10;&#10;  i = 0&#10;  out = []&#10;  for srcloc in srclocs:&#10;    j = 0&#10;    for dstloc in dstlocs:&#10;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#10;&#10;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#10;&#10;      if gauss &gt; 0.001:&#10;        #sys.stdout.write('gauss&gt;0.0001: i={0} gauss={1}'.format( i, gauss))&#10;        conn = (i,j,0,gauss)&#10;        out.append(conn)&#10;&#10;      j = j + 1&#10;    i = i + 1&#10;  #sys.stdout.write('out length: %d' % len(out))&#10;  return out&#10;" name="GaussianKernel" sigma="2"/>
+                            <Config weightProperty="w"/>
+                        </SpineCreator>
+                    </LL:Annotation>
+                    <BinaryFile file_name="conn_SC_deep_to_SC_deep_syn0.bin" num_connections="220356" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="SC_deep to SC_deep Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile27.bin" num_elements="220356"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SC_deep to SC_deep Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.5"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+</LL:SpineML>
