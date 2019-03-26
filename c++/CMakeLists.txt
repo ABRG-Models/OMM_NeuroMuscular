@@ -57,35 +57,36 @@ set(LRUD_SOURCE ${SOURCE_HEADERS} leftrightupdown.cpp worldframe.cpp eyeframe.cp
 add_executable(${LRUD_TARGET} ${LRUD_SOURCE})
 set_target_properties (${LRUD_TARGET} PROPERTIES COMPILE_FLAGS "-g")
 
-### Brahms Component
-set(BC_TARGET worldDataMaker CACHE TYPE STRING)
-set(BC_SOURCE ${SOURCE_HEADERS} worldDataMaker.cpp worldframe.cpp eyeframe.cpp)
+### Set the SYSTEMML_INSTALL_PATH once only
 set(SYSTEMML_INSTALL_PATH $ENV{SYSTEMML_INSTALL_PATH} CACHE PATH
     "Installation location of Brahms (e.g. ~/SystemML)")
+
+### Include directories for Brahms components.
 include_directories(/usr/include/brahms)
 include_directories(/var/lib/brahms/Namespace)
 include_directories(${SYSTEMML_INSTALL_PATH}/BRAHMS/include)
 include_directories(${SYSTEMML_INSTALL_PATH}/Namespace)
+include_directories(/usr/include/eigen3)
 include_directories($ENV{HOME}/usr/include)
+
+### Link dirs for Brahms components
 link_directories(${SYSTEMML_INSTALL_PATH}/BRAHMS/bin)
+
+### Brahms Component
+set(BC_TARGET worldDataMaker CACHE TYPE STRING)
+set(BC_SOURCE ${SOURCE_HEADERS} worldDataMaker.cpp worldframe.cpp eyeframe.cpp)
 add_library(${BC_TARGET} SHARED ${BC_SOURCE})
 # "" rather than "lib" to give Brahms style "component.so" not "libcomponent.so":
 set_target_properties(${BC_TARGET} PROPERTIES PREFIX "")
 set_target_properties (${BC_TARGET} PROPERTIES COMPILE_DEFINITIONS "__GLN__")
 set_target_properties (${BC_TARGET} PROPERTIES COMPILE_FLAGS "-fPIC -Werror -pthread -msse2 -O3")
+### Link jsoncpp for BC_TARGET
+target_link_libraries(${BC_TARGET} jsoncpp)
 ##########################################################################################
 
 ### Brahms Component for single centroid of whole map
 set(CENTROID centroid CACHE TYPE STRING)
 set(CENTROID_SOURCE ${SOURCE_HEADERS} centroid.cpp)
-set(SYSTEMML_INSTALL_PATH $ENV{SYSTEMML_INSTALL_PATH} CACHE PATH
-    "Installation location of Brahms (e.g. ~/SystemML)")
-include_directories(/usr/include/brahms)
-include_directories(/var/lib/brahms/Namespace)
-include_directories(${SYSTEMML_INSTALL_PATH}/BRAHMS/include)
-include_directories(${SYSTEMML_INSTALL_PATH}/Namespace)
-include_directories($ENV{HOME}/usr/include)
-link_directories(${SYSTEMML_INSTALL_PATH}/BRAHMS/bin)
 add_library(${CENTROID} SHARED ${CENTROID_SOURCE})
 # "" rather than "lib" to give Brahms style "centroid.so" not "libcentroid.so":
 set_target_properties(${CENTROID} PROPERTIES PREFIX "")
@@ -96,14 +97,6 @@ set_target_properties (${CENTROID} PROPERTIES COMPILE_FLAGS "-fPIC -Werror -pthr
 ### Brahms Component for localised centroids
 set(MULTICENTROID multicentroid CACHE TYPE STRING)
 set(MULTICENTROID_SOURCE ${SOURCE_HEADERS} multicentroid.cpp)
-set(SYSTEMML_INSTALL_PATH $ENV{SYSTEMML_INSTALL_PATH} CACHE PATH
-    "Installation location of Brahms (e.g. ~/SystemML)")
-include_directories(/usr/include/brahms)
-include_directories(/var/lib/brahms/Namespace)
-include_directories(${SYSTEMML_INSTALL_PATH}/BRAHMS/include)
-include_directories(${SYSTEMML_INSTALL_PATH}/Namespace)
-include_directories($ENV{HOME}/usr/include)
-link_directories(${SYSTEMML_INSTALL_PATH}/BRAHMS/bin)
 add_library(${MULTICENTROID} SHARED ${MULTICENTROID_SOURCE})
 # "" rather than "lib" to give Brahms style "centroid_multi.so" not "libcentroid_multi.so":
 set_target_properties(${MULTICENTROID} PROPERTIES PREFIX "")
@@ -114,21 +107,9 @@ set_target_properties (${MULTICENTROID} PROPERTIES COMPILE_FLAGS "-fPIC -Werror 
 ### Brahms Component for power centroid
 set(POWERCENTROID powercentroid CACHE TYPE STRING)
 set(POWERCENTROID_SOURCE ${SOURCE_HEADERS} powercentroid.cpp)
-set(SYSTEMML_INSTALL_PATH $ENV{SYSTEMML_INSTALL_PATH} CACHE PATH
-    "Installation location of Brahms (e.g. ~/SystemML)")
-include_directories(/usr/include/brahms)
-include_directories(/var/lib/brahms/Namespace)
-include_directories(${SYSTEMML_INSTALL_PATH}/BRAHMS/include)
-include_directories(${SYSTEMML_INSTALL_PATH}/Namespace)
-include_directories($ENV{HOME}/usr/include)
-link_directories(${SYSTEMML_INSTALL_PATH}/BRAHMS/bin)
 add_library(${POWERCENTROID} SHARED ${POWERCENTROID_SOURCE})
 # "" rather than "lib" to give Brahms style "powercentroid.so" not "libpowercentroid.so":
 set_target_properties(${POWERCENTROID} PROPERTIES PREFIX "")
 set_target_properties (${POWERCENTROID} PROPERTIES COMPILE_DEFINITIONS "__GLN__")
 set_target_properties (${POWERCENTROID} PROPERTIES COMPILE_FLAGS "-fPIC -Werror -pthread -msse2 -O3")
-##########################################################################################
-
-### Specify libraries for Brahms Component ###############################################
-target_link_libraries(${BC_TARGET} jsoncpp)
 ##########################################################################################

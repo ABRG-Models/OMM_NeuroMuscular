@@ -179,8 +179,6 @@ private:
 #define LUMINANCES_FILE "../model/luminances.json"
 void COMPONENT_CLASS_CPP::readLuminanceFile (void)
 {
-    Json::Value root;
-    Json::Reader reader;
     // This will read a file called luminances.json. The present
     // working directory will be your SpineML_2_BRAHMS
     // output_file_location/run/. Place luminances.json into your
@@ -202,14 +200,19 @@ void COMPONENT_CLASS_CPP::readLuminanceFile (void)
         return;
     }
 
+    // Parse the JSON
     ifstream jsonfile (LUMINANCES_FILE, ifstream::binary);
-
-    bool parsingSuccessful = reader.parse (jsonfile, root);
+    Json::Value root;
+    string errs;
+    Json::CharReaderBuilder rbuilder;
+    rbuilder["collectComments"] = false;
+    bool parsingSuccessful = Json::parseFromStream (rbuilder, jsonfile, &root, &errs);
     if (!parsingSuccessful) {
         // report to the user the failure and their locations in the document.
-        berr << "Failed to parse JSON luminances: " << reader.getFormattedErrorMessages();
+        berr << "Failed to parse JSON luminances: " << errs;
         return;
     }
+
     const Json::Value plugins = root["luminances"];
     for (int index = 0; index < plugins.size(); ++index) {  // Iterates over the sequence elements.
         Json::Value v = plugins[index];
